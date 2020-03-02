@@ -56,9 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\ClockController.cs" />
+    <Compile Include="Controllers\CommandProcessor.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\MruController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\RenderController.cs" />
     <Compile Include="Controllers\SceneController.cs" />
     <Compile Include="Controllers\SdiController.cs" />
     <Compile Include="Form1.cs">
@@ -67,13 +70,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Camera.cs" />
-    <Compile Include="Models\FillType.cs" />
+    <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\FilterIndex.cs" />
+    <Compile Include="Models\Foo.cs" />
+    <Compile Include="Models\GLInfo.cs" />
+    <Compile Include="Models\GLInfoTypeConverter.cs" />
+    <Compile Include="Models\GLMode.cs" />
+    <Compile Include="Models\GLModeTypeConverter.cs" />
     <Compile Include="Models\Options.cs" />
-    <Compile Include="Models\Pattern.cs" />
     <Compile Include="Models\Projection.cs" />
-    <Compile Include="Models\ProjectionType.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Program.cs" />
@@ -380,6 +385,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ZoomHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Snippets\FragmentBody.txt" />
+    <Content Include="Snippets\FragmentHead.txt" />
+    <Content Include="Snippets\MainBody.txt" />
+    <Content Include="Snippets\SceneBody.txt" />
+    <Content Include="Snippets\SceneFoot.txt" />
+    <Content Include="Snippets\SceneHead.txt" />
+    <Content Include="Snippets\TraceFoot.txt" />
+    <Content Include="Snippets\TraceHead.txt" />
+    <Content Include="Snippets\VertexBody.txt" />
+    <Content Include="Snippets\VertexHead.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

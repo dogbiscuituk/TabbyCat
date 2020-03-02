@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,7 +45,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strings.cs" />
+    <Compile Include="Types\Camera.cs" />
+    <Compile Include="Types\Entity.cs" />
+    <Compile Include="Types\FillType.cs" />
+    <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\ProjectionType.cs" />
+    <Compile Include="Utility\Maths.cs" />
+    <Compile Include="Utility\Processes.cs" />
+    <Compile Include="Utility\ShaderNames.cs" />
+    <Compile Include="Utility\ShaderTags.cs" />
+    <Compile Include="Utility\Strings.cs" />
+    <Compile Include="Types\ColourFormat.cs" />
+    <Compile Include="Types\GPUStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

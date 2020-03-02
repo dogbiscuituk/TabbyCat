@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common
+﻿namespace TabbyCat.Common.Utility
 {
     using System.IO;
     using System.Text;

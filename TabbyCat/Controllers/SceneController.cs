@@ -1,5 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using OpenTK;
+    using System;
+    using System.ComponentModel;
     using System.Windows.Forms;
     using TabbyCat.Models;
     using TabbyCat.Views;
@@ -10,8 +13,11 @@
         {
             SceneForm = new SceneForm();
             Scene = new Scene(this);
+            ClockController = new ClockController(this);
+            CommandProcessor = new CommandProcessor(this);
             JsonController = new JsonController(this);
             PropertyController = new PropertyController(this);
+            RenderController = new RenderController(this);
             ConnectAll(true);
         }
 
@@ -23,8 +29,20 @@
             set => PropertyController.FormVisible = value;
         }
 
+        internal ClockController ClockController;
+        internal CommandProcessor CommandProcessor { get; private set; }
+        internal GLControl GLControl => SceneForm.GLControl;
+        internal readonly RenderController RenderController;
         internal Scene Scene;
         internal SceneForm SceneForm;
+
+        #region Internal Methods
+
+        internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
+        internal void Show() => SceneForm.Show();
+        internal void Show(IWin32Window owner) => SceneForm.Show(owner);
+
+        #endregion
 
         #region Private Properties
 
@@ -46,8 +64,17 @@
         // Form
         private void SceneForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void SceneForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
+        // Json
+        private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
+        private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
+        private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
+        private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
+        private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
+        private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
 
         #endregion
+
+        private int UpdateCount;
 
         #region Private Methods
 
@@ -60,6 +87,19 @@
             else
             {
                 ConnectEventHandlers(false);
+            }
+        }
+
+        private void ConnectControllers(bool connect)
+        {
+            if (connect)
+            {
+                //PropertyGridController.SelectedObject = Scene;
+            }
+            else
+            {
+                //PropertyGridController.SelectedObject = null;
+                RenderController.Unload();
             }
         }
 
@@ -79,6 +119,13 @@
                 // Form
                 SceneForm.FormClosed += SceneForm_FormClosed;
                 SceneForm.FormClosing += SceneForm_FormClosing;
+                // Json
+                JsonController.FileLoaded += JsonController_FileLoaded;
+                JsonController.FilePathChanged += JsonController_FilePathChanged;
+                JsonController.FilePathRequest += JsonController_FilePathRequest;
+                JsonController.FileReopen += JsonController_FileReopen;
+                JsonController.FileSaving += JsonController_FileSaving;
+                JsonController.FileSaved += JsonController_FileSaved;
             }
             else
             {
@@ -94,25 +141,95 @@
                 // Form
                 SceneForm.FormClosed -= SceneForm_FormClosed;
                 SceneForm.FormClosing -= SceneForm_FormClosing;
+                // Json
+                JsonController.FileLoaded -= JsonController_FileLoaded;
+                JsonController.FilePathChanged -= JsonController_FilePathChanged;
+                JsonController.FilePathRequest -= JsonController_FilePathRequest;
+                JsonController.FileReopen -= JsonController_FileReopen;
+                JsonController.FileSaving -= JsonController_FileSaving;
+                JsonController.FileSaved -= JsonController_FileSaved;
             }
+        }
+
+        private void FileLoaded()
+        {
+            ConnectControllers(false);
+            Scene.SceneController = this;
+            BeginUpdate();
+            Scene.AttachTraces();
+            CommandProcessor.Clear();
+            EndUpdate();
+            ConnectControllers(true);
+            RecreateGLControl(Scene.GLMode);
+        }
+
+        private void FilePathRequest(SdiController.FilePathEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.FilePath))
+                e.FilePath = Scene.Title.ToFilename();
+        }
+
+        private void FileSaved()
+        {
+            BeginUpdate();
+            CommandProcessor.Save();
+            EndUpdate();
         }
 
         private void FormClosed() => ConnectAll(false);
 
         private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
 
-        private void NewEmptyScene() { }
+        private SceneController GetNewSceneController()
+        {
+            if (AppController.Options.OpenInNewWindow)
+                return AppController.AddNewSceneController();
+            if (!JsonController.SaveIfModified())
+                return null;
+            JsonController.Clear();
+            return this;
+        }
 
-        private void NewFromTemplate() { }
+        private void NewEmptyScene()
+        {
+            GetNewSceneController();
+            CommandProcessor.Clear();
+        }
 
-        private void OpenFile() { }
+        private void NewFromTemplate()
+        {
+            var sceneController = OpenFile(FilterIndex.Template);
+            if (sceneController != null)
+                sceneController.JsonController.FilePath = string.Empty;
+        }
 
-        private void SaveFile() { }
+        private SceneController OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
+            OpenFile(JsonController.SelectFilePath(filterIndex));
 
-        private void SaveFileAs() { }
+        private SceneController OpenFile(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                return null;
+            var sceneController = GetNewSceneController();
+            sceneController?.LoadFromFile(filePath);
+            return sceneController;
+        }
+
+        private bool SaveFile() => JsonController.Save();
+
+        private bool SaveFileAs() => JsonController.SaveAs();
+
+        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
+
+        private void UpdateCaption() { SceneForm.Text = JsonController.WindowCaption; }
 
         #endregion
 
-        internal void Show(IWin32Window owner) => SceneForm.Show(owner);
+        internal void OnPropertyChanged(params object[] args)
+        {
+
+        }
+
+        internal void BeginUpdate() => ++UpdateCount;
     }
 }

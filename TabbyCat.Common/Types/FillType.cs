@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Models
+﻿namespace TabbyCat.Common.Types
 {
     public class FillType
     {

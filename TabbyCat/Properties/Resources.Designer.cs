@@ -341,6 +341,31 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to   execTrace();.
+        /// </summary>
+        internal static string FragmentBody {
+            get {
+                return ResourceManager.GetString("FragmentBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in vec3 colour;
+        ///out vec4 FragColor;
+        ///uniform int traceIndex;
+        ///
+        ///void execTrace()
+        ///{
+        ///  FragColor = vec4(colour, 0.1);
+        ///}.
+        /// </summary>
+        internal static string FragmentHead {
+            get {
+                return ResourceManager.GetString("FragmentHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FullScreenHS {
@@ -447,6 +472,16 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("LineColorHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     case {0}: execTrace{0}(); break;
+        ///.
+        /// </summary>
+        internal static string MainBody {
+            get {
+                return ResourceManager.GetString("MainBody", resourceCulture);
             }
         }
         
@@ -731,6 +766,45 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to void main()
+        ///{
+        ///  switch (traceIndex)
+        ///  {.
+        /// </summary>
+        internal static string SceneBody {
+            get {
+                return ResourceManager.GetString("SceneBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     default: break;
+        ///  }
+        ///}
+        /// 
+        /// .
+        /// </summary>
+        internal static string SceneFoot {
+            get {
+                return ResourceManager.GetString("SceneFoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*
+        ///  {0} Shader
+        ///*/
+        /// 
+        ///#version {1}
+        /// .
+        /// </summary>
+        internal static string SceneHead {
+            get {
+                return ResourceManager.GetString("SceneHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SearchWebHS {
@@ -857,6 +931,67 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TileWindowsHorizontallyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to }
+        /// .
+        /// </summary>
+        internal static string TraceFoot {
+            get {
+                return ResourceManager.GetString("TraceFoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to void execTrace{0}() // {1}
+        ///{{
+        ///.
+        /// </summary>
+        internal static string TraceHead {
+            get {
+                return ResourceManager.GetString("TraceHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   execTrace();.
+        /// </summary>
+        internal static string VertexBody {
+            get {
+                return ResourceManager.GetString("VertexBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
+        ///out vec3 colour;
+        ///uniform float timeValue;
+        ///uniform int traceIndex;
+        ///uniform mat4
+        ///  transform,
+        ///  cameraView,
+        ///  projection;
+        ///
+        ///void execTrace()
+        ///{
+        ///  float
+        ///    t = timeValue,
+        ///    x = position.x,
+        ///    y = position.y,
+        ///    z = sqrt(x * x + y * y);
+        ///  z = cos(20 * z - 10 * t) * exp(-3 * z);
+        ///  float
+        ///    r = (x + 1) / 2,
+        ///    g = (y + 1) / 2,
+        ///    b = clamp(abs(5 * z), 0, 1);
+        ///  gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
+        ///  colour = vec3(r [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string VertexHead {
+            get {
+                return ResourceManager.GetString("VertexHead", resourceCulture);
             }
         }
         

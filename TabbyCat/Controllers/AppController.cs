@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Models;
@@ -12,6 +13,8 @@
         {
             Application.Exit();
         }
+
+        #region Internal Properties
 
         internal static Options Options
         {
@@ -39,6 +42,10 @@
             }
         }
 
+        internal static List<SceneController> SceneControllers = new List<SceneController>();
+
+        #endregion
+
         internal static string GetDefaultFolder(FilterIndex filterIndex)
         {
             switch (filterIndex)
@@ -50,6 +57,14 @@
                 default:
                     return string.Empty;
             }
+        }
+
+        internal static SceneController AddNewSceneController()
+        {
+            var sceneController = new SceneController();
+            SceneControllers.Add(sceneController);
+            sceneController.Show();
+            return sceneController;
         }
 
         #region Private Properties
