@@ -103,10 +103,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl TabControl;
-        private System.Windows.Forms.TabPage tpScene;
-        private System.Windows.Forms.TabPage tpTraces;
-        private TabbyCatControls.ScenePropertiesControl scenePropertiesControl1;
-        private TabbyCatControls.TracePropertiesControl tracePropertiesControl1;
+        internal System.Windows.Forms.TabControl TabControl;
+        internal System.Windows.Forms.TabPage tpScene;
+        internal System.Windows.Forms.TabPage tpTraces;
+        internal TabbyCatControls.ScenePropertiesControl scenePropertiesControl1;
+        internal TabbyCatControls.TracePropertiesControl tracePropertiesControl1;
     }
 }

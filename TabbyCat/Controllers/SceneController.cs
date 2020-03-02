@@ -3,9 +3,9 @@
     using System.Windows.Forms;
     using TabbyCat.Views;
 
-    public class SceneController
+    internal class SceneController
     {
-        public SceneController()
+        internal SceneController()
         {
             SceneForm = new SceneForm();
             PropertyController = new PropertyController(this);
@@ -27,20 +27,27 @@
             {
                 if (SceneForm != null)
                 {
-                    SceneForm.ViewPropertyEditor.Click -= ViewPropertyEditor_Click;
+                    SceneForm.FileClose.Click -= FileClose_Click;
+                    SceneForm.FileExit.Click -= FileExit_Click;
+                    SceneForm.ViewProperties.Click -= ViewProperties_Click;
                 }
                 _SceneForm = value;
                 if (SceneForm != null)
                 {
-                    SceneForm.ViewPropertyEditor.Click += ViewPropertyEditor_Click;
+                    SceneForm.FileClose.Click += FileClose_Click;
+                    SceneForm.FileExit.Click += FileExit_Click;
+                    SceneForm.ViewProperties.Click += ViewProperties_Click;
                 }
             }
         }
 
-        private void ViewPropertyEditor_Click(object sender, System.EventArgs e)
-        {
-            PropertyEditorVisible = !PropertyEditorVisible;
-        }
+        #region Private Event Handlers
+
+        private void FileClose_Click(object sender, System.EventArgs e) => SceneForm.Close();
+        private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
+        private void ViewProperties_Click(object sender, System.EventArgs e) => PropertyEditorVisible = !PropertyEditorVisible;
+
+        #endregion
 
         internal void Show(IWin32Window owner) => SceneForm.Show(owner);
     }

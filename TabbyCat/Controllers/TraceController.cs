@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat
 {
-    public class TraceController
+    internal class TraceController
     {
     }
 }
