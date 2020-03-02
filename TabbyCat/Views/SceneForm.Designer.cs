@@ -656,19 +656,19 @@
             // 
             this.ViewFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
             this.ViewFullScreen.Name = "ViewFullScreen";
-            this.ViewFullScreen.Size = new System.Drawing.Size(153, 22);
+            this.ViewFullScreen.Size = new System.Drawing.Size(180, 22);
             this.ViewFullScreen.Text = "&Full Screen";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(150, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
-            // ViewPropertyEditor
+            // ViewProperties
             // 
-            this.ViewProperties.Name = "ViewPropertyEditor";
-            this.ViewProperties.Size = new System.Drawing.Size(153, 22);
-            this.ViewProperties.Text = "&Property Editor";
+            this.ViewProperties.Name = "ViewProperties";
+            this.ViewProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewProperties.Text = "&Properties";
             // 
             // TimeMenu
             // 
