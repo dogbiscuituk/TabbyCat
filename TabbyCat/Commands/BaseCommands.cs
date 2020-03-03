@@ -100,7 +100,7 @@
         protected override string Target => "Scene";
         protected override Scene GetItem(Scene scene) => scene;
         protected override void PropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertyChanged(scene, propertyName);
+            scene.OnPropertiesChanged(scene, propertyName);
     }
 
     internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
@@ -119,8 +119,8 @@
 
         protected override string Target => "Trace";
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
-        protected override void PropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertyChanged(GetItem(scene), propertyName);
+        protected override void OnPropertyChanged(Scene scene, string propertyName) =>
+            scene.OnPropertiesChanged(GetItem(scene), propertyName);
     }
 
     #endregion
@@ -192,7 +192,7 @@
         protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
         protected override Trace GetNewItem(Scene scene) => scene.NewTrace();
         protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
-        protected override void PropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(scene, propertyName);
+        protected override void PropertyChanged(Scene scene, string propertyName) => scene.OnPropertiesChanged(scene, propertyName);
         protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }
 

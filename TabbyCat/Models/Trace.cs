@@ -3,10 +3,12 @@
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
+    using System.Linq;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Properties;
 
-    internal class Trace : CodeContainer
+    internal class Trace : CodeSource
     {
         #region Constructors
 
@@ -26,7 +28,7 @@
                 if (Description != value)
                 {
                     _Description = value;
-                    OnPropertyChanged(nameof(Description));
+                    OnPropertiesChanged(nameof(Description));
                 }
             }
         }
@@ -41,7 +43,7 @@
                 if (Location != value)
                 {
                     _Location = value;
-                    OnPropertyChanged(nameof(Location));
+                    OnPropertiesChanged(nameof(Location));
                 }
             }
         }
@@ -56,7 +58,7 @@
                 if (Maximum != value)
                 {
                     _Maximum = value;
-                    OnPropertyChanged(nameof(Maximum));
+                    OnPropertiesChanged(nameof(Maximum));
                 }
             }
         }
@@ -71,7 +73,7 @@
                 if (Minimum != value)
                 {
                     _Minimum = value;
-                    OnPropertyChanged(nameof(Minimum));
+                    OnPropertiesChanged(nameof(Minimum));
                 }
             }
         }
@@ -86,7 +88,7 @@
                 if (Orientation != value)
                 {
                     _Orientation = value;
-                    OnPropertyChanged(nameof(Orientation));
+                    OnPropertiesChanged(nameof(Orientation));
                 }
             }
         }
@@ -101,7 +103,7 @@
                 if (Pattern != value)
                 {
                     _Pattern = value;
-                    OnPropertyChanged(nameof(Pattern));
+                    OnPropertiesChanged(nameof(Pattern));
                 }
             }
         }
@@ -116,7 +118,7 @@
                 if (Scale != value)
                 {
                     _Scale = value;
-                    OnPropertyChanged(nameof(Scale));
+                    OnPropertiesChanged(nameof(Scale));
                 }
             }
         }
@@ -131,7 +133,7 @@
                 if (StripCount != value)
                 {
                     _StripCount = value;
-                    OnPropertyChanged(nameof(StripCount));
+                    OnPropertiesChanged(nameof(StripCount));
                 }
             }
         }
@@ -146,7 +148,7 @@
                 if (Visible != value)
                 {
                     _Visible = value;
-                    OnPropertyChanged(nameof(Visible));
+                    OnPropertiesChanged(nameof(Visible));
                 }
             }
         }
@@ -171,14 +173,76 @@
 
         #endregion
 
-        #region Protected Internal Methods
+        private int _Index;
 
-        internal override void OnPropertyChanged(string propertyName)
+        private void RestoreDefaults()
         {
-            Scene.OnPropertyChanged($"Traces[{Index}].{propertyName}");
+            _Index = Defaults.Index;
+            _Location = Defaults.Location;
+            _Maximum = Defaults.Maximum;
+            _Minimum = Defaults.Maximum;
+            _Orientation = Defaults.Orientation;
+            _Pattern = Defaults.Pattern;
+            _Scale = Defaults.Scale;
+            _Shader1Vertex = Resources.VertexBody;
+            _Shader2TessControl = Defaults.Shader2TessControl;
+            _Shader3TessEvaluation = Defaults.Shader3TessEvaluation;
+            _Shader4Geometry = Defaults.Shader4Geometry;
+            _Shader5Fragment = Resources.FragmentBody;
+            _Shader6Compute = Defaults.Shader6Compute;
+            _StripCount = Defaults.StripCount;
+            _Description = Defaults.Description;
+            _Visible = Defaults.Visible;
         }
 
+        #region Protected Internal Methods
+
+        internal override void OnPropertiesChanged(params string[] propertyNames) =>
+            Scene.OnPropertiesChanged(propertyNames.Select(p => $"Traces[{Index}].{p}").ToArray());
+
         internal Matrix4d GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
+
+        #endregion
+
+        #region Private Classes
+
+        public class Defaults
+        {
+            public const Pattern
+                Pattern = Common.Types.Pattern.Fill;
+
+            public const bool
+                Visible = true;
+
+            public const int
+                Index = -1;
+
+            public static Vector3
+                StripCount = new Vector3(100, 100, 0);
+
+            public static Vector3d
+                Location = new Vector3d(),
+                Maximum = new Vector3d(),
+                Minimum = new Vector3d(),
+                Orientation = new Vector3d(),
+                Scale = new Vector3d(1, 1, 1);
+
+            public const string
+                Description = "",
+                Shader2TessControl = "",
+                Shader3TessEvaluation = "",
+                Shader4Geometry = "",
+                Shader6Compute = "";
+
+            internal const string
+                LocationString = "0, 0, 0",
+                MaximumString = "0, 0, 0",
+                MinimumString = "0, 0, 0",
+                OrientationString = "0, 0, 0",
+                PatternString = "TriangleStrip",
+                ScaleString = "1, 1, 1",
+                StripCountString = "100, 100, 0";
+        }
 
         #endregion
 
@@ -190,17 +254,24 @@
 
         internal void SetScale(Vector3d scale) => Scale = scale;
 
+        /*internal void SetTransform(Matrix4d transform)
+        {
+            SetLocation(transform.ExtractTranslation());
+            SetOrientation(transform.ExtractRotation());
+            SetScale(transform.ExtractScale());
+        }*/
+
         public void CopyFrom(Trace trace)
         {
             _Description = trace.Description;
             _Index = trace.Index;
-            _Location = new Vector3f(trace.Location);
-            _Maximum = new Vector3f(trace.Maximum);
-            _Minimum = new Vector3f(trace.Minimum);
-            _Orientation = new Euler3f(trace.Orientation);
+            _Location = new Vector3d(trace.Location);
+            _Maximum = new Vector3d(trace.Maximum);
+            _Minimum = new Vector3d(trace.Minimum);
+            _Orientation = new Vector3d(trace.Orientation);
             _Pattern = trace.Pattern;
-            _Scale = new Vector3f(trace.Scale);
-            _StripCount = new Vector3i(trace.StripCount);
+            _Scale = new Vector3d(trace.Scale);
+            _StripCount = new Vector3(trace.StripCount);
             _Visible = trace.Visible;
         }
     }

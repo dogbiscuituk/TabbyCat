@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using OpenTK.Graphics.OpenGL;
 
-    internal class CodeContainer
+    internal abstract class CodeSource
     {
         [JsonProperty]
         internal string _Shader1Vertex;
@@ -15,7 +15,7 @@
                 if (Shader1Vertex != value)
                 {
                     _Shader1Vertex = value;
-                    OnPropertyChanged(nameof(Shader1Vertex));
+                    OnPropertiesChanged(nameof(Shader1Vertex));
                 }
             }
         }
@@ -30,7 +30,7 @@
                 if (Shader2TessControl != value)
                 {
                     _Shader2TessControl = value;
-                    OnPropertyChanged(nameof(Shader2TessControl));
+                    OnPropertiesChanged(nameof(Shader2TessControl));
                 }
             }
         }
@@ -45,7 +45,7 @@
                 if (Shader3TessEvaluation != value)
                 {
                     _Shader3TessEvaluation = value;
-                    OnPropertyChanged(nameof(Shader3TessEvaluation));
+                    OnPropertiesChanged(nameof(Shader3TessEvaluation));
                 }
             }
         }
@@ -60,7 +60,7 @@
                 if (Shader4Geometry != value)
                 {
                     _Shader4Geometry = value;
-                    OnPropertyChanged(nameof(Shader4Geometry));
+                    OnPropertiesChanged(nameof(Shader4Geometry));
                 }
             }
         }
@@ -75,7 +75,7 @@
                 if (Shader5Fragment != value)
                 {
                     _Shader5Fragment = value;
-                    OnPropertyChanged(nameof(Shader5Fragment));
+                    OnPropertiesChanged(nameof(Shader5Fragment));
                 }
             }
         }
@@ -90,16 +90,14 @@
                 if (Shader6Compute != value)
                 {
                     _Shader6Compute = value;
-                    OnPropertyChanged(nameof(Shader6Compute));
+                    OnPropertiesChanged(nameof(Shader6Compute));
                 }
             }
         }
 
         #region Protected Methods
 
-        internal virtual void OnPropertyChanged(string propertyName)
-        {
-        }
+        internal abstract void OnPropertiesChanged(params string[] propertyNames);
 
         #endregion
 
@@ -123,7 +121,32 @@
             return string.Empty;
         }
 
-        public void CopyFrom(CodeContainer source)
+        internal void SetScript(ShaderType shaderType, string script)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    _Shader1Vertex = script;
+                    break;
+                case ShaderType.TessControlShader:
+                    _Shader2TessControl = script;
+                    break;
+                case ShaderType.TessEvaluationShader:
+                    _Shader3TessEvaluation = script;
+                    break;
+                case ShaderType.GeometryShader:
+                    _Shader4Geometry = script;
+                    break;
+                case ShaderType.FragmentShader:
+                    _Shader5Fragment = script;
+                    break;
+                case ShaderType.ComputeShader:
+                    _Shader6Compute = script;
+                    break;
+            }
+        }
+
+        public void CopyFrom(CodeSource source)
         {
             _Shader1Vertex = source.Shader1Vertex;
             _Shader2TessControl = source.Shader2TessControl;

@@ -25,34 +25,34 @@
         {
             switch (field)
             {
-                case DisplayNames.GLMode_Index:
+                case "GLMode_Index":
                     Index = (IntPtr?)value;
                     return;
-                case DisplayNames.GLMode_ColourFormat:
+                case "GLMode_ColourFormat":
                     ColourFormat = new ColourFormat((ColourFormat)value);
                     return;
-                case DisplayNames.GLMode_AccumColourFormat:
+                case "GLMode_AccumColourFormat":
                     AccumColourFormat = new ColourFormat((ColourFormat)value);
                     return;
-                case DisplayNames.GLMode_Buffers:
+                case "GLMode_Buffers":
                     Buffers = (int)value;
                     return;
-                case DisplayNames.GLMode_Depth:
+                case "GLMode_Depth":
                     Depth = (int)value;
                     return;
-                case DisplayNames.GLMode_Samples:
+                case "GLMode_Samples":
                     Samples = (int)value;
                     return;
-                case DisplayNames.GLMode_Stencil:
+                case "GLMode_Stencil":
                     Stencil = (int)value;
                     return;
-                case DisplayNames.GLMode_Stereo:
+                case "GLMode_Stereo":
                     Stereo = (bool)value;
                     return;
             }
             var v = (int)value;
             var fields = field.Split('.');
-            var p = fields[0] == DisplayNames.GLMode_AccumColourFormat ? AccumColourFormat : ColourFormat;
+            var p = fields[0] == "GLMode_AccumColourFormat" ? AccumColourFormat : ColourFormat;
             switch (fields[1])
             {
                 case ColourFormat.DisplayNames.Red: p.Red = v; break;
@@ -62,10 +62,10 @@
             }
             switch (fields[0])
             {
-                case DisplayNames.GLMode_AccumColourFormat:
+                case "GLMode_AccumColourFormat":
                     AccumColourFormat = p;
                     break;
-                case DisplayNames.GLMode_ColourFormat:
+                case "GLMode_ColourFormat":
                     ColourFormat = p;
                     break;
             }

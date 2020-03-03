@@ -63,12 +63,15 @@
     <Compile Include="Commands\TraceCommands.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ClockController.cs" />
+    <Compile Include="Controllers\CodeSourcePropertyController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\MruController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\RenderController.cs" />
     <Compile Include="Controllers\SceneController.cs" />
+    <Compile Include="Controllers\ScenePropertyController.cs" />
     <Compile Include="Controllers\SdiController.cs" />
+    <Compile Include="Controllers\TracePropertyController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,12 +80,13 @@
     </Compile>
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\FilterIndex.cs" />
-    <Compile Include="Models\CodeContainer.cs" />
+    <Compile Include="Models\CodeSource.cs" />
     <Compile Include="Models\GLInfo.cs" />
     <Compile Include="Models\GLInfoTypeConverter.cs" />
     <Compile Include="Models\GLMode.cs" />
     <Compile Include="Models\GLModeTypeConverter.cs" />
     <Compile Include="Models\Options.cs" />
+    <Compile Include="Models\PropertiesChangedEventArgs.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Program.cs" />
@@ -138,6 +142,10 @@
     <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
       <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
       <Name>TabbyCat.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TabbyCat.Controls\TabbyCat.Controls.csproj">
+      <Project>{863f94ec-92f5-4b7c-833e-6016ed499ca4}</Project>
+      <Name>TabbyCat.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

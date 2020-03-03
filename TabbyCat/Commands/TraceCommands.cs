@@ -60,13 +60,6 @@
         { }
     }
 
-    internal class TransformCommand : TracePropertyCommand<Matrix4>
-    {
-        internal TransformCommand(int index, Matrix4 value) : base(index, "Transform",
-            value, e => e.GetTransform(), (e, v) => e.SetTransform(v))
-        { }
-    }
-
     internal class VisibleCommand : TracePropertyCommand<bool>
     {
         internal VisibleCommand(int index, bool value) : base(index, "Visible",

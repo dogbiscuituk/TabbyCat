@@ -30,9 +30,9 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpScene = new System.Windows.Forms.TabPage();
+            this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
             this.tpTraces = new System.Windows.Forms.TabPage();
-            this.scenePropertiesControl1 = new TabbyCatControls.ScenePropertiesControl();
-            this.tracePropertiesControl1 = new TabbyCatControls.TracePropertiesControl();
+            this.TracePropertiesControl = new TabbyCatControls.TracePropertiesControl();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
@@ -46,52 +46,56 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(424, 377);
+            this.TabControl.Size = new System.Drawing.Size(495, 435);
             this.TabControl.TabIndex = 0;
             // 
             // tpScene
             // 
-            this.tpScene.Controls.Add(this.scenePropertiesControl1);
-            this.tpScene.Location = new System.Drawing.Point(4, 22);
+            this.tpScene.Controls.Add(this.ScenePropertiesControl);
+            this.tpScene.Location = new System.Drawing.Point(4, 24);
             this.tpScene.Name = "tpScene";
             this.tpScene.Padding = new System.Windows.Forms.Padding(3);
-            this.tpScene.Size = new System.Drawing.Size(416, 351);
+            this.tpScene.Size = new System.Drawing.Size(487, 407);
             this.tpScene.TabIndex = 0;
             this.tpScene.Text = "Scene";
             this.tpScene.UseVisualStyleBackColor = true;
             // 
+            // ScenePropertiesControl
+            // 
+            this.ScenePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScenePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScenePropertiesControl.Location = new System.Drawing.Point(3, 3);
+            this.ScenePropertiesControl.Name = "ScenePropertiesControl";
+            this.ScenePropertiesControl.Size = new System.Drawing.Size(481, 401);
+            this.ScenePropertiesControl.TabIndex = 0;
+            // 
             // tpTraces
             // 
-            this.tpTraces.Controls.Add(this.tracePropertiesControl1);
-            this.tpTraces.Location = new System.Drawing.Point(4, 22);
+            this.tpTraces.Controls.Add(this.TracePropertiesControl);
+            this.tpTraces.Location = new System.Drawing.Point(4, 24);
             this.tpTraces.Name = "tpTraces";
             this.tpTraces.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTraces.Size = new System.Drawing.Size(416, 424);
+            this.tpTraces.Size = new System.Drawing.Size(487, 407);
             this.tpTraces.TabIndex = 1;
             this.tpTraces.Text = "Trace";
             this.tpTraces.UseVisualStyleBackColor = true;
             // 
-            // scenePropertiesControl1
+            // TracePropertiesControl
             // 
-            this.scenePropertiesControl1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scenePropertiesControl1.Location = new System.Drawing.Point(8, 6);
-            this.scenePropertiesControl1.Name = "scenePropertiesControl1";
-            this.scenePropertiesControl1.Size = new System.Drawing.Size(400, 347);
-            this.scenePropertiesControl1.TabIndex = 0;
-            // 
-            // tracePropertiesControl1
-            // 
-            this.tracePropertiesControl1.Location = new System.Drawing.Point(8, 6);
-            this.tracePropertiesControl1.Name = "tracePropertiesControl1";
-            this.tracePropertiesControl1.Size = new System.Drawing.Size(400, 254);
-            this.tracePropertiesControl1.TabIndex = 0;
+            this.TracePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TracePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TracePropertiesControl.Location = new System.Drawing.Point(3, 3);
+            this.TracePropertiesControl.Name = "TracePropertiesControl";
+            this.TracePropertiesControl.Size = new System.Drawing.Size(481, 401);
+            this.TracePropertiesControl.TabIndex = 0;
             // 
             // PropertyEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 377);
+            this.ClientSize = new System.Drawing.Size(495, 435);
             this.Controls.Add(this.TabControl);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PropertyEditor";
             this.Text = "Property Editor";
             this.TabControl.ResumeLayout(false);
@@ -106,7 +110,7 @@
         internal System.Windows.Forms.TabControl TabControl;
         internal System.Windows.Forms.TabPage tpScene;
         internal System.Windows.Forms.TabPage tpTraces;
-        internal TabbyCatControls.ScenePropertiesControl scenePropertiesControl1;
-        internal TabbyCatControls.TracePropertiesControl tracePropertiesControl1;
+        internal TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
+        internal TabbyCatControls.TracePropertiesControl TracePropertiesControl;
     }
 }

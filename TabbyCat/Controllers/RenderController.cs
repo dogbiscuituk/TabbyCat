@@ -384,7 +384,7 @@
             Log("Done.");
             Scene._GPUCode = GpuCode.ToString().TrimEnd();
             Scene._GPULog = GpuLog.ToString().TrimEnd();
-            SceneController.OnPropertyChanged(
+            SceneController.OnPropertiesChanged(
                 Scene,
                 "GPUCode",
                 "GPULog",
@@ -518,9 +518,10 @@
         }
 
         //private static void LoadBoolean(int location, bool value) => GL.Uniform1(location, value ? 1f : 0f);
+        private static void LoadDouble(int location, double value) => GL.Uniform1(location, value);
         private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
         private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
-        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
+        private static void LoadMatrix(int location, Matrix4d value) => GL.UniformMatrix4(location, false, ref value);
         //private static void LoadVector(int location, Vector3 value) => GL.Uniform3(location, value);
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());

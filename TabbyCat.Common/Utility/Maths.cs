@@ -18,19 +18,19 @@
             switch (p.ProjectionType)
             {
                 case ProjectionType.Orthographic:
-                    return Matrix4.CreateOrthographic(p.Width, p.Height, p.Near, p.Far);
+                    return Matrix4d.CreateOrthographic(p.Width, p.Height, p.Near, p.Far);
                 case ProjectionType.OrthographicOffset:
-                    return Matrix4.CreateOrthographicOffCenter(p.Left, p.Right, p.Bottom, p.Top, p.Near, p.Far);
+                    return Matrix4d.CreateOrthographicOffCenter(p.Left, p.Right, p.Bottom, p.Top, p.Near, p.Far);
                 case ProjectionType.Perspective:
-                    return Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(p.FieldOfView), (float)s.Width / s.Height, p.Near, p.Far);
+                    return Matrix4d.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(p.FieldOfView), (float)s.Width / s.Height, p.Near, p.Far);
                 case ProjectionType.PerspectiveOffset:
-                    return Matrix4.CreatePerspectiveOffCenter(p.Left, p.Right, p.Bottom, p.Top, p.Near, p.Far);
+                    return Matrix4d.CreatePerspectiveOffCenter(p.Left, p.Right, p.Bottom, p.Top, p.Near, p.Far);
             }
             return Matrix4d.Identity;
         }
 
         public static Matrix4d CreateTransformation(Vector3d location, Vector3d orientation, Vector3d scale) =>
-            Matrix4d.CreateScale(scale.X, scale.Y, scale.Z) *
+            Matrix4d.Scale(scale.X, scale.Y, scale.Z) *
             Matrix4d.CreateRotationZ(MathHelper.DegreesToRadians(orientation.Z)) *
             Matrix4d.CreateRotationY(MathHelper.DegreesToRadians(orientation.Y)) *
             Matrix4d.CreateRotationX(MathHelper.DegreesToRadians(orientation.X)) *

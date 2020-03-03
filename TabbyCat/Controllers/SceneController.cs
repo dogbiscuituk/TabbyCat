@@ -3,6 +3,7 @@
     using OpenTK;
     using OpenTK.Graphics;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -43,6 +44,8 @@
         #region Internal Methods
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
+        internal void ModifiedChanged() => SceneForm.Text = JsonController.WindowCaption;
+        internal void SetGLMode(GLMode mode) => RecreateGLControl(mode);
         internal void Show() => SceneForm.Show();
         internal void Show(IWin32Window owner) => SceneForm.Show(owner);
 
@@ -50,9 +53,12 @@
 
         #region Private Properties
 
+        private readonly List<string> ChangedPropertyNames = new List<string>();
         private readonly JsonController JsonController;
 
         #endregion
+
+        internal event EventHandler<PropertiesChangedEventArgs> PropertiesChanged;
 
         #region Private Event Handlers
 
@@ -68,6 +74,12 @@
         // Form
         private void SceneForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void SceneForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
+        // GLControl
+        private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
+        private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
+        private void GLControl_Load(object sender, EventArgs e) { }
+        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
+        private void GLControl_Resize(object sender, EventArgs e) { }
         // Json
         private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
         private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
@@ -157,6 +169,26 @@
             }
         }
 
+        private void ConnectGLControl(bool connect)
+        {
+            if (connect)
+            {
+                GLControl.BackColorChanged += GLControl_BackColorChanged;
+                GLControl.ClientSizeChanged += GLControl_ClientSizeChanged;
+                GLControl.Load += GLControl_Load;
+                GLControl.Paint += GLControl_Paint;
+                GLControl.Resize += GLControl_Resize;
+            }
+            else
+            {
+                GLControl.BackColorChanged -= GLControl_BackColorChanged;
+                GLControl.ClientSizeChanged -= GLControl_ClientSizeChanged;
+                GLControl.Load -= GLControl_Load;
+                GLControl.Paint -= GLControl_Paint;
+                GLControl.Resize -= GLControl_Resize;
+            }
+        }
+
         private void FileLoaded()
         {
             ConnectControllers(false);
@@ -226,7 +258,8 @@
             BackColorChanged();
             ConnectGLControl(false);
             var control = GLControl;
-            GLControlParent.Remove(control);
+            var controls = GLControl.Parent.Controls;
+            controls.Remove(control);
             control.Dispose();
             control = mode == null ? new GLControl() : new GLControl(mode);
             control.BackColor = Scene.BackgroundColour;
@@ -236,10 +269,12 @@
             control.Size = new System.Drawing.Size(100, 100);
             control.TabIndex = 1;
             control.VSync = Scene.VSync;
-            GLControlParent.Add(control);
+            controls.Add(control);
             ConnectGLControl(true);
             RenderController.Refresh();
         }
+
+        private void Resize() => RenderController.InvalidateProjection();
 
         private bool SaveFile() => JsonController.Save();
 
@@ -251,10 +286,20 @@
 
         #endregion
 
-        internal void OnPropertyChanged(params object[] args)
+        internal void OnPropertiesChanged(Scene scene, params string[] propertyNames)
         {
-
+            ChangedSubject = scene;
+            OnPropertyChanged(propertyNames);
         }
+
+        internal void OnPropertiesChanged(Trace trace, params string[] propertyNames)
+        {
+            ChangedSubject = trace;
+            OnPropertyChanged(propertyNames);
+        }
+
+        internal void OnPropertiesChanged(params string[] propertyNames) =>
+            PropertiesChanged?.Invoke(this, new PropertiesChangedEventArgs(propertyNames));
 
         internal void BeginUpdate() => ++UpdateCount;
 
@@ -263,7 +308,7 @@
             if (--UpdateCount == 0)
             {
                 foreach (var propertyName in ChangedPropertyNames)
-                    OnPropertyChanged(propertyName);
+                    OnPropertiesChanged(propertyName);
                 ChangedPropertyNames.Clear();
             }
         }

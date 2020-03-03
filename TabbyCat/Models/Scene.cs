@@ -4,12 +4,13 @@
     using OpenTK;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Linq;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controllers;
 
-    internal class Scene : CodeContainer
+    internal class Scene : CodeSource
     {
         #region Constructors
 
@@ -32,7 +33,7 @@
                 if (BackgroundColour != value)
                 {
                     _BackgroundColour = value;
-                    OnPropertyChanged(nameof(BackgroundColour));
+                    base.OnPropertiesChanged(nameof(BackgroundColour));
                 }
             }
         }
@@ -47,7 +48,7 @@
                 if (Camera != value)
                 {
                     _Camera = value;
-                    OnPropertyChanged(nameof(Camera));
+                    base.OnPropertiesChanged(nameof(Camera));
                 }
             }
         }
@@ -62,7 +63,7 @@
                 if (FPS != value)
                 {
                     _FPS = value;
-                    OnPropertyChanged(nameof(FPS));
+                    base.OnPropertiesChanged(nameof(FPS));
                 }
             }
         }
@@ -83,7 +84,7 @@
                 if (GLTargetVersion != value)
                 {
                     _GLTargetVersion = value;
-                    OnPropertyChanged(nameof(GLTargetVersion));
+                    base.OnPropertiesChanged(nameof(GLTargetVersion));
                 }
             }
         }
@@ -98,7 +99,7 @@
                 if (Projection != value)
                 {
                     _Projection = value;
-                    OnPropertyChanged(nameof(Projection));
+                    base.OnPropertiesChanged(nameof(Projection));
                 }
             }
         }
@@ -113,7 +114,7 @@
                 if (SampleCount != value)
                 {
                     _SampleCount = value;
-                    OnPropertyChanged(nameof(SampleCount));
+                    base.OnPropertiesChanged(nameof(SampleCount));
                 }
             }
         }
@@ -128,7 +129,7 @@
                 if (Title != value)
                 {
                     _Title = value;
-                    OnPropertyChanged(nameof(Title));
+                    base.OnPropertiesChanged(nameof(Title));
                 }
             }
         }
@@ -147,7 +148,7 @@
                 if (VSync != value)
                 {
                     _VSync = value;
-                    OnPropertyChanged(nameof(VSync));
+                    base.OnPropertiesChanged(nameof(VSync));
                 }
             }
         }
@@ -204,6 +205,8 @@
 
         #endregion
 
+        private GLControl GLControl => SceneController?.GLControl;
+
         #region Private Methods
 
         internal void AddTrace(Trace trace) => Traces.Add(trace);
@@ -217,6 +220,16 @@
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
         internal Trace NewTrace() => new Trace(this);
+
+        internal void RemoveTrace(int index)
+        {
+            if (index >= 0 && index < Traces.Count)
+                Traces.RemoveAt(index);
+        }
+
+        internal void SetCameraView(Matrix4d _) { }
+        internal void SetGLMode(GLMode mode) => SceneController?.SetGLMode(mode);
+        internal void SetProjection(Matrix4d _) { }
 
         private void RestoreDefaults()
         {
@@ -254,13 +267,13 @@
         internal GLMode GetGLMode() => SceneController?.GLMode;
         internal Matrix4d GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
 
-        internal void OnPropertyChanged(Scene scene, string propertyName) =>
-            SceneController?.OnPropertyChanged(scene, propertyName);
+        internal void OnPropertiesChanged(Scene scene, string propertyNames) =>
+            SceneController?.OnPropertiesChanged(scene, propertyNames);
 
-        internal void OnPropertyChanged(Trace trace, string propertyName) =>
-            SceneController?.OnPropertyChanged(trace, propertyName);
+        internal void OnPropertiesChanged(Trace trace, string propertyNames) =>
+            SceneController?.OnPropertiesChanged(trace, propertyNames);
 
-        internal override void OnPropertyChanged(string propertyName) =>
-            SceneController.OnPropertyChanged($"Scene.{propertyName}");
+        internal override void OnPropertiesChanged(params string[] propertyNames) =>
+            SceneController.OnPropertiesChanged(propertyNames.Select(p => $"Scene.{p}").ToArray());
     }
 }

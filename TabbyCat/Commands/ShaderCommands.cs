@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using OpenTK.Graphics.OpenGL;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
     internal class SceneShaderCommand : ScenePropertyCommand<string>
@@ -75,36 +76,5 @@
     internal class TraceVertexShaderCommand : TraceShaderCommand
     {
         internal TraceVertexShaderCommand(int index, string value) : base(index, ShaderType.VertexShader, value) { }
-    }
-
-    internal static class ShaderNames
-    {
-        internal static string GetName(this ShaderType shaderType)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader: return DisplayNames.Shader1Vertex;
-                case ShaderType.TessControlShader: return DisplayNames.Shader2TessControl;
-                case ShaderType.TessEvaluationShader: return DisplayNames.Shader3TessEvaluation;
-                case ShaderType.GeometryShader: return DisplayNames.Shader4Geometry;
-                case ShaderType.FragmentShader: return DisplayNames.Shader5Fragment;
-                case ShaderType.ComputeShader: return DisplayNames.Shader6Compute;
-                default: return string.Empty;
-            }
-        }
-
-        internal static string GetTag(this ShaderType shaderType)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader: return "Vertex";
-                case ShaderType.TessControlShader: return "Tessellation Control";
-                case ShaderType.TessEvaluationShader: return "Tessellation Evaluation";
-                case ShaderType.GeometryShader: return "Geometry";
-                case ShaderType.FragmentShader: return "Fragment";
-                case ShaderType.ComputeShader: return "Compute";
-                default: return string.Empty;
-            }
-        }
     }
 }
