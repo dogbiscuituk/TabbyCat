@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Drawing;
     using TabbyCat.Common.Types;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Controllers;
 
     internal class Scene : Foo
@@ -15,7 +16,7 @@
 
         internal Scene(SceneController sceneController)
         {
-            this.sceneController = sceneController;
+            SceneController = sceneController;
         }
 
         #endregion
@@ -63,6 +64,12 @@
                     OnPropertyChanged(nameof(FPS));
                 }
             }
+        }
+
+        public GLMode GLMode
+        {
+            get => SceneController?.GLMode;
+            set => Run(new GLModeCommand(value));
         }
 
         [JsonProperty]
@@ -150,13 +157,7 @@
 
         internal bool IsModified { get; set; }
 
-        [JsonProperty] internal string _Shader1Vertex;
-        [JsonProperty] internal string _Shader2TessControl;
-        [JsonProperty] internal string _Shader3TessEvaluation;
-        [JsonProperty] internal string _Shader4Geometry;
-        [JsonProperty] internal string _Shader5Fragment;
-        [JsonProperty] internal string _Shader6Compute;
-
+        internal CommandProcessor CommandProcessor => SceneController?.CommandProcessor;
         internal SceneController SceneController;
 
         internal void Clear() { }
@@ -232,11 +233,19 @@
             */
         }
 
+        private void Run(IScenePropertyCommand command)
+        {
+            if (CommandProcessor != null)
+                CommandProcessor.Run(command);
+            else
+                command.RunOn(this);
+        }
+
         #endregion
 
-        internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
+        internal Matrix4d GetCameraView() => Maths.CreateCameraView(Camera);
         internal GLMode GetGLMode() => SceneController?.GLMode;
-        internal Matrix4 GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
+        internal Matrix4d GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
 
         internal override void OnPropertyChanged(string propertyName) =>
             SceneController.OnPropertyChanged($"Scene.{propertyName}");

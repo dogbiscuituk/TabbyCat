@@ -3,7 +3,7 @@
     using System.Drawing;
     using System.IO;
     using System.Windows.Forms;
-    using TabbyCat.Common;
+    using TabbyCat.Common.Utility;
 
     public static class TgControls
     {

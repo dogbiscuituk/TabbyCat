@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,7 @@
     <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
     <Compile Include="Utility\Maths.cs" />
     <Compile Include="Utility\Processes.cs" />

@@ -1,9 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
     using OpenTK;
+    using OpenTK.Graphics;
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Models;
     using TabbyCat.Views;
 
@@ -32,6 +34,7 @@
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => SceneForm.GLControl;
+        internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;
         internal SceneForm SceneForm;
@@ -77,6 +80,8 @@
         private int UpdateCount;
 
         #region Private Methods
+
+        private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
 
         private void ConnectAll(bool connect)
         {
@@ -215,6 +220,26 @@
             return sceneController;
         }
 
+        private void RecreateGLControl(GraphicsMode mode = null)
+        {
+            BackColorChanged();
+            ConnectGLControl(false);
+            var control = GLControl;
+            GLControlParent.Remove(control);
+            control.Dispose();
+            control = mode == null ? new GLControl() : new GLControl(mode);
+            control.BackColor = Scene.BackgroundColour;
+            control.Dock = DockStyle.Fill;
+            control.Location = new System.Drawing.Point(0, 0);
+            control.Name = "GLControl";
+            control.Size = new System.Drawing.Size(100, 100);
+            control.TabIndex = 1;
+            control.VSync = Scene.VSync;
+            GLControlParent.Add(control);
+            ConnectGLControl(true);
+            RenderController.Refresh();
+        }
+
         private bool SaveFile() => JsonController.Save();
 
         private bool SaveFileAs() => JsonController.SaveAs();
@@ -231,5 +256,15 @@
         }
 
         internal void BeginUpdate() => ++UpdateCount;
+
+        internal void EndUpdate()
+        {
+            if (--UpdateCount == 0)
+            {
+                foreach (var propertyName in ChangedPropertyNames)
+                    OnPropertyChanged(propertyName);
+                ChangedPropertyNames.Clear();
+            }
+        }
     }
 }

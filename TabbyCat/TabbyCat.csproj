@@ -78,7 +78,6 @@
     <Compile Include="Models\GLMode.cs" />
     <Compile Include="Models\GLModeTypeConverter.cs" />
     <Compile Include="Models\Options.cs" />
-    <Compile Include="Models\Projection.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Program.cs" />
@@ -134,10 +133,6 @@
     <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
       <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
       <Name>TabbyCat.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TabbyCatControls\TabbyCatControls.csproj">
-      <Project>{863F94EC-92F5-4B7C-833E-6016ED499CA4}</Project>
-      <Name>TabbyCatControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

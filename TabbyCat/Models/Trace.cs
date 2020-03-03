@@ -4,7 +4,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using TabbyCat.Common.Types;
-    using ToyGraf.Common.Utility;
+    using TabbyCat.Common.Utility;
 
     internal class Trace : Foo
     {
@@ -158,5 +158,7 @@
         internal Matrix4 GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
 
         #endregion
+
+        internal void Init(Scene scene) => Scene = scene;
     }
 }
