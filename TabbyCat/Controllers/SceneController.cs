@@ -5,6 +5,7 @@
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
+    using TabbyCat.Commands;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
     using TabbyCat.Views;

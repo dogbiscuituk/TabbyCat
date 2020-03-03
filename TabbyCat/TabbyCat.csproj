@@ -55,9 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommands.cs" />
+    <Compile Include="Commands\CommandInterfaces.cs" />
+    <Compile Include="Commands\CommandProcessor.cs" />
+    <Compile Include="Commands\SceneCommands.cs" />
+    <Compile Include="Commands\ShaderCommands.cs" />
+    <Compile Include="Commands\TraceCommands.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ClockController.cs" />
-    <Compile Include="Controllers\CommandProcessor.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\MruController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
@@ -72,7 +77,7 @@
     </Compile>
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\FilterIndex.cs" />
-    <Compile Include="Models\Foo.cs" />
+    <Compile Include="Models\CodeContainer.cs" />
     <Compile Include="Models\GLInfo.cs" />
     <Compile Include="Models\GLInfoTypeConverter.cs" />
     <Compile Include="Models\GLMode.cs" />

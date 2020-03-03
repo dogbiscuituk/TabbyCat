@@ -4,11 +4,12 @@
     using OpenTK;
     using System.Collections.Generic;
     using System.Drawing;
+    using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controllers;
 
-    internal class Scene : Foo
+    internal class Scene : CodeContainer
     {
         #region Constructors
 
@@ -205,11 +206,17 @@
 
         #region Private Methods
 
+        internal void AddTrace(Trace trace) => Traces.Add(trace);
+
         internal void AttachTraces()
         {
             foreach (var trace in Traces)
                 trace.Init(this);
         }
+
+        internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
+
+        internal Trace NewTrace() => new Trace(this);
 
         private void RestoreDefaults()
         {
@@ -246,6 +253,12 @@
         internal Matrix4d GetCameraView() => Maths.CreateCameraView(Camera);
         internal GLMode GetGLMode() => SceneController?.GLMode;
         internal Matrix4d GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
+
+        internal void OnPropertyChanged(Scene scene, string propertyName) =>
+            SceneController?.OnPropertyChanged(scene, propertyName);
+
+        internal void OnPropertyChanged(Trace trace, string propertyName) =>
+            SceneController?.OnPropertyChanged(trace, propertyName);
 
         internal override void OnPropertyChanged(string propertyName) =>
             SceneController.OnPropertyChanged($"Scene.{propertyName}");

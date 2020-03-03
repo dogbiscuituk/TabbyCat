@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using OpenTK.Graphics.OpenGL;
 
-    internal class Foo
+    internal class CodeContainer
     {
         [JsonProperty]
         internal string _Shader1Vertex;
@@ -121,6 +121,16 @@
                     return _Shader6Compute;
             }
             return string.Empty;
+        }
+
+        public void CopyFrom(CodeContainer source)
+        {
+            _Shader1Vertex = source.Shader1Vertex;
+            _Shader2TessControl = source.Shader2TessControl;
+            _Shader3TessEvaluation = source.Shader3TessEvaluation;
+            _Shader4Geometry = source.Shader4Geometry;
+            _Shader5Fragment = source.Shader5Fragment;
+            _Shader6Compute = source.Shader6Compute;
         }
     }
 }

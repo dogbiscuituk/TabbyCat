@@ -6,8 +6,16 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
-    internal class Trace : Foo
+    internal class Trace : CodeContainer
     {
+        #region Constructors
+
+        public Trace() => RestoreDefaults();
+        public Trace(Scene scene) : this() => Init(scene);
+        public Trace(Trace trace) : this() => CopyFrom(trace);
+
+        #endregion
+
         [JsonProperty]
         internal string _Description;
         internal string Description
@@ -99,6 +107,21 @@
         }
 
         [JsonProperty]
+        internal Vector3d _Scale;
+        internal Vector3d Scale
+        {
+            get => _Scale;
+            set
+            {
+                if (Scale != value)
+                {
+                    _Scale = value;
+                    OnPropertyChanged(nameof(Scale));
+                }
+            }
+        }
+
+        [JsonProperty]
         internal Vector3 _StripCount;
         internal Vector3 StripCount
         {
@@ -155,10 +178,30 @@
             Scene.OnPropertyChanged($"Traces[{Index}].{propertyName}");
         }
 
-        internal Matrix4 GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
+        internal Matrix4d GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
 
         #endregion
 
         internal void Init(Scene scene) => Scene = scene;
+
+        internal void SetLocation(Vector3d location) => Location = location;
+
+        internal void SetOrientation(Vector3d orientation) => Orientation = orientation;
+
+        internal void SetScale(Vector3d scale) => Scale = scale;
+
+        public void CopyFrom(Trace trace)
+        {
+            _Description = trace.Description;
+            _Index = trace.Index;
+            _Location = new Vector3f(trace.Location);
+            _Maximum = new Vector3f(trace.Maximum);
+            _Minimum = new Vector3f(trace.Minimum);
+            _Orientation = new Euler3f(trace.Orientation);
+            _Pattern = trace.Pattern;
+            _Scale = new Vector3f(trace.Scale);
+            _StripCount = new Vector3i(trace.StripCount);
+            _Visible = trace.Visible;
+        }
     }
 }
