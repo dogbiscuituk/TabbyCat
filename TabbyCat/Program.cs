@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace TabbyCat
+﻿namespace TabbyCat
 {
+    using System;
+    using System.Windows.Forms;
+    using TabbyCat.Controllers;
+
     static class Program
     {
         /// <summary>
@@ -16,7 +14,7 @@ namespace TabbyCat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(AppController.AboutDialog);
         }
     }
 }

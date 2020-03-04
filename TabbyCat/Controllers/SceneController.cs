@@ -54,6 +54,8 @@
         #region Private Properties
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
+        private Clock Clock => ClockController.Clock;
+        private const string GLSLUrl = "https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.html";
         private readonly JsonController JsonController;
 
         #endregion
@@ -62,6 +64,21 @@
 
         #region Private Event Handlers
 
+        // Clock
+        private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
+        // GLControl
+        private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
+        private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
+        private void GLControl_Load(object sender, EventArgs e) { }
+        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
+        private void GLControl_Resize(object sender, EventArgs e) { }
+        // JsonController
+        private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
+        private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
+        private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
+        private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
+        private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
+        private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
         // Menu
         private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
         private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
@@ -70,23 +87,18 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => SceneForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
+        private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
+        private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
+        private void SceneAddNewTrace_Click(object sender, EventArgs e) => CommandProcessor.AppendTrace();
         private void ViewProperties_Click(object sender, System.EventArgs e) => PropertyEditorVisible = !PropertyEditorVisible;
-        // Form
+        private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
+        private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
+        // SceneForm
         private void SceneForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void SceneForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
-        // GLControl
-        private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
-        private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
-        private void GLControl_Load(object sender, EventArgs e) { }
-        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
-        private void GLControl_Resize(object sender, EventArgs e) { }
-        // Json
-        private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
-        private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
-        private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
-        private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
-        private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
-        private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
+        // Toolbar
+        private void TbOpen_DropDownOpening(object sender, EventArgs e) => SceneForm.FileReopen.CloneTo(SceneForm.tbOpen);
+        private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
         #endregion
 
@@ -96,15 +108,36 @@
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
 
+        private void ClockInit() => Clock.Interval_ms = GetFrameMilliseconds();
+
+        private void ClockShutdown() => Clock.Stop();
+
+        private void ClockStartup()
+        {
+            ClockInit();
+            Clock.Start();
+            ClockController.UpdateTimeControls();
+        }
+
         private void ConnectAll(bool connect)
         {
             if (connect)
             {
                 ConnectEventHandlers(true);
+                ConnectControllers(true);
+                CommandProcessor.Clear();
+                Clock.Tick += Clock_Tick;
+                ClockStartup();
             }
             else
             {
+                ClockShutdown();
+                Clock.Tick -= Clock_Tick;
+                RenderController.InvalidateProgram();
+                CommandProcessor.Clear();
+                ConnectControllers(false);
                 ConnectEventHandlers(false);
+                AppController.Remove(this);
             }
         }
 
@@ -125,6 +158,13 @@
         {
             if (connect)
             {
+                // JsonController
+                JsonController.FileLoaded += JsonController_FileLoaded;
+                JsonController.FilePathChanged += JsonController_FilePathChanged;
+                JsonController.FilePathRequest += JsonController_FilePathRequest;
+                JsonController.FileReopen += JsonController_FileReopen;
+                JsonController.FileSaving += JsonController_FileSaving;
+                JsonController.FileSaved += JsonController_FileSaved;
                 // Menu
                 SceneForm.FileNewEmptyScene.Click += FileNewEmptyScene_Click;
                 SceneForm.FileNewFromTemplate.Click += FileNewFromTemplate_Click;
@@ -133,20 +173,33 @@
                 SceneForm.FileSaveAs.Click += FileSaveAs_Click;
                 SceneForm.FileClose.Click += FileClose_Click;
                 SceneForm.FileExit.Click += FileExit_Click;
+                SceneForm.EditOptions.Click += EditOptions_Click;
+                SceneForm.EditRefresh.Click += EditRefresh_Click;
+                SceneForm.SceneAddNewTrace.Click += SceneAddNewTrace_Click;
                 SceneForm.ViewProperties.Click += ViewProperties_Click;
-                // Form
+                SceneForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
+                SceneForm.HelpAbout.Click += HelpAbout_Click;
+                // SceneForm
                 SceneForm.FormClosed += SceneForm_FormClosed;
                 SceneForm.FormClosing += SceneForm_FormClosing;
-                // Json
-                JsonController.FileLoaded += JsonController_FileLoaded;
-                JsonController.FilePathChanged += JsonController_FilePathChanged;
-                JsonController.FilePathRequest += JsonController_FilePathRequest;
-                JsonController.FileReopen += JsonController_FileReopen;
-                JsonController.FileSaving += JsonController_FileSaving;
-                JsonController.FileSaved += JsonController_FileSaved;
+                // Toolbar
+                SceneForm.tbAdd.Click += SceneAddNewTrace_Click;
+                SceneForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
+                SceneForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
+                SceneForm.tbNewFromTemplate.Click += FileNewFromTemplate_Click;
+                SceneForm.tbOpen.ButtonClick += FileOpen_Click;
+                SceneForm.tbOpen.DropDownOpening += TbOpen_DropDownOpening;
+                SceneForm.tbSave.Click += TbSave_Click;
             }
             else
             {
+                // JsonController
+                JsonController.FileLoaded -= JsonController_FileLoaded;
+                JsonController.FilePathChanged -= JsonController_FilePathChanged;
+                JsonController.FilePathRequest -= JsonController_FilePathRequest;
+                JsonController.FileReopen -= JsonController_FileReopen;
+                JsonController.FileSaving -= JsonController_FileSaving;
+                JsonController.FileSaved -= JsonController_FileSaved;
                 // Menu
                 SceneForm.FileNewEmptyScene.Click -= FileNewEmptyScene_Click;
                 SceneForm.FileNewFromTemplate.Click -= FileNewFromTemplate_Click;
@@ -155,17 +208,23 @@
                 SceneForm.FileSaveAs.Click -= FileSaveAs_Click;
                 SceneForm.FileClose.Click -= FileClose_Click;
                 SceneForm.FileExit.Click -= FileExit_Click;
+                SceneForm.EditOptions.Click -= EditOptions_Click;
+                SceneForm.EditRefresh.Click -= EditRefresh_Click;
+                SceneForm.SceneAddNewTrace.Click -= SceneAddNewTrace_Click;
                 SceneForm.ViewProperties.Click -= ViewProperties_Click;
-                // Form
+                SceneForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
+                SceneForm.HelpAbout.Click -= HelpAbout_Click;
+                // SceneForm
                 SceneForm.FormClosed -= SceneForm_FormClosed;
                 SceneForm.FormClosing -= SceneForm_FormClosing;
-                // Json
-                JsonController.FileLoaded -= JsonController_FileLoaded;
-                JsonController.FilePathChanged -= JsonController_FilePathChanged;
-                JsonController.FilePathRequest -= JsonController_FilePathRequest;
-                JsonController.FileReopen -= JsonController_FileReopen;
-                JsonController.FileSaving -= JsonController_FileSaving;
-                JsonController.FileSaved -= JsonController_FileSaved;
+                // Toolbar
+                SceneForm.tbAdd.Click -= SceneAddNewTrace_Click;
+                SceneForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
+                SceneForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
+                SceneForm.tbNewFromTemplate.Click -= FileNewFromTemplate_Click;
+                SceneForm.tbOpen.ButtonClick -= FileOpen_Click;
+                SceneForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
+                SceneForm.tbSave.Click -= TbSave_Click;
             }
         }
 
@@ -187,6 +246,12 @@
                 GLControl.Paint -= GLControl_Paint;
                 GLControl.Resize -= GLControl_Resize;
             }
+        }
+
+        private void EditOptions()
+        {
+            using (var optionsController = new OptionsController())
+                optionsController.ShowModal(SceneForm);
         }
 
         private void FileLoaded()
@@ -218,6 +283,8 @@
 
         private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
 
+        private int GetFrameMilliseconds() => (int)Math.Round(1000 / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
+
         private SceneController GetNewSceneController()
         {
             if (AppController.Options.OpenInNewWindow)
@@ -227,6 +294,8 @@
             JsonController.Clear();
             return this;
         }
+
+        private void HelpAbout() => new AboutController().ShowDialog(SceneForm);
 
         private void NewEmptyScene()
         {
@@ -252,6 +321,8 @@
             sceneController?.LoadFromFile(filePath);
             return sceneController;
         }
+
+        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
         private void RecreateGLControl(GraphicsMode mode = null)
         {

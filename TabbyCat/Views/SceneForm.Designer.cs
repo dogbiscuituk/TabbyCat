@@ -384,6 +384,7 @@
             // MainMenu
             // 
             this.MainMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.MainMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.EditMenu,
@@ -395,7 +396,6 @@
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Size = new System.Drawing.Size(800, 24);
             this.MainMenu.TabIndex = 0;
-            this.MainMenu.Text = "menuStrip1";
             // 
             // FileMenu
             // 
@@ -656,18 +656,18 @@
             // 
             this.ViewFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
             this.ViewFullScreen.Name = "ViewFullScreen";
-            this.ViewFullScreen.Size = new System.Drawing.Size(180, 22);
+            this.ViewFullScreen.Size = new System.Drawing.Size(131, 22);
             this.ViewFullScreen.Text = "&Full Screen";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(128, 6);
             // 
             // ViewProperties
             // 
             this.ViewProperties.Name = "ViewProperties";
-            this.ViewProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewProperties.Size = new System.Drawing.Size(131, 22);
             this.ViewProperties.Text = "&Properties";
             // 
             // TimeMenu

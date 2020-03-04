@@ -6,15 +6,33 @@
     using System.Windows.Forms;
     using TabbyCat.Models;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal static class AppController
     {
-        internal static void Close()
+        #region Static Constructor
+
+        static AppController()
         {
-            Application.Exit();
+            Timer = new Timer { Interval = 5000, Enabled = true };
+            Timer.Tick += Timer_Tick;
+            ApplyOptions();
+            AddNewSceneController();
         }
 
+        #endregion
+
         #region Internal Properties
+
+        internal static AboutDialog AboutDialog
+        {
+            get
+            {
+                if (_AboutDialog == null)
+                    _AboutDialog = new AboutController().View;
+                return _AboutDialog;
+            }
+        }
 
         internal static Options Options
         {
@@ -46,6 +64,21 @@
 
         #endregion
 
+        #region Internal Methods
+
+        internal static SceneController AddNewSceneController()
+        {
+            var sceneController = new SceneController();
+            SceneControllers.Add(sceneController);
+            sceneController.Show();
+            return sceneController;
+        }
+
+        internal static void Close()
+        {
+            Application.Exit();
+        }
+
         internal static string GetDefaultFolder(FilterIndex filterIndex)
         {
             switch (filterIndex)
@@ -59,19 +92,37 @@
             }
         }
 
-        internal static SceneController AddNewSceneController()
+        internal static void Remove(SceneController sceneController)
         {
-            var sceneController = new SceneController();
-            SceneControllers.Add(sceneController);
-            sceneController.Show();
-            return sceneController;
+            SceneControllers.Remove(sceneController);
+            if (SceneControllers.Count == 0)
+                Close();
         }
+
+        #endregion
 
         #region Private Properties
 
+        private static AboutDialog _AboutDialog;
+
         private static readonly string DefaultFilesFolderPath =
             $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\{Application.ProductName}";
+
         private static Settings Settings => Settings.Default;
+
+        private static Timer Timer;
+
+        #endregion
+
+        #region Private Event Handlers
+
+        private static void Timer_Tick(object sender, EventArgs e)
+        {
+            Timer.Enabled = false;
+            Timer.Dispose();
+            Timer = null;
+            AboutDialog.Hide();
+        }
 
         #endregion
 
