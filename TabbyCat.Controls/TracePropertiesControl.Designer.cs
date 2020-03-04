@@ -130,9 +130,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 258);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 260);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label8
@@ -141,7 +141,7 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(3, 203);
             this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label8.Size = new System.Drawing.Size(94, 29);
             this.label8.TabIndex = 8;
             this.label8.Text = "Strip Count";
@@ -153,7 +153,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 29);
             this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label2.Size = new System.Drawing.Size(94, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Location";
@@ -187,7 +187,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 58);
             this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label3.Size = new System.Drawing.Size(94, 29);
             this.label3.TabIndex = 3;
             this.label3.Text = "Orientation";
@@ -199,7 +199,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 87);
             this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label4.Size = new System.Drawing.Size(94, 29);
             this.label4.TabIndex = 4;
             this.label4.Text = "Scale";
@@ -223,7 +223,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 145);
             this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label6.Size = new System.Drawing.Size(94, 29);
             this.label6.TabIndex = 6;
             this.label6.Text = "Minimum";
@@ -235,7 +235,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(3, 174);
             this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label7.Size = new System.Drawing.Size(94, 29);
             this.label7.TabIndex = 7;
             this.label7.Text = "Maximum";
@@ -417,7 +417,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 232);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 20);
+            this.label9.Size = new System.Drawing.Size(94, 23);
             this.label9.TabIndex = 28;
             this.label9.Text = "Visible?";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -428,17 +428,18 @@
             this.cbVisible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVisible.Location = new System.Drawing.Point(103, 235);
             this.cbVisible.Name = "cbVisible";
-            this.cbVisible.Size = new System.Drawing.Size(94, 14);
+            this.cbVisible.Size = new System.Drawing.Size(94, 17);
             this.cbVisible.TabIndex = 29;
             this.cbVisible.UseVisualStyleBackColor = true;
             // 
             // TracePropertiesControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TracePropertiesControl";
-            this.Size = new System.Drawing.Size(400, 258);
+            this.Size = new System.Drawing.Size(400, 260);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

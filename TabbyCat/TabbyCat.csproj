@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,7 +80,7 @@
     </Compile>
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\FilterIndex.cs" />
-    <Compile Include="Models\CodeSource.cs" />
+    <Compile Include="Models\Code.cs" />
     <Compile Include="Models\GLInfo.cs" />
     <Compile Include="Models\GLInfoTypeConverter.cs" />
     <Compile Include="Models\GLMode.cs" />
@@ -91,6 +91,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\TraceController.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\PropertyEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,14 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Views\PropertyEditor.resx">
       <DependentUpon>PropertyEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,16 +394,24 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Snippets\FragmentBody.txt" />
-    <Content Include="Snippets\FragmentHead.txt" />
-    <Content Include="Snippets\MainBody.txt" />
-    <Content Include="Snippets\SceneBody.txt" />
-    <Content Include="Snippets\SceneFoot.txt" />
-    <Content Include="Snippets\SceneHead.txt" />
-    <Content Include="Snippets\TraceFoot.txt" />
-    <Content Include="Snippets\TraceHead.txt" />
-    <Content Include="Snippets\VertexBody.txt" />
-    <Content Include="Snippets\VertexHead.txt" />
+    <Content Include="Snippets\Scene_Head.txt" />
+    <Content Include="Snippets\Scene_Shader1Vertex.txt" />
+    <Content Include="Snippets\Scene_Shader2TessControl.txt" />
+    <Content Include="Snippets\Scene_Shader3TessEvaluation.txt" />
+    <Content Include="Snippets\Scene_Shader4Geometry.txt" />
+    <Content Include="Snippets\Scene_Shader5Fragment.txt" />
+    <Content Include="Snippets\Scene_Shader6Compute.txt" />
+    <Content Include="Snippets\Scene_Tail.txt" />
+    <Content Include="Snippets\Switch_Case.txt" />
+    <Content Include="Snippets\Switch_Statement.txt" />
+    <Content Include="Snippets\Trace_Head.txt" />
+    <Content Include="Snippets\Trace_Shader1Vertex.txt" />
+    <Content Include="Snippets\Trace_Shader2TessControl.txt" />
+    <Content Include="Snippets\Trace_Shader3TessEvaluation.txt" />
+    <Content Include="Snippets\Trace_Shader4Geometry.txt" />
+    <Content Include="Snippets\Trace_Shader5Fragment.txt" />
+    <Content Include="Snippets\Trace_Shader6Compute.txt" />
+    <Content Include="Snippets\Trace_Tail.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,17 +7,16 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controllers;
+    using TabbyCat.Properties;
 
-    public class Scene : CodeSource
+    public class Scene : Code
     {
         #region Constructors
 
-        public Scene() => RestoreDefaults();
+        public Scene() : base() => Init();
 
-        internal Scene(SceneController sceneController)
-        {
-            SceneController = sceneController;
-        }
+        internal Scene(SceneController sceneController) : this()
+            => SceneController = sceneController;
 
         #endregion
 
@@ -42,7 +41,9 @@
         #region Internal Properties
 
         internal CommandProcessor CommandProcessor => SceneController?.CommandProcessor;
+
         internal bool IsModified => CommandProcessor.IsModified;
+
         internal SceneController SceneController;
 
         #endregion
@@ -54,7 +55,7 @@
         internal void AttachTraces()
         {
             foreach (var trace in Traces)
-                trace.Init(this);
+                trace.Scene = this;
         }
 
         internal void Clear() { }
@@ -82,25 +83,6 @@
         internal void SetGLMode(GLMode mode) => SceneController?.SetGLMode(mode);
 
         internal void SetProjection(Matrix4d _) { }
-
-        #endregion
-
-        #region Protected Methods
-
-        protected override void RestoreDefaults()
-        {
-            base.RestoreDefaults();
-            BackgroundColour = Defaults.BackgroundColour;
-            Camera = Defaults.Camera;
-            FPS = Defaults.FPS;
-            GLTargetVersion = Defaults.GLTargetVersion;
-            GPUCode = Defaults.GPUCode;
-            GPULog = Defaults.GPULog;
-            Projection = Defaults.Projection;
-            Title = Defaults.Title;
-            Traces = Defaults.Traces;
-            VSync = Defaults.VSync;
-        }
 
         #endregion
 
@@ -146,12 +128,24 @@
 
         #region Private Methods
 
-        private void Run(IScenePropertyCommand command)
+        private void Init()
         {
-            if (CommandProcessor != null)
-                CommandProcessor.Run(command);
-            else
-                command.RunOn(this);
+            BackgroundColour = Defaults.BackgroundColour;
+            Camera = Defaults.Camera;
+            FPS = Defaults.FPS;
+            GLTargetVersion = Defaults.GLTargetVersion;
+            GPUCode = Defaults.GPUCode;
+            GPULog = Defaults.GPULog;
+            Projection = Defaults.Projection;
+            Shader1Vertex = Resources.Scene_Shader1Vertex;
+            Shader2TessControl = Resources.Scene_Shader2TessControl;
+            Shader3TessEvaluation = Resources.Scene_Shader3TessEvaluation;
+            Shader4Geometry = Resources.Scene_Shader4Geometry;
+            Shader5Fragment = Resources.Scene_Shader5Fragment;
+            Shader6Compute = Resources.Scene_Shader6Compute;
+            Title = Defaults.Title;
+            Traces = Defaults.Traces;
+            VSync = Defaults.VSync;
         }
 
         #endregion

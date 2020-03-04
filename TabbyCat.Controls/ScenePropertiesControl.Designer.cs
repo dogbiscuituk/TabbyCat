@@ -136,7 +136,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 343);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 344);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // numericUpDown2
@@ -470,7 +470,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ScenePropertiesControl";
-            this.Size = new System.Drawing.Size(400, 343);
+            this.Size = new System.Drawing.Size(400, 344);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

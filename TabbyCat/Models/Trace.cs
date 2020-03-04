@@ -1,20 +1,19 @@
 ﻿namespace TabbyCat.Models
 {
-    using Newtonsoft.Json;
     using OpenTK;
-    using OpenTK.Graphics.OpenGL;
-    using System.Linq;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Properties;
 
-    public class Trace : CodeSource
+    public class Trace : Code
     {
         #region Constructors
 
-        public Trace() => RestoreDefaults();
-        public Trace(Scene scene) : this() => Init(scene);
-        public Trace(Trace trace) : this() => CopyFrom(trace);
+        public Trace() : base() => Init();
+
+        internal Trace(Scene scene) : this() => Scene = scene;
+
+        internal Trace(Trace trace) : base(trace) => CopyFrom(trace);
 
         #endregion
 
@@ -29,24 +28,6 @@
         public Vector3d Scale { get; set; }
         public Vector3 StripCount { get; set; }
         public bool Visible { get; set; }
-
-        #endregion
-
-        #region Public Methods
-
-        public void CopyFrom(Trace trace)
-        {
-            Description = trace.Description;
-            Index = trace.Index;
-            Location = new Vector3d(trace.Location);
-            Maximum = new Vector3d(trace.Maximum);
-            Minimum = new Vector3d(trace.Minimum);
-            Orientation = new Vector3d(trace.Orientation);
-            Pattern = trace.Pattern;
-            Scale = new Vector3d(trace.Scale);
-            StripCount = new Vector3(trace.StripCount);
-            Visible = trace.Visible;
-        }
 
         #endregion
 
@@ -71,25 +52,22 @@
 
         #endregion
 
-        private void RestoreDefaults()
-        {
-            Index = Defaults.Index;
-            Location = Defaults.Location;
-            Maximum = Defaults.Maximum;
-            Minimum = Defaults.Maximum;
-            Orientation = Defaults.Orientation;
-            Pattern = Defaults.Pattern;
-            Scale = Defaults.Scale;
-            Shader1Vertex = Resources.VertexBody;
-            Shader5Fragment = Resources.FragmentBody;
-            StripCount = Defaults.StripCount;
-            Description = Defaults.Description;
-            Visible = Defaults.Visible;
-        }
-
-        #region Protected Internal Methods
+        #region Internal Methods
 
         internal Matrix4d GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
+
+        internal void SetLocation(Vector3d location) => Location = location;
+
+        internal void SetOrientation(Vector3d orientation) => Orientation = orientation;
+
+        internal void SetScale(Vector3d scale) => Scale = scale;
+
+        /*internal void SetTransform(Matrix4d transform)
+        {
+            SetLocation(transform.ExtractTranslation());
+            SetOrientation(transform.ExtractRotation());
+            SetScale(transform.ExtractScale());
+        }*/
 
         #endregion
 
@@ -122,19 +100,42 @@
 
         #endregion
 
-        internal void Init(Scene scene) => Scene = scene;
+        #region Private Methods
 
-        internal void SetLocation(Vector3d location) => Location = location;
-
-        internal void SetOrientation(Vector3d orientation) => Orientation = orientation;
-
-        internal void SetScale(Vector3d scale) => Scale = scale;
-
-        /*internal void SetTransform(Matrix4d transform)
+        private void CopyFrom(Trace trace)
         {
-            SetLocation(transform.ExtractTranslation());
-            SetOrientation(transform.ExtractRotation());
-            SetScale(transform.ExtractScale());
-        }*/
+            Description = trace.Description;
+            Index = trace.Index;
+            Location = new Vector3d(trace.Location);
+            Maximum = new Vector3d(trace.Maximum);
+            Minimum = new Vector3d(trace.Minimum);
+            Orientation = new Vector3d(trace.Orientation);
+            Pattern = trace.Pattern;
+            Scale = new Vector3d(trace.Scale);
+            StripCount = new Vector3(trace.StripCount);
+            Visible = trace.Visible;
+        }
+
+        private void Init()
+        {
+            Index = Defaults.Index;
+            Location = Defaults.Location;
+            Maximum = Defaults.Maximum;
+            Minimum = Defaults.Maximum;
+            Orientation = Defaults.Orientation;
+            Pattern = Defaults.Pattern;
+            Scale = Defaults.Scale;
+            Shader1Vertex = Resources.Trace_Shader1Vertex;
+            Shader2TessControl = Resources.Trace_Shader2TessControl;
+            Shader3TessEvaluation = Resources.Trace_Shader3TessEvaluation;
+            Shader4Geometry = Resources.Trace_Shader4Geometry;
+            Shader5Fragment = Resources.Trace_Shader5Fragment;
+            Shader6Compute = Resources.Trace_Shader6Compute;
+            StripCount = Defaults.StripCount;
+            Description = Defaults.Description;
+            Visible = Defaults.Visible;
+        }
+
+        #endregion
     }
 }

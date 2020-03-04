@@ -1,42 +1,25 @@
 ﻿namespace TabbyCat.Models
 {
     using OpenTK.Graphics.OpenGL;
-    using TabbyCat.Properties;
 
-    public abstract class CodeSource
+    public abstract class Code
     {
-        #region Public Properties
+        #region Constructors
 
-        internal string Shader1Vertex { get; set; }
-        internal string Shader2TessControl { get; set; }
-        internal string Shader3TessEvaluation { get; set; }
-        internal string Shader4Geometry { get; set; }
-        internal string Shader5Fragment { get; set; }
-        internal string Shader6Compute { get; set; }
+        public Code() => Init();
+
+        protected Code(Code code) => CopyFrom(code);
 
         #endregion
 
-        #region Public Methods
+        #region Public Properties
 
-        protected virtual void CopyFrom(CodeSource source)
-        {
-            Shader1Vertex = source.Shader1Vertex;
-            Shader2TessControl = source.Shader2TessControl;
-            Shader3TessEvaluation = source.Shader3TessEvaluation;
-            Shader4Geometry = source.Shader4Geometry;
-            Shader5Fragment = source.Shader5Fragment;
-            Shader6Compute = source.Shader6Compute;
-        }
-
-        protected virtual void RestoreDefaults()
-        {
-            Shader1Vertex = Resources.VertexHead;
-            Shader2TessControl = Defaults.Shader2TessControl;
-            Shader3TessEvaluation = Defaults.Shader3TessEvaluation;
-            Shader4Geometry = Defaults.Shader4Geometry;
-            Shader5Fragment = Resources.FragmentHead;
-            Shader6Compute = Defaults.Shader6Compute;
-        }
+        public string Shader1Vertex { get; set; }
+        public string Shader2TessControl { get; set; }
+        public string Shader3TessEvaluation { get; set; }
+        public string Shader4Geometry { get; set; }
+        public string Shader5Fragment { get; set; }
+        public string Shader6Compute { get; set; }
 
         #endregion
 
@@ -89,15 +72,26 @@
 
         #endregion
 
-        #region Private Classes
+        #region Private Methods
 
-        private class Defaults
+        private void CopyFrom(Code code)
         {
-            internal const string
-                Shader2TessControl = "",
-                Shader3TessEvaluation = "",
-                Shader4Geometry = "",
-                Shader6Compute = "";
+            Shader1Vertex = code.Shader1Vertex;
+            Shader2TessControl = code.Shader2TessControl;
+            Shader3TessEvaluation = code.Shader3TessEvaluation;
+            Shader4Geometry = code.Shader4Geometry;
+            Shader5Fragment = code.Shader5Fragment;
+            Shader6Compute = code.Shader6Compute;
+        }
+
+        private void Init()
+        {
+            Shader1Vertex = string.Empty;
+            Shader2TessControl = string.Empty;
+            Shader3TessEvaluation = string.Empty;
+            Shader4Geometry = string.Empty;
+            Shader5Fragment = string.Empty;
+            Shader6Compute = string.Empty;
         }
 
         #endregion
