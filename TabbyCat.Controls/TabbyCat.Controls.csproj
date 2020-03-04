@@ -49,16 +49,7 @@
       <DependentUpon>ScenePropertiesControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TgControls.cs" />
-    <Compile Include="TgMenuStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TgStatusStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TgToolStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="JmkControls.cs" />
     <Compile Include="TracePropertiesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
