@@ -19,6 +19,20 @@
         { }
     }
 
+    internal class CameraFocusCommand : ScenePropertyCommand<Vector3d>
+    {
+        internal CameraFocusCommand(Vector3d value) : base("Camera.Focus",
+            value, s => s.Camera.Focus, (s, v) => s.Camera.Focus = v)
+        { }
+    }
+
+    internal class CameraPositionCommand : ScenePropertyCommand<Vector3d>
+    {
+        internal CameraPositionCommand(Vector3d value) : base("Camera.Position",
+            value, s => s.Camera.Position, (s, v) => s.Camera.Position = v)
+        { }
+    }
+
     internal class CameraViewCommand : ScenePropertyCommand<Matrix4d>
     {
         internal CameraViewCommand(Matrix4d value) : base("CameraView",
@@ -51,6 +65,13 @@
     {
         internal ProjectionMatrixCommand(Matrix4d value) : base("ProjectionMatrix",
             value, s => s.GetProjection(), (s, v) => s.SetProjection(v))
+        { }
+    }
+
+    internal class ProjectionTypeCommand : ScenePropertyCommand<ProjectionType>
+    {
+        internal ProjectionTypeCommand(ProjectionType value) : base("Projection.ProjectionType",
+            value, s => s.Projection.ProjectionType, (s, v) => s.Projection.ProjectionType = v)
         { }
     }
 

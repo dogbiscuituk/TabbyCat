@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.seCameraPositionX = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.edTitle = new System.Windows.Forms.TextBox();
@@ -38,45 +38,45 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.cbProjectionType = new System.Windows.Forms.ComboBox();
+            this.seFieldOfView = new System.Windows.Forms.NumericUpDown();
+            this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
+            this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
+            this.seCameraFocusX = new System.Windows.Forms.NumericUpDown();
+            this.seCameraFocusY = new System.Windows.Forms.NumericUpDown();
+            this.seCameraFocusZ = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMinX = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMinY = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMinZ = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMaxX = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMaxY = new System.Windows.Forms.NumericUpDown();
+            this.seFrustumMaxZ = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.seFPS = new System.Windows.Forms.NumericUpDown();
+            this.seSamples = new System.Windows.Forms.NumericUpDown();
+            this.cbVSync = new System.Windows.Forms.CheckBox();
+            this.cbGLSLVersion = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFPS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seSamples)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionX, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.edTitle, 1, 0);
@@ -95,28 +95,28 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown5, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown6, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown7, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown8, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown9, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown10, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown11, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown12, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown13, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbProjectionType, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.seFieldOfView, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionY, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionZ, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusX, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusY, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusZ, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinX, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinY, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinZ, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxX, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxY, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxZ, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown14, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown15, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.seFPS, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.seSamples, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cbVSync, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.cbGLSLVersion, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.comboBox3, 1, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -139,15 +139,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 344);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // numericUpDown2
+            // seCameraPositionX
             // 
-            this.numericUpDown2.DecimalPlaces = 6;
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(103, 32);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown2.TabIndex = 12;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraPositionX.DecimalPlaces = 6;
+            this.seCameraPositionX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraPositionX.Location = new System.Drawing.Point(103, 32);
+            this.seCameraPositionX.Name = "seCameraPositionX";
+            this.seCameraPositionX.Size = new System.Drawing.Size(94, 23);
+            this.seCameraPositionX.TabIndex = 12;
+            this.seCameraPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -243,125 +243,125 @@
             this.label7.Text = "Max";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // cbProjectionType
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.comboBox1, 3);
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(103, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(294, 23);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Perspective";
+            this.tableLayoutPanel1.SetColumnSpan(this.cbProjectionType, 3);
+            this.cbProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbProjectionType.FormattingEnabled = true;
+            this.cbProjectionType.Location = new System.Drawing.Point(103, 90);
+            this.cbProjectionType.Name = "cbProjectionType";
+            this.cbProjectionType.Size = new System.Drawing.Size(294, 23);
+            this.cbProjectionType.TabIndex = 8;
+            this.cbProjectionType.Text = "Perspective";
             // 
-            // numericUpDown1
+            // seFieldOfView
             // 
-            this.numericUpDown1.DecimalPlaces = 3;
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(103, 119);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown1.TabIndex = 9;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFieldOfView.DecimalPlaces = 3;
+            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFieldOfView.Location = new System.Drawing.Point(103, 119);
+            this.seFieldOfView.Name = "seFieldOfView";
+            this.seFieldOfView.Size = new System.Drawing.Size(94, 23);
+            this.seFieldOfView.TabIndex = 9;
+            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown3
+            // seCameraPositionY
             // 
-            this.numericUpDown3.DecimalPlaces = 6;
-            this.numericUpDown3.Location = new System.Drawing.Point(203, 32);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown3.TabIndex = 15;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraPositionY.DecimalPlaces = 6;
+            this.seCameraPositionY.Location = new System.Drawing.Point(203, 32);
+            this.seCameraPositionY.Name = "seCameraPositionY";
+            this.seCameraPositionY.Size = new System.Drawing.Size(94, 23);
+            this.seCameraPositionY.TabIndex = 15;
+            this.seCameraPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown4
+            // seCameraPositionZ
             // 
-            this.numericUpDown4.DecimalPlaces = 6;
-            this.numericUpDown4.Location = new System.Drawing.Point(303, 32);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown4.TabIndex = 16;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraPositionZ.DecimalPlaces = 6;
+            this.seCameraPositionZ.Location = new System.Drawing.Point(303, 32);
+            this.seCameraPositionZ.Name = "seCameraPositionZ";
+            this.seCameraPositionZ.Size = new System.Drawing.Size(94, 23);
+            this.seCameraPositionZ.TabIndex = 16;
+            this.seCameraPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown5
+            // seCameraFocusX
             // 
-            this.numericUpDown5.DecimalPlaces = 6;
-            this.numericUpDown5.Location = new System.Drawing.Point(103, 61);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown5.TabIndex = 17;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraFocusX.DecimalPlaces = 6;
+            this.seCameraFocusX.Location = new System.Drawing.Point(103, 61);
+            this.seCameraFocusX.Name = "seCameraFocusX";
+            this.seCameraFocusX.Size = new System.Drawing.Size(94, 23);
+            this.seCameraFocusX.TabIndex = 17;
+            this.seCameraFocusX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown6
+            // seCameraFocusY
             // 
-            this.numericUpDown6.DecimalPlaces = 6;
-            this.numericUpDown6.Location = new System.Drawing.Point(203, 61);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown6.TabIndex = 18;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraFocusY.DecimalPlaces = 6;
+            this.seCameraFocusY.Location = new System.Drawing.Point(203, 61);
+            this.seCameraFocusY.Name = "seCameraFocusY";
+            this.seCameraFocusY.Size = new System.Drawing.Size(94, 23);
+            this.seCameraFocusY.TabIndex = 18;
+            this.seCameraFocusY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown7
+            // seCameraFocusZ
             // 
-            this.numericUpDown7.DecimalPlaces = 6;
-            this.numericUpDown7.Location = new System.Drawing.Point(303, 61);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown7.TabIndex = 19;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraFocusZ.DecimalPlaces = 6;
+            this.seCameraFocusZ.Location = new System.Drawing.Point(303, 61);
+            this.seCameraFocusZ.Name = "seCameraFocusZ";
+            this.seCameraFocusZ.Size = new System.Drawing.Size(94, 23);
+            this.seCameraFocusZ.TabIndex = 19;
+            this.seCameraFocusZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown8
+            // seFrustumMinX
             // 
-            this.numericUpDown8.DecimalPlaces = 6;
-            this.numericUpDown8.Location = new System.Drawing.Point(103, 148);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown8.TabIndex = 20;
-            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMinX.DecimalPlaces = 6;
+            this.seFrustumMinX.Location = new System.Drawing.Point(103, 148);
+            this.seFrustumMinX.Name = "seFrustumMinX";
+            this.seFrustumMinX.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMinX.TabIndex = 20;
+            this.seFrustumMinX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown9
+            // seFrustumMinY
             // 
-            this.numericUpDown9.DecimalPlaces = 6;
-            this.numericUpDown9.Location = new System.Drawing.Point(203, 148);
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown9.TabIndex = 21;
-            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMinY.DecimalPlaces = 6;
+            this.seFrustumMinY.Location = new System.Drawing.Point(203, 148);
+            this.seFrustumMinY.Name = "seFrustumMinY";
+            this.seFrustumMinY.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMinY.TabIndex = 21;
+            this.seFrustumMinY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown10
+            // seFrustumMinZ
             // 
-            this.numericUpDown10.DecimalPlaces = 6;
-            this.numericUpDown10.Location = new System.Drawing.Point(303, 148);
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown10.TabIndex = 22;
-            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMinZ.DecimalPlaces = 6;
+            this.seFrustumMinZ.Location = new System.Drawing.Point(303, 148);
+            this.seFrustumMinZ.Name = "seFrustumMinZ";
+            this.seFrustumMinZ.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMinZ.TabIndex = 22;
+            this.seFrustumMinZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown11
+            // seFrustumMaxX
             // 
-            this.numericUpDown11.DecimalPlaces = 6;
-            this.numericUpDown11.Location = new System.Drawing.Point(103, 177);
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown11.TabIndex = 23;
-            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMaxX.DecimalPlaces = 6;
+            this.seFrustumMaxX.Location = new System.Drawing.Point(103, 177);
+            this.seFrustumMaxX.Name = "seFrustumMaxX";
+            this.seFrustumMaxX.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMaxX.TabIndex = 23;
+            this.seFrustumMaxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown12
+            // seFrustumMaxY
             // 
-            this.numericUpDown12.DecimalPlaces = 6;
-            this.numericUpDown12.Location = new System.Drawing.Point(203, 177);
-            this.numericUpDown12.Name = "numericUpDown12";
-            this.numericUpDown12.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown12.TabIndex = 24;
-            this.numericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMaxY.DecimalPlaces = 6;
+            this.seFrustumMaxY.Location = new System.Drawing.Point(203, 177);
+            this.seFrustumMaxY.Name = "seFrustumMaxY";
+            this.seFrustumMaxY.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMaxY.TabIndex = 24;
+            this.seFrustumMaxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown13
+            // seFrustumMaxZ
             // 
-            this.numericUpDown13.DecimalPlaces = 6;
-            this.numericUpDown13.Location = new System.Drawing.Point(303, 177);
-            this.numericUpDown13.Name = "numericUpDown13";
-            this.numericUpDown13.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown13.TabIndex = 25;
-            this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFrustumMaxZ.DecimalPlaces = 6;
+            this.seFrustumMaxZ.Location = new System.Drawing.Point(303, 177);
+            this.seFrustumMaxZ.Name = "seFrustumMaxZ";
+            this.seFrustumMaxZ.Size = new System.Drawing.Size(94, 23);
+            this.seFrustumMaxZ.TabIndex = 25;
+            this.seFrustumMaxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -421,39 +421,39 @@
             this.label12.Text = "GLSL Version";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numericUpDown14
+            // seFPS
             // 
-            this.numericUpDown14.Location = new System.Drawing.Point(103, 235);
-            this.numericUpDown14.Name = "numericUpDown14";
-            this.numericUpDown14.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown14.TabIndex = 31;
-            this.numericUpDown14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seFPS.Location = new System.Drawing.Point(103, 235);
+            this.seFPS.Name = "seFPS";
+            this.seFPS.Size = new System.Drawing.Size(94, 23);
+            this.seFPS.TabIndex = 31;
+            this.seFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown15
+            // seSamples
             // 
-            this.numericUpDown15.Location = new System.Drawing.Point(103, 264);
-            this.numericUpDown15.Name = "numericUpDown15";
-            this.numericUpDown15.Size = new System.Drawing.Size(94, 23);
-            this.numericUpDown15.TabIndex = 32;
-            this.numericUpDown15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seSamples.Location = new System.Drawing.Point(103, 264);
+            this.seSamples.Name = "seSamples";
+            this.seSamples.Size = new System.Drawing.Size(94, 23);
+            this.seSamples.TabIndex = 32;
+            this.seSamples.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // checkBox1
+            // cbVSync
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(103, 293);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(94, 14);
-            this.checkBox1.TabIndex = 33;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbVSync.AutoSize = true;
+            this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbVSync.Location = new System.Drawing.Point(103, 293);
+            this.cbVSync.Name = "cbVSync";
+            this.cbVSync.Size = new System.Drawing.Size(94, 14);
+            this.cbVSync.TabIndex = 33;
+            this.cbVSync.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // cbGLSLVersion
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(103, 313);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(94, 23);
-            this.comboBox2.TabIndex = 34;
+            this.cbGLSLVersion.FormattingEnabled = true;
+            this.cbGLSLVersion.Location = new System.Drawing.Point(103, 313);
+            this.cbGLSLVersion.Name = "cbGLSLVersion";
+            this.cbGLSLVersion.Size = new System.Drawing.Size(94, 23);
+            this.cbGLSLVersion.TabIndex = 34;
             // 
             // comboBox3
             // 
@@ -473,21 +473,21 @@
             this.Size = new System.Drawing.Size(400, 344);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFPS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seSamples)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,35 +497,35 @@
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox edTitle;
-        public System.Windows.Forms.NumericUpDown numericUpDown2;
+        public System.Windows.Forms.NumericUpDown seCameraPositionX;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.NumericUpDown numericUpDown1;
-        public System.Windows.Forms.NumericUpDown numericUpDown3;
-        public System.Windows.Forms.NumericUpDown numericUpDown4;
-        public System.Windows.Forms.NumericUpDown numericUpDown5;
-        public System.Windows.Forms.NumericUpDown numericUpDown6;
-        public System.Windows.Forms.NumericUpDown numericUpDown7;
-        public System.Windows.Forms.NumericUpDown numericUpDown8;
-        public System.Windows.Forms.NumericUpDown numericUpDown9;
-        public System.Windows.Forms.NumericUpDown numericUpDown10;
-        public System.Windows.Forms.NumericUpDown numericUpDown11;
-        public System.Windows.Forms.NumericUpDown numericUpDown12;
-        public System.Windows.Forms.NumericUpDown numericUpDown13;
+        public System.Windows.Forms.ComboBox cbProjectionType;
+        public System.Windows.Forms.NumericUpDown seFieldOfView;
+        public System.Windows.Forms.NumericUpDown seCameraPositionY;
+        public System.Windows.Forms.NumericUpDown seCameraPositionZ;
+        public System.Windows.Forms.NumericUpDown seCameraFocusX;
+        public System.Windows.Forms.NumericUpDown seCameraFocusY;
+        public System.Windows.Forms.NumericUpDown seCameraFocusZ;
+        public System.Windows.Forms.NumericUpDown seFrustumMinX;
+        public System.Windows.Forms.NumericUpDown seFrustumMinY;
+        public System.Windows.Forms.NumericUpDown seFrustumMinZ;
+        public System.Windows.Forms.NumericUpDown seFrustumMaxX;
+        public System.Windows.Forms.NumericUpDown seFrustumMaxY;
+        public System.Windows.Forms.NumericUpDown seFrustumMaxZ;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label12;
-        public System.Windows.Forms.NumericUpDown numericUpDown14;
-        public System.Windows.Forms.NumericUpDown numericUpDown15;
-        public System.Windows.Forms.CheckBox checkBox1;
-        public System.Windows.Forms.ComboBox comboBox2;
+        public System.Windows.Forms.NumericUpDown seFPS;
+        public System.Windows.Forms.NumericUpDown seSamples;
+        public System.Windows.Forms.CheckBox cbVSync;
+        public System.Windows.Forms.ComboBox cbGLSLVersion;
         public System.Windows.Forms.ComboBox comboBox3;
     }
 }
