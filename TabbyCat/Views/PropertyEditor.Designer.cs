@@ -30,9 +30,10 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpScene = new System.Windows.Forms.TabPage();
+            this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TracePropertiesControl = new TabbyCatControls.TracePropertiesControl();
-            this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
+            this.shaderEdit1 = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
@@ -42,7 +43,7 @@
             // 
             this.TabControl.Controls.Add(this.tpScene);
             this.TabControl.Controls.Add(this.tpTraces);
-            this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
@@ -59,6 +60,15 @@
             this.tpScene.TabIndex = 0;
             this.tpScene.Text = "Scene";
             this.tpScene.UseVisualStyleBackColor = true;
+            // 
+            // ScenePropertiesControl
+            // 
+            this.ScenePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScenePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScenePropertiesControl.Location = new System.Drawing.Point(3, 3);
+            this.ScenePropertiesControl.Name = "ScenePropertiesControl";
+            this.ScenePropertiesControl.Size = new System.Drawing.Size(402, 335);
+            this.ScenePropertiesControl.TabIndex = 1;
             // 
             // tpTraces
             // 
@@ -80,20 +90,20 @@
             this.TracePropertiesControl.Size = new System.Drawing.Size(402, 335);
             this.TracePropertiesControl.TabIndex = 0;
             // 
-            // ScenePropertiesControl
+            // shaderEdit1
             // 
-            this.ScenePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScenePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScenePropertiesControl.Location = new System.Drawing.Point(3, 3);
-            this.ScenePropertiesControl.Name = "ScenePropertiesControl";
-            this.ScenePropertiesControl.Size = new System.Drawing.Size(402, 335);
-            this.ScenePropertiesControl.TabIndex = 1;
+            this.shaderEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shaderEdit1.Location = new System.Drawing.Point(0, 369);
+            this.shaderEdit1.Name = "shaderEdit1";
+            this.shaderEdit1.Size = new System.Drawing.Size(416, 485);
+            this.shaderEdit1.TabIndex = 1;
             // 
             // PropertyEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 369);
+            this.ClientSize = new System.Drawing.Size(416, 854);
+            this.Controls.Add(this.shaderEdit1);
             this.Controls.Add(this.TabControl);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PropertyEditor";
@@ -112,5 +122,6 @@
         internal System.Windows.Forms.TabPage tpTraces;
         internal TabbyCatControls.TracePropertiesControl TracePropertiesControl;
         internal TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
+        private Controls.ShaderEdit shaderEdit1;
     }
 }

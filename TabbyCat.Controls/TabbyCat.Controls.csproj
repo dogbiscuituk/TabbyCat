@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ScenePropertiesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -50,6 +58,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JmkControls.cs" />
+    <Compile Include="ShaderEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShaderEdit.Designer.cs">
+      <DependentUpon>ShaderEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="TracePropertiesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -59,8 +73,15 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScenePropertiesControl.resx">
       <DependentUpon>ScenePropertiesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShaderEdit.resx">
+      <DependentUpon>ShaderEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TracePropertiesControl.resx">
       <DependentUpon>TracePropertiesControl.cs</DependentUpon>
@@ -71,6 +92,22 @@
       <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
       <Name>TabbyCat.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\saveHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OptionsHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TileWindowsHorizontallyHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
