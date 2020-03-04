@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShaderEdit));
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.Splitter = new System.Windows.Forms.SplitContainer();
             this.SecondarySplitter = new System.Windows.Forms.SplitContainer();
             this.SecondaryTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
@@ -40,7 +40,7 @@
             this.PrimarySplitter = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.Toolbar = new System.Windows.Forms.ToolStrip();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnExportHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportRTF = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,9 +58,9 @@
             this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
             this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
             this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
-            this.toolStripContainer1.SuspendLayout();
+            this.ToolStripContainer.ContentPanel.SuspendLayout();
+            this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
+            this.ToolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Splitter)).BeginInit();
             this.Splitter.Panel1.SuspendLayout();
             this.Splitter.Panel2.SuspendLayout();
@@ -75,29 +75,29 @@
             this.PrimarySplitter.Panel1.SuspendLayout();
             this.PrimarySplitter.Panel2.SuspendLayout();
             this.PrimarySplitter.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
             // 
-            this.toolStripContainer1.BottomToolStripPanelVisible = false;
+            this.ToolStripContainer.BottomToolStripPanelVisible = false;
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.Splitter);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(247, 284);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(247, 309);
-            this.toolStripContainer1.TabIndex = 0;
-            this.toolStripContainer1.Text = "toolStripContainer1";
+            this.ToolStripContainer.ContentPanel.Controls.Add(this.Splitter);
+            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(247, 284);
+            this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ToolStripContainer.LeftToolStripPanelVisible = false;
+            this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
+            this.ToolStripContainer.Name = "toolStripContainer1";
+            this.ToolStripContainer.RightToolStripPanelVisible = false;
+            this.ToolStripContainer.Size = new System.Drawing.Size(247, 309);
+            this.ToolStripContainer.TabIndex = 0;
+            this.ToolStripContainer.Text = "toolStripContainer1";
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.ToolStripContainer.TopToolStripPanel.Controls.Add(this.Toolbar);
             // 
             // Splitter
             // 
@@ -297,18 +297,18 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnShader,
             this.btnExport,
             this.btnPrint,
             this.btnOptions,
             this.btnSplit,
             this.btnHelp});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(168, 25);
-            this.toolStrip1.TabIndex = 0;
+            this.Toolbar.Location = new System.Drawing.Point(3, 0);
+            this.Toolbar.Name = "toolStrip1";
+            this.Toolbar.Size = new System.Drawing.Size(168, 25);
+            this.Toolbar.TabIndex = 0;
             // 
             // btnExport
             // 
@@ -447,14 +447,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.toolStripContainer1);
+            this.Controls.Add(this.ToolStripContainer);
             this.Name = "ShaderEdit";
             this.Size = new System.Drawing.Size(247, 309);
-            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
+            this.ToolStripContainer.ContentPanel.ResumeLayout(false);
+            this.ToolStripContainer.TopToolStripPanel.ResumeLayout(false);
+            this.ToolStripContainer.TopToolStripPanel.PerformLayout();
+            this.ToolStripContainer.ResumeLayout(false);
+            this.ToolStripContainer.PerformLayout();
             this.Splitter.Panel1.ResumeLayout(false);
             this.Splitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Splitter)).EndInit();
@@ -469,41 +469,41 @@
             this.PrimarySplitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PrimarySplitter)).EndInit();
             this.PrimarySplitter.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.Toolbar.ResumeLayout(false);
+            this.Toolbar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        internal System.Windows.Forms.ToolStripDropDownButton btnExport;
-        internal System.Windows.Forms.ToolStripMenuItem btnExportHTML;
-        internal System.Windows.Forms.ToolStripMenuItem btnExportRTF;
-        internal System.Windows.Forms.ToolStripButton btnPrint;
-        internal System.Windows.Forms.ToolStripDropDownButton btnOptions;
-        internal System.Windows.Forms.ToolStripMenuItem btnRuler;
-        internal System.Windows.Forms.ToolStripMenuItem btnLineNumbers;
-        internal System.Windows.Forms.ToolStripMenuItem btnDocumentMap;
-        internal System.Windows.Forms.ToolStripButton btnSplit;
-        internal System.Windows.Forms.ToolStripButton btnHelp;
-        internal System.Windows.Forms.SplitContainer Splitter;
-        internal System.Windows.Forms.SplitContainer SecondarySplitter;
-        internal FastColoredTextBoxNS.FastColoredTextBox SecondaryTextBox;
-        internal FastColoredTextBoxNS.FastColoredTextBox PrimaryTextBox;
-        internal FastColoredTextBoxNS.Ruler SecondaryRuler;
-        internal FastColoredTextBoxNS.DocumentMap SecondaryMap;
-        internal System.Windows.Forms.SplitContainer PrimarySplitter;
-        internal FastColoredTextBoxNS.Ruler PrimaryRuler;
-        internal FastColoredTextBoxNS.DocumentMap PrimaryMap;
-        private System.Windows.Forms.ToolStripDropDownButton btnShader;
-        private System.Windows.Forms.ToolStripMenuItem miVertex;
-        private System.Windows.Forms.ToolStripMenuItem miTessellationControl;
-        private System.Windows.Forms.ToolStripMenuItem miTessellationEvaluation;
-        private System.Windows.Forms.ToolStripMenuItem miGeometry;
-        private System.Windows.Forms.ToolStripMenuItem miFragment;
-        private System.Windows.Forms.ToolStripMenuItem miCompute;
+        public System.Windows.Forms.ToolStripContainer ToolStripContainer;
+        public System.Windows.Forms.ToolStrip Toolbar;
+        public System.Windows.Forms.ToolStripDropDownButton btnExport;
+        public System.Windows.Forms.ToolStripMenuItem btnExportHTML;
+        public System.Windows.Forms.ToolStripMenuItem btnExportRTF;
+        public System.Windows.Forms.ToolStripButton btnPrint;
+        public System.Windows.Forms.ToolStripDropDownButton btnOptions;
+        public System.Windows.Forms.ToolStripMenuItem btnRuler;
+        public System.Windows.Forms.ToolStripMenuItem btnLineNumbers;
+        public System.Windows.Forms.ToolStripMenuItem btnDocumentMap;
+        public System.Windows.Forms.ToolStripButton btnSplit;
+        public System.Windows.Forms.ToolStripButton btnHelp;
+        public System.Windows.Forms.SplitContainer Splitter;
+        public System.Windows.Forms.SplitContainer SecondarySplitter;
+        public FastColoredTextBoxNS.FastColoredTextBox SecondaryTextBox;
+        public FastColoredTextBoxNS.FastColoredTextBox PrimaryTextBox;
+        public FastColoredTextBoxNS.Ruler SecondaryRuler;
+        public FastColoredTextBoxNS.DocumentMap SecondaryMap;
+        public System.Windows.Forms.SplitContainer PrimarySplitter;
+        public FastColoredTextBoxNS.Ruler PrimaryRuler;
+        public FastColoredTextBoxNS.DocumentMap PrimaryMap;
+        public System.Windows.Forms.ToolStripDropDownButton btnShader;
+        public System.Windows.Forms.ToolStripMenuItem miVertex;
+        public System.Windows.Forms.ToolStripMenuItem miTessellationControl;
+        public System.Windows.Forms.ToolStripMenuItem miTessellationEvaluation;
+        public System.Windows.Forms.ToolStripMenuItem miGeometry;
+        public System.Windows.Forms.ToolStripMenuItem miFragment;
+        public System.Windows.Forms.ToolStripMenuItem miCompute;
     }
 }

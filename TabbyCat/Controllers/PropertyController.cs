@@ -11,6 +11,7 @@
             SceneController = sceneController;
             ScenePropertyController = new ScenePropertyController(this);
             TracePropertyController = new TracePropertyController(this);
+            ShaderController = new ShaderController(this);
             Editor = new PropertyEditor();
         }
 
@@ -52,6 +53,7 @@
         }
 
         private readonly ScenePropertyController ScenePropertyController;
+        private readonly ShaderController ShaderController;
         private readonly TracePropertyController TracePropertyController;
 
         private void PropertyEditor_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,6 +76,7 @@
         {
             ScenePropertyController.Connect(connect);
             TracePropertyController.Connect(connect);
+            ShaderController.Connect(connect);
         }
     }
 }
