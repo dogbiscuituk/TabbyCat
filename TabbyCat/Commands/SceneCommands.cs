@@ -8,14 +8,14 @@
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
         internal BackgroundColourCommand(Color value) : base("BackgroundColour",
-            value, r => r._BackgroundColour, (r, v) => r._BackgroundColour = v)
+            value, r => r.BackgroundColour, (r, v) => r.BackgroundColour = v)
         { }
     }
 
     internal class CameraCommand : ScenePropertyCommand<Camera>
     {
         internal CameraCommand(Camera value) : base("Camera",
-            value, s => s._Camera, (s, v) => s._Camera = v)
+            value, s => s.Camera, (s, v) => s.Camera = v)
         { }
     }
 
@@ -29,7 +29,7 @@
     internal class FpsCommand : ScenePropertyCommand<double>
     {
         internal FpsCommand(double value) : base("FPS",
-            value, s => s._FPS, (s, v) => s._FPS = v)
+            value, s => s.FPS, (s, v) => s.FPS = v)
         { }
     }
 
@@ -43,7 +43,7 @@
     internal class ProjectionCommand : ScenePropertyCommand<Projection>
     {
         internal ProjectionCommand(Projection value) : base("Projection",
-            value, s => s._Projection, (s, v) => s._Projection = v)
+            value, s => s.Projection, (s, v) => s.Projection = v)
         { }
     }
 
@@ -57,14 +57,14 @@
     internal class GLTargetVersionCommand : ScenePropertyCommand<string>
     {
         internal GLTargetVersionCommand(string value) : base("GLTargetVersion",
-            value, s => s._GLTargetVersion, (s, v) => s._GLTargetVersion = v)
+            value, s => s.GLTargetVersion, (s, v) => s.GLTargetVersion = v)
         { }
     }
 
     internal class TitleCommand : ScenePropertyCommand<string>
     {
         internal TitleCommand(string value) : base("Title",
-            value, s => s._Title, (s, v) => s._Title = v)
+            value, s => s.Title, (s, v) => s.Title = v)
         { }
     }
 
@@ -81,7 +81,7 @@
     internal class VSyncCommand : ScenePropertyCommand<bool>
     {
         internal VSyncCommand(bool value) : base("VSync",
-            value, s => s._VSync, (s, v) => s._VSync = v)
+            value, s => s.VSync, (s, v) => s.VSync = v)
         { }
     }
 }

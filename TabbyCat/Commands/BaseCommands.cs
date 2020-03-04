@@ -10,8 +10,11 @@
         protected Command(int index = 0) { Index = index; }
 
         public int Index { get; private set; }
+
         public abstract string RedoAction { get; }
+
         public abstract string UndoAction { get; }
+
         internal TValue Value { get; set; }
 
         /// <summary>
@@ -28,16 +31,19 @@
         {
             var result = Run(scene);
             if (result)
-                PropertyChanged(scene, PropertyName);
+                OnPropertyChanged(scene, PropertyName);
             Invert();
             return result;
         }
 
         public virtual void Invert() { }
-        protected abstract void PropertyChanged(Scene scene, string propertyName);
+
+        protected abstract void OnPropertyChanged(Scene scene, string propertyName);
+
         public abstract bool Run(Scene scene);
 
         public string PropertyName { get; set; }
+
         protected abstract string Target { get; }
     }
 
@@ -58,6 +64,7 @@
         }
 
         public override string RedoAction => Action;
+
         public override string UndoAction => Action;
 
         public override bool Run(Scene scene)
@@ -73,13 +80,17 @@
         }
 
         public override string ToString() => $"{PropertyName} = {Value}";
+
         private string Action => $"{PropertyName} change";
 
         protected Func<TItem, TValue> Get;
+
         protected Action<TItem, TValue> Set;
 
         protected abstract TItem GetItem(Scene scene);
+
         protected TValue GetValue(Scene scene) => Get(GetItem(scene));
+
         protected void SetValue(Scene scene, TValue value) => Set(GetItem(scene), value);
     }
 
@@ -98,9 +109,11 @@
         }
 
         protected override string Target => "Scene";
+
         protected override Scene GetItem(Scene scene) => scene;
-        protected override void PropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertiesChanged(scene, propertyName);
+
+        protected override void OnPropertyChanged(Scene scene, string propertyName) =>
+            scene.OnPropertyChanged(propertyName);
     }
 
     internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
@@ -118,9 +131,11 @@
         }
 
         protected override string Target => "Trace";
-        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
+
         protected override void OnPropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertiesChanged(GetItem(scene), propertyName);
+            scene.OnPropertyChanged($"Traces[{Index}].{propertyName}");
+
+        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }
 
     #endregion
@@ -142,10 +157,13 @@
         internal CollectionCommand(int index, bool add) : base(index) { Adding = add; }
 
         public bool Adding { get; set; }
+
         public override string RedoAction => GetAction(false);
+
         public override string UndoAction => GetAction(true);
 
         public override void Invert() { Adding = !Adding; }
+
         public override string ToString() => $"{(Adding ? "Add" : "Remove")} {Target}";
 
         public override bool Run(Scene scene)
@@ -172,10 +190,15 @@
         }
 
         protected abstract void AddItem(Scene scene);
+
         protected abstract TItem GetItem(Scene scene);
+
         protected abstract int GetItemsCount(Scene scene);
+        
         protected abstract TItem GetNewItem(Scene scene);
+        
         protected abstract void InsertItem(Scene scene);
+        
         protected abstract void RemoveItem(Scene scene);
 
         private string GetAction(bool undo) => $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
@@ -188,11 +211,17 @@
         protected override string Target => Value.ToString();
 
         protected override void AddItem(Scene scene) => scene.AddTrace(Value);
+        
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
+        
         protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
+        
         protected override Trace GetNewItem(Scene scene) => scene.NewTrace();
+        
         protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
-        protected override void PropertyChanged(Scene scene, string propertyName) => scene.OnPropertiesChanged(scene, propertyName);
+        
+        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
+        
         protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }
 

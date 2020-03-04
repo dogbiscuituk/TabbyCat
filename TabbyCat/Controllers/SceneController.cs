@@ -58,7 +58,7 @@
 
         #endregion
 
-        internal event EventHandler<PropertiesChangedEventArgs> PropertiesChanged;
+        internal event PropertyChangedEventHandler PropertyChanged;
 
         #region Private Event Handlers
 
@@ -286,20 +286,8 @@
 
         #endregion
 
-        internal void OnPropertiesChanged(Scene scene, params string[] propertyNames)
-        {
-            ChangedSubject = scene;
-            OnPropertyChanged(propertyNames);
-        }
-
-        internal void OnPropertiesChanged(Trace trace, params string[] propertyNames)
-        {
-            ChangedSubject = trace;
-            OnPropertyChanged(propertyNames);
-        }
-
-        internal void OnPropertiesChanged(params string[] propertyNames) =>
-            PropertiesChanged?.Invoke(this, new PropertiesChangedEventArgs(propertyNames));
+        internal void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         internal void BeginUpdate() => ++UpdateCount;
 
@@ -308,7 +296,7 @@
             if (--UpdateCount == 0)
             {
                 foreach (var propertyName in ChangedPropertyNames)
-                    OnPropertiesChanged(propertyName);
+                    OnPropertyChanged(propertyName);
                 ChangedPropertyNames.Clear();
             }
         }

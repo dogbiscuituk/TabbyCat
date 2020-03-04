@@ -235,7 +235,7 @@
         private Clock Clock => ClockController.Clock;
         private ClockController ClockController => SceneController.ClockController;
         private GLControl GLControl => SceneController.GLControl;
-        private bool ProgramValid => ProgramCompiled && Scene._GPUStatus == GPUStatus.OK;
+        private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
         private Scene Scene => SceneController.Scene;
 
         #endregion
@@ -352,9 +352,9 @@
                 return;
             GpuLog.AppendLine(s.Trim());
             if (s.Contains("ERROR:"))
-                Scene._GPUStatus |= GPUStatus.Error;
+                Scene.GPUStatus |= GPUStatus.Error;
             if (s.Contains("WARNING:"))
-                Scene._GPUStatus |= GPUStatus.Warning;
+                Scene.GPUStatus |= GPUStatus.Warning;
         }
 
         private void ValidateCameraView()
@@ -371,7 +371,7 @@
             if (ProgramCompiled)
                 return;
             "Validate Program".Spit();
-            Scene._GPUStatus = GPUStatus.OK;
+            Scene.GPUStatus = GPUStatus.OK;
             GpuCode = new StringBuilder();
             GpuLog = new StringBuilder();
             ProgramID = GL.CreateProgram();
@@ -382,13 +382,8 @@
             GL.ValidateProgram(ProgramID);
             Log(GL.GetProgramInfoLog(ProgramID));
             Log("Done.");
-            Scene._GPUCode = GpuCode.ToString().TrimEnd();
-            Scene._GPULog = GpuLog.ToString().TrimEnd();
-            SceneController.OnPropertiesChanged(
-                Scene,
-                "GPUCode",
-                "GPULog",
-                "GPUStatus");
+            Scene.GPUCode = GpuCode.ToString().TrimEnd();
+            Scene.GPULog = GpuLog.ToString().TrimEnd();
             GpuCode = null;
             GpuLog = null;
             GetUniformLocations();

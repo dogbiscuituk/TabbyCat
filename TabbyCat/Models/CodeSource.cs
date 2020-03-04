@@ -1,122 +1,63 @@
 ﻿namespace TabbyCat.Models
 {
-    using Newtonsoft.Json;
     using OpenTK.Graphics.OpenGL;
+    using TabbyCat.Properties;
 
-    internal abstract class CodeSource
+    public abstract class CodeSource
     {
-        [JsonProperty]
-        internal string _Shader1Vertex;
-        internal string Shader1Vertex
-        {
-            get => _Shader1Vertex;
-            set
-            {
-                if (Shader1Vertex != value)
-                {
-                    _Shader1Vertex = value;
-                    OnPropertiesChanged(nameof(Shader1Vertex));
-                }
-            }
-        }
+        #region Public Properties
 
-        [JsonProperty]
-        internal string _Shader2TessControl;
-        internal string Shader2TessControl
-        {
-            get => _Shader2TessControl;
-            set
-            {
-                if (Shader2TessControl != value)
-                {
-                    _Shader2TessControl = value;
-                    OnPropertiesChanged(nameof(Shader2TessControl));
-                }
-            }
-        }
-
-        [JsonProperty]
-        internal string _Shader3TessEvaluation;
-        internal string Shader3TessEvaluation
-        {
-            get => _Shader3TessEvaluation;
-            set
-            {
-                if (Shader3TessEvaluation != value)
-                {
-                    _Shader3TessEvaluation = value;
-                    OnPropertiesChanged(nameof(Shader3TessEvaluation));
-                }
-            }
-        }
-
-        [JsonProperty]
-        internal string _Shader4Geometry;
-        internal string Shader4Geometry
-        {
-            get => _Shader4Geometry;
-            set
-            {
-                if (Shader4Geometry != value)
-                {
-                    _Shader4Geometry = value;
-                    OnPropertiesChanged(nameof(Shader4Geometry));
-                }
-            }
-        }
-
-        [JsonProperty]
-        internal string _Shader5Fragment;
-        internal string Shader5Fragment
-        {
-            get => _Shader5Fragment;
-            set
-            {
-                if (Shader5Fragment != value)
-                {
-                    _Shader5Fragment = value;
-                    OnPropertiesChanged(nameof(Shader5Fragment));
-                }
-            }
-        }
-
-        [JsonProperty]
-        internal string _Shader6Compute;
-        internal string Shader6Compute
-        {
-            get => _Shader6Compute;
-            set
-            {
-                if (Shader6Compute != value)
-                {
-                    _Shader6Compute = value;
-                    OnPropertiesChanged(nameof(Shader6Compute));
-                }
-            }
-        }
-
-        #region Protected Methods
-
-        internal abstract void OnPropertiesChanged(params string[] propertyNames);
+        internal string Shader1Vertex { get; set; }
+        internal string Shader2TessControl { get; set; }
+        internal string Shader3TessEvaluation { get; set; }
+        internal string Shader4Geometry { get; set; }
+        internal string Shader5Fragment { get; set; }
+        internal string Shader6Compute { get; set; }
 
         #endregion
+
+        #region Public Methods
+
+        protected virtual void CopyFrom(CodeSource source)
+        {
+            Shader1Vertex = source.Shader1Vertex;
+            Shader2TessControl = source.Shader2TessControl;
+            Shader3TessEvaluation = source.Shader3TessEvaluation;
+            Shader4Geometry = source.Shader4Geometry;
+            Shader5Fragment = source.Shader5Fragment;
+            Shader6Compute = source.Shader6Compute;
+        }
+
+        protected virtual void RestoreDefaults()
+        {
+            Shader1Vertex = Resources.VertexHead;
+            Shader2TessControl = Defaults.Shader2TessControl;
+            Shader3TessEvaluation = Defaults.Shader3TessEvaluation;
+            Shader4Geometry = Defaults.Shader4Geometry;
+            Shader5Fragment = Resources.FragmentHead;
+            Shader6Compute = Defaults.Shader6Compute;
+        }
+
+        #endregion
+
+        #region Internal Methods
 
         internal string GetScript(ShaderType shaderType)
         {
             switch (shaderType)
             {
                 case ShaderType.VertexShader:
-                    return _Shader1Vertex;
+                    return Shader1Vertex;
                 case ShaderType.TessControlShader:
-                    return _Shader2TessControl;
+                    return Shader2TessControl;
                 case ShaderType.TessEvaluationShader:
-                    return _Shader3TessEvaluation;
+                    return Shader3TessEvaluation;
                 case ShaderType.GeometryShader:
-                    return _Shader4Geometry;
+                    return Shader4Geometry;
                 case ShaderType.FragmentShader:
-                    return _Shader5Fragment;
+                    return Shader5Fragment;
                 case ShaderType.ComputeShader:
-                    return _Shader6Compute;
+                    return Shader6Compute;
             }
             return string.Empty;
         }
@@ -126,34 +67,39 @@
             switch (shaderType)
             {
                 case ShaderType.VertexShader:
-                    _Shader1Vertex = script;
+                    Shader1Vertex = script;
                     break;
                 case ShaderType.TessControlShader:
-                    _Shader2TessControl = script;
+                    Shader2TessControl = script;
                     break;
                 case ShaderType.TessEvaluationShader:
-                    _Shader3TessEvaluation = script;
+                    Shader3TessEvaluation = script;
                     break;
                 case ShaderType.GeometryShader:
-                    _Shader4Geometry = script;
+                    Shader4Geometry = script;
                     break;
                 case ShaderType.FragmentShader:
-                    _Shader5Fragment = script;
+                    Shader5Fragment = script;
                     break;
                 case ShaderType.ComputeShader:
-                    _Shader6Compute = script;
+                    Shader6Compute = script;
                     break;
             }
         }
 
-        public void CopyFrom(CodeSource source)
+        #endregion
+
+        #region Private Classes
+
+        private class Defaults
         {
-            _Shader1Vertex = source.Shader1Vertex;
-            _Shader2TessControl = source.Shader2TessControl;
-            _Shader3TessEvaluation = source.Shader3TessEvaluation;
-            _Shader4Geometry = source.Shader4Geometry;
-            _Shader5Fragment = source.Shader5Fragment;
-            _Shader6Compute = source.Shader6Compute;
+            internal const string
+                Shader2TessControl = "",
+                Shader3TessEvaluation = "",
+                Shader4Geometry = "",
+                Shader6Compute = "";
         }
+
+        #endregion
     }
 }
