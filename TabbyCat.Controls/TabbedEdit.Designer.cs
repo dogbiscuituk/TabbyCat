@@ -33,7 +33,7 @@
             this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TracePropertiesControl = new TabbyCatControls.TracePropertiesControl();
-            this.shaderEdit1 = new TabbyCat.Controls.ShaderEdit();
+            this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
@@ -95,18 +95,18 @@
             // 
             // shaderEdit1
             // 
-            this.shaderEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shaderEdit1.Location = new System.Drawing.Point(0, 314);
-            this.shaderEdit1.MinimumSize = new System.Drawing.Size(334, 0);
-            this.shaderEdit1.Name = "shaderEdit1";
-            this.shaderEdit1.Size = new System.Drawing.Size(334, 280);
-            this.shaderEdit1.TabIndex = 3;
+            this.ShaderEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ShaderEdit.Location = new System.Drawing.Point(0, 314);
+            this.ShaderEdit.MinimumSize = new System.Drawing.Size(334, 0);
+            this.ShaderEdit.Name = "shaderEdit1";
+            this.ShaderEdit.Size = new System.Drawing.Size(334, 280);
+            this.ShaderEdit.TabIndex = 3;
             // 
             // TabbedEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.shaderEdit1);
+            this.Controls.Add(this.ShaderEdit);
             this.Controls.Add(this.TabControl);
             this.Name = "TabbedEdit";
             this.Size = new System.Drawing.Size(334, 594);
@@ -119,11 +119,11 @@
 
         #endregion
 
-        internal System.Windows.Forms.TabControl TabControl;
-        internal System.Windows.Forms.TabPage tpScene;
-        internal TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
-        internal System.Windows.Forms.TabPage tpTraces;
-        internal TabbyCatControls.TracePropertiesControl TracePropertiesControl;
-        private ShaderEdit shaderEdit1;
+        public System.Windows.Forms.TabControl TabControl;
+        public System.Windows.Forms.TabPage tpScene;
+        public TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
+        public System.Windows.Forms.TabPage tpTraces;
+        public TabbyCatControls.TracePropertiesControl TracePropertiesControl;
+        public ShaderEdit ShaderEdit;
     }
 }

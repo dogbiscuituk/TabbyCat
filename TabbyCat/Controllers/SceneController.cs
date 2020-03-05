@@ -27,12 +27,6 @@
 
         internal PropertyController PropertyController;
 
-        private bool PropertyEditorVisible
-        {
-            get => PropertyController.FormVisible;
-            set => PropertyController.FormVisible = value;
-        }
-
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => SceneForm.GLControl;
@@ -90,7 +84,6 @@
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
         private void SceneAddNewTrace_Click(object sender, EventArgs e) => CommandProcessor.AppendTrace();
-        private void ViewProperties_Click(object sender, System.EventArgs e) => PropertyEditorVisible = !PropertyEditorVisible;
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         // SceneForm
@@ -176,7 +169,6 @@
                 SceneForm.EditOptions.Click += EditOptions_Click;
                 SceneForm.EditRefresh.Click += EditRefresh_Click;
                 SceneForm.SceneAddNewTrace.Click += SceneAddNewTrace_Click;
-                SceneForm.ViewProperties.Click += ViewProperties_Click;
                 SceneForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 SceneForm.HelpAbout.Click += HelpAbout_Click;
                 // SceneForm
@@ -211,7 +203,6 @@
                 SceneForm.EditOptions.Click -= EditOptions_Click;
                 SceneForm.EditRefresh.Click -= EditRefresh_Click;
                 SceneForm.SceneAddNewTrace.Click -= SceneAddNewTrace_Click;
-                SceneForm.ViewProperties.Click -= ViewProperties_Click;
                 SceneForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 SceneForm.HelpAbout.Click -= HelpAbout_Click;
                 // SceneForm

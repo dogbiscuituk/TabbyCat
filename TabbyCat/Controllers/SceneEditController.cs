@@ -2,7 +2,7 @@
 {
     using OpenTK;
     using System;
-    using System.Windows.Forms;
+    using System.ComponentModel;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCatControls;
@@ -71,6 +71,18 @@
             Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
             Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
             Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
+            SceneController.PropertyChanged += SceneController_PropertyChanged;
+        }
+
+        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (Updating)
+                return;
+            switch (e.PropertyName)
+            {
+                case "Camera Position":
+                    break;
+            }
         }
 
         protected override void Disconnect()

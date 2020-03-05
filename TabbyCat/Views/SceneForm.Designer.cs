@@ -899,6 +899,6 @@
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
         private System.Windows.Forms.SplitContainer SplitContainer1;
-        private Controls.TabbedEdit TabbedEdit;
+        internal Controls.TabbedEdit TabbedEdit;
     }
 }

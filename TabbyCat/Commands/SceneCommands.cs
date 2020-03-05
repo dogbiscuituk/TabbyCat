@@ -28,7 +28,7 @@
 
     internal class CameraPositionCommand : ScenePropertyCommand<Vector3d>
     {
-        internal CameraPositionCommand(Vector3d value) : base("Camera.Position",
+        internal CameraPositionCommand(Vector3d value) : base("Camera Position",
             value, s => s.Camera.Position, (s, v) => s.Camera.Position = v)
         { }
     }
