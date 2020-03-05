@@ -21,22 +21,14 @@
 
         protected void Run(ICommand command)
         {
+            if (Updating)
+                return;
             Updating = true;
             CommandProcessor.Run(command);
             Updating = false;
         }
 
         protected abstract void Connect();
-
-        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case "":
-                    break;
-            }
-        }
-
         protected abstract void Disconnect();
 
         internal void Connect(bool connect)
