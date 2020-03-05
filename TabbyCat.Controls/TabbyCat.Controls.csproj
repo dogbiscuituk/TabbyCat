@@ -50,11 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScenePropertiesControl.cs">
+    <Compile Include="SceneEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ScenePropertiesControl.Designer.cs">
-      <DependentUpon>ScenePropertiesControl.cs</DependentUpon>
+    <Compile Include="SceneEdit.Designer.cs">
+      <DependentUpon>SceneEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JmkControls.cs" />
@@ -64,11 +64,17 @@
     <Compile Include="ShaderEdit.Designer.cs">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="TracePropertiesControl.cs">
+    <Compile Include="TabbedEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TracePropertiesControl.Designer.cs">
-      <DependentUpon>TracePropertiesControl.cs</DependentUpon>
+    <Compile Include="TabbedEdit.Designer.cs">
+      <DependentUpon>TabbedEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TraceEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TraceEdit.Designer.cs">
+      <DependentUpon>TraceEdit.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -77,14 +83,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScenePropertiesControl.resx">
-      <DependentUpon>ScenePropertiesControl.cs</DependentUpon>
+    <EmbeddedResource Include="SceneEdit.resx">
+      <DependentUpon>SceneEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShaderEdit.resx">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TracePropertiesControl.resx">
-      <DependentUpon>TracePropertiesControl.cs</DependentUpon>
+    <EmbeddedResource Include="TabbedEdit.resx">
+      <DependentUpon>TabbedEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraceEdit.resx">
+      <DependentUpon>TraceEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

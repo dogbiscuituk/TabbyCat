@@ -40,10 +40,31 @@
         { }
     }
 
+    internal class FieldOfViewCommand : ScenePropertyCommand<double>
+    {
+        internal FieldOfViewCommand(double value) : base("FieldOfView",
+            value, s=>s.Projection.FieldOfView, (s, v)=>s.Projection.FieldOfView = v)
+        { }
+    }
+
     internal class FpsCommand : ScenePropertyCommand<double>
     {
         internal FpsCommand(double value) : base("FPS",
             value, s => s.FPS, (s, v) => s.FPS = v)
+        { }
+    }
+
+    internal class FrustumMaxCommand : ScenePropertyCommand<Vector3d>
+    {
+        internal FrustumMaxCommand(Vector3d value) : base("FrustumMax",
+            value, s => s.Projection.FrustumMax, (s, v) => s.Projection.FrustumMax = v)
+        { }
+    }
+
+    internal class FrustumMinCommand : ScenePropertyCommand<Vector3d>
+    {
+        internal FrustumMinCommand(Vector3d value) : base("FrustumMin",
+            value, s => s.Projection.FrustumMin, (s, v) => s.Projection.FrustumMin = v)
         { }
     }
 

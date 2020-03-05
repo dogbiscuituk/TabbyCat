@@ -7,9 +7,9 @@
     using TabbyCat.Common.Types;
     using TabbyCatControls;
 
-    internal class ScenePropertyController : CodeSourcePropertyController
+    internal class SceneEditController : CodeEditController
     {
-        internal ScenePropertyController(PropertyController propertyController)
+        internal SceneEditController(PropertyController propertyController)
             : base(propertyController)
         { }
 
@@ -31,6 +31,21 @@
                 (double)Editor.seCameraPositionY.Value,
                 (double)Editor.seCameraPositionZ.Value)));
 
+        private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
+            Run(new FieldOfViewCommand((double)Editor.seFieldOfView.Value));
+
+        private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMaxCommand(new Vector3d(
+                (double)Editor.seFrustumMaxX.Value,
+                (double)Editor.seFrustumMaxY.Value,
+                (double)Editor.seFrustumMaxZ.Value)));
+
+        private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMinCommand(new Vector3d(
+                (double)Editor.seFrustumMinX.Value,
+                (double)Editor.seFrustumMinY.Value,
+                (double)Editor.seFrustumMinZ.Value)));
+
         private void ProjectionType_SelectedIndexChanged(object sender, EventArgs e) =>
             Run(new ProjectionTypeCommand((ProjectionType)Editor.cbProjectionType.SelectedIndex));
 
@@ -49,6 +64,13 @@
             Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
             Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
             Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
+            Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
+            Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
+            Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
+            Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
         }
 
         protected override void Disconnect()

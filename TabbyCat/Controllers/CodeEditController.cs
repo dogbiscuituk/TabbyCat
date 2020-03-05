@@ -4,9 +4,9 @@
     using TabbyCat.Models;
     using TabbyCat.Views;
 
-    internal class CodeSourcePropertyController
+    internal class CodeEditController
     {
-        internal CodeSourcePropertyController(PropertyController propertyController)
+        internal CodeEditController(PropertyController propertyController)
         {
             PropertyController = propertyController;
         }

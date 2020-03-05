@@ -2,9 +2,9 @@
 {
     using TabbyCatControls;
 
-    internal class TracePropertyController : CodeSourcePropertyController
+    internal class TraceEditController : CodeEditController
     {
-        internal TracePropertyController(PropertyController propertyController)
+        internal TraceEditController(PropertyController propertyController)
             : base(propertyController)
         { }
 

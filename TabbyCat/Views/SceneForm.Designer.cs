@@ -38,7 +38,9 @@
             this.tbAccelerate = new System.Windows.Forms.ToolStripDropDownButton();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
             this.GLControl = new OpenTK.GLControl();
+            this.TabbedEdit = new TabbyCat.Controls.TabbedEdit();
             this.Toolbar = new TabbyCat.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,6 +107,10 @@
             this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.ToolStripContainer.SuspendLayout();
             this.StatusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
+            this.SplitContainer1.Panel1.SuspendLayout();
+            this.SplitContainer1.Panel2.SuspendLayout();
+            this.SplitContainer1.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -118,8 +124,8 @@
             // 
             // ToolStripContainer.ContentPanel
             // 
-            this.ToolStripContainer.ContentPanel.Controls.Add(this.GLControl);
-            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(767, 404);
+            this.ToolStripContainer.ContentPanel.Controls.Add(this.SplitContainer1);
+            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(975, 683);
             this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // ToolStripContainer.LeftToolStripPanel
@@ -127,7 +133,7 @@
             this.ToolStripContainer.LeftToolStripPanel.Controls.Add(this.Toolbar);
             this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.ToolStripContainer.Name = "ToolStripContainer";
-            this.ToolStripContainer.Size = new System.Drawing.Size(800, 450);
+            this.ToolStripContainer.Size = new System.Drawing.Size(1008, 729);
             this.ToolStripContainer.TabIndex = 0;
             this.ToolStripContainer.Text = "toolStripContainer1";
             // 
@@ -149,7 +155,7 @@
             this.Tlabel});
             this.StatusBar.Location = new System.Drawing.Point(0, 0);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(800, 22);
+            this.StatusBar.Size = new System.Drawing.Size(1008, 22);
             this.StatusBar.TabIndex = 0;
             // 
             // tbDecelerate
@@ -227,15 +233,44 @@
             this.Tlabel.Text = "t=0.0";
             this.Tlabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // SplitContainer1
+            // 
+            this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.SplitContainer1.Name = "SplitContainer1";
+            // 
+            // SplitContainer1.Panel1
+            // 
+            this.SplitContainer1.Panel1.Controls.Add(this.GLControl);
+            this.SplitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // SplitContainer1.Panel2
+            // 
+            this.SplitContainer1.Panel2.Controls.Add(this.TabbedEdit);
+            this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SplitContainer1.Panel2MinSize = 330;
+            this.SplitContainer1.Size = new System.Drawing.Size(975, 683);
+            this.SplitContainer1.SplitterDistance = 640;
+            this.SplitContainer1.TabIndex = 1;
+            // 
             // GLControl
             // 
             this.GLControl.BackColor = System.Drawing.Color.Black;
             this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(767, 404);
+            this.GLControl.Size = new System.Drawing.Size(640, 683);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
+            // 
+            // TabbedEdit
+            // 
+            this.TabbedEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabbedEdit.Location = new System.Drawing.Point(0, 0);
+            this.TabbedEdit.Name = "TabbedEdit";
+            this.TabbedEdit.Size = new System.Drawing.Size(331, 683);
+            this.TabbedEdit.TabIndex = 0;
             // 
             // Toolbar
             // 
@@ -394,7 +429,7 @@
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(800, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1008, 24);
             this.MainMenu.TabIndex = 0;
             // 
             // FileMenu
@@ -420,7 +455,7 @@
             this.FileNewFromTemplate});
             this.FileNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.FileNew.Name = "FileNew";
-            this.FileNew.Size = new System.Drawing.Size(196, 22);
+            this.FileNew.Size = new System.Drawing.Size(197, 22);
             this.FileNew.Text = "&New";
             // 
             // FileNewEmptyScene
@@ -443,19 +478,19 @@
             this.FileOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileOpen.Name = "FileOpen";
             this.FileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.FileOpen.Size = new System.Drawing.Size(196, 22);
+            this.FileOpen.Size = new System.Drawing.Size(197, 22);
             this.FileOpen.Text = "&Open...";
             // 
             // FileReopen
             // 
             this.FileReopen.Name = "FileReopen";
-            this.FileReopen.Size = new System.Drawing.Size(196, 22);
+            this.FileReopen.Size = new System.Drawing.Size(197, 22);
             this.FileReopen.Text = "&Reopen";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(194, 6);
             // 
             // FileSave
             // 
@@ -463,33 +498,33 @@
             this.FileSave.Name = "FileSave";
             this.FileSave.ShortcutKeyDisplayString = "^S";
             this.FileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.FileSave.Size = new System.Drawing.Size(196, 22);
+            this.FileSave.Size = new System.Drawing.Size(197, 22);
             this.FileSave.Text = "&Save";
             // 
             // FileSaveAs
             // 
             this.FileSaveAs.Name = "FileSaveAs";
-            this.FileSaveAs.Size = new System.Drawing.Size(196, 22);
+            this.FileSaveAs.Size = new System.Drawing.Size(197, 22);
             this.FileSaveAs.Text = "Save &As...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(194, 6);
             // 
             // FileClose
             // 
             this.FileClose.Name = "FileClose";
             this.FileClose.ShortcutKeyDisplayString = "^F4";
             this.FileClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.FileClose.Size = new System.Drawing.Size(196, 22);
+            this.FileClose.Size = new System.Drawing.Size(197, 22);
             this.FileClose.Text = "&Close";
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
             this.FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.FileExit.Size = new System.Drawing.Size(196, 22);
+            this.FileExit.Size = new System.Drawing.Size(197, 22);
             this.FileExit.Text = "Close All && E&xit";
             // 
             // EditMenu
@@ -633,13 +668,13 @@
             this.SceneAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
             this.SceneAddNewTrace.Name = "SceneAddNewTrace";
             this.SceneAddNewTrace.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.SceneAddNewTrace.Size = new System.Drawing.Size(182, 22);
+            this.SceneAddNewTrace.Size = new System.Drawing.Size(181, 22);
             this.SceneAddNewTrace.Text = "&Add a New Trace";
             // 
             // SceneEditCode
             // 
             this.SceneEditCode.Name = "SceneEditCode";
-            this.SceneEditCode.Size = new System.Drawing.Size(182, 22);
+            this.SceneEditCode.Size = new System.Drawing.Size(181, 22);
             this.SceneEditCode.Text = "&Edit Code";
             // 
             // ViewMenu
@@ -681,7 +716,7 @@
             this.TimeForward,
             this.TimeAccelerate});
             this.TimeMenu.Name = "TimeMenu";
-            this.TimeMenu.Size = new System.Drawing.Size(46, 20);
+            this.TimeMenu.Size = new System.Drawing.Size(45, 20);
             this.TimeMenu.Text = "&Time";
             // 
             // TimeDecelerate
@@ -762,7 +797,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.ToolStripContainer);
             this.MainMenuStrip = this.MainMenu;
             this.Name = "SceneForm";
@@ -778,6 +813,10 @@
             this.ToolStripContainer.PerformLayout();
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
+            this.SplitContainer1.Panel1.ResumeLayout(false);
+            this.SplitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
+            this.SplitContainer1.ResumeLayout(false);
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.MainMenu.ResumeLayout(false);
@@ -859,5 +898,7 @@
         internal System.Windows.Forms.ToolStripDropDownButton tbAccelerate;
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
+        private System.Windows.Forms.SplitContainer SplitContainer1;
+        private Controls.TabbedEdit TabbedEdit;
     }
 }

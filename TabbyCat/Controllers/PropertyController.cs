@@ -9,8 +9,8 @@
         internal PropertyController(SceneController sceneController)
         {
             SceneController = sceneController;
-            ScenePropertyController = new ScenePropertyController(this);
-            TracePropertyController = new TracePropertyController(this);
+            SceneEditController = new SceneEditController(this);
+            TraceEditController = new TraceEditController(this);
             ShaderController = new ShaderController(this);
             Editor = new PropertyEditor();
         }
@@ -42,28 +42,17 @@
             {
                 if (Editor != null)
                 {
-                    Editor.FormClosing -= PropertyEditor_FormClosing;
                 }
                 _Editor = value;
                 if (Editor != null)
                 {
-                    Editor.FormClosing += PropertyEditor_FormClosing;
                 }
             }
         }
 
-        private readonly ScenePropertyController ScenePropertyController;
+        private readonly SceneEditController SceneEditController;
         private readonly ShaderController ShaderController;
-        private readonly TracePropertyController TracePropertyController;
-
-        private void PropertyEditor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Editor.Hide();
-                e.Cancel = true;
-            }
-        }
+        private readonly TraceEditController TraceEditController;
 
         internal Scene Scene => SceneController.Scene;
         internal SceneController SceneController;
@@ -74,8 +63,8 @@
 
         private void Connect(bool connect)
         {
-            ScenePropertyController.Connect(connect);
-            TracePropertyController.Connect(connect);
+            SceneEditController.Connect(connect);
+            TraceEditController.Connect(connect);
             ShaderController.Connect(connect);
         }
     }

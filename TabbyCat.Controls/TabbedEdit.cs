@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TabbyCatControls
+namespace TabbyCat.Controls
 {
-    public partial class TracePropertiesControl : UserControl
+    public partial class TabbedEdit : UserControl
     {
-        public TracePropertiesControl()
+        public TabbedEdit()
         {
             InitializeComponent();
         }
