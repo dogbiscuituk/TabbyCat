@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.seCameraPositionX = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.cbVSync = new System.Windows.Forms.CheckBox();
             this.cbGLSLVersion = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).BeginInit();
@@ -81,69 +81,74 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionX, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.edTitle, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cbProjectionType, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.seFieldOfView, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionY, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.seCameraPositionZ, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusX, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusY, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.seCameraFocusZ, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinX, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinY, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMinZ, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxX, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxY, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.seFrustumMaxZ, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.seFPS, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.seSamples, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.cbVSync, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.cbGLSLVersion, 3, 9);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox3, 1, 7);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 14;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 280);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.TableLayoutPanel.ColumnCount = 4;
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.Controls.Add(this.seCameraPositionX, 1, 1);
+            this.TableLayoutPanel.Controls.Add(this.label2, 0, 1);
+            this.TableLayoutPanel.Controls.Add(this.label1, 0, 0);
+            this.TableLayoutPanel.Controls.Add(this.edTitle, 1, 0);
+            this.TableLayoutPanel.Controls.Add(this.label3, 0, 2);
+            this.TableLayoutPanel.Controls.Add(this.label4, 0, 3);
+            this.TableLayoutPanel.Controls.Add(this.label5, 0, 4);
+            this.TableLayoutPanel.Controls.Add(this.label6, 0, 5);
+            this.TableLayoutPanel.Controls.Add(this.label7, 0, 6);
+            this.TableLayoutPanel.Controls.Add(this.cbProjectionType, 1, 3);
+            this.TableLayoutPanel.Controls.Add(this.seFieldOfView, 1, 4);
+            this.TableLayoutPanel.Controls.Add(this.seCameraPositionY, 2, 1);
+            this.TableLayoutPanel.Controls.Add(this.seCameraPositionZ, 3, 1);
+            this.TableLayoutPanel.Controls.Add(this.seCameraFocusX, 1, 2);
+            this.TableLayoutPanel.Controls.Add(this.seCameraFocusY, 2, 2);
+            this.TableLayoutPanel.Controls.Add(this.seCameraFocusZ, 3, 2);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMinX, 1, 5);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMinY, 2, 5);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMinZ, 3, 5);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMaxX, 1, 6);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMaxY, 2, 6);
+            this.TableLayoutPanel.Controls.Add(this.seFrustumMaxZ, 3, 6);
+            this.TableLayoutPanel.Controls.Add(this.label8, 0, 7);
+            this.TableLayoutPanel.Controls.Add(this.label9, 2, 7);
+            this.TableLayoutPanel.Controls.Add(this.label10, 0, 9);
+            this.TableLayoutPanel.Controls.Add(this.label11, 0, 10);
+            this.TableLayoutPanel.Controls.Add(this.label12, 2, 9);
+            this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 7);
+            this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 9);
+            this.TableLayoutPanel.Controls.Add(this.cbVSync, 1, 10);
+            this.TableLayoutPanel.Controls.Add(this.cbGLSLVersion, 3, 9);
+            this.TableLayoutPanel.Controls.Add(this.comboBox3, 1, 7);
+            this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanel.Name = "tableLayoutPanel1";
+            this.TableLayoutPanel.RowCount = 14;
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 280);
+            this.TableLayoutPanel.TabIndex = 0;
             // 
             // seCameraPositionX
             // 
             this.seCameraPositionX.DecimalPlaces = 6;
             this.seCameraPositionX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraPositionX.Location = new System.Drawing.Point(83, 32);
+            this.seCameraPositionX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraPositionX.Name = "seCameraPositionX";
             this.seCameraPositionX.Size = new System.Drawing.Size(74, 23);
             this.seCameraPositionX.TabIndex = 12;
@@ -175,7 +180,7 @@
             // 
             // edTitle
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.edTitle, 3);
+            this.TableLayoutPanel.SetColumnSpan(this.edTitle, 3);
             this.edTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edTitle.Location = new System.Drawing.Point(83, 3);
             this.edTitle.Name = "edTitle";
@@ -245,7 +250,7 @@
             // 
             // cbProjectionType
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.cbProjectionType, 3);
+            this.TableLayoutPanel.SetColumnSpan(this.cbProjectionType, 3);
             this.cbProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbProjectionType.FormattingEnabled = true;
             this.cbProjectionType.Location = new System.Drawing.Point(83, 90);
@@ -259,6 +264,11 @@
             this.seFieldOfView.DecimalPlaces = 3;
             this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFieldOfView.Location = new System.Drawing.Point(83, 119);
+            this.seFieldOfView.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFieldOfView.Name = "seFieldOfView";
             this.seFieldOfView.Size = new System.Drawing.Size(74, 23);
             this.seFieldOfView.TabIndex = 9;
@@ -269,6 +279,11 @@
             this.seCameraPositionY.DecimalPlaces = 6;
             this.seCameraPositionY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraPositionY.Location = new System.Drawing.Point(163, 32);
+            this.seCameraPositionY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraPositionY.Name = "seCameraPositionY";
             this.seCameraPositionY.Size = new System.Drawing.Size(74, 23);
             this.seCameraPositionY.TabIndex = 15;
@@ -279,6 +294,11 @@
             this.seCameraPositionZ.DecimalPlaces = 6;
             this.seCameraPositionZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraPositionZ.Location = new System.Drawing.Point(243, 32);
+            this.seCameraPositionZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraPositionZ.Name = "seCameraPositionZ";
             this.seCameraPositionZ.Size = new System.Drawing.Size(74, 23);
             this.seCameraPositionZ.TabIndex = 16;
@@ -289,6 +309,11 @@
             this.seCameraFocusX.DecimalPlaces = 6;
             this.seCameraFocusX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraFocusX.Location = new System.Drawing.Point(83, 61);
+            this.seCameraFocusX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraFocusX.Name = "seCameraFocusX";
             this.seCameraFocusX.Size = new System.Drawing.Size(74, 23);
             this.seCameraFocusX.TabIndex = 17;
@@ -299,6 +324,11 @@
             this.seCameraFocusY.DecimalPlaces = 6;
             this.seCameraFocusY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraFocusY.Location = new System.Drawing.Point(163, 61);
+            this.seCameraFocusY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraFocusY.Name = "seCameraFocusY";
             this.seCameraFocusY.Size = new System.Drawing.Size(74, 23);
             this.seCameraFocusY.TabIndex = 18;
@@ -309,6 +339,11 @@
             this.seCameraFocusZ.DecimalPlaces = 6;
             this.seCameraFocusZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seCameraFocusZ.Location = new System.Drawing.Point(243, 61);
+            this.seCameraFocusZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seCameraFocusZ.Name = "seCameraFocusZ";
             this.seCameraFocusZ.Size = new System.Drawing.Size(74, 23);
             this.seCameraFocusZ.TabIndex = 19;
@@ -319,6 +354,11 @@
             this.seFrustumMinX.DecimalPlaces = 6;
             this.seFrustumMinX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMinX.Location = new System.Drawing.Point(83, 148);
+            this.seFrustumMinX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMinX.Name = "seFrustumMinX";
             this.seFrustumMinX.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMinX.TabIndex = 20;
@@ -329,6 +369,11 @@
             this.seFrustumMinY.DecimalPlaces = 6;
             this.seFrustumMinY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMinY.Location = new System.Drawing.Point(163, 148);
+            this.seFrustumMinY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMinY.Name = "seFrustumMinY";
             this.seFrustumMinY.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMinY.TabIndex = 21;
@@ -339,6 +384,11 @@
             this.seFrustumMinZ.DecimalPlaces = 6;
             this.seFrustumMinZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMinZ.Location = new System.Drawing.Point(243, 148);
+            this.seFrustumMinZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMinZ.Name = "seFrustumMinZ";
             this.seFrustumMinZ.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMinZ.TabIndex = 22;
@@ -349,6 +399,11 @@
             this.seFrustumMaxX.DecimalPlaces = 6;
             this.seFrustumMaxX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMaxX.Location = new System.Drawing.Point(83, 177);
+            this.seFrustumMaxX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMaxX.Name = "seFrustumMaxX";
             this.seFrustumMaxX.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMaxX.TabIndex = 23;
@@ -359,6 +414,11 @@
             this.seFrustumMaxY.DecimalPlaces = 6;
             this.seFrustumMaxY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMaxY.Location = new System.Drawing.Point(163, 177);
+            this.seFrustumMaxY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMaxY.Name = "seFrustumMaxY";
             this.seFrustumMaxY.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMaxY.TabIndex = 24;
@@ -369,6 +429,11 @@
             this.seFrustumMaxZ.DecimalPlaces = 6;
             this.seFrustumMaxZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFrustumMaxZ.Location = new System.Drawing.Point(243, 177);
+            this.seFrustumMaxZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFrustumMaxZ.Name = "seFrustumMaxZ";
             this.seFrustumMaxZ.Size = new System.Drawing.Size(74, 23);
             this.seFrustumMaxZ.TabIndex = 25;
@@ -436,6 +501,11 @@
             // 
             this.seFPS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFPS.Location = new System.Drawing.Point(243, 206);
+            this.seFPS.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seFPS.Name = "seFPS";
             this.seFPS.Size = new System.Drawing.Size(74, 23);
             this.seFPS.TabIndex = 31;
@@ -445,6 +515,11 @@
             // 
             this.seSamples.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seSamples.Location = new System.Drawing.Point(83, 235);
+            this.seSamples.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.seSamples.Name = "seSamples";
             this.seSamples.Size = new System.Drawing.Size(74, 23);
             this.seSamples.TabIndex = 32;
@@ -482,13 +557,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(320, 280);
             this.Name = "ScenePropertiesControl";
             this.Size = new System.Drawing.Size(320, 280);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.TableLayoutPanel.ResumeLayout(false);
+            this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).EndInit();
@@ -510,7 +585,7 @@
 
         #endregion
 
-        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox edTitle;
         public System.Windows.Forms.NumericUpDown seCameraPositionX;

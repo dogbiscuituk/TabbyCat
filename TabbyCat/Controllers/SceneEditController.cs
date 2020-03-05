@@ -10,12 +10,9 @@
     internal class SceneEditController : CodeEditController
     {
         internal SceneEditController(PropertyController propertyController)
-            : base(propertyController)
-        { }
+            : base(propertyController) => InitControls(Editor.TableLayoutPanel);
 
         private ScenePropertiesControl Editor => PropertyEditor.ScenePropertiesControl;
-
-        private bool Reading;
 
         #region Private Event Handlers
 
@@ -56,6 +53,7 @@
 
         protected override void Connect()
         {
+            UpdateAllProperties();
             Editor.edTitle.TextChanged += SceneTitle_TextChanged;
             Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
             Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
@@ -74,12 +72,27 @@
             SceneController.PropertyChanged += SceneController_PropertyChanged;
         }
 
-        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
+
+        private void UpdateAllProperties() => UpdateProperties(new[]
+        {
+            "SceneTitle",
+            "CameraPosition",
+            "Camera Focus",
+            //"Projection Type",
+            "Near Plane",
+            "Far Plane",
+            "FPS"
+        });
+
+        private void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
                 return;
             Updating = true;
-            switch (e.PropertyName)
+            foreach (var propertyName in propertyNames)
+            switch (propertyName)
             {
                 case "Scene Title":
                     Editor.edTitle.Text = Scene.Title;
@@ -121,11 +134,9 @@
 
         internal void ReadFromModel()
         {
-            Reading = true;
             Editor.seSamples.Value = Scene.SampleCount;
             Editor.cbVSync.Checked = Scene.VSync;
             Editor.cbGLSLVersion.SelectedItem = Scene.GLTargetVersion;
-            Reading = false;
         }
     }
 }
