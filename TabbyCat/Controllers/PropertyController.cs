@@ -1,12 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using System.Windows.Forms;
     using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Views;
 
     internal class PropertyController
     {
+        #region Constructors
+
         internal PropertyController(SceneController sceneController)
         {
             SceneController = sceneController;
@@ -16,15 +17,23 @@
             Connect(true);
         }
 
+        #endregion
+
+        #region Fields & Properties
+
         private readonly SceneEditController SceneEditController;
         private readonly ShaderController ShaderController;
         private readonly TraceEditController TraceEditController;
 
+        internal TabbedEdit Editor => SceneForm.TabbedEdit;
         internal Scene Scene => SceneController.Scene;
         internal SceneController SceneController;
-        internal TabbedEdit Editor => SceneForm.TabbedEdit;
 
         private SceneForm SceneForm => SceneController.SceneForm;
+
+        #endregion
+
+        #region Private Methods
 
         private void Connect(bool connect)
         {
@@ -32,5 +41,7 @@
             TraceEditController.Connect(connect);
             ShaderController.Connect(connect);
         }
+
+        #endregion
     }
 }

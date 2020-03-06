@@ -10,10 +10,16 @@
 
     internal class SceneEditController : CodeEditController
     {
-        #region Internal Constructor
+        #region Constructors
 
         internal SceneEditController(PropertyController propertyController)
             : base(propertyController) => InitControls(Editor.TableLayoutPanel);
+
+        #endregion
+
+        #region Fields & Properties
+
+        private SceneEdit Editor => PropertyEditor.SceneEdit;
 
         #endregion
 
@@ -43,13 +49,22 @@
         protected override void Disconnect()
         {
             Editor.edTitle.TextChanged -= SceneTitle_TextChanged;
+            Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
+            Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
+            Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
+            SceneController.PropertyChanged -= SceneController_PropertyChanged;
         }
-
-        #endregion
-
-        #region Private Properties
-
-        private SceneEdit Editor => PropertyEditor.SceneEdit;
 
         #endregion
 

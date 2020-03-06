@@ -4,7 +4,7 @@
 
     internal class ShaderController
     {
-        #region Internal Constructor
+        #region Constructors
 
         internal ShaderController(PropertyController propertyController)
         {
@@ -19,15 +19,11 @@
 
         #endregion
 
-        #region Private Fields & Properties
+        #region Fields & Properties
 
         private ShaderEdit Editor => PropertyEditor.ShaderEdit;
         private readonly PropertyController PropertyController;
         private TabbedEdit PropertyEditor => PropertyController.Editor;
-
-        #endregion
-
-        #region Private Event Handlers
 
         #endregion
 

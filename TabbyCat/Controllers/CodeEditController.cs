@@ -8,8 +8,14 @@
 
     internal abstract class CodeEditController
     {
+        #region Constructors
+
         internal CodeEditController(PropertyController propertyController) =>
             PropertyController = propertyController;
+
+        #endregion
+
+        #region Fields & Properties
 
         private CommandProcessor CommandProcessor => SceneController.CommandProcessor;
         private readonly PropertyController PropertyController;
@@ -17,6 +23,22 @@
         protected Scene Scene => SceneController.Scene;
         protected SceneController SceneController => PropertyController.SceneController;
         protected bool Updating;
+
+        #endregion
+
+        #region Internal Methods
+
+        internal void Connect(bool connect)
+        {
+            if (connect)
+                Connect();
+            else
+                Disconnect();
+        }
+
+        #endregion
+
+        #region Protected Methods
 
         protected void InitControls(TableLayoutPanel tableLayoutPanel)
         {
@@ -39,12 +61,6 @@
         protected abstract void Connect();
         protected abstract void Disconnect();
 
-        internal void Connect(bool connect)
-        {
-            if (connect)
-                Connect();
-            else
-                Disconnect();
-        }
+        #endregion
     }
 }
