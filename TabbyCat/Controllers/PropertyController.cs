@@ -11,8 +11,8 @@
         {
             SceneController = sceneController;
             SceneEditController = new SceneEditController(this);
-            TraceEditController = new TraceEditController(this);
             ShaderController = new ShaderController(this);
+            TraceEditController = new TraceEditController(this);
             Connect(true);
         }
 

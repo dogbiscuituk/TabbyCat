@@ -1,6 +1,6 @@
 ﻿namespace TabbyCatControls
 {
-    partial class TracePropertiesControl
+    partial class TraceEdit
     {
         /// <summary> 
         /// Required designer variable.

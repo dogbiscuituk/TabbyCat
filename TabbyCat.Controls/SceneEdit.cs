@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class ScenePropertiesControl: UserControl
+    public partial class SceneEdit: UserControl
     {
-        public ScenePropertiesControl()
+        public SceneEdit()
         {
             InitializeComponent();
         }

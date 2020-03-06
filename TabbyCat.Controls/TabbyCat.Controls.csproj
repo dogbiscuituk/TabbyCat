@@ -70,6 +70,18 @@
     <Compile Include="TabbedEdit.Designer.cs">
       <DependentUpon>TabbedEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextStyleInfo.cs" />
+    <Compile Include="TextStyleInfos.cs" />
+    <Compile Include="TextStyleInfosTypeConverter.cs" />
+    <Compile Include="TextStyleInfoTypeConverter.cs" />
+    <Compile Include="FlagsEnumEditor.cs" />
+    <Compile Include="FlagsCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlagsCheckedListBox.Designer.cs">
+      <DependentUpon>FlagsCheckedListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlagsCheckedListBoxItem.cs" />
     <Compile Include="TraceEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>

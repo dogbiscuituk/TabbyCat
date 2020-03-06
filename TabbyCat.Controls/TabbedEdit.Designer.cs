@@ -30,9 +30,9 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpScene = new System.Windows.Forms.TabPage();
-            this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
+            this.SceneEdit = new TabbyCatControls.SceneEdit();
             this.tpTraces = new System.Windows.Forms.TabPage();
-            this.TracePropertiesControl = new TabbyCatControls.TracePropertiesControl();
+            this.TraceEdit = new TabbyCatControls.TraceEdit();
             this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
@@ -53,7 +53,7 @@
             // 
             // tpScene
             // 
-            this.tpScene.Controls.Add(this.ScenePropertiesControl);
+            this.tpScene.Controls.Add(this.SceneEdit);
             this.tpScene.Location = new System.Drawing.Point(4, 22);
             this.tpScene.Name = "tpScene";
             this.tpScene.Padding = new System.Windows.Forms.Padding(3);
@@ -64,17 +64,17 @@
             // 
             // ScenePropertiesControl
             // 
-            this.ScenePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScenePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScenePropertiesControl.Location = new System.Drawing.Point(3, 3);
-            this.ScenePropertiesControl.MinimumSize = new System.Drawing.Size(320, 280);
-            this.ScenePropertiesControl.Name = "ScenePropertiesControl";
-            this.ScenePropertiesControl.Size = new System.Drawing.Size(320, 282);
-            this.ScenePropertiesControl.TabIndex = 1;
+            this.SceneEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SceneEdit.Location = new System.Drawing.Point(3, 3);
+            this.SceneEdit.MinimumSize = new System.Drawing.Size(320, 280);
+            this.SceneEdit.Name = "ScenePropertiesControl";
+            this.SceneEdit.Size = new System.Drawing.Size(320, 282);
+            this.SceneEdit.TabIndex = 1;
             // 
             // tpTraces
             // 
-            this.tpTraces.Controls.Add(this.TracePropertiesControl);
+            this.tpTraces.Controls.Add(this.TraceEdit);
             this.tpTraces.Location = new System.Drawing.Point(4, 22);
             this.tpTraces.Name = "tpTraces";
             this.tpTraces.Padding = new System.Windows.Forms.Padding(3);
@@ -85,13 +85,13 @@
             // 
             // TracePropertiesControl
             // 
-            this.TracePropertiesControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TracePropertiesControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TracePropertiesControl.Location = new System.Drawing.Point(3, 3);
-            this.TracePropertiesControl.MinimumSize = new System.Drawing.Size(320, 256);
-            this.TracePropertiesControl.Name = "TracePropertiesControl";
-            this.TracePropertiesControl.Size = new System.Drawing.Size(320, 282);
-            this.TracePropertiesControl.TabIndex = 0;
+            this.TraceEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TraceEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TraceEdit.Location = new System.Drawing.Point(3, 3);
+            this.TraceEdit.MinimumSize = new System.Drawing.Size(320, 256);
+            this.TraceEdit.Name = "TracePropertiesControl";
+            this.TraceEdit.Size = new System.Drawing.Size(320, 282);
+            this.TraceEdit.TabIndex = 0;
             // 
             // shaderEdit1
             // 
@@ -121,9 +121,9 @@
 
         public System.Windows.Forms.TabControl TabControl;
         public System.Windows.Forms.TabPage tpScene;
-        public TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
+        public TabbyCatControls.SceneEdit SceneEdit;
         public System.Windows.Forms.TabPage tpTraces;
-        public TabbyCatControls.TracePropertiesControl TracePropertiesControl;
+        public TabbyCatControls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
     }
 }

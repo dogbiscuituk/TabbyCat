@@ -1,6 +1,6 @@
 ﻿namespace TabbyCatControls
 {
-    partial class ScenePropertiesControl
+    partial class SceneEdit
     {
         /// <summary>
         /// Required designer variable.

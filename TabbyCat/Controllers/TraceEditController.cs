@@ -7,7 +7,7 @@
         internal TraceEditController(PropertyController propertyController)
             : base(propertyController) => InitControls(Editor.TableLayoutPanel);
 
-        private TracePropertiesControl Editor => PropertyEditor.TracePropertiesControl;
+        private TraceEdit Editor => PropertyEditor.TraceEdit;
 
         protected override void Connect()
         {

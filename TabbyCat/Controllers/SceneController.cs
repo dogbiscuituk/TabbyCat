@@ -25,11 +25,11 @@
             ConnectAll(true);
         }
 
-        internal PropertyController PropertyController;
 
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => SceneForm.GLControl;
+        internal PropertyController PropertyController;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;

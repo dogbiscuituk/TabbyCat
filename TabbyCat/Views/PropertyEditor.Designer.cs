@@ -30,9 +30,9 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpScene = new System.Windows.Forms.TabPage();
-            this.ScenePropertiesControl = new TabbyCatControls.ScenePropertiesControl();
+            this.ScenePropertiesControl = new TabbyCatControls.SceneEdit();
             this.tpTraces = new System.Windows.Forms.TabPage();
-            this.TracePropertiesControl = new TabbyCatControls.TracePropertiesControl();
+            this.TracePropertiesControl = new TabbyCatControls.TraceEdit();
             this.shaderEdit1 = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
@@ -123,8 +123,8 @@
         internal System.Windows.Forms.TabControl TabControl;
         internal System.Windows.Forms.TabPage tpScene;
         internal System.Windows.Forms.TabPage tpTraces;
-        internal TabbyCatControls.TracePropertiesControl TracePropertiesControl;
-        internal TabbyCatControls.ScenePropertiesControl ScenePropertiesControl;
+        internal TabbyCatControls.TraceEdit TracePropertiesControl;
+        internal TabbyCatControls.SceneEdit ScenePropertiesControl;
         private Controls.ShaderEdit shaderEdit1;
     }
 }
