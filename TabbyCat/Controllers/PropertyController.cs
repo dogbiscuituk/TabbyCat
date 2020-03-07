@@ -22,12 +22,12 @@
         #region Fields & Properties
 
         private readonly SceneEditController SceneEditController;
-        private readonly ShaderController ShaderController;
         private readonly TraceEditController TraceEditController;
 
         internal TabbedEdit Editor => SceneForm.TabbedEdit;
         internal Scene Scene => SceneController.Scene;
         internal SceneController SceneController;
+        internal readonly ShaderController ShaderController;
 
         private SceneForm SceneForm => SceneController.SceneForm;
 

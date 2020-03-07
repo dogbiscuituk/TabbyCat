@@ -21,7 +21,8 @@
 
         #region Fields & Properties
 
-        private ShaderEdit Editor => PropertyEditor.ShaderEdit;
+        internal ShaderEdit Editor => PropertyEditor.ShaderEdit;
+
         private readonly PropertyController PropertyController;
         private TabbedEdit PropertyEditor => PropertyController.Editor;
 

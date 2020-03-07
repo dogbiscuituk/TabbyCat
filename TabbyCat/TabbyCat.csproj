@@ -69,6 +69,8 @@
     <Compile Include="Controllers\ClockController.cs" />
     <Compile Include="Controllers\CodeEditController.cs" />
     <Compile Include="Controllers\GLPageController.cs" />
+    <Compile Include="Controllers\GLProgramController.cs" />
+    <Compile Include="Controllers\HotkeysController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MruController.cs" />
@@ -106,6 +108,10 @@
     <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HotkeysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HotkeysForm.Designer.cs" />
     <Compile Include="Views\OptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,7 @@
     <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HotkeysForm.resx" />
     <EmbeddedResource Include="Views\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
