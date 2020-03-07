@@ -84,5 +84,19 @@ namespace TabbyCat.Properties {
                 this["Options_OpenInNewWindow"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::TabbyCat.Controls.TextStyleInfos SyntaxHighlightStyles
+        {
+            get
+            {
+                return ((global::TabbyCat.Controls.TextStyleInfos)(this["SyntaxHighlightStyles"]));
+            }
+            set
+            {
+                this["SyntaxHighlightStyles"] = value;
+            }
+        }
     }
 }

@@ -69,6 +69,7 @@
             OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
             FilesFolderPath = OptionsDialog.edFilesFolder.Text,
             TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
+            SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject
         };
 
         private void SetOptions(Options options)
@@ -77,6 +78,7 @@
             OptionsDialog.rbWindowReuse.Checked = !options.OpenInNewWindow;
             OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;
             OptionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
+            StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
         }
 
         #endregion

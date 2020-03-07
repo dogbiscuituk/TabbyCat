@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
+    using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
@@ -43,6 +44,7 @@
                     OpenInNewWindow = Settings.Options_OpenInNewWindow,
                     FilesFolderPath = Settings.FilesFolderPath,
                     TemplatesFolderPath = Settings.TemplatesFolderPath,
+                    SyntaxHighlightStyles = Settings.SyntaxHighlightStyles ?? new TextStyleInfos()
                 };
                 if (string.IsNullOrWhiteSpace(options.FilesFolderPath))
                     options.FilesFolderPath = DefaultFilesFolderPath;
@@ -134,6 +136,7 @@
                 Directory.CreateDirectory(Options.FilesFolderPath);
             if (!Directory.Exists(Options.TemplatesFolderPath))
                 Directory.CreateDirectory(Options.TemplatesFolderPath);
+            GLPageController.ApplyStyles(Options.SyntaxHighlightStyles);
         }
 
         #endregion
