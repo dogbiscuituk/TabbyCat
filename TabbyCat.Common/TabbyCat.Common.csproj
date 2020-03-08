@@ -51,6 +51,7 @@
     <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
+    <Compile Include="Types\Optimization.cs" />
     <Compile Include="Types\Pattern.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />

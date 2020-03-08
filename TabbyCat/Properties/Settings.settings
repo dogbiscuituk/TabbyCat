@@ -17,5 +17,11 @@
     <Setting Name="Options_OpenInNewWindow" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="KnownColorSortOrder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Hue, Saturation</Value>
+    </Setting>
+    <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Controls.TextStyleInfos" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

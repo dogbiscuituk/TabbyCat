@@ -16,7 +16,10 @@
         public Scene() : base() => Init();
 
         internal Scene(SceneController sceneController) : this()
-            => SceneController = sceneController;
+        {
+            SceneController = sceneController;
+            this.AddTrace(new Trace());
+        }
 
         #endregion
 

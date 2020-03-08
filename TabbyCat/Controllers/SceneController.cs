@@ -34,6 +34,7 @@
         internal readonly RenderController RenderController;
         internal Scene Scene;
         internal SceneForm SceneForm;
+        internal Selection Selection = new Selection();
 
         #region Internal Methods
 
@@ -55,6 +56,7 @@
         #endregion
 
         internal event PropertyChangedEventHandler PropertyChanged;
+        internal event EventHandler SelectionChanged;
 
         #region Private Event Handlers
 
@@ -350,6 +352,9 @@
 
         internal void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        internal void OnSelectionChanged() =>
+            SelectionChanged?.Invoke(this, EventArgs.Empty);
 
         internal void BeginUpdate() => ++UpdateCount;
 

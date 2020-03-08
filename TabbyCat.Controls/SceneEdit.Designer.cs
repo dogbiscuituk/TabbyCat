@@ -54,13 +54,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.seFPS = new System.Windows.Forms.NumericUpDown();
             this.seSamples = new System.Windows.Forms.NumericUpDown();
             this.cbVSync = new System.Windows.Forms.CheckBox();
             this.cbGLSLVersion = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbBackground = new System.Windows.Forms.ComboBox();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
@@ -79,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.seSamples)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // TableLayoutPanel
             // 
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -109,19 +108,18 @@
             this.TableLayoutPanel.Controls.Add(this.seFrustumMaxY, 2, 6);
             this.TableLayoutPanel.Controls.Add(this.seFrustumMaxZ, 3, 6);
             this.TableLayoutPanel.Controls.Add(this.label8, 0, 7);
-            this.TableLayoutPanel.Controls.Add(this.label9, 2, 7);
-            this.TableLayoutPanel.Controls.Add(this.label10, 0, 9);
-            this.TableLayoutPanel.Controls.Add(this.label11, 0, 10);
-            this.TableLayoutPanel.Controls.Add(this.label12, 2, 9);
-            this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 7);
-            this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 9);
-            this.TableLayoutPanel.Controls.Add(this.cbVSync, 1, 10);
-            this.TableLayoutPanel.Controls.Add(this.cbGLSLVersion, 3, 9);
-            this.TableLayoutPanel.Controls.Add(this.comboBox3, 1, 7);
+            this.TableLayoutPanel.Controls.Add(this.label9, 2, 4);
+            this.TableLayoutPanel.Controls.Add(this.label10, 0, 8);
+            this.TableLayoutPanel.Controls.Add(this.label12, 2, 8);
+            this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 4);
+            this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 8);
+            this.TableLayoutPanel.Controls.Add(this.cbVSync, 3, 7);
+            this.TableLayoutPanel.Controls.Add(this.cbGLSLVersion, 3, 8);
+            this.TableLayoutPanel.Controls.Add(this.cbBackground, 1, 7);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanel.Name = "tableLayoutPanel1";
-            this.TableLayoutPanel.RowCount = 14;
+            this.TableLayoutPanel.Name = "TableLayoutPanel";
+            this.TableLayoutPanel.RowCount = 10;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -132,11 +130,11 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 280);
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 261);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // seCameraPositionX
@@ -197,7 +195,7 @@
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label3.Size = new System.Drawing.Size(74, 29);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Pivot";
+            this.label3.Text = "Focus";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
@@ -252,12 +250,17 @@
             // 
             this.TableLayoutPanel.SetColumnSpan(this.cbProjectionType, 3);
             this.cbProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbProjectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProjectionType.FormattingEnabled = true;
+            this.cbProjectionType.Items.AddRange(new object[] {
+            "Orthographic",
+            "Orthographic (Offset)",
+            "Perspective",
+            "Perspective (Offset)"});
             this.cbProjectionType.Location = new System.Drawing.Point(83, 90);
             this.cbProjectionType.Name = "cbProjectionType";
             this.cbProjectionType.Size = new System.Drawing.Size(234, 23);
             this.cbProjectionType.TabIndex = 8;
-            this.cbProjectionType.Text = "Perspective";
             // 
             // seFieldOfView
             // 
@@ -445,7 +448,7 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(3, 203);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 29);
+            this.label8.Size = new System.Drawing.Size(74, 30);
             this.label8.TabIndex = 26;
             this.label8.Text = "Background";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -454,7 +457,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(163, 203);
+            this.label9.Location = new System.Drawing.Point(163, 116);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label9.Size = new System.Drawing.Size(74, 29);
@@ -466,7 +469,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 232);
+            this.label10.Location = new System.Drawing.Point(3, 233);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label10.Size = new System.Drawing.Size(74, 29);
@@ -474,22 +477,11 @@
             this.label10.Text = "#Samples";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(3, 261);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 20);
-            this.label11.TabIndex = 29;
-            this.label11.Text = "VSync";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(163, 232);
+            this.label12.Location = new System.Drawing.Point(163, 233);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.label12.Size = new System.Drawing.Size(74, 29);
@@ -500,7 +492,7 @@
             // seFPS
             // 
             this.seFPS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFPS.Location = new System.Drawing.Point(243, 206);
+            this.seFPS.Location = new System.Drawing.Point(243, 119);
             this.seFPS.Maximum = new decimal(new int[] {
             0,
             0,
@@ -514,7 +506,7 @@
             // seSamples
             // 
             this.seSamples.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seSamples.Location = new System.Drawing.Point(83, 235);
+            this.seSamples.Location = new System.Drawing.Point(83, 236);
             this.seSamples.Maximum = new decimal(new int[] {
             0,
             0,
@@ -528,40 +520,54 @@
             // cbVSync
             // 
             this.cbVSync.AutoSize = true;
+            this.cbVSync.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbVSync.Location = new System.Drawing.Point(83, 264);
+            this.cbVSync.Location = new System.Drawing.Point(243, 206);
             this.cbVSync.Name = "cbVSync";
-            this.cbVSync.Size = new System.Drawing.Size(74, 14);
+            this.cbVSync.Size = new System.Drawing.Size(74, 24);
             this.cbVSync.TabIndex = 33;
+            this.cbVSync.Text = "VSync";
+            this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVSync.UseVisualStyleBackColor = true;
             // 
             // cbGLSLVersion
             // 
             this.cbGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbGLSLVersion.FormattingEnabled = true;
-            this.cbGLSLVersion.Location = new System.Drawing.Point(243, 235);
+            this.cbGLSLVersion.Items.AddRange(new object[] {
+            "330",
+            "400",
+            "410",
+            "420",
+            "430",
+            "440",
+            "450",
+            "460"});
+            this.cbGLSLVersion.Location = new System.Drawing.Point(243, 236);
             this.cbGLSLVersion.Name = "cbGLSLVersion";
             this.cbGLSLVersion.Size = new System.Drawing.Size(74, 23);
             this.cbGLSLVersion.TabIndex = 34;
             // 
-            // comboBox3
+            // cbBackground
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(83, 206);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(74, 23);
-            this.comboBox3.TabIndex = 35;
+            this.TableLayoutPanel.SetColumnSpan(this.cbBackground, 2);
+            this.cbBackground.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBackground.FormattingEnabled = true;
+            this.cbBackground.Location = new System.Drawing.Point(83, 206);
+            this.cbBackground.Name = "cbBackground";
+            this.cbBackground.Size = new System.Drawing.Size(154, 24);
+            this.cbBackground.TabIndex = 35;
             // 
-            // ScenePropertiesControl
+            // SceneEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(320, 280);
-            this.Name = "ScenePropertiesControl";
-            this.Size = new System.Drawing.Size(320, 280);
+            this.MinimumSize = new System.Drawing.Size(320, 261);
+            this.Name = "SceneEdit";
+            this.Size = new System.Drawing.Size(320, 261);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
@@ -611,12 +617,11 @@
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.NumericUpDown seFPS;
         public System.Windows.Forms.NumericUpDown seSamples;
         public System.Windows.Forms.CheckBox cbVSync;
         public System.Windows.Forms.ComboBox cbGLSLVersion;
-        public System.Windows.Forms.ComboBox comboBox3;
+        public System.Windows.Forms.ComboBox cbBackground;
     }
 }

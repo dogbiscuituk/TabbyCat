@@ -1,6 +1,8 @@
 ﻿namespace TabbyCat.Common.Utility
 {
+    using System;
     using System.IO;
+    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
 
@@ -22,6 +24,19 @@
         /// <param name="s">The string obtained from the UI context.</param>
         /// <returns>The input string with all escaped (doubled) ampersands unescaped.</returns>
         public static string AmpersandUnescape(this string s) => s?.Replace("&&", "&");
+
+        public static int GetCharCount(this string s, char c)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            var n = 0;
+            for (int p = -1; (p = s.IndexOf(c, p + 1)) >= 0; n++) ;
+            return n;
+        }
+
+        public static int GetCharCount(this StringBuilder builder, char c) => builder.ToString().GetCharCount(c);
+        public static int GetLineCount(this string s) => string.IsNullOrEmpty(s) ? 0 : s.GetCharCount('\n') + 1;
+        public static int GetLineCount(this StringBuilder builder) => builder.ToString().GetLineCount();
 
         /// <summary>
         /// Make a legal file name from a given string which may contain prohibited
@@ -50,17 +65,9 @@
                 RegexOptions.IgnoreCase) ? s + "_" : s;
         }
 
-        public static int GetCharCount(this string s, char c)
-        {
-            if (string.IsNullOrEmpty(s))
-                return 0;
-            var n = 0;
-            for (int p = -1; (p = s.IndexOf(c, p + 1)) >= 0; n++) ;
-            return n;
-        }
-
-        public static int GetCharCount(this StringBuilder builder, char c) => builder.ToString().GetCharCount(c);
-        public static int GetLineCount(this string s) => string.IsNullOrEmpty(s) ? 0 : s.GetCharCount('\n') + 1;
-        public static int GetLineCount(this StringBuilder builder) => builder.ToString().GetLineCount();
+        public static string ToTitleCase(this string s) =>
+            s == string.Empty
+            ? string.Empty
+            : $"{char.ToUpper(s[0])}{s.ToLower().Substring(1)}";
     }
 }

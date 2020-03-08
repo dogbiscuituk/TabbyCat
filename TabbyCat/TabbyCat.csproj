@@ -68,6 +68,7 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ClockController.cs" />
     <Compile Include="Controllers\CodeEditController.cs" />
+    <Compile Include="Controllers\ColourController.cs" />
     <Compile Include="Controllers\GLPageController.cs" />
     <Compile Include="Controllers\HotkeysController.cs" />
     <Compile Include="Controllers\JsonController.cs" />

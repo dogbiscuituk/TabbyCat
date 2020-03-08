@@ -84,17 +84,26 @@ namespace TabbyCat.Properties {
                 this["Options_OpenInNewWindow"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::TabbyCat.Controls.TextStyleInfos SyntaxHighlightStyles
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("Hue, Saturation")]
+        public string KnownColorSortOrder {
+            get {
+                return ((string)(this["KnownColorSortOrder"]));
+            }
+            set {
+                this["KnownColorSortOrder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::TabbyCat.Controls.TextStyleInfos SyntaxHighlightStyles {
+            get {
                 return ((global::TabbyCat.Controls.TextStyleInfos)(this["SyntaxHighlightStyles"]));
             }
-            set
-            {
+            set {
                 this["SyntaxHighlightStyles"] = value;
             }
         }

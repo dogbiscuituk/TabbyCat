@@ -3,6 +3,7 @@
     using OpenTK;
     using System;
     using System.ComponentModel;
+    using System.Drawing;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -13,7 +14,11 @@
         #region Constructors
 
         internal SceneEditController(PropertyController propertyController)
-            : base(propertyController) => InitControls(Editor.TableLayoutPanel);
+            : base(propertyController)
+        {
+            InitControls(Editor.TableLayoutPanel);
+            new ColourController().AddControls(Editor.cbBackground);
+        }
 
         #endregion
 
@@ -37,12 +42,17 @@
             Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
             Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
             Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
+            Editor.seFPS.ValueChanged += FPS_ValueChanged;
             Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
             Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
             Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
             Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
             Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
             Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
+            Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
+            Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
+            Editor.seSamples.ValueChanged += Samples_ValueChanged;
+            Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
             SceneController.PropertyChanged += SceneController_PropertyChanged;
         }
 
@@ -57,18 +67,26 @@
             Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
             Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
             Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
+            Editor.seFPS.ValueChanged -= FPS_ValueChanged;
             Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
             Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
             Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
             Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
             Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
             Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
+            Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
+            Editor.seSamples.ValueChanged -= Samples_ValueChanged;
+            Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
             SceneController.PropertyChanged -= SceneController_PropertyChanged;
         }
 
         #endregion
 
         #region Private Event Handlers
+
+        private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
+            Run(new BackgroundColourCommand(Color.FromName(Editor.cbBackground.Text)));
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraFocusCommand(new Vector3d(
@@ -85,6 +103,9 @@
         private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
             Run(new FieldOfViewCommand((double)Editor.seFieldOfView.Value));
 
+        private void FPS_ValueChanged(object sender, EventArgs e) =>
+            Run(new FpsCommand((double)Editor.seFPS.Value));
+
         private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
             Run(new FrustumMaxCommand(new Vector3d(
                 (double)Editor.seFrustumMaxX.Value,
@@ -97,8 +118,14 @@
                 (double)Editor.seFrustumMinY.Value,
                 (double)Editor.seFrustumMinZ.Value)));
 
+        private void GLSLVersion_SelectedValueChanged(object sender, EventArgs e) =>
+            Run(new GLTargetVersionCommand(Editor.cbGLSLVersion.Text));
+
         private void ProjectionType_SelectedIndexChanged(object sender, EventArgs e) =>
             Run(new ProjectionTypeCommand((ProjectionType)Editor.cbProjectionType.SelectedIndex));
+
+        private void Samples_ValueChanged(object sender, EventArgs e) =>
+            Run(new SamplesCommand((int)Editor.seSamples.Value));
 
         private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
@@ -106,15 +133,20 @@
         private void SceneTitle_TextChanged(object sender, EventArgs e)
             => Run(new TitleCommand(Editor.edTitle.Text));
 
+        private void VSync_CheckedChanged(object sender, EventArgs e) =>
+            Run(new VSyncCommand(Editor.cbVSync.Checked));
+
         #endregion
 
         #region Private Methods
 
         private void UpdateAllProperties() => UpdateProperties(new[]
         {
+            PropertyNames.Background,
             PropertyNames.CameraFocus,
             PropertyNames.CameraPosition,
             PropertyNames.FarPlane,
+            PropertyNames.FieldOfView,
             PropertyNames.FPS,
             PropertyNames.GLTargetVersion,
             PropertyNames.NearPlane,
@@ -132,6 +164,9 @@
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
+                    case PropertyNames.Background:
+                        Editor.cbBackground.Text = Scene.BackgroundColour.Name;
+                        break;
                     case PropertyNames.CameraFocus:
                         Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
                         Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
@@ -147,11 +182,14 @@
                         Editor.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
                         Editor.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
                         break;
+                    case PropertyNames.FieldOfView:
+                        Editor.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
+                        break;
                     case PropertyNames.FPS:
                         Editor.seFPS.Value = (decimal)Scene.FPS;
                         break;
                     case PropertyNames.GLTargetVersion:
-                        Editor.cbGLSLVersion.SelectedItem = Scene.GLTargetVersion;
+                        Editor.cbGLSLVersion.Text = Scene.GLTargetVersion;
                         break;
                     case PropertyNames.NearPlane:
                         Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
@@ -159,7 +197,7 @@
                         Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
                         break;
                     case PropertyNames.ProjectionType:
-                        //Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
+                        Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
                     case PropertyNames.Samples:
                         Editor.seSamples.Value = Scene.SampleCount;

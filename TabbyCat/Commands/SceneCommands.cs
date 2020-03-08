@@ -3,68 +3,62 @@
     using OpenTK;
     using System.Drawing;
     using TabbyCat.Common.Types;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
-        internal BackgroundColourCommand(Color value) : base("Background",
+        internal BackgroundColourCommand(Color value) : base(PropertyNames.Background,
             value, r => r.BackgroundColour, (r, v) => r.BackgroundColour = v)
         { }
     }
 
     internal class CameraFocusCommand : ScenePropertyCommand<Vector3d>
     {
-        internal CameraFocusCommand(Vector3d value) : base("Camera Focus",
+        internal CameraFocusCommand(Vector3d value) : base(PropertyNames.CameraFocus,
             value, s => s.Camera.Focus, (s, v) => s.Camera.Focus = v)
         { }
     }
 
     internal class CameraPositionCommand : ScenePropertyCommand<Vector3d>
     {
-        internal CameraPositionCommand(Vector3d value) : base("Camera Position",
+        internal CameraPositionCommand(Vector3d value) : base(PropertyNames.CameraPosition,
             value, s => s.Camera.Position, (s, v) => s.Camera.Position = v)
         { }
     }
 
     internal class FieldOfViewCommand : ScenePropertyCommand<double>
     {
-        internal FieldOfViewCommand(double value) : base("Field of View",
+        internal FieldOfViewCommand(double value) : base(PropertyNames.FieldOfView,
             value, s=>s.Projection.FieldOfView, (s, v)=>s.Projection.FieldOfView = v)
         { }
     }
 
     internal class FpsCommand : ScenePropertyCommand<double>
     {
-        internal FpsCommand(double value) : base("FPS",
+        internal FpsCommand(double value) : base(PropertyNames.FPS,
             value, s => s.FPS, (s, v) => s.FPS = v)
         { }
     }
 
     internal class FrustumMaxCommand : ScenePropertyCommand<Vector3d>
     {
-        internal FrustumMaxCommand(Vector3d value) : base("Far Plane",
+        internal FrustumMaxCommand(Vector3d value) : base(PropertyNames.FarPlane,
             value, s => s.Projection.FrustumMax, (s, v) => s.Projection.FrustumMax = v)
         { }
     }
 
     internal class FrustumMinCommand : ScenePropertyCommand<Vector3d>
     {
-        internal FrustumMinCommand(Vector3d value) : base("Near Plane",
+        internal FrustumMinCommand(Vector3d value) : base(PropertyNames.NearPlane,
             value, s => s.Projection.FrustumMin, (s, v) => s.Projection.FrustumMin = v)
         { }
     }
 
-    internal class GLModeCommand : ScenePropertyCommand<GLMode>
+    internal class GLTargetVersionCommand : ScenePropertyCommand<string>
     {
-        internal GLModeCommand(GLMode value) : base("GLMode",
-            value, s => s.GetGLMode(), (s, v) => s.SetGLMode(v))
-        { }
-    }
-
-    internal class ProjectionCommand : ScenePropertyCommand<Projection>
-    {
-        internal ProjectionCommand(Projection value) : base("Projection",
-            value, s => s.Projection, (s, v) => s.Projection = v)
+        internal GLTargetVersionCommand(string value) : base(PropertyNames.GLTargetVersion,
+            value, s => s.GLTargetVersion, (s, v) => s.GLTargetVersion = v)
         { }
     }
 
@@ -77,21 +71,21 @@
 
     internal class ProjectionTypeCommand : ScenePropertyCommand<ProjectionType>
     {
-        internal ProjectionTypeCommand(ProjectionType value) : base("Projection Type",
+        internal ProjectionTypeCommand(ProjectionType value) : base(PropertyNames.ProjectionType,
             value, s => s.Projection.ProjectionType, (s, v) => s.Projection.ProjectionType = v)
         { }
     }
 
-    internal class GLTargetVersionCommand : ScenePropertyCommand<string>
+    internal class SamplesCommand : ScenePropertyCommand<int>
     {
-        internal GLTargetVersionCommand(string value) : base("GLTargetVersion",
-            value, s => s.GLTargetVersion, (s, v) => s.GLTargetVersion = v)
+        internal SamplesCommand(int value) : base(PropertyNames.Samples,
+            value, s => s.SampleCount, (s, v) => s.SampleCount = v)
         { }
     }
 
     internal class TitleCommand : ScenePropertyCommand<string>
     {
-        internal TitleCommand(string value) : base("Title",
+        internal TitleCommand(string value) : base(PropertyNames.SceneTitle,
             value, s => s.Title, (s, v) => s.Title = v)
         { }
     }
@@ -108,7 +102,7 @@
 
     internal class VSyncCommand : ScenePropertyCommand<bool>
     {
-        internal VSyncCommand(bool value) : base("VSync",
+        internal VSyncCommand(bool value) : base(PropertyNames.VSync,
             value, s => s.VSync, (s, v) => s.VSync = v)
         { }
     }
