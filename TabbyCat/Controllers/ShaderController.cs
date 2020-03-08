@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using FastColoredTextBoxNS;
+    using OpenTK.Graphics.OpenGL;
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Controls;
@@ -15,6 +16,12 @@
             PropertyController = propertyController;
             new GLPageController(PrimaryTextBox);
             new GLPageController(SecondaryTextBox);
+            Editor.miVertex.Tag = ShaderType.VertexShader;
+            Editor.miTessellationControl.Tag = ShaderType.TessControlShader;
+            Editor.miTessellationEvaluation.Tag = ShaderType.TessEvaluationShader;
+            Editor.miGeometry.Tag = ShaderType.GeometryShader;
+            Editor.miFragment.Tag = ShaderType.FragmentShader;
+            Editor.miCompute.Tag = ShaderType.ComputeShader;
         }
 
         #endregion
@@ -33,6 +40,8 @@
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.Splitter;
+
+        private bool UseScene => PropertyEditor.TabControl.SelectedIndex == 0;
 
         private bool ShowDocumentMap
         {
@@ -119,6 +128,13 @@
         {
             if (connect)
             {
+                Editor.btnShader.DropDownOpening += Shader_DropDownOpening;
+                Editor.miVertex.Click += Shader_Click;
+                Editor.miTessellationControl.Click += Shader_Click;
+                Editor.miTessellationEvaluation.Click += Shader_Click;
+                Editor.miGeometry.Click += Shader_Click;
+                Editor.miFragment.Click += Shader_Click;
+                Editor.miCompute.Click += Shader_Click;
                 Editor.btnDocumentMap.Click += DocumentMap_Click;
                 Editor.btnExportHTML.Click += ExportHTML_Click;
                 Editor.btnExportRTF.Click += ExportRTF_Click;
@@ -146,6 +162,34 @@
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
             }
         }
+
+        private void Shader_DropDownOpening(object sender, System.EventArgs e)
+        {
+            foreach (ToolStripMenuItem item in ((ToolStripDropDownItem)sender).DropDownItems)
+                item.Checked = (ShaderType)item.Tag == ShaderType;
+        }
+
+        private ShaderType _ShaderType = ShaderType.VertexShader;
+        private ShaderType ShaderType
+        {
+            get => _ShaderType;
+            set
+            {
+                if (ShaderType != value)
+                {
+                    _ShaderType = value;
+                    GetShaderCode();
+                }
+            }
+        }
+
+        private void GetShaderCode()
+        {
+
+        }
+
+        private void Shader_Click(object sender, System.EventArgs e) =>
+            ShaderType = (ShaderType)((ToolStripItem)sender).Tag;
 
         private string GetHTML(int filterIndex)
         {

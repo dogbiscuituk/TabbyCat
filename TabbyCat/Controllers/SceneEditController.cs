@@ -140,6 +140,15 @@
 
         #region Private Methods
 
+        private void Run(ICommand command)
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            CommandProcessor.Run(command);
+            Updating = false;
+        }
+
         private void UpdateAllProperties() => UpdateProperties(new[]
         {
             PropertyNames.Background,

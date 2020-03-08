@@ -98,7 +98,7 @@
             set => SetProperty(p => p.Visible = value == true);
         }
 
-        private IEnumerable<Trace> Traces;
+        internal IEnumerable<Trace> Traces { get; } = new List<Trace>();
 
         private T GetProperty<T>(Func<Trace, T> getProperty) where T: IEquatable<T>
         {

@@ -38,49 +38,49 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
+            this.seLocationY = new System.Windows.Forms.NumericUpDown();
+            this.seLocationZ = new System.Windows.Forms.NumericUpDown();
+            this.seOrientationX = new System.Windows.Forms.NumericUpDown();
+            this.seOrientationY = new System.Windows.Forms.NumericUpDown();
+            this.seOrientationZ = new System.Windows.Forms.NumericUpDown();
+            this.seScaleX = new System.Windows.Forms.NumericUpDown();
+            this.seScaleY = new System.Windows.Forms.NumericUpDown();
+            this.seScaleZ = new System.Windows.Forms.NumericUpDown();
+            this.seMinimumX = new System.Windows.Forms.NumericUpDown();
+            this.seMinimumY = new System.Windows.Forms.NumericUpDown();
+            this.seMinimumZ = new System.Windows.Forms.NumericUpDown();
+            this.seMaximumX = new System.Windows.Forms.NumericUpDown();
+            this.seMaximumY = new System.Windows.Forms.NumericUpDown();
+            this.seMaximumZ = new System.Windows.Forms.NumericUpDown();
+            this.seStripCountX = new System.Windows.Forms.NumericUpDown();
+            this.seStripCountY = new System.Windows.Forms.NumericUpDown();
+            this.seStripCountZ = new System.Windows.Forms.NumericUpDown();
             this.cbPattern = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbVisible = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.TableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // TableLayoutPanel
             // 
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -96,31 +96,31 @@
             this.TableLayoutPanel.Controls.Add(this.label5, 0, 4);
             this.TableLayoutPanel.Controls.Add(this.label6, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.label7, 0, 6);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown2, 2, 1);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown3, 3, 1);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown4, 1, 2);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown5, 2, 2);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown6, 3, 2);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown7, 1, 3);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown8, 2, 3);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown9, 3, 3);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown10, 1, 5);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown11, 2, 5);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown12, 3, 5);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown13, 1, 6);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown14, 2, 6);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown15, 3, 6);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown16, 1, 7);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown17, 2, 7);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown18, 3, 7);
+            this.TableLayoutPanel.Controls.Add(this.seLocationY, 2, 1);
+            this.TableLayoutPanel.Controls.Add(this.seLocationZ, 3, 1);
+            this.TableLayoutPanel.Controls.Add(this.seOrientationX, 1, 2);
+            this.TableLayoutPanel.Controls.Add(this.seOrientationY, 2, 2);
+            this.TableLayoutPanel.Controls.Add(this.seOrientationZ, 3, 2);
+            this.TableLayoutPanel.Controls.Add(this.seScaleX, 1, 3);
+            this.TableLayoutPanel.Controls.Add(this.seScaleY, 2, 3);
+            this.TableLayoutPanel.Controls.Add(this.seScaleZ, 3, 3);
+            this.TableLayoutPanel.Controls.Add(this.seMinimumX, 1, 5);
+            this.TableLayoutPanel.Controls.Add(this.seMinimumY, 2, 5);
+            this.TableLayoutPanel.Controls.Add(this.seMinimumZ, 3, 5);
+            this.TableLayoutPanel.Controls.Add(this.seMaximumX, 1, 6);
+            this.TableLayoutPanel.Controls.Add(this.seMaximumY, 2, 6);
+            this.TableLayoutPanel.Controls.Add(this.seMaximumZ, 3, 6);
+            this.TableLayoutPanel.Controls.Add(this.seStripCountX, 1, 7);
+            this.TableLayoutPanel.Controls.Add(this.seStripCountY, 2, 7);
+            this.TableLayoutPanel.Controls.Add(this.seStripCountZ, 3, 7);
             this.TableLayoutPanel.Controls.Add(this.cbPattern, 1, 4);
             this.TableLayoutPanel.Controls.Add(this.label9, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.cbVisible, 1, 8);
-            this.TableLayoutPanel.Controls.Add(this.numericUpDown1, 1, 1);
+            this.TableLayoutPanel.Controls.Add(this.seLocationX, 1, 1);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanel.Name = "tableLayoutPanel1";
+            this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 10;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -241,257 +241,257 @@
             this.label7.Text = "Maximum";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numericUpDown2
+            // seLocationY
             // 
-            this.numericUpDown2.DecimalPlaces = 6;
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(163, 32);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.seLocationY.DecimalPlaces = 3;
+            this.seLocationY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seLocationY.Location = new System.Drawing.Point(163, 32);
+            this.seLocationY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown2.TabIndex = 10;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seLocationY.Name = "seLocationY";
+            this.seLocationY.Size = new System.Drawing.Size(74, 23);
+            this.seLocationY.TabIndex = 10;
+            this.seLocationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown3
+            // seLocationZ
             // 
-            this.numericUpDown3.DecimalPlaces = 6;
-            this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown3.Location = new System.Drawing.Point(243, 32);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.seLocationZ.DecimalPlaces = 3;
+            this.seLocationZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seLocationZ.Location = new System.Drawing.Point(243, 32);
+            this.seLocationZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown3.TabIndex = 11;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seLocationZ.Name = "seLocationZ";
+            this.seLocationZ.Size = new System.Drawing.Size(74, 23);
+            this.seLocationZ.TabIndex = 11;
+            this.seLocationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown4
+            // seOrientationX
             // 
-            this.numericUpDown4.DecimalPlaces = 6;
-            this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown4.Location = new System.Drawing.Point(83, 61);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.seOrientationX.DecimalPlaces = 3;
+            this.seOrientationX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seOrientationX.Location = new System.Drawing.Point(83, 61);
+            this.seOrientationX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown4.TabIndex = 12;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seOrientationX.Name = "seOrientationX";
+            this.seOrientationX.Size = new System.Drawing.Size(74, 23);
+            this.seOrientationX.TabIndex = 12;
+            this.seOrientationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown5
+            // seOrientationY
             // 
-            this.numericUpDown5.DecimalPlaces = 6;
-            this.numericUpDown5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown5.Location = new System.Drawing.Point(163, 61);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.seOrientationY.DecimalPlaces = 3;
+            this.seOrientationY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seOrientationY.Location = new System.Drawing.Point(163, 61);
+            this.seOrientationY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown5.TabIndex = 13;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seOrientationY.Name = "seOrientationY";
+            this.seOrientationY.Size = new System.Drawing.Size(74, 23);
+            this.seOrientationY.TabIndex = 13;
+            this.seOrientationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown6
+            // seOrientationZ
             // 
-            this.numericUpDown6.DecimalPlaces = 6;
-            this.numericUpDown6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown6.Location = new System.Drawing.Point(243, 61);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.seOrientationZ.DecimalPlaces = 3;
+            this.seOrientationZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seOrientationZ.Location = new System.Drawing.Point(243, 61);
+            this.seOrientationZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown6.TabIndex = 14;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seOrientationZ.Name = "seOrientationZ";
+            this.seOrientationZ.Size = new System.Drawing.Size(74, 23);
+            this.seOrientationZ.TabIndex = 14;
+            this.seOrientationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown7
+            // seScaleX
             // 
-            this.numericUpDown7.DecimalPlaces = 6;
-            this.numericUpDown7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown7.Location = new System.Drawing.Point(83, 90);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
+            this.seScaleX.DecimalPlaces = 3;
+            this.seScaleX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seScaleX.Location = new System.Drawing.Point(83, 90);
+            this.seScaleX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown7.TabIndex = 15;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seScaleX.Name = "seScaleX";
+            this.seScaleX.Size = new System.Drawing.Size(74, 23);
+            this.seScaleX.TabIndex = 15;
+            this.seScaleX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown8
+            // seScaleY
             // 
-            this.numericUpDown8.DecimalPlaces = 6;
-            this.numericUpDown8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown8.Location = new System.Drawing.Point(163, 90);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
+            this.seScaleY.DecimalPlaces = 3;
+            this.seScaleY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seScaleY.Location = new System.Drawing.Point(163, 90);
+            this.seScaleY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown8.TabIndex = 16;
-            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seScaleY.Name = "seScaleY";
+            this.seScaleY.Size = new System.Drawing.Size(74, 23);
+            this.seScaleY.TabIndex = 16;
+            this.seScaleY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown9
+            // seScaleZ
             // 
-            this.numericUpDown9.DecimalPlaces = 6;
-            this.numericUpDown9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown9.Location = new System.Drawing.Point(243, 90);
-            this.numericUpDown9.Maximum = new decimal(new int[] {
+            this.seScaleZ.DecimalPlaces = 3;
+            this.seScaleZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seScaleZ.Location = new System.Drawing.Point(243, 90);
+            this.seScaleZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown9.TabIndex = 17;
-            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seScaleZ.Name = "seScaleZ";
+            this.seScaleZ.Size = new System.Drawing.Size(74, 23);
+            this.seScaleZ.TabIndex = 17;
+            this.seScaleZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown10
+            // seMinimumX
             // 
-            this.numericUpDown10.DecimalPlaces = 6;
-            this.numericUpDown10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown10.Location = new System.Drawing.Point(83, 148);
-            this.numericUpDown10.Maximum = new decimal(new int[] {
+            this.seMinimumX.DecimalPlaces = 3;
+            this.seMinimumX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMinimumX.Location = new System.Drawing.Point(83, 148);
+            this.seMinimumX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown10.TabIndex = 18;
-            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMinimumX.Name = "seMinimumX";
+            this.seMinimumX.Size = new System.Drawing.Size(74, 23);
+            this.seMinimumX.TabIndex = 18;
+            this.seMinimumX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown11
+            // seMinimumY
             // 
-            this.numericUpDown11.DecimalPlaces = 6;
-            this.numericUpDown11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown11.Location = new System.Drawing.Point(163, 148);
-            this.numericUpDown11.Maximum = new decimal(new int[] {
+            this.seMinimumY.DecimalPlaces = 3;
+            this.seMinimumY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMinimumY.Location = new System.Drawing.Point(163, 148);
+            this.seMinimumY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown11.TabIndex = 19;
-            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMinimumY.Name = "seMinimumY";
+            this.seMinimumY.Size = new System.Drawing.Size(74, 23);
+            this.seMinimumY.TabIndex = 19;
+            this.seMinimumY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown12
+            // seMinimumZ
             // 
-            this.numericUpDown12.DecimalPlaces = 6;
-            this.numericUpDown12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown12.Location = new System.Drawing.Point(243, 148);
-            this.numericUpDown12.Maximum = new decimal(new int[] {
+            this.seMinimumZ.DecimalPlaces = 3;
+            this.seMinimumZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMinimumZ.Location = new System.Drawing.Point(243, 148);
+            this.seMinimumZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown12.Name = "numericUpDown12";
-            this.numericUpDown12.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown12.TabIndex = 20;
-            this.numericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMinimumZ.Name = "seMinimumZ";
+            this.seMinimumZ.Size = new System.Drawing.Size(74, 23);
+            this.seMinimumZ.TabIndex = 20;
+            this.seMinimumZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown13
+            // seMaximumX
             // 
-            this.numericUpDown13.DecimalPlaces = 6;
-            this.numericUpDown13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown13.Location = new System.Drawing.Point(83, 177);
-            this.numericUpDown13.Maximum = new decimal(new int[] {
+            this.seMaximumX.DecimalPlaces = 3;
+            this.seMaximumX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMaximumX.Location = new System.Drawing.Point(83, 177);
+            this.seMaximumX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown13.Name = "numericUpDown13";
-            this.numericUpDown13.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown13.TabIndex = 21;
-            this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMaximumX.Name = "seMaximumX";
+            this.seMaximumX.Size = new System.Drawing.Size(74, 23);
+            this.seMaximumX.TabIndex = 21;
+            this.seMaximumX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown14
+            // seMaximumY
             // 
-            this.numericUpDown14.DecimalPlaces = 6;
-            this.numericUpDown14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown14.Location = new System.Drawing.Point(163, 177);
-            this.numericUpDown14.Maximum = new decimal(new int[] {
+            this.seMaximumY.DecimalPlaces = 3;
+            this.seMaximumY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMaximumY.Location = new System.Drawing.Point(163, 177);
+            this.seMaximumY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown14.Name = "numericUpDown14";
-            this.numericUpDown14.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown14.TabIndex = 22;
-            this.numericUpDown14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMaximumY.Name = "seMaximumY";
+            this.seMaximumY.Size = new System.Drawing.Size(74, 23);
+            this.seMaximumY.TabIndex = 22;
+            this.seMaximumY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown15
+            // seMaximumZ
             // 
-            this.numericUpDown15.DecimalPlaces = 6;
-            this.numericUpDown15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown15.Location = new System.Drawing.Point(243, 177);
-            this.numericUpDown15.Maximum = new decimal(new int[] {
+            this.seMaximumZ.DecimalPlaces = 3;
+            this.seMaximumZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seMaximumZ.Location = new System.Drawing.Point(243, 177);
+            this.seMaximumZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown15.Name = "numericUpDown15";
-            this.numericUpDown15.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown15.TabIndex = 23;
-            this.numericUpDown15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seMaximumZ.Name = "seMaximumZ";
+            this.seMaximumZ.Size = new System.Drawing.Size(74, 23);
+            this.seMaximumZ.TabIndex = 23;
+            this.seMaximumZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown16
+            // seStripCountX
             // 
-            this.numericUpDown16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown16.Location = new System.Drawing.Point(83, 206);
-            this.numericUpDown16.Maximum = new decimal(new int[] {
+            this.seStripCountX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seStripCountX.Location = new System.Drawing.Point(83, 206);
+            this.seStripCountX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown16.Name = "numericUpDown16";
-            this.numericUpDown16.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown16.TabIndex = 24;
-            this.numericUpDown16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seStripCountX.Name = "seStripCountX";
+            this.seStripCountX.Size = new System.Drawing.Size(74, 23);
+            this.seStripCountX.TabIndex = 24;
+            this.seStripCountX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown17
+            // seStripCountY
             // 
-            this.numericUpDown17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown17.Location = new System.Drawing.Point(163, 206);
-            this.numericUpDown17.Maximum = new decimal(new int[] {
+            this.seStripCountY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seStripCountY.Location = new System.Drawing.Point(163, 206);
+            this.seStripCountY.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown17.Name = "numericUpDown17";
-            this.numericUpDown17.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown17.TabIndex = 25;
-            this.numericUpDown17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seStripCountY.Name = "seStripCountY";
+            this.seStripCountY.Size = new System.Drawing.Size(74, 23);
+            this.seStripCountY.TabIndex = 25;
+            this.seStripCountY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown18
+            // seStripCountZ
             // 
-            this.numericUpDown18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown18.Location = new System.Drawing.Point(243, 206);
-            this.numericUpDown18.Maximum = new decimal(new int[] {
+            this.seStripCountZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seStripCountZ.Location = new System.Drawing.Point(243, 206);
+            this.seStripCountZ.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown18.Name = "numericUpDown18";
-            this.numericUpDown18.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown18.TabIndex = 26;
-            this.numericUpDown18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seStripCountZ.Name = "seStripCountZ";
+            this.seStripCountZ.Size = new System.Drawing.Size(74, 23);
+            this.seStripCountZ.TabIndex = 26;
+            this.seStripCountZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbPattern
             // 
@@ -525,50 +525,50 @@
             this.cbVisible.TabIndex = 29;
             this.cbVisible.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // seLocationX
             // 
-            this.numericUpDown1.DecimalPlaces = 6;
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(83, 32);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.seLocationX.DecimalPlaces = 3;
+            this.seLocationX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seLocationX.Location = new System.Drawing.Point(83, 32);
+            this.seLocationX.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(74, 23);
-            this.numericUpDown1.TabIndex = 9;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seLocationX.Name = "seLocationX";
+            this.seLocationX.Size = new System.Drawing.Size(74, 23);
+            this.seLocationX.TabIndex = 9;
+            this.seLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TracePropertiesControl
+            // TraceEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(320, 256);
-            this.Name = "TracePropertiesControl";
+            this.Name = "TraceEdit";
             this.Size = new System.Drawing.Size(320, 256);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seOrientationZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMinimumZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seMaximumZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seStripCountZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -585,24 +585,24 @@
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.NumericUpDown numericUpDown1;
-        public System.Windows.Forms.NumericUpDown numericUpDown2;
-        public System.Windows.Forms.NumericUpDown numericUpDown3;
-        public System.Windows.Forms.NumericUpDown numericUpDown4;
-        public System.Windows.Forms.NumericUpDown numericUpDown5;
-        public System.Windows.Forms.NumericUpDown numericUpDown6;
-        public System.Windows.Forms.NumericUpDown numericUpDown7;
-        public System.Windows.Forms.NumericUpDown numericUpDown8;
-        public System.Windows.Forms.NumericUpDown numericUpDown9;
-        public System.Windows.Forms.NumericUpDown numericUpDown10;
-        public System.Windows.Forms.NumericUpDown numericUpDown11;
-        public System.Windows.Forms.NumericUpDown numericUpDown12;
-        public System.Windows.Forms.NumericUpDown numericUpDown13;
-        public System.Windows.Forms.NumericUpDown numericUpDown14;
-        public System.Windows.Forms.NumericUpDown numericUpDown15;
-        public System.Windows.Forms.NumericUpDown numericUpDown16;
-        public System.Windows.Forms.NumericUpDown numericUpDown17;
-        public System.Windows.Forms.NumericUpDown numericUpDown18;
+        public System.Windows.Forms.NumericUpDown seLocationX;
+        public System.Windows.Forms.NumericUpDown seLocationY;
+        public System.Windows.Forms.NumericUpDown seLocationZ;
+        public System.Windows.Forms.NumericUpDown seOrientationX;
+        public System.Windows.Forms.NumericUpDown seOrientationY;
+        public System.Windows.Forms.NumericUpDown seOrientationZ;
+        public System.Windows.Forms.NumericUpDown seScaleX;
+        public System.Windows.Forms.NumericUpDown seScaleY;
+        public System.Windows.Forms.NumericUpDown seScaleZ;
+        public System.Windows.Forms.NumericUpDown seMinimumX;
+        public System.Windows.Forms.NumericUpDown seMinimumY;
+        public System.Windows.Forms.NumericUpDown seMinimumZ;
+        public System.Windows.Forms.NumericUpDown seMaximumX;
+        public System.Windows.Forms.NumericUpDown seMaximumY;
+        public System.Windows.Forms.NumericUpDown seMaximumZ;
+        public System.Windows.Forms.NumericUpDown seStripCountX;
+        public System.Windows.Forms.NumericUpDown seStripCountY;
+        public System.Windows.Forms.NumericUpDown seStripCountZ;
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.CheckBox cbVisible;

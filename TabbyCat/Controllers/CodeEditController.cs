@@ -17,7 +17,7 @@
 
         #region Fields & Properties
 
-        private CommandProcessor CommandProcessor => SceneController.CommandProcessor;
+        protected CommandProcessor CommandProcessor => SceneController.CommandProcessor;
         private readonly PropertyController PropertyController;
         protected TabbedEdit PropertyEditor => PropertyController.Editor;
         protected Scene Scene => SceneController.Scene;
@@ -40,6 +40,9 @@
 
         #region Protected Methods
 
+        protected abstract void Connect();
+        protected abstract void Disconnect();
+
         protected void InitControls(TableLayoutPanel tableLayoutPanel)
         {
             foreach (var spinEdit in tableLayoutPanel.Controls.OfType<NumericUpDown>())
@@ -48,18 +51,6 @@
                 spinEdit.Maximum = decimal.MaxValue;
             }
         }
-
-        protected void Run(ICommand command)
-        {
-            if (Updating)
-                return;
-            Updating = true;
-            CommandProcessor.Run(command);
-            Updating = false;
-        }
-
-        protected abstract void Connect();
-        protected abstract void Disconnect();
 
         #endregion
     }
