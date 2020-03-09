@@ -179,7 +179,6 @@
             this.edDescription.Name = "edDescription";
             this.edDescription.Size = new System.Drawing.Size(234, 23);
             this.edDescription.TabIndex = 1;
-            this.edDescription.Text = "This is the Description";
             // 
             // label3
             // 

@@ -6,6 +6,7 @@
     using System.ComponentModel;
     using System.IO;
     using System.Windows.Forms;
+    using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
@@ -39,6 +40,7 @@
 
         internal ShaderEdit Editor => PropertyEditor.ShaderEdit;
 
+        private CommandProcessor CommandProcessor => SceneController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertyController PropertyController;
@@ -276,12 +278,19 @@
             Updating = false;
         }
 
+        private void Run(ICommand command) => CommandProcessor.Run(command);
+
         private void SaveShaderCode()
         {
             if (Updating)
                 return;
             Updating = true;
-            Shaders.SetScript(ShaderType, PrimaryTextBox.Text);
+            var text = Editor.PrimaryTextBox.Text;
+            if (SceneTab)
+                Run(new SceneShaderCommand(ShaderType, text));
+            else
+                foreach(var trace in Selection.Traces)
+                    Run(new TraceShaderCommand(trace.Index, ShaderType, text));
             Updating = false;
         }
 
@@ -292,7 +301,9 @@
             Updating = true;
             foreach (var propertyName in propertyNames)
                 if (propertyName == ShaderName)
-                { }
+                {
+                    Editor.PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
+                }
             Updating = false;
         }
 
@@ -300,7 +311,7 @@
         {
             Editor.btnExport.Enabled =
                 Editor.btnPrint.Enabled =
-                Editor.PrimaryTextBox.Text != string.Empty;
+                PrimaryTextBox.Text != string.Empty;
         }
 
         #endregion

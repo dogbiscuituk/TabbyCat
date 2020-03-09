@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
@@ -57,6 +58,17 @@
     {
         internal StripCountCommand(int index, Vector3 value) : base(index, PropertyNames.StripCount,
             value, t => t.StripCount, (t, v) => t.StripCount = v)
+        { }
+    }
+
+    internal class TraceShaderCommand : TracePropertyCommand<string>
+    {
+        internal TraceShaderCommand(int index, ShaderType shaderType, string value) : base(
+            index,
+            shaderType.TraceShaderName(),
+            value,
+            t => t.GetScript(shaderType),
+            (t, v) => t.SetScript(shaderType, v))
         { }
     }
 

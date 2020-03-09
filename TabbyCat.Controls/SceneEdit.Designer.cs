@@ -184,7 +184,6 @@
             this.edTitle.Name = "edTitle";
             this.edTitle.Size = new System.Drawing.Size(234, 23);
             this.edTitle.TabIndex = 1;
-            this.edTitle.Text = "This is the Title";
             // 
             // label3
             // 

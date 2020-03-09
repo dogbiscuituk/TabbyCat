@@ -1,10 +1,10 @@
 ﻿namespace TabbyCat.Commands
 {
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
     using System.Drawing;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
-    using TabbyCat.Models;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
@@ -80,6 +80,16 @@
     {
         internal SamplesCommand(int value) : base(PropertyNames.Samples,
             value, s => s.SampleCount, (s, v) => s.SampleCount = v)
+        { }
+    }
+
+    internal class SceneShaderCommand : ScenePropertyCommand<string>
+    {
+        internal SceneShaderCommand(ShaderType shaderType, string value) : base(
+            shaderType.SceneShaderName(),
+            value,
+            s => s.GetScript(shaderType),
+            (s, v) => s.SetScript(shaderType, v))
         { }
     }
 
