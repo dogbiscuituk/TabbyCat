@@ -1,6 +1,8 @@
 ﻿namespace TabbyCat.Models
 {
+    using Newtonsoft.Json;
     using OpenTK;
+    using TabbyCat.Common.Converters;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Properties;
@@ -20,14 +22,15 @@
         #region Public Properties
 
         public string Description { get; set; }
-        public Vector3d Location { get; set; }
-        public Vector3d Maximum { get; set; }
-        public Vector3d Minimum { get; set; }
-        public Vector3d Orientation { get; set; }
         public Pattern Pattern { get; set; }
-        public Vector3d Scale { get; set; }
-        public Vector3 StripCount { get; set; }
         public bool Visible { get; set; }
+
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Location { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Maximum { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Minimum { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Orientation { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Scale { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 StripCount { get; set; }
 
         #endregion
 

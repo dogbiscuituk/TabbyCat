@@ -1,10 +1,12 @@
 ﻿namespace TabbyCat.Common.Types
 {
+    using Newtonsoft.Json;
     using OpenTK;
+    using TabbyCat.Common.Converters;
 
     public class Camera
     {
-        public Vector3d Focus { get; set; }
-        public Vector3d Position { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Focus { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Position { get; set; }
     }
 }

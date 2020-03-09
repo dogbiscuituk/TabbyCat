@@ -1,6 +1,8 @@
 ﻿namespace TabbyCat.Common.Types
 {
+    using Newtonsoft.Json;
     using OpenTK;
+    using TabbyCat.Common.Converters;
 
     public class Projection
     {
@@ -63,9 +65,10 @@
         #endregion
 
         public double FieldOfView { get; set; }
-        public Vector3d FrustumMax { get; set; }
-        public Vector3d FrustumMin { get; set; }
         public ProjectionType ProjectionType { get; set; }
+
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d FrustumMax { get; set; }
+        [JsonConverter(typeof(Vector3dConverter))] public Vector3d FrustumMin { get; set; }
 
         public double Bottom => FrustumMin.Y;
         public double Depth => Far - Near;
