@@ -90,37 +90,37 @@
             Run(p => new DescriptionCommand(p, Editor.edDescription.Text));
 
         private void Location_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new LocationCommand(p, new Vector3d(
-                (double)Editor.seLocationX.Value,
-                (double)Editor.seLocationY.Value,
-                (double)Editor.seLocationZ.Value)));
+            Run(p => new LocationCommand(p, new Vector3(
+                (float)Editor.seLocationX.Value,
+                (float)Editor.seLocationY.Value,
+                (float)Editor.seLocationZ.Value)));
 
         private void Maximum_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new MaximumCommand(p, new Vector3d(
-                (double)Editor.seMaximumX.Value,
-                (double)Editor.seMaximumY.Value,
-                (double)Editor.seMaximumZ.Value)));
+            Run(p => new MaximumCommand(p, new Vector3(
+                (float)Editor.seMaximumX.Value,
+                (float)Editor.seMaximumY.Value,
+                (float)Editor.seMaximumZ.Value)));
 
         private void Minimum_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new MinimumCommand(p, new Vector3d(
-                (double)Editor.seMinimumX.Value,
-                (double)Editor.seMinimumY.Value,
-                (double)Editor.seMinimumZ.Value)));
+            Run(p => new MinimumCommand(p, new Vector3(
+                (float)Editor.seMinimumX.Value,
+                (float)Editor.seMinimumY.Value,
+                (float)Editor.seMinimumZ.Value)));
 
         private void Orientation_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new OrientationCommand(p, new Vector3d(
-                (double)Editor.seOrientationX.Value,
-                (double)Editor.seOrientationY.Value,
-                (double)Editor.seOrientationZ.Value)));
+            Run(p => new OrientationCommand(p, new Vector3(
+                (float)Editor.seOrientationX.Value,
+                (float)Editor.seOrientationY.Value,
+                (float)Editor.seOrientationZ.Value)));
 
         private void Pattern_SelectedIndexChanged(object sender, System.EventArgs e) =>
             Run(p => new PatternCommand(p, (Pattern)Editor.cbPattern.SelectedIndex));
 
         private void Scale_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new ScaleCommand(p, new Vector3d(
-                (double)Editor.seScaleX.Value,
-                (double)Editor.seScaleY.Value,
-                (double)Editor.seScaleZ.Value)));
+            Run(p => new ScaleCommand(p, new Vector3(
+                (float)Editor.seScaleX.Value,
+                (float)Editor.seScaleY.Value,
+                (float)Editor.seScaleZ.Value)));
 
         private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);

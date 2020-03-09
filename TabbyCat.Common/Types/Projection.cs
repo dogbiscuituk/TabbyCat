@@ -8,7 +8,7 @@
     {
         #region Constructors
 
-        public Projection(ProjectionType projectionType, double fieldOfView, Vector3d frustumMin, Vector3d frustumMax)
+        public Projection(ProjectionType projectionType, float fieldOfView, Vector3 frustumMin, Vector3 frustumMax)
         {
             ProjectionType = projectionType;
             FieldOfView = fieldOfView;
@@ -21,26 +21,26 @@
         {
         }
 
-        public Projection(double width, double height, double near, double far)
+        public Projection(float width, float height, float near, float far)
         {
             ProjectionType = ProjectionType.Orthographic;
-            FrustumMin = new Vector3d(-width / 2, -height / 2, near);
-            FrustumMax = new Vector3d(width / 2, height / 2, far);
+            FrustumMin = new Vector3(-width / 2, -height / 2, near);
+            FrustumMax = new Vector3(width / 2, height / 2, far);
         }
 
-        public Projection(double fieldOfView, double width, double height, double near, double far)
+        public Projection(float fieldOfView, float width, float height, float near, float far)
         {
             ProjectionType = ProjectionType.Perspective;
             FieldOfView = fieldOfView;
-            FrustumMin = new Vector3d(-width / 2, -height / 2, near);
-            FrustumMax = new Vector3d(width / 2, height / 2, far);
+            FrustumMin = new Vector3(-width / 2, -height / 2, near);
+            FrustumMax = new Vector3(width / 2, height / 2, far);
         }
 
-        public Projection(ProjectionType projectionType, double left, double right, double bottom, double top, double near, double far)
+        public Projection(ProjectionType projectionType, float left, float right, float bottom, float top, float near, float far)
         {
             ProjectionType = projectionType;
-            FrustumMin = new Vector3d(left, bottom, near);
-            FrustumMax = new Vector3d(right, top, far);
+            FrustumMin = new Vector3(left, bottom, near);
+            FrustumMax = new Vector3(right, top, far);
         }
 
         public Projection(Projection projection, string field, object value) : this(projection)
@@ -51,33 +51,33 @@
                     ProjectionType = (ProjectionType)value;
                     return;
                 case nameof(FieldOfView):
-                    FieldOfView = (double)value;
+                    FieldOfView = (float)value;
                     return;
                 case nameof(FrustumMin):
-                    FrustumMin = (Vector3d)value;
+                    FrustumMin = (Vector3)value;
                     return;
                 case nameof(FrustumMax):
-                    FrustumMax = (Vector3d)value;
+                    FrustumMax = (Vector3)value;
                     return;
             }
         }
 
         #endregion
 
-        public double FieldOfView { get; set; }
+        public float FieldOfView { get; set; }
         public ProjectionType ProjectionType { get; set; }
 
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d FrustumMax { get; set; }
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d FrustumMin { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 FrustumMax { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 FrustumMin { get; set; }
 
-        public double Bottom => FrustumMin.Y;
-        public double Depth => Far - Near;
-        public double Far => FrustumMax.Z;
-        public double Height => Top - Bottom;
-        public double Left => FrustumMin.X;
-        public double Near => FrustumMin.Z;
-        public double Right => FrustumMax.X;
-        public double Top => FrustumMax.Y;
-        public double Width => Right - Left;
+        public float Bottom => FrustumMin.Y;
+        public float Depth => Far - Near;
+        public float Far => FrustumMax.Z;
+        public float Height => Top - Bottom;
+        public float Left => FrustumMin.X;
+        public float Near => FrustumMin.Z;
+        public float Right => FrustumMax.X;
+        public float Top => FrustumMax.Y;
+        public float Width => Right - Left;
     }
 }

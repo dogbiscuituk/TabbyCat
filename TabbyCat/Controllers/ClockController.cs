@@ -34,9 +34,9 @@
 
         internal Clock Clock;
         internal bool ClockRunning => Clock.Running;
-        internal double VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
+        internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
 
-        internal double VirtualTimeFactor
+        internal float VirtualTimeFactor
         {
             get => Clock.VirtualTimeFactor;
             set => Clock.VirtualTimeFactor = value;

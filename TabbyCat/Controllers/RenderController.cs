@@ -516,11 +516,11 @@
         private static void LoadDouble(int location, double value) => GL.Uniform1(location, value);
         private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
         private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
-        private static void LoadMatrix(int location, Matrix4d value) => GL.UniformMatrix4(location, false, ref value);
+        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
         //private static void LoadVector(int location, Vector3 value) => GL.Uniform3(location, value);
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
-        private void LoadTimeValue() => LoadFloat(Loc_TimeValue, (float)Clock.VirtualSecondsElapsed);
+        private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);
         private void LoadTraceIndex(int traceIndex) => LoadInt(Loc_TraceIndex, traceIndex);
         private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());

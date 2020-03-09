@@ -22,25 +22,25 @@
             set => SetProperty(p => p.Description = value);
         }
 
-        public Vector3d Location
+        public Vector3 Location
         {
             get => GetProperty(p => p.Location);
             set => SetProperty(p => p.Location = value);
         }
 
-        public Vector3d Maximum
+        public Vector3 Maximum
         {
             get => GetProperty(p => p.Maximum);
             set => SetProperty(p => p.Maximum = value);
         }
 
-        public Vector3d Minimum
+        public Vector3 Minimum
         {
             get => GetProperty(p => p.Minimum);
             set => SetProperty(p => p.Minimum = value);
         }
 
-        public Vector3d Orientation
+        public Vector3 Orientation
         {
             get => GetProperty(p => p.Orientation);
             set => SetProperty(p => p.Orientation = value);
@@ -52,7 +52,7 @@
             set => SetProperty(p => p.Pattern = value);
         }
 
-        public Vector3d Scale
+        public Vector3 Scale
         {
             get => GetProperty(p => p.Scale);
             set => SetProperty(p => p.Scale = value);

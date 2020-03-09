@@ -354,8 +354,45 @@
 
         #endregion
 
-        internal void OnPropertyChanged(string propertyName) =>
+        internal void OnPropertyChanged(string propertyName)
+        {
+            switch (propertyName)
+            {
+                case PropertyNames.FPS:
+                    ClockInit();
+                    break;
+                case PropertyNames.CameraPosition:
+                case PropertyNames.CameraFocus:
+                    RenderController.InvalidateCameraView();
+                    break;
+                case PropertyNames.GLTargetVersion:
+                case PropertyNames.SceneVertex:
+                case PropertyNames.SceneTessControl:
+                case PropertyNames.SceneTessEvaluation:
+                case PropertyNames.SceneGeometry:
+                case PropertyNames.SceneFragment:
+                case PropertyNames.SceneCompute:
+                case PropertyNames.TraceVertex:
+                case PropertyNames.TraceTessControl:
+                case PropertyNames.TraceTessEvaluation:
+                case PropertyNames.TraceGeometry:
+                case PropertyNames.TraceFragment:
+                case PropertyNames.TraceCompute:
+                    RenderController.InvalidateProgram();
+                    break;
+                case PropertyNames.ProjectionType:
+                case PropertyNames.FieldOfView:
+                case PropertyNames.NearPlane:
+                case PropertyNames.FarPlane:
+                    RenderController.InvalidateProjection();
+                    break;
+                //case PropertyNames.Pattern:
+                //case PropertyNames.StripCount:
+                //    RenderController.InvalidateTrace((Trace)ChangedSubject);
+                //    break;
+            }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         internal void OnSelectionChanged() =>
             SelectionChanged?.Invoke(this, EventArgs.Empty);

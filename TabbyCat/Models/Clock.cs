@@ -42,8 +42,8 @@
             }
         }
 
-        public double RealSecondsElapsed => RealTimeElapsed.TotalSeconds;
-        public double VirtualSecondsElapsed => VirtualTimeElapsed.TotalSeconds;
+        public float RealSecondsElapsed => (float)RealTimeElapsed.TotalSeconds;
+        public float VirtualSecondsElapsed => (float)VirtualTimeElapsed.TotalSeconds;
 
         public int Interval_ms
         {
@@ -59,7 +59,7 @@
             ? _VirtualTimeElapsed + GetVirtualIncrement(DateTime.Now)
             : _VirtualTimeElapsed;
 
-        public double VirtualTimeFactor
+        public float VirtualTimeFactor
         {
             get => _VirtualTimeFactor;
             set
@@ -130,7 +130,7 @@
         private TimeSpan _RealTimeElapsed, _VirtualTimeElapsed;
         private int _SuspendCount;
         private readonly Timer Timer;
-        private double _VirtualTimeFactor = 1;
+        private float _VirtualTimeFactor = 1;
 
         #endregion
 
@@ -145,17 +145,17 @@
         private TimeSpan GetVirtualIncrement(DateTime now) =>
             TimeSpan.FromSeconds((now - _StartedAt).TotalSeconds * VirtualTimeFactor);
 
-        private static double Scale(double factor)
+        private static float Scale(float factor)
         {
             switch (factor)
             {
-                case double f when f < -1.0 / LimitFactor:
+                case float f when f < -1.0 / LimitFactor:
                     return factor / 2;
-                case -1.0 / LimitFactor:
+                case -1f / LimitFactor:
                     return 0;
                 case 0:
-                    return 1.0 / LimitFactor;
-                case double f when f < LimitFactor:
+                    return 1f / LimitFactor;
+                case float f when f < LimitFactor:
                     return factor * 2;
                 default:
                     return LimitFactor;

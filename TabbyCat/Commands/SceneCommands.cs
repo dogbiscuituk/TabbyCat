@@ -13,44 +13,44 @@
         { }
     }
 
-    internal class CameraFocusCommand : ScenePropertyCommand<Vector3d>
+    internal class CameraFocusCommand : ScenePropertyCommand<Vector3>
     {
-        internal CameraFocusCommand(Vector3d value) : base(PropertyNames.CameraFocus,
+        internal CameraFocusCommand(Vector3 value) : base(PropertyNames.CameraFocus,
             value, s => s.Camera.Focus, (s, v) => s.Camera.Focus = v)
         { }
     }
 
-    internal class CameraPositionCommand : ScenePropertyCommand<Vector3d>
+    internal class CameraPositionCommand : ScenePropertyCommand<Vector3>
     {
-        internal CameraPositionCommand(Vector3d value) : base(PropertyNames.CameraPosition,
+        internal CameraPositionCommand(Vector3 value) : base(PropertyNames.CameraPosition,
             value, s => s.Camera.Position, (s, v) => s.Camera.Position = v)
         { }
     }
 
-    internal class FieldOfViewCommand : ScenePropertyCommand<double>
+    internal class FieldOfViewCommand : ScenePropertyCommand<float>
     {
-        internal FieldOfViewCommand(double value) : base(PropertyNames.FieldOfView,
-            value, s=>s.Projection.FieldOfView, (s, v)=>s.Projection.FieldOfView = v)
+        internal FieldOfViewCommand(float value) : base(PropertyNames.FieldOfView,
+            value, s => s.Projection.FieldOfView, (s, v)=>s.Projection.FieldOfView = v)
         { }
     }
 
-    internal class FpsCommand : ScenePropertyCommand<double>
+    internal class FpsCommand : ScenePropertyCommand<float>
     {
-        internal FpsCommand(double value) : base(PropertyNames.FPS,
+        internal FpsCommand(float value) : base(PropertyNames.FPS,
             value, s => s.FPS, (s, v) => s.FPS = v)
         { }
     }
 
-    internal class FrustumMaxCommand : ScenePropertyCommand<Vector3d>
+    internal class FrustumMaxCommand : ScenePropertyCommand<Vector3>
     {
-        internal FrustumMaxCommand(Vector3d value) : base(PropertyNames.FarPlane,
+        internal FrustumMaxCommand(Vector3 value) : base(PropertyNames.FarPlane,
             value, s => s.Projection.FrustumMax, (s, v) => s.Projection.FrustumMax = v)
         { }
     }
 
-    internal class FrustumMinCommand : ScenePropertyCommand<Vector3d>
+    internal class FrustumMinCommand : ScenePropertyCommand<Vector3>
     {
-        internal FrustumMinCommand(Vector3d value) : base(PropertyNames.NearPlane,
+        internal FrustumMinCommand(Vector3 value) : base(PropertyNames.NearPlane,
             value, s => s.Projection.FrustumMin, (s, v) => s.Projection.FrustumMin = v)
         { }
     }
@@ -62,9 +62,9 @@
         { }
     }
 
-    internal class ProjectionMatrixCommand : ScenePropertyCommand<Matrix4d>
+    internal class ProjectionMatrixCommand : ScenePropertyCommand<Matrix4>
     {
-        internal ProjectionMatrixCommand(Matrix4d value) : base("Projection Matrix",
+        internal ProjectionMatrixCommand(Matrix4 value) : base("Projection Matrix",
             value, s => s.GetProjection(), (s, v) => s.SetProjection(v))
         { }
     }

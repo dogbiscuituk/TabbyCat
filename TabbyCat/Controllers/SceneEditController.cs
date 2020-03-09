@@ -89,34 +89,34 @@
             Run(new BackgroundColourCommand(Color.FromName(Editor.cbBackground.Text)));
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
-            Run(new CameraFocusCommand(new Vector3d(
-                (double)Editor.seCameraFocusX.Value,
-                (double)Editor.seCameraFocusY.Value,
-                (double)Editor.seCameraFocusZ.Value)));
+            Run(new CameraFocusCommand(new Vector3(
+                (float)Editor.seCameraFocusX.Value,
+                (float)Editor.seCameraFocusY.Value,
+                (float)Editor.seCameraFocusZ.Value)));
 
         private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
-            Run(new CameraPositionCommand(new Vector3d(
-                (double)Editor.seCameraPositionX.Value,
-                (double)Editor.seCameraPositionY.Value,
-                (double)Editor.seCameraPositionZ.Value)));
+            Run(new CameraPositionCommand(new Vector3(
+                (float)Editor.seCameraPositionX.Value,
+                (float)Editor.seCameraPositionY.Value,
+                (float)Editor.seCameraPositionZ.Value)));
 
         private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
-            Run(new FieldOfViewCommand((double)Editor.seFieldOfView.Value));
+            Run(new FieldOfViewCommand((float)Editor.seFieldOfView.Value));
 
         private void FPS_ValueChanged(object sender, EventArgs e) =>
-            Run(new FpsCommand((double)Editor.seFPS.Value));
+            Run(new FpsCommand((float)Editor.seFPS.Value));
 
         private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
-            Run(new FrustumMaxCommand(new Vector3d(
-                (double)Editor.seFrustumMaxX.Value,
-                (double)Editor.seFrustumMaxY.Value,
-                (double)Editor.seFrustumMaxZ.Value)));
+            Run(new FrustumMaxCommand(new Vector3(
+                (float)Editor.seFrustumMaxX.Value,
+                (float)Editor.seFrustumMaxY.Value,
+                (float)Editor.seFrustumMaxZ.Value)));
 
         private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
-            Run(new FrustumMinCommand(new Vector3d(
-                (double)Editor.seFrustumMinX.Value,
-                (double)Editor.seFrustumMinY.Value,
-                (double)Editor.seFrustumMinZ.Value)));
+            Run(new FrustumMinCommand(new Vector3(
+                (float)Editor.seFrustumMinX.Value,
+                (float)Editor.seFrustumMinY.Value,
+                (float)Editor.seFrustumMinZ.Value)));
 
         private void GLSLVersion_SelectedValueChanged(object sender, EventArgs e) =>
             Run(new GLTargetVersionCommand(Editor.cbGLSLVersion.Text));

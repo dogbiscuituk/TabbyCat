@@ -1,5 +1,7 @@
 ﻿namespace TabbyCat.Common.Utility
 {
+    using OpenTK.Graphics.OpenGL;
+
     public static class PropertyNames
     {
         /// <summary>
@@ -20,6 +22,17 @@
             VSync = "VSync";
 
         /// <summary>
+        /// Scene shader names.
+        /// </summary>
+        public const string
+            SceneVertex = "Scene Vertex Shader",
+            SceneTessControl = "Scene Tessellation Control Shader",
+            SceneTessEvaluation = "Scene Tessellation Evaluation Shader",
+            SceneGeometry = "Scene Geometry Shader",
+            SceneFragment = "Scene Fragment Shader",
+            SceneCompute = "Scene Compute Shader";
+
+        /// <summary>
         /// Trace property names.
         /// </summary>
         public const string
@@ -32,5 +45,16 @@
             Scale = "Scale",
             StripCount = "Strip Count",
             Visible = "Visible";
+
+        /// <summary>
+        /// Trace shader names.
+        /// </summary>
+        public const string
+            TraceVertex = "Trace Vertex Shader",
+            TraceTessControl = "Trace Tessellation Control Shader",
+            TraceTessEvaluation = "Trace Tessellation Evaluation Shader",
+            TraceGeometry = "Trace Geometry Shader",
+            TraceFragment = "Trace Fragment Shader",
+            TraceCompute = "Trace Compute Shader";
     }
 }

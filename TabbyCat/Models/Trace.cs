@@ -25,11 +25,11 @@
         public Pattern Pattern { get; set; }
         public bool Visible { get; set; }
 
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Location { get; set; }
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Maximum { get; set; }
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Minimum { get; set; }
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Orientation { get; set; }
-        [JsonConverter(typeof(Vector3dConverter))] public Vector3d Scale { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 Location { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 Maximum { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 Minimum { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 Orientation { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 Scale { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 StripCount { get; set; }
 
         #endregion
@@ -57,15 +57,15 @@
 
         #region Internal Methods
 
-        internal Matrix4d GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
+        internal Matrix4 GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
 
-        internal void SetLocation(Vector3d location) => Location = location;
+        internal void SetLocation(Vector3 location) => Location = location;
 
-        internal void SetOrientation(Vector3d orientation) => Orientation = orientation;
+        internal void SetOrientation(Vector3 orientation) => Orientation = orientation;
 
-        internal void SetScale(Vector3d scale) => Scale = scale;
+        internal void SetScale(Vector3 scale) => Scale = scale;
 
-        /*internal void SetTransform(Matrix4d transform)
+        /*internal void SetTransform(Matrix4 transform)
         {
             SetLocation(transform.ExtractTranslation());
             SetOrientation(transform.ExtractRotation());
@@ -88,14 +88,12 @@
                 Index = -1;
 
             internal static Vector3
+                Location = new Vector3(),
+                Maximum = new Vector3(),
+                Minimum = new Vector3(),
+                Orientation = new Vector3(),
+                Scale = new Vector3(1, 1, 1),
                 StripCount = new Vector3(100, 100, 0);
-
-            internal static Vector3d
-                Location = new Vector3d(),
-                Maximum = new Vector3d(),
-                Minimum = new Vector3d(),
-                Orientation = new Vector3d(),
-                Scale = new Vector3d(1, 1, 1);
 
             internal const string
                 Description = "";
@@ -109,12 +107,12 @@
         {
             Description = trace.Description;
             Index = trace.Index;
-            Location = new Vector3d(trace.Location);
-            Maximum = new Vector3d(trace.Maximum);
-            Minimum = new Vector3d(trace.Minimum);
-            Orientation = new Vector3d(trace.Orientation);
+            Location = new Vector3(trace.Location);
+            Maximum = new Vector3(trace.Maximum);
+            Minimum = new Vector3(trace.Minimum);
+            Orientation = new Vector3(trace.Orientation);
             Pattern = trace.Pattern;
-            Scale = new Vector3d(trace.Scale);
+            Scale = new Vector3(trace.Scale);
             StripCount = new Vector3(trace.StripCount);
             Visible = trace.Visible;
         }

@@ -27,7 +27,7 @@
 
         public Color BackgroundColour { get; set; }
         public Camera Camera { get; set; }
-        public double FPS { get; set; }
+        public float FPS { get; set; }
         public GLMode GLMode { get; set; }
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
@@ -63,11 +63,11 @@
 
         internal void Clear() { }
 
-        internal Matrix4d GetCameraView() => Maths.CreateCameraView(Camera);
+        internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
 
         internal GLMode GetGLMode() => SceneController?.GLMode;
 
-        internal Matrix4d GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
+        internal Matrix4 GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
 
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
@@ -81,11 +81,11 @@
                 Traces.RemoveAt(index);
         }
 
-        internal void SetCameraView(Matrix4d _) { }
+        internal void SetCameraView(Matrix4 _) { }
 
         internal void SetGLMode(GLMode mode) => SceneController?.SetGLMode(mode);
 
-        internal void SetProjection(Matrix4d _) { }
+        internal void SetProjection(Matrix4 _) { }
 
         #endregion
 
@@ -102,14 +102,18 @@
             internal const bool
                 VSync = false;
 
-            internal const double
+            internal const float
                 FPS = 60;
 
             internal GPUStatus
                 GPUStatus = GPUStatus.OK;
 
             internal static Camera
-                Camera = new Camera();
+                Camera = new Camera
+                {
+                    Position = new Vector3(0, 0, 2),
+                    Focus = new Vector3(0, 0, 0)
+                };
 
             internal static Color
                 BackgroundColour = Color.White;
