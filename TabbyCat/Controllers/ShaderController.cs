@@ -17,9 +17,9 @@
     {
         #region Constructors
 
-        internal ShaderController(PropertyController propertyController)
+        internal ShaderController(PropertiesController propertiesController)
         {
-            PropertyController = propertyController;
+            PropertiesController = propertiesController;
             new GLPageController(PrimaryTextBox);
             new GLPageController(SecondaryTextBox);
             Editor.miVertex.Tag = ShaderType.VertexShader;
@@ -32,25 +32,26 @@
             ShowLineNumbers = false;
             ShowDocumentMap = false;
             SplitType = SplitType.None;
+            LoadShaderCode();
         }
 
         #endregion
 
         #region Fields & Properties
 
-        internal ShaderEdit Editor => PropertyEditor.ShaderEdit;
+        internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
 
         private CommandProcessor CommandProcessor => SceneController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
-        private readonly PropertyController PropertyController;
-        private TabbedEdit PropertyEditor => PropertyController.Editor;
-        private TabControl PropertyTabControl => PropertyEditor.TabControl;
-        private int PropertyTabSelectedIndex => PropertyTabControl.SelectedIndex;
+        private readonly PropertiesController PropertiesController;
+        private TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
+        private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
+        private int PropertiesTabSelectedIndex => PropertiesTabControl.SelectedIndex;
         private Scene Scene => SceneController.Scene;
-        private SceneController SceneController => PropertyController.SceneController;
+        private SceneController SceneController => PropertiesController.SceneController;
         private SceneForm SceneForm => SceneController.SceneForm;
-        private bool SceneTab => PropertyTabSelectedIndex == 0;
+        private bool SceneTab => PropertiesTabSelectedIndex == 0;
         private Selection Selection => SceneController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
@@ -224,7 +225,7 @@
                 Editor.btnSplit.Click += Split_Click;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
-                PropertyTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
+                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 SceneController.PropertyChanged += SceneController_PropertyChanged;
                 SceneController.SelectionChanged += SceneController_SelectionChanged;
             }
@@ -248,7 +249,7 @@
                 Editor.btnSplit.Click -= Split_Click;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
-                PropertyTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
+                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
                 SceneController.PropertyChanged -= SceneController_PropertyChanged;
                 SceneController.SelectionChanged -= SceneController_SelectionChanged;
             }
@@ -276,6 +277,7 @@
             Updating = true;
             PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
             Updating = false;
+            UpdateUI();
         }
 
         private void Run(ICommand command) => CommandProcessor.Run(command);

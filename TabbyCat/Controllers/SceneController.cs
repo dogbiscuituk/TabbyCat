@@ -19,8 +19,9 @@
             Scene = new Scene(this);
             ClockController = new ClockController(this);
             CommandProcessor = new CommandProcessor(this);
+            new FullScreenController(this);
             JsonController = new JsonController(this);
-            PropertyController = new PropertyController(this);
+            PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
 
             Selection.Add(Scene.Traces[0]);
@@ -32,7 +33,7 @@
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => SceneForm.GLControl;
-        internal PropertyController PropertyController;
+        internal PropertiesController PropertiesController;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;

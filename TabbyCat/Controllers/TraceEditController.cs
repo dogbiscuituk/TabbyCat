@@ -15,14 +15,14 @@
     {
         #region Constructors
 
-        internal TraceEditController(PropertyController propertyController)
-            : base(propertyController) => InitControls(Editor.TableLayoutPanel);
+        internal TraceEditController(PropertiesController propertiesController)
+            : base(propertiesController) => InitControls(Editor.TableLayoutPanel);
 
         #endregion
 
         #region Fields & Properties
 
-        private TraceEdit Editor => PropertyEditor.TraceEdit;
+        private TraceEdit Editor => PropertiesEditor.TraceEdit;
         private Selection Selection => SceneController.Selection;
 
         #endregion

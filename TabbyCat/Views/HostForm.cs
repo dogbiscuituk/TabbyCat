@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class PropertyEditor : Form
+    public partial class HostForm : Form
     {
-        public PropertyEditor()
+        public HostForm()
         {
             InitializeComponent();
         }

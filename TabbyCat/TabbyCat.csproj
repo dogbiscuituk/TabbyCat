@@ -68,13 +68,15 @@
     <Compile Include="Controllers\ClockController.cs" />
     <Compile Include="Controllers\CodeEditController.cs" />
     <Compile Include="Controllers\ColourController.cs" />
+    <Compile Include="Controllers\FullScreenController.cs" />
     <Compile Include="Controllers\GLPageController.cs" />
+    <Compile Include="Controllers\HostController.cs" />
     <Compile Include="Controllers\HotkeysController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MruController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
-    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\PropertiesController.cs" />
     <Compile Include="Controllers\RenderController.cs" />
     <Compile Include="Controllers\SceneController.cs" />
     <Compile Include="Controllers\SceneEditController.cs" />
@@ -108,6 +110,12 @@
     <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HostForm.Designer.cs">
+      <DependentUpon>HostForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HotkeysForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +127,6 @@
     </Compile>
     <Compile Include="Views\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PropertyEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\PropertyEditor.Designer.cs">
-      <DependentUpon>PropertyEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SceneForm.cs">
       <SubType>Form</SubType>
@@ -140,14 +142,14 @@
     <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HostForm.resx">
+      <DependentUpon>HostForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PropertyEditor.resx">
-      <DependentUpon>PropertyEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SceneForm.resx">
       <DependentUpon>SceneForm.cs</DependentUpon>

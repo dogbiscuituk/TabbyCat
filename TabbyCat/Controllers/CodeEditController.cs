@@ -10,18 +10,18 @@
     {
         #region Constructors
 
-        internal CodeEditController(PropertyController propertyController) =>
-            PropertyController = propertyController;
+        internal CodeEditController(PropertiesController propertiesController) =>
+            PropertiesController = propertiesController;
 
         #endregion
 
         #region Fields & Properties
 
         protected CommandProcessor CommandProcessor => SceneController.CommandProcessor;
-        private readonly PropertyController PropertyController;
-        protected TabbedEdit PropertyEditor => PropertyController.Editor;
+        private readonly PropertiesController PropertiesController;
+        protected TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
         protected Scene Scene => SceneController.Scene;
-        protected SceneController SceneController => PropertyController.SceneController;
+        protected SceneController SceneController => PropertiesController.SceneController;
         protected bool Updating;
 
         #endregion

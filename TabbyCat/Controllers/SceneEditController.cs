@@ -13,8 +13,8 @@
     {
         #region Constructors
 
-        internal SceneEditController(PropertyController propertyController)
-            : base(propertyController)
+        internal SceneEditController(PropertiesController propertiesController)
+            : base(propertiesController)
         {
             InitControls(Editor.TableLayoutPanel);
             new ColourController().AddControls(Editor.cbBackground);
@@ -24,7 +24,7 @@
 
         #region Fields & Properties
 
-        private SceneEdit Editor => PropertyEditor.SceneEdit;
+        private SceneEdit Editor => PropertiesEditor.SceneEdit;
 
         #endregion
 
