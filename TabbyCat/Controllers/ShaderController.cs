@@ -2,8 +2,12 @@
 {
     using FastColoredTextBoxNS;
     using OpenTK.Graphics.OpenGL;
+    using System;
+    using System.ComponentModel;
     using System.IO;
     using System.Windows.Forms;
+    using TabbyCat.Common.Types;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Views;
@@ -23,6 +27,10 @@
             Editor.miGeometry.Tag = ShaderType.GeometryShader;
             Editor.miFragment.Tag = ShaderType.FragmentShader;
             Editor.miCompute.Tag = ShaderType.ComputeShader;
+            ShowRuler = false;
+            ShowLineNumbers = false;
+            ShowDocumentMap = false;
+            SplitType = SplitType.None;
         }
 
         #endregion
@@ -31,7 +39,6 @@
 
         internal ShaderEdit Editor => PropertyEditor.ShaderEdit;
 
-        private Orientation Orientation { get => Splitter.Orientation; set => SetSplit(value); }
         private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertyController PropertyController;
@@ -41,10 +48,12 @@
         private Scene Scene => SceneController.Scene;
         private SceneController SceneController => PropertyController.SceneController;
         private SceneForm SceneForm => SceneController.SceneForm;
+        private bool SceneTab => PropertyTabSelectedIndex == 0;
         private Selection Selection => SceneController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
-        private Shaders Shaders => PropertyTabSelectedIndex == 0 ? (Shaders)Scene : Selection;
+        private string ShaderName => SceneTab ? ShaderType.SceneShaderName() : ShaderType.TraceShaderName();
+        private Shaders Shaders => SceneTab ? (Shaders)Scene : Selection;
         private SplitContainer Splitter => Editor.Splitter;
         private bool Updating;
 
@@ -58,6 +67,32 @@
                 {
                     _ShaderType = value;
                     LoadShaderCode();
+                }
+            }
+        }
+
+        private SplitType _SplitType;
+        private SplitType SplitType
+        {
+            get => _SplitType;
+            set
+            {
+                _SplitType = value;
+                switch (SplitType)
+                {
+                    case SplitType.None:
+                        Splitter.Panel2Collapsed = true;
+                        break;
+                    case SplitType.Horizontal:
+                        Splitter.Panel2Collapsed = false;
+                        Splitter.Orientation = Orientation.Horizontal;
+                        Splitter.SplitterDistance = Splitter.Height / 2 - 2;
+                        break;
+                    case SplitType.Vertical:
+                        Splitter.Panel2Collapsed = false;
+                        Splitter.Orientation = Orientation.Vertical;
+                        Splitter.SplitterDistance = Splitter.Width / 2 - 2;
+                        break;
                 }
             }
         }
@@ -127,7 +162,6 @@
             Editor.btnRuler.Checked = ShowRuler;
             Editor.btnLineNumbers.Checked = ShowLineNumbers;
             Editor.btnDocumentMap.Checked = ShowDocumentMap;
-            Editor.btnSplit.Checked = Orientation == Orientation.Vertical;
         }
 
         private void Print_Click(object sender, System.EventArgs e) =>
@@ -136,7 +170,14 @@
         private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) =>
             LoadShaderCode();
 
-        private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
+        private void Ruler_Click(object sender, System.EventArgs e) =>
+            ShowRuler = !ShowRuler;
+
+        private void SceneController_SelectionChanged(object sender, EventArgs e) =>
+            LoadShaderCode();
+
+        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
 
         private void Shader_Click(object sender, System.EventArgs e) =>
             ShaderType = (ShaderType)((ToolStripItem)sender).Tag;
@@ -147,7 +188,7 @@
                 item.Checked = (ShaderType)item.Tag == ShaderType;
         }
 
-        private void Split_Click(object sender, System.EventArgs e) => ToggleSplit();
+        private void Split_Click(object sender, System.EventArgs e) => CycleSplit();
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -182,6 +223,8 @@
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
                 PropertyTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
+                SceneController.PropertyChanged += SceneController_PropertyChanged;
+                SceneController.SelectionChanged += SceneController_SelectionChanged;
             }
             else
             {
@@ -204,8 +247,12 @@
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
                 PropertyTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
+                SceneController.PropertyChanged -= SceneController_PropertyChanged;
+                SceneController.SelectionChanged -= SceneController_SelectionChanged;
             }
         }
+
+        private void CycleSplit() => SplitType = (SplitType)((int)(SplitType + 1) % 3);
 
         private string GetHTML(int filterIndex)
         {
@@ -222,39 +269,32 @@
 
         private void LoadShaderCode()
         {
-            if (!Updating)
-            {
-                Updating = true;
-                PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
-                Updating = false;
-            }
+            if (Updating)
+                return;
+            Updating = true;
+            PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
+            Updating = false;
         }
 
         private void SaveShaderCode()
         {
-            if (!Updating)
-            {
-                Updating = true;
-                Shaders.SetScript(ShaderType, PrimaryTextBox.Text);
-                Updating = false;
-            }
+            if (Updating)
+                return;
+            Updating = true;
+            Shaders.SetScript(ShaderType, PrimaryTextBox.Text);
+            Updating = false;
         }
 
-        private void SetSplit(Orientation orientation)
+        private void UpdateProperties(params string[] propertyNames)
         {
-            Splitter.Orientation = orientation;
-            var size = Orientation == Orientation.Horizontal
-                ? Splitter.Height
-                : Splitter.Width;
-            SetSplitSize(size / 2 - 2);
+            if (Updating)
+                return;
+            Updating = true;
+            foreach (var propertyName in propertyNames)
+                if (propertyName == ShaderName)
+                { }
+            Updating = false;
         }
-
-        private void SetSplitSize(int size) => Splitter.SplitterDistance = size;
-
-        private void ToggleSplit() =>
-            SetSplit(Splitter.SplitterDistance == 0 || Orientation == Orientation.Vertical
-                ? Orientation.Horizontal
-                : Orientation.Vertical);
 
         private void UpdateUI()
         {

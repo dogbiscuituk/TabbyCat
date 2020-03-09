@@ -133,7 +133,7 @@
         protected override string Target => "Trace";
 
         protected override void OnPropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertyChanged($"Traces[{Index}].{propertyName}");
+            scene.OnPropertyChanged(propertyName);
 
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }

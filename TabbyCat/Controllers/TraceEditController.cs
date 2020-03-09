@@ -126,14 +126,13 @@
             UpdateProperties(e.PropertyName);
 
         private void SceneController_SelectionChanged(object sender, System.EventArgs e) =>
-            UpdateSelection();
+            UpdateAllProperties();
 
         private void StripCount_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p, new Vector3(
                 (float)Editor.seStripCountX.Value,
                 (float)Editor.seStripCountY.Value,
                 (float)Editor.seStripCountZ.Value)));
-
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p, Editor.cbVisible.Checked));
@@ -227,10 +226,6 @@
                         break;
                 }
             Updating = false;
-        }
-
-        private void UpdateSelection()
-        {
         }
 
         #endregion

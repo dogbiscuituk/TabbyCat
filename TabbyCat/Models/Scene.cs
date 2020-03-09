@@ -18,7 +18,7 @@
         internal Scene(SceneController sceneController) : this()
         {
             SceneController = sceneController;
-            this.AddTrace(new Trace());
+            AddTrace(new Trace(this));
         }
 
         #endregion

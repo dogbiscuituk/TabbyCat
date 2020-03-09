@@ -270,7 +270,7 @@
                     if (SceneScript == null)
                     {
                         SceneScript = new StringBuilder();
-                        SceneScript.AppendFormat(Resources.Scene_Head, shaderType.GetTag(), Scene.GLTargetVersion);
+                        SceneScript.AppendFormat(Resources.Scene_Head, shaderType.ShaderTag(), Scene.GLTargetVersion);
                         AddScript(Scene.GetScript(shaderType));
                         MainBody = new StringBuilder();
                     }
@@ -282,14 +282,14 @@
             if (SceneScript == null)
             {
                 if (mandatory)
-                    Log($"ERROR: Missing {shaderType.GetName()}.");
+                    Log($"ERROR: Missing {shaderType.ShaderName()}.");
                 return 0;
             }
             SceneScript.AppendLine(Resources.Switch_Statement);
             for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
                 SceneScript.AppendFormat(Resources.Switch_Case, traceIndex);
             SceneScript.AppendLine(Resources.Scene_Tail);
-            Log($"Compiling {shaderType.GetName()}...");
+            Log($"Compiling {shaderType.ShaderName()}...");
             var shaderID = GL.CreateShader(shaderType);
             GpuCode.Append(SceneScript);
             BreakOffset = GpuCode.GetLineCount() - 1;

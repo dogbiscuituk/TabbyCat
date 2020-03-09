@@ -55,12 +55,12 @@
     <Compile Include="Types\Pattern.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
+    <Compile Include="Types\SplitType.cs" />
     <Compile Include="Utility\Colours.cs" />
     <Compile Include="Utility\Maths.cs" />
     <Compile Include="Utility\Processes.cs" />
     <Compile Include="Utility\PropertyNames.cs" />
     <Compile Include="Utility\ShaderNames.cs" />
-    <Compile Include="Utility\ShaderTags.cs" />
     <Compile Include="Utility\Strings.cs" />
     <Compile Include="Types\ColourFormat.cs" />
     <Compile Include="Types\GPUStatus.cs" />

@@ -22,6 +22,9 @@
             JsonController = new JsonController(this);
             PropertyController = new PropertyController(this);
             RenderController = new RenderController(this);
+
+            Selection.Add(Scene.Traces[0]);
+
             ConnectAll(true);
         }
 

@@ -10,7 +10,7 @@
     {
         #region Fields and Properties
 
-        internal IEnumerable<Trace> Traces { get; } = new List<Trace>();
+        internal List<Trace> Traces { get; } = new List<Trace>();
 
         #endregion
 
@@ -104,6 +104,16 @@
         {
             get => GetProperty(p => p.Visible);
             set => SetProperty(p => p.Visible = value == true);
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        internal void Add(Trace trace)
+        {
+            if (!Traces.Contains(trace))
+                Traces.Add(trace);
         }
 
         #endregion

@@ -4,25 +4,34 @@
 
     public static class ShaderNames
     {
-        public static string GetName(this ShaderType shaderType)
+        public static string SceneShaderName(this ShaderType shaderType) =>
+            $"Scene {shaderType.ShaderTag()} Shader";
+
+        public static string ShaderName(this ShaderType shaderType) =>
+            $"{shaderType.ShaderTag()} Shader";
+
+        public static string ShaderTag(this ShaderType shaderType)
         {
             switch (shaderType)
             {
                 case ShaderType.VertexShader:
-                    return "Shader 1: Vertex (mandatory)";
+                    return "Vertex";
                 case ShaderType.TessControlShader:
-                    return "Shader 2: Tessellation Control";
+                    return "Tessellation Control";
                 case ShaderType.TessEvaluationShader:
-                    return "Shader 3: Tessellation Evaluation";
+                    return "Tessellation Evaluation";
                 case ShaderType.GeometryShader:
-                    return "Shader 4: Geometry";
+                    return "Geometry";
                 case ShaderType.FragmentShader:
-                    return "Shader 5: Fragment (mandatory)";
+                    return "Fragment";
                 case ShaderType.ComputeShader:
-                    return "Shader 6: Compute";
+                    return "Compute";
                 default:
                     return string.Empty;
             }
         }
+
+        public static string TraceShaderName(this ShaderType shaderType) =>
+            $"Trace {shaderType.ShaderTag()} Shader";
     }
 }
