@@ -5,6 +5,7 @@
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Controls;
+    using TabbyCat.Models;
     using TabbyCat.Views;
 
     internal class ShaderController
@@ -35,13 +36,31 @@
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertyController PropertyController;
         private TabbedEdit PropertyEditor => PropertyController.Editor;
+        private TabControl PropertyTabControl => PropertyEditor.TabControl;
+        private int PropertyTabSelectedIndex => PropertyTabControl.SelectedIndex;
+        private Scene Scene => SceneController.Scene;
         private SceneController SceneController => PropertyController.SceneController;
         private SceneForm SceneForm => SceneController.SceneForm;
+        private Selection Selection => SceneController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
+        private Shaders Shaders => PropertyTabSelectedIndex == 0 ? (Shaders)Scene : Selection;
         private SplitContainer Splitter => Editor.Splitter;
+        private bool Updating;
 
-        private bool UseScene => PropertyEditor.TabControl.SelectedIndex == 0;
+        private ShaderType _ShaderType = ShaderType.VertexShader;
+        private ShaderType ShaderType
+        {
+            get => _ShaderType;
+            set
+            {
+                if (ShaderType != value)
+                {
+                    _ShaderType = value;
+                    LoadShaderCode();
+                }
+            }
+        }
 
         private bool ShowDocumentMap
         {
@@ -114,11 +133,27 @@
         private void Print_Click(object sender, System.EventArgs e) =>
             PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
+        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) =>
+            LoadShaderCode();
+
         private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
+
+        private void Shader_Click(object sender, System.EventArgs e) =>
+            ShaderType = (ShaderType)((ToolStripItem)sender).Tag;
+
+        private void Shader_DropDownOpening(object sender, System.EventArgs e)
+        {
+            foreach (ToolStripMenuItem item in ((ToolStripDropDownItem)sender).DropDownItems)
+                item.Checked = (ShaderType)item.Tag == ShaderType;
+        }
 
         private void Split_Click(object sender, System.EventArgs e) => ToggleSplit();
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) => UpdateUI();
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveShaderCode();
+            UpdateUI();
+        }
 
         #endregion
 
@@ -146,9 +181,17 @@
                 Editor.btnSplit.Click += Split_Click;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
+                PropertyTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
             }
             else
             {
+                Editor.btnShader.DropDownOpening -= Shader_DropDownOpening;
+                Editor.miVertex.Click -= Shader_Click;
+                Editor.miTessellationControl.Click -= Shader_Click;
+                Editor.miTessellationEvaluation.Click -= Shader_Click;
+                Editor.miGeometry.Click -= Shader_Click;
+                Editor.miFragment.Click -= Shader_Click;
+                Editor.miCompute.Click -= Shader_Click;
                 Editor.btnDocumentMap.Click -= DocumentMap_Click;
                 Editor.btnExportHTML.Click -= ExportHTML_Click;
                 Editor.btnExportRTF.Click -= ExportRTF_Click;
@@ -160,36 +203,9 @@
                 Editor.btnSplit.Click -= Split_Click;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
+                PropertyTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
             }
         }
-
-        private void Shader_DropDownOpening(object sender, System.EventArgs e)
-        {
-            foreach (ToolStripMenuItem item in ((ToolStripDropDownItem)sender).DropDownItems)
-                item.Checked = (ShaderType)item.Tag == ShaderType;
-        }
-
-        private ShaderType _ShaderType = ShaderType.VertexShader;
-        private ShaderType ShaderType
-        {
-            get => _ShaderType;
-            set
-            {
-                if (ShaderType != value)
-                {
-                    _ShaderType = value;
-                    GetShaderCode();
-                }
-            }
-        }
-
-        private void GetShaderCode()
-        {
-
-        }
-
-        private void Shader_Click(object sender, System.EventArgs e) =>
-            ShaderType = (ShaderType)((ToolStripItem)sender).Tag;
 
         private string GetHTML(int filterIndex)
         {
@@ -201,6 +217,26 @@
                     return new ExportToHTML { UseNbsp = false, UseForwardNbsp = true }.GetHtml(PrimaryTextBox);
                 default:
                     return string.Empty;
+            }
+        }
+
+        private void LoadShaderCode()
+        {
+            if (!Updating)
+            {
+                Updating = true;
+                PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
+                Updating = false;
+            }
+        }
+
+        private void SaveShaderCode()
+        {
+            if (!Updating)
+            {
+                Updating = true;
+                Shaders.SetScript(ShaderType, PrimaryTextBox.Text);
+                Updating = false;
             }
         }
 

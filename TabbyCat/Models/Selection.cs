@@ -6,8 +6,16 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class Selection : ITrace
+    public class Selection : Shaders
     {
+        #region Fields and Properties
+
+        internal IEnumerable<Trace> Traces { get; } = new List<Trace>();
+
+        #endregion
+
+        #region Public Properties
+
         public string Description
         {
             get => GetProperty(p => p.Description);
@@ -50,37 +58,37 @@
             set => SetProperty(p => p.Scale = value);
         }
 
-        public string Shader1Vertex
+        public override string Shader1Vertex
         {
             get => GetProperty(p => p.Shader1Vertex);
             set => SetProperty(p => p.Shader1Vertex = value);
         }
 
-        public string Shader2TessControl
+        public override string Shader2TessControl
         {
             get => GetProperty(p => p.Shader2TessControl);
             set => SetProperty(p => p.Shader2TessControl = value);
         }
 
-        public string Shader3TessEvaluation
+        public override string Shader3TessEvaluation
         {
             get => GetProperty(p => p.Shader3TessEvaluation);
             set => SetProperty(p => p.Shader3TessEvaluation = value);
         }
 
-        public string Shader4Geometry
+        public override string Shader4Geometry
         {
             get => GetProperty(p => p.Shader4Geometry);
             set => SetProperty(p => p.Shader4Geometry = value);
         }
 
-        public string Shader5Fragment
+        public override string Shader5Fragment
         {
             get => GetProperty(p => p.Shader5Fragment);
             set => SetProperty(p => p.Shader5Fragment = value);
         }
 
-        public string Shader6Compute
+        public override string Shader6Compute
         {
             get => GetProperty(p => p.Shader6Compute);
             set => SetProperty(p => p.Shader6Compute = value);
@@ -98,7 +106,9 @@
             set => SetProperty(p => p.Visible = value == true);
         }
 
-        internal IEnumerable<Trace> Traces { get; } = new List<Trace>();
+        #endregion
+
+        #region Private Methods
 
         private T GetProperty<T>(Func<Trace, T> getProperty) where T: IEquatable<T>
         {
@@ -117,5 +127,7 @@
             foreach (var trace in Traces)
                 setProperty(trace);
         }
+
+        #endregion
     }
 }

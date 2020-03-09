@@ -2,7 +2,7 @@
 {
     using OpenTK.Graphics.OpenGL;
 
-    public abstract class Code
+    public abstract class Code : Shaders
     {
         #region Constructors
 
@@ -14,61 +14,12 @@
 
         #region Public Properties
 
-        public string Shader1Vertex { get; set; }
-        public string Shader2TessControl { get; set; }
-        public string Shader3TessEvaluation { get; set; }
-        public string Shader4Geometry { get; set; }
-        public string Shader5Fragment { get; set; }
-        public string Shader6Compute { get; set; }
-
-        #endregion
-
-        #region Internal Methods
-
-        internal string GetScript(ShaderType shaderType)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    return Shader1Vertex;
-                case ShaderType.TessControlShader:
-                    return Shader2TessControl;
-                case ShaderType.TessEvaluationShader:
-                    return Shader3TessEvaluation;
-                case ShaderType.GeometryShader:
-                    return Shader4Geometry;
-                case ShaderType.FragmentShader:
-                    return Shader5Fragment;
-                case ShaderType.ComputeShader:
-                    return Shader6Compute;
-            }
-            return string.Empty;
-        }
-
-        internal void SetScript(ShaderType shaderType, string script)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    Shader1Vertex = script;
-                    break;
-                case ShaderType.TessControlShader:
-                    Shader2TessControl = script;
-                    break;
-                case ShaderType.TessEvaluationShader:
-                    Shader3TessEvaluation = script;
-                    break;
-                case ShaderType.GeometryShader:
-                    Shader4Geometry = script;
-                    break;
-                case ShaderType.FragmentShader:
-                    Shader5Fragment = script;
-                    break;
-                case ShaderType.ComputeShader:
-                    Shader6Compute = script;
-                    break;
-            }
-        }
+        public override string Shader1Vertex { get; set; }
+        public override string Shader2TessControl { get; set; }
+        public override string Shader3TessEvaluation { get; set; }
+        public override string Shader4Geometry { get; set; }
+        public override string Shader5Fragment { get; set; }
+        public override string Shader6Compute { get; set; }
 
         #endregion
 
