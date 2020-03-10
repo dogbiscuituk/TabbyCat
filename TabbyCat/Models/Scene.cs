@@ -28,7 +28,6 @@
         public Color BackgroundColour { get; set; }
         public Camera Camera { get; set; }
         public float FPS { get; set; }
-        public GLMode GLMode { get; set; }
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
         public int SampleCount { get; set; }
@@ -82,8 +81,6 @@
         }
 
         internal void SetCameraView(Matrix4 _) { }
-
-        internal void SetGLMode(GLMode mode) => SceneController?.SetGLMode(mode);
 
         internal void SetProjection(Matrix4 _) { }
 

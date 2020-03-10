@@ -70,14 +70,14 @@
         [JsonConverter(typeof(Vector3Converter))] public Vector3 FrustumMax { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 FrustumMin { get; set; }
 
-        public float Bottom => FrustumMin.Y;
-        public float Depth => Far - Near;
-        public float Far => FrustumMax.Z;
-        public float Height => Top - Bottom;
-        public float Left => FrustumMin.X;
-        public float Near => FrustumMin.Z;
-        public float Right => FrustumMax.X;
-        public float Top => FrustumMax.Y;
-        public float Width => Right - Left;
+        [JsonIgnore] public float Bottom => FrustumMin.Y;
+        [JsonIgnore] public float Depth => Far - Near;
+        [JsonIgnore] public float Far => FrustumMax.Z;
+        [JsonIgnore] public float Height => Top - Bottom;
+        [JsonIgnore] public float Left => FrustumMin.X;
+        [JsonIgnore] public float Near => FrustumMin.Z;
+        [JsonIgnore] public float Right => FrustumMax.X;
+        [JsonIgnore] public float Top => FrustumMax.Y;
+        [JsonIgnore] public float Width => Right - Left;
     }
 }

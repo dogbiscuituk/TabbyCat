@@ -44,7 +44,6 @@
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
         internal void ModifiedChanged() => SceneForm.Text = JsonController.WindowCaption;
-        internal void SetGLMode(GLMode mode) => RecreateGLControl(mode);
         internal void Show() => SceneForm.Show();
         internal void Show(IWin32Window owner) => SceneForm.Show(owner);
 
@@ -229,6 +228,7 @@
                 SceneForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
                 SceneForm.tbSave.Click -= TbSave_Click;
             }
+            ConnectGLControl(connect);
         }
 
         private void ConnectGLControl(bool connect)
@@ -266,7 +266,6 @@
             CommandProcessor.Clear();
             EndUpdate();
             ConnectControllers(true);
-            RecreateGLControl(Scene.GLMode);
         }
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)
@@ -326,27 +325,6 @@
         }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
-        private void RecreateGLControl(GraphicsMode mode = null)
-        {
-            BackColorChanged();
-            ConnectGLControl(false);
-            var control = GLControl;
-            var controls = GLControl.Parent.Controls;
-            controls.Remove(control);
-            control.Dispose();
-            control = mode == null ? new GLControl() : new GLControl(mode);
-            control.BackColor = Scene.BackgroundColour;
-            control.Dock = DockStyle.Fill;
-            control.Location = new System.Drawing.Point(0, 0);
-            control.Name = "GLControl";
-            control.Size = new System.Drawing.Size(100, 100);
-            control.TabIndex = 1;
-            control.VSync = Scene.VSync;
-            controls.Add(control);
-            ConnectGLControl(true);
-            RenderController.Refresh();
-        }
 
         private void Resize() => RenderController.InvalidateProjection();
 
