@@ -14,7 +14,7 @@
             if (token.Type == JTokenType.Array)
             {
                 var array = (JArray)token;
-                if (array.Count == 4 && array.All(p => p.Type == JTokenType.Float))
+                if (array.Count == 3 && array.All(p => p.Type == JTokenType.Float))
                     return new Vector3(
                         array[0].Value<float>(),
                         array[1].Value<float>(),
