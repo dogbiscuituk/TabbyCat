@@ -28,7 +28,6 @@
             Selection.Add(Scene.Traces[0]);
         }
 
-
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => SceneForm.GLControl;
