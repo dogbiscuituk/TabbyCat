@@ -45,7 +45,7 @@
 
         internal CommandProcessor CommandProcessor => SceneController?.CommandProcessor;
 
-        internal bool IsModified => CommandProcessor.IsModified;
+        internal bool IsModified => CommandProcessor?.IsModified ?? false;
 
         internal SceneController SceneController;
 

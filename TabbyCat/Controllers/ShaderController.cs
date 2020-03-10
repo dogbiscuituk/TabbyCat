@@ -72,35 +72,11 @@
                 {
                     _ShaderType = value;
                     Editor.btnShader.Text =
-                        Editor.btnShader.DropDownItems.Cast<ToolStripMenuItem>()
-                        .First(p => (ShaderType)p.Tag == ShaderType).Text;
+                        Editor.btnShader.DropDownItems
+                        .Cast<ToolStripMenuItem>()
+                        .First(p => (ShaderType)p.Tag == ShaderType)
+                        .Text;
                     LoadShaderCode();
-                }
-            }
-        }
-
-        private SplitType _SplitType;
-        private SplitType SplitType
-        {
-            get => _SplitType;
-            set
-            {
-                _SplitType = value;
-                switch (SplitType)
-                {
-                    case SplitType.None:
-                        Splitter.Panel2Collapsed = true;
-                        break;
-                    case SplitType.Horizontal:
-                        Splitter.Panel2Collapsed = false;
-                        Splitter.Orientation = Orientation.Horizontal;
-                        Splitter.SplitterDistance = Splitter.Height / 2 - 2;
-                        break;
-                    case SplitType.Vertical:
-                        Splitter.Panel2Collapsed = false;
-                        Splitter.Orientation = Orientation.Vertical;
-                        Splitter.SplitterDistance = Splitter.Width / 2 - 2;
-                        break;
                 }
             }
         }
@@ -128,6 +104,32 @@
             {
                 Editor.PrimaryRuler.Visible = Editor.SecondaryRuler.Visible = value;
                 Editor.Refresh();
+            }
+        }
+
+        private SplitType _SplitType;
+        private SplitType SplitType
+        {
+            get => _SplitType;
+            set
+            {
+                _SplitType = value;
+                switch (SplitType)
+                {
+                    case SplitType.None:
+                        Splitter.Panel2Collapsed = true;
+                        break;
+                    case SplitType.Horizontal:
+                        Splitter.Panel2Collapsed = false;
+                        Splitter.Orientation = Orientation.Horizontal;
+                        Splitter.SplitterDistance = (Splitter.Height - 4) / 2;
+                        break;
+                    case SplitType.Vertical:
+                        Splitter.Panel2Collapsed = false;
+                        Splitter.Orientation = Orientation.Vertical;
+                        Splitter.SplitterDistance = (Splitter.Width - 4) / 2;
+                        break;
+                }
             }
         }
 
@@ -200,7 +202,7 @@
                 item.CheckState =
                     shaderType == ShaderType
                     ? CheckState.Checked
-                    : string.IsNullOrWhiteSpace(Shaders.GetScript(shaderType))
+                    : string.IsNullOrWhiteSpace(GetScript(shaderType))
                     ? CheckState.Unchecked
                     : CheckState.Indeterminate;
             }
@@ -251,6 +253,9 @@
                 Editor.btnPrint.Click -= Print_Click;
                 Editor.btnRuler.Click -= Ruler_Click;
                 Editor.btnSplit.Click -= Split_Click;
+                Editor.btnShader.ButtonClick -= Shader_ButtonClick;
+                Editor.btnShader.DropDownOpening -= Shader_DropDownOpening;
+                Editor.btnShader.DropDownItemClicked -= Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
@@ -274,12 +279,15 @@
             }
         }
 
+        private string GetScript() => GetScript(ShaderType);
+        private string GetScript(ShaderType shaderType) => Shaders.GetScript(shaderType);
+
         private void LoadShaderCode()
         {
             if (Updating)
                 return;
             Updating = true;
-            PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
+            PrimaryTextBox.Text = GetScript();
             Updating = false;
             UpdateUI();
         }
@@ -301,14 +309,14 @@
 
         private void SelectNextShaderType()
         {
-            if (Shaders.GetActiveShaders.Count < 2)
+            if (Shaders.GetActiveShaderCount() < 2)
                 ShaderType = ShaderType.Next();
             else
             {
                 var shaderType = ShaderType;
                 do
                     shaderType = shaderType.Next();
-                while (string.IsNullOrWhiteSpace(Shaders.GetScript(shaderType)));
+                while (string.IsNullOrWhiteSpace(GetScript(shaderType)));
                 ShaderType = shaderType;
             }
         }
@@ -320,18 +328,14 @@
             Updating = true;
             foreach (var propertyName in propertyNames)
                 if (propertyName == ShaderName)
-                {
-                    Editor.PrimaryTextBox.Text = Shaders.GetScript(ShaderType);
-                }
+                    Editor.PrimaryTextBox.Text = GetScript();
             Updating = false;
         }
 
-        private void UpdateUI()
-        {
+        private void UpdateUI() =>
             Editor.btnExport.Enabled =
-                Editor.btnPrint.Enabled =
-                PrimaryTextBox.Text != string.Empty;
-        }
+            Editor.btnPrint.Enabled =
+            PrimaryTextBox.Text != string.Empty;
 
         #endregion
     }

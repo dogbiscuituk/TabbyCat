@@ -19,18 +19,8 @@
 
         #region Public Methods
 
-        public List<string> GetActiveShaders =>
-            GetAllShaders().Where(p => string.IsNullOrWhiteSpace(p)).ToList();
-
-        public List<string> GetAllShaders() => new List<string>
-        {
-            Shader1Vertex,
-            Shader2TessControl,
-            Shader3TessEvaluation,
-            Shader4Geometry,
-            Shader5Fragment,
-            Shader6Compute
-        };
+        public int GetActiveShaderCount() =>
+            GetAllShaders().Count(p => !string.IsNullOrWhiteSpace(p));
 
         public string GetScript(ShaderType shaderType)
         {
@@ -77,6 +67,20 @@
                     break;
             }
         }
+
+        #endregion
+
+        #region Private
+
+        private IEnumerable<string> GetAllShaders() => new List<string>
+        {
+            Shader1Vertex,
+            Shader2TessControl,
+            Shader3TessEvaluation,
+            Shader4Geometry,
+            Shader5Fragment,
+            Shader6Compute
+        };
 
         #endregion
     }
