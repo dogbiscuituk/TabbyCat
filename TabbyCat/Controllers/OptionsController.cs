@@ -69,7 +69,8 @@
             OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
             FilesFolderPath = OptionsDialog.edFilesFolder.Text,
             TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
-            SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject
+            SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
+            GLSLUrl = OptionsDialog.edGLSLUrl.Text
         };
 
         private void SetOptions(Options options)
@@ -79,6 +80,7 @@
             OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;
             OptionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
             StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
+            OptionsDialog.edGLSLUrl.Text = options.GLSLUrl;
         }
 
         #endregion

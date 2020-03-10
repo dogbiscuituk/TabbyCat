@@ -23,5 +23,8 @@
     <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Controls.TextStyleInfos" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="GLSLUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.html</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

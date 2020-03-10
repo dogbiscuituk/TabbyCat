@@ -8,5 +8,6 @@
         public string TemplatesFolderPath { get; set; }
         public bool OpenInNewWindow { get; set; }
         public TextStyleInfos SyntaxHighlightStyles { get; set; }
+        public string GLSLUrl { get; set; }
     }
 }

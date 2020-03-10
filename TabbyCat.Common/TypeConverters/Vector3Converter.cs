@@ -8,7 +8,12 @@
 
     public class Vector3Converter : JsonConverter<Vector3>
     {
-        public override Vector3 ReadJson(JsonReader reader, Type objectType, Vector3 existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Vector3 ReadJson(
+            JsonReader reader,
+            Type objectType,
+            Vector3 existingValue,
+            bool hasExistingValue,
+            JsonSerializer serializer)
         {
             var obj = JToken.Load(reader);
             if (obj.Type == JTokenType.Array)
@@ -23,7 +28,9 @@
             return Vector3.Zero;
         }
 
-        public override void WriteJson(JsonWriter writer, Vector3 value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer,
+            Vector3 value,
+            JsonSerializer serializer)
         {
             writer.WriteStartArray();
             writer.WriteValue(value.X);

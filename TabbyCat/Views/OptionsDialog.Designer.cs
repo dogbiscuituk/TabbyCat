@@ -41,11 +41,12 @@
             this.edFilesFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbShowSystemRO = new System.Windows.Forms.CheckBox();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.tpGLSLStyles = new System.Windows.Forms.TabPage();
             this.GLSLStylesPropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.label3 = new System.Windows.Forms.Label();
+            this.edGLSLUrl = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -149,7 +150,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "&Templates:";
             // 
@@ -182,23 +183,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbShowSystemRO);
+            this.groupBox2.Controls.Add(this.edGLSLUrl);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(6, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(441, 51);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Developer View";
-            // 
-            // cbShowSystemRO
-            // 
-            this.cbShowSystemRO.AutoSize = true;
-            this.cbShowSystemRO.Location = new System.Drawing.Point(8, 22);
-            this.cbShowSystemRO.Name = "cbShowSystemRO";
-            this.cbShowSystemRO.Size = new System.Drawing.Size(220, 19);
-            this.cbShowSystemRO.TabIndex = 1;
-            this.cbShowSystemRO.Text = "&Show Read Only / System properties.";
-            this.cbShowSystemRO.UseVisualStyleBackColor = true;
+            this.groupBox2.Text = "OpenGL Shading Language";
             // 
             // TabControl
             // 
@@ -243,6 +235,24 @@
             this.GLSLStylesPropertyGrid.Size = new System.Drawing.Size(447, 232);
             this.GLSLStylesPropertyGrid.TabIndex = 0;
             this.GLSLStylesPropertyGrid.ToolbarVisible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 15);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Specification URL:";
+            // 
+            // edGLSLUrl
+            // 
+            this.edGLSLUrl.BackColor = System.Drawing.SystemColors.Control;
+            this.edGLSLUrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.edGLSLUrl.Location = new System.Drawing.Point(115, 24);
+            this.edGLSLUrl.Name = "edGLSLUrl";
+            this.edGLSLUrl.Size = new System.Drawing.Size(314, 16);
+            this.edGLSLUrl.TabIndex = 3;
             // 
             // OptionsDialog
             // 
@@ -289,10 +299,11 @@
         internal System.Windows.Forms.TextBox edFilesFolder;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.GroupBox groupBox2;
-        internal System.Windows.Forms.CheckBox cbShowSystemRO;
         internal System.Windows.Forms.TabControl TabControl;
         internal System.Windows.Forms.TabPage tpGeneral;
         internal System.Windows.Forms.TabPage tpGLSLStyles;
         internal System.Windows.Forms.PropertyGrid GLSLStylesPropertyGrid;
+        internal System.Windows.Forms.TextBox edGLSLUrl;
+        internal System.Windows.Forms.Label label3;
     }
 }

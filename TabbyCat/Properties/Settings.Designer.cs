@@ -107,5 +107,17 @@ namespace TabbyCat.Properties {
                 this["SyntaxHighlightStyles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.html")]
+        public string GLSLUrl {
+            get {
+                return ((string)(this["GLSLUrl"]));
+            }
+            set {
+                this["GLSLUrl"] = value;
+            }
+        }
     }
 }

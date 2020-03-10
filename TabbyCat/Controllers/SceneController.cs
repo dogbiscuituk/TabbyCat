@@ -9,6 +9,7 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCat.Views;
 
     internal class SceneController
@@ -54,7 +55,7 @@
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private Clock Clock => ClockController.Clock;
-        private const string GLSLUrl = "https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.html";
+        private string GLSLUrl => Settings.Default.GLSLUrl;
         private readonly JsonController JsonController;
 
         #endregion
