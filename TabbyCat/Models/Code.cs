@@ -2,7 +2,7 @@
 {
     using OpenTK.Graphics.OpenGL;
 
-    public abstract class Code : Shaders
+    public abstract class Code : ShaderSet
     {
         #region Constructors
 

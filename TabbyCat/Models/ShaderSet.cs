@@ -1,8 +1,10 @@
 ﻿namespace TabbyCat.Models
 {
     using OpenTK.Graphics.OpenGL;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public abstract class Shaders : IShaders
+    public abstract class ShaderSet : IShaderSet
     {
         #region Public Properties
 
@@ -16,6 +18,19 @@
         #endregion
 
         #region Public Methods
+
+        public List<string> GetActiveShaders =>
+            GetAllShaders().Where(p => string.IsNullOrWhiteSpace(p)).ToList();
+
+        public List<string> GetAllShaders() => new List<string>
+        {
+            Shader1Vertex,
+            Shader2TessControl,
+            Shader3TessEvaluation,
+            Shader4Geometry,
+            Shader5Fragment,
+            Shader6Compute
+        };
 
         public string GetScript(ShaderType shaderType)
         {

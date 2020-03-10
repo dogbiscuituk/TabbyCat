@@ -41,13 +41,6 @@
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
             this.Toolbar = new System.Windows.Forms.ToolStrip();
-            this.btnShader = new System.Windows.Forms.ToolStripDropDownButton();
-            this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTessellationEvaluation = new System.Windows.Forms.ToolStripMenuItem();
-            this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
-            this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnExportHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportRTF = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +51,13 @@
             this.btnDocumentMap = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSplit = new System.Windows.Forms.ToolStripButton();
             this.btnHelp = new System.Windows.Forms.ToolStripButton();
+            this.btnShader = new System.Windows.Forms.ToolStripSplitButton();
+            this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
+            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
+            this.miTessellationEvaluation = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
+            this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
+            this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.ToolStripContainer.SuspendLayout();
@@ -80,18 +80,17 @@
             // 
             // ToolStripContainer
             // 
-            this.ToolStripContainer.BottomToolStripPanelVisible = false;
             // 
             // ToolStripContainer.ContentPanel
             // 
             this.ToolStripContainer.ContentPanel.Controls.Add(this.Splitter);
-            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(288, 332);
+            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(314, 332);
             this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolStripContainer.LeftToolStripPanelVisible = false;
             this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.ToolStripContainer.Name = "ToolStripContainer";
             this.ToolStripContainer.RightToolStripPanelVisible = false;
-            this.ToolStripContainer.Size = new System.Drawing.Size(288, 357);
+            this.ToolStripContainer.Size = new System.Drawing.Size(314, 357);
             this.ToolStripContainer.TabIndex = 0;
             this.ToolStripContainer.Text = "toolStripContainer1";
             // 
@@ -116,7 +115,7 @@
             // 
             this.Splitter.Panel2.Controls.Add(this.PrimarySplitter);
             this.Splitter.Panel2MinSize = 0;
-            this.Splitter.Size = new System.Drawing.Size(288, 332);
+            this.Splitter.Size = new System.Drawing.Size(314, 332);
             this.Splitter.SplitterDistance = 102;
             this.Splitter.SplitterWidth = 5;
             this.Splitter.TabIndex = 3;
@@ -136,8 +135,8 @@
             // SecondarySplitter.Panel2
             // 
             this.SecondarySplitter.Panel2.Controls.Add(this.SecondaryMap);
-            this.SecondarySplitter.Size = new System.Drawing.Size(288, 102);
-            this.SecondarySplitter.SplitterDistance = 200;
+            this.SecondarySplitter.Size = new System.Drawing.Size(314, 102);
+            this.SecondarySplitter.SplitterDistance = 222;
             this.SecondarySplitter.SplitterWidth = 5;
             this.SecondarySplitter.TabIndex = 5;
             // 
@@ -164,7 +163,7 @@
             this.SecondaryTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.SecondaryTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.SecondaryTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SecondaryTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecondaryTextBox.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.SecondaryTextBox.IsReplaceMode = false;
             this.SecondaryTextBox.Language = FastColoredTextBoxNS.Language.CSharp;
             this.SecondaryTextBox.LeftBracket = '(';
@@ -180,7 +179,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(200, 74);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(222, 74);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -210,7 +209,7 @@
             this.PrimaryTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.PrimaryTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.PrimaryTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrimaryTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrimaryTextBox.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.PrimaryTextBox.IsReplaceMode = false;
             this.PrimaryTextBox.Language = FastColoredTextBoxNS.Language.CSharp;
             this.PrimaryTextBox.LeftBracket = '(';
@@ -226,7 +225,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(200, 197);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(222, 197);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -241,7 +240,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(200, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(222, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -253,7 +252,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(83, 102);
+            this.SecondaryMap.Size = new System.Drawing.Size(87, 102);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -274,8 +273,8 @@
             // PrimarySplitter.Panel2
             // 
             this.PrimarySplitter.Panel2.Controls.Add(this.PrimaryMap);
-            this.PrimarySplitter.Size = new System.Drawing.Size(288, 225);
-            this.PrimarySplitter.SplitterDistance = 200;
+            this.PrimarySplitter.Size = new System.Drawing.Size(314, 225);
+            this.PrimarySplitter.SplitterDistance = 222;
             this.PrimarySplitter.SplitterWidth = 5;
             this.PrimarySplitter.TabIndex = 4;
             // 
@@ -288,7 +287,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(200, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(222, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -300,7 +299,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(83, 225);
+            this.PrimaryMap.Size = new System.Drawing.Size(87, 225);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
@@ -308,70 +307,19 @@
             // 
             // Toolbar
             // 
+            this.Toolbar.AutoSize = false;
             this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShader,
             this.btnExport,
             this.btnPrint,
             this.btnOptions,
             this.btnSplit,
-            this.btnHelp});
+            this.btnHelp,
+            this.btnShader});
             this.Toolbar.Location = new System.Drawing.Point(3, 0);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(168, 25);
+            this.Toolbar.Size = new System.Drawing.Size(311, 25);
             this.Toolbar.TabIndex = 0;
-            // 
-            // btnShader
-            // 
-            this.btnShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miVertex,
-            this.miTessellationControl,
-            this.miTessellationEvaluation,
-            this.miGeometry,
-            this.miFragment,
-            this.miCompute});
-            this.btnShader.Image = ((System.Drawing.Image)(resources.GetObject("btnShader.Image")));
-            this.btnShader.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShader.Name = "btnShader";
-            this.btnShader.Size = new System.Drawing.Size(29, 22);
-            this.btnShader.Text = "toolStripDropDownButton1";
-            // 
-            // miVertex
-            // 
-            this.miVertex.Name = "miVertex";
-            this.miVertex.Size = new System.Drawing.Size(193, 22);
-            this.miVertex.Text = "&Vertex";
-            // 
-            // miTessellationControl
-            // 
-            this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(193, 22);
-            this.miTessellationControl.Text = "&Tessellation Control";
-            // 
-            // miTessellationEvaluation
-            // 
-            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
-            this.miTessellationEvaluation.Size = new System.Drawing.Size(193, 22);
-            this.miTessellationEvaluation.Text = "Tessellation &Evaluation";
-            // 
-            // miGeometry
-            // 
-            this.miGeometry.Name = "miGeometry";
-            this.miGeometry.Size = new System.Drawing.Size(193, 22);
-            this.miGeometry.Text = "&Geometry";
-            // 
-            // miFragment
-            // 
-            this.miFragment.Name = "miFragment";
-            this.miFragment.Size = new System.Drawing.Size(193, 22);
-            this.miFragment.Text = "&Fragment";
-            // 
-            // miCompute
-            // 
-            this.miCompute.Name = "miCompute";
-            this.miCompute.Size = new System.Drawing.Size(193, 22);
-            this.miCompute.Text = "&Compute";
             // 
             // btnExport
             // 
@@ -454,6 +402,61 @@
             this.btnHelp.Size = new System.Drawing.Size(23, 22);
             this.btnHelp.ToolTipText = "Help";
             // 
+            // btnShader
+            // 
+            this.btnShader.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnShader.AutoSize = false;
+            this.btnShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miVertex,
+            this.miTessellationEvaluation,
+            this.miTessellationControl,
+            this.miGeometry,
+            this.miFragment,
+            this.miCompute});
+            this.btnShader.Image = ((System.Drawing.Image)(resources.GetObject("btnShader.Image")));
+            this.btnShader.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShader.Name = "btnShader";
+            this.btnShader.Size = new System.Drawing.Size(144, 22);
+            this.btnShader.Text = "Vertex Shader";
+            this.btnShader.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // miVertex
+            // 
+            this.miVertex.Name = "miVertex";
+            this.miVertex.Size = new System.Drawing.Size(193, 22);
+            this.miVertex.Text = "&Vertex Shader";
+            // 
+            // miTessellationControl
+            // 
+            this.miTessellationControl.Name = "miTessellationControl";
+            this.miTessellationControl.Size = new System.Drawing.Size(193, 22);
+            this.miTessellationControl.Text = "&Tessellation Control";
+            // 
+            // miTessellationEvaluation
+            // 
+            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
+            this.miTessellationEvaluation.Size = new System.Drawing.Size(193, 22);
+            this.miTessellationEvaluation.Text = "Tessellation &Evaluation";
+            // 
+            // miGeometry
+            // 
+            this.miGeometry.Name = "miGeometry";
+            this.miGeometry.Size = new System.Drawing.Size(193, 22);
+            this.miGeometry.Text = "&Geometry Shader";
+            // 
+            // miFragment
+            // 
+            this.miFragment.Name = "miFragment";
+            this.miFragment.Size = new System.Drawing.Size(193, 22);
+            this.miFragment.Text = "&Fragment Shader";
+            // 
+            // miCompute
+            // 
+            this.miCompute.Name = "miCompute";
+            this.miCompute.Size = new System.Drawing.Size(193, 22);
+            this.miCompute.Text = "&Compute Shader";
+            // 
             // ShaderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -461,10 +464,9 @@
             this.Controls.Add(this.ToolStripContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ShaderEdit";
-            this.Size = new System.Drawing.Size(288, 357);
+            this.Size = new System.Drawing.Size(314, 357);
             this.ToolStripContainer.ContentPanel.ResumeLayout(false);
             this.ToolStripContainer.TopToolStripPanel.ResumeLayout(false);
-            this.ToolStripContainer.TopToolStripPanel.PerformLayout();
             this.ToolStripContainer.ResumeLayout(false);
             this.ToolStripContainer.PerformLayout();
             this.Splitter.Panel1.ResumeLayout(false);
@@ -510,7 +512,7 @@
         public System.Windows.Forms.SplitContainer PrimarySplitter;
         public FastColoredTextBoxNS.Ruler PrimaryRuler;
         public FastColoredTextBoxNS.DocumentMap PrimaryMap;
-        public System.Windows.Forms.ToolStripDropDownButton btnShader;
+        public System.Windows.Forms.ToolStripSplitButton btnShader;
         public System.Windows.Forms.ToolStripMenuItem miVertex;
         public System.Windows.Forms.ToolStripMenuItem miTessellationControl;
         public System.Windows.Forms.ToolStripMenuItem miTessellationEvaluation;

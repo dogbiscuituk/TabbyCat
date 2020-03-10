@@ -24,10 +24,9 @@
             JsonController = new JsonController(this);
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
+            ConnectAll(true);
 
             Selection.Add(Scene.Traces[0]);
-
-            ConnectAll(true);
         }
 
 
@@ -96,6 +95,8 @@
         // SceneForm
         private void SceneForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void SceneForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
+        // Selection
+        private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
         // Toolbar
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => SceneForm.FileReopen.CloneTo(SceneForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
@@ -181,6 +182,8 @@
                 // SceneForm
                 SceneForm.FormClosed += SceneForm_FormClosed;
                 SceneForm.FormClosing += SceneForm_FormClosing;
+                // Selection
+                Selection.Changed += Selection_Changed;
                 // Toolbar
                 SceneForm.tbAdd.Click += SceneAddNewTrace_Click;
                 SceneForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
@@ -215,6 +218,8 @@
                 // SceneForm
                 SceneForm.FormClosed -= SceneForm_FormClosed;
                 SceneForm.FormClosing -= SceneForm_FormClosing;
+                // Selection
+                Selection.Changed -= Selection_Changed;
                 // Toolbar
                 SceneForm.tbAdd.Click -= SceneAddNewTrace_Click;
                 SceneForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
@@ -395,8 +400,7 @@
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        internal void OnSelectionChanged() =>
-            SelectionChanged?.Invoke(this, EventArgs.Empty);
+        internal void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
 
         internal void BeginUpdate() => ++UpdateCount;
 

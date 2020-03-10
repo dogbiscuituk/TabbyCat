@@ -6,11 +6,11 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class Selection : Shaders
+    public class Selection : ShaderSet
     {
         #region Fields and Properties
 
-        internal List<Trace> Traces { get; } = new List<Trace>();
+        private readonly List<Trace> _Traces = new List<Trace>();
 
         #endregion
 
@@ -21,6 +21,8 @@
             get => GetProperty(p => p.Description);
             set => SetProperty(p => p.Description = value);
         }
+
+        public bool IsEmpty => !_Traces.Any();
 
         public Vector3 Location
         {
@@ -48,7 +50,7 @@
 
         public Pattern Pattern
         {
-            get => throw new NotImplementedException();
+            get => GetPattern();
             set => SetProperty(p => p.Pattern = value);
         }
 
@@ -108,34 +110,80 @@
 
         #endregion
 
+        #region Public Events
+
+        public event EventHandler Changed;
+
+        #endregion
+
         #region Internal Methods
 
         internal void Add(Trace trace)
         {
-            if (!Traces.Contains(trace))
-                Traces.Add(trace);
+            if (_Traces.Contains(trace))
+                return;
+            _Traces.Add(trace);
+            OnChanged();
         }
+
+        internal void Clear()
+        {
+            if (IsEmpty)
+                return;
+            _Traces.Clear();
+            OnChanged();
+        }
+
+        internal void Remove(Trace trace)
+        {
+            if (!_Traces.Contains(trace))
+                return;
+            _Traces.Remove(trace);
+            OnChanged();
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected virtual void OnChanged() => Changed?.Invoke(this, EventArgs.Empty);
 
         #endregion
 
         #region Private Methods
 
+        private Pattern GetPattern()
+        {
+            if (IsEmpty)
+                return default;
+            Pattern first = _Traces.First().Pattern;
+            return _Traces.FirstOrDefault(p => p.Pattern == first) == null
+                ? default
+                : first;
+        }
+
         private T GetProperty<T>(Func<Trace, T> getProperty) where T: IEquatable<T>
         {
-            if (Traces == null || !Traces.Any())
+            if (IsEmpty)
                 return default;
-            T first = getProperty(Traces.First());
-            return Traces.FirstOrDefault(p => getProperty(p).Equals(first)) == null
+            T first = getProperty(_Traces.First());
+            return _Traces.FirstOrDefault(p => getProperty(p).Equals(first)) == null
                 ? default
                 : first;
         }
 
         private void SetProperty(Action<Trace> setProperty)
         {
-            if (Traces == null || !Traces.Any())
+            if (IsEmpty)
                 return;
-            foreach (var trace in Traces)
+            foreach (var trace in _Traces)
                 setProperty(trace);
+        }
+
+        internal void ForEach(Action<Trace> action)
+        {
+            foreach (var trace in _Traces)
+                action(trace);
         }
 
         #endregion

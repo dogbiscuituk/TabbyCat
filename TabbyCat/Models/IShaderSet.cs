@@ -2,7 +2,7 @@
 {
     using OpenTK.Graphics.OpenGL;
 
-    public interface IShaders
+    public interface IShaderSet
     {
         string Shader1Vertex { get; set; }
         string Shader2TessControl { get; set; }

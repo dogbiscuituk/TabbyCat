@@ -3,7 +3,7 @@
     using OpenTK;
     using TabbyCat.Common.Types;
 
-    public interface ITrace : IShaders
+    public interface ITrace : IShaderSet
     {
         string Description { get; set; }
         Vector3 Location { get; set; }

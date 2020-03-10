@@ -5,6 +5,7 @@
     using System;
     using System.ComponentModel;
     using System.IO;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -22,16 +23,17 @@
             PropertiesController = propertiesController;
             new GLPageController(PrimaryTextBox);
             new GLPageController(SecondaryTextBox);
-            Editor.miVertex.Tag = ShaderType.VertexShader;
-            Editor.miTessellationControl.Tag = ShaderType.TessControlShader;
-            Editor.miTessellationEvaluation.Tag = ShaderType.TessEvaluationShader;
-            Editor.miGeometry.Tag = ShaderType.GeometryShader;
-            Editor.miFragment.Tag = ShaderType.FragmentShader;
-            Editor.miCompute.Tag = ShaderType.ComputeShader;
             ShowRuler = false;
             ShowLineNumbers = false;
             ShowDocumentMap = false;
             SplitType = SplitType.None;
+            var items = Editor.btnShader.DropDownItems;
+            items[0].Tag = ShaderType.VertexShader;
+            items[1].Tag = ShaderType.TessControlShader;
+            items[2].Tag = ShaderType.TessEvaluationShader;
+            items[3].Tag = ShaderType.GeometryShader;
+            items[4].Tag = ShaderType.FragmentShader;
+            items[5].Tag = ShaderType.ComputeShader;
             LoadShaderCode();
         }
 
@@ -56,7 +58,7 @@
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private string ShaderName => SceneTab ? ShaderType.SceneShaderName() : ShaderType.TraceShaderName();
-        private Shaders Shaders => SceneTab ? (Shaders)Scene : Selection;
+        private ShaderSet Shaders => SceneTab ? (ShaderSet)Scene : Selection;
         private SplitContainer Splitter => Editor.Splitter;
         private bool Updating;
 
@@ -69,6 +71,9 @@
                 if (ShaderType != value)
                 {
                     _ShaderType = value;
+                    Editor.btnShader.Text =
+                        Editor.btnShader.DropDownItems.Cast<ToolStripMenuItem>()
+                        .First(p => (ShaderType)p.Tag == ShaderType).Text;
                     LoadShaderCode();
                 }
             }
@@ -182,13 +187,23 @@
         private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
-        private void Shader_Click(object sender, System.EventArgs e) =>
-            ShaderType = (ShaderType)((ToolStripItem)sender).Tag;
+        private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShaderType();
 
-        private void Shader_DropDownOpening(object sender, System.EventArgs e)
+        private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) =>
+            ShaderType = (ShaderType)e.ClickedItem.Tag;
+
+        private void Shader_DropDownOpening(object sender, EventArgs e)
         {
-            foreach (ToolStripMenuItem item in ((ToolStripDropDownItem)sender).DropDownItems)
-                item.Checked = (ShaderType)item.Tag == ShaderType;
+            foreach (ToolStripMenuItem item in Editor.btnShader.DropDownItems)
+            {
+                var shaderType = (ShaderType)item.Tag;
+                item.CheckState =
+                    shaderType == ShaderType
+                    ? CheckState.Checked
+                    : string.IsNullOrWhiteSpace(Shaders.GetScript(shaderType))
+                    ? CheckState.Unchecked
+                    : CheckState.Indeterminate;
+            }
         }
 
         private void Split_Click(object sender, System.EventArgs e) => CycleSplit();
@@ -207,13 +222,6 @@
         {
             if (connect)
             {
-                Editor.btnShader.DropDownOpening += Shader_DropDownOpening;
-                Editor.miVertex.Click += Shader_Click;
-                Editor.miTessellationControl.Click += Shader_Click;
-                Editor.miTessellationEvaluation.Click += Shader_Click;
-                Editor.miGeometry.Click += Shader_Click;
-                Editor.miFragment.Click += Shader_Click;
-                Editor.miCompute.Click += Shader_Click;
                 Editor.btnDocumentMap.Click += DocumentMap_Click;
                 Editor.btnExportHTML.Click += ExportHTML_Click;
                 Editor.btnExportRTF.Click += ExportRTF_Click;
@@ -223,6 +231,9 @@
                 Editor.btnPrint.Click += Print_Click;
                 Editor.btnRuler.Click += Ruler_Click;
                 Editor.btnSplit.Click += Split_Click;
+                Editor.btnShader.ButtonClick += Shader_ButtonClick;
+                Editor.btnShader.DropDownOpening += Shader_DropDownOpening;
+                Editor.btnShader.DropDownItemClicked += Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
@@ -231,13 +242,6 @@
             }
             else
             {
-                Editor.btnShader.DropDownOpening -= Shader_DropDownOpening;
-                Editor.miVertex.Click -= Shader_Click;
-                Editor.miTessellationControl.Click -= Shader_Click;
-                Editor.miTessellationEvaluation.Click -= Shader_Click;
-                Editor.miGeometry.Click -= Shader_Click;
-                Editor.miFragment.Click -= Shader_Click;
-                Editor.miCompute.Click -= Shader_Click;
                 Editor.btnDocumentMap.Click -= DocumentMap_Click;
                 Editor.btnExportHTML.Click -= ExportHTML_Click;
                 Editor.btnExportRTF.Click -= ExportRTF_Click;
@@ -291,9 +295,22 @@
             if (SceneTab)
                 Run(new SceneShaderCommand(ShaderType, text));
             else
-                foreach(var trace in Selection.Traces)
-                    Run(new TraceShaderCommand(trace.Index, ShaderType, text));
+                Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
             Updating = false;
+        }
+
+        private void SelectNextShaderType()
+        {
+            if (Shaders.GetActiveShaders.Count < 2)
+                ShaderType = ShaderType.Next();
+            else
+            {
+                var shaderType = ShaderType;
+                do
+                    shaderType = shaderType.Next();
+                while (string.IsNullOrWhiteSpace(Shaders.GetScript(shaderType)));
+                ShaderType = shaderType;
+            }
         }
 
         private void UpdateProperties(params string[] propertyNames)

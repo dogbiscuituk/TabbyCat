@@ -197,6 +197,9 @@
         private static readonly object GLModeSyncRoot = new object();
         private readonly SceneController SceneController;
 
+        /// <summary>
+        /// Program and Shader IDs.
+        /// </summary>
         private int
             ProgramID,
             VertexShaderID,
@@ -206,6 +209,9 @@
             FragmentShaderID,
             ComputeShaderID;
 
+        /// <summary>
+        /// Uniform locations.
+        /// </summary>
         private int
             Loc_CameraView,
             Loc_Projection,
@@ -225,7 +231,6 @@
         private StringBuilder
             GpuCode,
             GpuLog,
-            MainBody,
             SceneScript;
 
         #endregion
@@ -272,7 +277,6 @@
                         SceneScript = new StringBuilder();
                         SceneScript.AppendFormat(Resources.Scene_Head, shaderType.ShaderTag(), Scene.GLTargetVersion);
                         AddScript(Scene.GetScript(shaderType));
-                        MainBody = new StringBuilder();
                     }
                     SceneScript.AppendFormat(Resources.Trace_Head, traceIndex, trace);
                     AddScript(traceScript);
@@ -294,7 +298,6 @@
             GpuCode.Append(SceneScript);
             BreakOffset = GpuCode.GetLineCount() - 1;
             GL.ShaderSource(shaderID, SceneScript.ToString());
-            MainBody = null;
             SceneScript = null;
             GL.CompileShader(shaderID);
             GL.AttachShader(ProgramID, shaderID);
@@ -512,12 +515,9 @@
             Loc_Transform = GetUniformLocation("transform");
         }
 
-        //private static void LoadBoolean(int location, bool value) => GL.Uniform1(location, value ? 1f : 0f);
-        private static void LoadDouble(int location, double value) => GL.Uniform1(location, value);
         private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
         private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
         private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
-        //private static void LoadVector(int location, Vector3 value) => GL.Uniform3(location, value);
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
         private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);

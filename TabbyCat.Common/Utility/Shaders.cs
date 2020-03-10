@@ -2,8 +2,27 @@
 {
     using OpenTK.Graphics.OpenGL;
 
-    public static class ShaderNames
+    public static class Shaders
     {
+        public static ShaderType Next(this ShaderType shaderType)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    return ShaderType.TessControlShader;
+                case ShaderType.TessControlShader:
+                    return ShaderType.TessEvaluationShader;
+                case ShaderType.TessEvaluationShader:
+                    return ShaderType.GeometryShader;
+                case ShaderType.GeometryShader:
+                    return ShaderType.FragmentShader;
+                case ShaderType.FragmentShader:
+                    return ShaderType.ComputeShader;
+                default:
+                    return ShaderType.VertexShader;
+            }
+        }
+
         public static string SceneShaderName(this ShaderType shaderType) =>
             $"Scene {shaderType.ShaderTag()} Shader";
 

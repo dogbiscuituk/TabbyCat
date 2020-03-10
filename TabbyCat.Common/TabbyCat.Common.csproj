@@ -64,7 +64,7 @@
     <Compile Include="Utility\Maths.cs" />
     <Compile Include="Utility\Processes.cs" />
     <Compile Include="Utility\PropertyNames.cs" />
-    <Compile Include="Utility\ShaderNames.cs" />
+    <Compile Include="Utility\Shaders.cs" />
     <Compile Include="Utility\Strings.cs" />
     <Compile Include="Types\ColourFormat.cs" />
     <Compile Include="Types\GPUStatus.cs" />

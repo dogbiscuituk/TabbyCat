@@ -501,7 +501,6 @@
             this.cbPattern.Name = "cbPattern";
             this.cbPattern.Size = new System.Drawing.Size(234, 23);
             this.cbPattern.TabIndex = 27;
-            this.cbPattern.Text = "Grid";
             // 
             // label9
             // 

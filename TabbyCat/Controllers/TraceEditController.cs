@@ -3,7 +3,6 @@
     using OpenTK;
     using System;
     using System.ComponentModel;
-    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -16,7 +15,11 @@
         #region Constructors
 
         internal TraceEditController(PropertiesController propertiesController)
-            : base(propertiesController) => InitControls(Editor.TableLayoutPanel);
+            : base(propertiesController)
+        {
+            InitControls(Editor.TableLayoutPanel);
+            InitPatternCombo();
+        }
 
         #endregion
 
@@ -31,6 +34,7 @@
 
         protected override void Connect()
         {
+            UpdateAllProperties();
             Editor.edDescription.TextChanged += Description_TextChanged;
             Editor.seLocationX.ValueChanged += Location_ValueChanged;
             Editor.seLocationY.ValueChanged += Location_ValueChanged;
@@ -41,7 +45,7 @@
             Editor.seScaleX.ValueChanged += Scale_ValueChanged;
             Editor.seScaleY.ValueChanged += Scale_ValueChanged;
             Editor.seScaleZ.ValueChanged += Scale_ValueChanged;
-            Editor.cbPattern.SelectedIndexChanged += Pattern_SelectedIndexChanged;
+            Editor.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
             Editor.seMinimumX.ValueChanged += Minimum_ValueChanged;
             Editor.seMinimumY.ValueChanged += Minimum_ValueChanged;
             Editor.seMinimumZ.ValueChanged += Minimum_ValueChanged;
@@ -68,7 +72,7 @@
             Editor.seScaleX.ValueChanged -= Scale_ValueChanged;
             Editor.seScaleY.ValueChanged -= Scale_ValueChanged;
             Editor.seScaleZ.ValueChanged -= Scale_ValueChanged;
-            Editor.cbPattern.SelectedIndexChanged -= Pattern_SelectedIndexChanged;
+            Editor.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
             Editor.seMinimumX.ValueChanged -= Minimum_ValueChanged;
             Editor.seMinimumY.ValueChanged -= Minimum_ValueChanged;
             Editor.seMinimumZ.ValueChanged -= Minimum_ValueChanged;
@@ -113,8 +117,8 @@
                 (float)Editor.seOrientationY.Value,
                 (float)Editor.seOrientationZ.Value)));
 
-        private void Pattern_SelectedIndexChanged(object sender, System.EventArgs e) =>
-            Run(p => new PatternCommand(p, (Pattern)Editor.cbPattern.SelectedIndex));
+        private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new PatternCommand(p, (Pattern)Editor.cbPattern.SelectedItem));
 
         private void Scale_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new ScaleCommand(p, new Vector3(
@@ -154,13 +158,18 @@
             }
         }
 
+        private void InitPatternCombo()
+        {
+            foreach (Pattern pattern in Enum.GetValues(typeof(Pattern)))
+                Editor.cbPattern.Items.Add(pattern);
+        }
+
         private void Run(Func<int, ICommand> makeCommand)
         {
-            if (Updating || !Selection.Traces.Any())
+            if (Updating || Selection.IsEmpty)
                 return;
             Updating = true;
-            foreach (var trace in Selection.Traces)
-                CommandProcessor.Run(makeCommand(trace.Index));
+            Selection.ForEach(p => CommandProcessor.Run(makeCommand(p.Index)));
             Updating = false;
         }
 
@@ -209,7 +218,7 @@
                         Editor.seOrientationZ.Value = (decimal)Selection.Orientation.Z;
                         break;
                     case PropertyNames.Pattern:
-                        Editor.cbPattern.SelectedIndex = (int)Selection.Pattern;
+                        Editor.cbPattern.SelectedItem = Selection.Pattern;
                         break;
                     case PropertyNames.Scale:
                         Editor.seScaleX.Value = (decimal)Selection.Scale.X;
