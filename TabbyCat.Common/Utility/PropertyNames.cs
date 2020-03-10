@@ -1,7 +1,5 @@
 ﻿namespace TabbyCat.Common.Utility
 {
-    using OpenTK.Graphics.OpenGL;
-
     public static class PropertyNames
     {
         /// <summary>

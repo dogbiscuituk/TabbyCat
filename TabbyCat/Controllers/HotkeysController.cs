@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Properties;
     using System.Windows.Forms;
     using TabbyCat.Views;
 

@@ -1,7 +1,5 @@
 ﻿namespace TabbyCat.Models
 {
-    using OpenTK.Graphics.OpenGL;
-
     public abstract class Code : ShaderSet
     {
         #region Constructors
