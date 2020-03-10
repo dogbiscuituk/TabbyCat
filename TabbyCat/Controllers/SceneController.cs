@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using OpenTK;
-    using OpenTK.Graphics;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
