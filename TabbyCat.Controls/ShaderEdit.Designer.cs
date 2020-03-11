@@ -53,8 +53,8 @@
             this.btnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnShader = new System.Windows.Forms.ToolStripSplitButton();
             this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
             this.miTessellationEvaluation = new System.Windows.Forms.ToolStripMenuItem();
+            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
             this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
             this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
             this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,7 +136,7 @@
             // 
             this.SecondarySplitter.Panel2.Controls.Add(this.SecondaryMap);
             this.SecondarySplitter.Size = new System.Drawing.Size(314, 102);
-            this.SecondarySplitter.SplitterDistance = 222;
+            this.SecondarySplitter.SplitterDistance = 221;
             this.SecondarySplitter.SplitterWidth = 5;
             this.SecondarySplitter.TabIndex = 5;
             // 
@@ -179,7 +179,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(222, 74);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(221, 74);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -225,7 +225,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(222, 197);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(221, 197);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -240,7 +240,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(222, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(221, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -252,7 +252,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(87, 102);
+            this.SecondaryMap.Size = new System.Drawing.Size(88, 102);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -274,7 +274,7 @@
             // 
             this.PrimarySplitter.Panel2.Controls.Add(this.PrimaryMap);
             this.PrimarySplitter.Size = new System.Drawing.Size(314, 225);
-            this.PrimarySplitter.SplitterDistance = 222;
+            this.PrimarySplitter.SplitterDistance = 221;
             this.PrimarySplitter.SplitterWidth = 5;
             this.PrimarySplitter.TabIndex = 4;
             // 
@@ -287,7 +287,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(222, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(221, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -299,7 +299,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(87, 225);
+            this.PrimaryMap.Size = new System.Drawing.Size(88, 225);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
@@ -308,7 +308,7 @@
             // Toolbar
             // 
             this.Toolbar.AutoSize = false;
-            this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.Toolbar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnExport,
             this.btnPrint,
@@ -336,13 +336,13 @@
             // btnExportHTML
             // 
             this.btnExportHTML.Name = "btnExportHTML";
-            this.btnExportHTML.Size = new System.Drawing.Size(166, 22);
+            this.btnExportHTML.Size = new System.Drawing.Size(180, 22);
             this.btnExportHTML.Text = "Export as &HTML...";
             // 
             // btnExportRTF
             // 
             this.btnExportRTF.Name = "btnExportRTF";
-            this.btnExportRTF.Size = new System.Drawing.Size(166, 22);
+            this.btnExportRTF.Size = new System.Drawing.Size(180, 22);
             this.btnExportRTF.Text = "Export as &RTF...";
             // 
             // btnPrint
@@ -352,6 +352,7 @@
             this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(23, 22);
+            this.btnPrint.ToolTipText = "Print...";
             // 
             // btnOptions
             // 
@@ -369,19 +370,19 @@
             // btnRuler
             // 
             this.btnRuler.Name = "btnRuler";
-            this.btnRuler.Size = new System.Drawing.Size(157, 22);
+            this.btnRuler.Size = new System.Drawing.Size(180, 22);
             this.btnRuler.Text = "&Ruler";
             // 
             // btnLineNumbers
             // 
             this.btnLineNumbers.Name = "btnLineNumbers";
-            this.btnLineNumbers.Size = new System.Drawing.Size(157, 22);
+            this.btnLineNumbers.Size = new System.Drawing.Size(180, 22);
             this.btnLineNumbers.Text = "&Line Numbers";
             // 
             // btnDocumentMap
             // 
             this.btnDocumentMap.Name = "btnDocumentMap";
-            this.btnDocumentMap.Size = new System.Drawing.Size(157, 22);
+            this.btnDocumentMap.Size = new System.Drawing.Size(180, 22);
             this.btnDocumentMap.Text = "&Document Map";
             // 
             // btnSplit
@@ -399,7 +400,7 @@
             this.btnHelp.Image = global::TabbyCat.Controls.Properties.Resources.info;
             this.btnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(23, 22);
+            this.btnHelp.Size = new System.Drawing.Size(23, 20);
             this.btnHelp.ToolTipText = "Help";
             // 
             // btnShader
@@ -427,17 +428,17 @@
             this.miVertex.Size = new System.Drawing.Size(193, 22);
             this.miVertex.Text = "&Vertex Shader";
             // 
-            // miTessellationControl
-            // 
-            this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(193, 22);
-            this.miTessellationControl.Text = "&Tessellation Control";
-            // 
             // miTessellationEvaluation
             // 
             this.miTessellationEvaluation.Name = "miTessellationEvaluation";
             this.miTessellationEvaluation.Size = new System.Drawing.Size(193, 22);
             this.miTessellationEvaluation.Text = "Tessellation &Evaluation";
+            // 
+            // miTessellationControl
+            // 
+            this.miTessellationControl.Name = "miTessellationControl";
+            this.miTessellationControl.Size = new System.Drawing.Size(193, 22);
+            this.miTessellationControl.Text = "&Tessellation Control";
             // 
             // miGeometry
             // 

@@ -8,7 +8,7 @@
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
-    using TabbyCat.Controls;
+    using TabbyCat.Controls.Types;
     using Languages = FastColoredTextBoxNS.Language;
 
     /// <summary>

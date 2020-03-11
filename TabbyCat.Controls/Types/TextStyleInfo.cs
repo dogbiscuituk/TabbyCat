@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Controls
+﻿namespace TabbyCat.Controls.Types
 {
     using System;
     using System.ComponentModel;

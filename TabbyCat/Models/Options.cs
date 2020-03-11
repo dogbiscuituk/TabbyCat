@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Models
 {
-    using TabbyCat.Controls;
+    using TabbyCat.Controls.Types;
 
     public class Options
     {

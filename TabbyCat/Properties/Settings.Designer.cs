@@ -99,9 +99,9 @@ namespace TabbyCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::TabbyCat.Controls.TextStyleInfos SyntaxHighlightStyles {
+        public global::TabbyCat.Controls.Types.TextStyleInfos SyntaxHighlightStyles {
             get {
-                return ((global::TabbyCat.Controls.TextStyleInfos)(this["SyntaxHighlightStyles"]));
+                return ((global::TabbyCat.Controls.Types.TextStyleInfos)(this["SyntaxHighlightStyles"]));
             }
             set {
                 this["SyntaxHighlightStyles"] = value;

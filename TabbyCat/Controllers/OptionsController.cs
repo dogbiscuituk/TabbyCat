@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
-    using TabbyCat.Controls;
+    using TabbyCat.Controls.Types;
     using TabbyCat.Models;
     using TabbyCat.Views;
 

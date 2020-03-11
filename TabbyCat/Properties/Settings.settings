@@ -20,7 +20,7 @@
     <Setting Name="KnownColorSortOrder" Type="System.String" Scope="User">
       <Value Profile="(Default)">Hue, Saturation</Value>
     </Setting>
-    <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Controls.TextStyleInfos" Scope="User">
+    <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Controls.Types.TextStyleInfos" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GLSLUrl" Type="System.String" Scope="User">

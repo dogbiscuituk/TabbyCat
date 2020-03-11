@@ -70,10 +70,10 @@
     <Compile Include="WorldEdit.Designer.cs">
       <DependentUpon>WorldEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextStyleInfo.cs" />
-    <Compile Include="TextStyleInfos.cs" />
-    <Compile Include="TextStyleInfosTypeConverter.cs" />
-    <Compile Include="TextStyleInfoTypeConverter.cs" />
+    <Compile Include="Types\TextStyleInfo.cs" />
+    <Compile Include="Types\TextStyleInfos.cs" />
+    <Compile Include="Types\TextStyleInfosTypeConverter.cs" />
+    <Compile Include="Types\TextStyleInfoTypeConverter.cs" />
     <Compile Include="FlagsEnumEditor.cs" />
     <Compile Include="FlagsCheckedListBox.cs">
       <SubType>Component</SubType>
