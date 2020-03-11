@@ -13,8 +13,8 @@
     {
         #region Constructors
 
-        internal RenderController(SceneController sceneController) =>
-            SceneController = sceneController;
+        internal RenderController(WorldController worldController) =>
+            WorldController = worldController;
 
         #endregion
 
@@ -195,7 +195,7 @@
 
         private static readonly object GLInfoSyncRoot = new object();
         private static readonly object GLModeSyncRoot = new object();
-        private readonly SceneController SceneController;
+        private readonly WorldController WorldController;
 
         /// <summary>
         /// Program and Shader IDs.
@@ -238,10 +238,10 @@
         #region Private Properties
 
         private Clock Clock => ClockController.Clock;
-        private ClockController ClockController => SceneController.ClockController;
-        private GLControl GLControl => SceneController.GLControl;
+        private ClockController ClockController => WorldController.ClockController;
+        private GLControl GLControl => WorldController.GLControl;
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
-        private Scene Scene => SceneController.Scene;
+        private Scene Scene => WorldController.Scene;
 
         #endregion
 

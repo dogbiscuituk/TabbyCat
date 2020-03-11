@@ -2,392 +2,243 @@
 {
     using OpenTK;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Windows.Forms;
+    using System.Drawing;
     using TabbyCat.Commands;
+    using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using TabbyCatControls;
 
-    internal class SceneController
+    internal class SceneController : CodeEditController
     {
-        internal SceneController()
-        {
-            SceneForm = new SceneForm();
-            Scene = new Scene(this);
-            ClockController = new ClockController(this);
-            CommandProcessor = new CommandProcessor(this);
-            new FullScreenController(this);
-            JsonController = new JsonController(this);
-            PropertiesController = new PropertiesController(this);
-            RenderController = new RenderController(this);
-            ConnectAll(true);
+        #region Constructors
 
-            Selection.Add(Scene.Traces[0]);
+        internal SceneController(PropertiesController propertiesController)
+            : base(propertiesController)
+        {
+            InitControls(Editor.TableLayoutPanel);
+            new ColourController().AddControls(Editor.cbBackground);
         }
 
-        internal ClockController ClockController;
-        internal CommandProcessor CommandProcessor { get; private set; }
-        internal GLControl GLControl => SceneForm.GLControl;
-        internal PropertiesController PropertiesController;
-        internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
-        internal readonly RenderController RenderController;
-        internal Scene Scene;
-        internal SceneForm SceneForm;
-        internal Selection Selection = new Selection();
+        #endregion
 
-        #region Internal Methods
+        #region Fields & Properties
 
-        internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
-        internal void ModifiedChanged() => SceneForm.Text = JsonController.WindowCaption;
-        internal void Show() => SceneForm.Show();
-        internal void Show(IWin32Window owner) => SceneForm.Show(owner);
+        private SceneEdit Editor => PropertiesEditor.SceneEdit;
 
         #endregion
 
-        #region Private Properties
+        #region Protected Methods
 
-        private readonly List<string> ChangedPropertyNames = new List<string>();
-        private Clock Clock => ClockController.Clock;
-        private string GLSLUrl => Settings.Default.GLSLUrl;
-        private readonly JsonController JsonController;
+        protected override void Connect()
+        {
+            UpdateAllProperties();
+            Editor.edTitle.TextChanged += SceneTitle_TextChanged;
+            Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
+            Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
+            Editor.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
+            Editor.seCameraFocusX.ValueChanged += CameraFocus_ValueChanged;
+            Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
+            Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
+            Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
+            Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
+            Editor.seFPS.ValueChanged += FPS_ValueChanged;
+            Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
+            Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
+            Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
+            Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
+            Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
+            Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
+            Editor.seSamples.ValueChanged += Samples_ValueChanged;
+            Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
+            WorldController.PropertyChanged += WorldController_PropertyChanged;
+        }
+
+        protected override void Disconnect()
+        {
+            Editor.edTitle.TextChanged -= SceneTitle_TextChanged;
+            Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
+            Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
+            Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
+            Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
+            Editor.seFPS.ValueChanged -= FPS_ValueChanged;
+            Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
+            Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
+            Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
+            Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
+            Editor.seSamples.ValueChanged -= Samples_ValueChanged;
+            Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
+            WorldController.PropertyChanged -= WorldController_PropertyChanged;
+        }
 
         #endregion
-
-        internal event PropertyChangedEventHandler PropertyChanged;
-        internal event EventHandler SelectionChanged;
 
         #region Private Event Handlers
 
-        // Clock
-        private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
-        // GLControl
-        private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
-        private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
-        private void GLControl_Load(object sender, EventArgs e) { }
-        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
-        private void GLControl_Resize(object sender, EventArgs e) { }
-        // JsonController
-        private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
-        private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
-        private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
-        private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
-        private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
-        private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
-        // Menu
-        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
-        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
-        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
-        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
-        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
-        private void FileClose_Click(object sender, System.EventArgs e) => SceneForm.Close();
-        private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
-        private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
-        private void SceneAddNewTrace_Click(object sender, EventArgs e) => CommandProcessor.AppendTrace();
-        private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
-        private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
-        // SceneForm
-        private void SceneForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
-        private void SceneForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
-        // Selection
-        private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
-        // Toolbar
-        private void TbOpen_DropDownOpening(object sender, EventArgs e) => SceneForm.FileReopen.CloneTo(SceneForm.tbOpen);
-        private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
+        private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
+            Run(new BackgroundColourCommand(Color.FromName(Editor.cbBackground.Text)));
+
+        private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
+            Run(new CameraFocusCommand(new Vector3(
+                (float)Editor.seCameraFocusX.Value,
+                (float)Editor.seCameraFocusY.Value,
+                (float)Editor.seCameraFocusZ.Value)));
+
+        private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
+            Run(new CameraPositionCommand(new Vector3(
+                (float)Editor.seCameraPositionX.Value,
+                (float)Editor.seCameraPositionY.Value,
+                (float)Editor.seCameraPositionZ.Value)));
+
+        private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
+            Run(new FieldOfViewCommand((float)Editor.seFieldOfView.Value));
+
+        private void FPS_ValueChanged(object sender, EventArgs e) =>
+            Run(new FpsCommand((float)Editor.seFPS.Value));
+
+        private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMaxCommand(new Vector3(
+                (float)Editor.seFrustumMaxX.Value,
+                (float)Editor.seFrustumMaxY.Value,
+                (float)Editor.seFrustumMaxZ.Value)));
+
+        private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMinCommand(new Vector3(
+                (float)Editor.seFrustumMinX.Value,
+                (float)Editor.seFrustumMinY.Value,
+                (float)Editor.seFrustumMinZ.Value)));
+
+        private void GLSLVersion_SelectedValueChanged(object sender, EventArgs e) =>
+            Run(new GLTargetVersionCommand(Editor.cbGLSLVersion.Text));
+
+        private void ProjectionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateUI();
+            Run(new ProjectionTypeCommand((ProjectionType)Editor.cbProjectionType.SelectedIndex));
+        }
+
+        private void Samples_ValueChanged(object sender, EventArgs e) =>
+            Run(new SamplesCommand((int)Editor.seSamples.Value));
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
+
+        private void SceneTitle_TextChanged(object sender, EventArgs e)
+            => Run(new TitleCommand(Editor.edTitle.Text));
+
+        private void VSync_CheckedChanged(object sender, EventArgs e) =>
+            Run(new VSyncCommand(Editor.cbVSync.Checked));
 
         #endregion
-
-        private int UpdateCount;
 
         #region Private Methods
 
-        private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
-
-        private void ClockInit() => Clock.Interval_ms = GetFrameMilliseconds();
-
-        private void ClockShutdown() => Clock.Stop();
-
-        private void ClockStartup()
+        private void Run(ICommand command)
         {
-            ClockInit();
-            Clock.Start();
-            ClockController.UpdateTimeControls();
+            if (Updating)
+                return;
+            Updating = true;
+            CommandProcessor.Run(command);
+            Updating = false;
         }
 
-        private void ConnectAll(bool connect)
+        private void UpdateAllProperties()
         {
-            if (connect)
+            UpdateProperties(new[]
             {
-                ConnectEventHandlers(true);
-                ConnectControllers(true);
-                CommandProcessor.Clear();
-                Clock.Tick += Clock_Tick;
-                ClockStartup();
-            }
-            else
-            {
-                ClockShutdown();
-                Clock.Tick -= Clock_Tick;
-                RenderController.InvalidateProgram();
-                CommandProcessor.Clear();
-                ConnectControllers(false);
-                ConnectEventHandlers(false);
-                AppController.Remove(this);
-            }
+                PropertyNames.Background,
+                PropertyNames.CameraFocus,
+                PropertyNames.CameraPosition,
+                PropertyNames.FarPlane,
+                PropertyNames.FieldOfView,
+                PropertyNames.FPS,
+                PropertyNames.GLTargetVersion,
+                PropertyNames.NearPlane,
+                PropertyNames.ProjectionType,
+                PropertyNames.Samples,
+                PropertyNames.SceneTitle,
+                PropertyNames.VSync
+            });
+            UpdateUI();
         }
 
-        private void ConnectControllers(bool connect)
+        private void UpdateProperties(params string[] propertyNames)
         {
-            if (connect)
-            {
-                //PropertyGridController.SelectedObject = Scene;
-            }
-            else
-            {
-                //PropertyGridController.SelectedObject = null;
-                RenderController.Unload();
-            }
+            if (Updating)
+                return;
+            Updating = true;
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Background:
+                        Editor.cbBackground.Text = Scene.BackgroundColour.Name;
+                        break;
+                    case PropertyNames.CameraFocus:
+                        Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
+                        Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
+                        Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
+                        break;
+                    case PropertyNames.CameraPosition:
+                        Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
+                        Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
+                        Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
+                        break;
+                    case PropertyNames.FarPlane:
+                        Editor.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
+                        Editor.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
+                        Editor.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
+                        break;
+                    case PropertyNames.FieldOfView:
+                        Editor.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
+                        break;
+                    case PropertyNames.FPS:
+                        Editor.seFPS.Value = (decimal)Scene.FPS;
+                        break;
+                    case PropertyNames.GLTargetVersion:
+                        Editor.cbGLSLVersion.Text = Scene.GLTargetVersion;
+                        break;
+                    case PropertyNames.NearPlane:
+                        Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
+                        Editor.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
+                        Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
+                        break;
+                    case PropertyNames.ProjectionType:
+                        Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
+                        break;
+                    case PropertyNames.Samples:
+                        Editor.seSamples.Value = Scene.SampleCount;
+                        break;
+                    case PropertyNames.SceneTitle:
+                        Editor.edTitle.Text = Scene.Title;
+                        break;
+                    case PropertyNames.VSync:
+                        Editor.cbVSync.Checked = Scene.VSync;
+                        break;
+                }
+            Updating = false;
         }
 
-        private void ConnectEventHandlers(bool connect)
+        private void UpdateUI()
         {
-            if (connect)
-            {
-                // JsonController
-                JsonController.FileLoaded += JsonController_FileLoaded;
-                JsonController.FilePathChanged += JsonController_FilePathChanged;
-                JsonController.FilePathRequest += JsonController_FilePathRequest;
-                JsonController.FileReopen += JsonController_FileReopen;
-                JsonController.FileSaving += JsonController_FileSaving;
-                JsonController.FileSaved += JsonController_FileSaved;
-                // Menu
-                SceneForm.FileNewEmptyScene.Click += FileNewEmptyScene_Click;
-                SceneForm.FileNewFromTemplate.Click += FileNewFromTemplate_Click;
-                SceneForm.FileOpen.Click += FileOpen_Click;
-                SceneForm.FileSave.Click += FileSave_Click;
-                SceneForm.FileSaveAs.Click += FileSaveAs_Click;
-                SceneForm.FileClose.Click += FileClose_Click;
-                SceneForm.FileExit.Click += FileExit_Click;
-                SceneForm.EditOptions.Click += EditOptions_Click;
-                SceneForm.EditRefresh.Click += EditRefresh_Click;
-                SceneForm.SceneAddNewTrace.Click += SceneAddNewTrace_Click;
-                SceneForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
-                SceneForm.HelpAbout.Click += HelpAbout_Click;
-                // SceneForm
-                SceneForm.FormClosed += SceneForm_FormClosed;
-                SceneForm.FormClosing += SceneForm_FormClosing;
-                // Selection
-                Selection.Changed += Selection_Changed;
-                // Toolbar
-                SceneForm.tbAdd.Click += SceneAddNewTrace_Click;
-                SceneForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
-                SceneForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
-                SceneForm.tbNewFromTemplate.Click += FileNewFromTemplate_Click;
-                SceneForm.tbOpen.ButtonClick += FileOpen_Click;
-                SceneForm.tbOpen.DropDownOpening += TbOpen_DropDownOpening;
-                SceneForm.tbSave.Click += TbSave_Click;
-            }
-            else
-            {
-                // JsonController
-                JsonController.FileLoaded -= JsonController_FileLoaded;
-                JsonController.FilePathChanged -= JsonController_FilePathChanged;
-                JsonController.FilePathRequest -= JsonController_FilePathRequest;
-                JsonController.FileReopen -= JsonController_FileReopen;
-                JsonController.FileSaving -= JsonController_FileSaving;
-                JsonController.FileSaved -= JsonController_FileSaved;
-                // Menu
-                SceneForm.FileNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                SceneForm.FileNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                SceneForm.FileOpen.Click -= FileOpen_Click;
-                SceneForm.FileSave.Click -= FileSave_Click;
-                SceneForm.FileSaveAs.Click -= FileSaveAs_Click;
-                SceneForm.FileClose.Click -= FileClose_Click;
-                SceneForm.FileExit.Click -= FileExit_Click;
-                SceneForm.EditOptions.Click -= EditOptions_Click;
-                SceneForm.EditRefresh.Click -= EditRefresh_Click;
-                SceneForm.SceneAddNewTrace.Click -= SceneAddNewTrace_Click;
-                SceneForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
-                SceneForm.HelpAbout.Click -= HelpAbout_Click;
-                // SceneForm
-                SceneForm.FormClosed -= SceneForm_FormClosed;
-                SceneForm.FormClosing -= SceneForm_FormClosing;
-                // Selection
-                Selection.Changed -= Selection_Changed;
-                // Toolbar
-                SceneForm.tbAdd.Click -= SceneAddNewTrace_Click;
-                SceneForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
-                SceneForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                SceneForm.tbNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                SceneForm.tbOpen.ButtonClick -= FileOpen_Click;
-                SceneForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
-                SceneForm.tbSave.Click -= TbSave_Click;
-            }
-            ConnectGLControl(connect);
+            var fov = Editor.cbProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            Editor.seFrustumMinX.Enabled =
+            Editor.seFrustumMinY.Enabled =
+            Editor.seFrustumMaxX.Enabled =
+            Editor.seFrustumMaxY.Enabled =
+                !fov;
+            Editor.seFieldOfView.Enabled = fov;
         }
-
-        private void ConnectGLControl(bool connect)
-        {
-            if (connect)
-            {
-                GLControl.BackColorChanged += GLControl_BackColorChanged;
-                GLControl.ClientSizeChanged += GLControl_ClientSizeChanged;
-                GLControl.Load += GLControl_Load;
-                GLControl.Paint += GLControl_Paint;
-                GLControl.Resize += GLControl_Resize;
-            }
-            else
-            {
-                GLControl.BackColorChanged -= GLControl_BackColorChanged;
-                GLControl.ClientSizeChanged -= GLControl_ClientSizeChanged;
-                GLControl.Load -= GLControl_Load;
-                GLControl.Paint -= GLControl_Paint;
-                GLControl.Resize -= GLControl_Resize;
-            }
-        }
-
-        private void EditOptions()
-        {
-            using (var optionsController = new OptionsController())
-                optionsController.ShowModal(SceneForm);
-        }
-
-        private void FileLoaded()
-        {
-            ConnectControllers(false);
-            Scene.SceneController = this;
-            BeginUpdate();
-            Scene.AttachTraces();
-            CommandProcessor.Clear();
-            EndUpdate();
-            ConnectControllers(true);
-        }
-
-        private void FilePathRequest(SdiController.FilePathEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(e.FilePath))
-                e.FilePath = Scene.Title.ToFilename();
-        }
-
-        private void FileSaved()
-        {
-            BeginUpdate();
-            CommandProcessor.Save();
-            EndUpdate();
-        }
-
-        private void FormClosed() => ConnectAll(false);
-
-        private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
-
-        private int GetFrameMilliseconds() => (int)Math.Round(1000 / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
-
-        private SceneController GetNewSceneController()
-        {
-            if (AppController.Options.OpenInNewWindow)
-                return AppController.AddNewSceneController();
-            if (!JsonController.SaveIfModified())
-                return null;
-            JsonController.Clear();
-            return this;
-        }
-
-        private void HelpAbout() => new AboutController().ShowDialog(SceneForm);
-
-        private void NewEmptyScene()
-        {
-            GetNewSceneController();
-            CommandProcessor.Clear();
-        }
-
-        private void NewFromTemplate()
-        {
-            var sceneController = OpenFile(FilterIndex.Template);
-            if (sceneController != null)
-                sceneController.JsonController.FilePath = string.Empty;
-        }
-
-        private SceneController OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
-            OpenFile(JsonController.SelectFilePath(filterIndex));
-
-        private SceneController OpenFile(string filePath)
-        {
-            if (string.IsNullOrWhiteSpace(filePath))
-                return null;
-            var sceneController = GetNewSceneController();
-            sceneController?.LoadFromFile(filePath);
-            return sceneController;
-        }
-
-        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
-        private void Resize() => RenderController.InvalidateProjection();
-
-        private bool SaveFile() => JsonController.Save();
-
-        private bool SaveFileAs() => JsonController.SaveAs();
-
-        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
-
-        private void UpdateCaption() { SceneForm.Text = JsonController.WindowCaption; }
 
         #endregion
-
-        internal void OnPropertyChanged(string propertyName)
-        {
-            switch (propertyName)
-            {
-                case PropertyNames.FPS:
-                    ClockInit();
-                    break;
-                case PropertyNames.CameraPosition:
-                case PropertyNames.CameraFocus:
-                    RenderController.InvalidateCameraView();
-                    break;
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.SceneVertex:
-                case PropertyNames.SceneTessControl:
-                case PropertyNames.SceneTessEvaluation:
-                case PropertyNames.SceneGeometry:
-                case PropertyNames.SceneFragment:
-                case PropertyNames.SceneCompute:
-                case PropertyNames.TraceVertex:
-                case PropertyNames.TraceTessControl:
-                case PropertyNames.TraceTessEvaluation:
-                case PropertyNames.TraceGeometry:
-                case PropertyNames.TraceFragment:
-                case PropertyNames.TraceCompute:
-                    RenderController.InvalidateProgram();
-                    break;
-                case PropertyNames.ProjectionType:
-                case PropertyNames.FieldOfView:
-                case PropertyNames.NearPlane:
-                case PropertyNames.FarPlane:
-                    RenderController.InvalidateProjection();
-                    break;
-                //case PropertyNames.Pattern:
-                //case PropertyNames.StripCount:
-                //    RenderController.InvalidateTrace((Trace)ChangedSubject);
-                //    break;
-            }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        internal void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
-
-        internal void BeginUpdate() => ++UpdateCount;
-
-        internal void EndUpdate()
-        {
-            if (--UpdateCount == 0)
-            {
-                foreach (var propertyName in ChangedPropertyNames)
-                    OnPropertyChanged(propertyName);
-                ChangedPropertyNames.Clear();
-            }
-        }
     }
 }

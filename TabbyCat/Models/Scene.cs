@@ -15,9 +15,9 @@
 
         public Scene() : base() => Init();
 
-        internal Scene(SceneController sceneController) : this()
+        internal Scene(WorldController worldController) : this()
         {
-            SceneController = sceneController;
+            WorldController = worldController;
             AddTrace(new Trace(this));
         }
 
@@ -42,11 +42,11 @@
 
         #region Internal Properties
 
-        internal CommandProcessor CommandProcessor => SceneController?.CommandProcessor;
+        internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
 
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
 
-        internal SceneController SceneController;
+        internal WorldController WorldController;
 
         #endregion
 
@@ -64,7 +64,7 @@
 
         internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
 
-        internal GLMode GetGLMode() => SceneController?.GLMode;
+        internal GLMode GetGLMode() => WorldController?.GLMode;
 
         internal Matrix4 GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
 
@@ -72,7 +72,7 @@
 
         internal Trace NewTrace() => new Trace(this);
 
-        internal void OnPropertyChanged(string propertyName) => SceneController.OnPropertyChanged(propertyName);
+        internal void OnPropertyChanged(string propertyName) => WorldController.OnPropertyChanged(propertyName);
 
         internal void RemoveTrace(int index)
         {
@@ -126,7 +126,7 @@
 
         #region Private Properties
 
-        private GLControl GLControl => SceneController?.GLControl;
+        private GLControl GLControl => WorldController?.GLControl;
 
         #endregion
 

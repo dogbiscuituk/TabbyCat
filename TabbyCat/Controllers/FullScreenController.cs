@@ -8,9 +8,9 @@
     {
         #region Constructor
 
-        internal FullScreenController(SceneController sceneController)
+        internal FullScreenController(WorldController worldController)
         {
-            SceneController = sceneController;
+            WorldController = worldController;
             Form.ViewFullScreen.Click += ZoomFullScreen_Click;
         }
 
@@ -39,9 +39,9 @@
 
         #region Private Properties
 
-        private PropertiesController PropertiesController => SceneController.PropertiesController;
-        private readonly SceneController SceneController;
-        private SceneForm Form => SceneController.SceneForm;
+        private PropertiesController PropertiesController => WorldController.PropertiesController;
+        private readonly WorldController WorldController;
+        private WorldForm Form => WorldController.WorldForm;
 
         private FormState SavedFormState;
 

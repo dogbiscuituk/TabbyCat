@@ -17,8 +17,8 @@
     {
         #region Constructors
 
-        protected SdiController(SceneController sceneController, string filter, string subKeyName)
-            : base(sceneController, subKeyName)
+        protected SdiController(WorldController worldController, string filter, string subKeyName)
+            : base(worldController, subKeyName)
         {
             OpenFileDialog = new OpenFileDialog { Filter = filter, Title = "Select the file to open" };
             SaveFileDialog = new SaveFileDialog { Filter = filter, Title = "Save file" };

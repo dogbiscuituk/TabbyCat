@@ -8,13 +8,12 @@
     {
         #region Constructors
 
-        internal PropertiesController(SceneController sceneController)
-            : base(sceneController, "Properties")
+        internal PropertiesController(WorldController worldController)
+            : base(worldController, "Properties")
         {
-            //SceneController = sceneController;
-            SceneEditController = new SceneEditController(this);
+            SceneController = new SceneController(this);
             ShaderController = new ShaderController(this);
-            TraceEditController = new TraceEditController(this);
+            TraceController = new TraceController(this);
             Connect(true);
         }
 
@@ -22,14 +21,14 @@
 
         #region Fields & Properties
 
-        internal TabbedEdit TabbedEdit => SceneForm.TabbedEdit;
+        internal TabbedEdit TabbedEdit => WorldForm.TabbedEdit;
         internal readonly ShaderController ShaderController;
 
         protected override Control Editor => TabbedEdit;
-        protected override Control EditorParent => SceneForm.SplitContainer1.Panel2;
+        protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
 
-        private readonly SceneEditController SceneEditController;
-        private readonly TraceEditController TraceEditController;
+        private readonly SceneController SceneController;
+        private readonly TraceController TraceController;
 
         #endregion
 
@@ -47,7 +46,7 @@
 
         #region Protected Methods
 
-        protected override void Collapse(bool collapse) => SceneForm.SplitContainer1.Panel2Collapsed = collapse;
+        protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel2Collapsed = collapse;
 
         #endregion
 
@@ -60,7 +59,7 @@
             EditorVisible = false;
 
         private void PopupPropertiesMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) =>
-            SceneForm.PopupPropertiesUndock.Text = EditorDocked ? "&Undock" : "&Dock";
+            WorldForm.PopupPropertiesUndock.Text = EditorDocked ? "&Undock" : "&Dock";
 
         #endregion
 
@@ -70,20 +69,20 @@
         {
             if (connect)
             {
-                SceneForm.ViewProperties.Click += ToggleEditor;
-                SceneForm.PopupPropertiesMenu.Opening += PopupPropertiesMenu_Opening;
-                SceneForm.PopupPropertiesHide.Click += PopupPropertiesHide_Click;
-                SceneForm.PopupPropertiesUndock.Click += PopupPropertiesUndock_Click;
+                WorldForm.ViewProperties.Click += ToggleEditor;
+                WorldForm.PopupPropertiesMenu.Opening += PopupPropertiesMenu_Opening;
+                WorldForm.PopupPropertiesHide.Click += PopupPropertiesHide_Click;
+                WorldForm.PopupPropertiesUndock.Click += PopupPropertiesUndock_Click;
             }
             else
             {
-                SceneForm.ViewProperties.Click -= ToggleEditor;
-                SceneForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;
-                SceneForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;
-                SceneForm.PopupPropertiesUndock.Click -= PopupPropertiesUndock_Click;
+                WorldForm.ViewProperties.Click -= ToggleEditor;
+                WorldForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;
+                WorldForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;
+                WorldForm.PopupPropertiesUndock.Click -= PopupPropertiesUndock_Click;
             }
-            SceneEditController.Connect(connect);
-            TraceEditController.Connect(connect);
+            SceneController.Connect(connect);
+            TraceController.Connect(connect);
             ShaderController.Connect(connect);
         }
 

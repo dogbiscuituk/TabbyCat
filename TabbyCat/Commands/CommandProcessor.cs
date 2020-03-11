@@ -12,19 +12,19 @@
     {
         #region Public/Internal Interface
 
-        internal CommandProcessor(SceneController sceneController)
+        internal CommandProcessor(WorldController worldController)
         {
-            SceneController = sceneController;
-            SceneForm.EditUndo.Click += EditUndo_Click;
-            SceneForm.tbUndo.ButtonClick += EditUndo_Click;
-            SceneForm.tbUndo.DropDownOpening += TbUndo_DropDownOpening;
-            SceneForm.EditRedo.Click += EditRedo_Click;
-            SceneForm.tbRedo.ButtonClick += EditRedo_Click;
-            SceneForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
+            WorldController = worldController;
+            WorldForm.EditUndo.Click += EditUndo_Click;
+            WorldForm.tbUndo.ButtonClick += EditUndo_Click;
+            WorldForm.tbUndo.DropDownOpening += TbUndo_DropDownOpening;
+            WorldForm.EditRedo.Click += EditRedo_Click;
+            WorldForm.tbRedo.ButtonClick += EditRedo_Click;
+            WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
         }
 
         internal bool IsModified => LastSave != UndoStack.Count;
-        internal Scene Scene => SceneController.Scene;
+        internal Scene Scene => WorldController.Scene;
         internal List<Trace> Traces => Scene.Traces;
 
         internal void Clear()
@@ -77,8 +77,8 @@
         private string UndoAction => UndoStack.Peek().UndoAction;
         private string RedoAction => RedoStack.Peek().RedoAction;
 
-        private readonly SceneController SceneController;
-        private SceneForm SceneForm => SceneController.SceneForm;
+        private readonly WorldController WorldController;
+        private WorldForm WorldForm => WorldController.WorldForm;
 
         private int LastSave, UpdateCount;
 
@@ -87,9 +87,9 @@
         #region Private Event Handlers
 
         private void EditUndo_Click(object sender, EventArgs e) => Undo();
-        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, SceneForm.tbUndo, UndoMultiple);
+        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
         private void EditRedo_Click(object sender, EventArgs e) => Redo();
-        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, SceneForm.tbRedo, RedoMultiple);
+        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
         private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
         private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
@@ -180,13 +180,13 @@
             string
                 undo = CanUndo ? $"Undo {UndoAction}" : "Undo",
                 redo = CanRedo ? $"Redo {RedoAction}" : "Redo";
-            SceneForm.EditUndo.Enabled = SceneForm.tbUndo.Enabled = CanUndo;
-            SceneForm.EditRedo.Enabled = SceneForm.tbRedo.Enabled = CanRedo;
-            SceneForm.EditUndo.Text = $"&{undo}";
-            SceneForm.EditRedo.Text = $"&{redo}";
-            SceneForm.tbUndo.ToolTipText = $"{undo} (^Z)";
-            SceneForm.tbRedo.ToolTipText = $"{redo} (^Y)";
-            SceneController.ModifiedChanged();
+            WorldForm.EditUndo.Enabled = WorldForm.tbUndo.Enabled = CanUndo;
+            WorldForm.EditRedo.Enabled = WorldForm.tbRedo.Enabled = CanRedo;
+            WorldForm.EditUndo.Text = $"&{undo}";
+            WorldForm.EditRedo.Text = $"&{redo}";
+            WorldForm.tbUndo.ToolTipText = $"{undo} (^Z)";
+            WorldForm.tbRedo.ToolTipText = $"{redo} (^Y)";
+            WorldController.ModifiedChanged();
         }
 
         #endregion

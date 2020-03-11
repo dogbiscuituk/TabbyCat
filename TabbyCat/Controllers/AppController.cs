@@ -18,7 +18,7 @@
             Timer = new Timer { Interval = 5000, Enabled = true };
             Timer.Tick += Timer_Tick;
             ApplyOptions();
-            AddNewSceneController();
+            AddNewWorldController();
         }
 
         #endregion
@@ -64,18 +64,18 @@
             }
         }
 
-        internal static List<SceneController> SceneControllers = new List<SceneController>();
+        internal static List<WorldController> WorldControllers = new List<WorldController>();
 
         #endregion
 
         #region Internal Methods
 
-        internal static SceneController AddNewSceneController()
+        internal static WorldController AddNewWorldController()
         {
-            var sceneController = new SceneController();
-            SceneControllers.Add(sceneController);
-            sceneController.Show();
-            return sceneController;
+            var worldController = new WorldController();
+            WorldControllers.Add(worldController);
+            worldController.Show();
+            return worldController;
         }
 
         internal static void Close()
@@ -96,10 +96,10 @@
             }
         }
 
-        internal static void Remove(SceneController sceneController)
+        internal static void Remove(WorldController worldController)
         {
-            SceneControllers.Remove(sceneController);
-            if (SceneControllers.Count == 0)
+            WorldControllers.Remove(worldController);
+            if (WorldControllers.Count == 0)
                 Close();
         }
 

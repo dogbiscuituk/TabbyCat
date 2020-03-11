@@ -10,9 +10,9 @@
     {
         #region Constructor
 
-        protected HostController(SceneController sceneController, string caption)
+        protected HostController(WorldController worldController, string caption)
         {
-            SceneController = sceneController;
+            WorldController = worldController;
             _Caption = caption;
         }
 
@@ -39,7 +39,7 @@
 
         #region Protected Fields
 
-        protected internal readonly SceneController SceneController;
+        protected internal readonly WorldController WorldController;
 
         #endregion
 
@@ -62,9 +62,9 @@
 
         protected abstract Control EditorParent { get; }
 
-        protected Scene Scene => SceneController.Scene;
+        protected Scene Scene => WorldController.Scene;
 
-        protected SceneForm SceneForm => SceneController.SceneForm;
+        protected WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion
 
@@ -112,7 +112,7 @@
                 To.Controls.Add(Editor);
                 Editor.BringToFront();
                 if (value)
-                    HostForm.Show(SceneForm);
+                    HostForm.Show(WorldForm);
                 else
                     HostForm.Hide();
             }

@@ -78,11 +78,11 @@
     <Compile Include="Controllers\OptionsController.cs" />
     <Compile Include="Controllers\PropertiesController.cs" />
     <Compile Include="Controllers\RenderController.cs" />
+    <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Controllers\SceneController.cs" />
-    <Compile Include="Controllers\SceneEditController.cs" />
     <Compile Include="Controllers\SdiController.cs" />
     <Compile Include="Controllers\ShaderController.cs" />
-    <Compile Include="Controllers\TraceEditController.cs" />
+    <Compile Include="Controllers\TraceController.cs" />
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\FilterIndex.cs" />
     <Compile Include="Models\Code.cs" />
@@ -128,11 +128,11 @@
     <Compile Include="Views\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SceneForm.cs">
+    <Compile Include="Views\WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SceneForm.Designer.cs">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <Compile Include="Views\WorldForm.Designer.cs">
+      <DependentUpon>WorldForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="Views\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SceneForm.resx">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\WorldForm.resx">
+      <DependentUpon>WorldForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />

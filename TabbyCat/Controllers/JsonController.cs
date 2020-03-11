@@ -16,8 +16,8 @@
     {
         #region Internal Interface
 
-        internal JsonController(SceneController sceneController)
-            : base(sceneController, Properties.Settings.Default.FileFilter, "LibraryMRU")
+        internal JsonController(WorldController worldController)
+            : base(worldController, Properties.Settings.Default.FileFilter, "LibraryMRU")
         { }
 
         internal string WindowCaption

@@ -17,11 +17,11 @@
 
         #region Fields & Properties
 
-        protected CommandProcessor CommandProcessor => SceneController.CommandProcessor;
+        protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private readonly PropertiesController PropertiesController;
         protected TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
-        protected Scene Scene => SceneController.Scene;
-        protected SceneController SceneController => PropertiesController.SceneController;
+        protected Scene Scene => WorldController.Scene;
+        protected WorldController WorldController => PropertiesController.WorldController;
         protected bool Updating;
 
         #endregion

@@ -10,11 +10,11 @@
     using TabbyCat.Models;
     using TabbyCatControls;
 
-    internal class TraceEditController : CodeEditController
+    internal class TraceController : CodeEditController
     {
         #region Constructors
 
-        internal TraceEditController(PropertiesController propertiesController)
+        internal TraceController(PropertiesController propertiesController)
             : base(propertiesController)
         {
             InitControls(Editor.TableLayoutPanel);
@@ -26,7 +26,7 @@
         #region Fields & Properties
 
         private TraceEdit Editor => PropertiesEditor.TraceEdit;
-        private Selection Selection => SceneController.Selection;
+        private Selection Selection => WorldController.Selection;
 
         #endregion
 
@@ -56,8 +56,8 @@
             Editor.seStripCountY.ValueChanged += StripCount_ValueChanged;
             Editor.seStripCountZ.ValueChanged += StripCount_ValueChanged;
             Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-            SceneController.PropertyChanged += SceneController_PropertyChanged;
-            SceneController.SelectionChanged += SceneController_SelectionChanged;
+            WorldController.PropertyChanged += WorldController_PropertyChanged;
+            WorldController.SelectionChanged += WorldController_SelectionChanged;
         }
 
         protected override void Disconnect()
@@ -82,8 +82,8 @@
             Editor.seStripCountX.ValueChanged -= StripCount_ValueChanged;
             Editor.seStripCountY.ValueChanged -= StripCount_ValueChanged;
             Editor.seStripCountZ.ValueChanged -= StripCount_ValueChanged;
-            SceneController.PropertyChanged -= SceneController_PropertyChanged;
-            SceneController.SelectionChanged -= SceneController_SelectionChanged;
+            WorldController.PropertyChanged -= WorldController_PropertyChanged;
+            WorldController.SelectionChanged -= WorldController_SelectionChanged;
         }
 
         #endregion
@@ -126,10 +126,10 @@
                 (float)Editor.seScaleY.Value,
                 (float)Editor.seScaleZ.Value)));
 
-        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
-        private void SceneController_SelectionChanged(object sender, System.EventArgs e) =>
+        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
             UpdateAllProperties();
 
         private void StripCount_ValueChanged(object sender, System.EventArgs e) =>

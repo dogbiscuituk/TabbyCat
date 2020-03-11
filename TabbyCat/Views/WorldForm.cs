@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class SceneForm : Form
+    public partial class WorldForm : Form
     {
-        public SceneForm()
+        public WorldForm()
         {
             InitializeComponent();
         }

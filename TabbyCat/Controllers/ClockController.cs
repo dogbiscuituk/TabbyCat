@@ -8,21 +8,21 @@
     {
         #region Constructors
 
-        internal ClockController(SceneController sceneController)
+        internal ClockController(WorldController worldController)
         {
-            SceneController = sceneController;
-            SceneForm.TimeDecelerate.Click += TimeDecelerate_Click;
-            SceneForm.tbDecelerate.Click += TimeDecelerate_Click;
-            SceneForm.TimeReverse.Click += TimeReverse_Click;
-            SceneForm.tbReverse.Click += TimeReverse_Click;
-            SceneForm.TimeStop.Click += TimeStop_Click;
-            SceneForm.tbStop.Click += TimeStop_Click;
-            SceneForm.TimePause.Click += TimePause_Click;
-            SceneForm.tbPause.Click += TimePause_Click;
-            SceneForm.TimeForward.Click += TimeForward_Click;
-            SceneForm.tbForward.Click += TimeForward_Click;
-            SceneForm.TimeAccelerate.Click += TimeAccelerate_Click;
-            SceneForm.tbAccelerate.Click += TimeAccelerate_Click;
+            WorldController = worldController;
+            WorldForm.TimeDecelerate.Click += TimeDecelerate_Click;
+            WorldForm.tbDecelerate.Click += TimeDecelerate_Click;
+            WorldForm.TimeReverse.Click += TimeReverse_Click;
+            WorldForm.tbReverse.Click += TimeReverse_Click;
+            WorldForm.TimeStop.Click += TimeStop_Click;
+            WorldForm.tbStop.Click += TimeStop_Click;
+            WorldForm.TimePause.Click += TimePause_Click;
+            WorldForm.tbPause.Click += TimePause_Click;
+            WorldForm.TimeForward.Click += TimeForward_Click;
+            WorldForm.tbForward.Click += TimeForward_Click;
+            WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
+            WorldForm.tbAccelerate.Click += TimeAccelerate_Click;
             Clock = new Clock();
             Clock.Tick += Clock_Tick;
             UpdateTimeControls();
@@ -48,12 +48,12 @@
 
         internal void UpdateTimeControls()
         {
-            SceneForm.TimeAccelerate.Enabled = SceneForm.tbAccelerate.Enabled = CanAccelerate;
-            SceneForm.TimeDecelerate.Enabled = SceneForm.tbDecelerate.Enabled = CanDecelerate;
-            SceneForm.TimeForward.Enabled = SceneForm.tbForward.Enabled = CanStart;
-            SceneForm.TimePause.Enabled = SceneForm.tbPause.Enabled = CanPause;
-            SceneForm.TimeReverse.Enabled = SceneForm.tbReverse.Enabled = CanReverse;
-            SceneForm.TimeStop.Enabled = SceneForm.tbStop.Enabled = CanStop;
+            WorldForm.TimeAccelerate.Enabled = WorldForm.tbAccelerate.Enabled = CanAccelerate;
+            WorldForm.TimeDecelerate.Enabled = WorldForm.tbDecelerate.Enabled = CanDecelerate;
+            WorldForm.TimeForward.Enabled = WorldForm.tbForward.Enabled = CanStart;
+            WorldForm.TimePause.Enabled = WorldForm.tbPause.Enabled = CanPause;
+            WorldForm.TimeReverse.Enabled = WorldForm.tbReverse.Enabled = CanReverse;
+            WorldForm.TimeStop.Enabled = WorldForm.tbStop.Enabled = CanStop;
             UpdateTimeFactor();
         }
 
@@ -72,8 +72,8 @@
             LastTime,
             LastSpeed;
 
-        private readonly SceneController SceneController;
-        private SceneForm SceneForm => SceneController.SceneForm;
+        private readonly WorldController WorldController;
+        private WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion
 
@@ -136,7 +136,7 @@
         {
             var time = string.Format("t={0:f1}", VirtualSecondsElapsed);
             if (LastTime != time)
-                LastTime = SceneForm.Tlabel.Text = time;
+                LastTime = WorldForm.Tlabel.Text = time;
         }
 
         private void UpdateTimeFactor()
@@ -153,7 +153,7 @@
                 speed = divide ? $"time ÷ {factor}" : $"time × {factor}";
             }
             if (LastSpeed != speed)
-                LastSpeed = SceneForm.SpeedLabel.Text = speed;
+                LastSpeed = WorldForm.SpeedLabel.Text = speed;
         }
 
         #endregion

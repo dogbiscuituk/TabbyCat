@@ -43,18 +43,18 @@
 
         internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
 
-        private CommandProcessor CommandProcessor => SceneController.CommandProcessor;
+        private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertiesController PropertiesController;
         private TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private int PropertiesTabSelectedIndex => PropertiesTabControl.SelectedIndex;
-        private Scene Scene => SceneController.Scene;
-        private SceneController SceneController => PropertiesController.SceneController;
-        private SceneForm SceneForm => SceneController.SceneForm;
+        private Scene Scene => WorldController.Scene;
+        private WorldController WorldController => PropertiesController.WorldController;
+        private WorldForm WorldForm => WorldController.WorldForm;
         private bool SceneTab => PropertiesTabSelectedIndex == 0;
-        private Selection Selection => SceneController.Selection;
+        private Selection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private string ShaderName => SceneTab ? ShaderType.SceneShaderName() : ShaderType.TraceShaderName();
@@ -162,7 +162,7 @@
                     File.WriteAllText(dialog.FileName, PrimaryTextBox.Rtf);
         }
 
-        private void Help_Click(object sender, System.EventArgs e) => HotkeysController.Show(SceneForm);
+        private void Help_Click(object sender, System.EventArgs e) => HotkeysController.Show(WorldForm);
 
         private void LineNumbers_Click(object sender, System.EventArgs e) =>
             ShowLineNumbers = !ShowLineNumbers;
@@ -183,10 +183,10 @@
         private void Ruler_Click(object sender, System.EventArgs e) =>
             ShowRuler = !ShowRuler;
 
-        private void SceneController_SelectionChanged(object sender, EventArgs e) =>
+        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             LoadShaderCode();
 
-        private void SceneController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
         private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShaderType();
@@ -239,8 +239,8 @@
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
-                SceneController.PropertyChanged += SceneController_PropertyChanged;
-                SceneController.SelectionChanged += SceneController_SelectionChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
             }
             else
             {
@@ -259,8 +259,8 @@
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
-                SceneController.PropertyChanged -= SceneController_PropertyChanged;
-                SceneController.SelectionChanged -= SceneController_SelectionChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
         }
 

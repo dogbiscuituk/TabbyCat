@@ -20,11 +20,11 @@
     {
         #region Constructors
 
-        protected MruController(SceneController sceneController, string subKeyName)
+        protected MruController(WorldController worldController, string subKeyName)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
                 throw new ArgumentNullException("subKeyName");
-            SceneController = sceneController;
+            WorldController = worldController;
             SubKeyName = string.Format(
                 @"Software\{0}\{1}\{2}",
                 Application.CompanyName,
@@ -43,13 +43,13 @@
 
         #region Protected Properties
 
-        protected ToolStripDropDownItem RecentMenu => SceneController.SceneForm.FileReopen;
+        protected ToolStripDropDownItem RecentMenu => WorldController.WorldForm.FileReopen;
 
-        protected SceneController SceneController;
+        protected WorldController WorldController;
         protected Scene Scene
         {
-            get => SceneController.Scene;
-            set => SceneController.Scene = value;
+            get => WorldController.Scene;
+            set => WorldController.Scene = value;
         }
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class SceneForm
+    partial class WorldForm
     {
         /// <summary>
         /// Required designer variable.
@@ -820,15 +820,15 @@
             this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
             this.PopupPropertiesHide.Text = "&Hide";
             // 
-            // SceneForm
+            // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.ToolStripContainer);
             this.MainMenuStrip = this.MainMenu;
-            this.Name = "SceneForm";
-            this.Text = "SceneForm";
+            this.Name = "WorldForm";
+            this.Text = "WorldForm";
             this.ToolStripContainer.BottomToolStripPanel.ResumeLayout(false);
             this.ToolStripContainer.BottomToolStripPanel.PerformLayout();
             this.ToolStripContainer.ContentPanel.ResumeLayout(false);
