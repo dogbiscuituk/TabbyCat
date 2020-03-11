@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.seCameraPositionX = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             this.cbVSync = new System.Windows.Forms.CheckBox();
             this.cbGLSLVersion = new System.Windows.Forms.ComboBox();
             this.cbBackground = new System.Windows.Forms.ComboBox();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
@@ -134,7 +136,7 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 261);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 270);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // seCameraPositionX
@@ -564,9 +566,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(320, 261);
             this.Name = "SceneEdit";
-            this.Size = new System.Drawing.Size(320, 261);
+            this.Size = new System.Drawing.Size(320, 270);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
@@ -622,5 +623,6 @@
         public System.Windows.Forms.CheckBox cbVSync;
         public System.Windows.Forms.ComboBox cbGLSLVersion;
         public System.Windows.Forms.ComboBox cbBackground;
+        public System.Windows.Forms.ToolTip ToolTip;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class TabbedEdit
+    partial class WorldEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -103,13 +103,13 @@
             this.ShaderEdit.Size = new System.Drawing.Size(334, 300);
             this.ShaderEdit.TabIndex = 3;
             // 
-            // TabbedEdit
+            // WorldEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ShaderEdit);
             this.Controls.Add(this.TabControl);
-            this.Name = "TabbedEdit";
+            this.Name = "WorldEdit";
             this.Size = new System.Drawing.Size(334, 594);
             this.TabControl.ResumeLayout(false);
             this.tpScene.ResumeLayout(false);

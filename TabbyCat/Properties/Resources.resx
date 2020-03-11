@@ -388,8 +388,74 @@
   <data name="TileWindowsHorizontallyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TileWindowsHorizontallyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Trace_Description" xml:space="preserve">
+    <value>The trace description</value>
+  </data>
+  <data name="Trace_LocationZ" xml:space="preserve">
+    <value>The Z component of location</value>
+  </data>
+  <data name="Trace_MaximumX" xml:space="preserve">
+    <value>The X component of </value>
+  </data>
+  <data name="Trace_MaximumY" xml:space="preserve">
+    <value>The Y component of</value>
+  </data>
+  <data name="Trace_MaximumZ" xml:space="preserve">
+    <value>The Z component of</value>
+  </data>
+  <data name="Trace_MinimumX" xml:space="preserve">
+    <value>The X component of</value>
+  </data>
+  <data name="Trace_MinimumY" xml:space="preserve">
+    <value>The Y component of</value>
+  </data>
+  <data name="Trace_MinimumZ" xml:space="preserve">
+    <value>The Z component of</value>
+  </data>
+  <data name="Trace_OrientationX" xml:space="preserve">
+    <value>The X component of</value>
+  </data>
+  <data name="Trace_OrientationY" xml:space="preserve">
+    <value>The Y component of</value>
+  </data>
+  <data name="Trace_OrientationZ" xml:space="preserve">
+    <value>The Z component of</value>
+  </data>
+  <data name="Trace_Pattern" xml:space="preserve">
+    <value>The texture of the trace</value>
+  </data>
+  <data name="Projection_Type" xml:space="preserve">
+    <value>Scene projection type</value>
+  </data>
+  <data name="Trace_ScaleX" xml:space="preserve">
+    <value>The X component of scale</value>
+  </data>
+  <data name="Trace_ScaleY" xml:space="preserve">
+    <value>The Y component of scale</value>
+  </data>
+  <data name="Trace_ScaleZ" xml:space="preserve">
+    <value>The Z component of scale</value>
+  </data>
+  <data name="Trace_StripCountX" xml:space="preserve">
+    <value>The X component of</value>
+  </data>
+  <data name="Trace_StripCountY" xml:space="preserve">
+    <value>The Y component of</value>
+  </data>
+  <data name="Trace_StripCountZ" xml:space="preserve">
+    <value>The Z component of</value>
+  </data>
+  <data name="Trace_Visible" xml:space="preserve">
+    <value>Whether or not the trace is visible</value>
+  </data>
   <data name="Trace_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_head.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Trace_LocationX" xml:space="preserve">
+    <value>The X component of location</value>
+  </data>
+  <data name="Trace_LocationY" xml:space="preserve">
+    <value>The Y component of location</value>
   </data>
   <data name="Trace_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -417,5 +483,62 @@
   </data>
   <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Camera_FocusX" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camera_FocusY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camera_FocusZ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camera_PositionX" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camera_PositionY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camera_PositionZ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GLSL_TargetVersion" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_FarPlaneX" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_FarPlaneY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_FarPlaneZ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_FieldOfView" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_NearPlaneX" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_NearPlaneY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projection_NearPlaneZ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Scene_Background" xml:space="preserve">
+    <value>The colour of the background</value>
+  </data>
+  <data name="Scene_FPS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Scene_Samples" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Scene_Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Scene_VSync" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TabbyCat.Controls
 {
-    public partial class TabbedEdit : UserControl
+    public partial class WorldEdit : UserControl
     {
-        public TabbedEdit()
+        public WorldEdit()
         {
             InitializeComponent();
         }

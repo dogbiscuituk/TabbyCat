@@ -35,8 +35,9 @@
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;
-        internal WorldForm WorldForm;
         internal Selection Selection = new Selection();
+        internal ToolTip ToolTip => WorldForm.ToolTip;
+        internal WorldForm WorldForm;
 
         #region Internal Methods
 

@@ -41,7 +41,10 @@
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
             this.GLControl = new OpenTK.GLControl();
-            this.TabbedEdit = new TabbyCat.Controls.TabbedEdit();
+            this.WorldEdit = new TabbyCat.Controls.WorldEdit();
+            this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
+            this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolbar = new TabbyCat.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,9 +105,7 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
-            this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -115,9 +116,9 @@
             this.SplitContainer1.Panel1.SuspendLayout();
             this.SplitContainer1.Panel2.SuspendLayout();
             this.SplitContainer1.SuspendLayout();
+            this.PopupPropertiesMenu.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
-            this.PopupPropertiesMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripContainer
@@ -252,7 +253,7 @@
             // 
             // SplitContainer1.Panel2
             // 
-            this.SplitContainer1.Panel2.Controls.Add(this.TabbedEdit);
+            this.SplitContainer1.Panel2.Controls.Add(this.WorldEdit);
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 330;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 683);
@@ -269,14 +270,34 @@
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
-            // TabbedEdit
+            // WorldEdit
             // 
-            this.TabbedEdit.ContextMenuStrip = this.PopupPropertiesMenu;
-            this.TabbedEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabbedEdit.Location = new System.Drawing.Point(0, 0);
-            this.TabbedEdit.Name = "TabbedEdit";
-            this.TabbedEdit.Size = new System.Drawing.Size(331, 683);
-            this.TabbedEdit.TabIndex = 0;
+            this.WorldEdit.ContextMenuStrip = this.PopupPropertiesMenu;
+            this.WorldEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WorldEdit.Location = new System.Drawing.Point(0, 0);
+            this.WorldEdit.Name = "WorldEdit";
+            this.WorldEdit.Size = new System.Drawing.Size(331, 683);
+            this.WorldEdit.TabIndex = 0;
+            // 
+            // PopupPropertiesMenu
+            // 
+            this.PopupPropertiesMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PopupPropertiesUndock,
+            this.PopupPropertiesHide});
+            this.PopupPropertiesMenu.Name = "PopupPropertiesMenu";
+            this.PopupPropertiesMenu.Size = new System.Drawing.Size(116, 48);
+            // 
+            // PopupPropertiesUndock
+            // 
+            this.PopupPropertiesUndock.Name = "PopupPropertiesUndock";
+            this.PopupPropertiesUndock.Size = new System.Drawing.Size(115, 22);
+            this.PopupPropertiesUndock.Text = "&Undock";
+            // 
+            // PopupPropertiesHide
+            // 
+            this.PopupPropertiesHide.Name = "PopupPropertiesHide";
+            this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
+            this.PopupPropertiesHide.Text = "&Hide";
             // 
             // Toolbar
             // 
@@ -800,26 +821,6 @@
             this.HelpAbout.Size = new System.Drawing.Size(229, 22);
             this.HelpAbout.Text = "&About";
             // 
-            // PopupPropertiesMenu
-            // 
-            this.PopupPropertiesMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PopupPropertiesUndock,
-            this.PopupPropertiesHide});
-            this.PopupPropertiesMenu.Name = "PopupPropertiesMenu";
-            this.PopupPropertiesMenu.Size = new System.Drawing.Size(116, 48);
-            // 
-            // PopupPropertiesUndock
-            // 
-            this.PopupPropertiesUndock.Name = "PopupPropertiesUndock";
-            this.PopupPropertiesUndock.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesUndock.Text = "&Undock";
-            // 
-            // PopupPropertiesHide
-            // 
-            this.PopupPropertiesHide.Name = "PopupPropertiesHide";
-            this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesHide.Text = "&Hide";
-            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -844,11 +845,11 @@
             this.SplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
             this.SplitContainer1.ResumeLayout(false);
+            this.PopupPropertiesMenu.ResumeLayout(false);
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
-            this.PopupPropertiesMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -927,9 +928,10 @@
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
         internal System.Windows.Forms.SplitContainer SplitContainer1;
-        internal Controls.TabbedEdit TabbedEdit;
+        internal Controls.WorldEdit WorldEdit;
         internal System.Windows.Forms.ContextMenuStrip PopupPropertiesMenu;
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
+        internal System.Windows.Forms.ToolTip ToolTip;
     }
 }

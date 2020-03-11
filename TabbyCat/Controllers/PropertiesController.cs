@@ -21,13 +21,14 @@
 
         #region Fields & Properties
 
-        internal TabbedEdit TabbedEdit => WorldForm.TabbedEdit;
-        internal readonly ShaderController ShaderController;
+        internal ToolTip ToolTip => WorldController.ToolTip;
+        internal WorldEdit WorldEdit => WorldForm.WorldEdit;
 
-        protected override Control Editor => TabbedEdit;
+        protected override Control Editor => WorldEdit;
         protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
 
         private readonly SceneController SceneController;
+        private readonly ShaderController ShaderController;
         private readonly TraceController TraceController;
 
         #endregion

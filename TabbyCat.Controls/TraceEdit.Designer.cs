@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -132,7 +134,7 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 256);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(320, 270);
             this.TableLayoutPanel.TabIndex = 1;
             // 
             // label8
@@ -546,7 +548,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(320, 256);
             this.Name = "TraceEdit";
-            this.Size = new System.Drawing.Size(320, 256);
+            this.Size = new System.Drawing.Size(320, 270);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();
@@ -604,5 +606,6 @@
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.CheckBox cbVisible;
+        public System.Windows.Forms.ToolTip ToolTip;
     }
 }

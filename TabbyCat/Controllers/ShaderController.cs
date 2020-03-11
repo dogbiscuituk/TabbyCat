@@ -47,7 +47,7 @@
         private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertiesController PropertiesController;
-        private TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
+        private WorldEdit PropertiesEditor => PropertiesController.WorldEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private int PropertiesTabSelectedIndex => PropertiesTabControl.SelectedIndex;
         private Scene Scene => WorldController.Scene;

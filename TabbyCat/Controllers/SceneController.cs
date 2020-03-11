@@ -7,24 +7,25 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Properties;
     using TabbyCatControls;
 
-    internal class SceneController : CodeEditController
+    internal class SceneController : ShaderSetController
     {
         #region Constructors
 
         internal SceneController(PropertiesController propertiesController)
             : base(propertiesController)
         {
-            InitControls(Editor.TableLayoutPanel);
-            new ColourController().AddControls(Editor.cbBackground);
+            InitCommonControls(Editor.TableLayoutPanel);
+            InitLocalControls();
         }
 
         #endregion
 
         #region Fields & Properties
 
-        private SceneEdit Editor => PropertiesEditor.SceneEdit;
+        private SceneEdit Editor => WorldEdit.SceneEdit;
 
         #endregion
 
@@ -130,18 +131,48 @@
         private void Samples_ValueChanged(object sender, EventArgs e) =>
             Run(new SamplesCommand((int)Editor.seSamples.Value));
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
-
         private void SceneTitle_TextChanged(object sender, EventArgs e)
             => Run(new TitleCommand(Editor.edTitle.Text));
 
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
             Run(new VSyncCommand(Editor.cbVSync.Checked));
 
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
+
         #endregion
 
         #region Private Methods
+
+        private void InitLocalControls()
+        {
+            InitToolTips();
+            new ColourController().AddControls(Editor.cbBackground);
+        }
+
+        private void InitToolTips()
+        {
+            SetToolTip(Editor.cbBackground, Resources.Scene_Background);
+            SetToolTip(Editor.seCameraFocusX, Resources.Camera_FocusX);
+            SetToolTip(Editor.seCameraFocusY, Resources.Camera_FocusY);
+            SetToolTip(Editor.seCameraFocusZ, Resources.Camera_FocusZ);
+            SetToolTip(Editor.seCameraPositionX, Resources.Camera_PositionX);
+            SetToolTip(Editor.seCameraPositionY, Resources.Camera_PositionY);
+            SetToolTip(Editor.seCameraPositionZ, Resources.Camera_PositionZ);
+            SetToolTip(Editor.seFrustumMaxX, Resources.Projection_FarPlaneX);
+            SetToolTip(Editor.seFrustumMaxY, Resources.Projection_FarPlaneY);
+            SetToolTip(Editor.seFrustumMaxZ, Resources.Projection_FarPlaneZ);
+            SetToolTip(Editor.cbGLSLVersion, Resources.GLSL_TargetVersion);
+            SetToolTip(Editor.seFieldOfView, Resources.Projection_FieldOfView);
+            SetToolTip(Editor.seFPS, Resources.Scene_FPS);
+            SetToolTip(Editor.seFrustumMinX, Resources.Projection_NearPlaneX);
+            SetToolTip(Editor.seFrustumMinY, Resources.Projection_NearPlaneY);
+            SetToolTip(Editor.seFrustumMinZ, Resources.Projection_NearPlaneZ);
+            SetToolTip(Editor.cbProjectionType, Resources.Projection_Type);
+            SetToolTip(Editor.seSamples, Resources.Scene_Samples);
+            SetToolTip(Editor.edTitle, Resources.Scene_Title);
+            SetToolTip(Editor.cbVSync, Resources.Scene_VSync);
+        }
 
         private void Run(ICommand command)
         {

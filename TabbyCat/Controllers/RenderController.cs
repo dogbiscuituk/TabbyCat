@@ -144,6 +144,7 @@
 
         internal void Render()
         {
+            return;
             if (!MakeCurrent(true))
                 return;
             GL.Enable(EnableCap.DepthTest);

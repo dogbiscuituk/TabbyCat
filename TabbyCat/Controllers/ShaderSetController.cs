@@ -6,11 +6,11 @@
     using TabbyCat.Controls;
     using TabbyCat.Models;
 
-    internal abstract class CodeEditController
+    internal abstract class ShaderSetController
     {
         #region Constructors
 
-        internal CodeEditController(PropertiesController propertiesController) =>
+        internal ShaderSetController(PropertiesController propertiesController) =>
             PropertiesController = propertiesController;
 
         #endregion
@@ -19,10 +19,11 @@
 
         protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private readonly PropertiesController PropertiesController;
-        protected TabbedEdit PropertiesEditor => PropertiesController.TabbedEdit;
         protected Scene Scene => WorldController.Scene;
-        protected WorldController WorldController => PropertiesController.WorldController;
+        internal ToolTip ToolTip => PropertiesController.ToolTip;
         protected bool Updating;
+        protected WorldController WorldController => PropertiesController.WorldController;
+        protected WorldEdit WorldEdit => PropertiesController.WorldEdit;
 
         #endregion
 
@@ -40,10 +41,13 @@
 
         #region Protected Methods
 
+        protected void SetToolTip(Control control, string toolTip) =>
+            ToolTip.SetToolTip(control, toolTip);
+
         protected abstract void Connect();
         protected abstract void Disconnect();
 
-        protected void InitControls(TableLayoutPanel tableLayoutPanel)
+        protected void InitCommonControls(TableLayoutPanel tableLayoutPanel)
         {
             foreach (var spinEdit in tableLayoutPanel.Controls.OfType<NumericUpDown>())
             {

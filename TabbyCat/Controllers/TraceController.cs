@@ -8,24 +8,25 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCatControls;
 
-    internal class TraceController : CodeEditController
+    internal class TraceController : ShaderSetController
     {
         #region Constructors
 
         internal TraceController(PropertiesController propertiesController)
             : base(propertiesController)
         {
-            InitControls(Editor.TableLayoutPanel);
-            InitPatternCombo();
+            InitCommonControls(Editor.TableLayoutPanel);
+            InitLocalControls();
         }
 
         #endregion
 
         #region Fields & Properties
 
-        private TraceEdit Editor => PropertiesEditor.TraceEdit;
+        private TraceEdit Editor => WorldEdit.TraceEdit;
         private Selection Selection => WorldController.Selection;
 
         #endregion
@@ -126,12 +127,6 @@
                 (float)Editor.seScaleY.Value,
                 (float)Editor.seScaleZ.Value)));
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
-
-        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
-            UpdateAllProperties();
-
         private void StripCount_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p, new Vector3(
                 (float)Editor.seStripCountX.Value,
@@ -140,6 +135,12 @@
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p, Editor.cbVisible.Checked));
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
+
+        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
+            UpdateAllProperties();
 
         #endregion
 
@@ -158,10 +159,36 @@
             }
         }
 
-        private void InitPatternCombo()
+        private void InitLocalControls()
         {
+            InitToolTips();
             foreach (Pattern pattern in Enum.GetValues(typeof(Pattern)))
                 Editor.cbPattern.Items.Add(pattern);
+        }
+
+        private void InitToolTips()
+        {
+            SetToolTip(Editor.edDescription, Resources.Trace_Description);
+            SetToolTip(Editor.seLocationX, Resources.Trace_LocationX);
+            SetToolTip(Editor.seLocationY, Resources.Trace_LocationY);
+            SetToolTip(Editor.seLocationZ, Resources.Trace_LocationZ);
+            SetToolTip(Editor.seMaximumX, Resources.Trace_MaximumX);
+            SetToolTip(Editor.seMaximumY, Resources.Trace_MaximumY);
+            SetToolTip(Editor.seMaximumZ, Resources.Trace_MaximumZ);
+            SetToolTip(Editor.seMinimumX, Resources.Trace_MinimumX);
+            SetToolTip(Editor.seMinimumY, Resources.Trace_MinimumY);
+            SetToolTip(Editor.seMinimumZ, Resources.Trace_MinimumZ);
+            SetToolTip(Editor.seOrientationX, Resources.Trace_OrientationX);
+            SetToolTip(Editor.seOrientationY, Resources.Trace_OrientationY);
+            SetToolTip(Editor.seOrientationZ, Resources.Trace_OrientationZ);
+            SetToolTip(Editor.cbPattern, Resources.Trace_Pattern);
+            SetToolTip(Editor.seScaleX, Resources.Trace_ScaleX);
+            SetToolTip(Editor.seScaleY, Resources.Trace_ScaleY);
+            SetToolTip(Editor.seScaleZ, Resources.Trace_ScaleZ);
+            SetToolTip(Editor.seStripCountX, Resources.Trace_StripCountX);
+            SetToolTip(Editor.seStripCountY, Resources.Trace_StripCountY);
+            SetToolTip(Editor.seStripCountZ, Resources.Trace_StripCountZ);
+            SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
         }
 
         private void Run(Func<int, ICommand> makeCommand)

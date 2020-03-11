@@ -64,11 +64,11 @@
     <Compile Include="ShaderEdit.Designer.cs">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="TabbedEdit.cs">
+    <Compile Include="WorldEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TabbedEdit.Designer.cs">
-      <DependentUpon>TabbedEdit.cs</DependentUpon>
+    <Compile Include="WorldEdit.Designer.cs">
+      <DependentUpon>WorldEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="TextStyleInfo.cs" />
     <Compile Include="TextStyleInfos.cs" />
@@ -101,8 +101,8 @@
     <EmbeddedResource Include="ShaderEdit.resx">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TabbedEdit.resx">
-      <DependentUpon>TabbedEdit.cs</DependentUpon>
+    <EmbeddedResource Include="WorldEdit.resx">
+      <DependentUpon>WorldEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraceEdit.resx">
       <DependentUpon>TraceEdit.cs</DependentUpon>
