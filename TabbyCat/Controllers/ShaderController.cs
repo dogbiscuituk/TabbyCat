@@ -49,18 +49,47 @@
         private readonly PropertiesController PropertiesController;
         private WorldEdit PropertiesEditor => PropertiesController.WorldEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
-        private int PropertiesTabSelectedIndex => PropertiesTabControl.SelectedIndex;
+        private int PropertiesTabIndex => PropertiesTabControl.SelectedIndex;
         private Scene Scene => WorldController.Scene;
         private WorldController WorldController => PropertiesController.WorldController;
         private WorldForm WorldForm => WorldController.WorldForm;
-        private bool SceneTab => PropertiesTabSelectedIndex == 0;
         private Selection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
-        private string ShaderName => SceneTab ? ShaderType.SceneShaderName() : ShaderType.TraceShaderName();
-        private ShaderSet Shaders => SceneTab ? (ShaderSet)Scene : Selection;
         private SplitContainer Splitter => Editor.Splitter;
         private bool Updating;
+
+        private string ShaderName
+        {
+            get
+            {
+                switch (PropertiesTabIndex)
+                {
+                    case 0:
+                        return ShaderType.SceneShaderName();
+                    case 1:
+                        return ShaderType.TraceShaderName();
+                    default:
+                        return string.Empty;
+                }
+            }
+        }
+
+        private ShaderSet ShaderSet
+        {
+            get
+            {
+                switch (PropertiesTabIndex)
+                {
+                    case 0:
+                        return Scene;
+                    case 1:
+                        return Selection;
+                    default:
+                        return null;
+                }
+            }
+        }
 
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private ShaderType ShaderType
@@ -279,8 +308,19 @@
             }
         }
 
-        private string GetScript() => GetScript(ShaderType);
-        private string GetScript(ShaderType shaderType) => Shaders.GetScript(shaderType);
+        private string GetScript()
+        {
+            switch (PropertiesTabIndex)
+            {
+                case 0:
+                case 1:
+                    return GetScript(ShaderType);
+                default:
+                    return Scene.GPUCode;
+            }
+        }
+            
+        private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
         private void LoadShaderCode()
         {
@@ -300,16 +340,21 @@
                 return;
             Updating = true;
             var text = Editor.PrimaryTextBox.Text;
-            if (SceneTab)
-                Run(new SceneShaderCommand(ShaderType, text));
-            else
-                Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+            switch (PropertiesTabIndex)
+            {
+                case 0:
+                    Run(new SceneShaderCommand(ShaderType, text));
+                    break;
+                case 1:
+                    Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+                    break;
+            }
             Updating = false;
         }
 
         private void SelectNextShaderType()
         {
-            if (Shaders.GetActiveShaderCount() < 2)
+            if (ShaderSet.GetActiveShaderCount() < 2)
                 ShaderType = ShaderType.Next();
             else
             {
