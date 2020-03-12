@@ -23,7 +23,7 @@
 
         #endregion
 
-        #region Public Properties
+        #region Properties
 
         public Color BackgroundColour { get; set; }
         public Camera Camera { get; set; }
@@ -38,15 +38,12 @@
         public string GPULog { get; set; }
         public GPUStatus GPUStatus { get; set; }
 
-        #endregion
-
-        #region Internal Properties
-
         internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
-
+        internal GLMode GLMode => WorldController?.GLMode;
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
-
         internal WorldController WorldController;
+
+        private GLControl GLControl => WorldController?.GLControl;
 
         #endregion
 
@@ -121,12 +118,6 @@
             internal static List<Trace>
                 Traces => new List<Trace>();
         }
-
-        #endregion
-
-        #region Private Properties
-
-        private GLControl GLControl => WorldController?.GLControl;
 
         #endregion
 

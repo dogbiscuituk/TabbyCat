@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using OpenTK;
+    using OpenTK.Graphics;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -13,6 +14,8 @@
 
     internal class WorldController
     {
+        #region Constructor
+
         internal WorldController()
         {
             WorldForm = new WorldForm();
@@ -28,9 +31,13 @@
             Selection.Add(Scene.Traces[0]);
         }
 
+        #endregion
+
+        #region Fields, Properties, Events
+
         internal ClockController ClockController;
         internal CommandProcessor CommandProcessor { get; private set; }
-        internal GLControl GLControl => WorldForm.GLControl;
+        internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal PropertiesController PropertiesController;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
@@ -38,6 +45,17 @@
         internal Selection Selection = new Selection();
         internal ToolTip ToolTip => WorldForm.ToolTip;
         internal WorldForm WorldForm;
+
+        internal event PropertyChangedEventHandler PropertyChanged;
+        internal event EventHandler SelectionChanged;
+
+        private readonly List<string> ChangedPropertyNames = new List<string>();
+        private Clock Clock => ClockController.Clock;
+        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
+        private string GLSLUrl => Settings.Default.GLSLUrl;
+        private readonly JsonController JsonController;
+
+        #endregion
 
         #region Internal Methods
 
@@ -47,18 +65,6 @@
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
         #endregion
-
-        #region Private Properties
-
-        private readonly List<string> ChangedPropertyNames = new List<string>();
-        private Clock Clock => ClockController.Clock;
-        private string GLSLUrl => Settings.Default.GLSLUrl;
-        private readonly JsonController JsonController;
-
-        #endregion
-
-        internal event PropertyChangedEventHandler PropertyChanged;
-        internal event EventHandler SelectionChanged;
 
         #region Private Event Handlers
 
@@ -106,6 +112,8 @@
         #region Private Methods
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
+
+        internal void BeginUpdate() => ++UpdateCount;
 
         private void ClockInit() => Clock.Interval_ms = GetFrameMilliseconds();
 
@@ -256,6 +264,16 @@
                 optionsController.ShowModal(WorldForm);
         }
 
+        internal void EndUpdate()
+        {
+            if (--UpdateCount == 0)
+            {
+                foreach (var propertyName in ChangedPropertyNames)
+                    OnPropertyChanged(propertyName);
+                ChangedPropertyNames.Clear();
+            }
+        }
+
         private void FileLoaded()
         {
             ConnectControllers(false);
@@ -265,6 +283,7 @@
             CommandProcessor.Clear();
             EndUpdate();
             ConnectControllers(true);
+            RecreateGLControl(Scene.GLMode);
         }
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)
@@ -369,6 +388,9 @@
                 case PropertyNames.FarPlane:
                     RenderController.InvalidateProjection();
                     break;
+                case PropertyNames.Samples:
+                    RecreateGLControl(new GLMode(this.GLMode, propertyName, Scene.SampleCount));
+                    break;
                 //case PropertyNames.Pattern:
                 //case PropertyNames.StripCount:
                 //    RenderController.InvalidateTrace((Trace)ChangedSubject);
@@ -379,16 +401,24 @@
 
         internal void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
 
-        internal void BeginUpdate() => ++UpdateCount;
-
-        internal void EndUpdate()
+        private void RecreateGLControl(GraphicsMode mode = null)
         {
-            if (--UpdateCount == 0)
-            {
-                foreach (var propertyName in ChangedPropertyNames)
-                    OnPropertyChanged(propertyName);
-                ChangedPropertyNames.Clear();
-            }
+            BackColorChanged();
+            ConnectGLControl(false);
+            var control = GLControl;
+            GLControlParent.Remove(control);
+            control.Dispose();
+            control = mode == null ? new GLControl() : new GLControl(mode);
+            control.BackColor = Scene.BackgroundColour;
+            control.Dock = DockStyle.Fill;
+            control.Location = new System.Drawing.Point(0, 0);
+            control.Name = "GLControl";
+            control.Size = new System.Drawing.Size(100, 100);
+            control.TabIndex = 1;
+            control.VSync = Scene.VSync;
+            GLControlParent.Add(control);
+            ConnectGLControl(true);
+            RenderController.Refresh();
         }
     }
 }

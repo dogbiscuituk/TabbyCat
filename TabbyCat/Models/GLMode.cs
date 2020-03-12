@@ -5,6 +5,7 @@
     using System;
     using System.ComponentModel;
     using TabbyCat.Common.Types;
+    using TabbyCat.Common.Utility;
 
     [TypeConverter(typeof(GLModeTypeConverter))]
     public class GLMode
@@ -40,7 +41,7 @@
                 case "GLMode_Depth":
                     Depth = (int)value;
                     return;
-                case "GLMode_Samples":
+                case PropertyNames.Samples:
                     Samples = (int)value;
                     return;
                 case "GLMode_Stencil":
