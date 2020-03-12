@@ -389,14 +389,15 @@
                     RenderController.InvalidateProjection();
                     break;
                 case PropertyNames.Samples:
-                    RecreateGLControl(new GLMode(this.GLMode, propertyName, Scene.SampleCount));
+                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.SampleCount));
                     break;
-                //case PropertyNames.Pattern:
-                //case PropertyNames.StripCount:
-                //    RenderController.InvalidateTrace((Trace)ChangedSubject);
-                //    break;
+                case PropertyNames.Pattern:
+                case PropertyNames.StripCount:
+                    RenderController.InvalidateAllTraces();
+                    break;
             }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            GLControl.Invalidate();
         }
 
         internal void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);

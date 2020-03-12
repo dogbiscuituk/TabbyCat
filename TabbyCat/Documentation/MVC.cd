@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TabbyCat.Models.Scene" Collapsed="true">
+    <Position X="4.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAACAYCYSABAAMARIAEABAJQAAIAABQAAAASAABQAYA=</HashCode>
+      <FileName>Models\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TabbyCat.Models.Trace" Collapsed="true">
+    <Position X="2" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAKAAQAgAyAAgAJAAAAQgAAAAAEoAAECAgAMAAA=</HashCode>
+      <FileName>Models\Trace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TabbyCat.Models.Code" Collapsed="true">
+    <Position X="3" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAICAAABAAAAAgAAQAAAAAIAECAAAAAAA=</HashCode>
+      <FileName>Models\Code.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TabbyCat.Models.Selection" Collapsed="true">
+    <Position X="6.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAJACACAAQAgIQAAFBIABAAwAAUAAAAIJAEAAABAAAA=</HashCode>
+      <FileName>Models\Selection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_Traces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TabbyCat.Models.ShaderSet" Collapsed="true">
+    <Position X="4.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIACAABAAAAAwAAQAAiAAIAEAAAAAAAA=</HashCode>
+      <FileName>Models\ShaderSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TabbyCat.Controllers.ShaderSetController" Collapsed="true">
+    <Position X="3" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAgAEAIIgAAAAAAAAAAAAAACEAAIA=</HashCode>
+      <FileName>Controllers\ShaderSetController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TabbyCat.Controllers.TraceController" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgBACAAAACAAQAlAGMgACgAAIEAAAAAAAAAAQAo=</HashCode>
+      <FileName>Controllers\TraceController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Editor" />
+      <Property Name="Selection" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TabbyCat.Controllers.SceneController" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAQAwAhCAAAAAACQAVAAIAAAgAAIAJAAAKAAAAABAI=</HashCode>
+      <FileName>Controllers\SceneController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Editor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TabbyCatControls.SceneEdit" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TabbyCat.Controls.ShaderEdit" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TabbyCatControls.TraceEdit" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TabbyCat.Controls.WorldEdit" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="SceneEdit" />
+      <Field Name="ShaderEdit" />
+      <Field Name="TraceEdit" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TabbyCat.Views.WorldForm" Collapsed="true">
+    <Position X="7.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAokAEkAAiAtBDYagCClcAnTwAIxIkMgCLAkAIIIAE0=</HashCode>
+      <FileName>Views\WorldForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TabbyCat.Controllers.WorldController" Collapsed="true">
+    <Position X="7.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBgAAgJMOIBJQBWSqQGdQIxA4AMEhEYABpWLQAFO0oA=</HashCode>
+      <FileName>Controllers\WorldController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Scene" />
+      <Field Name="Selection" />
+      <Field Name="WorldForm" />
+      <Field Name="PropertiesController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TabbyCat.Controllers.PropertiesController" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhAAAAABAAABASAEAAIgAAAAAAAIAAAAQACAAAAA=</HashCode>
+      <FileName>Controllers\PropertiesController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="SceneController" />
+      <Field Name="ShaderController" />
+      <Field Name="TraceController" />
+      <Property Name="WorldEdit" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TabbyCat.Controllers.ShaderController" Collapsed="true">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAQAmhAAAAMjEKBwAEIIIAABgQQooAKAACQAwEISI8=</HashCode>
+      <FileName>Controllers\ShaderController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

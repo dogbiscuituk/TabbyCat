@@ -29,57 +29,59 @@
 
         #endregion
 
-        #region Protected Methods
+        #region Protected Internal Methods
 
-        protected override void Connect()
+        protected internal override void Connect(bool connect)
         {
-            UpdateAllProperties();
-            Editor.edTitle.TextChanged += SceneTitle_TextChanged;
-            Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
-            Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
-            Editor.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
-            Editor.seCameraFocusX.ValueChanged += CameraFocus_ValueChanged;
-            Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
-            Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
-            Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
-            Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
-            Editor.seFPS.ValueChanged += FPS_ValueChanged;
-            Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
-            Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
-            Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
-            Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
-            Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
-            Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
-            Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
-            Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
-            Editor.seSamples.ValueChanged += Samples_ValueChanged;
-            Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
-            WorldController.PropertyChanged += WorldController_PropertyChanged;
-        }
-
-        protected override void Disconnect()
-        {
-            Editor.edTitle.TextChanged -= SceneTitle_TextChanged;
-            Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
-            Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
-            Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
-            Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
-            Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
-            Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
-            Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
-            Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
-            Editor.seFPS.ValueChanged -= FPS_ValueChanged;
-            Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
-            Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
-            Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
-            Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
-            Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
-            Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
-            Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
-            Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
-            Editor.seSamples.ValueChanged -= Samples_ValueChanged;
-            Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
-            WorldController.PropertyChanged -= WorldController_PropertyChanged;
+            if (connect)
+            {
+                UpdateAllProperties();
+                Editor.edTitle.TextChanged += SceneTitle_TextChanged;
+                Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
+                Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
+                Editor.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
+                Editor.seCameraFocusX.ValueChanged += CameraFocus_ValueChanged;
+                Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
+                Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
+                Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
+                Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
+                Editor.seFPS.ValueChanged += FPS_ValueChanged;
+                Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
+                Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
+                Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
+                Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
+                Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
+                Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
+                Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
+                Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
+                Editor.seSamples.ValueChanged += Samples_ValueChanged;
+                Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+            }
+            else
+            {
+                Editor.edTitle.TextChanged -= SceneTitle_TextChanged;
+                Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
+                Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
+                Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
+                Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
+                Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
+                Editor.seFPS.ValueChanged -= FPS_ValueChanged;
+                Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
+                Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
+                Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
+                Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
+                Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
+                Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
+                Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
+                Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
+                Editor.seSamples.ValueChanged -= Samples_ValueChanged;
+                Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+            }
         }
 
         #endregion

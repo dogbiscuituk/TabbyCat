@@ -29,13 +29,7 @@
 
         #region Internal Methods
 
-        internal void Connect(bool connect)
-        {
-            if (connect)
-                Connect();
-            else
-                Disconnect();
-        }
+        protected internal abstract void Connect(bool connect);
 
         #endregion
 
@@ -44,12 +38,9 @@
         protected void SetToolTip(Control control, string toolTip) =>
             ToolTip.SetToolTip(control, toolTip);
 
-        protected abstract void Connect();
-        protected abstract void Disconnect();
-
-        protected void InitCommonControls(TableLayoutPanel tableLayoutPanel)
+        protected void InitCommonControls(Control control)
         {
-            foreach (var spinEdit in tableLayoutPanel.Controls.OfType<NumericUpDown>())
+            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
             {
                 spinEdit.Minimum = decimal.MinValue;
                 spinEdit.Maximum = decimal.MaxValue;

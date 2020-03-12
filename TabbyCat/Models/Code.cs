@@ -1,5 +1,9 @@
 ﻿namespace TabbyCat.Models
 {
+    /// <summary>
+    /// Base class for Scene and Trace (but not Selection).
+    /// Provides concrete string properties for shader code.
+    /// </summary>
     public abstract class Code : ShaderSet
     {
         #region Constructors

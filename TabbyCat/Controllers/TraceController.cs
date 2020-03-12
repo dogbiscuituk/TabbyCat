@@ -31,60 +31,62 @@
 
         #endregion
 
-        #region Protected Methods
+        #region Protected Internal Methods
 
-        protected override void Connect()
+        protected internal override void Connect(bool connect)
         {
-            UpdateAllProperties();
-            Editor.edDescription.TextChanged += Description_TextChanged;
-            Editor.seLocationX.ValueChanged += Location_ValueChanged;
-            Editor.seLocationY.ValueChanged += Location_ValueChanged;
-            Editor.seLocationZ.ValueChanged += Location_ValueChanged;
-            Editor.seOrientationX.ValueChanged += Orientation_ValueChanged;
-            Editor.seOrientationY.ValueChanged += Orientation_ValueChanged;
-            Editor.seOrientationZ.ValueChanged += Orientation_ValueChanged;
-            Editor.seScaleX.ValueChanged += Scale_ValueChanged;
-            Editor.seScaleY.ValueChanged += Scale_ValueChanged;
-            Editor.seScaleZ.ValueChanged += Scale_ValueChanged;
-            Editor.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
-            Editor.seMinimumX.ValueChanged += Minimum_ValueChanged;
-            Editor.seMinimumY.ValueChanged += Minimum_ValueChanged;
-            Editor.seMinimumZ.ValueChanged += Minimum_ValueChanged;
-            Editor.seMaximumX.ValueChanged += Maximum_ValueChanged;
-            Editor.seMaximumY.ValueChanged += Maximum_ValueChanged;
-            Editor.seMaximumZ.ValueChanged += Maximum_ValueChanged;
-            Editor.seStripCountX.ValueChanged += StripCount_ValueChanged;
-            Editor.seStripCountY.ValueChanged += StripCount_ValueChanged;
-            Editor.seStripCountZ.ValueChanged += StripCount_ValueChanged;
-            Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-            WorldController.PropertyChanged += WorldController_PropertyChanged;
-            WorldController.SelectionChanged += WorldController_SelectionChanged;
-        }
-
-        protected override void Disconnect()
-        {
-            Editor.edDescription.TextChanged -= Description_TextChanged;
-            Editor.seLocationX.ValueChanged -= Location_ValueChanged;
-            Editor.seLocationY.ValueChanged -= Location_ValueChanged;
-            Editor.seLocationZ.ValueChanged -= Location_ValueChanged;
-            Editor.seOrientationX.ValueChanged -= Orientation_ValueChanged;
-            Editor.seOrientationY.ValueChanged -= Orientation_ValueChanged;
-            Editor.seOrientationZ.ValueChanged -= Orientation_ValueChanged;
-            Editor.seScaleX.ValueChanged -= Scale_ValueChanged;
-            Editor.seScaleY.ValueChanged -= Scale_ValueChanged;
-            Editor.seScaleZ.ValueChanged -= Scale_ValueChanged;
-            Editor.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
-            Editor.seMinimumX.ValueChanged -= Minimum_ValueChanged;
-            Editor.seMinimumY.ValueChanged -= Minimum_ValueChanged;
-            Editor.seMinimumZ.ValueChanged -= Minimum_ValueChanged;
-            Editor.seMaximumX.ValueChanged -= Maximum_ValueChanged;
-            Editor.seMaximumY.ValueChanged -= Maximum_ValueChanged;
-            Editor.seMaximumZ.ValueChanged -= Maximum_ValueChanged;
-            Editor.seStripCountX.ValueChanged -= StripCount_ValueChanged;
-            Editor.seStripCountY.ValueChanged -= StripCount_ValueChanged;
-            Editor.seStripCountZ.ValueChanged -= StripCount_ValueChanged;
-            WorldController.PropertyChanged -= WorldController_PropertyChanged;
-            WorldController.SelectionChanged -= WorldController_SelectionChanged;
+            if (connect)
+            {
+                UpdateAllProperties();
+                Editor.edDescription.TextChanged += Description_TextChanged;
+                Editor.seLocationX.ValueChanged += Location_ValueChanged;
+                Editor.seLocationY.ValueChanged += Location_ValueChanged;
+                Editor.seLocationZ.ValueChanged += Location_ValueChanged;
+                Editor.seOrientationX.ValueChanged += Orientation_ValueChanged;
+                Editor.seOrientationY.ValueChanged += Orientation_ValueChanged;
+                Editor.seOrientationZ.ValueChanged += Orientation_ValueChanged;
+                Editor.seScaleX.ValueChanged += Scale_ValueChanged;
+                Editor.seScaleY.ValueChanged += Scale_ValueChanged;
+                Editor.seScaleZ.ValueChanged += Scale_ValueChanged;
+                Editor.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
+                Editor.seMinimumX.ValueChanged += Minimum_ValueChanged;
+                Editor.seMinimumY.ValueChanged += Minimum_ValueChanged;
+                Editor.seMinimumZ.ValueChanged += Minimum_ValueChanged;
+                Editor.seMaximumX.ValueChanged += Maximum_ValueChanged;
+                Editor.seMaximumY.ValueChanged += Maximum_ValueChanged;
+                Editor.seMaximumZ.ValueChanged += Maximum_ValueChanged;
+                Editor.seStripCountX.ValueChanged += StripCount_ValueChanged;
+                Editor.seStripCountY.ValueChanged += StripCount_ValueChanged;
+                Editor.seStripCountZ.ValueChanged += StripCount_ValueChanged;
+                Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
+            }
+            else
+            {
+                Editor.edDescription.TextChanged -= Description_TextChanged;
+                Editor.seLocationX.ValueChanged -= Location_ValueChanged;
+                Editor.seLocationY.ValueChanged -= Location_ValueChanged;
+                Editor.seLocationZ.ValueChanged -= Location_ValueChanged;
+                Editor.seOrientationX.ValueChanged -= Orientation_ValueChanged;
+                Editor.seOrientationY.ValueChanged -= Orientation_ValueChanged;
+                Editor.seOrientationZ.ValueChanged -= Orientation_ValueChanged;
+                Editor.seScaleX.ValueChanged -= Scale_ValueChanged;
+                Editor.seScaleY.ValueChanged -= Scale_ValueChanged;
+                Editor.seScaleZ.ValueChanged -= Scale_ValueChanged;
+                Editor.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
+                Editor.seMinimumX.ValueChanged -= Minimum_ValueChanged;
+                Editor.seMinimumY.ValueChanged -= Minimum_ValueChanged;
+                Editor.seMinimumZ.ValueChanged -= Minimum_ValueChanged;
+                Editor.seMaximumX.ValueChanged -= Maximum_ValueChanged;
+                Editor.seMaximumY.ValueChanged -= Maximum_ValueChanged;
+                Editor.seMaximumZ.ValueChanged -= Maximum_ValueChanged;
+                Editor.seStripCountX.ValueChanged -= StripCount_ValueChanged;
+                Editor.seStripCountY.ValueChanged -= StripCount_ValueChanged;
+                Editor.seStripCountZ.ValueChanged -= StripCount_ValueChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+            }
         }
 
         #endregion

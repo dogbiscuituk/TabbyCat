@@ -91,7 +91,6 @@
     <Compile Include="Models\GLMode.cs" />
     <Compile Include="Models\GLModeTypeConverter.cs" />
     <Compile Include="Models\IShaderSet.cs" />
-    <Compile Include="Models\ITrace.cs" />
     <Compile Include="Models\Options.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\ShaderSet.cs" />
@@ -154,6 +153,7 @@
     <EmbeddedResource Include="Views\WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Documentation\MVC.cd" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -93,6 +93,8 @@
             return null;
         }
 
+        internal void InvalidateAllTraces() => Scene.Traces.ForEach(p => InvalidateTrace(p));
+
         internal void InvalidateCameraView()
         {
             "Invalidate Camera View".Spit();
@@ -138,8 +140,7 @@
             lock (GLModeSyncRoot)
                 _GLMode = null;
             InvalidateProgram();
-            foreach (var trace in Scene.Traces)
-                InvalidateTrace(trace);
+            InvalidateAllTraces();
         }
 
         internal void Render()
@@ -183,7 +184,7 @@
             var result = MakeCurrent(true);
             if (result)
             {
-                UnloadTraces();
+                InvalidateAllTraces();
                 MakeCurrent(false);
             }
             return result;
@@ -469,12 +470,6 @@
             GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             return vboID;
-        }
-
-        private void UnloadTraces()
-        {
-            foreach (var trace in Scene.Traces)
-                InvalidateTrace(trace);
         }
 
         #endregion

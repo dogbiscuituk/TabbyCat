@@ -8,12 +8,6 @@
 
     public class Selection : ShaderSet
     {
-        #region Fields and Properties
-
-        private readonly List<Trace> _Traces = new List<Trace>();
-
-        #endregion
-
         #region Public Properties
 
         public string Description
@@ -147,6 +141,12 @@
         #region Protected Methods
 
         protected virtual void OnChanged() => Changed?.Invoke(this, EventArgs.Empty);
+
+        #endregion
+
+        #region Private Fields
+
+        private readonly List<Trace> _Traces = new List<Trace>();
 
         #endregion
 
