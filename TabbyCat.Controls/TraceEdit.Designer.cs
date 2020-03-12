@@ -498,6 +498,7 @@
             // 
             this.TableLayoutPanel.SetColumnSpan(this.cbPattern, 3);
             this.cbPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPattern.FormattingEnabled = true;
             this.cbPattern.Location = new System.Drawing.Point(83, 119);
             this.cbPattern.Name = "cbPattern";
