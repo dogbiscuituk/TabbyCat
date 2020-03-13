@@ -308,17 +308,7 @@
             }
         }
 
-        private string GetScript()
-        {
-            switch (PropertiesTabIndex)
-            {
-                case 0:
-                case 1:
-                    return GetScript(ShaderType);
-                default:
-                    return Scene.GPUCode;
-            }
-        }
+        private string GetScript() => PropertiesTabIndex < 2 ? GetScript(ShaderType) : Scene.GPUCode;
             
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 

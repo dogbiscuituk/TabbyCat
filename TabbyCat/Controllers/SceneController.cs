@@ -25,6 +25,22 @@
 
         #region Fields & Properties
 
+        protected override string[] AllProperties => new[]
+        {
+            PropertyNames.Background,
+            PropertyNames.CameraFocus,
+            PropertyNames.CameraPosition,
+            PropertyNames.FarPlane,
+            PropertyNames.FieldOfView,
+            PropertyNames.FPS,
+            PropertyNames.GLTargetVersion,
+            PropertyNames.NearPlane,
+            PropertyNames.ProjectionType,
+            PropertyNames.Samples,
+            PropertyNames.SceneTitle,
+            PropertyNames.VSync
+        };
+
         private SceneEdit Editor => WorldEdit.SceneEdit;
 
         #endregion
@@ -33,9 +49,9 @@
 
         protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             if (connect)
             {
-                UpdateAllProperties();
                 Editor.edTitle.TextChanged += SceneTitle_TextChanged;
                 Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
                 Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
@@ -56,7 +72,6 @@
                 Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
                 Editor.seSamples.ValueChanged += Samples_ValueChanged;
                 Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
             }
             else
             {
@@ -80,8 +95,68 @@
                 Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
                 Editor.seSamples.ValueChanged -= Samples_ValueChanged;
                 Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
             }
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected override void UpdateProperties(params string[] propertyNames)
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Background:
+                        Editor.cbBackground.Text = Scene.BackgroundColour.Name;
+                        break;
+                    case PropertyNames.CameraFocus:
+                        Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
+                        Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
+                        Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
+                        break;
+                    case PropertyNames.CameraPosition:
+                        Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
+                        Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
+                        Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
+                        break;
+                    case PropertyNames.FarPlane:
+                        Editor.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
+                        Editor.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
+                        Editor.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
+                        break;
+                    case PropertyNames.FieldOfView:
+                        Editor.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
+                        break;
+                    case PropertyNames.FPS:
+                        Editor.seFPS.Value = (decimal)Scene.FPS;
+                        break;
+                    case PropertyNames.GLTargetVersion:
+                        Editor.cbGLSLVersion.Text = Scene.GLTargetVersion;
+                        break;
+                    case PropertyNames.NearPlane:
+                        Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
+                        Editor.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
+                        Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
+                        break;
+                    case PropertyNames.ProjectionType:
+                        Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
+                        break;
+                    case PropertyNames.Samples:
+                        Editor.seSamples.Value = Scene.SampleCount;
+                        break;
+                    case PropertyNames.SceneTitle:
+                        Editor.edTitle.Text = Scene.Title;
+                        break;
+                    case PropertyNames.VSync:
+                        Editor.cbVSync.Checked = Scene.VSync;
+                        break;
+                }
+            Updating = false;
+            UpdateUI();
         }
 
         #endregion
@@ -139,9 +214,6 @@
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
             Run(new VSyncCommand(Editor.cbVSync.Checked));
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
-
         #endregion
 
         #region Private Methods
@@ -185,91 +257,14 @@
             Updating = false;
         }
 
-        private void UpdateAllProperties()
-        {
-            UpdateProperties(new[]
-            {
-                PropertyNames.Background,
-                PropertyNames.CameraFocus,
-                PropertyNames.CameraPosition,
-                PropertyNames.FarPlane,
-                PropertyNames.FieldOfView,
-                PropertyNames.FPS,
-                PropertyNames.GLTargetVersion,
-                PropertyNames.NearPlane,
-                PropertyNames.ProjectionType,
-                PropertyNames.Samples,
-                PropertyNames.SceneTitle,
-                PropertyNames.VSync
-            });
-            UpdateUI();
-        }
-
-        private void UpdateProperties(params string[] propertyNames)
-        {
-            if (Updating)
-                return;
-            Updating = true;
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
-                {
-                    case PropertyNames.Background:
-                        Editor.cbBackground.Text = Scene.BackgroundColour.Name;
-                        break;
-                    case PropertyNames.CameraFocus:
-                        Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
-                        Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
-                        Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
-                        break;
-                    case PropertyNames.CameraPosition:
-                        Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
-                        Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
-                        Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
-                        break;
-                    case PropertyNames.FarPlane:
-                        Editor.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
-                        Editor.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
-                        Editor.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
-                        break;
-                    case PropertyNames.FieldOfView:
-                        Editor.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
-                        break;
-                    case PropertyNames.FPS:
-                        Editor.seFPS.Value = (decimal)Scene.FPS;
-                        break;
-                    case PropertyNames.GLTargetVersion:
-                        Editor.cbGLSLVersion.Text = Scene.GLTargetVersion;
-                        break;
-                    case PropertyNames.NearPlane:
-                        Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
-                        Editor.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
-                        Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
-                        break;
-                    case PropertyNames.ProjectionType:
-                        Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
-                        break;
-                    case PropertyNames.Samples:
-                        Editor.seSamples.Value = Scene.SampleCount;
-                        break;
-                    case PropertyNames.SceneTitle:
-                        Editor.edTitle.Text = Scene.Title;
-                        break;
-                    case PropertyNames.VSync:
-                        Editor.cbVSync.Checked = Scene.VSync;
-                        break;
-                }
-            Updating = false;
-        }
-
         private void UpdateUI()
         {
-            var fov = Editor.cbProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            var useFov = Editor.cbProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            Editor.seFieldOfView.Enabled = useFov;
             Editor.seFrustumMinX.Enabled =
             Editor.seFrustumMinY.Enabled =
             Editor.seFrustumMaxX.Enabled =
-            Editor.seFrustumMaxY.Enabled =
-                !fov;
-            Editor.seFieldOfView.Enabled = fov;
+            Editor.seFrustumMaxY.Enabled = !useFov;
         }
 
         #endregion

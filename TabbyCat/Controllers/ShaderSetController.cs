@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -17,6 +18,7 @@
 
         #region Fields & Properties
 
+        protected abstract string[] AllProperties { get; }
         protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private readonly PropertiesController PropertiesController;
         protected Scene Scene => WorldController.Scene;
@@ -27,16 +29,32 @@
 
         #endregion
 
-        #region Internal Methods
+        #region Protected Internal Methods
 
-        protected internal abstract void Connect(bool connect);
+        protected internal virtual void Connect(bool connect)
+        {
+            if (connect)
+            {
+                UpdateAllProperties();
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
+            }
+            else
+            {
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+            }
+        }
+
+        #endregion
+
+        #region Internal Properties
+
+        internal void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         #endregion
 
         #region Protected Methods
-
-        protected void SetToolTip(Control control, string toolTip) =>
-            ToolTip.SetToolTip(control, toolTip);
 
         protected void InitCommonControls(Control control)
         {
@@ -46,6 +64,21 @@
                 spinEdit.Maximum = decimal.MaxValue;
             }
         }
+
+        protected void SetToolTip(Control control, string toolTip) =>
+            ToolTip.SetToolTip(control, toolTip);
+
+        protected abstract void UpdateProperties(params string[] propertyNames);
+
+        #endregion
+
+        #region Private Event Handlers
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
+
+        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
+            UpdateAllProperties();
 
         #endregion
     }

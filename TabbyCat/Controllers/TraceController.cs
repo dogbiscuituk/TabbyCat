@@ -26,6 +26,19 @@
 
         #region Fields & Properties
 
+        protected override string[] AllProperties => new[]
+        {
+            PropertyNames.Description,
+            PropertyNames.Location,
+            PropertyNames.Maximum,
+            PropertyNames.Minimum,
+            PropertyNames.Orientation,
+            PropertyNames.Pattern,
+            PropertyNames.Scale,
+            PropertyNames.StripCount,
+            PropertyNames.Visible
+        };
+
         private TraceEdit Editor => WorldEdit.TraceEdit;
         private Selection Selection => WorldController.Selection;
 
@@ -35,6 +48,7 @@
 
         protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             if (connect)
             {
                 UpdateAllProperties();
@@ -59,8 +73,6 @@
                 Editor.seStripCountY.ValueChanged += StripCount_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCount_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
             }
             else
             {
@@ -84,9 +96,62 @@
                 Editor.seStripCountX.ValueChanged -= StripCount_ValueChanged;
                 Editor.seStripCountY.ValueChanged -= StripCount_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCount_ValueChanged;
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected override void UpdateProperties(params string[] propertyNames)
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Description:
+                        Editor.edDescription.Text = Selection.Description;
+                        break;
+                    case PropertyNames.Location:
+                        Editor.seLocationX.Value = (decimal)Selection.Location.X;
+                        Editor.seLocationY.Value = (decimal)Selection.Location.Y;
+                        Editor.seLocationZ.Value = (decimal)Selection.Location.Z;
+                        break;
+                    case PropertyNames.Maximum:
+                        Editor.seMaximumX.Value = (decimal)Selection.Maximum.X;
+                        Editor.seMaximumY.Value = (decimal)Selection.Maximum.Y;
+                        Editor.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
+                        break;
+                    case PropertyNames.Minimum:
+                        Editor.seMinimumX.Value = (decimal)Selection.Minimum.X;
+                        Editor.seMinimumY.Value = (decimal)Selection.Minimum.Y;
+                        Editor.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
+                        break;
+                    case PropertyNames.Orientation:
+                        Editor.seOrientationX.Value = (decimal)Selection.Orientation.X;
+                        Editor.seOrientationY.Value = (decimal)Selection.Orientation.Y;
+                        Editor.seOrientationZ.Value = (decimal)Selection.Orientation.Z;
+                        break;
+                    case PropertyNames.Pattern:
+                        Editor.cbPattern.SelectedItem = Selection.Pattern;
+                        break;
+                    case PropertyNames.Scale:
+                        Editor.seScaleX.Value = (decimal)Selection.Scale.X;
+                        Editor.seScaleY.Value = (decimal)Selection.Scale.Y;
+                        Editor.seScaleZ.Value = (decimal)Selection.Scale.Z;
+                        break;
+                    case PropertyNames.StripCount:
+                        Editor.seStripCountX.Value = (decimal)Selection.StripCount.X;
+                        Editor.seStripCountY.Value = (decimal)Selection.StripCount.Y;
+                        Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
+                        break;
+                    case PropertyNames.Visible:
+                        Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
+                        break;
+                }
+            Updating = false;
         }
 
         #endregion
@@ -137,12 +202,6 @@
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p, Editor.cbVisible.Checked));
-
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
-
-        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
-            UpdateAllProperties();
 
         #endregion
 
@@ -199,70 +258,6 @@
                 return;
             Updating = true;
             Selection.ForEach(p => CommandProcessor.Run(makeCommand(p.Index)));
-            Updating = false;
-        }
-
-        private void UpdateAllProperties() => UpdateProperties(new[]
-        {
-            PropertyNames.Description,
-            PropertyNames.Location,
-            PropertyNames.Maximum,
-            PropertyNames.Minimum,
-            PropertyNames.Orientation,
-            PropertyNames.Pattern,
-            PropertyNames.Scale,
-            PropertyNames.StripCount,
-            PropertyNames.Visible
-        });
-
-        private void UpdateProperties(params string[] propertyNames)
-        {
-            if (Updating)
-                return;
-            Updating = true;
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
-                {
-                    case PropertyNames.Description:
-                        Editor.edDescription.Text = Selection.Description;
-                        break;
-                    case PropertyNames.Location:
-                        Editor.seLocationX.Value = (decimal)Selection.Location.X;
-                        Editor.seLocationY.Value = (decimal)Selection.Location.Y;
-                        Editor.seLocationZ.Value = (decimal)Selection.Location.Z;
-                        break;
-                    case PropertyNames.Maximum:
-                        Editor.seMaximumX.Value = (decimal)Selection.Maximum.X;
-                        Editor.seMaximumY.Value = (decimal)Selection.Maximum.Y;
-                        Editor.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
-                        break;
-                    case PropertyNames.Minimum:
-                        Editor.seMinimumX.Value = (decimal)Selection.Minimum.X;
-                        Editor.seMinimumY.Value = (decimal)Selection.Minimum.Y;
-                        Editor.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
-                        break;
-                    case PropertyNames.Orientation:
-                        Editor.seOrientationX.Value = (decimal)Selection.Orientation.X;
-                        Editor.seOrientationY.Value = (decimal)Selection.Orientation.Y;
-                        Editor.seOrientationZ.Value = (decimal)Selection.Orientation.Z;
-                        break;
-                    case PropertyNames.Pattern:
-                        Editor.cbPattern.SelectedItem = Selection.Pattern;
-                        break;
-                    case PropertyNames.Scale:
-                        Editor.seScaleX.Value = (decimal)Selection.Scale.X;
-                        Editor.seScaleY.Value = (decimal)Selection.Scale.Y;
-                        Editor.seScaleZ.Value = (decimal)Selection.Scale.Z;
-                        break;
-                    case PropertyNames.StripCount:
-                        Editor.seStripCountX.Value = (decimal)Selection.StripCount.X;
-                        Editor.seStripCountY.Value = (decimal)Selection.StripCount.Y;
-                        Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
-                        break;
-                    case PropertyNames.Visible:
-                        Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
-                        break;
-                }
             Updating = false;
         }
 
