@@ -534,6 +534,7 @@
             // cbGLSLVersion
             // 
             this.cbGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbGLSLVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGLSLVersion.FormattingEnabled = true;
             this.cbGLSLVersion.Items.AddRange(new object[] {
             "330",
