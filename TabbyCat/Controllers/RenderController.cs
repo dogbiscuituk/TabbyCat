@@ -18,6 +18,17 @@
 
         #endregion
 
+        #region Public Properties
+
+        public override string Shader1Vertex { get => CreateScript(ShaderType.VertexShader); set { } }
+        public override string Shader2TessControl { get => CreateScript(ShaderType.TessControlShader); set { } }
+        public override string Shader3TessEvaluation { get => CreateScript(ShaderType.TessEvaluationShader); set { } }
+        public override string Shader4Geometry { get => CreateScript(ShaderType.GeometryShader); set { } }
+        public override string Shader5Fragment { get => CreateScript(ShaderType.FragmentShader); set { } }
+        public override string Shader6Compute { get => CreateScript(ShaderType.ComputeShader); set { } }
+
+        #endregion
+
         #region Internal Properties
 
         internal static GLInfo _GLInfo;
@@ -219,13 +230,6 @@
         private GLControl GLControl => WorldController.GLControl;
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
         private Scene Scene => WorldController.Scene;
-
-        public override string Shader1Vertex { get => CreateScript(ShaderType.VertexShader); set { } }
-        public override string Shader2TessControl { get => CreateScript(ShaderType.TessControlShader); set { } }
-        public override string Shader3TessEvaluation { get => CreateScript(ShaderType.TessEvaluationShader); set { } }
-        public override string Shader4Geometry { get => CreateScript(ShaderType.GeometryShader); set { } }
-        public override string Shader5Fragment { get => CreateScript(ShaderType.FragmentShader); set { } }
-        public override string Shader6Compute { get => CreateScript(ShaderType.ComputeShader); set { } }
 
         #endregion
 
