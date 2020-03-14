@@ -35,9 +35,13 @@
             this.TraceEdit = new TabbyCatControls.TraceEdit();
             this.tpGPU = new System.Windows.Forms.TabPage();
             this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
+            this.tpGPU.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -69,9 +73,8 @@
             this.SceneEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SceneEdit.Location = new System.Drawing.Point(3, 3);
-            this.SceneEdit.MinimumSize = new System.Drawing.Size(320, 280);
             this.SceneEdit.Name = "SceneEdit";
-            this.SceneEdit.Size = new System.Drawing.Size(320, 280);
+            this.SceneEdit.Size = new System.Drawing.Size(320, 262);
             this.SceneEdit.TabIndex = 1;
             // 
             // tpTraces
@@ -97,6 +100,7 @@
             // 
             // tpGPU
             // 
+            this.tpGPU.Controls.Add(this.groupBox1);
             this.tpGPU.Location = new System.Drawing.Point(4, 22);
             this.tpGPU.Name = "tpGPU";
             this.tpGPU.Padding = new System.Windows.Forms.Padding(3);
@@ -115,6 +119,27 @@
             this.ShaderEdit.Size = new System.Drawing.Size(334, 300);
             this.ShaderEdit.TabIndex = 3;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(320, 262);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Log";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 16);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(314, 243);
+            this.textBox1.TabIndex = 0;
+            // 
             // WorldEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,6 +151,9 @@
             this.TabControl.ResumeLayout(false);
             this.tpScene.ResumeLayout(false);
             this.tpTraces.ResumeLayout(false);
+            this.tpGPU.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -139,5 +167,7 @@
         public TabbyCatControls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
         private System.Windows.Forms.TabPage tpGPU;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

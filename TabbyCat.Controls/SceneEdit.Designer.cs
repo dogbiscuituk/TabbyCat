@@ -487,7 +487,7 @@
             this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.label12.Size = new System.Drawing.Size(74, 29);
             this.label12.TabIndex = 30;
-            this.label12.Text = "GLSL Version";
+            this.label12.Text = "GL Version";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // seFPS

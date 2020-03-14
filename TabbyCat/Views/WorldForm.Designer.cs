@@ -255,9 +255,9 @@
             // 
             this.SplitContainer1.Panel2.Controls.Add(this.WorldEdit);
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SplitContainer1.Panel2MinSize = 330;
+            this.SplitContainer1.Panel2MinSize = 340;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 683);
-            this.SplitContainer1.SplitterDistance = 640;
+            this.SplitContainer1.SplitterDistance = 625;
             this.SplitContainer1.TabIndex = 1;
             // 
             // GLControl
@@ -266,7 +266,7 @@
             this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(640, 683);
+            this.GLControl.Size = new System.Drawing.Size(625, 683);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -276,7 +276,7 @@
             this.WorldEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WorldEdit.Location = new System.Drawing.Point(0, 0);
             this.WorldEdit.Name = "WorldEdit";
-            this.WorldEdit.Size = new System.Drawing.Size(331, 683);
+            this.WorldEdit.Size = new System.Drawing.Size(346, 683);
             this.WorldEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -482,7 +482,7 @@
             this.FileNewFromTemplate});
             this.FileNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.FileNew.Name = "FileNew";
-            this.FileNew.Size = new System.Drawing.Size(196, 22);
+            this.FileNew.Size = new System.Drawing.Size(197, 22);
             this.FileNew.Text = "&New";
             // 
             // FileNewEmptyScene
@@ -505,19 +505,19 @@
             this.FileOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileOpen.Name = "FileOpen";
             this.FileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.FileOpen.Size = new System.Drawing.Size(196, 22);
+            this.FileOpen.Size = new System.Drawing.Size(197, 22);
             this.FileOpen.Text = "&Open...";
             // 
             // FileReopen
             // 
             this.FileReopen.Name = "FileReopen";
-            this.FileReopen.Size = new System.Drawing.Size(196, 22);
+            this.FileReopen.Size = new System.Drawing.Size(197, 22);
             this.FileReopen.Text = "&Reopen";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(194, 6);
             // 
             // FileSave
             // 
@@ -525,33 +525,33 @@
             this.FileSave.Name = "FileSave";
             this.FileSave.ShortcutKeyDisplayString = "^S";
             this.FileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.FileSave.Size = new System.Drawing.Size(196, 22);
+            this.FileSave.Size = new System.Drawing.Size(197, 22);
             this.FileSave.Text = "&Save";
             // 
             // FileSaveAs
             // 
             this.FileSaveAs.Name = "FileSaveAs";
-            this.FileSaveAs.Size = new System.Drawing.Size(196, 22);
+            this.FileSaveAs.Size = new System.Drawing.Size(197, 22);
             this.FileSaveAs.Text = "Save &As...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(194, 6);
             // 
             // FileClose
             // 
             this.FileClose.Name = "FileClose";
             this.FileClose.ShortcutKeyDisplayString = "^F4";
             this.FileClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.FileClose.Size = new System.Drawing.Size(196, 22);
+            this.FileClose.Size = new System.Drawing.Size(197, 22);
             this.FileClose.Text = "&Close";
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
             this.FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.FileExit.Size = new System.Drawing.Size(196, 22);
+            this.FileExit.Size = new System.Drawing.Size(197, 22);
             this.FileExit.Text = "Close All && E&xit";
             // 
             // EditMenu
@@ -695,13 +695,13 @@
             this.SceneAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
             this.SceneAddNewTrace.Name = "SceneAddNewTrace";
             this.SceneAddNewTrace.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.SceneAddNewTrace.Size = new System.Drawing.Size(182, 22);
+            this.SceneAddNewTrace.Size = new System.Drawing.Size(181, 22);
             this.SceneAddNewTrace.Text = "&Add a New Trace";
             // 
             // SceneEditCode
             // 
             this.SceneEditCode.Name = "SceneEditCode";
-            this.SceneEditCode.Size = new System.Drawing.Size(182, 22);
+            this.SceneEditCode.Size = new System.Drawing.Size(181, 22);
             this.SceneEditCode.Text = "&Edit Code";
             // 
             // ViewMenu
@@ -744,7 +744,7 @@
             this.TimeForward,
             this.TimeAccelerate});
             this.TimeMenu.Name = "TimeMenu";
-            this.TimeMenu.Size = new System.Drawing.Size(46, 20);
+            this.TimeMenu.Size = new System.Drawing.Size(45, 20);
             this.TimeMenu.Text = "&Time";
             // 
             // TimeDecelerate
