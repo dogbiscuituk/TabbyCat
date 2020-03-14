@@ -50,14 +50,15 @@
         private WorldEdit PropertiesEditor => PropertiesController.WorldEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private int PropertiesTabIndex => PropertiesTabControl.SelectedIndex;
+        private RenderController RenderController => WorldController.RenderController;
         private Scene Scene => WorldController.Scene;
-        private WorldController WorldController => PropertiesController.WorldController;
-        private WorldForm WorldForm => WorldController.WorldForm;
         private Selection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.Splitter;
         private bool Updating;
+        private WorldController WorldController => PropertiesController.WorldController;
+        private WorldForm WorldForm => WorldController.WorldForm;
 
         private string ShaderName
         {
@@ -86,7 +87,7 @@
                     case 1:
                         return Selection;
                     default:
-                        return null;
+                        return RenderController;
                 }
             }
         }
@@ -308,7 +309,7 @@
             }
         }
 
-        private string GetScript() => PropertiesTabIndex < 2 ? GetScript(ShaderType) : Scene.GPUCode;
+        private string GetScript() => GetScript(ShaderType);
             
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 

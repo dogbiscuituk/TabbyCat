@@ -9,7 +9,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
-    public class RenderController
+    public class RenderController : ShaderSet
     {
         #region Constructors
 
@@ -19,27 +19,6 @@
         #endregion
 
         #region Internal Properties
-
-        /// <summary>
-        /// A list of (1-based) line numbers, indicating the first line of each successive section
-        /// in the most recently compiled GPUCode.
-        /// </summary>
-        /// <remarks>
-        /// The GPUCode comprises a sequence of sections, alternating between system and user.
-        /// Breaks[0] = 1, the line number of the 1st line in the 1st system section;
-        /// Breaks[1] = the line number of the 1st line in the 1st user section;
-        /// Breaks[2] = the start of the 2nd system section;
-        /// Breaks[3] = the start of the 2nd user section;
-        /// and so on. The last entry is the highest numbered line in the GPUCode, plus one.
-        /// When no shaders are defined, there is no GPU code, and Breaks[1] will be zero.
-        /// These line numbers can be provided to the FastColouredTextBox-based editor, allowing the
-        /// entire GPUCode to be edited, displaying each shader & trace section in its context,
-        /// while marking its boundaries (shown in italic) as system, or possibly even readonly, to
-        /// prevent user editing of these parts. After editing, the system sections are relocated,
-        /// allowing the individual shader fragments of user code to be retrieved, and their changes
-        /// effected on the scene.
-        /// </remarks>
-        internal List<int> Breaks { get; } = new List<int>();
 
         internal static GLInfo _GLInfo;
         internal GLInfo GLInfo
@@ -221,7 +200,6 @@
             Loc_Transform;
 
         private int
-            BreakOffset,
             CurrencyCount;
 
         private bool
@@ -230,9 +208,7 @@
             ProjectionValid;
 
         private StringBuilder
-            GpuCode,
-            GpuLog,
-            SceneScript;
+            GpuLog;
 
         #endregion
 
@@ -244,62 +220,61 @@
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
         private Scene Scene => WorldController.Scene;
 
+        public override string Shader1Vertex { get => CreateScript(ShaderType.VertexShader); set { } }
+        public override string Shader2TessControl { get => CreateScript(ShaderType.TessControlShader); set { } }
+        public override string Shader3TessEvaluation { get => CreateScript(ShaderType.TessEvaluationShader); set { } }
+        public override string Shader4Geometry { get => CreateScript(ShaderType.GeometryShader); set { } }
+        public override string Shader5Fragment { get => CreateScript(ShaderType.FragmentShader); set { } }
+        public override string Shader6Compute { get => CreateScript(ShaderType.ComputeShader); set { } }
+
         #endregion
 
         #region Private Methods
 
         #region Create / Delete Shaders
 
-        private void AddBreak() => Breaks.Add(BreakOffset + SceneScript.GetLineCount());
-
-        private void AddScript(string script)
-        {
-            AddBreak();
-            SceneScript.AppendLine($"\n{script}\n");
-            AddBreak();
-        }
-
         private void BindAttribute(int attributeIndex, string variableName) =>
             GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
         private void BindAttributes() => BindAttribute(0, "position");
 
-        private int CreateShader(ShaderType shaderType, bool mandatory = false)
+        private string CreateScript(ShaderType shaderType)
         {
-            System.Diagnostics.Debug.Assert(SceneScript == null);
+            StringBuilder script = null;
             for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
             {
                 var trace = Scene.Traces[traceIndex];
                 var traceScript = trace.GetScript(shaderType);
                 if (!string.IsNullOrWhiteSpace(traceScript))
                 {
-                    if (SceneScript == null)
+                    if (script == null)
                     {
-                        SceneScript = new StringBuilder();
-                        SceneScript.AppendFormat(Resources.Scene_Head, shaderType.ShaderTag(), Scene.GLTargetVersion);
-                        AddScript(Scene.GetScript(shaderType));
+                        script = new StringBuilder();
+                        script.AppendFormat(Resources.Scene_Head, Scene.GLTargetVersion);
+                        script.AppendLine($"\n{Scene.GetScript(shaderType)}\n");
                     }
-                    SceneScript.AppendFormat(Resources.Trace_Head, traceIndex, trace);
-                    AddScript(traceScript);
-                    SceneScript.AppendLine(Resources.Trace_Tail);
+                    script.AppendFormat(Resources.Trace_Head, traceIndex, trace);
+                    script.AppendLine($"\n{traceScript}\n");
+                    script.AppendLine(Resources.Trace_Tail);
                 }
             }
-            if (SceneScript == null)
-            {
-                if (mandatory)
-                    Log($"ERROR: Missing {shaderType.ShaderName()}.");
-                return 0;
-            }
-            SceneScript.AppendLine(Resources.Switch_Statement);
+            if (script == null)
+                return string.Empty;
+            script.AppendLine(Resources.Switch_Statement);
             for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-                SceneScript.AppendFormat(Resources.Switch_Case, traceIndex);
-            SceneScript.AppendLine(Resources.Scene_Tail);
+                script.AppendFormat(Resources.Switch_Case, traceIndex);
+            script.AppendLine(Resources.Scene_Tail);
+            return script.ToString();
+        }
+
+        private int CreateShader(ShaderType shaderType)
+        {
+            var script = CreateScript(shaderType);
+            if (string.IsNullOrWhiteSpace(script))
+                return 0;
             Log($"Compiling {shaderType.ShaderName()}...");
             var shaderID = GL.CreateShader(shaderType);
-            GpuCode.Append(SceneScript);
-            BreakOffset = GpuCode.GetLineCount() - 1;
-            GL.ShaderSource(shaderID, SceneScript.ToString());
-            SceneScript = null;
+            GL.ShaderSource(shaderID, script);
             GL.CompileShader(shaderID);
             GL.AttachShader(ProgramID, shaderID);
             Log(GL.GetShaderInfoLog(shaderID));
@@ -309,17 +284,13 @@
 
         private void CreateShaders()
         {
-            Breaks.Clear();
-            BreakOffset = 0;
-            Breaks.Add(1);
             ShaderTypes.Clear();
-            VertexShaderID = CreateShader(ShaderType.VertexShader, true);
+            VertexShaderID = CreateShader(ShaderType.VertexShader);
             TessControlShaderID = CreateShader(ShaderType.TessControlShader);
             TessEvaluationShaderID = CreateShader(ShaderType.TessEvaluationShader);
             GeometryShaderID = CreateShader(ShaderType.GeometryShader);
-            FragmentShaderID = CreateShader(ShaderType.FragmentShader, true);
+            FragmentShaderID = CreateShader(ShaderType.FragmentShader);
             ComputeShaderID = CreateShader(ShaderType.ComputeShader);
-            Breaks.Add(BreakOffset + 1);
         }
 
         private void DeleteShader(ref int shaderID)
@@ -376,7 +347,6 @@
                 return;
             "Validate Program".Spit();
             Scene.GPUStatus = GPUStatus.OK;
-            GpuCode = new StringBuilder();
             GpuLog = new StringBuilder();
             ProgramID = GL.CreateProgram();
             CreateShaders();
@@ -386,9 +356,7 @@
             GL.ValidateProgram(ProgramID);
             Log(GL.GetProgramInfoLog(ProgramID));
             Log("Done.");
-            Scene.GPUCode = GpuCode.ToString().TrimEnd();
             Scene.GPULog = GpuLog.ToString().TrimEnd();
-            GpuCode = null;
             GpuLog = null;
             GetUniformLocations();
             DeleteShaders();

@@ -33,7 +33,7 @@
             this.SceneEdit = new TabbyCatControls.SceneEdit();
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TraceEdit = new TabbyCatControls.TraceEdit();
-            this.tpStatus = new System.Windows.Forms.TabPage();
+            this.tpGPU = new System.Windows.Forms.TabPage();
             this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.TabControl.Controls.Add(this.tpScene);
             this.TabControl.Controls.Add(this.tpTraces);
-            this.TabControl.Controls.Add(this.tpStatus);
+            this.TabControl.Controls.Add(this.tpGPU);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
@@ -95,15 +95,15 @@
             this.TraceEdit.Size = new System.Drawing.Size(320, 262);
             this.TraceEdit.TabIndex = 0;
             // 
-            // tpStatus
+            // tpGPU
             // 
-            this.tpStatus.Location = new System.Drawing.Point(4, 22);
-            this.tpStatus.Name = "tpStatus";
-            this.tpStatus.Padding = new System.Windows.Forms.Padding(3);
-            this.tpStatus.Size = new System.Drawing.Size(326, 268);
-            this.tpStatus.TabIndex = 2;
-            this.tpStatus.Text = "Status";
-            this.tpStatus.UseVisualStyleBackColor = true;
+            this.tpGPU.Location = new System.Drawing.Point(4, 22);
+            this.tpGPU.Name = "tpGPU";
+            this.tpGPU.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGPU.Size = new System.Drawing.Size(326, 268);
+            this.tpGPU.TabIndex = 2;
+            this.tpGPU.Text = "GPU";
+            this.tpGPU.UseVisualStyleBackColor = true;
             // 
             // ShaderEdit
             // 
@@ -138,6 +138,6 @@
         public System.Windows.Forms.TabPage tpTraces;
         public TabbyCatControls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
-        private System.Windows.Forms.TabPage tpStatus;
+        private System.Windows.Forms.TabPage tpGPU;
     }
 }

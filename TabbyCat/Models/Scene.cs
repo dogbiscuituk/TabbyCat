@@ -34,7 +34,6 @@
         public string Title { get; set; }
         public List<Trace> Traces = new List<Trace>();
         public bool VSync { get; set; }
-        public string GPUCode { get; set; }
         public string GPULog { get; set; }
         public GPUStatus GPUStatus { get; set; }
 
@@ -129,7 +128,6 @@
             Camera = Defaults.Camera;
             FPS = Defaults.FPS;
             GLTargetVersion = Defaults.GLTargetVersion;
-            GPUCode = Defaults.GPUCode;
             GPULog = Defaults.GPULog;
             Projection = Defaults.Projection;
             Shader1Vertex = Resources.Scene_Shader1Vertex;
