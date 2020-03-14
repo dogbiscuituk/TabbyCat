@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using OpenTK;
+    using System.ComponentModel;
     using TabbyCat.Common.Converters;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -11,7 +12,7 @@
     {
         #region Constructors
 
-        public Trace() : base() => Init();
+        public Trace() => Init();
 
         internal Trace(Scene scene) : this() => Scene = scene;
 
@@ -21,9 +22,9 @@
 
         #region Public Properties
 
-        public string Description { get; set; }
+        [DefaultValue("")] public string Description { get; set; } = "";
         public Pattern Pattern { get; set; }
-        public bool Visible { get; set; }
+        [DefaultValue(true)] public bool Visible { get; set; } = true;
 
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Location { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Maximum { get; set; }
@@ -94,9 +95,6 @@
                 Orientation = new Vector3(),
                 Scale = new Vector3(1, 1, 1),
                 StripCount = new Vector3(100, 100, 0);
-
-            internal const string
-                Description = "";
         }
 
         #endregion
@@ -133,8 +131,6 @@
             Shader5Fragment = Resources.Trace_Shader5Fragment;
             Shader6Compute = Resources.Trace_Shader6Compute;
             StripCount = Defaults.StripCount;
-            Description = Defaults.Description;
-            Visible = Defaults.Visible;
         }
 
         #endregion

@@ -13,7 +13,7 @@
     {
         #region Constructors
 
-        public Scene() : base() => Init();
+        public Scene() => Init();
 
         internal Scene(WorldController worldController) : this()
         {

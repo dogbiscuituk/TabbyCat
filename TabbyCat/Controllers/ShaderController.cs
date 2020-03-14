@@ -76,7 +76,7 @@
             }
         }
 
-        private ShaderSet ShaderSet
+        private IShaderSet ShaderSet
         {
             get
             {
@@ -219,7 +219,7 @@
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
-        private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShaderType();
+        private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
         private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) =>
             ShaderType = (ShaderType)e.ClickedItem.Tag;
@@ -343,18 +343,15 @@
             Updating = false;
         }
 
-        private void SelectNextShaderType()
+        private void SelectNextShader()
         {
-            if (ShaderSet.GetActiveShaderCount() < 2)
-                ShaderType = ShaderType.Next();
-            else
-            {
-                var shaderType = ShaderType;
-                do
-                    shaderType = shaderType.Next();
-                while (string.IsNullOrWhiteSpace(GetScript(shaderType)));
-                ShaderType = shaderType;
-            }
+            var s = ShaderType;
+            do
+                s = s.Next();
+            while (string.IsNullOrWhiteSpace(GetScript(s)) && s != ShaderType);
+            if (s == ShaderType)
+                s = s.Next();
+            ShaderType = s;
         }
 
         private void UpdateProperties(params string[] propertyNames)

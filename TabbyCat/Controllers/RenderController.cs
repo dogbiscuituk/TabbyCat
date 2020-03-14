@@ -9,7 +9,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
-    public class RenderController : ShaderSet
+    public class RenderController : IShaderSet
     {
         #region Constructors
 
@@ -18,14 +18,39 @@
 
         #endregion
 
-        #region Public Properties
+        #region Public Methods
 
-        public override string Shader1Vertex { get => CreateScript(ShaderType.VertexShader); set { } }
-        public override string Shader2TessControl { get => CreateScript(ShaderType.TessControlShader); set { } }
-        public override string Shader3TessEvaluation { get => CreateScript(ShaderType.TessEvaluationShader); set { } }
-        public override string Shader4Geometry { get => CreateScript(ShaderType.GeometryShader); set { } }
-        public override string Shader5Fragment { get => CreateScript(ShaderType.FragmentShader); set { } }
-        public override string Shader6Compute { get => CreateScript(ShaderType.ComputeShader); set { } }
+        public string GetScript(ShaderType shaderType)
+        {
+            StringBuilder script = null;
+            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
+            {
+                var trace = Scene.Traces[traceIndex];
+                var traceScript = trace.GetScript(shaderType);
+                if (!string.IsNullOrWhiteSpace(traceScript))
+                {
+                    if (script == null)
+                    {
+                        script = new StringBuilder();
+                        script.AppendFormat(Resources.Scene_Head, Scene.GLTargetVersion);
+                        script.AppendLine($"\n{Scene.GetScript(shaderType)}\n");
+                    }
+                    script.AppendFormat(Resources.Trace_Head, traceIndex, trace);
+                    script.AppendLine($"\n{traceScript}\n");
+                    script.AppendLine(Resources.Trace_Tail);
+                }
+            }
+            if (script == null)
+                return string.Empty;
+            script.AppendLine(Resources.Switch_Statement);
+            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
+                script.AppendFormat(Resources.Switch_Case, traceIndex);
+            script.AppendLine(Resources.Scene_Tail);
+            return script.ToString();
+        }
+
+        public void SetScript(ShaderType shaderType, string value) =>
+            throw new System.NotImplementedException();
 
         #endregion
 
@@ -242,38 +267,9 @@
 
         private void BindAttributes() => BindAttribute(0, "position");
 
-        private string CreateScript(ShaderType shaderType)
-        {
-            StringBuilder script = null;
-            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-            {
-                var trace = Scene.Traces[traceIndex];
-                var traceScript = trace.GetScript(shaderType);
-                if (!string.IsNullOrWhiteSpace(traceScript))
-                {
-                    if (script == null)
-                    {
-                        script = new StringBuilder();
-                        script.AppendFormat(Resources.Scene_Head, Scene.GLTargetVersion);
-                        script.AppendLine($"\n{Scene.GetScript(shaderType)}\n");
-                    }
-                    script.AppendFormat(Resources.Trace_Head, traceIndex, trace);
-                    script.AppendLine($"\n{traceScript}\n");
-                    script.AppendLine(Resources.Trace_Tail);
-                }
-            }
-            if (script == null)
-                return string.Empty;
-            script.AppendLine(Resources.Switch_Statement);
-            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-                script.AppendFormat(Resources.Switch_Case, traceIndex);
-            script.AppendLine(Resources.Scene_Tail);
-            return script.ToString();
-        }
-
         private int CreateShader(ShaderType shaderType)
         {
-            var script = CreateScript(shaderType);
+            var script = GetScript(shaderType);
             if (string.IsNullOrWhiteSpace(script))
                 return 0;
             Log($"Compiling {shaderType.ShaderName()}...");

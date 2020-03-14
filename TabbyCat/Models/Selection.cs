@@ -1,12 +1,13 @@
 ﻿namespace TabbyCat.Models
 {
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class Selection : ShaderSet
+    public class Selection : IShaderSet
     {
         #region Public Properties
 
@@ -54,42 +55,6 @@
             set => SetProperty(p => p.Scale = value);
         }
 
-        public override string Shader1Vertex
-        {
-            get => GetProperty(p => p.Shader1Vertex);
-            set => SetProperty(p => p.Shader1Vertex = value);
-        }
-
-        public override string Shader2TessControl
-        {
-            get => GetProperty(p => p.Shader2TessControl);
-            set => SetProperty(p => p.Shader2TessControl = value);
-        }
-
-        public override string Shader3TessEvaluation
-        {
-            get => GetProperty(p => p.Shader3TessEvaluation);
-            set => SetProperty(p => p.Shader3TessEvaluation = value);
-        }
-
-        public override string Shader4Geometry
-        {
-            get => GetProperty(p => p.Shader4Geometry);
-            set => SetProperty(p => p.Shader4Geometry = value);
-        }
-
-        public override string Shader5Fragment
-        {
-            get => GetProperty(p => p.Shader5Fragment);
-            set => SetProperty(p => p.Shader5Fragment = value);
-        }
-
-        public override string Shader6Compute
-        {
-            get => GetProperty(p => p.Shader6Compute);
-            set => SetProperty(p => p.Shader6Compute = value);
-        }
-
         public Vector3 StripCount
         {
             get => GetProperty(p => p.StripCount);
@@ -107,6 +72,14 @@
         #region Public Events
 
         public event EventHandler Changed;
+
+        #endregion
+
+        #region Public Methods
+
+        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType));
+
+        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
 
         #endregion
 

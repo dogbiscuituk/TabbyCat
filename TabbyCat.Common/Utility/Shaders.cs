@@ -4,6 +4,16 @@
 
     public static class Shaders
     {
+        public static ShaderType[] All = new[]
+        {
+            ShaderType.VertexShader,
+            ShaderType.TessControlShader,
+            ShaderType.TessEvaluationShader,
+            ShaderType.GeometryShader,
+            ShaderType.FragmentShader,
+            ShaderType.ComputeShader
+        };
+
         public static ShaderType Next(this ShaderType shaderType)
         {
             switch (shaderType)

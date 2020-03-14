@@ -65,7 +65,7 @@
 
         private static JsonSerializer GetSerializer() => new JsonSerializer
         {
-            DefaultValueHandling = DefaultValueHandling.Include,
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented
         };
 

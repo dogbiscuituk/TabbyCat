@@ -5,6 +5,9 @@
 
     public enum Pattern
     {
+        [Description("None")]
+        None = FillType.None | PrimitiveType.Points,
+
         [Description("Fill")]
         Fill = FillType.Fill | PrimitiveType.TriangleStrip,
 
