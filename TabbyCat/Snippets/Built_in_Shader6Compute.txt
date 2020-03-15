@@ -1,0 +1,11 @@
+// workgroup dimensions
+in uvec3 gl_NumWorkGroups;
+const uvec3 gl_WorkGroupSize;
+
+// workgroup and invocation IDs
+in uvec3 gl_WorkGroupID;
+in uvec3 gl_LocalInvocationID;
+
+// derived variables
+in uvec3 gl_GlobalInvocationID;
+in uint gl_LocalInvocationIndex;

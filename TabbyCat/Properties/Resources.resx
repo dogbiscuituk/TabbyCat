@@ -541,4 +541,22 @@
   <data name="Scene_VSync" xml:space="preserve">
     <value />
   </data>
+  <data name="Built_in_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_Shader2TessControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader2tesscontrol.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_Shader4Geometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader4geometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

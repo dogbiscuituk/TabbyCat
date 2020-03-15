@@ -81,6 +81,153 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to in int gl_VertexID;       // only present when not targeting Vulkan
+        ///in int gl_InstanceID;     // only present when not targeting Vulkan
+        ///in int gl_VertexIndex;    // only present when targeting Vulkan
+        ///in int gl_InstanceIndex;  // only present when targeting Vulkan
+        ///in int gl_DrawID;
+        ///in int gl_BaseVertex;
+        ///in int gl_BaseInstance;
+        ///
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///};.
+        /// </summary>
+        internal static string Built_in_Shader1Vertex {
+            get {
+                return ResourceManager.GetString("Built_in_Shader1Vertex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_in[gl_MaxPatchVertices];
+        ///
+        ///in int gl_PatchVerticesIn;
+        ///in int gl_PrimitiveID;
+        ///in int gl_InvocationID;
+        ///
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_out[];
+        ///
+        ///patch out float gl_TessLevelOuter[4];
+        ///patch out float gl_TessLevelInner[2];.
+        /// </summary>
+        internal static string Built_in_Shader2TessControl {
+            get {
+                return ResourceManager.GetString("Built_in_Shader2TessControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_in[gl_MaxPatchVertices];
+        ///
+        ///in int gl_PatchVerticesIn;
+        ///in int gl_PrimitiveID;
+        ///in vec3 gl_TessCoord;
+        ///patch in float gl_TessLevelOuter[4];
+        ///patch in float gl_TessLevelInner[2];
+        ///
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///};.
+        /// </summary>
+        internal static string Built_in_Shader3TessEvaluation {
+            get {
+                return ResourceManager.GetString("Built_in_Shader3TessEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_in[];
+        ///
+        ///in int gl_PrimitiveIDIn;
+        ///in int gl_InvocationID;
+        ///
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///};
+        ///
+        ///out int gl_PrimitiveID;
+        ///out int gl_Layer;
+        ///out int gl_ViewportIndex;.
+        /// </summary>
+        internal static string Built_in_Shader4Geometry {
+            get {
+                return ResourceManager.GetString("Built_in_Shader4Geometry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in vec4 gl_FragCoord;
+        ///in bool gl_FrontFacing;
+        ///in float gl_ClipDistance[];
+        ///in float gl_CullDistance[];
+        ///in vec2 gl_PointCoord;
+        ///in int gl_PrimitiveID;
+        ///in int gl_SampleID;
+        ///in vec2 gl_SamplePosition;
+        ///in int gl_SampleMaskIn[];
+        ///in int gl_Layer;
+        ///in int gl_ViewportIndex;
+        ///in bool gl_HelperInvocation;
+        ///
+        ///out float gl_FragDepth;
+        ///out int gl_SampleMask[];.
+        /// </summary>
+        internal static string Built_in_Shader5Fragment {
+            get {
+                return ResourceManager.GetString("Built_in_Shader5Fragment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to // workgroup dimensions
+        ///in uvec3 gl_NumWorkGroups;
+        ///const uvec3 gl_WorkGroupSize;
+        ///
+        ///// workgroup and invocation IDs
+        ///in uvec3 gl_WorkGroupID;
+        ///in uvec3 gl_LocalInvocationID;
+        ///
+        ///// derived variables
+        ///in uvec3 gl_GlobalInvocationID;
+        ///in uint gl_LocalInvocationIndex;.
+        /// </summary>
+        internal static string Built_in_Shader6Compute {
+            get {
+                return ResourceManager.GetString("Built_in_Shader6Compute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string Camera_FocusX {
@@ -884,11 +1031,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /*
-        ///  {0} Shader
-        ///*/
-        /// 
-        ///#version {1}
+        ///   Looks up a localized string similar to #version {0}
         /// .
         /// </summary>
         internal static string Scene_Head {
@@ -909,6 +1052,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
         ///out vec3 colour;
+        ///
         ///uniform float timeValue;
         ///uniform int traceIndex;
         ///uniform mat4
@@ -922,14 +1066,18 @@ namespace TabbyCat.Properties {
         ///    t = timeValue,
         ///    x = position.x,
         ///    y = position.y,
-        ///    z = sqrt(x * x + y * y);
+        ///    z = position.z,
+        ///    r = 0,
+        ///    g = 0,
+        ///    b = 0;
+        ///
+        ///  z = sqrt(x * x + y * y);
         ///  z = cos(20 * z - 10 * t) * exp(-3 * z);
-        ///  float
-        ///    r = (x + 1) / 2,
-        ///    g = (y + 1) / 2,
-        ///    b = clamp(abs(5 * z), 0, 1);
-        ///  gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
-        ///  colour = vec3(r [rest of string was truncated]&quot;;.
+        ///  r = (x + 1) / 2;
+        ///  g = (y + 1) / 2;
+        ///  b = clamp(abs(5 * z), 0, 1);
+        ///
+        ///  gl_Position = projection * cameraView * tr [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Scene_Shader1Vertex {
             get {
@@ -967,6 +1115,8 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to in vec3 colour;
         ///out vec4 FragColor;
+        ///
+        ///uniform float timeValue;
         ///uniform int traceIndex;
         ///
         ///void execTrace()

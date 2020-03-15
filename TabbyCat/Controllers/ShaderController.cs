@@ -12,6 +12,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCat.Views;
 
     internal class ShaderController
@@ -35,6 +36,7 @@
             items[4].Tag = ShaderType.FragmentShader;
             items[5].Tag = ShaderType.ComputeShader;
             LoadShaderCode();
+            LoadBuiltInHelp();
         }
 
         #endregion
@@ -107,6 +109,7 @@
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
                     LoadShaderCode();
+                    LoadBuiltInHelp();
                 }
             }
         }
@@ -213,12 +216,6 @@
         private void Ruler_Click(object sender, System.EventArgs e) =>
             ShowRuler = !ShowRuler;
 
-        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
-            LoadShaderCode();
-
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
-
         private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
         private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) =>
@@ -245,6 +242,12 @@
             SaveShaderCode();
             UpdateUI();
         }
+
+        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
+            LoadShaderCode();
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
+            UpdateProperties(e.PropertyName);
 
         #endregion
 
@@ -296,6 +299,27 @@
 
         private void CycleSplit() => SplitType = (SplitType)((int)(SplitType + 1) % 3);
 
+        private string GetBuiltInHelp()
+        {
+            switch (ShaderType)
+            {
+                case ShaderType.VertexShader:
+                    return Resources.Built_in_Shader1Vertex;
+                case ShaderType.TessControlShader:
+                    return Resources.Built_in_Shader2TessControl;
+                case ShaderType.TessEvaluationShader:
+                    return Resources.Built_in_Shader3TessEvaluation;
+                case ShaderType.GeometryShader:
+                    return Resources.Built_in_Shader4Geometry;
+                case ShaderType.FragmentShader:
+                    return Resources.Built_in_Shader5Fragment;
+                case ShaderType.ComputeShader:
+                    return Resources.Built_in_Shader6Compute;
+                default:
+                    return string.Empty;
+            }
+        }
+
         private string GetHTML(int filterIndex)
         {
             switch (filterIndex)
@@ -312,6 +336,11 @@
         private string GetScript() => GetScript(ShaderType);
             
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
+
+        private void LoadBuiltInHelp()
+        {
+            Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
+        }
 
         private void LoadShaderCode()
         {

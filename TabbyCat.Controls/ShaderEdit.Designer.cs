@@ -41,7 +41,7 @@
             this.PrimarySplitter = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblBuiltInHelp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Toolbar = new System.Windows.Forms.ToolStrip();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
@@ -119,7 +119,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.lblBuiltInHelp);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(320, 455);
             this.splitContainer1.SplitterDistance = 359;
@@ -163,7 +163,7 @@
             // 
             this.SecondarySplitter.Panel2.Controls.Add(this.SecondaryMap);
             this.SecondarySplitter.Size = new System.Drawing.Size(320, 177);
-            this.SecondarySplitter.SplitterDistance = 223;
+            this.SecondarySplitter.SplitterDistance = 219;
             this.SecondarySplitter.SplitterWidth = 5;
             this.SecondarySplitter.TabIndex = 5;
             // 
@@ -206,7 +206,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(223, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(219, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -252,7 +252,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(223, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(219, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -267,7 +267,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(223, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(219, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -279,7 +279,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(92, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(96, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -301,7 +301,7 @@
             // 
             this.PrimarySplitter.Panel2.Controls.Add(this.PrimaryMap);
             this.PrimarySplitter.Size = new System.Drawing.Size(320, 177);
-            this.PrimarySplitter.SplitterDistance = 223;
+            this.PrimarySplitter.SplitterDistance = 219;
             this.PrimarySplitter.SplitterWidth = 5;
             this.PrimarySplitter.TabIndex = 4;
             // 
@@ -314,7 +314,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(223, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(219, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -326,21 +326,22 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(92, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(96, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
             this.PrimaryMap.Visible = false;
             // 
-            // label2
+            // lblBuiltInHelp
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(0, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Help text will appear here.";
+            this.lblBuiltInHelp.AutoSize = true;
+            this.lblBuiltInHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 21);
+            this.lblBuiltInHelp.Name = "lblBuiltInHelp";
+            this.lblBuiltInHelp.Padding = new System.Windows.Forms.Padding(3);
+            this.lblBuiltInHelp.Size = new System.Drawing.Size(150, 21);
+            this.lblBuiltInHelp.TabIndex = 1;
+            this.lblBuiltInHelp.Text = "Help text will appear here.";
             // 
             // label1
             // 
@@ -349,9 +350,10 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 15);
+            this.label1.Padding = new System.Windows.Forms.Padding(3);
+            this.label1.Size = new System.Drawing.Size(199, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Built-in language variables";
+            this.label1.Text = "Special built-in language variables";
             // 
             // Toolbar
             // 
@@ -366,7 +368,7 @@
             this.btnShader});
             this.Toolbar.Location = new System.Drawing.Point(3, 0);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(305, 25);
+            this.Toolbar.Size = new System.Drawing.Size(317, 25);
             this.Toolbar.TabIndex = 0;
             // 
             // btnExport
@@ -458,8 +460,8 @@
             this.btnShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miVertex,
-            this.miTessellationEvaluation,
             this.miTessellationControl,
+            this.miTessellationEvaluation,
             this.miGeometry,
             this.miFragment,
             this.miCompute});
@@ -573,8 +575,8 @@
         public System.Windows.Forms.ToolStripMenuItem miGeometry;
         public System.Windows.Forms.ToolStripMenuItem miFragment;
         public System.Windows.Forms.ToolStripMenuItem miCompute;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.SplitContainer splitContainer1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label lblBuiltInHelp;
     }
 }

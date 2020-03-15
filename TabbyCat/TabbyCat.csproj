@@ -424,6 +424,12 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Snippets\Built_in_Shader1Vertex.txt" />
+    <Content Include="Snippets\Built_in_Shader2TessControl.txt" />
+    <Content Include="Snippets\Built_in_Shader3TessEvaluation.txt" />
+    <Content Include="Snippets\Built_in_Shader4Geometry.txt" />
+    <Content Include="Snippets\Built_in_Shader5Fragment.txt" />
+    <Content Include="Snippets\Built_in_Shader6Compute.txt" />
     <Content Include="Snippets\Scene_Head.txt" />
     <Content Include="Snippets\Scene_Shader1Vertex.txt" />
     <Content Include="Snippets\Scene_Shader2TessControl.txt" />
