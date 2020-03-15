@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class WorldEdit : UserControl
+    public partial class PropertiesEdit : UserControl
     {
-        public WorldEdit()
+        public PropertiesEdit()
         {
             InitializeComponent();
         }

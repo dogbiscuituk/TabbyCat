@@ -54,5 +54,11 @@
             TraceGeometry = "Trace Geometry Shader",
             TraceFragment = "Trace Fragment Shader",
             TraceCompute = "Trace Compute Shader";
+
+        /// <summary>
+        /// Transient Properties.
+        /// </summary>
+        public const string
+            GPULog = "GPU Log";
     }
 }

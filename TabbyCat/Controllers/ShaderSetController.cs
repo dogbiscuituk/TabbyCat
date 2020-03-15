@@ -25,7 +25,7 @@
         internal ToolTip ToolTip => PropertiesController.ToolTip;
         protected bool Updating;
         protected WorldController WorldController => PropertiesController.WorldController;
-        protected WorldEdit WorldEdit => PropertiesController.WorldEdit;
+        protected PropertiesEdit WorldEdit => PropertiesController.PropertiesEdit;
 
         #endregion
 

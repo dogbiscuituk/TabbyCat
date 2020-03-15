@@ -41,7 +41,7 @@
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
             this.GLControl = new OpenTK.GLControl();
-            this.WorldEdit = new TabbyCat.Controls.WorldEdit();
+            this.PropertiesEdit = new TabbyCat.Controls.PropertiesEdit();
             this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
             this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
@@ -253,7 +253,7 @@
             // 
             // SplitContainer1.Panel2
             // 
-            this.SplitContainer1.Panel2.Controls.Add(this.WorldEdit);
+            this.SplitContainer1.Panel2.Controls.Add(this.PropertiesEdit);
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 340;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 683);
@@ -272,12 +272,12 @@
             // 
             // WorldEdit
             // 
-            this.WorldEdit.ContextMenuStrip = this.PopupPropertiesMenu;
-            this.WorldEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WorldEdit.Location = new System.Drawing.Point(0, 0);
-            this.WorldEdit.Name = "WorldEdit";
-            this.WorldEdit.Size = new System.Drawing.Size(346, 683);
-            this.WorldEdit.TabIndex = 0;
+            this.PropertiesEdit.ContextMenuStrip = this.PopupPropertiesMenu;
+            this.PropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
+            this.PropertiesEdit.Name = "WorldEdit";
+            this.PropertiesEdit.Size = new System.Drawing.Size(346, 683);
+            this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
             // 
@@ -928,7 +928,7 @@
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
         internal System.Windows.Forms.SplitContainer SplitContainer1;
-        internal Controls.WorldEdit WorldEdit;
+        internal Controls.PropertiesEdit PropertiesEdit;
         internal System.Windows.Forms.ContextMenuStrip PopupPropertiesMenu;
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;

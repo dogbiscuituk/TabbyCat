@@ -34,8 +34,20 @@
         public string Title { get; set; }
         public List<Trace> Traces = new List<Trace>();
         public bool VSync { get; set; }
-        public string GPULog { get; set; }
         public GPUStatus GPUStatus { get; set; }
+
+        private string _GPULog = string.Empty;
+        public string GPULog
+        {
+            get => _GPULog;
+            set
+            {
+                if (GPULog == value)
+                    return;
+                _GPULog = value;
+                OnPropertyChanged(PropertyNames.GPULog);
+            }
+        }
 
         internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
         internal GLMode GLMode => WorldController?.GLMode;

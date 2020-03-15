@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class WorldEdit
+    partial class PropertiesEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,9 +34,9 @@
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TraceEdit = new TabbyCatControls.TraceEdit();
             this.tpGPU = new System.Windows.Forms.TabPage();
-            this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.edGPULog = new System.Windows.Forms.TextBox();
+            this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
@@ -109,6 +109,29 @@
             this.tpGPU.Text = "GPU";
             this.tpGPU.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.edGPULog);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(320, 262);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Log";
+            // 
+            // edGPULog
+            // 
+            this.edGPULog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.edGPULog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edGPULog.Location = new System.Drawing.Point(3, 16);
+            this.edGPULog.Multiline = true;
+            this.edGPULog.Name = "edGPULog";
+            this.edGPULog.ReadOnly = true;
+            this.edGPULog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.edGPULog.Size = new System.Drawing.Size(314, 243);
+            this.edGPULog.TabIndex = 0;
+            // 
             // ShaderEdit
             // 
             this.ShaderEdit.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -119,34 +142,13 @@
             this.ShaderEdit.Size = new System.Drawing.Size(334, 300);
             this.ShaderEdit.TabIndex = 3;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 262);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Log";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(314, 243);
-            this.textBox1.TabIndex = 0;
-            // 
-            // WorldEdit
+            // PropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ShaderEdit);
             this.Controls.Add(this.TabControl);
-            this.Name = "WorldEdit";
+            this.Name = "PropertiesEdit";
             this.Size = new System.Drawing.Size(334, 594);
             this.TabControl.ResumeLayout(false);
             this.tpScene.ResumeLayout(false);
@@ -166,8 +168,8 @@
         public System.Windows.Forms.TabPage tpTraces;
         public TabbyCatControls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
-        private System.Windows.Forms.TabPage tpGPU;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TabPage tpGPU;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TextBox edGPULog;
     }
 }

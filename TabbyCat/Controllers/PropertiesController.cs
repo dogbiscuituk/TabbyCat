@@ -1,6 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using System.ComponentModel;
     using System.Windows.Forms;
+    using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.Views;
 
@@ -21,10 +23,10 @@
 
         #region Fields & Properties
 
+        internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
         internal ToolTip ToolTip => WorldController.ToolTip;
-        internal WorldEdit WorldEdit => WorldForm.WorldEdit;
 
-        protected override Control Editor => WorldEdit;
+        protected override Control Editor => PropertiesEdit;
         protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
 
         private readonly SceneController SceneController;
@@ -70,6 +72,7 @@
         {
             if (connect)
             {
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
                 WorldForm.ViewProperties.Click += ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening += PopupPropertiesMenu_Opening;
                 WorldForm.PopupPropertiesHide.Click += PopupPropertiesHide_Click;
@@ -77,6 +80,7 @@
             }
             else
             {
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
                 WorldForm.ViewProperties.Click -= ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;
                 WorldForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;
@@ -85,6 +89,16 @@
             SceneController.Connect(connect);
             TraceController.Connect(connect);
             ShaderController.Connect(connect);
+        }
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch(e.PropertyName)
+            {
+                case PropertyNames.GPULog:
+                    PropertiesEdit.edGPULog.Text = Scene.GPULog;
+                    break;
+            }
         }
 
         #endregion
