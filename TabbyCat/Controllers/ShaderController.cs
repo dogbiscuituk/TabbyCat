@@ -47,7 +47,7 @@
         internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
 
         private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
-        private SplitContainer PrimarySplitter => Editor.PrimarySplitter;
+        private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private readonly PropertiesController PropertiesController;
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
@@ -56,9 +56,9 @@
         private RenderController RenderController => WorldController.RenderController;
         private Scene Scene => WorldController.Scene;
         private Selection Selection => WorldController.Selection;
-        private SplitContainer SecondarySplitter => Editor.SecondarySplitter;
+        private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
-        private SplitContainer Splitter => Editor.Splitter;
+        private SplitContainer Splitter => Editor.EditSplit;
         private bool Updating;
         private WorldController WorldController => PropertiesController.WorldController;
         private WorldForm WorldForm => WorldController.WorldForm;

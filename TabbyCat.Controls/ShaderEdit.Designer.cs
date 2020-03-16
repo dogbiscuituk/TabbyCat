@@ -31,19 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShaderEdit));
             this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.Splitter = new System.Windows.Forms.SplitContainer();
-            this.SecondarySplitter = new System.Windows.Forms.SplitContainer();
+            this.MainSplit = new System.Windows.Forms.SplitContainer();
+            this.EditSplit = new System.Windows.Forms.SplitContainer();
+            this.TopSplit = new System.Windows.Forms.SplitContainer();
             this.SecondaryTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.PrimaryTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.SecondaryRuler = new FastColoredTextBoxNS.Ruler();
             this.SecondaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.PrimarySplitter = new System.Windows.Forms.SplitContainer();
+            this.BottomSplit = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.lblBuiltInHelp = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Toolbar = new System.Windows.Forms.ToolStrip();
+            this.lblBuiltInHelp = new TabbyCat.Controls.JmkLinkLabel();
+            this.Toolbar = new TabbyCat.Controls.JmkToolStrip();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnExportHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportRTF = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,24 +63,24 @@
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.ToolStripContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).BeginInit();
-            this.Splitter.Panel1.SuspendLayout();
-            this.Splitter.Panel2.SuspendLayout();
-            this.Splitter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SecondarySplitter)).BeginInit();
-            this.SecondarySplitter.Panel1.SuspendLayout();
-            this.SecondarySplitter.Panel2.SuspendLayout();
-            this.SecondarySplitter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
+            this.MainSplit.Panel1.SuspendLayout();
+            this.MainSplit.Panel2.SuspendLayout();
+            this.MainSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EditSplit)).BeginInit();
+            this.EditSplit.Panel1.SuspendLayout();
+            this.EditSplit.Panel2.SuspendLayout();
+            this.EditSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TopSplit)).BeginInit();
+            this.TopSplit.Panel1.SuspendLayout();
+            this.TopSplit.Panel2.SuspendLayout();
+            this.TopSplit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SecondaryTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PrimarySplitter)).BeginInit();
-            this.PrimarySplitter.Panel1.SuspendLayout();
-            this.PrimarySplitter.Panel2.SuspendLayout();
-            this.PrimarySplitter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomSplit)).BeginInit();
+            this.BottomSplit.Panel1.SuspendLayout();
+            this.BottomSplit.Panel2.SuspendLayout();
+            this.BottomSplit.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +89,7 @@
             // 
             // ToolStripContainer.ContentPanel
             // 
-            this.ToolStripContainer.ContentPanel.Controls.Add(this.splitContainer1);
+            this.ToolStripContainer.ContentPanel.Controls.Add(this.MainSplit);
             this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(288, 455);
             this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolStripContainer.LeftToolStripPanelVisible = false;
@@ -105,68 +104,67 @@
             // 
             this.ToolStripContainer.TopToolStripPanel.Controls.Add(this.Toolbar);
             // 
-            // splitContainer1
+            // MainSplit
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.MainSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.MainSplit.Location = new System.Drawing.Point(0, 0);
+            this.MainSplit.Name = "MainSplit";
+            this.MainSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // MainSplit.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.Splitter);
+            this.MainSplit.Panel1.Controls.Add(this.EditSplit);
             // 
-            // splitContainer1.Panel2
+            // MainSplit.Panel2
             // 
-            this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.lblBuiltInHelp);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(288, 455);
-            this.splitContainer1.SplitterDistance = 359;
-            this.splitContainer1.TabIndex = 4;
+            this.MainSplit.Panel2.AutoScroll = true;
+            this.MainSplit.Panel2.Controls.Add(this.lblBuiltInHelp);
+            this.MainSplit.Size = new System.Drawing.Size(288, 455);
+            this.MainSplit.SplitterDistance = 359;
+            this.MainSplit.TabIndex = 4;
             // 
-            // Splitter
+            // EditSplit
             // 
-            this.Splitter.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Splitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Splitter.Location = new System.Drawing.Point(0, 0);
-            this.Splitter.Name = "Splitter";
-            this.Splitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.EditSplit.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.EditSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditSplit.Location = new System.Drawing.Point(0, 0);
+            this.EditSplit.Name = "EditSplit";
+            this.EditSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // Splitter.Panel1
+            // EditSplit.Panel1
             // 
-            this.Splitter.Panel1.Controls.Add(this.SecondarySplitter);
-            this.Splitter.Panel1MinSize = 0;
+            this.EditSplit.Panel1.Controls.Add(this.TopSplit);
+            this.EditSplit.Panel1MinSize = 0;
             // 
-            // Splitter.Panel2
+            // EditSplit.Panel2
             // 
-            this.Splitter.Panel2.Controls.Add(this.PrimarySplitter);
-            this.Splitter.Panel2MinSize = 0;
-            this.Splitter.Size = new System.Drawing.Size(288, 359);
-            this.Splitter.SplitterDistance = 177;
-            this.Splitter.SplitterWidth = 5;
-            this.Splitter.TabIndex = 3;
+            this.EditSplit.Panel2.Controls.Add(this.BottomSplit);
+            this.EditSplit.Panel2MinSize = 0;
+            this.EditSplit.Size = new System.Drawing.Size(288, 359);
+            this.EditSplit.SplitterDistance = 177;
+            this.EditSplit.SplitterWidth = 5;
+            this.EditSplit.TabIndex = 3;
             // 
-            // SecondarySplitter
+            // TopSplit
             // 
-            this.SecondarySplitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SecondarySplitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.SecondarySplitter.Location = new System.Drawing.Point(0, 0);
-            this.SecondarySplitter.Name = "SecondarySplitter";
+            this.TopSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.TopSplit.Location = new System.Drawing.Point(0, 0);
+            this.TopSplit.Name = "TopSplit";
             // 
-            // SecondarySplitter.Panel1
+            // TopSplit.Panel1
             // 
-            this.SecondarySplitter.Panel1.Controls.Add(this.SecondaryTextBox);
-            this.SecondarySplitter.Panel1.Controls.Add(this.SecondaryRuler);
+            this.TopSplit.Panel1.Controls.Add(this.SecondaryTextBox);
+            this.TopSplit.Panel1.Controls.Add(this.SecondaryRuler);
             // 
-            // SecondarySplitter.Panel2
+            // TopSplit.Panel2
             // 
-            this.SecondarySplitter.Panel2.Controls.Add(this.SecondaryMap);
-            this.SecondarySplitter.Size = new System.Drawing.Size(288, 177);
-            this.SecondarySplitter.SplitterDistance = 175;
-            this.SecondarySplitter.SplitterWidth = 5;
-            this.SecondarySplitter.TabIndex = 5;
+            this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
+            this.TopSplit.Size = new System.Drawing.Size(288, 177);
+            this.TopSplit.SplitterDistance = 173;
+            this.TopSplit.SplitterWidth = 5;
+            this.TopSplit.TabIndex = 5;
             // 
             // SecondaryTextBox
             // 
@@ -207,7 +205,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(175, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(173, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -253,7 +251,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(175, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(173, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -268,7 +266,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(175, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(173, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -280,31 +278,31 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(108, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(110, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
             this.SecondaryMap.Visible = false;
             // 
-            // PrimarySplitter
+            // BottomSplit
             // 
-            this.PrimarySplitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrimarySplitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.PrimarySplitter.Location = new System.Drawing.Point(0, 0);
-            this.PrimarySplitter.Name = "PrimarySplitter";
+            this.BottomSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.BottomSplit.Location = new System.Drawing.Point(0, 0);
+            this.BottomSplit.Name = "BottomSplit";
             // 
-            // PrimarySplitter.Panel1
+            // BottomSplit.Panel1
             // 
-            this.PrimarySplitter.Panel1.Controls.Add(this.PrimaryTextBox);
-            this.PrimarySplitter.Panel1.Controls.Add(this.PrimaryRuler);
+            this.BottomSplit.Panel1.Controls.Add(this.PrimaryTextBox);
+            this.BottomSplit.Panel1.Controls.Add(this.PrimaryRuler);
             // 
-            // PrimarySplitter.Panel2
+            // BottomSplit.Panel2
             // 
-            this.PrimarySplitter.Panel2.Controls.Add(this.PrimaryMap);
-            this.PrimarySplitter.Size = new System.Drawing.Size(288, 177);
-            this.PrimarySplitter.SplitterDistance = 175;
-            this.PrimarySplitter.SplitterWidth = 5;
-            this.PrimarySplitter.TabIndex = 4;
+            this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
+            this.BottomSplit.Size = new System.Drawing.Size(288, 177);
+            this.BottomSplit.SplitterDistance = 173;
+            this.BottomSplit.SplitterWidth = 5;
+            this.BottomSplit.TabIndex = 4;
             // 
             // PrimaryRuler
             // 
@@ -315,7 +313,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(175, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(173, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -327,7 +325,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(108, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(110, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
@@ -336,24 +334,14 @@
             // lblBuiltInHelp
             // 
             this.lblBuiltInHelp.AutoSize = true;
-            this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 19);
+            this.lblBuiltInHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 0);
             this.lblBuiltInHelp.Name = "lblBuiltInHelp";
             this.lblBuiltInHelp.Padding = new System.Windows.Forms.Padding(2);
             this.lblBuiltInHelp.Size = new System.Drawing.Size(147, 19);
             this.lblBuiltInHelp.TabIndex = 1;
+            this.lblBuiltInHelp.TabStop = true;
             this.lblBuiltInHelp.Text = "Help text will appear here.";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(2);
-            this.label1.Size = new System.Drawing.Size(197, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Special built-in language variables";
             // 
             // Toolbar
             // 
@@ -520,25 +508,25 @@
             this.ToolStripContainer.TopToolStripPanel.PerformLayout();
             this.ToolStripContainer.ResumeLayout(false);
             this.ToolStripContainer.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.Splitter.Panel1.ResumeLayout(false);
-            this.Splitter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).EndInit();
-            this.Splitter.ResumeLayout(false);
-            this.SecondarySplitter.Panel1.ResumeLayout(false);
-            this.SecondarySplitter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SecondarySplitter)).EndInit();
-            this.SecondarySplitter.ResumeLayout(false);
+            this.MainSplit.Panel1.ResumeLayout(false);
+            this.MainSplit.Panel2.ResumeLayout(false);
+            this.MainSplit.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).EndInit();
+            this.MainSplit.ResumeLayout(false);
+            this.EditSplit.Panel1.ResumeLayout(false);
+            this.EditSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EditSplit)).EndInit();
+            this.EditSplit.ResumeLayout(false);
+            this.TopSplit.Panel1.ResumeLayout(false);
+            this.TopSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TopSplit)).EndInit();
+            this.TopSplit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SecondaryTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryTextBox)).EndInit();
-            this.PrimarySplitter.Panel1.ResumeLayout(false);
-            this.PrimarySplitter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PrimarySplitter)).EndInit();
-            this.PrimarySplitter.ResumeLayout(false);
+            this.BottomSplit.Panel1.ResumeLayout(false);
+            this.BottomSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BottomSplit)).EndInit();
+            this.BottomSplit.ResumeLayout(false);
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.ResumeLayout(false);
@@ -548,7 +536,7 @@
         #endregion
 
         public System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        public System.Windows.Forms.ToolStrip Toolbar;
+        public TabbyCat.Controls.JmkToolStrip Toolbar;
         public System.Windows.Forms.ToolStripDropDownButton btnExport;
         public System.Windows.Forms.ToolStripMenuItem btnExportHTML;
         public System.Windows.Forms.ToolStripMenuItem btnExportRTF;
@@ -559,13 +547,13 @@
         public System.Windows.Forms.ToolStripMenuItem btnDocumentMap;
         public System.Windows.Forms.ToolStripButton btnSplit;
         public System.Windows.Forms.ToolStripButton btnHelp;
-        public System.Windows.Forms.SplitContainer Splitter;
-        public System.Windows.Forms.SplitContainer SecondarySplitter;
+        public System.Windows.Forms.SplitContainer EditSplit;
+        public System.Windows.Forms.SplitContainer TopSplit;
         public FastColoredTextBoxNS.FastColoredTextBox SecondaryTextBox;
         public FastColoredTextBoxNS.FastColoredTextBox PrimaryTextBox;
         public FastColoredTextBoxNS.Ruler SecondaryRuler;
         public FastColoredTextBoxNS.DocumentMap SecondaryMap;
-        public System.Windows.Forms.SplitContainer PrimarySplitter;
+        public System.Windows.Forms.SplitContainer BottomSplit;
         public FastColoredTextBoxNS.Ruler PrimaryRuler;
         public FastColoredTextBoxNS.DocumentMap PrimaryMap;
         public System.Windows.Forms.ToolStripSplitButton btnShader;
@@ -575,8 +563,7 @@
         public System.Windows.Forms.ToolStripMenuItem miGeometry;
         public System.Windows.Forms.ToolStripMenuItem miFragment;
         public System.Windows.Forms.ToolStripMenuItem miCompute;
-        public System.Windows.Forms.SplitContainer splitContainer1;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.LinkLabel lblBuiltInHelp;
+        public System.Windows.Forms.SplitContainer MainSplit;
+        public TabbyCat.Controls.JmkLinkLabel lblBuiltInHelp;
     }
 }

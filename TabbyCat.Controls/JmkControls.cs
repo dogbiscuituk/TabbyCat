@@ -35,6 +35,15 @@
         }
     }
 
+    public class JmkLinkLabel : LinkLabel
+    {
+        protected override void WndProc(ref Message m)
+        {
+            this.FirstFocus(ref m);
+            base.WndProc(ref m);
+        }
+    }
+
     public class JmkMenuStrip : MenuStrip
     {
         protected override void WndProc(ref Message m)
