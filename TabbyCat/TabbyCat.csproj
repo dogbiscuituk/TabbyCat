@@ -66,6 +66,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ClockController.cs" />
+    <Compile Include="Controllers\LinkLabelController.cs" />
     <Compile Include="Controllers\ShaderSetController.cs" />
     <Compile Include="Controllers\ColourController.cs" />
     <Compile Include="Controllers\FullScreenController.cs" />

@@ -171,6 +171,9 @@
 
         #region Private Event Handlers
 
+        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
+            e.Link.LinkData.ToString().Launch();
+
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
             ResizeBuiltInHelp();
 
@@ -275,6 +278,7 @@
                 Editor.btnShader.DropDownItemClicked += Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
+                Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
@@ -296,6 +300,7 @@
                 Editor.btnShader.DropDownItemClicked -= Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
+                Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
@@ -343,10 +348,8 @@
             
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
-        private void LoadBuiltInHelp()
-        {
-            Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
-        }
+        private void LoadBuiltInHelp() =>
+            LinkLabelController.SetText(Editor.lblBuiltInHelp, GetBuiltInHelp());
 
         private void LoadShaderCode()
         {

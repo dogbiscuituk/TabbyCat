@@ -34,7 +34,7 @@ gl_TessCoord.z == 1.0 - (1.0 - gl_TessCoord.z) // two operations performed
 
 to aid in replicating subdivision computations.
 
-If a tessellation control shader is active, the input variables gl_TessLevelOuter and gl_TessLevelInner are filled with the corresponding outputs written by the tessellation control shader. Otherwise, they are assigned with default tessellation levels specified in section 11.2.3.3 “Tessellation Evaluation Shader Inputs” of the OpenGL Specification.
+If a tessellation control shader is active, the input variables gl_TessLevelOuter and gl_TessLevelInner are filled with the corresponding outputs written by the tessellation control shader. Otherwise, they are assigned with default tessellation levels specified in section 11.2.3.3 “Tessellation Evaluation Shader Inputs” of the [OpenGL Specification](https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.html#references).
 
 Tessellation Evaluation Output Variables
 

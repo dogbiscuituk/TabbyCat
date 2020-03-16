@@ -41,7 +41,7 @@
             this.PrimarySplitter = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.lblBuiltInHelp = new System.Windows.Forms.Label();
+            this.lblBuiltInHelp = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.Toolbar = new System.Windows.Forms.ToolStrip();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
@@ -577,6 +577,6 @@
         public System.Windows.Forms.ToolStripMenuItem miCompute;
         public System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lblBuiltInHelp;
+        public System.Windows.Forms.LinkLabel lblBuiltInHelp;
     }
 }
