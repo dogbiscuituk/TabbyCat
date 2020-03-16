@@ -1,14 +1,48 @@
-in int gl_VertexID;       // only present when not targeting Vulkan
-in int gl_InstanceID;     // only present when not targeting Vulkan
-in int gl_VertexIndex;    // only present when targeting Vulkan
-in int gl_InstanceIndex;  // only present when targeting Vulkan
+The built-in vertex shader variables are intrinsically declared as follows:
+
+in int gl_VertexID;      // only present when not targeting Vulkan
+in int gl_InstanceID;    // only present when not targeting Vulkan
+in int gl_VertexIndex;   // only present when targeting Vulkan
+in int gl_InstanceIndex; // only present when targeting Vulkan
 in int gl_DrawID;
 in int gl_BaseVertex;
 in int gl_BaseInstance;
 
 out gl_PerVertex {
-    vec4 gl_Position;
-    float gl_PointSize;
-    float gl_ClipDistance[];
-    float gl_CullDistance[];
+  vec4 gl_Position;
+  float gl_PointSize;
+  float gl_ClipDistance[];
+  float gl_CullDistance[];
 };
+
+The variable gl_Position is intended for writing the homogeneous vertex position. It can be written at any time during shader execution. This value will be used by primitive assembly, clipping, culling, and other fixed functionality operations, if present, that operate on primitives after vertex processing has occurred. Its value is undefined after the vertex processing stage if the vertex shader executable does not write gl_Position.
+
+The variable gl_PointSize is intended for a shader to write the size of the point to be rasterized. It is measured in pixels. If gl_PointSize is not written to, its value is undefined in subsequent pipe stages.
+
+The variable gl_ClipDistance is intended for writing clip distances, and provides the forward compatible mechanism for controlling user clipping. The element gl_ClipDistance[i] specifies a clip distance for each plane i. A distance of 0 means the vertex is on the plane, a positive distance means the vertex is inside the clip plane, and a negative distance means the point is outside the clip plane. The clip distances will be linearly interpolated across the primitive and the portion of the primitive with interpolated distances less than 0 will be clipped.
+
+The gl_ClipDistance array is predeclared as unsized and must be explicitly sized by the shader either redeclaring it with a size or implicitly sized by indexing it only with constant integral expressions. This needs to size the array to include all the clip planes that are enabled via the API; if the size does not include all enabled planes, results are undefined. The size can be at most gl_MaxClipDistances. The number of varying components (see gl_MaxVaryingComponents) consumed by gl_ClipDistance will match the size of the array, no matter how many planes are enabled. The shader must also set all values in gl_ClipDistance that have been enabled via the API, or results are undefined. Values written into gl_ClipDistance for planes that are not enabled have no effect.
+
+The variable gl_CullDistance provides a mechanism for controlling user culling. The element gl_CullDistance[i] specifies a cull distance for plane i. A distance of 0 means the vertex is on the plane, a positive distance means the vertex is inside the cull volume, and a negative distance means the point is outside the cull volume. Primitives whose vertices all have a negative cull distance for plane i will be discarded.
+
+The gl_CullDistance array is predeclared as unsized and must be sized by the shader either redeclaring it with a size or indexing it only with constant integral expressions. The size determines the number and set of enabled cull distances and can be at most gl_MaxCullDistances. The number of varying components (see gl_MaxVaryingComponents) consumed by gl_CullDistance will match the size of the array. Shaders writing gl_CullDistance must write all enabled distances, or culling results are undefined.
+
+As an output variable, gl_CullDistance provides the place for the shader to write these distances. As an input in all but the fragment language, it reads the values written in the previous shader stage. In the fragment language, gl_CullDistance array contains linearly interpolated values for the vertex values written by a shader to the gl_CullDistance vertex output variable.
+
+It is a compile-time or link-time error for the set of shaders forming a program to have the sum of the sizes of the gl_ClipDistance and gl_CullDistance arrays to be larger than gl_MaxCombinedClipAndCullDistances.
+
+The variable gl_VertexID is a vertex shader input variable that holds an integer index for the vertex, as defined under “Shader Inputs” in section 11.1.3.9 “Shader Inputs” of the OpenGL Specification. It is only present when not targeting Vulkan. Even when present, the value of gl_VertexID is not always defined.
+
+The variable gl_InstanceID is a vertex shader input variable that holds the instance number of the current primitive in an instanced draw call (see “Shader Inputs” in section 11.1.3.9 “Shader Inputs” of the OpenGL Specification). It is only present when not targeting Vulkan. If the current primitive does not come from an instanced draw call, the value of gl_InstanceID is zero.
+
+The variable gl_VertexIndex is a vertex language input variable that holds an integer index for the vertex, relative to a base. It is only present when targeting Vulkan. Even when present, the value of gl_VertexIndex is not always defined.
+
+The variable gl_InstanceIndex is a vertex language input variable that holds the instance number of the current primitive in an instanced draw call, relative to a base. It is only present when targeting Vulkan. If the current primitive does not come from an instanced draw call, the value of gl_InstanceIndex is zero.
+
+The variable gl_DrawID is a vertex shader input variable that holds the integer index of the drawing command to which the current vertex belongs (see “Shader Inputs” in section 11.1.3.9 of the OpenGL Specification). If the vertex is not invoked by a Multi* form of a draw command, then the value of gl_DrawID is zero.
+
+The variable gl_BaseVertex is a vertex shader input variable that holds the integer value passed to the baseVertex parameter of the command that resulted in the current shader invocation (see “Shader Inputs” in section 11.1.3.9 of the OpenGL Specification).
+
+The variable gl_BaseInstance is a vertex shader input variable that holds the integer value passed to the baseInstance parameter of the command that resulted in the current shader invocation (see “Shader Inputs” in section 11.1.3.9 of the OpenGL Specification).
+
+Copyright © 2008-2018 The Khronos Group Inc. All Rights Reserved.

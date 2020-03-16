@@ -1,3 +1,5 @@
+In the tessellation evaluation shader, built-in variables are intrinsically declared as:
+
 in gl_PerVertex {
     vec4 gl_Position;
     float gl_PointSize;
@@ -17,3 +19,25 @@ out gl_PerVertex {
     float gl_ClipDistance[];
     float gl_CullDistance[];
 };
+
+Tessellation Evaluation Input Variables
+
+gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance contain the values written in the previous shader stage to the corresponding outputs.
+
+gl_PatchVerticesIn and gl_PrimitiveID are defined in the same fashion as the corresponding input variables in the tessellation control shader.
+
+gl_TessCoord specifies a three-component (u,v,w) vector identifying the position of the vertex being processed by the shader relative to the primitive being tessellated. Its values will obey the properties
+
+gl_TessCoord.x == 1.0 - (1.0 - gl_TessCoord.x) // two operations performed
+gl_TessCoord.y == 1.0 - (1.0 - gl_TessCoord.y) // two operations performed
+gl_TessCoord.z == 1.0 - (1.0 - gl_TessCoord.z) // two operations performed
+
+to aid in replicating subdivision computations.
+
+If a tessellation control shader is active, the input variables gl_TessLevelOuter and gl_TessLevelInner are filled with the corresponding outputs written by the tessellation control shader. Otherwise, they are assigned with default tessellation levels specified in section 11.2.3.3 “Tessellation Evaluation Shader Inputs” of the OpenGL Specification.
+
+Tessellation Evaluation Output Variables
+
+gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance are used in the same fashion as the corresponding output variables in the vertex shader.
+
+Copyright © 2008-2018 The Khronos Group Inc. All Rights Reserved.

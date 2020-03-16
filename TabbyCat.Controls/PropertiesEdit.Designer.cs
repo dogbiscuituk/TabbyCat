@@ -34,14 +34,13 @@
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TraceEdit = new TabbyCatControls.TraceEdit();
             this.tpGPU = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.edGPULog = new System.Windows.Forms.TextBox();
+            this.lblGPULog = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.TabControl.SuspendLayout();
             this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
             this.tpGPU.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -100,7 +99,9 @@
             // 
             // tpGPU
             // 
-            this.tpGPU.Controls.Add(this.groupBox1);
+            this.tpGPU.AutoScroll = true;
+            this.tpGPU.Controls.Add(this.lblGPULog);
+            this.tpGPU.Controls.Add(this.label1);
             this.tpGPU.Location = new System.Drawing.Point(4, 22);
             this.tpGPU.Name = "tpGPU";
             this.tpGPU.Padding = new System.Windows.Forms.Padding(3);
@@ -109,28 +110,27 @@
             this.tpGPU.Text = "GPU";
             this.tpGPU.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // lblGPULog
             // 
-            this.groupBox1.Controls.Add(this.edGPULog);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 262);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Log";
+            this.lblGPULog.AutoSize = true;
+            this.lblGPULog.Location = new System.Drawing.Point(3, 22);
+            this.lblGPULog.Name = "lblGPULog";
+            this.lblGPULog.Padding = new System.Windows.Forms.Padding(2);
+            this.lblGPULog.Size = new System.Drawing.Size(135, 17);
+            this.lblGPULog.TabIndex = 2;
+            this.lblGPULog.Text = "GPU Log will appear here.";
             // 
-            // edGPULog
+            // label1
             // 
-            this.edGPULog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.edGPULog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edGPULog.Location = new System.Drawing.Point(3, 16);
-            this.edGPULog.Multiline = true;
-            this.edGPULog.Name = "edGPULog";
-            this.edGPULog.ReadOnly = true;
-            this.edGPULog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edGPULog.Size = new System.Drawing.Size(314, 243);
-            this.edGPULog.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(2);
+            this.label1.Size = new System.Drawing.Size(31, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Log";
             // 
             // ShaderEdit
             // 
@@ -154,8 +154,7 @@
             this.tpScene.ResumeLayout(false);
             this.tpTraces.ResumeLayout(false);
             this.tpGPU.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tpGPU.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -169,7 +168,7 @@
         public TabbyCatControls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
         public System.Windows.Forms.TabPage tpGPU;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.TextBox edGPULog;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label lblGPULog;
     }
 }

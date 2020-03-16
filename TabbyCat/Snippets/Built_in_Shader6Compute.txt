@@ -1,3 +1,5 @@
+In the compute shader, built-in variables are declared as follows:
+
 // workgroup dimensions
 in uvec3 gl_NumWorkGroups;
 const uvec3 gl_WorkGroupSize;
@@ -9,3 +11,27 @@ in uvec3 gl_LocalInvocationID;
 // derived variables
 in uvec3 gl_GlobalInvocationID;
 in uint gl_LocalInvocationIndex;
+
+The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its content is equal to the values specified in the num_groups_x, num_groups_y, and num_groups_z parameters passed to the DispatchCompute API entry point.
+
+The built-in constant gl_WorkGroupSize is a compute-shader constant containing the workgroup size of the shader. The size of the workgroup in the X, Y, and Z dimensions is stored in the x, y, and z components. The constants values in gl_WorkGroupSize will match those specified in the required local_size_x, local_size_y, and local_size_z layout qualifiers for the current shader. This is a constant so that it can be used to size arrays of memory that can be shared within the workgroup. It is a compile-time error to use gl_WorkGroupSize in a shader that does not declare a fixed workgroup size, or before that shader has declared a fixed workgroup size, using local_size_x, local_size_y, and local_size_z.
+
+The built-in variable gl_WorkGroupID is a compute-shader input variable containing the three-dimensional index of the workgroup that the current invocation is executing in. The possible values range across the parameters passed into DispatchCompute, i.e., from (0, 0, 0) to (gl_NumWorkGroups.x - 1, gl_NumWorkGroups.y - 1, gl_NumWorkGroups.z -1).
+
+The built-in variable gl_LocalInvocationID is a compute-shader input variable containing the three-dimensional index of the current work item within the workgroup. The possible values for this variable range across the workgroup size, i.e., (0,0,0) to (gl_WorkGroupSize.x - 1, gl_WorkGroupSize.y - 1, gl_WorkGroupSize.z - 1). Use of gl_LocalInvocationID is allowed before declarations of local_size_x, local_size_y, and local_size_z.
+
+The built-in variable gl_GlobalInvocationID is a compute shader input variable containing the global index of the current work item. This value uniquely identifies this invocation from all other invocations across all workgroups initiated by the current DispatchCompute call. This is computed as:
+
+gl_GlobalInvocationID =
+  gl_WorkGroupID * gl_WorkGroupSize + gl_LocalInvocationID;
+
+The built-in variable gl_LocalInvocationIndex is a compute shader input variable that contains the one-dimensional representation of the gl_LocalInvocationID. This is computed as:
+
+gl_LocalInvocationIndex =
+  gl_LocalInvocationID.z * gl_WorkGroupSize.x * gl_WorkGroupSize.y +
+  gl_LocalInvocationID.y * gl_WorkGroupSize.x +
+  gl_LocalInvocationID.x;
+
+Use of gl_LocalInvocationIndex is allowed before declarations of local_size_x, local_size_y, and local_size_z.
+
+Copyright © 2008-2018 The Khronos Group Inc. All Rights Reserved.

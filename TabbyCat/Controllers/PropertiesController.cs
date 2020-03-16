@@ -96,7 +96,7 @@
             switch(e.PropertyName)
             {
                 case PropertyNames.GPULog:
-                    PropertiesEdit.edGPULog.Text = Scene.GPULog;
+                    PropertiesEdit.lblGPULog.Text = Scene.GPULog;
                     break;
             }
         }
