@@ -348,8 +348,7 @@
             
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
-        private void LoadBuiltInHelp() =>
-            LinkLabelController.SetText(Editor.lblBuiltInHelp, GetBuiltInHelp());
+        private void LoadBuiltInHelp() => LinkLabelController.SetText(Editor.lblBuiltInHelp, GetBuiltInHelp());
 
         private void LoadShaderCode()
         {
