@@ -4,6 +4,7 @@
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;
+    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -170,6 +171,9 @@
 
         #region Private Event Handlers
 
+        private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
+            ResizeBuiltInHelp();
+
         private void DocumentMap_Click(object sender, System.EventArgs e) =>
             ShowDocumentMap = !ShowDocumentMap;
 
@@ -271,6 +275,7 @@
                 Editor.btnShader.DropDownItemClicked += Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
+                Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
                 WorldController.SelectionChanged += WorldController_SelectionChanged;
@@ -291,6 +296,7 @@
                 Editor.btnShader.DropDownItemClicked -= Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
+                Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
                 WorldController.SelectionChanged -= WorldController_SelectionChanged;
@@ -351,6 +357,9 @@
             Updating = false;
             UpdateUI();
         }
+
+        private void ResizeBuiltInHelp() => Editor.lblBuiltInHelp.MaximumSize = new Size(
+            Editor.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
         private void Run(ICommand command) => CommandProcessor.Run(command);
 

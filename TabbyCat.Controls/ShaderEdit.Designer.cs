@@ -164,7 +164,7 @@
             // 
             this.SecondarySplitter.Panel2.Controls.Add(this.SecondaryMap);
             this.SecondarySplitter.Size = new System.Drawing.Size(288, 177);
-            this.SecondarySplitter.SplitterDistance = 177;
+            this.SecondarySplitter.SplitterDistance = 175;
             this.SecondarySplitter.SplitterWidth = 5;
             this.SecondarySplitter.TabIndex = 5;
             // 
@@ -207,7 +207,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(177, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(175, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -253,7 +253,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(177, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(175, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -268,7 +268,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(177, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(175, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -280,7 +280,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(106, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(108, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -302,7 +302,7 @@
             // 
             this.PrimarySplitter.Panel2.Controls.Add(this.PrimaryMap);
             this.PrimarySplitter.Size = new System.Drawing.Size(288, 177);
-            this.PrimarySplitter.SplitterDistance = 177;
+            this.PrimarySplitter.SplitterDistance = 175;
             this.PrimarySplitter.SplitterWidth = 5;
             this.PrimarySplitter.TabIndex = 4;
             // 
@@ -315,7 +315,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(177, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(175, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -327,7 +327,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(106, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(108, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
@@ -335,11 +335,11 @@
             // 
             // lblBuiltInHelp
             // 
-            this.lblBuiltInHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBuiltInHelp.AutoSize = true;
             this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 19);
             this.lblBuiltInHelp.Name = "lblBuiltInHelp";
             this.lblBuiltInHelp.Padding = new System.Windows.Forms.Padding(2);
-            this.lblBuiltInHelp.Size = new System.Drawing.Size(288, 73);
+            this.lblBuiltInHelp.Size = new System.Drawing.Size(147, 19);
             this.lblBuiltInHelp.TabIndex = 1;
             this.lblBuiltInHelp.Text = "Help text will appear here.";
             // 
