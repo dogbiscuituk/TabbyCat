@@ -35,6 +35,17 @@
 
         #endregion
 
+        #region Public Methods
+
+        public override string ToString() =>
+            !string.IsNullOrWhiteSpace(Description)
+            ? Description
+            : Index >= 0
+            ? $"Trace #{Index + 1}"
+            : "New trace";
+
+        #endregion
+
         #region Internal Properties
 
         private int _Index;
