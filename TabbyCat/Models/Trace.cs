@@ -22,9 +22,13 @@
 
         #region Public Properties
 
-        [DefaultValue("")] public string Description { get; set; } = "";
+        [DefaultValue("")]
+        public string Description { get; set; } = "";
+
         public Pattern Pattern { get; set; }
-        [DefaultValue(true)] public bool Visible { get; set; } = true;
+
+        [DefaultValue(true)]
+        public bool Visible { get; set; } = true;
 
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Location { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Maximum { get; set; }

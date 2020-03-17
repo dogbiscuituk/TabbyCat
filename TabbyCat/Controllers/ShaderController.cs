@@ -117,26 +117,32 @@
 
         private bool ShowDocumentMap
         {
-            get => !PrimarySplitter.Panel2Collapsed;
-            set => PrimarySplitter.Panel2Collapsed = SecondarySplitter.Panel2Collapsed = !value;
+            get => !PrimarySplitter.Panel2Collapsed || !SecondarySplitter.Panel2Collapsed;
+            set
+            {
+                PrimarySplitter.Panel2Collapsed = !value;
+                SecondarySplitter.Panel2Collapsed = !value;
+            }
         }
 
         private bool ShowLineNumbers
         {
-            get => PrimaryTextBox.ShowLineNumbers;
+            get => PrimaryTextBox.ShowLineNumbers || SecondaryTextBox.ShowLineNumbers;
             set
             {
-                PrimaryTextBox.ShowLineNumbers = SecondaryTextBox.ShowLineNumbers = value;
+                PrimaryTextBox.ShowLineNumbers = value;
+                SecondaryTextBox.ShowLineNumbers = value;
                 Editor.Refresh();
             }
         }
 
         private bool ShowRuler
         {
-            get => Editor.PrimaryRuler.Visible;
+            get => Editor.PrimaryRuler.Visible || Editor.SecondaryRuler.Visible;
             set
             {
-                Editor.PrimaryRuler.Visible = Editor.SecondaryRuler.Visible = value;
+                Editor.PrimaryRuler.Visible = value;
+                Editor.SecondaryRuler.Visible = value;
                 Editor.Refresh();
             }
         }

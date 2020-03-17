@@ -190,7 +190,7 @@
                 }
                 GL.UseProgram(0); // Stop Shader
             }
-            GLControl.SwapBuffers();
+            //GLControl.SwapBuffers();
             MakeCurrent(false);
         }
 
@@ -355,7 +355,7 @@
             GL.LinkProgram(ProgramID);
             GL.ValidateProgram(ProgramID);
             Log(GL.GetProgramInfoLog(ProgramID));
-            Log("Done.");
+            Log("End of log.");
             Scene.GPULog = GpuLog.ToString().TrimEnd();
             GpuLog = null;
             GetUniformLocations();

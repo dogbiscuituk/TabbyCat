@@ -81,20 +81,21 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in int gl_VertexID;       // only present when not targeting Vulkan
-        ///in int gl_InstanceID;     // only present when not targeting Vulkan
-        ///in int gl_VertexIndex;    // only present when targeting Vulkan
-        ///in int gl_InstanceIndex;  // only present when targeting Vulkan
+        ///   Looks up a localized string similar to The built-in vertex shader variables are intrinsically declared as follows:
+        ///
+        ///in int gl_VertexID;      // only present when not targeting Vulkan
+        ///in int gl_InstanceID;    // only present when not targeting Vulkan
+        ///in int gl_VertexIndex;   // only present when targeting Vulkan
+        ///in int gl_InstanceIndex; // only present when targeting Vulkan
         ///in int gl_DrawID;
         ///in int gl_BaseVertex;
         ///in int gl_BaseInstance;
         ///
         ///out gl_PerVertex {
-        ///    vec4 gl_Position;
-        ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///};.
+        ///  vec4 gl_Position;
+        ///  float gl_PointSize;
+        ///  float gl_ClipDistance[];
+        ///  float  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader1Vertex {
             get {
@@ -103,7 +104,9 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///   Looks up a localized string similar to In the tessellation control shader, built-in variables are intrinsically declared as:
+        ///
+        ///in gl_PerVertex {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
         ///    float gl_ClipDistance[];
@@ -122,7 +125,7 @@ namespace TabbyCat.Properties {
         ///} gl_out[];
         ///
         ///patch out float gl_TessLevelOuter[4];
-        ///patch out float gl_TessLevelInner[2];.
+        ///pa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader2TessControl {
             get {
@@ -131,7 +134,9 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///   Looks up a localized string similar to In the tessellation evaluation shader, built-in variables are intrinsically declared as:
+        ///
+        ///in gl_PerVertex {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
         ///    float gl_ClipDistance[];
@@ -148,8 +153,7 @@ namespace TabbyCat.Properties {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
         ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///};.
+        ///    float [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader3TessEvaluation {
             get {
@@ -158,7 +162,9 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in gl_PerVertex {
+        ///   Looks up a localized string similar to In the geometry shader, built-in variables are intrinsically declared as:
+        ///
+        ///in gl_PerVertex {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
         ///    float gl_ClipDistance[];
@@ -177,7 +183,10 @@ namespace TabbyCat.Properties {
         ///
         ///out int gl_PrimitiveID;
         ///out int gl_Layer;
-        ///out int gl_ViewportIndex;.
+        ///out int gl_ViewportIndex;
+        ///
+        ///Geometry Shader Input Variables
+        ///        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader4Geometry {
             get {
@@ -186,7 +195,10 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in vec4 gl_FragCoord;
+        ///   Looks up a localized string similar to The built-in special variables that are accessible from a 
+        ///fragment shader are intrinsically declared as follows:
+        ///
+        ///in vec4 gl_FragCoord;
         ///in bool gl_FrontFacing;
         ///in float gl_ClipDistance[];
         ///in float gl_CullDistance[];
@@ -200,7 +212,9 @@ namespace TabbyCat.Properties {
         ///in bool gl_HelperInvocation;
         ///
         ///out float gl_FragDepth;
-        ///out int gl_SampleMask[];.
+        ///out int gl_SampleMask[];
+        ///
+        ///The output of the fragment shader e [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader5Fragment {
             get {
@@ -209,7 +223,9 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to // workgroup dimensions
+        ///   Looks up a localized string similar to In the compute shader, built-in variables are declared as follows:
+        ///
+        ///// workgroup dimensions
         ///in uvec3 gl_NumWorkGroups;
         ///const uvec3 gl_WorkGroupSize;
         ///
@@ -219,7 +235,9 @@ namespace TabbyCat.Properties {
         ///
         ///// derived variables
         ///in uvec3 gl_GlobalInvocationID;
-        ///in uint gl_LocalInvocationIndex;.
+        ///in uint gl_LocalInvocationIndex;
+        ///
+        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the comput [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader6Compute {
             get {
@@ -228,7 +246,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The X component of camera focus.
         /// </summary>
         internal static string Camera_FocusX {
             get {
@@ -237,7 +255,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Y component of camera focus.
         /// </summary>
         internal static string Camera_FocusY {
             get {
@@ -246,7 +264,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Z component of camera focus.
         /// </summary>
         internal static string Camera_FocusZ {
             get {
@@ -255,7 +273,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The X component of camera position.
         /// </summary>
         internal static string Camera_PositionX {
             get {
@@ -264,7 +282,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Y component of camera position.
         /// </summary>
         internal static string Camera_PositionY {
             get {
@@ -273,7 +291,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Z component of camera position.
         /// </summary>
         internal static string Camera_PositionZ {
             get {
@@ -562,7 +580,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Shader Language version targeted by this code.
         /// </summary>
         internal static string GLSL_TargetVersion {
             get {
@@ -821,7 +839,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The X component of the projection far plane.
         /// </summary>
         internal static string Projection_FarPlaneX {
             get {
@@ -830,7 +848,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Y component of the projection far plane.
         /// </summary>
         internal static string Projection_FarPlaneY {
             get {
@@ -839,7 +857,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Z component of the projection far plane.
         /// </summary>
         internal static string Projection_FarPlaneZ {
             get {
@@ -848,7 +866,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The perspective field of view angle (degrees).
         /// </summary>
         internal static string Projection_FieldOfView {
             get {
@@ -857,7 +875,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The X component of the projection near plane.
         /// </summary>
         internal static string Projection_NearPlaneX {
             get {
@@ -866,7 +884,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Y component of the projection near plane.
         /// </summary>
         internal static string Projection_NearPlaneY {
             get {
@@ -875,7 +893,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The Z component of the projection near plane.
         /// </summary>
         internal static string Projection_NearPlaneZ {
             get {
@@ -1022,7 +1040,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The target number of frames per second.
         /// </summary>
         internal static string Scene_FPS {
             get {
@@ -1041,7 +1059,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The number of samples interpolated over.
         /// </summary>
         internal static string Scene_Samples {
             get {
@@ -1153,7 +1171,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The title of this scene.
         /// </summary>
         internal static string Scene_Title {
             get {
@@ -1162,7 +1180,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Whether or not to apply vertical sync.
         /// </summary>
         internal static string Scene_VSync {
             get {
@@ -1323,7 +1341,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The trace description.
+        ///   Looks up a localized string similar to The description of this trace.
         /// </summary>
         internal static string Trace_Description {
             get {
@@ -1370,7 +1388,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of .
+        ///   Looks up a localized string similar to The maximum value of X.
         /// </summary>
         internal static string Trace_MaximumX {
             get {
@@ -1379,7 +1397,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Y component of.
+        ///   Looks up a localized string similar to The maximum value of Y.
         /// </summary>
         internal static string Trace_MaximumY {
             get {
@@ -1388,7 +1406,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Z component of.
+        ///   Looks up a localized string similar to The maximum value of Z.
         /// </summary>
         internal static string Trace_MaximumZ {
             get {
@@ -1397,7 +1415,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of.
+        ///   Looks up a localized string similar to The minimum value of X.
         /// </summary>
         internal static string Trace_MinimumX {
             get {
@@ -1406,7 +1424,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Y component of.
+        ///   Looks up a localized string similar to The minimum value of Y.
         /// </summary>
         internal static string Trace_MinimumY {
             get {
@@ -1415,7 +1433,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Z component of.
+        ///   Looks up a localized string similar to The minimum value of Z.
         /// </summary>
         internal static string Trace_MinimumZ {
             get {
@@ -1424,7 +1442,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of.
+        ///   Looks up a localized string similar to The X component of orientation.
         /// </summary>
         internal static string Trace_OrientationX {
             get {
@@ -1433,7 +1451,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Y component of.
+        ///   Looks up a localized string similar to The Y component of orientation.
         /// </summary>
         internal static string Trace_OrientationY {
             get {
@@ -1442,7 +1460,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Z component of.
+        ///   Looks up a localized string similar to The Z component of orientation.
         /// </summary>
         internal static string Trace_OrientationZ {
             get {
@@ -1541,7 +1559,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of.
+        ///   Looks up a localized string similar to The number of strips in the X direction.
         /// </summary>
         internal static string Trace_StripCountX {
             get {
@@ -1550,7 +1568,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Y component of.
+        ///   Looks up a localized string similar to The number of strips in the Y direction.
         /// </summary>
         internal static string Trace_StripCountY {
             get {
@@ -1559,7 +1577,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Z component of.
+        ///   Looks up a localized string similar to The number of strips in the Z direction.
         /// </summary>
         internal static string Trace_StripCountZ {
             get {
@@ -1578,7 +1596,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether or not the trace is visible.
+        ///   Looks up a localized string similar to Whether or not this trace is visible.
         /// </summary>
         internal static string Trace_Visible {
             get {

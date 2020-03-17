@@ -389,37 +389,37 @@
     <value>..\Resources\TileWindowsHorizontallyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Trace_Description" xml:space="preserve">
-    <value>The trace description</value>
+    <value>The description of this trace</value>
   </data>
   <data name="Trace_LocationZ" xml:space="preserve">
     <value>The Z component of location</value>
   </data>
   <data name="Trace_MaximumX" xml:space="preserve">
-    <value>The X component of </value>
+    <value>The maximum value of X</value>
   </data>
   <data name="Trace_MaximumY" xml:space="preserve">
-    <value>The Y component of</value>
+    <value>The maximum value of Y</value>
   </data>
   <data name="Trace_MaximumZ" xml:space="preserve">
-    <value>The Z component of</value>
+    <value>The maximum value of Z</value>
   </data>
   <data name="Trace_MinimumX" xml:space="preserve">
-    <value>The X component of</value>
+    <value>The minimum value of X</value>
   </data>
   <data name="Trace_MinimumY" xml:space="preserve">
-    <value>The Y component of</value>
+    <value>The minimum value of Y</value>
   </data>
   <data name="Trace_MinimumZ" xml:space="preserve">
-    <value>The Z component of</value>
+    <value>The minimum value of Z</value>
   </data>
   <data name="Trace_OrientationX" xml:space="preserve">
-    <value>The X component of</value>
+    <value>The X component of orientation</value>
   </data>
   <data name="Trace_OrientationY" xml:space="preserve">
-    <value>The Y component of</value>
+    <value>The Y component of orientation</value>
   </data>
   <data name="Trace_OrientationZ" xml:space="preserve">
-    <value>The Z component of</value>
+    <value>The Z component of orientation</value>
   </data>
   <data name="Trace_Pattern" xml:space="preserve">
     <value>The texture of the trace</value>
@@ -437,16 +437,16 @@
     <value>The Z component of scale</value>
   </data>
   <data name="Trace_StripCountX" xml:space="preserve">
-    <value>The X component of</value>
+    <value>The number of strips in the X direction</value>
   </data>
   <data name="Trace_StripCountY" xml:space="preserve">
-    <value>The Y component of</value>
+    <value>The number of strips in the Y direction</value>
   </data>
   <data name="Trace_StripCountZ" xml:space="preserve">
-    <value>The Z component of</value>
+    <value>The number of strips in the Z direction</value>
   </data>
   <data name="Trace_Visible" xml:space="preserve">
-    <value>Whether or not the trace is visible</value>
+    <value>Whether or not this trace is visible</value>
   </data>
   <data name="Trace_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_head.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -485,61 +485,61 @@
     <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Camera_FocusX" xml:space="preserve">
-    <value />
+    <value>The X component of camera focus</value>
   </data>
   <data name="Camera_FocusY" xml:space="preserve">
-    <value />
+    <value>The Y component of camera focus</value>
   </data>
   <data name="Camera_FocusZ" xml:space="preserve">
-    <value />
+    <value>The Z component of camera focus</value>
   </data>
   <data name="Camera_PositionX" xml:space="preserve">
-    <value />
+    <value>The X component of camera position</value>
   </data>
   <data name="Camera_PositionY" xml:space="preserve">
-    <value />
+    <value>The Y component of camera position</value>
   </data>
   <data name="Camera_PositionZ" xml:space="preserve">
-    <value />
+    <value>The Z component of camera position</value>
   </data>
   <data name="GLSL_TargetVersion" xml:space="preserve">
-    <value />
+    <value>The Shader Language version targeted by this code</value>
   </data>
   <data name="Projection_FarPlaneX" xml:space="preserve">
-    <value />
+    <value>The X component of the projection far plane</value>
   </data>
   <data name="Projection_FarPlaneY" xml:space="preserve">
-    <value />
+    <value>The Y component of the projection far plane</value>
   </data>
   <data name="Projection_FarPlaneZ" xml:space="preserve">
-    <value />
+    <value>The Z component of the projection far plane</value>
   </data>
   <data name="Projection_FieldOfView" xml:space="preserve">
-    <value />
+    <value>The perspective field of view angle (degrees)</value>
   </data>
   <data name="Projection_NearPlaneX" xml:space="preserve">
-    <value />
+    <value>The X component of the projection near plane</value>
   </data>
   <data name="Projection_NearPlaneY" xml:space="preserve">
-    <value />
+    <value>The Y component of the projection near plane</value>
   </data>
   <data name="Projection_NearPlaneZ" xml:space="preserve">
-    <value />
+    <value>The Z component of the projection near plane</value>
   </data>
   <data name="Scene_Background" xml:space="preserve">
     <value>The colour of the background</value>
   </data>
   <data name="Scene_FPS" xml:space="preserve">
-    <value />
+    <value>The target number of frames per second</value>
   </data>
   <data name="Scene_Samples" xml:space="preserve">
-    <value />
+    <value>The number of samples interpolated over</value>
   </data>
   <data name="Scene_Title" xml:space="preserve">
-    <value />
+    <value>The title of this scene</value>
   </data>
   <data name="Scene_VSync" xml:space="preserve">
-    <value />
+    <value>Whether or not to apply vertical sync</value>
   </data>
   <data name="Built_in_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>

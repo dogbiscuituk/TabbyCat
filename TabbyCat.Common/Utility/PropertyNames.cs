@@ -59,6 +59,7 @@
         /// Transient Properties.
         /// </summary>
         public const string
-            GPULog = "GPU Log";
+            GPULog = "GPU Log",
+            GPUStatus = "GPU Status";
     }
 }

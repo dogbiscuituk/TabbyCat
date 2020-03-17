@@ -2,6 +2,7 @@
 {
     using OpenTK;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Drawing;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -23,7 +24,7 @@
 
         #endregion
 
-        #region Properties
+        #region Public Properties
 
         public Color BackgroundColour { get; set; }
         public Camera Camera { get; set; }
@@ -31,10 +32,25 @@
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
         public int SampleCount { get; set; }
+
+        [DefaultValue("")]
         public string Title { get; set; }
+
         public List<Trace> Traces = new List<Trace>();
         public bool VSync { get; set; }
-        public GPUStatus GPUStatus { get; set; }
+
+        private GPUStatus _GPUStatus;
+        public GPUStatus GPUStatus
+        {
+            get => _GPUStatus;
+            set
+            {
+                if (GPUStatus == value)
+                    return;
+                _GPUStatus = value;
+                OnPropertyChanged(PropertyNames.GPUStatus);
+            }
+        }
 
         private string _GPULog = string.Empty;
         public string GPULog
@@ -49,12 +65,14 @@
             }
         }
 
+        #endregion
+
+        #region Internal Properties
+
         internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
         internal GLMode GLMode => WorldController?.GLMode;
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
         internal WorldController WorldController;
-
-        private GLControl GLControl => WorldController?.GLControl;
 
         #endregion
 
@@ -129,6 +147,12 @@
             internal static List<Trace>
                 Traces => new List<Trace>();
         }
+
+        #endregion
+
+        #region Private Properties
+
+        private GLControl GLControl => WorldController?.GLControl;
 
         #endregion
 

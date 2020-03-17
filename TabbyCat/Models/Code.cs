@@ -2,6 +2,7 @@
 {
     using OpenTK.Graphics.OpenGL;
     using System;
+    using System.ComponentModel;
     using TabbyCat.Common.Utility;
 
     /// <summary>
@@ -20,12 +21,12 @@
 
         #region Public Properties
 
-        public string Shader1Vertex { get; set; } = string.Empty;
-        public string Shader2TessControl { get; set; } = string.Empty;
-        public string Shader3TessEvaluation { get; set; } = string.Empty;
-        public string Shader4Geometry { get; set; } = string.Empty;
-        public string Shader5Fragment { get; set; } = string.Empty;
-        public string Shader6Compute { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader1Vertex { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader2TessControl { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader3TessEvaluation { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader4Geometry { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader5Fragment { get; set; } = string.Empty;
+        [DefaultValue("")] public string Shader6Compute { get; set; } = string.Empty;
 
         #endregion
 
