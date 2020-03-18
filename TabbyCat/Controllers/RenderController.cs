@@ -190,7 +190,7 @@
                 }
                 GL.UseProgram(0); // Stop Shader
             }
-            //GLControl.SwapBuffers();
+            GLControl.SwapBuffers();
             MakeCurrent(false);
         }
 
