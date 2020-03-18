@@ -2,7 +2,7 @@
 {
     using System.Windows.Forms;
 
-    public partial class SceneEdit: UserControl
+    public partial class SceneEdit : UserControl
     {
         public SceneEdit()
         {

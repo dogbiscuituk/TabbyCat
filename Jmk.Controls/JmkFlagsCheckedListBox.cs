@@ -1,14 +1,14 @@
-﻿namespace TabbyCat.Controls
+﻿namespace Jmk.Controls
 {
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
 
-    public partial class FlagsCheckedListBox : CheckedListBox
+    public partial class JmkFlagsCheckedListBox : CheckedListBox
     {
         #region Constructors
 
-        public FlagsCheckedListBox() => InitializeComponent();
+        public JmkFlagsCheckedListBox() => InitializeComponent();
 
         #endregion
 
@@ -32,10 +32,10 @@
 
         #region Public Methods
 
-        public FlagsCheckedListBoxItem Add(string text, int value) =>
-            Add(new FlagsCheckedListBoxItem(text, value));
+        public JmkFlagsCheckedListBoxItem Add(string text, int value) =>
+            Add(new JmkFlagsCheckedListBoxItem(text, value));
 
-        public FlagsCheckedListBoxItem Add(FlagsCheckedListBoxItem item)
+        public JmkFlagsCheckedListBoxItem Add(JmkFlagsCheckedListBoxItem item)
         {
             Items.Add(item);
             return item;
@@ -46,7 +46,7 @@
             var result = 0;
             for (var index = 0; index < Items.Count; index++)
                 if (GetItemChecked(index))
-                    result |= ((FlagsCheckedListBoxItem)Items[index]).Value;
+                    result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
             return result;
         }
 
@@ -58,17 +58,17 @@
         {
             base.OnItemCheck(e);
             if (!Updating)
-                UpdateItems((FlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
+                UpdateItems((JmkFlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
         }
 
-        protected void UpdateItems(FlagsCheckedListBoxItem item, CheckState state)
+        protected void UpdateItems(JmkFlagsCheckedListBoxItem item, CheckState state)
         {
             if (item.Value == 0)
                 UpdateItems(0);
             var result = 0;
             for (var index = 0; index < Items.Count; index++)
                 if (GetItemChecked(index))
-                    result |= ((FlagsCheckedListBoxItem)Items[index]).Value;
+                    result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
             if (state == CheckState.Unchecked)
                 result &= ~item.Value;
             else
@@ -81,7 +81,7 @@
             Updating = true;
             for (var index = 0; index < Items.Count; index++)
             {
-                var item = (FlagsCheckedListBoxItem)Items[index];
+                var item = (JmkFlagsCheckedListBoxItem)Items[index];
                 SetItemChecked(index, item.Value == 0
                     ? value == 0
                     : (item.Value & value) == item.Value && item.Value != 0);

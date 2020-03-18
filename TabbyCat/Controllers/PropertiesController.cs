@@ -93,7 +93,7 @@
 
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            switch(e.PropertyName)
+            switch (e.PropertyName)
             {
                 case PropertyNames.GPULog:
                     PropertiesEdit.lblGPULog.Text = Scene.GPULog;

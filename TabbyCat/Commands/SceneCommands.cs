@@ -30,7 +30,7 @@
     internal class FieldOfViewCommand : ScenePropertyCommand<float>
     {
         internal FieldOfViewCommand(float value) : base(PropertyNames.FieldOfView,
-            value, s => s.Projection.FieldOfView, (s, v)=>s.Projection.FieldOfView = v)
+            value, s => s.Projection.FieldOfView, (s, v) => s.Projection.FieldOfView = v)
         { }
     }
 
@@ -100,14 +100,14 @@
         { }
     }
 
-    internal class TraceInsertCommand : TracesCommand
-    {
-        internal TraceInsertCommand(int index) : base(index, true) { }
-    }
-
     internal class TraceDeleteCommand : TracesCommand
     {
         internal TraceDeleteCommand(int index) : base(index, false) { }
+    }
+
+    internal class TraceInsertCommand : TracesCommand
+    {
+        internal TraceInsertCommand(int index) : base(index, true) { }
     }
 
     internal class VSyncCommand : ScenePropertyCommand<bool>

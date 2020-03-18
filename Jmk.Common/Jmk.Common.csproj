@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AE90AE3-BFD0-4B81-B894-12DD5CA59828}</ProjectGuid>
+    <ProjectGuid>{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TabbyCat.Common</RootNamespace>
-    <AssemblyName>TabbyCat.Common</AssemblyName>
+    <RootNamespace>Jmk.Common</RootNamespace>
+    <AssemblyName>Jmk.Common</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>false</Deterministic>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,15 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,34 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TypeConverters\Vector3Converter.cs" />
+    <Compile Include="Processes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeConverters\ColourFormatTypeConverter.cs" />
-    <Compile Include="Types\Camera.cs" />
-    <Compile Include="Types\Entity.cs" />
-    <Compile Include="Types\FillType.cs" />
-    <Compile Include="Types\GLSL4.60.7.cs" />
-    <Compile Include="Types\Optimization.cs" />
-    <Compile Include="Types\Pattern.cs" />
-    <Compile Include="Types\Projection.cs" />
-    <Compile Include="Types\ProjectionType.cs" />
-    <Compile Include="Types\SplitType.cs" />
-    <Compile Include="Utility\Colours.cs" />
-    <Compile Include="Utility\Maths.cs" />
-    <Compile Include="Utility\PropertyNames.cs" />
-    <Compile Include="Utility\Shaders.cs" />
-    <Compile Include="Types\ColourFormat.cs" />
-    <Compile Include="Types\GPUStatus.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="OpenTK.dll.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Jmk.Common\Jmk.Common.csproj">
-      <Project>{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}</Project>
-      <Name>Jmk.Common</Name>
-    </ProjectReference>
+    <Compile Include="Strings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

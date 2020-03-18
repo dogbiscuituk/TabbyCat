@@ -66,7 +66,6 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ClockController.cs" />
-    <Compile Include="Controllers\LinkLabelController.cs" />
     <Compile Include="Controllers\ShaderSetController.cs" />
     <Compile Include="Controllers\ColourController.cs" />
     <Compile Include="Controllers\FullScreenController.cs" />
@@ -169,6 +168,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jmk.Common\Jmk.Common.csproj">
+      <Project>{3fcc8674-5e51-4fa1-976e-c0c3966fe77f}</Project>
+      <Name>Jmk.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jmk.Controls\Jmk.Controls.csproj">
+      <Project>{6b45e0f7-a8b0-4d9b-b730-e361d62fb1f4}</Project>
+      <Name>Jmk.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
       <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
       <Name>TabbyCat.Common</Name>

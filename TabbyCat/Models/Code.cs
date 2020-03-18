@@ -34,7 +34,7 @@
 
         public string GetScript(ShaderType shaderType)
         {
-            switch(shaderType)
+            switch (shaderType)
             {
                 case ShaderType.VertexShader:
                     return Shader1Vertex;

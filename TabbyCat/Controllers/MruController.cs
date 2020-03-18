@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Jmk.Controls;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Controls;
     using TabbyCat.Models;
     using Win32 = Microsoft.Win32;
 
@@ -178,22 +178,18 @@
             if (ok)
             {
                 foreach (var name in key.GetValueNames().OrderByDescending(n => n))
-                {
-                    var value = key.GetValue(name, null) as string;
-                    if (value == null)
-                        continue;
-                    try
-                    {
-                        var text = value.Split('|')[0].CompactMenuText();
-                        var item = items.Add(text, null, OnItemClick);
-                        item.Tag = value;
-                        item.ToolTipText = value.Replace('|', '\n');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
+                    if (key.GetValue(name, null) is string value)
+                        try
+                        {
+                            var text = value.Split('|')[0].CompactMenuText();
+                            var item = items.Add(text, null, OnItemClick);
+                            item.Tag = value;
+                            item.ToolTipText = value.Replace('|', '\n');
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
                 ok = items.Count > 0;
                 if (ok)
                 {

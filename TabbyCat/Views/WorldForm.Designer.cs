@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.StatusBar = new TabbyCat.Controls.JmkStatusStrip();
+            this.StatusBar = new Jmk.Controls.JmkStatusStrip();
             this.tbDecelerate = new System.Windows.Forms.ToolStripDropDownButton();
             this.tbReverse = new System.Windows.Forms.ToolStripDropDownButton();
             this.tbStop = new System.Windows.Forms.ToolStripDropDownButton();
@@ -45,7 +45,7 @@
             this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
             this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
-            this.Toolbar = new TabbyCat.Controls.JmkToolStrip();
+            this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
             this.tbNewFromTemplate = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tbAdd = new System.Windows.Forms.ToolStripButton();
-            this.MainMenu = new TabbyCat.Controls.JmkMenuStrip();
+            this.MainMenu = new Jmk.Controls.JmkMenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -857,14 +857,14 @@
         #endregion
 
         internal System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        internal TabbyCat.Controls.JmkMenuStrip MainMenu;
+        internal Jmk.Controls.JmkMenuStrip MainMenu;
         internal System.Windows.Forms.ToolStripMenuItem FileMenu;
         internal System.Windows.Forms.ToolStripMenuItem EditMenu;
         internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
         internal System.Windows.Forms.ToolStripMenuItem HelpMenu;
-        internal TabbyCat.Controls.JmkStatusStrip StatusBar;
+        internal Jmk.Controls.JmkStatusStrip StatusBar;
         internal OpenTK.GLControl GLControl;
-        internal TabbyCat.Controls.JmkToolStrip Toolbar;
+        internal Jmk.Controls.JmkToolStrip Toolbar;
         internal System.Windows.Forms.ToolStripMenuItem ViewProperties;
         internal System.Windows.Forms.ToolStripMenuItem FileNew;
         internal System.Windows.Forms.ToolStripMenuItem FileNewEmptyScene;

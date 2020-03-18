@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.Utility
+﻿namespace Jmk.Common
 {
     using System;
     using System.Diagnostics;

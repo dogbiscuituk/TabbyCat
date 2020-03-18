@@ -1,11 +1,11 @@
-﻿namespace TabbyCat.Controls
+﻿namespace Jmk.Controls
 {
+    using Jmk.Common;
     using System.Drawing;
     using System.IO;
     using System.Windows.Forms;
-    using TabbyCat.Common.Utility;
 
-    public static class JmkControls
+    public static class JmkControl
     {
         public static string CompactMenuText(this string text)
         {
@@ -32,42 +32,6 @@
             const int WM_MOUSEACTIVATE = 0x21;
             if (m.Msg == WM_MOUSEACTIVATE && control.CanFocus && !control.Focused)
                 control.Focus();
-        }
-    }
-
-    public class JmkLinkLabel : LinkLabel
-    {
-        protected override void WndProc(ref Message m)
-        {
-            this.FirstFocus(ref m);
-            base.WndProc(ref m);
-        }
-    }
-
-    public class JmkMenuStrip : MenuStrip
-    {
-        protected override void WndProc(ref Message m)
-        {
-            this.FirstFocus(ref m);
-            base.WndProc(ref m);
-        }
-    }
-
-    public class JmkStatusStrip : StatusStrip
-    {
-        protected override void WndProc(ref Message m)
-        {
-            this.FirstFocus(ref m);
-            base.WndProc(ref m);
-        }
-    }
-
-    public class JmkToolStrip : ToolStrip
-    {
-        protected override void WndProc(ref Message m)
-        {
-            this.FirstFocus(ref m);
-            base.WndProc(ref m);
         }
     }
 }

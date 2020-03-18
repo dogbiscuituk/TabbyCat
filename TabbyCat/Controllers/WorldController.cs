@@ -1,10 +1,12 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Jmk.Common;
     using OpenTK;
     using OpenTK.Graphics;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Utility;
@@ -27,8 +29,6 @@
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
             ConnectAll(true);
-
-            Selection.Add(Scene.Traces[0]);
         }
 
         #endregion
@@ -91,9 +91,11 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
+        private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
+        private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
-        private void SceneAddNewTrace_Click(object sender, EventArgs e) => CommandProcessor.AppendTrace();
+        private void SceneAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         // WorldForm
@@ -110,6 +112,13 @@
         private int UpdateCount;
 
         #region Private Methods
+
+        private void AddNewTrace()
+        {
+            CommandProcessor.AppendTrace();
+            Selection.Clear();
+            Selection.Add(Scene.Traces.Last());
+        }
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
 
@@ -152,11 +161,9 @@
         {
             if (connect)
             {
-                //PropertyGridController.SelectedObject = Scene;
             }
             else
             {
-                //PropertyGridController.SelectedObject = null;
                 RenderController.Unload();
             }
         }
@@ -180,6 +187,8 @@
                 WorldForm.FileSaveAs.Click += FileSaveAs_Click;
                 WorldForm.FileClose.Click += FileClose_Click;
                 WorldForm.FileExit.Click += FileExit_Click;
+                WorldForm.EditSelectAll.Click += EditSelectAll_Click;
+                WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
                 WorldForm.EditOptions.Click += EditOptions_Click;
                 WorldForm.EditRefresh.Click += EditRefresh_Click;
                 WorldForm.SceneAddNewTrace.Click += SceneAddNewTrace_Click;
@@ -216,6 +225,8 @@
                 WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
                 WorldForm.FileClose.Click -= FileClose_Click;
                 WorldForm.FileExit.Click -= FileExit_Click;
+                WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
+                WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
                 WorldForm.EditOptions.Click -= EditOptions_Click;
                 WorldForm.EditRefresh.Click -= EditRefresh_Click;
                 WorldForm.SceneAddNewTrace.Click -= SceneAddNewTrace_Click;
@@ -317,6 +328,16 @@
 
         private void HelpAbout() => new AboutController().ShowDialog(WorldForm);
 
+        private void InvertSelection()
+        {
+            foreach (var trace in Scene.Traces)
+                if (Selection.Contains(trace))
+                    Selection.Remove(trace);
+                else
+                    Selection.Add(trace);
+        }
+
+
         private void NewEmptyScene()
         {
             GetNewWorldController();
@@ -352,14 +373,21 @@
 
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
+        private void SelectAll() => Selection.AddRange(Scene.Traces);
+
         private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
 
         #endregion
 
         internal void OnPropertyChanged(string propertyName)
         {
+            $"OnPropertyChanged({propertyName})".Spit();
             switch (propertyName)
             {
+                case PropertyNames.Traces:
+                    UpdateSelection();
+                    RenderController.InvalidateProgram();
+                    break;
                 case PropertyNames.FPS:
                     ClockInit();
                     break;
@@ -400,7 +428,7 @@
             GLControl.Invalidate();
         }
 
-        internal void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
+        private void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
 
         private void RecreateGLControl(GraphicsMode mode = null)
         {
@@ -421,5 +449,10 @@
             ConnectGLControl(true);
             RenderController.Refresh();
         }
+
+        private void UpdateSelection() => Selection
+            .Where(p => !Scene.Traces.Contains(p))
+            .ToList()
+            .ForEach(p => Selection.Remove(p));
     }
 }

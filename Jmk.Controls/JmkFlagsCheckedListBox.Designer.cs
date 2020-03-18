@@ -1,6 +1,6 @@
-﻿namespace TabbyCat.Controls
+﻿namespace Jmk.Controls
 {
-    partial class FlagsCheckedListBox
+    partial class JmkFlagsCheckedListBox
     {
         /// <summary>
         /// Required designer variable.

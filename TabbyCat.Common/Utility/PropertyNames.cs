@@ -17,6 +17,7 @@
             ProjectionType = "Projection Type",
             Samples = "Samples",
             SceneTitle = "Scene Title",
+            Traces = "Traces",
             VSync = "VSync";
 
         /// <summary>

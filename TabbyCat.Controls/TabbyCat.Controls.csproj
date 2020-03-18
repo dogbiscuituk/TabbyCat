@@ -57,7 +57,6 @@
       <DependentUpon>SceneEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JmkControls.cs" />
     <Compile Include="ShaderEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,14 +73,6 @@
     <Compile Include="Types\TextStyleInfos.cs" />
     <Compile Include="Types\TextStyleInfosTypeConverter.cs" />
     <Compile Include="Types\TextStyleInfoTypeConverter.cs" />
-    <Compile Include="FlagsEnumEditor.cs" />
-    <Compile Include="FlagsCheckedListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FlagsCheckedListBox.Designer.cs">
-      <DependentUpon>FlagsCheckedListBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FlagsCheckedListBoxItem.cs" />
     <Compile Include="TraceEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +100,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jmk.Controls\Jmk.Controls.csproj">
+      <Project>{6b45e0f7-a8b0-4d9b-b730-e361d62fb1f4}</Project>
+      <Name>Jmk.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
       <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
       <Name>TabbyCat.Common</Name>

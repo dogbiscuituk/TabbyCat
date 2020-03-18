@@ -194,11 +194,11 @@
         protected abstract TItem GetItem(Scene scene);
 
         protected abstract int GetItemsCount(Scene scene);
-        
+
         protected abstract TItem GetNewItem(Scene scene);
-        
+
         protected abstract void InsertItem(Scene scene);
-        
+
         protected abstract void RemoveItem(Scene scene);
 
         private string GetAction(bool undo) => $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
@@ -211,17 +211,17 @@
         protected override string Target => Value.ToString();
 
         protected override void AddItem(Scene scene) => scene.AddTrace(Value);
-        
+
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
-        
+
         protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
-        
+
         protected override Trace GetNewItem(Scene scene) => scene.NewTrace();
-        
+
         protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
-        
+
         protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
-        
+
         protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }
 

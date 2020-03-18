@@ -7,7 +7,7 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class Selection : IShaderSet
+    public class Selection : List<Trace>, IShaderSet
     {
         #region Public Properties
 
@@ -16,8 +16,6 @@
             get => GetProperty(p => p.Description);
             set => SetProperty(p => p.Description = value);
         }
-
-        public bool IsEmpty => !_Traces.Any();
 
         public Vector3 Location
         {
@@ -77,35 +75,46 @@
 
         #region Public Methods
 
-        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType));
+        public string GetScript(ShaderType shaderType) =>
+            GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
 
-        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
+        public void SetScript(ShaderType shaderType, string value) =>
+            SetProperty(p => p.SetScript(shaderType, value));
 
         #endregion
 
         #region Internal Methods
 
-        internal void Add(Trace trace)
+        internal new void Add(Trace trace)
         {
-            if (_Traces.Contains(trace))
+            if (Contains(trace))
                 return;
-            _Traces.Add(trace);
+            base.Add(trace);
             OnChanged();
         }
 
-        internal void Clear()
+        internal new void AddRange(IEnumerable<Trace> traces)
         {
-            if (IsEmpty)
+            traces = traces.Where(p => !Contains(p)).ToList();
+            if (!traces.Any())
                 return;
-            _Traces.Clear();
+            base.AddRange(traces);
             OnChanged();
         }
 
-        internal void Remove(Trace trace)
+        internal new void Clear()
         {
-            if (!_Traces.Contains(trace))
+            if (!this.Any())
                 return;
-            _Traces.Remove(trace);
+            base.Clear();
+            OnChanged();
+        }
+
+        internal new void Remove(Trace trace)
+        {
+            if (!Contains(trace))
+                return;
+            base.Remove(trace);
             OnChanged();
         }
 
@@ -119,7 +128,7 @@
 
         #region Private Fields
 
-        private readonly List<Trace> _Traces = new List<Trace>();
+        //private readonly List<Trace> _Traces = new List<Trace>();
 
         #endregion
 
@@ -127,35 +136,35 @@
 
         private Pattern GetPattern()
         {
-            if (IsEmpty)
+            if (!this.Any())
                 return default;
-            Pattern first = _Traces.First().Pattern;
-            return _Traces.FirstOrDefault(p => p.Pattern == first) == null
+            Pattern first = this.First().Pattern;
+            return this.FirstOrDefault(p => p.Pattern == first) == null
                 ? default
                 : first;
         }
 
-        private T GetProperty<T>(Func<Trace, T> getProperty) where T: IEquatable<T>
+        private T GetProperty<T>(Func<Trace, T> getProperty) where T : IEquatable<T>
         {
-            if (IsEmpty)
+            if (!this.Any())
                 return default;
-            T first = getProperty(_Traces.First());
-            return _Traces.FirstOrDefault(p => getProperty(p).Equals(first)) == null
+            T first = getProperty(this.First());
+            return this.FirstOrDefault(p => getProperty(p).Equals(first)) == null
                 ? default
                 : first;
         }
 
         private void SetProperty(Action<Trace> setProperty)
         {
-            if (IsEmpty)
+            if (!this.Any())
                 return;
-            foreach (var trace in _Traces)
+            foreach (var trace in this)
                 setProperty(trace);
         }
 
-        internal void ForEach(Action<Trace> action)
+        internal new void ForEach(Action<Trace> action)
         {
-            foreach (var trace in _Traces)
+            foreach (var trace in this)
                 action(trace);
         }
 

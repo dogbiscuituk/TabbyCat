@@ -65,6 +65,8 @@
             }
         }
 
+        protected virtual void OnSelectionChanged() { }
+
         protected void SetToolTip(Control control, string toolTip) =>
             ToolTip.SetToolTip(control, toolTip);
 
@@ -78,7 +80,7 @@
             UpdateProperties(e.PropertyName);
 
         private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
-            UpdateAllProperties();
+            OnSelectionChanged();
 
         #endregion
     }

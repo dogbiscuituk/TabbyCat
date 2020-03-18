@@ -1,8 +1,6 @@
-﻿namespace TabbyCat.Common.Utility
+﻿namespace Jmk.Common
 {
-    using System;
     using System.IO;
-    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
 

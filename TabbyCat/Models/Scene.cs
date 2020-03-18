@@ -16,11 +16,7 @@
 
         public Scene() => Init();
 
-        internal Scene(WorldController worldController) : this()
-        {
-            WorldController = worldController;
-            AddTrace(new Trace(this));
-        }
+        internal Scene(WorldController worldController) : this() => WorldController = worldController;
 
         #endregion
 
@@ -98,7 +94,7 @@
 
         internal Trace NewTrace() => new Trace(this);
 
-        internal void OnPropertyChanged(string propertyName) => WorldController.OnPropertyChanged(propertyName);
+        internal void OnPropertyChanged(string propertyName) => WorldController?.OnPropertyChanged(propertyName);
 
         internal void RemoveTrace(int index)
         {

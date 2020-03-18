@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Jmk.Common;
     using System.Reflection;
     using System.Windows.Forms;
-    using TabbyCat.Common.Utility;
     using TabbyCat.Views;
 
     internal class AboutController

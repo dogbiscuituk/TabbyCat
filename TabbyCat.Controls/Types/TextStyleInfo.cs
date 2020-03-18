@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Controls.Types
 {
+    using Jmk.Controls;
     using System;
     using System.ComponentModel;
     using System.Drawing;
@@ -36,7 +37,7 @@
         [DefaultValue(0)]
         [Description("The font attributes of the text style (bold, italic, etc).")]
         [DisplayName("Font Attributes")]
-        [Editor(typeof(FlagsEnumEditor), typeof(UITypeEditor))]
+        [Editor(typeof(JmkFlagsEnumEditor), typeof(UITypeEditor))]
         public FontStyle FontStyle { get; set; }
 
         #endregion

@@ -2,7 +2,7 @@
 {
     using OpenTK;
     using System;
-    using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -103,11 +103,19 @@
 
         #region Protected Methods
 
+        protected override void OnSelectionChanged()
+        {
+            base.OnSelectionChanged();
+            UpdateAllProperties();
+            UpdateUI();
+        }
+
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
                 return;
             Updating = true;
+            UpdateUI();
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
@@ -254,11 +262,16 @@
 
         private void Run(Func<int, ICommand> makeCommand)
         {
-            if (Updating || Selection.IsEmpty)
+            if (Updating || !Selection.Any())
                 return;
             Updating = true;
             Selection.ForEach(p => CommandProcessor.Run(makeCommand(p.Index)));
             Updating = false;
+        }
+
+        private void UpdateUI()
+        {
+            Editor.Enabled = Selection.Any();
         }
 
         #endregion

@@ -41,8 +41,9 @@
             this.BottomSplit = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.lblBuiltInHelp = new TabbyCat.Controls.JmkLinkLabel();
-            this.Toolbar = new TabbyCat.Controls.JmkToolStrip();
+            this.jmkScrollPanel1 = new Jmk.Controls.JmkScrollPanel();
+            this.lblBuiltInHelp = new Jmk.Controls.JmkLinkLabel();
+            this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnExportHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportRTF = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +82,7 @@
             this.BottomSplit.Panel1.SuspendLayout();
             this.BottomSplit.Panel2.SuspendLayout();
             this.BottomSplit.SuspendLayout();
+            this.jmkScrollPanel1.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,8 +120,7 @@
             // 
             // MainSplit.Panel2
             // 
-            this.MainSplit.Panel2.AutoScroll = true;
-            this.MainSplit.Panel2.Controls.Add(this.lblBuiltInHelp);
+            this.MainSplit.Panel2.Controls.Add(this.jmkScrollPanel1);
             this.MainSplit.Size = new System.Drawing.Size(288, 455);
             this.MainSplit.SplitterDistance = 359;
             this.MainSplit.TabIndex = 4;
@@ -162,7 +163,7 @@
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
             this.TopSplit.Size = new System.Drawing.Size(288, 177);
-            this.TopSplit.SplitterDistance = 172;
+            this.TopSplit.SplitterDistance = 171;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -205,7 +206,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(172, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(171, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -251,7 +252,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(172, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(171, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -266,7 +267,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1461481856, 32);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(172, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(171, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -278,7 +279,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(111, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(112, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -300,7 +301,7 @@
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
             this.BottomSplit.Size = new System.Drawing.Size(288, 177);
-            this.BottomSplit.SplitterDistance = 172;
+            this.BottomSplit.SplitterDistance = 171;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -313,7 +314,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1252698752, 28);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(172, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(171, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -325,11 +326,21 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(111, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(112, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
             this.PrimaryMap.Visible = false;
+            // 
+            // jmkScrollPanel1
+            // 
+            this.jmkScrollPanel1.AutoScroll = true;
+            this.jmkScrollPanel1.Controls.Add(this.lblBuiltInHelp);
+            this.jmkScrollPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jmkScrollPanel1.Location = new System.Drawing.Point(0, 0);
+            this.jmkScrollPanel1.Name = "jmkScrollPanel1";
+            this.jmkScrollPanel1.Size = new System.Drawing.Size(288, 92);
+            this.jmkScrollPanel1.TabIndex = 2;
             // 
             // lblBuiltInHelp
             // 
@@ -337,7 +348,7 @@
             this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 0);
             this.lblBuiltInHelp.Name = "lblBuiltInHelp";
             this.lblBuiltInHelp.Padding = new System.Windows.Forms.Padding(2);
-            this.lblBuiltInHelp.Size = new System.Drawing.Size(147, 19);
+            this.lblBuiltInHelp.Size = new System.Drawing.Size(148, 19);
             this.lblBuiltInHelp.TabIndex = 1;
             this.lblBuiltInHelp.TabStop = true;
             this.lblBuiltInHelp.Text = "Help text will appear here.";
@@ -461,37 +472,37 @@
             // miVertex
             // 
             this.miVertex.Name = "miVertex";
-            this.miVertex.Size = new System.Drawing.Size(193, 22);
+            this.miVertex.Size = new System.Drawing.Size(192, 22);
             this.miVertex.Text = "&Vertex Shader";
             // 
             // miTessellationControl
             // 
             this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(193, 22);
+            this.miTessellationControl.Size = new System.Drawing.Size(192, 22);
             this.miTessellationControl.Text = "&Tessellation Control";
             // 
             // miTessellationEvaluation
             // 
             this.miTessellationEvaluation.Name = "miTessellationEvaluation";
-            this.miTessellationEvaluation.Size = new System.Drawing.Size(193, 22);
+            this.miTessellationEvaluation.Size = new System.Drawing.Size(192, 22);
             this.miTessellationEvaluation.Text = "Tessellation &Evaluation";
             // 
             // miGeometry
             // 
             this.miGeometry.Name = "miGeometry";
-            this.miGeometry.Size = new System.Drawing.Size(193, 22);
+            this.miGeometry.Size = new System.Drawing.Size(192, 22);
             this.miGeometry.Text = "&Geometry Shader";
             // 
             // miFragment
             // 
             this.miFragment.Name = "miFragment";
-            this.miFragment.Size = new System.Drawing.Size(193, 22);
+            this.miFragment.Size = new System.Drawing.Size(192, 22);
             this.miFragment.Text = "&Fragment Shader";
             // 
             // miCompute
             // 
             this.miCompute.Name = "miCompute";
-            this.miCompute.Size = new System.Drawing.Size(193, 22);
+            this.miCompute.Size = new System.Drawing.Size(192, 22);
             this.miCompute.Text = "&Compute Shader";
             // 
             // ShaderEdit
@@ -509,7 +520,6 @@
             this.ToolStripContainer.PerformLayout();
             this.MainSplit.Panel1.ResumeLayout(false);
             this.MainSplit.Panel2.ResumeLayout(false);
-            this.MainSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).EndInit();
             this.MainSplit.ResumeLayout(false);
             this.EditSplit.Panel1.ResumeLayout(false);
@@ -526,6 +536,8 @@
             this.BottomSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BottomSplit)).EndInit();
             this.BottomSplit.ResumeLayout(false);
+            this.jmkScrollPanel1.ResumeLayout(false);
+            this.jmkScrollPanel1.PerformLayout();
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.ResumeLayout(false);
@@ -535,7 +547,7 @@
         #endregion
 
         public System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        public TabbyCat.Controls.JmkToolStrip Toolbar;
+        public Jmk.Controls.JmkToolStrip Toolbar;
         public System.Windows.Forms.ToolStripDropDownButton btnExport;
         public System.Windows.Forms.ToolStripMenuItem btnExportHTML;
         public System.Windows.Forms.ToolStripMenuItem btnExportRTF;
@@ -563,6 +575,7 @@
         public System.Windows.Forms.ToolStripMenuItem miFragment;
         public System.Windows.Forms.ToolStripMenuItem miCompute;
         public System.Windows.Forms.SplitContainer MainSplit;
-        public TabbyCat.Controls.JmkLinkLabel lblBuiltInHelp;
+        public Jmk.Controls.JmkLinkLabel lblBuiltInHelp;
+        private Jmk.Controls.JmkScrollPanel jmkScrollPanel1;
     }
 }

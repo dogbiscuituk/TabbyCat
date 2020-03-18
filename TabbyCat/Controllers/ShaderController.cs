@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using FastColoredTextBoxNS;
+    using Jmk.Common;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;
@@ -177,6 +178,9 @@
 
         #region Private Event Handlers
 
+        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) =>
+            WorldForm.ToolTip.SetToolTip(Editor.lblBuiltInHelp, Editor.lblBuiltInHelp.ActiveLink?.Description);
+
         private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
             e.Link.LinkData.ToString().Launch();
 
@@ -284,6 +288,7 @@
                 Editor.btnShader.DropDownItemClicked += Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
+                Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
@@ -306,6 +311,7 @@
                 Editor.btnShader.DropDownItemClicked -= Shader_DropDownItemClicked;
                 Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
+                Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
@@ -351,10 +357,10 @@
         }
 
         private string GetScript() => GetScript(ShaderType);
-            
+
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
-        private void LoadBuiltInHelp() => LinkLabelController.SetText(Editor.lblBuiltInHelp, GetBuiltInHelp());
+        private void LoadBuiltInHelp() => Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
 
         private void LoadShaderCode()
         {

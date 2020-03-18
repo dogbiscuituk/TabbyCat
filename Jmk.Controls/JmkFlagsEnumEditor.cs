@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Controls
+﻿namespace Jmk.Controls
 {
     using System;
     using System.ComponentModel;
@@ -6,13 +6,13 @@
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
-    public class FlagsEnumEditor : UITypeEditor
+    public class JmkFlagsEnumEditor : UITypeEditor
     {
         #region Constructors
 
-        public FlagsEnumEditor()
+        public JmkFlagsEnumEditor()
         {
-            FlagsCheckedListBox = new FlagsCheckedListBox
+            FlagsCheckedListBox = new JmkFlagsCheckedListBox
             {
                 BorderStyle = BorderStyle.None
             };
@@ -43,7 +43,7 @@
 
         #region Private Properties
 
-        private readonly FlagsCheckedListBox FlagsCheckedListBox;
+        private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
 
         #endregion
     }
