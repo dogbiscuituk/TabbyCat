@@ -255,9 +255,9 @@
             // 
             this.SplitContainer1.Panel2.Controls.Add(this.PropertiesEdit);
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SplitContainer1.Panel2MinSize = 340;
+            this.SplitContainer1.Panel2MinSize = 300;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 683);
-            this.SplitContainer1.SplitterDistance = 625;
+            this.SplitContainer1.SplitterDistance = 600;
             this.SplitContainer1.TabIndex = 1;
             // 
             // GLControl
@@ -266,17 +266,19 @@
             this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(625, 683);
+            this.GLControl.Size = new System.Drawing.Size(600, 683);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
-            // WorldEdit
+            // PropertiesEdit
             // 
             this.PropertiesEdit.ContextMenuStrip = this.PopupPropertiesMenu;
             this.PropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertiesEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
-            this.PropertiesEdit.Name = "WorldEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(346, 683);
+            this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PropertiesEdit.Name = "PropertiesEdit";
+            this.PropertiesEdit.Size = new System.Drawing.Size(371, 683);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu

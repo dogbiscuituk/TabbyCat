@@ -135,7 +135,7 @@
                 SearchPattern = "[#\\w\\.]" // Directives begin with '#'.
             };
             AutocompleteMenu.Items.SetAutocompleteItems(GLSL.AutocompleteItems);
-            AutocompleteMenu.Items.MaximumSize = new System.Drawing.Size(200, 300);
+            AutocompleteMenu.Items.MaximumSize = new Size(200, 300);
             AutocompleteMenu.Items.Width = 200;
         }
 

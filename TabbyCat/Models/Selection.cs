@@ -13,74 +13,56 @@
 
         public string Description
         {
-            get => GetProperty(p => p.Description);
-            set => SetProperty(p => p.Description = value);
+            get => Get(p => p.Description);
+            set => Set(p => p.Description = value);
         }
 
         public Vector3 Location
         {
-            get => new Vector3(
-                GetProperty(p => p.Location.X),
-                GetProperty(p => p.Location.Y),
-                GetProperty(p => p.Location.Z));
-            set => SetProperty(p => p.Location = value);
+            get => Get(p => p.Location);
+            set => Set(p => p.Location = value);
         }
 
         public Vector3 Maximum
         {
-            get => new Vector3(
-                GetProperty(p => p.Maximum.X),
-                GetProperty(p => p.Maximum.Y),
-                GetProperty(p => p.Maximum.Z));
-            set => SetProperty(p => p.Maximum = value);
+            get => Get(p => p.Maximum);
+            set => Set(p => p.Maximum = value);
         }
 
         public Vector3 Minimum
         {
-            get => new Vector3(
-                GetProperty(p => p.Minimum.X),
-                GetProperty(p => p.Minimum.Y),
-                GetProperty(p => p.Minimum.Z));
-            set => SetProperty(p => p.Minimum = value);
+            get => Get(p => p.Minimum);
+            set => Set(p => p.Minimum = value);
         }
 
         public Vector3 Orientation
         {
-            get => new Vector3(
-                GetProperty(p => p.Orientation.X),
-                GetProperty(p => p.Orientation.Y),
-                GetProperty(p => p.Orientation.Z));
-            set => SetProperty(p => p.Orientation = value);
+            get => Get(p => p.Orientation);
+            set => Set(p => p.Orientation = value);
         }
 
         public Pattern Pattern
         {
-            get => GetPattern();
-            set => SetProperty(p => p.Pattern = value);
+            get => (Pattern)Get(p => (int)p.Pattern);
+            set => Set(p => p.Pattern = value);
         }
 
         public Vector3 Scale
         {
-            get => new Vector3(
-                GetProperty(p => p.Scale.X),
-                GetProperty(p => p.Scale.Y),
-                GetProperty(p => p.Scale.Z));
-            set => SetProperty(p => p.Scale = value);
+            get => Get(p => p.Scale);
+            set => Set(p => p.Scale = value);
         }
 
         public Vector3 StripCount
         {
-            get => new Vector3(
-                GetProperty(p => p.StripCount.X),
-                GetProperty(p => p.StripCount.Y),
-                GetProperty(p => p.StripCount.Z));
-            set => SetProperty(p => p.StripCount = value);
+            get => Get(p => p.StripCount);
+            set => Set(p => p.StripCount = value);
         }
 
         public bool? Visible
         {
-            get => GetProperty(p => p.Visible);
-            set => SetProperty(p => p.Visible = value == true);
+            get => Get(p => p.Visible);
+            set => Set(p => p.Visible = value == true);
         }
 
         #endregion
@@ -94,10 +76,10 @@
         #region Public Methods
 
         public string GetScript(ShaderType shaderType) =>
-            GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+            Get(p => p.GetScript(shaderType)) ?? string.Empty;
 
         public void SetScript(ShaderType shaderType, string value) =>
-            SetProperty(p => p.SetScript(shaderType, value));
+            Set(p => p.SetScript(shaderType, value));
 
         #endregion
 
@@ -128,6 +110,12 @@
             OnChanged();
         }
 
+        internal new void ForEach(Action<Trace> action)
+        {
+            foreach (var trace in this)
+                action(trace);
+        }
+
         internal new void Remove(Trace trace)
         {
             if (!Contains(trace))
@@ -144,47 +132,24 @@
 
         #endregion
 
-        #region Private Fields
-
-        //private readonly List<Trace> _Traces = new List<Trace>();
-
-        #endregion
-
         #region Private Methods
 
-        private Pattern GetPattern()
+        private T Get<T>(Func<Trace, T> f) where T : IEquatable<T>
         {
             if (!this.Any())
                 return default;
-            Pattern first = this.First().Pattern;
-            return this.FirstOrDefault(p => p.Pattern == first) == null
+            T first = f(this.First());
+            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? default
                 : first;
         }
 
-        private T GetProperty<T>(Func<Trace, T> getProperty) where T : IEquatable<T>
-        {
-            if (!this.Any())
-                return default;
-            T first = getProperty(this.First());
-            return this.FirstOrDefault(p => getProperty(p).Equals(first)) == null
-                ? first
-                : default;
-        }
+        private Vector3 Get(Func<Trace, Vector3> f) => new Vector3(
+            Get(p => f(p).X),
+            Get(p => f(p).Y),
+            Get(p => f(p).Z));
 
-        private void SetProperty(Action<Trace> setProperty)
-        {
-            if (!this.Any())
-                return;
-            foreach (var trace in this)
-                setProperty(trace);
-        }
-
-        internal new void ForEach(Action<Trace> action)
-        {
-            foreach (var trace in this)
-                action(trace);
-        }
+        private void Set(Action<Trace> set) => ForEach(p => set(p));
 
         #endregion
     }
