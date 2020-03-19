@@ -19,25 +19,37 @@
 
         public Vector3 Location
         {
-            get => GetProperty(p => p.Location);
+            get => new Vector3(
+                GetProperty(p => p.Location.X),
+                GetProperty(p => p.Location.Y),
+                GetProperty(p => p.Location.Z));
             set => SetProperty(p => p.Location = value);
         }
 
         public Vector3 Maximum
         {
-            get => GetProperty(p => p.Maximum);
+            get => new Vector3(
+                GetProperty(p => p.Maximum.X),
+                GetProperty(p => p.Maximum.Y),
+                GetProperty(p => p.Maximum.Z));
             set => SetProperty(p => p.Maximum = value);
         }
 
         public Vector3 Minimum
         {
-            get => GetProperty(p => p.Minimum);
+            get => new Vector3(
+                GetProperty(p => p.Minimum.X),
+                GetProperty(p => p.Minimum.Y),
+                GetProperty(p => p.Minimum.Z));
             set => SetProperty(p => p.Minimum = value);
         }
 
         public Vector3 Orientation
         {
-            get => GetProperty(p => p.Orientation);
+            get => new Vector3(
+                GetProperty(p => p.Orientation.X),
+                GetProperty(p => p.Orientation.Y),
+                GetProperty(p => p.Orientation.Z));
             set => SetProperty(p => p.Orientation = value);
         }
 
@@ -49,13 +61,19 @@
 
         public Vector3 Scale
         {
-            get => GetProperty(p => p.Scale);
+            get => new Vector3(
+                GetProperty(p => p.Scale.X),
+                GetProperty(p => p.Scale.Y),
+                GetProperty(p => p.Scale.Z));
             set => SetProperty(p => p.Scale = value);
         }
 
         public Vector3 StripCount
         {
-            get => GetProperty(p => p.StripCount);
+            get => new Vector3(
+                GetProperty(p => p.StripCount.X),
+                GetProperty(p => p.StripCount.Y),
+                GetProperty(p => p.StripCount.Z));
             set => SetProperty(p => p.StripCount = value);
         }
 
@@ -150,8 +168,8 @@
                 return default;
             T first = getProperty(this.First());
             return this.FirstOrDefault(p => getProperty(p).Equals(first)) == null
-                ? default
-                : first;
+                ? first
+                : default;
         }
 
         private void SetProperty(Action<Trace> setProperty)

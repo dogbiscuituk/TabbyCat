@@ -53,49 +53,49 @@
             {
                 UpdateAllProperties();
                 Editor.edDescription.TextChanged += Description_TextChanged;
-                Editor.seLocationX.ValueChanged += Location_ValueChanged;
-                Editor.seLocationY.ValueChanged += Location_ValueChanged;
-                Editor.seLocationZ.ValueChanged += Location_ValueChanged;
-                Editor.seOrientationX.ValueChanged += Orientation_ValueChanged;
-                Editor.seOrientationY.ValueChanged += Orientation_ValueChanged;
-                Editor.seOrientationZ.ValueChanged += Orientation_ValueChanged;
-                Editor.seScaleX.ValueChanged += Scale_ValueChanged;
-                Editor.seScaleY.ValueChanged += Scale_ValueChanged;
-                Editor.seScaleZ.ValueChanged += Scale_ValueChanged;
+                Editor.seLocationX.ValueChanged += LocationX_ValueChanged;
+                Editor.seLocationY.ValueChanged += LocationY_ValueChanged;
+                Editor.seLocationZ.ValueChanged += LocationZ_ValueChanged;
+                Editor.seOrientationX.ValueChanged += OrientationX_ValueChanged;
+                Editor.seOrientationY.ValueChanged += OrientationY_ValueChanged;
+                Editor.seOrientationZ.ValueChanged += OrientationZ_ValueChanged;
+                Editor.seScaleX.ValueChanged += ScaleX_ValueChanged;
+                Editor.seScaleY.ValueChanged += ScaleY_ValueChanged;
+                Editor.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
                 Editor.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
-                Editor.seMinimumX.ValueChanged += Minimum_ValueChanged;
-                Editor.seMinimumY.ValueChanged += Minimum_ValueChanged;
-                Editor.seMinimumZ.ValueChanged += Minimum_ValueChanged;
-                Editor.seMaximumX.ValueChanged += Maximum_ValueChanged;
-                Editor.seMaximumY.ValueChanged += Maximum_ValueChanged;
-                Editor.seMaximumZ.ValueChanged += Maximum_ValueChanged;
-                Editor.seStripCountX.ValueChanged += StripCount_ValueChanged;
-                Editor.seStripCountY.ValueChanged += StripCount_ValueChanged;
-                Editor.seStripCountZ.ValueChanged += StripCount_ValueChanged;
+                Editor.seMinimumX.ValueChanged += MinimumX_ValueChanged;
+                Editor.seMinimumY.ValueChanged += MinimumY_ValueChanged;
+                Editor.seMinimumZ.ValueChanged += MinimumZ_ValueChanged;
+                Editor.seMaximumX.ValueChanged += MaximumX_ValueChanged;
+                Editor.seMaximumY.ValueChanged += MaximumY_ValueChanged;
+                Editor.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
+                Editor.seStripCountX.ValueChanged += StripCountX_ValueChanged;
+                Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
+                Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
             }
             else
             {
                 Editor.edDescription.TextChanged -= Description_TextChanged;
-                Editor.seLocationX.ValueChanged -= Location_ValueChanged;
-                Editor.seLocationY.ValueChanged -= Location_ValueChanged;
-                Editor.seLocationZ.ValueChanged -= Location_ValueChanged;
-                Editor.seOrientationX.ValueChanged -= Orientation_ValueChanged;
-                Editor.seOrientationY.ValueChanged -= Orientation_ValueChanged;
-                Editor.seOrientationZ.ValueChanged -= Orientation_ValueChanged;
-                Editor.seScaleX.ValueChanged -= Scale_ValueChanged;
-                Editor.seScaleY.ValueChanged -= Scale_ValueChanged;
-                Editor.seScaleZ.ValueChanged -= Scale_ValueChanged;
+                Editor.seLocationX.ValueChanged -= LocationX_ValueChanged;
+                Editor.seLocationY.ValueChanged -= LocationY_ValueChanged;
+                Editor.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
+                Editor.seOrientationX.ValueChanged -= OrientationX_ValueChanged;
+                Editor.seOrientationY.ValueChanged -= OrientationY_ValueChanged;
+                Editor.seOrientationZ.ValueChanged -= OrientationZ_ValueChanged;
+                Editor.seScaleX.ValueChanged -= ScaleX_ValueChanged;
+                Editor.seScaleY.ValueChanged -= ScaleY_ValueChanged;
+                Editor.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
                 Editor.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
-                Editor.seMinimumX.ValueChanged -= Minimum_ValueChanged;
-                Editor.seMinimumY.ValueChanged -= Minimum_ValueChanged;
-                Editor.seMinimumZ.ValueChanged -= Minimum_ValueChanged;
-                Editor.seMaximumX.ValueChanged -= Maximum_ValueChanged;
-                Editor.seMaximumY.ValueChanged -= Maximum_ValueChanged;
-                Editor.seMaximumZ.ValueChanged -= Maximum_ValueChanged;
-                Editor.seStripCountX.ValueChanged -= StripCount_ValueChanged;
-                Editor.seStripCountY.ValueChanged -= StripCount_ValueChanged;
-                Editor.seStripCountZ.ValueChanged -= StripCount_ValueChanged;
+                Editor.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
+                Editor.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
+                Editor.seMinimumZ.ValueChanged -= MinimumZ_ValueChanged;
+                Editor.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
+                Editor.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
+                Editor.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
+                Editor.seStripCountX.ValueChanged -= StripCountX_ValueChanged;
+                Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
+                Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
             }
         }
 
@@ -167,49 +167,121 @@
         #region Private Event Handlers
 
         private void Description_TextChanged(object sender, System.EventArgs e) =>
-            Run(p => new DescriptionCommand(p, Editor.edDescription.Text));
+            Run(p => new DescriptionCommand(p.Index, Editor.edDescription.Text));
 
-        private void Location_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new LocationCommand(p, new Vector3(
+        private void LocationX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new LocationCommand(p.Index, new Vector3(
                 (float)Editor.seLocationX.Value,
+                p.Location.Y,
+                p.Location.Z)));
+
+        private void LocationY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new LocationCommand(p.Index, new Vector3(
+                p.Location.X,
                 (float)Editor.seLocationY.Value,
+                p.Location.Z)));
+
+        private void LocationZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new LocationCommand(p.Index, new Vector3(
+                p.Location.X,
+                p.Location.Y,
                 (float)Editor.seLocationZ.Value)));
 
-        private void Maximum_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new MaximumCommand(p, new Vector3(
+        private void MaximumX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MaximumCommand(p.Index, new Vector3(
                 (float)Editor.seMaximumX.Value,
+                p.Maximum.Y,
+                p.Maximum.Z)));
+
+        private void MaximumY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MaximumCommand(p.Index, new Vector3(
+                p.Maximum.X,
                 (float)Editor.seMaximumY.Value,
+                p.Maximum.Z)));
+
+        private void MaximumZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MaximumCommand(p.Index, new Vector3(
+                p.Maximum.X,
+                p.Maximum.Y,
                 (float)Editor.seMaximumZ.Value)));
 
-        private void Minimum_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new MinimumCommand(p, new Vector3(
+        private void MinimumX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MinimumCommand(p.Index, new Vector3(
                 (float)Editor.seMinimumX.Value,
+                p.Minimum.Y,
+                p.Minimum.Z)));
+
+        private void MinimumY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MinimumCommand(p.Index, new Vector3(
+                p.Minimum.X,
                 (float)Editor.seMinimumY.Value,
+                p.Minimum.Z)));
+
+        private void MinimumZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new MinimumCommand(p.Index, new Vector3(
+                p.Minimum.X,
+                p.Minimum.Y,
                 (float)Editor.seMinimumZ.Value)));
 
-        private void Orientation_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new OrientationCommand(p, new Vector3(
+        private void OrientationX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new OrientationCommand(p.Index, new Vector3(
                 (float)Editor.seOrientationX.Value,
+                p.Orientation.Y,
+                p.Orientation.Z)));
+
+        private void OrientationY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new OrientationCommand(p.Index, new Vector3(
+                p.Orientation.X,
                 (float)Editor.seOrientationY.Value,
+                p.Orientation.Z)));
+
+        private void OrientationZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new OrientationCommand(p.Index, new Vector3(
+                p.Orientation.X,
+                p.Orientation.Y,
                 (float)Editor.seOrientationZ.Value)));
 
         private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new PatternCommand(p, (Pattern)Editor.cbPattern.SelectedItem));
+            Run(p => new PatternCommand(p.Index, (Pattern)Editor.cbPattern.SelectedItem));
 
-        private void Scale_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new ScaleCommand(p, new Vector3(
+        private void ScaleX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new ScaleCommand(p.Index, new Vector3(
                 (float)Editor.seScaleX.Value,
+                p.Scale.Y,
+                p.Scale.Z)));
+
+        private void ScaleY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new ScaleCommand(p.Index, new Vector3(
+                p.Scale.X,
                 (float)Editor.seScaleY.Value,
+                p.Scale.Z)));
+
+        private void ScaleZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new ScaleCommand(p.Index, new Vector3(
+                p.Scale.X,
+                p.Scale.Y,
                 (float)Editor.seScaleZ.Value)));
 
-        private void StripCount_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new StripCountCommand(p, new Vector3(
+        private void StripCountX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripCountCommand(p.Index, new Vector3(
                 (float)Editor.seStripCountX.Value,
+                p.StripCount.Y,
+                p.StripCount.Z)));
+
+        private void StripCountY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripCountCommand(p.Index, new Vector3(
+                p.StripCount.X,
                 (float)Editor.seStripCountY.Value,
+                p.StripCount.Z)));
+
+        private void StripCountZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripCountCommand(p.Index, new Vector3(
+                p.StripCount.X,
+                p.StripCount.Y,
                 (float)Editor.seStripCountZ.Value)));
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
-            Run(p => new VisibleCommand(p, Editor.cbVisible.Checked));
+            Run(p => new VisibleCommand(p.Index, Editor.cbVisible.Checked));
 
         #endregion
 
@@ -260,12 +332,12 @@
             SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
         }
 
-        private void Run(Func<int, ICommand> makeCommand)
+        private void Run(Func<Trace, ICommand> makeCommand)
         {
             if (Updating || !Selection.Any())
                 return;
             Updating = true;
-            Selection.ForEach(p => CommandProcessor.Run(makeCommand(p.Index)));
+            Selection.ForEach(p => CommandProcessor.Run(makeCommand(p)));
             Updating = false;
         }
 
