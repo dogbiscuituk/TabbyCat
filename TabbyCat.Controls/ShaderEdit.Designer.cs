@@ -162,7 +162,7 @@
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
             this.TopSplit.Size = new System.Drawing.Size(288, 177);
-            this.TopSplit.SplitterDistance = 170;
+            this.TopSplit.SplitterDistance = 169;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -205,7 +205,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(170, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(169, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -251,7 +251,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(170, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(169, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -263,9 +263,10 @@
             this.SecondaryRuler.BackColor2 = System.Drawing.SystemColors.Control;
             this.SecondaryRuler.Dock = System.Windows.Forms.DockStyle.Top;
             this.SecondaryRuler.Location = new System.Drawing.Point(0, 0);
+            this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(170, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(169, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -277,7 +278,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(113, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(114, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             this.SecondaryMap.Text = "documentMap1";
@@ -299,7 +300,7 @@
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
             this.BottomSplit.Size = new System.Drawing.Size(288, 177);
-            this.BottomSplit.SplitterDistance = 170;
+            this.BottomSplit.SplitterDistance = 169;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -309,9 +310,10 @@
             this.PrimaryRuler.BackColor2 = System.Drawing.SystemColors.Control;
             this.PrimaryRuler.Dock = System.Windows.Forms.DockStyle.Top;
             this.PrimaryRuler.Location = new System.Drawing.Point(0, 0);
+            this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(170, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(169, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -323,7 +325,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(113, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(114, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             this.PrimaryMap.Text = "documentMap2";
@@ -346,13 +348,14 @@
             this.lblBuiltInHelp.Location = new System.Drawing.Point(0, 0);
             this.lblBuiltInHelp.Name = "lblBuiltInHelp";
             this.lblBuiltInHelp.Padding = new System.Windows.Forms.Padding(2);
-            this.lblBuiltInHelp.Size = new System.Drawing.Size(148, 19);
+            this.lblBuiltInHelp.Size = new System.Drawing.Size(165, 21);
             this.lblBuiltInHelp.TabIndex = 1;
             this.lblBuiltInHelp.Text = "Help text will appear here.";
             // 
             // Toolbar
             // 
             this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.Toolbar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnExport,
             this.btnPrint,
@@ -380,13 +383,13 @@
             // btnExportHTML
             // 
             this.btnExportHTML.Name = "btnExportHTML";
-            this.btnExportHTML.Size = new System.Drawing.Size(166, 22);
+            this.btnExportHTML.Size = new System.Drawing.Size(178, 22);
             this.btnExportHTML.Text = "Export as &HTML...";
             // 
             // btnExportRTF
             // 
             this.btnExportRTF.Name = "btnExportRTF";
-            this.btnExportRTF.Size = new System.Drawing.Size(166, 22);
+            this.btnExportRTF.Size = new System.Drawing.Size(178, 22);
             this.btnExportRTF.Text = "Export as &RTF...";
             // 
             // btnPrint
@@ -414,19 +417,19 @@
             // btnRuler
             // 
             this.btnRuler.Name = "btnRuler";
-            this.btnRuler.Size = new System.Drawing.Size(157, 22);
+            this.btnRuler.Size = new System.Drawing.Size(166, 22);
             this.btnRuler.Text = "&Ruler";
             // 
             // btnLineNumbers
             // 
             this.btnLineNumbers.Name = "btnLineNumbers";
-            this.btnLineNumbers.Size = new System.Drawing.Size(157, 22);
+            this.btnLineNumbers.Size = new System.Drawing.Size(166, 22);
             this.btnLineNumbers.Text = "&Line Numbers";
             // 
             // btnDocumentMap
             // 
             this.btnDocumentMap.Name = "btnDocumentMap";
-            this.btnDocumentMap.Size = new System.Drawing.Size(157, 22);
+            this.btnDocumentMap.Size = new System.Drawing.Size(166, 22);
             this.btnDocumentMap.Text = "&Document Map";
             // 
             // btnSplit
@@ -469,45 +472,45 @@
             // miVertex
             // 
             this.miVertex.Name = "miVertex";
-            this.miVertex.Size = new System.Drawing.Size(192, 22);
+            this.miVertex.Size = new System.Drawing.Size(206, 22);
             this.miVertex.Text = "&Vertex Shader";
             // 
             // miTessellationControl
             // 
             this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(192, 22);
+            this.miTessellationControl.Size = new System.Drawing.Size(206, 22);
             this.miTessellationControl.Text = "&Tessellation Control";
             // 
             // miTessellationEvaluation
             // 
             this.miTessellationEvaluation.Name = "miTessellationEvaluation";
-            this.miTessellationEvaluation.Size = new System.Drawing.Size(192, 22);
+            this.miTessellationEvaluation.Size = new System.Drawing.Size(206, 22);
             this.miTessellationEvaluation.Text = "Tessellation &Evaluation";
             // 
             // miGeometry
             // 
             this.miGeometry.Name = "miGeometry";
-            this.miGeometry.Size = new System.Drawing.Size(192, 22);
+            this.miGeometry.Size = new System.Drawing.Size(206, 22);
             this.miGeometry.Text = "&Geometry Shader";
             // 
             // miFragment
             // 
             this.miFragment.Name = "miFragment";
-            this.miFragment.Size = new System.Drawing.Size(192, 22);
+            this.miFragment.Size = new System.Drawing.Size(206, 22);
             this.miFragment.Text = "&Fragment Shader";
             // 
             // miCompute
             // 
             this.miCompute.Name = "miCompute";
-            this.miCompute.Size = new System.Drawing.Size(192, 22);
+            this.miCompute.Size = new System.Drawing.Size(206, 22);
             this.miCompute.Text = "&Compute Shader";
             // 
             // ShaderEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ToolStripContainer);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ShaderEdit";
             this.Size = new System.Drawing.Size(288, 480);
             this.ToolStripContainer.ContentPanel.ResumeLayout(false);
