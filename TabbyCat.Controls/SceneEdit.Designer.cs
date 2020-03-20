@@ -141,6 +141,11 @@
             this.seCameraPositionX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionX.DecimalPlaces = 3;
             this.seCameraPositionX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraPositionX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraPositionX.Location = new System.Drawing.Point(93, 34);
             this.seCameraPositionX.Maximum = new decimal(new int[] {
             0,
@@ -284,6 +289,11 @@
             this.seCameraPositionY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionY.DecimalPlaces = 3;
             this.seCameraPositionY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraPositionY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraPositionY.Location = new System.Drawing.Point(183, 34);
             this.seCameraPositionY.Maximum = new decimal(new int[] {
             0,
@@ -300,6 +310,11 @@
             this.seCameraPositionZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionZ.DecimalPlaces = 3;
             this.seCameraPositionZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraPositionZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraPositionZ.Location = new System.Drawing.Point(273, 34);
             this.seCameraPositionZ.Maximum = new decimal(new int[] {
             0,
@@ -316,6 +331,11 @@
             this.seCameraFocusX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusX.DecimalPlaces = 3;
             this.seCameraFocusX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraFocusX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraFocusX.Location = new System.Drawing.Point(93, 61);
             this.seCameraFocusX.Maximum = new decimal(new int[] {
             0,
@@ -332,6 +352,11 @@
             this.seCameraFocusY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusY.DecimalPlaces = 3;
             this.seCameraFocusY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraFocusY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraFocusY.Location = new System.Drawing.Point(183, 61);
             this.seCameraFocusY.Maximum = new decimal(new int[] {
             0,
@@ -348,6 +373,11 @@
             this.seCameraFocusZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusZ.DecimalPlaces = 3;
             this.seCameraFocusZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraFocusZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seCameraFocusZ.Location = new System.Drawing.Point(273, 61);
             this.seCameraFocusZ.Maximum = new decimal(new int[] {
             0,
@@ -364,6 +394,11 @@
             this.seFrustumMinX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinX.DecimalPlaces = 3;
             this.seFrustumMinX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMinX.Location = new System.Drawing.Point(93, 146);
             this.seFrustumMinX.Maximum = new decimal(new int[] {
             0,
@@ -380,6 +415,11 @@
             this.seFrustumMinY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinY.DecimalPlaces = 3;
             this.seFrustumMinY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMinY.Location = new System.Drawing.Point(183, 146);
             this.seFrustumMinY.Maximum = new decimal(new int[] {
             0,
@@ -396,6 +436,11 @@
             this.seFrustumMinZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinZ.DecimalPlaces = 3;
             this.seFrustumMinZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMinZ.Location = new System.Drawing.Point(273, 146);
             this.seFrustumMinZ.Maximum = new decimal(new int[] {
             0,
@@ -412,6 +457,11 @@
             this.seFrustumMaxX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxX.DecimalPlaces = 3;
             this.seFrustumMaxX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMaxX.Location = new System.Drawing.Point(93, 173);
             this.seFrustumMaxX.Maximum = new decimal(new int[] {
             0,
@@ -428,6 +478,11 @@
             this.seFrustumMaxY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxY.DecimalPlaces = 3;
             this.seFrustumMaxY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMaxY.Location = new System.Drawing.Point(183, 173);
             this.seFrustumMaxY.Maximum = new decimal(new int[] {
             0,
@@ -444,6 +499,11 @@
             this.seFrustumMaxZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxZ.DecimalPlaces = 3;
             this.seFrustumMaxZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.seFrustumMaxZ.Location = new System.Drawing.Point(273, 173);
             this.seFrustumMaxZ.Maximum = new decimal(new int[] {
             0,

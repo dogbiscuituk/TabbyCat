@@ -184,6 +184,9 @@
         private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
             e.Link.LinkData.ToString().Launch();
 
+        private void BuiltInHelp_LookupParameterValue(object sender, Jmk.Controls.JmkLinkLabel.LookupParameterEventArgs e) =>
+            e.Value = LookupParameterValue(e.Name);
+
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
             ResizeBuiltInHelp();
 
@@ -290,6 +293,7 @@
                 Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
+                Editor.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
                 Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
@@ -313,6 +317,7 @@
                 Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
+                Editor.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
                 Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
@@ -370,6 +375,17 @@
             PrimaryTextBox.Text = GetScript();
             Updating = false;
             UpdateUI();
+        }
+
+        private string LookupParameterValue(string parameterName)
+        {
+            switch (parameterName)
+            {
+                case "GLSLUrl":
+                    return AppController.Options.GLSLUrl;
+                default:
+                    return string.Empty;
+            }
         }
 
         private void ResizeBuiltInHelp() => Editor.lblBuiltInHelp.MaximumSize = new Size(
