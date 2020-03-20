@@ -65,10 +65,10 @@
             }
         }
 
-        protected virtual void OnSelectionChanged() { }
-
         protected void SetToolTip(Control control, string toolTip) =>
             ToolTip.SetToolTip(control, toolTip);
+
+        protected virtual void OnSelectionChanged() { }
 
         protected abstract void UpdateProperties(params string[] propertyNames);
 

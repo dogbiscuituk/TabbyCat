@@ -37,8 +37,6 @@
             items[3].Tag = ShaderType.GeometryShader;
             items[4].Tag = ShaderType.FragmentShader;
             items[5].Tag = ShaderType.ComputeShader;
-            LoadShaderCode();
-            LoadBuiltInHelp();
         }
 
         #endregion
@@ -110,7 +108,6 @@
                         .Cast<ToolStripMenuItem>()
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
-                    LoadShaderCode();
                     LoadBuiltInHelp();
                 }
             }
@@ -298,6 +295,7 @@
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
                 WorldController.SelectionChanged += WorldController_SelectionChanged;
+                LoadBuiltInHelp();
             }
             else
             {
@@ -365,7 +363,11 @@
 
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
-        private void LoadBuiltInHelp() => Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
+        private void LoadBuiltInHelp()
+        {
+            LoadShaderCode();
+            Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
+        }
 
         private void LoadShaderCode()
         {
