@@ -133,7 +133,7 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 272);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 254);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // seCameraPositionX
@@ -178,7 +178,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label1.Size = new System.Drawing.Size(84, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Scene Title";
@@ -215,7 +215,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 85);
             this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label4.Size = new System.Drawing.Size(84, 27);
             this.label4.TabIndex = 10;
             this.label4.Text = "Projection";
@@ -526,6 +526,7 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(3, 220);
             this.label8.Name = "label8";
+            this.label8.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.label8.Size = new System.Drawing.Size(84, 32);
             this.label8.TabIndex = 29;
             this.label8.Text = "Background";
@@ -564,7 +565,7 @@
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Location = new System.Drawing.Point(183, 193);
             this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label12.Size = new System.Drawing.Size(84, 27);
             this.label12.TabIndex = 27;
             this.label12.Text = "GL Version";
@@ -610,9 +611,11 @@
             this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVSync.FlatAppearance.BorderSize = 0;
             this.cbVSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbVSync.Location = new System.Drawing.Point(273, 88);
+            this.cbVSync.Location = new System.Drawing.Point(273, 86);
+            this.cbVSync.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
             this.cbVSync.Name = "cbVSync";
-            this.cbVSync.Size = new System.Drawing.Size(84, 21);
+            this.cbVSync.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbVSync.Size = new System.Drawing.Size(84, 23);
             this.cbVSync.TabIndex = 12;
             this.cbVSync.Text = "VSync";
             this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -669,7 +672,7 @@
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SceneEdit";
-            this.Size = new System.Drawing.Size(360, 272);
+            this.Size = new System.Drawing.Size(360, 254);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
