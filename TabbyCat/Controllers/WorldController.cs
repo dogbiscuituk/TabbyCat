@@ -39,6 +39,7 @@
         internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal PropertiesController PropertiesController;
+        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;
@@ -381,7 +382,6 @@
 
         internal void OnPropertyChanged(string propertyName)
         {
-            $"OnPropertyChanged({propertyName})".Spit();
             switch (propertyName)
             {
                 case PropertyNames.Traces:

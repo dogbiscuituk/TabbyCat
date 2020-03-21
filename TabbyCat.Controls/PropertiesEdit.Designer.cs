@@ -58,7 +58,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(390, 306);
+            this.TabControl.Size = new System.Drawing.Size(390, 292);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 2;
             // 
@@ -71,7 +71,7 @@
             this.tpScene.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpScene.Name = "tpScene";
             this.tpScene.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpScene.Size = new System.Drawing.Size(382, 276);
+            this.tpScene.Size = new System.Drawing.Size(382, 262);
             this.tpScene.TabIndex = 0;
             this.tpScene.Text = "Scene";
             // 
@@ -82,7 +82,7 @@
             this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SceneEdit.Location = new System.Drawing.Point(3, 4);
             this.SceneEdit.Name = "SceneEdit";
-            this.SceneEdit.Size = new System.Drawing.Size(359, 272);
+            this.SceneEdit.Size = new System.Drawing.Size(376, 255);
             this.SceneEdit.TabIndex = 1;
             // 
             // tpTraces
@@ -94,7 +94,7 @@
             this.tpTraces.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpTraces.Name = "tpTraces";
             this.tpTraces.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpTraces.Size = new System.Drawing.Size(382, 276);
+            this.tpTraces.Size = new System.Drawing.Size(382, 262);
             this.tpTraces.TabIndex = 1;
             this.tpTraces.Text = "Trace";
             // 
@@ -119,7 +119,7 @@
             this.tpGPU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpGPU.Name = "tpGPU";
             this.tpGPU.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpGPU.Size = new System.Drawing.Size(382, 276);
+            this.tpGPU.Size = new System.Drawing.Size(382, 262);
             this.tpGPU.TabIndex = 2;
             this.tpGPU.Text = "GPU";
             // 
@@ -141,7 +141,7 @@
             this.label1.Location = new System.Drawing.Point(3, 4);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(33, 21);
+            this.label1.Size = new System.Drawing.Size(37, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Log";
             // 
@@ -161,7 +161,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.ShaderEdit);
             this.splitContainer1.Size = new System.Drawing.Size(390, 777);
-            this.splitContainer1.SplitterDistance = 306;
+            this.splitContainer1.SplitterDistance = 292;
             this.splitContainer1.TabIndex = 4;
             // 
             // ShaderEdit
@@ -170,7 +170,7 @@
             this.ShaderEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShaderEdit.Location = new System.Drawing.Point(0, 0);
             this.ShaderEdit.Name = "ShaderEdit";
-            this.ShaderEdit.Size = new System.Drawing.Size(390, 467);
+            this.ShaderEdit.Size = new System.Drawing.Size(390, 481);
             this.ShaderEdit.TabIndex = 3;
             // 
             // PropertiesEdit

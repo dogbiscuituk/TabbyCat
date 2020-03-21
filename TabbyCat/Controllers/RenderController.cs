@@ -5,6 +5,7 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -111,15 +112,10 @@
 
         internal void InvalidateAllTraces() => Scene.Traces.ForEach(p => InvalidateTrace(p));
 
-        internal void InvalidateCameraView()
-        {
-            "Invalidate Camera View".Spit();
-            CameraViewValid = false;
-        }
+        internal void InvalidateCameraView() => CameraViewValid = false;
 
         internal void InvalidateProgram()
         {
-            "Invalidate Program".Spit();
             ProgramCompiled = false;
             InvalidateCameraView();
             InvalidateProjection();
@@ -134,15 +130,10 @@
             MakeCurrent(false);
         }
 
-        internal void InvalidateProjection()
-        {
-            "Invalidate Projection".Spit();
-            ProjectionValid = false;
-        }
+        internal void InvalidateProjection() => ProjectionValid = false;
 
         internal void InvalidateTrace(Trace trace)
         {
-            $"Invalidate Trace '{trace}'".Spit();
             trace._VaoValid = false;
             if (MakeCurrent(true))
             {
@@ -337,7 +328,6 @@
         {
             if (CameraViewValid)
                 return;
-            "Validate Camera View".Spit();
             LoadCameraView();
             CameraViewValid = true;
         }
@@ -346,11 +336,12 @@
         {
             if (ProgramCompiled)
                 return;
-            "Validate Program".Spit();
             Scene.GPUStatus = GPUStatus.OK;
             GpuLog = new StringBuilder();
             ProgramID = GL.CreateProgram();
             CreateShaders();
+            if (!ShaderTypes.Any())
+                Log("No Trace Shaders found to compile.");
             Log("Linking program...");
             BindAttributes();
             GL.LinkProgram(ProgramID);
@@ -368,7 +359,6 @@
         {
             if (ProjectionValid)
                 return;
-            "Validate Projection".Spit();
             GL.Viewport(GLControl.Size);
             LoadProjection();
             ProjectionValid = true;
@@ -378,7 +368,6 @@
         {
             if (trace._VaoValid)
                 return;
-            $"Validate Trace '{trace}'".Spit();
             DeleteTraceVao(trace);
             var coords = Entity.GetCoordinates(trace.StripCount);
             var indices = Entity.GetIndices(trace.Pattern, trace.StripCount);
