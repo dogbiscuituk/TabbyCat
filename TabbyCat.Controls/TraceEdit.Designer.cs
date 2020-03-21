@@ -138,6 +138,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.Control;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(3, 166);
             this.label8.Name = "label8";
@@ -150,6 +151,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 31);
             this.label2.Name = "label2";
@@ -162,6 +164,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
@@ -173,6 +176,7 @@
             // 
             // edDescription
             // 
+            this.edDescription.BackColor = System.Drawing.SystemColors.Window;
             this.edDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TableLayoutPanel.SetColumnSpan(this.edDescription, 3);
             this.edDescription.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -184,6 +188,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 58);
             this.label3.Name = "label3";
@@ -196,6 +201,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 85);
             this.label4.Name = "label4";
@@ -208,6 +214,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(3, 193);
             this.label5.Name = "label5";
@@ -220,6 +227,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 112);
             this.label6.Name = "label6";
@@ -232,6 +240,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(3, 139);
             this.label7.Name = "label7";
@@ -243,6 +252,7 @@
             // 
             // seLocationY
             // 
+            this.seLocationY.BackColor = System.Drawing.SystemColors.Window;
             this.seLocationY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seLocationY.DecimalPlaces = 3;
             this.seLocationY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -264,6 +274,7 @@
             // 
             // seLocationZ
             // 
+            this.seLocationZ.BackColor = System.Drawing.SystemColors.Window;
             this.seLocationZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seLocationZ.DecimalPlaces = 3;
             this.seLocationZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -285,6 +296,7 @@
             // 
             // seOrientationX
             // 
+            this.seOrientationX.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seOrientationX.DecimalPlaces = 3;
             this.seOrientationX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -306,6 +318,7 @@
             // 
             // seOrientationY
             // 
+            this.seOrientationY.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seOrientationY.DecimalPlaces = 3;
             this.seOrientationY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -327,6 +340,7 @@
             // 
             // seOrientationZ
             // 
+            this.seOrientationZ.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seOrientationZ.DecimalPlaces = 3;
             this.seOrientationZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -348,6 +362,7 @@
             // 
             // seScaleX
             // 
+            this.seScaleX.BackColor = System.Drawing.SystemColors.Window;
             this.seScaleX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleX.DecimalPlaces = 3;
             this.seScaleX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -369,6 +384,7 @@
             // 
             // seScaleY
             // 
+            this.seScaleY.BackColor = System.Drawing.SystemColors.Window;
             this.seScaleY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleY.DecimalPlaces = 3;
             this.seScaleY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -390,6 +406,7 @@
             // 
             // seScaleZ
             // 
+            this.seScaleZ.BackColor = System.Drawing.SystemColors.Window;
             this.seScaleZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleZ.DecimalPlaces = 3;
             this.seScaleZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -411,6 +428,7 @@
             // 
             // seMinimumX
             // 
+            this.seMinimumX.BackColor = System.Drawing.SystemColors.Window;
             this.seMinimumX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumX.DecimalPlaces = 3;
             this.seMinimumX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -432,6 +450,7 @@
             // 
             // seMinimumY
             // 
+            this.seMinimumY.BackColor = System.Drawing.SystemColors.Window;
             this.seMinimumY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumY.DecimalPlaces = 3;
             this.seMinimumY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -453,6 +472,7 @@
             // 
             // seMinimumZ
             // 
+            this.seMinimumZ.BackColor = System.Drawing.SystemColors.Window;
             this.seMinimumZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumZ.DecimalPlaces = 3;
             this.seMinimumZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -474,6 +494,7 @@
             // 
             // seMaximumX
             // 
+            this.seMaximumX.BackColor = System.Drawing.SystemColors.Window;
             this.seMaximumX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumX.DecimalPlaces = 3;
             this.seMaximumX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -495,6 +516,7 @@
             // 
             // seMaximumY
             // 
+            this.seMaximumY.BackColor = System.Drawing.SystemColors.Window;
             this.seMaximumY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumY.DecimalPlaces = 3;
             this.seMaximumY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -516,6 +538,7 @@
             // 
             // seMaximumZ
             // 
+            this.seMaximumZ.BackColor = System.Drawing.SystemColors.Window;
             this.seMaximumZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumZ.DecimalPlaces = 3;
             this.seMaximumZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -537,6 +560,7 @@
             // 
             // seStripCountX
             // 
+            this.seStripCountX.BackColor = System.Drawing.SystemColors.Window;
             this.seStripCountX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripCountX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripCountX.Location = new System.Drawing.Point(93, 169);
@@ -552,6 +576,7 @@
             // 
             // seStripCountY
             // 
+            this.seStripCountY.BackColor = System.Drawing.SystemColors.Window;
             this.seStripCountY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripCountY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripCountY.Location = new System.Drawing.Point(183, 169);
@@ -567,6 +592,7 @@
             // 
             // seStripCountZ
             // 
+            this.seStripCountZ.BackColor = System.Drawing.SystemColors.Window;
             this.seStripCountZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripCountZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripCountZ.Location = new System.Drawing.Point(273, 169);
@@ -582,6 +608,7 @@
             // 
             // cbPattern
             // 
+            this.cbPattern.BackColor = System.Drawing.SystemColors.Window;
             this.TableLayoutPanel.SetColumnSpan(this.cbPattern, 2);
             this.cbPattern.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -595,6 +622,7 @@
             // cbVisible
             // 
             this.cbVisible.AutoSize = true;
+            this.cbVisible.BackColor = System.Drawing.SystemColors.Control;
             this.cbVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVisible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVisible.FlatAppearance.BorderSize = 0;
@@ -605,10 +633,11 @@
             this.cbVisible.TabIndex = 28;
             this.cbVisible.Text = "Visible";
             this.cbVisible.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbVisible.UseVisualStyleBackColor = true;
+            this.cbVisible.UseVisualStyleBackColor = false;
             // 
             // seLocationX
             // 
+            this.seLocationX.BackColor = System.Drawing.SystemColors.Window;
             this.seLocationX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seLocationX.DecimalPlaces = 3;
             this.seLocationX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -627,6 +656,10 @@
             this.seLocationX.Size = new System.Drawing.Size(84, 21);
             this.seLocationX.TabIndex = 3;
             this.seLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
             // TraceEdit
             // 

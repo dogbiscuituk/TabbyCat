@@ -39,7 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbProjectionType = new System.Windows.Forms.ComboBox();
             this.seFieldOfView = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
@@ -59,8 +58,9 @@
             this.seFPS = new System.Windows.Forms.NumericUpDown();
             this.seSamples = new System.Windows.Forms.NumericUpDown();
             this.cbVSync = new System.Windows.Forms.CheckBox();
-            this.cbGLSLVersion = new System.Windows.Forms.ComboBox();
             this.cbBackground = new System.Windows.Forms.ComboBox();
+            this.seProjectionType = new System.Windows.Forms.DomainUpDown();
+            this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
@@ -97,7 +97,6 @@
             this.TableLayoutPanel.Controls.Add(this.label5, 0, 4);
             this.TableLayoutPanel.Controls.Add(this.label6, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.label7, 0, 6);
-            this.TableLayoutPanel.Controls.Add(this.cbProjectionType, 1, 3);
             this.TableLayoutPanel.Controls.Add(this.seFieldOfView, 1, 4);
             this.TableLayoutPanel.Controls.Add(this.seCameraPositionY, 2, 1);
             this.TableLayoutPanel.Controls.Add(this.seCameraPositionZ, 3, 1);
@@ -117,8 +116,9 @@
             this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 4);
             this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 7);
             this.TableLayoutPanel.Controls.Add(this.cbVSync, 3, 3);
-            this.TableLayoutPanel.Controls.Add(this.cbGLSLVersion, 3, 7);
             this.TableLayoutPanel.Controls.Add(this.cbBackground, 1, 8);
+            this.TableLayoutPanel.Controls.Add(this.seProjectionType, 1, 3);
+            this.TableLayoutPanel.Controls.Add(this.seGLSLVersion, 3, 7);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
@@ -138,6 +138,7 @@
             // 
             // seCameraPositionX
             // 
+            this.seCameraPositionX.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraPositionX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionX.DecimalPlaces = 3;
             this.seCameraPositionX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,6 +161,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 31);
             this.label2.Name = "label2";
@@ -172,6 +174,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
@@ -183,6 +186,7 @@
             // 
             // edTitle
             // 
+            this.edTitle.BackColor = System.Drawing.SystemColors.Window;
             this.edTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TableLayoutPanel.SetColumnSpan(this.edTitle, 3);
             this.edTitle.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -194,6 +198,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 58);
             this.label3.Name = "label3";
@@ -206,11 +211,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 85);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label4.Size = new System.Drawing.Size(84, 31);
+            this.label4.Size = new System.Drawing.Size(84, 27);
             this.label4.TabIndex = 10;
             this.label4.Text = "Projection";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -218,8 +224,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 116);
+            this.label5.Location = new System.Drawing.Point(3, 112);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label5.Size = new System.Drawing.Size(84, 27);
@@ -230,8 +237,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 143);
+            this.label6.Location = new System.Drawing.Point(3, 139);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label6.Size = new System.Drawing.Size(84, 27);
@@ -242,8 +250,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 170);
+            this.label7.Location = new System.Drawing.Point(3, 166);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label7.Size = new System.Drawing.Size(84, 27);
@@ -251,29 +260,13 @@
             this.label7.Text = "Far Plane";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cbProjectionType
-            // 
-            this.TableLayoutPanel.SetColumnSpan(this.cbProjectionType, 2);
-            this.cbProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbProjectionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProjectionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbProjectionType.FormattingEnabled = true;
-            this.cbProjectionType.Items.AddRange(new object[] {
-            "Orthographic",
-            "Orthographic (Offset)",
-            "Perspective",
-            "Perspective (Offset)"});
-            this.cbProjectionType.Location = new System.Drawing.Point(93, 88);
-            this.cbProjectionType.Name = "cbProjectionType";
-            this.cbProjectionType.Size = new System.Drawing.Size(174, 25);
-            this.cbProjectionType.TabIndex = 11;
-            // 
             // seFieldOfView
             // 
+            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
             this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFieldOfView.DecimalPlaces = 3;
             this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFieldOfView.Location = new System.Drawing.Point(93, 119);
+            this.seFieldOfView.Location = new System.Drawing.Point(93, 115);
             this.seFieldOfView.Maximum = new decimal(new int[] {
             0,
             0,
@@ -286,6 +279,7 @@
             // 
             // seCameraPositionY
             // 
+            this.seCameraPositionY.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraPositionY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionY.DecimalPlaces = 3;
             this.seCameraPositionY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -307,6 +301,7 @@
             // 
             // seCameraPositionZ
             // 
+            this.seCameraPositionZ.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraPositionZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPositionZ.DecimalPlaces = 3;
             this.seCameraPositionZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -328,6 +323,7 @@
             // 
             // seCameraFocusX
             // 
+            this.seCameraFocusX.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraFocusX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusX.DecimalPlaces = 3;
             this.seCameraFocusX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -349,6 +345,7 @@
             // 
             // seCameraFocusY
             // 
+            this.seCameraFocusY.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraFocusY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusY.DecimalPlaces = 3;
             this.seCameraFocusY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -370,6 +367,7 @@
             // 
             // seCameraFocusZ
             // 
+            this.seCameraFocusZ.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraFocusZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraFocusZ.DecimalPlaces = 3;
             this.seCameraFocusZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -391,6 +389,7 @@
             // 
             // seFrustumMinX
             // 
+            this.seFrustumMinX.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMinX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinX.DecimalPlaces = 3;
             this.seFrustumMinX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -399,7 +398,7 @@
             0,
             0,
             65536});
-            this.seFrustumMinX.Location = new System.Drawing.Point(93, 146);
+            this.seFrustumMinX.Location = new System.Drawing.Point(93, 142);
             this.seFrustumMinX.Maximum = new decimal(new int[] {
             0,
             0,
@@ -412,6 +411,7 @@
             // 
             // seFrustumMinY
             // 
+            this.seFrustumMinY.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMinY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinY.DecimalPlaces = 3;
             this.seFrustumMinY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -420,7 +420,7 @@
             0,
             0,
             65536});
-            this.seFrustumMinY.Location = new System.Drawing.Point(183, 146);
+            this.seFrustumMinY.Location = new System.Drawing.Point(183, 142);
             this.seFrustumMinY.Maximum = new decimal(new int[] {
             0,
             0,
@@ -433,6 +433,7 @@
             // 
             // seFrustumMinZ
             // 
+            this.seFrustumMinZ.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMinZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMinZ.DecimalPlaces = 3;
             this.seFrustumMinZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -441,7 +442,7 @@
             0,
             0,
             65536});
-            this.seFrustumMinZ.Location = new System.Drawing.Point(273, 146);
+            this.seFrustumMinZ.Location = new System.Drawing.Point(273, 142);
             this.seFrustumMinZ.Maximum = new decimal(new int[] {
             0,
             0,
@@ -454,6 +455,7 @@
             // 
             // seFrustumMaxX
             // 
+            this.seFrustumMaxX.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMaxX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxX.DecimalPlaces = 3;
             this.seFrustumMaxX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -462,7 +464,7 @@
             0,
             0,
             65536});
-            this.seFrustumMaxX.Location = new System.Drawing.Point(93, 173);
+            this.seFrustumMaxX.Location = new System.Drawing.Point(93, 169);
             this.seFrustumMaxX.Maximum = new decimal(new int[] {
             0,
             0,
@@ -475,6 +477,7 @@
             // 
             // seFrustumMaxY
             // 
+            this.seFrustumMaxY.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMaxY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxY.DecimalPlaces = 3;
             this.seFrustumMaxY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -483,7 +486,7 @@
             0,
             0,
             65536});
-            this.seFrustumMaxY.Location = new System.Drawing.Point(183, 173);
+            this.seFrustumMaxY.Location = new System.Drawing.Point(183, 169);
             this.seFrustumMaxY.Maximum = new decimal(new int[] {
             0,
             0,
@@ -496,6 +499,7 @@
             // 
             // seFrustumMaxZ
             // 
+            this.seFrustumMaxZ.BackColor = System.Drawing.SystemColors.Window;
             this.seFrustumMaxZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFrustumMaxZ.DecimalPlaces = 3;
             this.seFrustumMaxZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -504,7 +508,7 @@
             0,
             0,
             65536});
-            this.seFrustumMaxZ.Location = new System.Drawing.Point(273, 173);
+            this.seFrustumMaxZ.Location = new System.Drawing.Point(273, 169);
             this.seFrustumMaxZ.Maximum = new decimal(new int[] {
             0,
             0,
@@ -518,8 +522,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.Control;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 228);
+            this.label8.Location = new System.Drawing.Point(3, 220);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 32);
             this.label8.TabIndex = 29;
@@ -529,23 +534,25 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.Control;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(183, 116);
+            this.label9.Location = new System.Drawing.Point(183, 112);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label9.Size = new System.Drawing.Size(84, 27);
             this.label9.TabIndex = 15;
-            this.label9.Text = "FPS";
+            this.label9.Text = "Target FPS";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.SystemColors.Control;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 197);
+            this.label10.Location = new System.Drawing.Point(3, 193);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label10.Size = new System.Drawing.Size(84, 31);
+            this.label10.Size = new System.Drawing.Size(84, 27);
             this.label10.TabIndex = 25;
             this.label10.Text = "#Samples";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -553,20 +560,22 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.SystemColors.Control;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(183, 197);
+            this.label12.Location = new System.Drawing.Point(183, 193);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.label12.Size = new System.Drawing.Size(84, 31);
+            this.label12.Size = new System.Drawing.Size(84, 27);
             this.label12.TabIndex = 27;
             this.label12.Text = "GL Version";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // seFPS
             // 
+            this.seFPS.BackColor = System.Drawing.SystemColors.Window;
             this.seFPS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seFPS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFPS.Location = new System.Drawing.Point(273, 119);
+            this.seFPS.Location = new System.Drawing.Point(273, 115);
             this.seFPS.Maximum = new decimal(new int[] {
             0,
             0,
@@ -579,9 +588,10 @@
             // 
             // seSamples
             // 
+            this.seSamples.BackColor = System.Drawing.SystemColors.Window;
             this.seSamples.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seSamples.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seSamples.Location = new System.Drawing.Point(93, 200);
+            this.seSamples.Location = new System.Drawing.Point(93, 196);
             this.seSamples.Maximum = new decimal(new int[] {
             0,
             0,
@@ -595,50 +605,61 @@
             // cbVSync
             // 
             this.cbVSync.AutoSize = true;
+            this.cbVSync.BackColor = System.Drawing.SystemColors.Control;
             this.cbVSync.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVSync.FlatAppearance.BorderSize = 0;
             this.cbVSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbVSync.Location = new System.Drawing.Point(273, 88);
             this.cbVSync.Name = "cbVSync";
-            this.cbVSync.Size = new System.Drawing.Size(84, 25);
+            this.cbVSync.Size = new System.Drawing.Size(84, 21);
             this.cbVSync.TabIndex = 12;
             this.cbVSync.Text = "VSync";
             this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbVSync.UseVisualStyleBackColor = true;
-            // 
-            // cbGLSLVersion
-            // 
-            this.cbGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbGLSLVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGLSLVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbGLSLVersion.FormattingEnabled = true;
-            this.cbGLSLVersion.Items.AddRange(new object[] {
-            "330",
-            "400",
-            "410",
-            "420",
-            "430",
-            "440",
-            "450",
-            "460"});
-            this.cbGLSLVersion.Location = new System.Drawing.Point(273, 200);
-            this.cbGLSLVersion.Name = "cbGLSLVersion";
-            this.cbGLSLVersion.Size = new System.Drawing.Size(84, 25);
-            this.cbGLSLVersion.TabIndex = 28;
+            this.cbVSync.UseVisualStyleBackColor = false;
             // 
             // cbBackground
             // 
+            this.cbBackground.BackColor = System.Drawing.SystemColors.Window;
             this.TableLayoutPanel.SetColumnSpan(this.cbBackground, 2);
             this.cbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbBackground.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbBackground.FormattingEnabled = true;
-            this.cbBackground.Location = new System.Drawing.Point(93, 231);
+            this.cbBackground.Location = new System.Drawing.Point(93, 223);
             this.cbBackground.Name = "cbBackground";
             this.cbBackground.Size = new System.Drawing.Size(174, 26);
             this.cbBackground.TabIndex = 30;
+            // 
+            // seProjectionType
+            // 
+            this.seProjectionType.BackColor = System.Drawing.SystemColors.Window;
+            this.seProjectionType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TableLayoutPanel.SetColumnSpan(this.seProjectionType, 2);
+            this.seProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seProjectionType.Location = new System.Drawing.Point(93, 88);
+            this.seProjectionType.Name = "seProjectionType";
+            this.seProjectionType.ReadOnly = true;
+            this.seProjectionType.Size = new System.Drawing.Size(174, 21);
+            this.seProjectionType.TabIndex = 31;
+            this.seProjectionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seGLSLVersion
+            // 
+            this.seGLSLVersion.BackColor = System.Drawing.SystemColors.Window;
+            this.seGLSLVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seGLSLVersion.Location = new System.Drawing.Point(273, 196);
+            this.seGLSLVersion.Name = "seGLSLVersion";
+            this.seGLSLVersion.ReadOnly = true;
+            this.seGLSLVersion.Size = new System.Drawing.Size(84, 21);
+            this.seGLSLVersion.TabIndex = 32;
+            this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
             // SceneEdit
             // 
@@ -682,7 +703,6 @@
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.ComboBox cbProjectionType;
         public System.Windows.Forms.NumericUpDown seFieldOfView;
         public System.Windows.Forms.NumericUpDown seCameraPositionY;
         public System.Windows.Forms.NumericUpDown seCameraPositionZ;
@@ -702,8 +722,9 @@
         public System.Windows.Forms.NumericUpDown seFPS;
         public System.Windows.Forms.NumericUpDown seSamples;
         public System.Windows.Forms.CheckBox cbVSync;
-        public System.Windows.Forms.ComboBox cbGLSLVersion;
         public System.Windows.Forms.ComboBox cbBackground;
         public System.Windows.Forms.ToolTip ToolTip;
+        public System.Windows.Forms.DomainUpDown seProjectionType;
+        public System.Windows.Forms.DomainUpDown seGLSLVersion;
     }
 }

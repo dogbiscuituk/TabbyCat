@@ -3,6 +3,7 @@
     using OpenTK;
     using System;
     using System.Drawing;
+    using System.Linq;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -58,7 +59,7 @@
                 Editor.seCameraFocusX.ValueChanged += CameraFocus_ValueChanged;
                 Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
                 Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
-                Editor.cbProjectionType.SelectedIndexChanged += ProjectionType_SelectedIndexChanged;
+                Editor.seProjectionType.SelectedItemChanged += ProjectionType_SelectedItemChanged;
                 Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged += FPS_ValueChanged;
                 Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
@@ -70,7 +71,7 @@
                 Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
                 Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
                 Editor.seSamples.ValueChanged += Samples_ValueChanged;
-                Editor.cbGLSLVersion.SelectedValueChanged += GLSLVersion_SelectedValueChanged;
+                Editor.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
             }
             else
             {
@@ -81,7 +82,7 @@
                 Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
                 Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
                 Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.cbProjectionType.SelectedIndexChanged -= ProjectionType_SelectedIndexChanged;
+                Editor.seProjectionType.SelectedItemChanged -= ProjectionType_SelectedItemChanged;
                 Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged -= FPS_ValueChanged;
                 Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
@@ -93,7 +94,7 @@
                 Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
                 Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
                 Editor.seSamples.ValueChanged -= Samples_ValueChanged;
-                Editor.cbGLSLVersion.SelectedValueChanged -= GLSLVersion_SelectedValueChanged;
+                Editor.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
             }
         }
 
@@ -134,7 +135,7 @@
                         Editor.seFPS.Value = (decimal)Scene.FPS;
                         break;
                     case PropertyNames.GLTargetVersion:
-                        Editor.cbGLSLVersion.Text = Scene.GLTargetVersion;
+                        Editor.seGLSLVersion.Text = Scene.GLTargetVersion;
                         break;
                     case PropertyNames.NearPlane:
                         Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
@@ -142,7 +143,7 @@
                         Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
                         break;
                     case PropertyNames.ProjectionType:
-                        Editor.cbProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
+                        Editor.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
                     case PropertyNames.Samples:
                         Editor.seSamples.Value = Scene.SampleCount;
@@ -195,13 +196,13 @@
                 (float)Editor.seFrustumMinY.Value,
                 (float)Editor.seFrustumMinZ.Value)));
 
-        private void GLSLVersion_SelectedValueChanged(object sender, EventArgs e) =>
-            Run(new GLTargetVersionCommand(Editor.cbGLSLVersion.Text));
+        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
+            Run(new GLTargetVersionCommand(Editor.seGLSLVersion.Text));
 
-        private void ProjectionType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e)
         {
             UpdateUI();
-            Run(new ProjectionTypeCommand((ProjectionType)Editor.cbProjectionType.SelectedIndex));
+            Run(new ProjectionTypeCommand((ProjectionType)Editor.seProjectionType.SelectedIndex));
         }
 
         private void Samples_ValueChanged(object sender, EventArgs e) =>
@@ -219,6 +220,10 @@
 
         private void InitLocalControls()
         {
+            Editor.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
+            Editor.seGLSLVersion.Items.AddRange(
+                new[] { "330", "400", "410", "420", "430", "440", "450", "460" }
+                .Reverse().ToList());
             InitToolTips();
             new ColourController().AddControls(Editor.cbBackground);
         }
@@ -235,13 +240,13 @@
             SetToolTip(Editor.seFrustumMaxX, Resources.Projection_FarPlaneX);
             SetToolTip(Editor.seFrustumMaxY, Resources.Projection_FarPlaneY);
             SetToolTip(Editor.seFrustumMaxZ, Resources.Projection_FarPlaneZ);
-            SetToolTip(Editor.cbGLSLVersion, Resources.GLSL_TargetVersion);
+            SetToolTip(Editor.seGLSLVersion, Resources.GLSL_TargetVersion);
             SetToolTip(Editor.seFieldOfView, Resources.Projection_FieldOfView);
             SetToolTip(Editor.seFPS, Resources.Scene_FPS);
             SetToolTip(Editor.seFrustumMinX, Resources.Projection_NearPlaneX);
             SetToolTip(Editor.seFrustumMinY, Resources.Projection_NearPlaneY);
             SetToolTip(Editor.seFrustumMinZ, Resources.Projection_NearPlaneZ);
-            SetToolTip(Editor.cbProjectionType, Resources.Projection_Type);
+            SetToolTip(Editor.seProjectionType, Resources.Projection_Type);
             SetToolTip(Editor.seSamples, Resources.Scene_Samples);
             SetToolTip(Editor.edTitle, Resources.Scene_Title);
             SetToolTip(Editor.cbVSync, Resources.Scene_VSync);
@@ -258,7 +263,7 @@
 
         private void UpdateUI()
         {
-            var useFov = Editor.cbProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            var useFov = Editor.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
             Editor.seFieldOfView.Enabled = useFov;
             Editor.seFrustumMinX.Enabled =
             Editor.seFrustumMinY.Enabled =
