@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.cbStereo = new System.Windows.Forms.CheckBox();
             this.seCameraPositionX = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.seProjectionType = new System.Windows.Forms.DomainUpDown();
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cbStereo = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
@@ -137,6 +137,24 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.Size = new System.Drawing.Size(360, 254);
             this.TableLayoutPanel.TabIndex = 0;
+            // 
+            // cbStereo
+            // 
+            this.cbStereo.AutoSize = true;
+            this.cbStereo.BackColor = System.Drawing.SystemColors.Control;
+            this.cbStereo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStereo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbStereo.FlatAppearance.BorderSize = 0;
+            this.cbStereo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbStereo.Location = new System.Drawing.Point(273, 86);
+            this.cbStereo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
+            this.cbStereo.Name = "cbStereo";
+            this.cbStereo.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbStereo.Size = new System.Drawing.Size(84, 23);
+            this.cbStereo.TabIndex = 12;
+            this.cbStereo.Text = "Stereo";
+            this.cbStereo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStereo.UseVisualStyleBackColor = false;
             // 
             // seCameraPositionX
             // 
@@ -618,7 +636,7 @@
             this.cbVSync.Name = "cbVSync";
             this.cbVSync.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbVSync.Size = new System.Drawing.Size(84, 28);
-            this.cbVSync.TabIndex = 12;
+            this.cbVSync.TabIndex = 31;
             this.cbVSync.Text = "VSync";
             this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVSync.UseVisualStyleBackColor = false;
@@ -647,7 +665,7 @@
             this.seProjectionType.Name = "seProjectionType";
             this.seProjectionType.ReadOnly = true;
             this.seProjectionType.Size = new System.Drawing.Size(174, 21);
-            this.seProjectionType.TabIndex = 31;
+            this.seProjectionType.TabIndex = 11;
             this.seProjectionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seGLSLVersion
@@ -659,30 +677,12 @@
             this.seGLSLVersion.Name = "seGLSLVersion";
             this.seGLSLVersion.ReadOnly = true;
             this.seGLSLVersion.Size = new System.Drawing.Size(84, 21);
-            this.seGLSLVersion.TabIndex = 32;
+            this.seGLSLVersion.TabIndex = 28;
             this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ToolTip
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // cbStereo
-            // 
-            this.cbStereo.AutoSize = true;
-            this.cbStereo.BackColor = System.Drawing.SystemColors.Control;
-            this.cbStereo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbStereo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbStereo.FlatAppearance.BorderSize = 0;
-            this.cbStereo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbStereo.Location = new System.Drawing.Point(273, 86);
-            this.cbStereo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
-            this.cbStereo.Name = "cbStereo";
-            this.cbStereo.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.cbStereo.Size = new System.Drawing.Size(84, 23);
-            this.cbStereo.TabIndex = 33;
-            this.cbStereo.Text = "Stereo";
-            this.cbStereo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbStereo.UseVisualStyleBackColor = false;
             // 
             // SceneEdit
             // 
