@@ -55,14 +55,27 @@
 
         #region Private Event Handlers
 
-        private void PopupPropertiesUndock_Click(object sender, System.EventArgs e) =>
-            EditorDocked = !EditorDocked;
-
         private void PopupPropertiesHide_Click(object sender, System.EventArgs e) =>
             EditorVisible = false;
 
         private void PopupPropertiesMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) =>
             WorldForm.PopupPropertiesUndock.Text = EditorDocked ? "&Undock" : "&Dock";
+
+        private void PopupPropertiesUndock_Click(object sender, System.EventArgs e) =>
+            EditorDocked = !EditorDocked;
+
+        private void ViewMenu_DropDownOpening(object sender, System.EventArgs e) =>
+            WorldForm.ViewProperties.Checked = EditorVisible;
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case PropertyNames.GPULog:
+                    PropertiesEdit.lblGPULog.Text = Scene.GPULog;
+                    break;
+            }
+        }
 
         #endregion
 
@@ -73,6 +86,7 @@
             if (connect)
             {
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
                 WorldForm.ViewProperties.Click += ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening += PopupPropertiesMenu_Opening;
                 WorldForm.PopupPropertiesHide.Click += PopupPropertiesHide_Click;
@@ -81,6 +95,7 @@
             else
             {
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
                 WorldForm.ViewProperties.Click -= ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;
                 WorldForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;
@@ -89,16 +104,6 @@
             SceneController.Connect(connect);
             TraceController.Connect(connect);
             ShaderController.Connect(connect);
-        }
-
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case PropertyNames.GPULog:
-                    PropertiesEdit.lblGPULog.Text = Scene.GPULog;
-                    break;
-            }
         }
 
         #endregion

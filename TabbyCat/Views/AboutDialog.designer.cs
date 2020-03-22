@@ -244,6 +244,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnOK;
             this.ClientSize = new System.Drawing.Size(400, 240);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.lblVersion);
