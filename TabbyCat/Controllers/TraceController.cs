@@ -303,8 +303,10 @@
         private void InitLocalControls()
         {
             InitToolTips();
-            foreach (Pattern pattern in Enum.GetValues(typeof(Pattern)))
-                Editor.cbPattern.Items.Add(pattern);
+            Editor.seStripCountX.Minimum =
+            Editor.seStripCountY.Minimum =
+            Editor.seStripCountZ.Minimum = 0;
+            Editor.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
         }
 
         private void InitToolTips()

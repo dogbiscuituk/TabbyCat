@@ -221,10 +221,15 @@
         private void InitLocalControls()
         {
             Editor.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
+            Editor.seFieldOfView.Minimum = 1;
+            Editor.seFieldOfView.Maximum = 179;
+            Editor.seFPS.Minimum = 1;
+            Editor.seFPS.Maximum = 300;
             Editor.seGLSLVersion.Items.AddRange(
                 new[] { "330", "400", "410", "420", "430", "440", "450", "460" }
                 .Reverse().ToList());
             InitToolTips();
+            Editor.seSamples.Minimum = 0;
             new ColourController().AddControls(Editor.cbBackground);
         }
 

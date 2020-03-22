@@ -284,7 +284,6 @@
             // 
             this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
             this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFieldOfView.DecimalPlaces = 3;
             this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seFieldOfView.Location = new System.Drawing.Point(93, 115);
             this.seFieldOfView.Maximum = new decimal(new int[] {
