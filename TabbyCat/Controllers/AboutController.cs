@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Jmk.Common;
     using System.Reflection;
     using System.Windows.Forms;
     using TabbyCat.Views;
@@ -19,56 +18,32 @@
             View.lblVersion.Text = Application.ProductVersion;
             View.lblAuthor.Text = Application.CompanyName;
             View.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            var info = AppController.WorldControllers[0].RenderController.GLInfo;
+            View.lblOpenGLVersion.Text = info.Number;
+            View.lblGLSLVersion.Text = info.Shader;
+            View.lblVendorName.Text = info.Vendor;
+            View.lblRendererName.Text = info.Renderer;
         }
 
         internal void Show(IWin32Window owner)
         {
-            View.btnOK.Visible = false;
+            Init(false);
             View.Show(owner);
         }
 
         internal void ShowDialog(IWin32Window owner)
         {
-            View.btnOK.Visible = true;
+            Init(true);
             View.ShowDialog(owner);
         }
 
-        internal AboutDialog View
-        {
-            get => _View;
-            set
-            {
-                _View = value;
-                View.NewtonsoftLinkLabel.LinkClicked += NewtonsoftLinkClick;
-                View.GplLinkLabel.LinkClicked += GplLinkClick;
-            }
-        }
-
-        #endregion
-
-        #region Private Properties
-
-        private AboutDialog _View;
-
-        #endregion
-
-        #region Private Event Handlers
-
-        private void GplLinkClick(object sender, LinkLabelLinkClickedEventArgs e) =>
-            Launch(View.GplLinkLabel);
-
-        private void NewtonsoftLinkClick(object sender, LinkLabelLinkClickedEventArgs e) =>
-            Launch(View.NewtonsoftLinkLabel);
+        internal AboutDialog View { get; set; }
 
         #endregion
 
         #region Private Methods
 
-        private void Launch(LinkLabel linkLabel)
-        {
-            linkLabel.Text.Launch();
-            linkLabel.LinkVisited = true;
-        }
+        private void Init(bool showOK) => View.btnOK.Visible = showOK;
 
         #endregion
     }

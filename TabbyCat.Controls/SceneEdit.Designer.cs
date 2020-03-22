@@ -62,6 +62,7 @@
             this.seProjectionType = new System.Windows.Forms.DomainUpDown();
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.cbStereo = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
@@ -88,6 +89,7 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.Controls.Add(this.cbStereo, 3, 3);
             this.TableLayoutPanel.Controls.Add(this.seCameraPositionX, 1, 1);
             this.TableLayoutPanel.Controls.Add(this.label2, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.label1, 0, 0);
@@ -115,7 +117,7 @@
             this.TableLayoutPanel.Controls.Add(this.label12, 2, 7);
             this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 4);
             this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 7);
-            this.TableLayoutPanel.Controls.Add(this.cbVSync, 3, 3);
+            this.TableLayoutPanel.Controls.Add(this.cbVSync, 3, 8);
             this.TableLayoutPanel.Controls.Add(this.cbBackground, 1, 8);
             this.TableLayoutPanel.Controls.Add(this.seProjectionType, 1, 3);
             this.TableLayoutPanel.Controls.Add(this.seGLSLVersion, 3, 7);
@@ -611,11 +613,11 @@
             this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVSync.FlatAppearance.BorderSize = 0;
             this.cbVSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbVSync.Location = new System.Drawing.Point(273, 86);
+            this.cbVSync.Location = new System.Drawing.Point(273, 221);
             this.cbVSync.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
             this.cbVSync.Name = "cbVSync";
             this.cbVSync.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.cbVSync.Size = new System.Drawing.Size(84, 23);
+            this.cbVSync.Size = new System.Drawing.Size(84, 28);
             this.cbVSync.TabIndex = 12;
             this.cbVSync.Text = "VSync";
             this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -663,6 +665,24 @@
             // ToolTip
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // cbStereo
+            // 
+            this.cbStereo.AutoSize = true;
+            this.cbStereo.BackColor = System.Drawing.SystemColors.Control;
+            this.cbStereo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStereo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbStereo.FlatAppearance.BorderSize = 0;
+            this.cbStereo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbStereo.Location = new System.Drawing.Point(273, 86);
+            this.cbStereo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
+            this.cbStereo.Name = "cbStereo";
+            this.cbStereo.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbStereo.Size = new System.Drawing.Size(84, 23);
+            this.cbStereo.TabIndex = 33;
+            this.cbStereo.Text = "Stereo";
+            this.cbStereo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStereo.UseVisualStyleBackColor = false;
             // 
             // SceneEdit
             // 
@@ -729,5 +749,6 @@
         public System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.DomainUpDown seProjectionType;
         public System.Windows.Forms.DomainUpDown seGLSLVersion;
+        public System.Windows.Forms.CheckBox cbStereo;
     }
 }
