@@ -27,7 +27,7 @@
         public float FPS { get; set; }
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
-        public int SampleCount { get; set; }
+        public int Samples { get; set; }
 
         [DefaultValue("")]
         public string Title { get; set; }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.clbTraceSelector = new Jmk.Controls.JmkCheckedListBox();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -89,6 +91,7 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TableLayoutPanel.Controls.Add(this.label9, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.label8, 0, 6);
             this.TableLayoutPanel.Controls.Add(this.label2, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.label1, 0, 0);
@@ -118,11 +121,12 @@
             this.TableLayoutPanel.Controls.Add(this.cbPattern, 1, 7);
             this.TableLayoutPanel.Controls.Add(this.cbVisible, 3, 7);
             this.TableLayoutPanel.Controls.Add(this.seLocationX, 1, 1);
+            this.TableLayoutPanel.Controls.Add(this.clbTraceSelector, 1, 8);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
-            this.TableLayoutPanel.RowCount = 9;
+            this.TableLayoutPanel.RowCount = 10;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -132,8 +136,21 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 226);
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 266);
             this.TableLayoutPanel.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.Control;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 224);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 40);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Selected Trace(s)";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -661,6 +678,22 @@
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
+            // clbSelection
+            // 
+            this.clbTraceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.clbTraceSelector.CheckOnClick = true;
+            this.TableLayoutPanel.SetColumnSpan(this.clbTraceSelector, 3);
+            this.clbTraceSelector.ColumnWidth = 14;
+            this.clbTraceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbTraceSelector.HorizontalScrollbar = true;
+            this.clbTraceSelector.IntegralHeight = false;
+            this.clbTraceSelector.Location = new System.Drawing.Point(93, 227);
+            this.clbTraceSelector.MultiColumn = true;
+            this.clbTraceSelector.Name = "clbSelection";
+            this.clbTraceSelector.ScrollAlwaysVisible = true;
+            this.clbTraceSelector.Size = new System.Drawing.Size(264, 34);
+            this.clbTraceSelector.TabIndex = 29;
+            // 
             // TraceEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -669,7 +702,7 @@
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TraceEdit";
-            this.Size = new System.Drawing.Size(360, 226);
+            this.Size = new System.Drawing.Size(360, 266);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();
@@ -727,5 +760,7 @@
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.ToolTip ToolTip;
+        public System.Windows.Forms.Label label9;
+        public Jmk.Controls.JmkCheckedListBox clbTraceSelector;
     }
 }

@@ -37,10 +37,10 @@
             this.edTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblFieldOfView = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.seFieldOfView = new System.Windows.Forms.NumericUpDown();
+            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
             this.seCameraFocusX = new System.Windows.Forms.NumericUpDown();
@@ -57,11 +57,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.seFPS = new System.Windows.Forms.NumericUpDown();
-            this.seSamples = new System.Windows.Forms.NumericUpDown();
             this.cbVSync = new System.Windows.Forms.CheckBox();
             this.cbBackground = new System.Windows.Forms.ComboBox();
             this.seProjectionType = new System.Windows.Forms.DomainUpDown();
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
+            this.seSampleCount = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
@@ -78,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seSamples)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -96,7 +95,7 @@
             this.TableLayoutPanel.Controls.Add(this.edTitle, 1, 0);
             this.TableLayoutPanel.Controls.Add(this.label3, 0, 2);
             this.TableLayoutPanel.Controls.Add(this.label4, 0, 3);
-            this.TableLayoutPanel.Controls.Add(this.label5, 0, 4);
+            this.TableLayoutPanel.Controls.Add(this.lblFieldOfView, 0, 4);
             this.TableLayoutPanel.Controls.Add(this.label6, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.label7, 0, 6);
             this.TableLayoutPanel.Controls.Add(this.seFieldOfView, 1, 4);
@@ -116,11 +115,11 @@
             this.TableLayoutPanel.Controls.Add(this.label10, 0, 7);
             this.TableLayoutPanel.Controls.Add(this.label12, 2, 7);
             this.TableLayoutPanel.Controls.Add(this.seFPS, 3, 4);
-            this.TableLayoutPanel.Controls.Add(this.seSamples, 1, 7);
             this.TableLayoutPanel.Controls.Add(this.cbVSync, 3, 8);
             this.TableLayoutPanel.Controls.Add(this.cbBackground, 1, 8);
             this.TableLayoutPanel.Controls.Add(this.seProjectionType, 1, 3);
             this.TableLayoutPanel.Controls.Add(this.seGLSLVersion, 3, 7);
+            this.TableLayoutPanel.Controls.Add(this.seSampleCount, 1, 7);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
@@ -241,18 +240,18 @@
             this.label4.Text = "Projection";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label5
+            // lblFieldOfView
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 112);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label5.Size = new System.Drawing.Size(84, 27);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Field of View";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblFieldOfView.AutoSize = true;
+            this.lblFieldOfView.BackColor = System.Drawing.SystemColors.Control;
+            this.lblFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFieldOfView.Location = new System.Drawing.Point(3, 112);
+            this.lblFieldOfView.Name = "lblFieldOfView";
+            this.lblFieldOfView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblFieldOfView.Size = new System.Drawing.Size(84, 27);
+            this.lblFieldOfView.TabIndex = 13;
+            this.lblFieldOfView.Text = "Field of View";
+            this.lblFieldOfView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -606,22 +605,6 @@
             this.seFPS.TabIndex = 16;
             this.seFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // seSamples
-            // 
-            this.seSamples.BackColor = System.Drawing.SystemColors.Window;
-            this.seSamples.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seSamples.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seSamples.Location = new System.Drawing.Point(93, 196);
-            this.seSamples.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seSamples.Name = "seSamples";
-            this.seSamples.Size = new System.Drawing.Size(84, 21);
-            this.seSamples.TabIndex = 26;
-            this.seSamples.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // cbVSync
             // 
             this.cbVSync.AutoSize = true;
@@ -679,6 +662,24 @@
             this.seGLSLVersion.TabIndex = 28;
             this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // seSampleCount
+            // 
+            this.seSampleCount.BackColor = System.Drawing.SystemColors.Window;
+            this.seSampleCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seSampleCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seSampleCount.Items.Add("16");
+            this.seSampleCount.Items.Add("8");
+            this.seSampleCount.Items.Add("4");
+            this.seSampleCount.Items.Add("2");
+            this.seSampleCount.Items.Add("1");
+            this.seSampleCount.Location = new System.Drawing.Point(93, 196);
+            this.seSampleCount.Name = "seSampleCount";
+            this.seSampleCount.ReadOnly = true;
+            this.seSampleCount.Size = new System.Drawing.Size(84, 21);
+            this.seSampleCount.TabIndex = 26;
+            this.seSampleCount.Text = "1";
+            this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ToolTip
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
@@ -708,7 +709,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seSamples)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -722,10 +722,10 @@
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label lblFieldOfView;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.NumericUpDown seFieldOfView;
+        public Jmk.Controls.JmkNumericUpDownDegrees seFieldOfView;
         public System.Windows.Forms.NumericUpDown seCameraPositionY;
         public System.Windows.Forms.NumericUpDown seCameraPositionZ;
         public System.Windows.Forms.NumericUpDown seCameraFocusX;
@@ -742,12 +742,12 @@
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.NumericUpDown seFPS;
-        public System.Windows.Forms.NumericUpDown seSamples;
         public System.Windows.Forms.CheckBox cbVSync;
         public System.Windows.Forms.ComboBox cbBackground;
         public System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.DomainUpDown seProjectionType;
         public System.Windows.Forms.DomainUpDown seGLSLVersion;
         public System.Windows.Forms.CheckBox cbStereo;
+        public System.Windows.Forms.DomainUpDown seSampleCount;
     }
 }

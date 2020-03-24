@@ -4,6 +4,7 @@
     using System;
     using System.Drawing;
     using System.Linq;
+    using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -70,7 +71,7 @@
                 Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
                 Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
                 Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
-                Editor.seSamples.ValueChanged += Samples_ValueChanged;
+                Editor.seSampleCount.SelectedItemChanged += Samples_ValueChanged;
                 Editor.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
             }
             else
@@ -93,7 +94,7 @@
                 Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
                 Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
                 Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
-                Editor.seSamples.ValueChanged -= Samples_ValueChanged;
+                Editor.seSampleCount.SelectedItemChanged -= Samples_ValueChanged;
                 Editor.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
             }
         }
@@ -104,6 +105,13 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.ProjectionType:
+                        UpdateUI();
+                        break;
+                }
             if (Updating)
                 return;
             Updating = true;
@@ -146,7 +154,7 @@
                         Editor.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
                     case PropertyNames.Samples:
-                        Editor.seSamples.Value = Scene.SampleCount;
+                        Editor.seSampleCount.Text = Scene.Samples.ToString();
                         break;
                     case PropertyNames.SceneTitle:
                         Editor.edTitle.Text = Scene.Title;
@@ -199,17 +207,14 @@
         private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
             Run(new GLTargetVersionCommand(Editor.seGLSLVersion.Text));
 
-        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e)
-        {
-            UpdateUI();
+        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) =>
             Run(new ProjectionTypeCommand((ProjectionType)Editor.seProjectionType.SelectedIndex));
-        }
 
         private void Samples_ValueChanged(object sender, EventArgs e) =>
-            Run(new SamplesCommand((int)Editor.seSamples.Value));
+            Run(new SamplesCommand(int.Parse(Editor.seSampleCount.Text)));
 
-        private void SceneTitle_TextChanged(object sender, EventArgs e)
-            => Run(new TitleCommand(Editor.edTitle.Text));
+        private void SceneTitle_TextChanged(object sender, EventArgs e) =>
+            Run(new TitleCommand(Editor.edTitle.Text));
 
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
             Run(new VSyncCommand(Editor.cbVSync.Checked));
@@ -225,12 +230,16 @@
             Editor.seFieldOfView.Maximum = 179;
             Editor.seFPS.Minimum = 1;
             Editor.seFPS.Maximum = 300;
-            Editor.seGLSLVersion.Items.AddRange(
-                new[] { "330", "400", "410", "420", "430", "440", "450", "460" }
-                .Reverse().ToList());
+            InitDomainUpDownItems(Editor.seGLSLVersion, Settings.Default.GLSLVersions);
+            InitDomainUpDownItems(Editor.seSampleCount, Settings.Default.SampleCounts);
             InitToolTips();
-            Editor.seSamples.Minimum = 0;
             new ColourController().AddControls(Editor.cbBackground);
+        }
+
+        private static void InitDomainUpDownItems(DomainUpDown control, string items)
+        {
+            control.Items.Clear();
+            control.Items.AddRange(items.Split('|').Reverse().ToList());
         }
 
         private void InitToolTips()
@@ -252,7 +261,7 @@
             SetToolTip(Editor.seFrustumMinY, Resources.Projection_NearPlaneY);
             SetToolTip(Editor.seFrustumMinZ, Resources.Projection_NearPlaneZ);
             SetToolTip(Editor.seProjectionType, Resources.Projection_Type);
-            SetToolTip(Editor.seSamples, Resources.Scene_Samples);
+            SetToolTip(Editor.seSampleCount, Resources.Scene_Samples);
             SetToolTip(Editor.edTitle, Resources.Scene_Title);
             SetToolTip(Editor.cbVSync, Resources.Scene_VSync);
         }
@@ -268,12 +277,13 @@
 
         private void UpdateUI()
         {
-            var useFov = Editor.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
-            Editor.seFieldOfView.Enabled = useFov;
-            Editor.seFrustumMinX.Enabled =
-            Editor.seFrustumMinY.Enabled =
-            Editor.seFrustumMaxX.Enabled =
-            Editor.seFrustumMaxY.Enabled = !useFov;
+            var perspective = Editor.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            Editor.lblFieldOfView.Visible =
+            Editor.seFieldOfView.Visible = perspective;
+            Editor.seFrustumMinX.Visible =
+            Editor.seFrustumMinY.Visible =
+            Editor.seFrustumMaxX.Visible =
+            Editor.seFrustumMaxY.Visible = !perspective;
         }
 
         #endregion

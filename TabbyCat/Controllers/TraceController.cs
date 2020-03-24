@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Jmk.Common;
     using OpenTK;
     using System;
     using System.Linq;
@@ -73,6 +74,7 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
+                Editor.clbTraceSelector.SelectionChanged += TraceSelector_SelectionChanged;
             }
             else
             {
@@ -96,6 +98,8 @@
                 Editor.seStripCountX.ValueChanged -= StripCountX_ValueChanged;
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
+                Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
+                Editor.clbTraceSelector.SelectionChanged -= TraceSelector_SelectionChanged;
             }
         }
 
@@ -105,9 +109,10 @@
 
         protected override void OnSelectionChanged()
         {
+            $"Selection = {Selection}".Spit();
             base.OnSelectionChanged();
             UpdateAllProperties();
-            UpdateUI();
+            CopySelectionToControl();
         }
 
         protected override void UpdateProperties(params string[] propertyNames)
@@ -115,7 +120,6 @@
             if (Updating)
                 return;
             Updating = true;
-            UpdateUI();
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
@@ -280,12 +284,53 @@
                 p.StripCount.Y,
                 (float)Editor.seStripCountZ.Value)));
 
+        private void TraceSelector_SelectionChanged(object sender, EventArgs e) =>
+            CopySelectionFromControl();
+
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, Editor.cbVisible.Checked));
 
         #endregion
 
         #region Private Methods
+
+        private void CopySelectionFromControl()
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            var selectionBox = Editor.clbTraceSelector;
+            var traces = Scene.Traces;
+            Selection.BeginUpdate();
+            for (var pass = 1; pass <= 2; pass++)
+                for (int index = 0; index < traces.Count; index++)
+                {
+                    var trace = traces[index];
+                    if (pass == 1 && selectionBox.GetItemChecked(index))
+                        Selection.Add(trace);
+                    if (pass == 2 && !selectionBox.GetItemChecked(index))
+                        Selection.Remove(trace);
+                }
+            Selection.EndUpdate();
+            Updating = false;
+        }
+
+        private void CopySelectionToControl()
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            var selectionBox = Editor.clbTraceSelector;
+            var items = selectionBox.Items;
+            var traces = Scene.Traces;
+            while (items.Count < traces.Count)
+                items.Add(string.Empty);
+            while (items.Count > traces.Count)
+                items.RemoveAt(items.Count - 1);
+            for (var index = 0; index < items.Count; index++)
+                selectionBox.SetItemChecked(index, Selection.Contains(traces[index]));
+            Updating = false;
+        }
 
         private static CheckState GetCheckState(bool? input)
         {
@@ -341,11 +386,6 @@
             Updating = true;
             Selection.ForEach(p => CommandProcessor.Run(makeCommand(p)));
             Updating = false;
-        }
-
-        private void UpdateUI()
-        {
-            Editor.Enabled = Selection.Any();
         }
 
         #endregion

@@ -79,7 +79,7 @@
     internal class SamplesCommand : ScenePropertyCommand<int>
     {
         internal SamplesCommand(int value) : base(PropertyNames.Samples,
-            value, s => s.SampleCount, (s, v) => s.SampleCount = v)
+            value, s => s.Samples, (s, v) => s.Samples = v)
         { }
     }
 

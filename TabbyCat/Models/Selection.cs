@@ -19,25 +19,25 @@
 
         public Vector3 Location
         {
-            get => Get(p => p.Location);
+            get => GetVector3(p => p.Location);
             set => Set(p => p.Location = value);
         }
 
         public Vector3 Maximum
         {
-            get => Get(p => p.Maximum);
+            get => GetVector3(p => p.Maximum);
             set => Set(p => p.Maximum = value);
         }
 
         public Vector3 Minimum
         {
-            get => Get(p => p.Minimum);
+            get => GetVector3(p => p.Minimum);
             set => Set(p => p.Minimum = value);
         }
 
         public Vector3 Orientation
         {
-            get => Get(p => p.Orientation);
+            get => GetVector3(p => p.Orientation);
             set => Set(p => p.Orientation = value);
         }
 
@@ -49,19 +49,19 @@
 
         public Vector3 Scale
         {
-            get => Get(p => p.Scale);
+            get => GetVector3(p => p.Scale);
             set => Set(p => p.Scale = value);
         }
 
         public Vector3 StripCount
         {
-            get => Get(p => p.StripCount);
+            get => GetVector3(p => p.StripCount);
             set => Set(p => p.StripCount = value);
         }
 
         public bool? Visible
         {
-            get => Get(p => p.Visible);
+            get => GetBool(p => p.Visible);
             set => Set(p => p.Visible = value == true);
         }
 
@@ -75,11 +75,26 @@
 
         #region Public Methods
 
+        private bool Updated;
+        private int UpdateCount;
+
+        public void BeginUpdate() => UpdateCount++;
+
+        public void EndUpdate()
+        {
+            if (--UpdateCount > 0 || !Updated)
+                return;
+            Updated = false;
+            OnChanged();
+        }
+
         public string GetScript(ShaderType shaderType) =>
             Get(p => p.GetScript(shaderType)) ?? string.Empty;
 
         public void SetScript(ShaderType shaderType, string value) =>
             Set(p => p.SetScript(shaderType, value));
+
+        public override string ToString() => this.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
 
         #endregion
 
@@ -128,7 +143,13 @@
 
         #region Protected Methods
 
-        protected virtual void OnChanged() => Changed?.Invoke(this, EventArgs.Empty);
+        protected virtual void OnChanged()
+        {
+            if (UpdateCount > 0)
+                Updated = true;
+            else
+                Changed?.Invoke(this, EventArgs.Empty);
+        }
 
         #endregion
 
@@ -144,7 +165,17 @@
                 : first;
         }
 
-        private Vector3 Get(Func<Trace, Vector3> f) => new Vector3(
+        private bool? GetBool(Func<Trace, bool> f)
+        {
+            if (!this.Any())
+                return default;
+            bool first = f(this.First());
+            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
+                ? (bool?)null
+                : first;
+        }
+
+        private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
             Get(p => f(p).X),
             Get(p => f(p).Y),
             Get(p => f(p).Z));

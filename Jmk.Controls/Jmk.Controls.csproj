@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JmkCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JmkCheckedListBox.Designer.cs">
+      <DependentUpon>JmkCheckedListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="JmkFlagsCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -56,6 +62,12 @@
     </Compile>
     <Compile Include="JmkMenuStrip.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JmkNumericUpDownDegrees.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JmkNumericUpDownDegrees.Designer.cs">
+      <DependentUpon>JmkNumericUpDownDegrees.cs</DependentUpon>
     </Compile>
     <Compile Include="JmkScrollPanel.cs">
       <SubType>Component</SubType>

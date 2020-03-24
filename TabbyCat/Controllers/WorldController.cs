@@ -117,8 +117,10 @@
         private void AddNewTrace()
         {
             CommandProcessor.AppendTrace();
+            Selection.BeginUpdate();
             Selection.Clear();
             Selection.Add(Scene.Traces.Last());
+            Selection.EndUpdate();
         }
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
@@ -331,11 +333,13 @@
 
         private void InvertSelection()
         {
+            Selection.BeginUpdate();
             foreach (var trace in Scene.Traces)
                 if (Selection.Contains(trace))
                     Selection.Remove(trace);
                 else
                     Selection.Add(trace);
+            Selection.EndUpdate();
         }
 
 
@@ -417,7 +421,7 @@
                     RenderController.InvalidateProjection();
                     break;
                 case PropertyNames.Samples:
-                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.SampleCount));
+                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.Samples));
                     break;
                 case PropertyNames.Pattern:
                 case PropertyNames.StripCount:
@@ -432,27 +436,35 @@
 
         private void RecreateGLControl(GraphicsMode mode = null)
         {
+            GLControl
+                oldControl = GLControl,
+                newControl = mode == null ? new GLControl() : new GLControl(mode);
+            newControl.BackColor = Scene.BackgroundColour;
+            newControl.Dock = DockStyle.Fill;
+            newControl.Location = new System.Drawing.Point(0, 0);
+            newControl.Name = "GLControl";
+            newControl.Size = new System.Drawing.Size(100, 100);
+            newControl.TabIndex = 1;
+            newControl.VSync = Scene.VSync;
             BackColorChanged();
+            GLControlParent.Owner.SuspendLayout();
             ConnectGLControl(false);
-            var control = GLControl;
-            GLControlParent.Remove(control);
-            control.Dispose();
-            control = mode == null ? new GLControl() : new GLControl(mode);
-            control.BackColor = Scene.BackgroundColour;
-            control.Dock = DockStyle.Fill;
-            control.Location = new System.Drawing.Point(0, 0);
-            control.Name = "GLControl";
-            control.Size = new System.Drawing.Size(100, 100);
-            control.TabIndex = 1;
-            control.VSync = Scene.VSync;
-            GLControlParent.Add(control);
+            GLControlParent.Remove(oldControl);
+            GLControlParent.Add(newControl);
             ConnectGLControl(true);
             RenderController.Refresh();
+            GLControlParent.Owner.ResumeLayout();
+            oldControl.Dispose();
         }
 
-        private void UpdateSelection() => Selection
-            .Where(p => !Scene.Traces.Contains(p))
-            .ToList()
-            .ForEach(p => Selection.Remove(p));
+        private void UpdateSelection()
+        {
+            Selection.BeginUpdate();
+            Selection
+                .Where(p => !Scene.Traces.Contains(p))
+                .ToList()
+                .ForEach(p => Selection.Remove(p));
+            Selection.EndUpdate();
+        }
     }
 }
