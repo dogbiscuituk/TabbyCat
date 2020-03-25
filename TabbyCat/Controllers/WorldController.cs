@@ -331,17 +331,7 @@
 
         private void HelpAbout() => new AboutController().ShowDialog(WorldForm);
 
-        private void InvertSelection()
-        {
-            Selection.BeginUpdate();
-            foreach (var trace in Scene.Traces)
-                if (Selection.Contains(trace))
-                    Selection.Remove(trace);
-                else
-                    Selection.Add(trace);
-            Selection.EndUpdate();
-        }
-
+        private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Contains(p)).ToList());
 
         private void NewEmptyScene()
         {
@@ -368,8 +358,6 @@
             return worldController;
         }
 
-        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
         private void Resize() => RenderController.InvalidateProjection();
 
         private bool SaveFile() => JsonController.Save();
@@ -379,6 +367,8 @@
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
         private void SelectAll() => Selection.AddRange(Scene.Traces);
+
+        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
         private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
 

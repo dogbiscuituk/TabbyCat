@@ -42,6 +42,7 @@
 
         private TraceEdit Editor => WorldEdit.TraceEdit;
         private Selection Selection => WorldController.Selection;
+        private bool SelectionUpdating;
 
         #endregion
 
@@ -74,7 +75,7 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                Editor.clbTraceSelector.SelectionChanged += TraceSelector_SelectionChanged;
+                Editor.lvTraceSelector.ItemSelectionChanged += TraceSelector_SelectionChanged;
             }
             else
             {
@@ -99,7 +100,7 @@
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                Editor.clbTraceSelector.SelectionChanged -= TraceSelector_SelectionChanged;
+                Editor.lvTraceSelector.ItemSelectionChanged += TraceSelector_SelectionChanged;
             }
         }
 
@@ -109,7 +110,7 @@
 
         protected override void OnSelectionChanged()
         {
-            $"Selection = {Selection}".Spit();
+            $"Selection = {{{Selection}}}".Spit();
             base.OnSelectionChanged();
             UpdateAllProperties();
             CopySelectionToControl();
@@ -158,6 +159,9 @@
                         Editor.seStripCountX.Value = (decimal)Selection.StripCount.X;
                         Editor.seStripCountY.Value = (decimal)Selection.StripCount.Y;
                         Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
+                        break;
+                    case PropertyNames.Traces:
+                        InitTraceSelector();
                         break;
                     case PropertyNames.Visible:
                         Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
@@ -296,40 +300,38 @@
 
         private void CopySelectionFromControl()
         {
-            if (Updating)
+            if (SelectionUpdating)
                 return;
-            Updating = true;
-            var selectionBox = Editor.clbTraceSelector;
+            SelectionUpdating = true;
+            var selectedIndices = Editor.lvTraceSelector.SelectedIndices;
             var traces = Scene.Traces;
             Selection.BeginUpdate();
             for (var pass = 1; pass <= 2; pass++)
                 for (int index = 0; index < traces.Count; index++)
                 {
                     var trace = traces[index];
-                    if (pass == 1 && selectionBox.GetItemChecked(index))
+                    if (pass == 1 && selectedIndices.Contains(index))
                         Selection.Add(trace);
-                    if (pass == 2 && !selectionBox.GetItemChecked(index))
+                    if (pass == 2 && !selectedIndices.Contains(index))
                         Selection.Remove(trace);
                 }
             Selection.EndUpdate();
-            Updating = false;
+            SelectionUpdating = false;
         }
 
         private void CopySelectionToControl()
         {
-            if (Updating)
+            if (SelectionUpdating)
                 return;
-            Updating = true;
-            var selectionBox = Editor.clbTraceSelector;
+            SelectionUpdating = true;
+            var selectionBox = Editor.lvTraceSelector;
             var items = selectionBox.Items;
             var traces = Scene.Traces;
-            while (items.Count < traces.Count)
-                items.Add(string.Empty);
-            while (items.Count > traces.Count)
-                items.RemoveAt(items.Count - 1);
+            selectionBox.SelectedIndices.Clear();
             for (var index = 0; index < items.Count; index++)
-                selectionBox.SetItemChecked(index, Selection.Contains(traces[index]));
-            Updating = false;
+                if (Selection.Contains(traces[index]))
+                    selectionBox.SelectedIndices.Add(index);
+            SelectionUpdating = false;
         }
 
         private static CheckState GetCheckState(bool? input)
@@ -377,6 +379,14 @@
             SetToolTip(Editor.seStripCountY, Resources.Trace_StripCountY);
             SetToolTip(Editor.seStripCountZ, Resources.Trace_StripCountZ);
             SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
+        }
+
+        private void InitTraceSelector()
+        {
+            var items = Editor.lvTraceSelector.Items;
+            items.Clear();
+            foreach (var trace in Scene.Traces)
+                items.Add((trace.Index + 1).ToString());
         }
 
         private void Run(Func<Trace, ICommand> makeCommand)

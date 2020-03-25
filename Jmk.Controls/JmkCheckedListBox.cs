@@ -7,7 +7,11 @@
     {
         #region Constructors
 
-        public JmkCheckedListBox() => InitializeComponent();
+        public JmkCheckedListBox()
+        {
+            InitializeComponent();
+            CheckOnClick = false;
+        }
 
         #endregion
 
@@ -24,11 +28,10 @@
 
         protected override void OnItemCheck(ItemCheckEventArgs ice)
         {
-            base.OnItemCheck(ice);
             if (Updating)
                 return;
-            var thisIndex = ice.Index;
             Updating = true;
+            var thisIndex = ice.Index;
             if (!Control)
                 for (var index = 0; index < Items.Count; index++)
                     if (index != thisIndex)
@@ -41,8 +44,8 @@
                 SetItemChecked(thisIndex, true);
                 PrevIndex = thisIndex;
             }
-            Updating = false;
             OnSelectionChanged();
+            Updating = false;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -59,6 +62,12 @@
         }
 
         protected virtual void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
+
+        protected override void WndProc(ref Message m)
+        {
+            this.FirstFocus(ref m);
+            base.WndProc(ref m);
+        }
 
         #endregion
     }

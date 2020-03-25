@@ -13,56 +13,56 @@
 
         public string Description
         {
-            get => Get(p => p.Description);
-            set => Set(p => p.Description = value);
+            get => GetProperty(p => p.Description);
+            set => SetProperty(p => p.Description = value);
         }
 
         public Vector3 Location
         {
             get => GetVector3(p => p.Location);
-            set => Set(p => p.Location = value);
+            set => SetProperty(p => p.Location = value);
         }
 
         public Vector3 Maximum
         {
             get => GetVector3(p => p.Maximum);
-            set => Set(p => p.Maximum = value);
+            set => SetProperty(p => p.Maximum = value);
         }
 
         public Vector3 Minimum
         {
             get => GetVector3(p => p.Minimum);
-            set => Set(p => p.Minimum = value);
+            set => SetProperty(p => p.Minimum = value);
         }
 
         public Vector3 Orientation
         {
             get => GetVector3(p => p.Orientation);
-            set => Set(p => p.Orientation = value);
+            set => SetProperty(p => p.Orientation = value);
         }
 
         public Pattern Pattern
         {
-            get => (Pattern)Get(p => (int)p.Pattern);
-            set => Set(p => p.Pattern = value);
+            get => (Pattern)GetProperty(p => (int)p.Pattern);
+            set => SetProperty(p => p.Pattern = value);
         }
 
         public Vector3 Scale
         {
             get => GetVector3(p => p.Scale);
-            set => Set(p => p.Scale = value);
+            set => SetProperty(p => p.Scale = value);
         }
 
         public Vector3 StripCount
         {
             get => GetVector3(p => p.StripCount);
-            set => Set(p => p.StripCount = value);
+            set => SetProperty(p => p.StripCount = value);
         }
 
         public bool? Visible
         {
             get => GetBool(p => p.Visible);
-            set => Set(p => p.Visible = value == true);
+            set => SetProperty(p => p.Visible = value == true);
         }
 
         #endregion
@@ -89,12 +89,14 @@
         }
 
         public string GetScript(ShaderType shaderType) =>
-            Get(p => p.GetScript(shaderType)) ?? string.Empty;
+            GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
 
         public void SetScript(ShaderType shaderType, string value) =>
-            Set(p => p.SetScript(shaderType, value));
+            SetProperty(p => p.SetScript(shaderType, value));
 
-        public override string ToString() => this.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+        public override string ToString() => Count < 1
+            ? string.Empty
+            : this.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
 
         #endregion
 
@@ -139,6 +141,13 @@
             OnChanged();
         }
 
+        internal void Set(IEnumerable<Trace> traces)
+        {
+            base.Clear();
+            base.AddRange(traces);
+            OnChanged();
+        }
+
         #endregion
 
         #region Protected Methods
@@ -155,16 +164,6 @@
 
         #region Private Methods
 
-        private T Get<T>(Func<Trace, T> f) where T : IEquatable<T>
-        {
-            if (!this.Any())
-                return default;
-            T first = f(this.First());
-            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
-                ? default
-                : first;
-        }
-
         private bool? GetBool(Func<Trace, bool> f)
         {
             if (!this.Any())
@@ -175,12 +174,22 @@
                 : first;
         }
 
-        private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
-            Get(p => f(p).X),
-            Get(p => f(p).Y),
-            Get(p => f(p).Z));
+        private T GetProperty<T>(Func<Trace, T> f) where T : IEquatable<T>
+        {
+            if (!this.Any())
+                return default;
+            T first = f(this.First());
+            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
+                ? default
+                : first;
+        }
 
-        private void Set(Action<Trace> set) => ForEach(p => set(p));
+        private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
+            GetProperty(p => f(p).X),
+            GetProperty(p => f(p).Y),
+            GetProperty(p => f(p).Z));
+
+        private void SetProperty(Action<Trace> set) => ForEach(p => set(p));
 
         #endregion
     }

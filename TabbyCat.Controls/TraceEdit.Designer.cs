@@ -61,7 +61,8 @@
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.clbTraceSelector = new Jmk.Controls.JmkCheckedListBox();
+            this.lvTraceSelector = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -121,7 +122,7 @@
             this.TableLayoutPanel.Controls.Add(this.cbPattern, 1, 7);
             this.TableLayoutPanel.Controls.Add(this.cbVisible, 3, 7);
             this.TableLayoutPanel.Controls.Add(this.seLocationX, 1, 1);
-            this.TableLayoutPanel.Controls.Add(this.clbTraceSelector, 1, 8);
+            this.TableLayoutPanel.Controls.Add(this.lvTraceSelector, 1, 8);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -147,8 +148,8 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 224);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 40);
-            this.label9.TabIndex = 30;
+            this.label9.Size = new System.Drawing.Size(84, 42);
+            this.label9.TabIndex = 29;
             this.label9.Text = "Selected Trace(s)";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -678,21 +679,26 @@
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
-            // clbSelection
+            // lvTraceSelector
             // 
-            this.clbTraceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.clbTraceSelector.CheckOnClick = true;
-            this.TableLayoutPanel.SetColumnSpan(this.clbTraceSelector, 3);
-            this.clbTraceSelector.ColumnWidth = 14;
-            this.clbTraceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clbTraceSelector.HorizontalScrollbar = true;
-            this.clbTraceSelector.IntegralHeight = false;
-            this.clbTraceSelector.Location = new System.Drawing.Point(93, 227);
-            this.clbTraceSelector.MultiColumn = true;
-            this.clbTraceSelector.Name = "clbSelection";
-            this.clbTraceSelector.ScrollAlwaysVisible = true;
-            this.clbTraceSelector.Size = new System.Drawing.Size(264, 34);
-            this.clbTraceSelector.TabIndex = 29;
+            this.lvTraceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvTraceSelector.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.TableLayoutPanel.SetColumnSpan(this.lvTraceSelector, 3);
+            this.lvTraceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvTraceSelector.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvTraceSelector.HideSelection = false;
+            this.lvTraceSelector.Location = new System.Drawing.Point(93, 227);
+            this.lvTraceSelector.Name = "lvTraceSelector";
+            this.lvTraceSelector.Size = new System.Drawing.Size(264, 36);
+            this.lvTraceSelector.TabIndex = 30;
+            this.lvTraceSelector.UseCompatibleStateImageBehavior = false;
+            this.lvTraceSelector.View = System.Windows.Forms.View.List;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 20;
             // 
             // TraceEdit
             // 
@@ -761,6 +767,7 @@
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.Label label9;
-        public Jmk.Controls.JmkCheckedListBox clbTraceSelector;
+        public System.Windows.Forms.ListView lvTraceSelector;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
