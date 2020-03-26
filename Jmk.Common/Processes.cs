@@ -13,11 +13,11 @@
             {
                 Process.Start(url);
             }
-            catch (Win32Exception e)
+            catch (Win32Exception ex)
             {
                 MessageBox.Show(
-                    $"{e.Message}:\n\n{url}",
-                    e.GetType().Name,
+                    $"{ex.Message}:\n\n{url}",
+                    ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }

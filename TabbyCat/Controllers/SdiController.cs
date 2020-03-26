@@ -175,11 +175,11 @@
             {
                 action();
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
                 MessageBox.Show(
-                    x.Message,
-                    x.GetType().Name,
+                    ex.Message,
+                    ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 result = false;
@@ -187,10 +187,7 @@
             return result;
         }
 
-        protected virtual void OnFilePathChanged()
-        {
-            FilePathChanged?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnFilePathChanged() => FilePathChanged?.Invoke(this, EventArgs.Empty);
 
         protected virtual void OnFileLoaded() => FileLoaded?.Invoke(this, EventArgs.Empty);
 
