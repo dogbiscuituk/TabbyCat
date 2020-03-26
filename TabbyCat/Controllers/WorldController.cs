@@ -186,10 +186,7 @@
         private void AddNewTrace()
         {
             CommandProcessor.AppendTrace();
-            Selection.BeginUpdate();
-            Selection.Clear();
-            Selection.Add(Scene.Traces.Last());
-            Selection.EndUpdate();
+            Selection.Set(new[] { Scene.Traces.Last() });
         }
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
@@ -505,8 +502,13 @@
             var traces = JsonController.ClipboardRead();
             if (traces == null || !traces.Any())
                 return;
+            var index = Scene.Traces.Count;
             foreach (var trace in traces)
-                Scene.AddTrace(trace);
+            {
+                trace.Scene = Scene;
+                CommandProcessor.Run(new TraceInsertCommand(index++) { Value = trace });
+            }
+            Selection.Set(traces);
         }
 
         private void RecreateGLControl(GraphicsMode mode = null)
