@@ -10,7 +10,6 @@
         public JmkCheckedListBox()
         {
             InitializeComponent();
-            CheckOnClick = false;
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿namespace TabbyCatControls
+﻿namespace TabbyCat.Controls
 {
     using System.Windows.Forms;
 

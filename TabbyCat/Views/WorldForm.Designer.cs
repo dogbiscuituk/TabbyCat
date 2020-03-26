@@ -58,7 +58,6 @@
             this.tbCopy = new System.Windows.Forms.ToolStripButton();
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tbAdd = new System.Windows.Forms.ToolStripButton();
             this.MainMenu = new Jmk.Controls.JmkMenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,9 +86,6 @@
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.SceneMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.SceneAddNewTrace = new System.Windows.Forms.ToolStripMenuItem();
-            this.SceneEditCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -106,6 +102,8 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.EditAddNewTrace = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -261,7 +259,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 576;
+            this.SplitContainer1.SplitterDistance = 573;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -272,7 +270,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(576, 682);
+            this.GLControl.Size = new System.Drawing.Size(573, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -284,7 +282,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(394, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(397, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -315,17 +313,16 @@
             this.tbOpen,
             this.tbSave,
             this.toolStripSeparator1,
+            this.tbAdd,
             this.tbUndo,
             this.tbRedo,
             this.tbCut,
             this.tbCopy,
             this.tbPaste,
-            this.tbDelete,
-            this.toolStripSeparator2,
-            this.tbAdd});
+            this.tbDelete});
             this.Toolbar.Location = new System.Drawing.Point(0, 3);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(33, 253);
+            this.Toolbar.Size = new System.Drawing.Size(33, 266);
             this.Toolbar.TabIndex = 0;
             // 
             // tbNew
@@ -405,7 +402,7 @@
             this.tbCut.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCut.Name = "tbCut";
             this.tbCut.Size = new System.Drawing.Size(31, 20);
-            this.tbCut.Text = "toolStripButton1";
+            this.tbCut.ToolTipText = "Cut";
             // 
             // tbCopy
             // 
@@ -415,7 +412,7 @@
             this.tbCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCopy.Name = "tbCopy";
             this.tbCopy.Size = new System.Drawing.Size(31, 20);
-            this.tbCopy.Text = "toolStripButton2";
+            this.tbCopy.ToolTipText = "Copy";
             // 
             // tbPaste
             // 
@@ -425,7 +422,7 @@
             this.tbPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.tbPaste.Name = "tbPaste";
             this.tbPaste.Size = new System.Drawing.Size(31, 20);
-            this.tbPaste.Text = "toolStripButton3";
+            this.tbPaste.ToolTipText = "Paste";
             // 
             // tbDelete
             // 
@@ -435,12 +432,7 @@
             this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tbDelete.Name = "tbDelete";
             this.tbDelete.Size = new System.Drawing.Size(31, 20);
-            this.tbDelete.Text = "toolStripButton4";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(31, 6);
+            this.tbDelete.ToolTipText = "Delete selected Trace(s)";
             // 
             // tbAdd
             // 
@@ -459,7 +451,6 @@
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.EditMenu,
-            this.SceneMenu,
             this.ViewMenu,
             this.TimeMenu,
             this.HelpMenu});
@@ -499,13 +490,13 @@
             this.FileNewEmptyScene.Name = "FileNewEmptyScene";
             this.FileNewEmptyScene.ShortcutKeyDisplayString = "^N";
             this.FileNewEmptyScene.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.FileNewEmptyScene.Size = new System.Drawing.Size(180, 22);
+            this.FileNewEmptyScene.Size = new System.Drawing.Size(177, 22);
             this.FileNewEmptyScene.Text = "&Empty Scene";
             // 
             // FileNewFromTemplate
             // 
             this.FileNewFromTemplate.Name = "FileNewFromTemplate";
-            this.FileNewFromTemplate.Size = new System.Drawing.Size(180, 22);
+            this.FileNewFromTemplate.Size = new System.Drawing.Size(177, 22);
             this.FileNewFromTemplate.Text = "&From Template...";
             // 
             // FileOpen
@@ -566,6 +557,8 @@
             // EditMenu
             // 
             this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditAddNewTrace,
+            this.toolStripMenuItem4,
             this.EditUndo,
             this.EditRedo,
             this.toolStripMenuItem8,
@@ -591,7 +584,7 @@
             this.EditUndo.Name = "EditUndo";
             this.EditUndo.ShortcutKeyDisplayString = "^Z";
             this.EditUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.EditUndo.Size = new System.Drawing.Size(180, 22);
+            this.EditUndo.Size = new System.Drawing.Size(197, 22);
             this.EditUndo.Text = "&Undo";
             // 
             // EditRedo
@@ -602,13 +595,13 @@
             this.EditRedo.Name = "EditRedo";
             this.EditRedo.ShortcutKeyDisplayString = "^Y";
             this.EditRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.EditRedo.Size = new System.Drawing.Size(180, 22);
+            this.EditRedo.Size = new System.Drawing.Size(197, 22);
             this.EditRedo.Text = "&Redo";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(194, 6);
             // 
             // EditCut
             // 
@@ -618,7 +611,7 @@
             this.EditCut.Name = "EditCut";
             this.EditCut.ShortcutKeyDisplayString = "^X";
             this.EditCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.EditCut.Size = new System.Drawing.Size(180, 22);
+            this.EditCut.Size = new System.Drawing.Size(197, 22);
             this.EditCut.Text = "Cu&t";
             // 
             // EditCopy
@@ -629,7 +622,7 @@
             this.EditCopy.Name = "EditCopy";
             this.EditCopy.ShortcutKeyDisplayString = "^C";
             this.EditCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.EditCopy.Size = new System.Drawing.Size(180, 22);
+            this.EditCopy.Size = new System.Drawing.Size(197, 22);
             this.EditCopy.Text = "&Copy";
             // 
             // EditPaste
@@ -640,7 +633,7 @@
             this.EditPaste.Name = "EditPaste";
             this.EditPaste.ShortcutKeyDisplayString = "^V";
             this.EditPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.EditPaste.Size = new System.Drawing.Size(180, 22);
+            this.EditPaste.Size = new System.Drawing.Size(197, 22);
             this.EditPaste.Text = "&Paste";
             // 
             // EditDelete
@@ -649,69 +642,45 @@
             this.EditDelete.Image = global::TabbyCat.Properties.Resources.Delete;
             this.EditDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.EditDelete.Name = "EditDelete";
-            this.EditDelete.Size = new System.Drawing.Size(180, 22);
+            this.EditDelete.Size = new System.Drawing.Size(197, 22);
             this.EditDelete.Text = "&Delete";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(194, 6);
             // 
             // EditSelectAll
             // 
             this.EditSelectAll.Name = "EditSelectAll";
             this.EditSelectAll.ShortcutKeyDisplayString = "^A";
             this.EditSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.EditSelectAll.Size = new System.Drawing.Size(180, 22);
+            this.EditSelectAll.Size = new System.Drawing.Size(197, 22);
             this.EditSelectAll.Text = "Select &All";
             // 
             // EditInvertSelection
             // 
             this.EditInvertSelection.Name = "EditInvertSelection";
-            this.EditInvertSelection.Size = new System.Drawing.Size(180, 22);
+            this.EditInvertSelection.Size = new System.Drawing.Size(197, 22);
             this.EditInvertSelection.Text = "&Invert Selection";
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(194, 6);
             // 
             // EditRefresh
             // 
             this.EditRefresh.Name = "EditRefresh";
             this.EditRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.EditRefresh.Size = new System.Drawing.Size(180, 22);
+            this.EditRefresh.Size = new System.Drawing.Size(197, 22);
             this.EditRefresh.Text = "R&efresh";
             // 
             // EditOptions
             // 
             this.EditOptions.Name = "EditOptions";
-            this.EditOptions.Size = new System.Drawing.Size(180, 22);
+            this.EditOptions.Size = new System.Drawing.Size(197, 22);
             this.EditOptions.Text = "&Options...";
-            // 
-            // SceneMenu
-            // 
-            this.SceneMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SceneAddNewTrace,
-            this.SceneEditCode});
-            this.SceneMenu.Name = "SceneMenu";
-            this.SceneMenu.Size = new System.Drawing.Size(54, 21);
-            this.SceneMenu.Text = "&Scene";
-            // 
-            // SceneAddNewTrace
-            // 
-            this.SceneAddNewTrace.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
-            this.SceneAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
-            this.SceneAddNewTrace.Name = "SceneAddNewTrace";
-            this.SceneAddNewTrace.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.SceneAddNewTrace.Size = new System.Drawing.Size(197, 22);
-            this.SceneAddNewTrace.Text = "&Add a New Trace";
-            // 
-            // SceneEditCode
-            // 
-            this.SceneEditCode.Name = "SceneEditCode";
-            this.SceneEditCode.Size = new System.Drawing.Size(197, 22);
-            this.SceneEditCode.Text = "&Edit Code";
             // 
             // ViewMenu
             // 
@@ -830,6 +799,27 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "&About";
             // 
+            // ToolTip
+            // 
+            this.ToolTip.AutomaticDelay = 100;
+            this.ToolTip.AutoPopDelay = 10000;
+            this.ToolTip.InitialDelay = 100;
+            this.ToolTip.ReshowDelay = 20;
+            // 
+            // EditAddNewTrace
+            // 
+            this.EditAddNewTrace.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
+            this.EditAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
+            this.EditAddNewTrace.Name = "EditAddNewTrace";
+            this.EditAddNewTrace.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.EditAddNewTrace.Size = new System.Drawing.Size(197, 22);
+            this.EditAddNewTrace.Text = "&Add a New Trace";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 6);
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -901,9 +891,6 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         internal System.Windows.Forms.ToolStripMenuItem EditRefresh;
         internal System.Windows.Forms.ToolStripMenuItem EditOptions;
-        internal System.Windows.Forms.ToolStripMenuItem SceneMenu;
-        internal System.Windows.Forms.ToolStripMenuItem SceneAddNewTrace;
-        internal System.Windows.Forms.ToolStripMenuItem SceneEditCode;
         internal System.Windows.Forms.ToolStripMenuItem TimeMenu;
         internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
         internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
@@ -926,7 +913,6 @@
         internal System.Windows.Forms.ToolStripButton tbCopy;
         internal System.Windows.Forms.ToolStripButton tbPaste;
         internal System.Windows.Forms.ToolStripButton tbDelete;
-        internal System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         internal System.Windows.Forms.ToolStripButton tbAdd;
         internal System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
@@ -944,5 +930,7 @@
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
         internal System.Windows.Forms.ToolTip ToolTip;
+        internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
     }
 }

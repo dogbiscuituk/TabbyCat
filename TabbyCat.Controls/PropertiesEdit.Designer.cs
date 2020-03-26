@@ -30,9 +30,9 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpScene = new System.Windows.Forms.TabPage();
-            this.SceneEdit = new TabbyCatControls.SceneEdit();
+            this.SceneEdit = new TabbyCat.Controls.SceneEdit();
             this.tpTraces = new System.Windows.Forms.TabPage();
-            this.TraceEdit = new TabbyCatControls.TraceEdit();
+            this.TraceEdit = new TabbyCat.Controls.TraceEdit();
             this.tpGPU = new System.Windows.Forms.TabPage();
             this.lblGPULog = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -199,9 +199,9 @@
 
         public System.Windows.Forms.TabControl TabControl;
         public System.Windows.Forms.TabPage tpScene;
-        public TabbyCatControls.SceneEdit SceneEdit;
+        public TabbyCat.Controls.SceneEdit SceneEdit;
         public System.Windows.Forms.TabPage tpTraces;
-        public TabbyCatControls.TraceEdit TraceEdit;
+        public TabbyCat.Controls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
         public System.Windows.Forms.TabPage tpGPU;
         public System.Windows.Forms.Label label1;

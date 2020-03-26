@@ -45,12 +45,13 @@
 
         protected ToolStripDropDownItem RecentMenu => WorldController.WorldForm.FileReopen;
 
-        protected WorldController WorldController;
         protected Scene Scene
         {
             get => WorldController.Scene;
             set => WorldController.Scene = value;
         }
+
+        protected readonly WorldController WorldController;
 
         #endregion
 

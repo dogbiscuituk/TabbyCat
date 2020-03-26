@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Jmk.Common;
+    using Jmk.Controls;
     using OpenTK;
     using System;
     using System.Linq;
@@ -8,9 +9,9 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Properties;
-    using TabbyCatControls;
 
     internal class TraceController : ShaderSetController
     {
@@ -43,6 +44,7 @@
         private TraceEdit Editor => WorldEdit.TraceEdit;
         private Selection Selection => WorldController.Selection;
         private bool SelectionUpdating;
+        private JmkCheckedListBox TraceSelector => Editor.clbTraceSelector;
 
         #endregion
 
@@ -75,7 +77,8 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                Editor.lvTraceSelector.ItemSelectionChanged += TraceSelector_SelectionChanged;
+                TraceSelector.MouseMove += TraceSelector_MouseMove;
+                TraceSelector.SelectionChanged += TraceSelector_SelectionChanged;
             }
             else
             {
@@ -100,15 +103,16 @@
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                Editor.lvTraceSelector.ItemSelectionChanged += TraceSelector_SelectionChanged;
+                TraceSelector.MouseMove -= TraceSelector_MouseMove;
+                TraceSelector.SelectionChanged -= TraceSelector_SelectionChanged;
             }
         }
 
-        #endregion
+    #endregion
 
-        #region Protected Methods
+    #region Protected Methods
 
-        protected override void OnSelectionChanged()
+    protected override void OnSelectionChanged()
         {
             $"Selection = {{{Selection}}}".Spit();
             base.OnSelectionChanged();
@@ -118,6 +122,14 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Description:
+                        foreach (var trace in Selection)
+                            InitTraceToolTip(trace.Index);
+                        break;
+                }
             if (Updating)
                 return;
             Updating = true;
@@ -161,7 +173,7 @@
                         Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
                         break;
                     case PropertyNames.Traces:
-                        InitTraceSelector();
+                        InitSelector();
                         break;
                     case PropertyNames.Visible:
                         Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
@@ -288,6 +300,18 @@
                 p.StripCount.Y,
                 (float)Editor.seStripCountZ.Value)));
 
+        private void TraceSelector_MouseMove(object sender, MouseEventArgs e)
+        {
+            var toolTip = string.Empty;
+            for (var index = 0; index < TraceSelector.Items.Count; index++)
+                if (TraceSelector.GetItemRectangle(index).Contains(e.Location))
+                {
+                    toolTip = Scene.Traces[index].ToString();
+                    break;
+                }
+            SetToolTip(TraceSelector, toolTip);
+        }
+
         private void TraceSelector_SelectionChanged(object sender, EventArgs e) =>
             CopySelectionFromControl();
 
@@ -303,19 +327,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            var selectedIndices = Editor.lvTraceSelector.SelectedIndices;
-            var traces = Scene.Traces;
-            Selection.BeginUpdate();
-            for (var pass = 1; pass <= 2; pass++)
-                for (int index = 0; index < traces.Count; index++)
-                {
-                    var trace = traces[index];
-                    if (pass == 1 && selectedIndices.Contains(index))
-                        Selection.Add(trace);
-                    if (pass == 2 && !selectedIndices.Contains(index))
-                        Selection.Remove(trace);
-                }
-            Selection.EndUpdate();
+            Selection.Set(TraceSelector.CheckedIndices.Cast<int>().Select(p => Scene.Traces[p]));
             SelectionUpdating = false;
         }
 
@@ -324,13 +336,8 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            var selectionBox = Editor.lvTraceSelector;
-            var items = selectionBox.Items;
-            var traces = Scene.Traces;
-            selectionBox.SelectedIndices.Clear();
-            for (var index = 0; index < items.Count; index++)
-                if (Selection.Contains(traces[index]))
-                    selectionBox.SelectedIndices.Add(index);
+            for (var index = 0; index < TraceSelector.Items.Count; index++)
+                TraceSelector.SetItemChecked(index, Selection.Contains(Scene.Traces[index]));
             SelectionUpdating = false;
         }
 
@@ -354,6 +361,18 @@
             Editor.seStripCountY.Minimum =
             Editor.seStripCountZ.Minimum = 0;
             Editor.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
+        }
+
+        private void InitSelector()
+        {
+            TraceSelector.BeginUpdate();
+            var items = TraceSelector.Items;
+            var traces = Scene.Traces;
+            while (items.Count > traces.Count)
+                items.RemoveAt(traces.Count);
+            while (items.Count < traces.Count)
+                items.Add(string.Empty);
+            TraceSelector.EndUpdate();
         }
 
         private void InitToolTips()
@@ -381,20 +400,16 @@
             SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
         }
 
-        private void InitTraceSelector()
+        private void InitTraceToolTip(int index)
         {
-            var items = Editor.lvTraceSelector.Items;
-            items.Clear();
-            foreach (var trace in Scene.Traces)
-                items.Add((trace.Index + 1).ToString());
         }
 
-        private void Run(Func<Trace, ICommand> makeCommand)
+        private void Run(Func<Trace, ICommand> command)
         {
             if (Updating || !Selection.Any())
                 return;
             Updating = true;
-            Selection.ForEach(p => CommandProcessor.Run(makeCommand(p)));
+            Selection.ForEach(p => CommandProcessor.Run(command(p)));
             Updating = false;
         }
 

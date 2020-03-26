@@ -1,4 +1,4 @@
-﻿namespace TabbyCatControls
+﻿namespace TabbyCat.Controls
 {
     partial class SceneEdit
     {

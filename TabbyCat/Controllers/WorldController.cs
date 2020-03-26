@@ -28,7 +28,7 @@
             JsonController = new JsonController(this);
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
-            ConnectAll(true);
+            Connect(true);
         }
 
         #endregion
@@ -92,11 +92,12 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
+        private void EditAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
+        private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
-        private void SceneAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         // WorldForm
@@ -138,7 +139,7 @@
             ClockController.UpdateTimeControls();
         }
 
-        private void ConnectAll(bool connect)
+        private void Connect(bool connect)
         {
             if (connect)
             {
@@ -173,81 +174,24 @@
 
         private void ConnectEventHandlers(bool connect)
         {
+            ConnectJsonController(connect);
+            ConnectMainMenu(connect);
+            ConnectToolbar(connect);
             if (connect)
             {
-                // JsonController
-                JsonController.FileLoaded += JsonController_FileLoaded;
-                JsonController.FilePathChanged += JsonController_FilePathChanged;
-                JsonController.FilePathRequest += JsonController_FilePathRequest;
-                JsonController.FileReopen += JsonController_FileReopen;
-                JsonController.FileSaving += JsonController_FileSaving;
-                JsonController.FileSaved += JsonController_FileSaved;
-                // Menu
-                WorldForm.FileNewEmptyScene.Click += FileNewEmptyScene_Click;
-                WorldForm.FileNewFromTemplate.Click += FileNewFromTemplate_Click;
-                WorldForm.FileOpen.Click += FileOpen_Click;
-                WorldForm.FileSave.Click += FileSave_Click;
-                WorldForm.FileSaveAs.Click += FileSaveAs_Click;
-                WorldForm.FileClose.Click += FileClose_Click;
-                WorldForm.FileExit.Click += FileExit_Click;
-                WorldForm.EditSelectAll.Click += EditSelectAll_Click;
-                WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
-                WorldForm.EditOptions.Click += EditOptions_Click;
-                WorldForm.EditRefresh.Click += EditRefresh_Click;
-                WorldForm.SceneAddNewTrace.Click += SceneAddNewTrace_Click;
-                WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
-                WorldForm.HelpAbout.Click += HelpAbout_Click;
                 // WorldForm
                 WorldForm.FormClosed += WorldForm_FormClosed;
                 WorldForm.FormClosing += WorldForm_FormClosing;
                 // Selection
                 Selection.Changed += Selection_Changed;
-                // Toolbar
-                WorldForm.tbAdd.Click += SceneAddNewTrace_Click;
-                WorldForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
-                WorldForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
-                WorldForm.tbNewFromTemplate.Click += FileNewFromTemplate_Click;
-                WorldForm.tbOpen.ButtonClick += FileOpen_Click;
-                WorldForm.tbOpen.DropDownOpening += TbOpen_DropDownOpening;
-                WorldForm.tbSave.Click += TbSave_Click;
             }
             else
             {
-                // JsonController
-                JsonController.FileLoaded -= JsonController_FileLoaded;
-                JsonController.FilePathChanged -= JsonController_FilePathChanged;
-                JsonController.FilePathRequest -= JsonController_FilePathRequest;
-                JsonController.FileReopen -= JsonController_FileReopen;
-                JsonController.FileSaving -= JsonController_FileSaving;
-                JsonController.FileSaved -= JsonController_FileSaved;
-                // Menu
-                WorldForm.FileNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                WorldForm.FileNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                WorldForm.FileOpen.Click -= FileOpen_Click;
-                WorldForm.FileSave.Click -= FileSave_Click;
-                WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
-                WorldForm.FileClose.Click -= FileClose_Click;
-                WorldForm.FileExit.Click -= FileExit_Click;
-                WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
-                WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
-                WorldForm.EditOptions.Click -= EditOptions_Click;
-                WorldForm.EditRefresh.Click -= EditRefresh_Click;
-                WorldForm.SceneAddNewTrace.Click -= SceneAddNewTrace_Click;
-                WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
-                WorldForm.HelpAbout.Click -= HelpAbout_Click;
                 // WorldForm
                 WorldForm.FormClosed -= WorldForm_FormClosed;
                 WorldForm.FormClosing -= WorldForm_FormClosing;
                 // Selection
                 Selection.Changed -= Selection_Changed;
-                // Toolbar
-                WorldForm.tbAdd.Click -= SceneAddNewTrace_Click;
-                WorldForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
-                WorldForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                WorldForm.tbNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                WorldForm.tbOpen.ButtonClick -= FileOpen_Click;
-                WorldForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
-                WorldForm.tbSave.Click -= TbSave_Click;
             }
             ConnectGLControl(connect);
         }
@@ -270,6 +214,125 @@
                 GLControl.Paint -= GLControl_Paint;
                 GLControl.Resize -= GLControl_Resize;
             }
+        }
+
+        private void ConnectJsonController(bool connect)
+        {
+            if (connect)
+            {
+                JsonController.FileLoaded += JsonController_FileLoaded;
+                JsonController.FilePathChanged += JsonController_FilePathChanged;
+                JsonController.FilePathRequest += JsonController_FilePathRequest;
+                JsonController.FileReopen += JsonController_FileReopen;
+                JsonController.FileSaving += JsonController_FileSaving;
+                JsonController.FileSaved += JsonController_FileSaved;
+            }
+            else
+            {
+                JsonController.FileLoaded -= JsonController_FileLoaded;
+                JsonController.FilePathChanged -= JsonController_FilePathChanged;
+                JsonController.FilePathRequest -= JsonController_FilePathRequest;
+                JsonController.FileReopen -= JsonController_FileReopen;
+                JsonController.FileSaving -= JsonController_FileSaving;
+                JsonController.FileSaved -= JsonController_FileSaved;
+            }
+        }
+
+        private void ConnectMainMenu(bool connect)
+        {
+            if (connect)
+            {
+                WorldForm.FileNewEmptyScene.Click += FileNewEmptyScene_Click;
+                WorldForm.FileNewFromTemplate.Click += FileNewFromTemplate_Click;
+                WorldForm.FileOpen.Click += FileOpen_Click;
+                WorldForm.FileSave.Click += FileSave_Click;
+                WorldForm.FileSaveAs.Click += FileSaveAs_Click;
+                WorldForm.FileClose.Click += FileClose_Click;
+                WorldForm.FileExit.Click += FileExit_Click;
+                WorldForm.EditAddNewTrace.Click += EditAddNewTrace_Click;
+                WorldForm.EditCut.Click += EditCut_Click;
+                WorldForm.EditCopy.Click += EditCopy_Click;
+                WorldForm.EditPaste.Click += EditPaste_Click;
+                WorldForm.EditDelete.Click += EditDelete_Click;
+                WorldForm.EditSelectAll.Click += EditSelectAll_Click;
+                WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
+                WorldForm.EditOptions.Click += EditOptions_Click;
+                WorldForm.EditRefresh.Click += EditRefresh_Click;
+                WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
+                WorldForm.HelpAbout.Click += HelpAbout_Click;
+            }
+            else
+            {
+                WorldForm.FileNewEmptyScene.Click -= FileNewEmptyScene_Click;
+                WorldForm.FileNewFromTemplate.Click -= FileNewFromTemplate_Click;
+                WorldForm.FileOpen.Click -= FileOpen_Click;
+                WorldForm.FileSave.Click -= FileSave_Click;
+                WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
+                WorldForm.FileClose.Click -= FileClose_Click;
+                WorldForm.FileExit.Click -= FileExit_Click;
+                WorldForm.EditAddNewTrace.Click -= EditAddNewTrace_Click;
+                WorldForm.EditCut.Click -= EditCut_Click;
+                WorldForm.EditCopy.Click -= EditCopy_Click;
+                WorldForm.EditPaste.Click -= EditPaste_Click;
+                WorldForm.EditDelete.Click -= EditDelete_Click;
+                WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
+                WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
+                WorldForm.EditOptions.Click -= EditOptions_Click;
+                WorldForm.EditRefresh.Click -= EditRefresh_Click;
+                WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
+                WorldForm.HelpAbout.Click -= HelpAbout_Click;
+            }
+        }
+
+        private void EditPaste_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void EditCopy_Click(object sender, EventArgs e)
+        {
+            JsonController.ClipboardWrite(Selection);
+        }
+
+        private void EditCut_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ConnectToolbar(bool connect)
+        {
+            if (connect)
+            {
+                WorldForm.tbAdd.Click += EditAddNewTrace_Click;
+                WorldForm.tbDelete.Click += EditDelete_Click;
+                WorldForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
+                WorldForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
+                WorldForm.tbNewFromTemplate.Click += FileNewFromTemplate_Click;
+                WorldForm.tbOpen.ButtonClick += FileOpen_Click;
+                WorldForm.tbOpen.DropDownOpening += TbOpen_DropDownOpening;
+                WorldForm.tbSave.Click += TbSave_Click;
+            }
+            else
+            {
+                WorldForm.tbAdd.Click -= EditAddNewTrace_Click;
+                WorldForm.tbDelete.Click -= EditDelete_Click;
+                WorldForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
+                WorldForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
+                WorldForm.tbNewFromTemplate.Click -= FileNewFromTemplate_Click;
+                WorldForm.tbOpen.ButtonClick -= FileOpen_Click;
+                WorldForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
+                WorldForm.tbSave.Click -= TbSave_Click;
+            }
+        }
+
+        private void DeleteSelection()
+        {
+            if (!Selection.Any())
+                return;
+            var indices = Selection.Select(p => p.Index).OrderByDescending(p => p).ToList();
+            Selection.Clear();
+            foreach (var index in indices)
+                CommandProcessor.DeleteTrace(index);
         }
 
         private void EditOptions()
@@ -313,7 +376,7 @@
             EndUpdate();
         }
 
-        private void FormClosed() => ConnectAll(false);
+        private void FormClosed() => Connect(false);
 
         private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
 
@@ -422,7 +485,23 @@
             GLControl.Invalidate();
         }
 
-        private void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
+        private void OnSelectionChanged()
+        {
+            SetEnabled(Selection.Any(),
+                WorldForm.EditCut,
+                WorldForm.EditCopy,
+                WorldForm.EditDelete,
+                WorldForm.tbCut,
+                WorldForm.tbCopy,
+                WorldForm.tbDelete);
+            SelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void SetEnabled(bool enable, params ToolStripItem[] items)
+        {
+            foreach (var item in items)
+                item.Enabled = enable;
+        }
 
         private void RecreateGLControl(GraphicsMode mode = null)
         {

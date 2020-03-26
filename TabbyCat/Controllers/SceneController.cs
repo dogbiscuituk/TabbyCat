@@ -8,8 +8,8 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Controls;
     using TabbyCat.Properties;
-    using TabbyCatControls;
 
     internal class SceneController : ShaderSetController
     {

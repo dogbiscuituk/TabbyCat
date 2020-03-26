@@ -3,6 +3,7 @@
     using Jmk.Common;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Models;
@@ -19,6 +20,33 @@
         internal JsonController(WorldController worldController)
             : base(worldController, Properties.Settings.Default.FileFilter, "LibraryMRU")
         { }
+
+        internal IEnumerable<Trace> ClipboardRead()
+        {
+            return null;
+        }
+
+        internal bool ClipboardWrite(IEnumerable<Trace> selection)
+        {
+            bool result;
+            string text;
+            using (var stream = new MemoryStream())
+            {
+                using (var streamer = new StreamWriter(stream))
+                {
+                    using (var writer = new JsonTextWriter(streamer) { CloseOutput = false })
+                    {
+                        result = UseStream(() => GetSerializer().Serialize(writer, selection));
+
+                        stream.Seek(0, SeekOrigin.Begin);
+                        using (var reader = new StreamReader(stream))
+                            text = reader.ReadToEnd();
+                    }
+                }
+            }
+            Clipboard.SetData(DataFormats.Text, text);
+            return result;
+        }
 
         internal string WindowCaption
         {
