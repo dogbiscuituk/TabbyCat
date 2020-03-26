@@ -111,6 +111,30 @@
 
         private void BeginUpdate() { ++UpdateCount; }
 
+        private bool CanGroup(ICommand cmd1, ICommand cmd2)
+        {
+            if (cmd2 is ICollectionCommand)
+                return false;
+            if (cmd1.GetType() == cmd2.GetType())
+                switch (cmd1)
+                {
+                    case IScenePropertyCommand _: return true;
+                    case ITracePropertyCommand tpc1: return tpc1.Index == ((ITracePropertyCommand)cmd2).Index;
+                }
+            else if (cmd1 is ICollectionCommand cc1 && !cc1.Adding)
+                switch (cc1)
+                {
+                    case ITracesCommand tc1:
+                        if (cmd2 is ITracePropertyCommand tpc2 && tpc2.Index == tc1.Index)
+                        {
+                            if (tc1.Value == null) tc1.Value = Scene.Traces[tc1.Index];
+                            return true;
+                        }
+                        break;
+                }
+            return false;
+        }
+
         private void Copy(Stack<ICommand> source, ToolStripDropDownItem target, EventHandler handler)
         {
             const int MaxItems = 20;
@@ -149,13 +173,12 @@
 
         private bool Redo(ICommand command)
         {
-            var result = command.Do(Scene);
-            if (result)
-            {
+            if (!command.Do(Scene))
+                return false;
+            if (!(CanUndo && CanGroup(UndoStack.Peek(), command)))
                 UndoStack.Push(command);
-                UpdateUI();
-            }
-            return result;
+            UpdateUI();
+            return true;
         }
 
         private bool Undo() => CanUndo && Undo(UndoStack.Pop());
