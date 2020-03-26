@@ -33,28 +33,31 @@
 
         #endregion
 
-        #region Fields, Properties, Events
+        #region Internal Fields
 
         internal ClockController ClockController;
-        internal CommandProcessor CommandProcessor { get; private set; }
-        internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal PropertiesController PropertiesController;
-        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
-        internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
         internal readonly RenderController RenderController;
         internal Scene Scene;
         internal Selection Selection = new Selection();
-        internal ToolTip ToolTip => WorldForm.ToolTip;
         internal WorldForm WorldForm;
+
+        #endregion
+
+        #region Internal Properties
+
+        internal CommandProcessor CommandProcessor { get; private set; }
+        internal GLControl GLControl => GLControlParent[0] as GLControl;
+        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
+        internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
+        internal ToolTip ToolTip => WorldForm.ToolTip;
+
+        #endregion
+
+        #region Internal Events
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler SelectionChanged;
-
-        private readonly List<string> ChangedPropertyNames = new List<string>();
-        private Clock Clock => ClockController.Clock;
-        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
-        private string GLSLUrl => Settings.Default.GLSLUrl;
-        private readonly JsonController JsonController;
 
         #endregion
 
@@ -64,6 +67,70 @@
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
         internal void Show() => WorldForm.Show();
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
+
+        internal void OnPropertyChanged(string propertyName)
+        {
+            switch (propertyName)
+            {
+                case PropertyNames.Traces:
+                    UpdateSelection();
+                    RenderController.InvalidateProgram();
+                    break;
+                case PropertyNames.FPS:
+                    ClockInit();
+                    break;
+                case PropertyNames.CameraPosition:
+                case PropertyNames.CameraFocus:
+                    RenderController.InvalidateCameraView();
+                    break;
+                case PropertyNames.GLTargetVersion:
+                case PropertyNames.SceneVertex:
+                case PropertyNames.SceneTessControl:
+                case PropertyNames.SceneTessEvaluation:
+                case PropertyNames.SceneGeometry:
+                case PropertyNames.SceneFragment:
+                case PropertyNames.SceneCompute:
+                case PropertyNames.TraceVertex:
+                case PropertyNames.TraceTessControl:
+                case PropertyNames.TraceTessEvaluation:
+                case PropertyNames.TraceGeometry:
+                case PropertyNames.TraceFragment:
+                case PropertyNames.TraceCompute:
+                    RenderController.InvalidateProgram();
+                    break;
+                case PropertyNames.ProjectionType:
+                case PropertyNames.FieldOfView:
+                case PropertyNames.NearPlane:
+                case PropertyNames.FarPlane:
+                    RenderController.InvalidateProjection();
+                    break;
+                case PropertyNames.Samples:
+                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.Samples));
+                    break;
+                case PropertyNames.Pattern:
+                case PropertyNames.StripCount:
+                    RenderController.InvalidateAllTraces();
+                    break;
+            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            GLControl.Invalidate();
+        }
+
+        #endregion
+
+        #region Private Fields
+
+        private readonly List<string> ChangedPropertyNames = new List<string>();
+        private readonly JsonController JsonController;
+        private int UpdateCount;
+
+        #endregion
+
+        #region Private Properties
+
+        private Clock Clock => ClockController.Clock;
+        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
+        private string GLSLUrl => Settings.Default.GLSLUrl;
 
         #endregion
 
@@ -93,6 +160,9 @@
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
         private void EditAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
+        private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
+        private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
+        private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
         private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
@@ -110,8 +180,6 @@
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
         #endregion
-
-        private int UpdateCount;
 
         #region Private Methods
 
@@ -284,26 +352,14 @@
             }
         }
 
-        private void EditPaste_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void EditCopy_Click(object sender, EventArgs e)
-        {
-            JsonController.ClipboardWrite(Selection);
-        }
-
-        private void EditCut_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ConnectToolbar(bool connect)
         {
             if (connect)
             {
                 WorldForm.tbAdd.Click += EditAddNewTrace_Click;
+                WorldForm.tbCut.Click += EditCut_Click;
+                WorldForm.tbCopy.Click += EditCopy_Click;
+                WorldForm.tbPaste.Click += EditPaste_Click;
                 WorldForm.tbDelete.Click += EditDelete_Click;
                 WorldForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
                 WorldForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
@@ -315,6 +371,9 @@
             else
             {
                 WorldForm.tbAdd.Click -= EditAddNewTrace_Click;
+                WorldForm.tbCut.Click -= EditCut_Click;
+                WorldForm.tbCopy.Click -= EditCopy_Click;
+                WorldForm.tbPaste.Click -= EditPaste_Click;
                 WorldForm.tbDelete.Click -= EditDelete_Click;
                 WorldForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
                 WorldForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
@@ -324,6 +383,14 @@
                 WorldForm.tbSave.Click -= TbSave_Click;
             }
         }
+
+        private void CutToClipboard()
+        {
+            CopyToClipboard();
+            DeleteSelection();
+        }
+
+        private void CopyToClipboard() => JsonController.ClipboardWrite(Selection);
 
         private void DeleteSelection()
         {
@@ -409,82 +476,6 @@
                 worldController.JsonController.FilePath = string.Empty;
         }
 
-        private WorldController OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
-            OpenFile(JsonController.SelectFilePath(filterIndex));
-
-        private WorldController OpenFile(string filePath)
-        {
-            if (string.IsNullOrWhiteSpace(filePath))
-                return null;
-            var worldController = GetNewWorldController();
-            worldController?.LoadFromFile(filePath);
-            return worldController;
-        }
-
-        private void Resize() => RenderController.InvalidateProjection();
-
-        private bool SaveFile() => JsonController.Save();
-
-        private bool SaveFileAs() => JsonController.SaveAs();
-
-        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
-
-        private void SelectAll() => Selection.AddRange(Scene.Traces);
-
-        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
-        private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
-
-        #endregion
-
-        internal void OnPropertyChanged(string propertyName)
-        {
-            switch (propertyName)
-            {
-                case PropertyNames.Traces:
-                    UpdateSelection();
-                    RenderController.InvalidateProgram();
-                    break;
-                case PropertyNames.FPS:
-                    ClockInit();
-                    break;
-                case PropertyNames.CameraPosition:
-                case PropertyNames.CameraFocus:
-                    RenderController.InvalidateCameraView();
-                    break;
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.SceneVertex:
-                case PropertyNames.SceneTessControl:
-                case PropertyNames.SceneTessEvaluation:
-                case PropertyNames.SceneGeometry:
-                case PropertyNames.SceneFragment:
-                case PropertyNames.SceneCompute:
-                case PropertyNames.TraceVertex:
-                case PropertyNames.TraceTessControl:
-                case PropertyNames.TraceTessEvaluation:
-                case PropertyNames.TraceGeometry:
-                case PropertyNames.TraceFragment:
-                case PropertyNames.TraceCompute:
-                    RenderController.InvalidateProgram();
-                    break;
-                case PropertyNames.ProjectionType:
-                case PropertyNames.FieldOfView:
-                case PropertyNames.NearPlane:
-                case PropertyNames.FarPlane:
-                    RenderController.InvalidateProjection();
-                    break;
-                case PropertyNames.Samples:
-                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.Samples));
-                    break;
-                case PropertyNames.Pattern:
-                case PropertyNames.StripCount:
-                    RenderController.InvalidateAllTraces();
-                    break;
-            }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            GLControl.Invalidate();
-        }
-
         private void OnSelectionChanged()
         {
             SetEnabled(Selection.Any(),
@@ -497,10 +488,25 @@
             SelectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private void SetEnabled(bool enable, params ToolStripItem[] items)
+        private WorldController OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
+            OpenFile(JsonController.SelectFilePath(filterIndex));
+
+        private WorldController OpenFile(string filePath)
         {
-            foreach (var item in items)
-                item.Enabled = enable;
+            if (string.IsNullOrWhiteSpace(filePath))
+                return null;
+            var worldController = GetNewWorldController();
+            worldController?.LoadFromFile(filePath);
+            return worldController;
+        }
+
+        private void PasteFromClipboard()
+        {
+            var traces = JsonController.ClipboardRead();
+            if (traces == null || !traces.Any())
+                return;
+            foreach (var trace in traces)
+                Scene.AddTrace(trace);
         }
 
         private void RecreateGLControl(GraphicsMode mode = null)
@@ -526,6 +532,26 @@
             oldControl.Dispose();
         }
 
+        private void Resize() => RenderController.InvalidateProjection();
+
+        private bool SaveFile() => JsonController.Save();
+
+        private bool SaveFileAs() => JsonController.SaveAs();
+
+        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
+
+        private void SelectAll() => Selection.AddRange(Scene.Traces);
+
+        private void SetEnabled(bool enable, params ToolStripItem[] items)
+        {
+            foreach (var item in items)
+                item.Enabled = enable;
+        }
+
+        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
+
+        private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
+
         private void UpdateSelection()
         {
             Selection.BeginUpdate();
@@ -535,5 +561,7 @@
                 .ForEach(p => Selection.Remove(p));
             Selection.EndUpdate();
         }
+
+        #endregion
     }
 }

@@ -23,26 +23,35 @@
 
         internal IEnumerable<Trace> ClipboardRead()
         {
-            return null;
+            IEnumerable<Trace> traces = null;
+            var text = Clipboard.GetData(DataFormats.Text);
+            using (var stream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(stream))
+            {
+                streamWriter.Write(text);
+                streamWriter.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var streamReader = new StreamReader(stream))
+                using (var jsonTextReader = new JsonTextReader(streamReader))
+                    UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(jsonTextReader));
+            }
+            return traces;
         }
 
-        internal bool ClipboardWrite(IEnumerable<Trace> selection)
+        internal bool ClipboardWrite(IEnumerable<Trace> traces)
         {
             bool result;
             string text;
             using (var stream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(stream))
+            using (var jsonTextWriter = new JsonTextWriter(streamWriter))
             {
-                using (var streamer = new StreamWriter(stream))
-                {
-                    using (var writer = new JsonTextWriter(streamer) { CloseOutput = false })
-                    {
-                        result = UseStream(() => GetSerializer().Serialize(writer, selection));
-
-                        stream.Seek(0, SeekOrigin.Begin);
-                        using (var reader = new StreamReader(stream))
-                            text = reader.ReadToEnd();
-                    }
-                }
+                result = UseStream(() => GetSerializer().Serialize(jsonTextWriter, traces));
+                jsonTextWriter.Flush();
+                streamWriter.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var streamReader = new StreamReader(stream))
+                    text = streamReader.ReadToEnd();
             }
             Clipboard.SetData(DataFormats.Text, text);
             return result;
@@ -87,11 +96,11 @@
                 return UseStream(() => GetSerializer().Serialize(writer, Scene));
         }
 
-        #endregion
+    #endregion
 
-        #region Private Implementation
+    #region Private Implementation
 
-        private static JsonSerializer GetSerializer() => new JsonSerializer
+    private static JsonSerializer GetSerializer() => new JsonSerializer
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented
