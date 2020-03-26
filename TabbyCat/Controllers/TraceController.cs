@@ -77,7 +77,7 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                TraceSelector.MouseMove += TraceSelector_MouseMove;
+                TraceSelector.MouseInItem += TraceSelector_MouseInItem;
                 TraceSelector.SelectionChanged += TraceSelector_SelectionChanged;
             }
             else
@@ -103,16 +103,16 @@
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                TraceSelector.MouseMove -= TraceSelector_MouseMove;
+                TraceSelector.MouseInItem -= TraceSelector_MouseInItem;
                 TraceSelector.SelectionChanged -= TraceSelector_SelectionChanged;
             }
         }
 
-    #endregion
+        #endregion
 
-    #region Protected Methods
+        #region Protected Methods
 
-    protected override void OnSelectionChanged()
+        protected override void OnSelectionChanged()
         {
             $"Selection = {{{Selection}}}".Spit();
             base.OnSelectionChanged();
@@ -300,17 +300,8 @@
                 p.StripCount.Y,
                 (float)Editor.seStripCountZ.Value)));
 
-        private void TraceSelector_MouseMove(object sender, MouseEventArgs e)
-        {
-            var toolTip = string.Empty;
-            for (var index = 0; index < TraceSelector.Items.Count; index++)
-                if (TraceSelector.GetItemRectangle(index).Contains(e.Location))
-                {
-                    toolTip = Scene.Traces[index].ToString();
-                    break;
-                }
-            SetToolTip(TraceSelector, toolTip);
-        }
+        private void TraceSelector_MouseInItem(object sender, ItemCheckEventArgs e) =>
+            SetToolTip(TraceSelector, e.Index < 0 ? string.Empty : Scene.Traces[e.Index].ToString());
 
         private void TraceSelector_SelectionChanged(object sender, EventArgs e) =>
             CopySelectionFromControl();
@@ -336,8 +327,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            for (var index = 0; index < TraceSelector.Items.Count; index++)
-                TraceSelector.SetItemChecked(index, Selection.Contains(Scene.Traces[index]));
+            TraceSelector.SetCheckedIndices(Selection.Select(p => p.Index).ToList());
             SelectionUpdating = false;
         }
 

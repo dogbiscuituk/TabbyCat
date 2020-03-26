@@ -679,7 +679,7 @@
             this.clbTraceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.clbTraceSelector.CheckOnClick = true;
             this.TableLayoutPanel.SetColumnSpan(this.clbTraceSelector, 3);
-            this.clbTraceSelector.ColumnWidth = 16;
+            this.clbTraceSelector.ColumnWidth = 15;
             this.clbTraceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbTraceSelector.FormattingEnabled = true;
             this.clbTraceSelector.HorizontalScrollbar = true;

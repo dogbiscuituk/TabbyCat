@@ -1,6 +1,7 @@
 ﻿namespace Jmk.Controls
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Forms;
 
     public partial class JmkCheckedListBox : CheckedListBox
@@ -16,10 +17,23 @@
 
         #region Fields, Properties, Events
 
+        public event ItemCheckEventHandler MouseInItem;
         public event EventHandler SelectionChanged;
 
         private bool Control, Shift, Updating;
         private int PrevIndex = -1;
+
+        #endregion
+
+        #region Public Methods
+
+        public void SetCheckedIndices(IList<int> indices)
+        {
+            Updating = true;
+            for (int index = 0; index < Items.Count; index++)
+                SetItemChecked(index, indices.Contains(index));
+            Updating = false;
+        }
 
         #endregion
 
@@ -58,6 +72,23 @@
         {
             base.OnKeyUp(e);
             Control = Shift = false;
+        }
+
+        protected virtual void OnMouseInItem(ItemCheckEventArgs e) => MouseInItem?.Invoke(this, e);
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            var itemIndex = -1;
+            var checkState = CheckState.Indeterminate;
+            for (var index = 0; index < Items.Count; index++)
+                if (GetItemRectangle(index).Contains(e.Location))
+                {
+                    itemIndex = index;
+                    checkState = GetItemCheckState(index);
+                    break;
+                }
+            OnMouseInItem(new ItemCheckEventArgs(itemIndex, checkState, checkState));
         }
 
         protected virtual void OnSelectionChanged() => SelectionChanged?.Invoke(this, EventArgs.Empty);
