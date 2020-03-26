@@ -58,7 +58,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(390, 340);
+            this.TabControl.Size = new System.Drawing.Size(390, 284);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 2;
             // 
@@ -71,7 +71,7 @@
             this.tpScene.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpScene.Name = "tpScene";
             this.tpScene.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpScene.Size = new System.Drawing.Size(382, 310);
+            this.tpScene.Size = new System.Drawing.Size(382, 254);
             this.tpScene.TabIndex = 0;
             this.tpScene.Text = "Scene";
             // 
@@ -82,7 +82,7 @@
             this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SceneEdit.Location = new System.Drawing.Point(3, 4);
             this.SceneEdit.Name = "SceneEdit";
-            this.SceneEdit.Size = new System.Drawing.Size(376, 303);
+            this.SceneEdit.Size = new System.Drawing.Size(376, 235);
             this.SceneEdit.TabIndex = 1;
             // 
             // tpTraces
@@ -94,7 +94,7 @@
             this.tpTraces.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpTraces.Name = "tpTraces";
             this.tpTraces.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpTraces.Size = new System.Drawing.Size(382, 310);
+            this.tpTraces.Size = new System.Drawing.Size(382, 254);
             this.tpTraces.TabIndex = 1;
             this.tpTraces.Text = "Trace";
             // 
@@ -105,7 +105,7 @@
             this.TraceEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TraceEdit.Location = new System.Drawing.Point(3, 4);
             this.TraceEdit.Name = "TraceEdit";
-            this.TraceEdit.Size = new System.Drawing.Size(376, 303);
+            this.TraceEdit.Size = new System.Drawing.Size(376, 250);
             this.TraceEdit.TabIndex = 0;
             // 
             // tpGPU
@@ -119,7 +119,7 @@
             this.tpGPU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpGPU.Name = "tpGPU";
             this.tpGPU.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpGPU.Size = new System.Drawing.Size(382, 294);
+            this.tpGPU.Size = new System.Drawing.Size(382, 314);
             this.tpGPU.TabIndex = 2;
             this.tpGPU.Text = "GPU";
             // 
@@ -161,7 +161,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.ShaderEdit);
             this.splitContainer1.Size = new System.Drawing.Size(390, 777);
-            this.splitContainer1.SplitterDistance = 340;
+            this.splitContainer1.SplitterDistance = 284;
             this.splitContainer1.TabIndex = 4;
             // 
             // ShaderEdit
@@ -170,7 +170,7 @@
             this.ShaderEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShaderEdit.Location = new System.Drawing.Point(0, 0);
             this.ShaderEdit.Name = "ShaderEdit";
-            this.ShaderEdit.Size = new System.Drawing.Size(390, 433);
+            this.ShaderEdit.Size = new System.Drawing.Size(390, 489);
             this.ShaderEdit.TabIndex = 3;
             // 
             // PropertiesEdit
