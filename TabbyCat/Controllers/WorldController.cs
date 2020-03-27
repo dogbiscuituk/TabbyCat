@@ -251,18 +251,14 @@
             ConnectToolbar(connect);
             if (connect)
             {
-                // WorldForm
                 WorldForm.FormClosed += WorldForm_FormClosed;
                 WorldForm.FormClosing += WorldForm_FormClosing;
-                // Selection
                 Selection.Changed += Selection_Changed;
             }
             else
             {
-                // WorldForm
                 WorldForm.FormClosed -= WorldForm_FormClosed;
                 WorldForm.FormClosing -= WorldForm_FormClosing;
-                // Selection
                 Selection.Changed -= Selection_Changed;
             }
             ConnectGLControl(connect);
