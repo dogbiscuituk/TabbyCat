@@ -50,8 +50,8 @@
             // 
             // TabControl
             // 
-            this.TabControl.Controls.Add(this.tpScene);
             this.TabControl.Controls.Add(this.tpTraces);
+            this.TabControl.Controls.Add(this.tpScene);
             this.TabControl.Controls.Add(this.tpGPU);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);

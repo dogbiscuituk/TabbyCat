@@ -116,6 +116,9 @@
             GLControl.Invalidate();
         }
 
+        internal void Pulse() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled =
+            AppController.CanPaste;
+
         #endregion
 
         #region Private Fields
@@ -387,7 +390,7 @@
             DeleteSelection();
         }
 
-        private void CopyToClipboard() => JsonController.ClipboardWrite(Selection);
+        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection);
 
         private void DeleteSelection()
         {
@@ -499,7 +502,7 @@
 
         private void PasteFromClipboard()
         {
-            var traces = JsonController.ClipboardRead();
+            var traces = JsonController.ClipboardPaste();
             if (traces == null || !traces.Any())
                 return;
             var index = Scene.Traces.Count;

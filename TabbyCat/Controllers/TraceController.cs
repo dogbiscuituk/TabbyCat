@@ -122,14 +122,6 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
-                {
-                    case PropertyNames.Description:
-                        foreach (var trace in Selection)
-                            InitTraceToolTip(trace.Index);
-                        break;
-                }
             if (Updating)
                 return;
             Updating = true;
@@ -388,10 +380,6 @@
             SetToolTip(Editor.seStripCountY, Resources.Trace_StripCountY);
             SetToolTip(Editor.seStripCountZ, Resources.Trace_StripCountZ);
             SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
-        }
-
-        private void InitTraceToolTip(int index)
-        {
         }
 
         private void Run(Func<Trace, ICommand> command)

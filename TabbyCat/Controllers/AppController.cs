@@ -15,8 +15,8 @@
 
         static AppController()
         {
-            Timer = new Timer { Interval = 5000, Enabled = true };
-            Timer.Tick += Timer_Tick;
+            Pulse = new Timer { Interval = 200, Enabled = true };
+            Pulse.Tick += Pulse_Tick;
             ApplyOptions();
             AddNewWorldController();
         }
@@ -34,6 +34,10 @@
                 return _AboutDialog;
             }
         }
+
+        internal static bool CanPaste;
+
+        internal static string DataFormat = "TabbyCatDataFormat";
 
         internal static Options Options
         {
@@ -80,6 +84,10 @@
 
         internal static void Close()
         {
+            Pulse.Enabled = false;
+            Pulse.Tick -= Pulse_Tick;
+            Pulse.Dispose();
+            Pulse = null;
             Application.Exit();
         }
 
@@ -112,20 +120,25 @@
         private static readonly string DefaultFilesFolderPath =
             $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\{Application.ProductName}";
 
-        private static Settings Settings => Settings.Default;
+        private static Timer Pulse;
 
-        private static Timer Timer;
+        private static int PulseCount;
+
+        private static Settings Settings => Settings.Default;
 
         #endregion
 
         #region Private Event Handlers
 
-        private static void Timer_Tick(object sender, EventArgs e)
+        private static void Pulse_Tick(object sender, EventArgs e)
         {
-            Timer.Enabled = false;
-            Timer.Dispose();
-            Timer = null;
-            AboutDialog.Hide();
+            CanPaste = Clipboard.ContainsData(DataFormat);
+            foreach (var worldController in WorldControllers)
+                worldController.Pulse();
+            if (PulseCount < 10)
+                PulseCount++;
+            else
+                AboutDialog.Hide();
         }
 
         #endregion

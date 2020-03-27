@@ -15,47 +15,58 @@
     /// </summary>
     internal class JsonController : SdiController
     {
-        #region Internal Interface
+        #region Constructor
 
         internal JsonController(WorldController worldController)
             : base(worldController, Properties.Settings.Default.FileFilter, "LibraryMRU")
         { }
 
-        internal IEnumerable<Trace> ClipboardRead()
-        {
-            IEnumerable<Trace> traces = null;
-            var text = Clipboard.GetData(DataFormats.Text);
-            using (var stream = new MemoryStream())
-            using (var streamWriter = new StreamWriter(stream))
-            {
-                streamWriter.Write(text);
-                streamWriter.Flush();
-                stream.Seek(0, SeekOrigin.Begin);
-                using (var streamReader = new StreamReader(stream))
-                using (var jsonTextReader = new JsonTextReader(streamReader))
-                    UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(jsonTextReader));
-            }
-            return traces;
-        }
+        #endregion
 
-        internal bool ClipboardWrite(IEnumerable<Trace> traces)
+        #region Internal Methods
+
+        internal bool ClipboardCopy(IEnumerable<Trace> traces)
         {
             bool result;
             string text;
             using (var stream = new MemoryStream())
             using (var streamWriter = new StreamWriter(stream))
-            using (var jsonTextWriter = new JsonTextWriter(streamWriter))
+            using (var textWriter = new JsonTextWriter(streamWriter))
             {
-                result = UseStream(() => GetSerializer().Serialize(jsonTextWriter, traces));
-                jsonTextWriter.Flush();
+                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
+                textWriter.Flush();
                 streamWriter.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
                 using (var streamReader = new StreamReader(stream))
                     text = streamReader.ReadToEnd();
             }
-            Clipboard.SetData(DataFormats.Text, text);
+            var dataObject = new DataObject();
+            dataObject.SetData(AppController.DataFormat, text);
+            dataObject.SetData(DataFormats.Text, text);
+            Clipboard.SetDataObject(dataObject, copy: true);
             return result;
         }
+
+        internal IEnumerable<Trace> ClipboardPaste()
+        {
+            IEnumerable<Trace> traces = null;
+            if (AppController.CanPaste)
+                using (var stream = new MemoryStream())
+                using (var streamWriter = new StreamWriter(stream))
+                {
+                    streamWriter.Write(Clipboard.GetData(AppController.DataFormat));
+                    streamWriter.Flush();
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using (var streamReader = new StreamReader(stream))
+                    using (var textReader = new JsonTextReader(streamReader))
+                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
+                }
+            return traces;
+        }
+
+        #endregion
+
+        #region Internal Properties
 
         internal string WindowCaption
         {
@@ -71,36 +82,38 @@
 
         #endregion
 
-        #region Protected I/O Overrides
+        #region Internal Events
+
+        internal event EventHandler<FilePathEventArgs> FileReopen;
+
+        #endregion
+
+        #region Protected Methods
 
         protected override void ClearDocument() => Scene.Clear();
 
         protected override bool LoadFromStream(Stream stream)
         {
-            bool result;
-            using (var streamer = new StreamReader(stream))
-            using (var reader = new JsonTextReader(streamer))
-                result = UseStream(() => Scene = GetSerializer().Deserialize<Scene>(reader));
-            return result;
+            using (var streamReader = new StreamReader(stream))
+            using (var textReader = new JsonTextReader(streamReader))
+                return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
         }
 
         protected override void OnFileReopen(string filePath) =>
             FileReopen?.Invoke(this, new FilePathEventArgs(filePath));
 
-        internal event EventHandler<FilePathEventArgs> FileReopen;
-
         protected override bool SaveToStream(Stream stream)
         {
-            using (var streamer = new StreamWriter(stream))
-            using (var writer = new JsonTextWriter(streamer))
-                return UseStream(() => GetSerializer().Serialize(writer, Scene));
+            using (var streamWriter = new StreamWriter(stream))
+            using (var TextWriter = new JsonTextWriter(streamWriter))
+                return UseStream(() => GetSerializer().Serialize(TextWriter, Scene));
         }
 
-    #endregion
+        #endregion
 
-    #region Private Implementation
+        #region Private Methods
 
-    private static JsonSerializer GetSerializer() => new JsonSerializer
+        private static JsonSerializer GetSerializer() => new JsonSerializer
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented

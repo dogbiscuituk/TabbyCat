@@ -51,7 +51,7 @@
         private readonly PropertiesController PropertiesController;
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
-        private int PropertiesTabIndex => PropertiesTabControl.SelectedIndex;
+        private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
         private RenderController RenderController => WorldController.RenderController;
         private Scene Scene => WorldController.Scene;
         private Selection Selection => WorldController.Selection;
@@ -66,15 +66,16 @@
         {
             get
             {
-                switch (PropertiesTabIndex)
+                switch (PropertiesTab)
                 {
-                    case 0:
-                        return ShaderType.SceneShaderName();
-                    case 1:
+                    case TabPage page when page == PropertiesEditor.tpTraces:
                         return ShaderType.TraceShaderName();
-                    default:
+                    case TabPage page when page == PropertiesEditor.tpScene:
+                        return ShaderType.SceneShaderName();
+                    case TabPage page when page == PropertiesEditor.tpGPU:
                         return string.Empty;
                 }
+                return string.Empty;
             }
         }
 
@@ -82,15 +83,16 @@
         {
             get
             {
-                switch (PropertiesTabIndex)
+                switch (PropertiesTab)
                 {
-                    case 0:
-                        return Scene;
-                    case 1:
+                    case TabPage page when page == PropertiesEditor.tpTraces:
                         return Selection;
-                    default:
+                    case TabPage page when page == PropertiesEditor.tpScene:
+                        return Scene;
+                    case TabPage page when page == PropertiesEditor.tpGPU:
                         return RenderController;
                 }
+                return null;
             }
         }
 
@@ -401,13 +403,13 @@
                 return;
             Updating = true;
             var text = Editor.PrimaryTextBox.Text;
-            switch (PropertiesTabIndex)
+            switch (PropertiesTab)
             {
-                case 0:
-                    Run(new SceneShaderCommand(ShaderType, text));
-                    break;
-                case 1:
+                case TabPage page when page == PropertiesEditor.tpTraces:
                     Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+                    break;
+                case TabPage page when page == PropertiesEditor.tpScene:
+                    Run(new SceneShaderCommand(ShaderType, text));
                     break;
             }
             Updating = false;
