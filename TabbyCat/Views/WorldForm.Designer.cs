@@ -104,6 +104,7 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -159,7 +160,8 @@
             this.tbForward,
             this.tbAccelerate,
             this.SpeedLabel,
-            this.Tlabel});
+            this.Tlabel,
+            this.FPSlabel});
             this.StatusBar.Location = new System.Drawing.Point(0, 0);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.Size = new System.Drawing.Size(1008, 22);
@@ -259,7 +261,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 572;
+            this.SplitContainer1.SplitterDistance = 571;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -270,7 +272,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(572, 682);
+            this.GLControl.Size = new System.Drawing.Size(571, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -282,7 +284,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(398, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(399, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -818,6 +820,14 @@
             this.ToolTip.InitialDelay = 100;
             this.ToolTip.ReshowDelay = 20;
             // 
+            // toolStripStatusLabel1
+            // 
+            this.FPSlabel.AutoSize = false;
+            this.FPSlabel.Name = "toolStripStatusLabel1";
+            this.FPSlabel.Size = new System.Drawing.Size(64, 17);
+            this.FPSlabel.Text = "FPS=0.0";
+            this.FPSlabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -929,6 +939,7 @@
         internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
         internal System.Windows.Forms.ToolTip ToolTip;
         internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        internal System.Windows.Forms.ToolStripStatusLabel FPSlabel;
     }
 }

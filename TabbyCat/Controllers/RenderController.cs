@@ -15,8 +15,11 @@
     {
         #region Constructors
 
-        internal RenderController(WorldController worldController) =>
+        internal RenderController(WorldController worldController)
+        {
             WorldController = worldController;
+            Stopwatch.Start();
+        }
 
         #endregion
 
@@ -58,6 +61,8 @@
         #endregion
 
         #region Internal Properties
+
+        internal float FramesPerSecond;
 
         internal static GLInfo _GLInfo;
         internal GLInfo GLInfo
@@ -183,9 +188,23 @@
                     GL.BindVertexArray(0);
                 }
                 GL.UseProgram(0); // Stop Shader
+                GLControl.SwapBuffers();
+                UpdateFPS();
             }
-            GLControl.SwapBuffers();
             MakeCurrent(false);
+        }
+
+        private void UpdateFPS()
+        {
+            Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
+            if (TickCount < Ticks.Length) TickCount++;
+            var fps = 0f;
+            if (TickCount > 1)
+            {
+                var ticks = Ticks.Take(TickCount);
+                fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
+            }
+            FramesPerSecond = fps;
         }
 
         internal bool Unload()
@@ -205,6 +224,9 @@
 
         private static readonly object GLInfoSyncRoot = new object();
         private static readonly object GLModeSyncRoot = new object();
+        private readonly System.Diagnostics.Stopwatch Stopwatch = new System.Diagnostics.Stopwatch();
+        private readonly long[] Ticks = new long[64];
+        private int TickCount, TickIndex;
         private readonly WorldController WorldController;
 
         /// <summary>

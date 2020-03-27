@@ -24,7 +24,6 @@
             WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
             WorldForm.tbAccelerate.Click += TimeAccelerate_Click;
             Clock = new Clock();
-            Clock.Tick += Clock_Tick;
             UpdateTimeControls();
         }
 
@@ -54,7 +53,6 @@
             WorldForm.TimePause.Enabled = WorldForm.tbPause.Enabled = CanPause;
             WorldForm.TimeReverse.Enabled = WorldForm.tbReverse.Enabled = CanReverse;
             WorldForm.TimeStop.Enabled = WorldForm.tbStop.Enabled = CanStop;
-            UpdateTimeFactor();
         }
 
         #endregion
@@ -68,10 +66,6 @@
         private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
         private bool CanStop => Clock.Running;
 
-        private string
-            LastTime,
-            LastSpeed;
-
         private readonly WorldController WorldController;
         private WorldForm WorldForm => WorldController.WorldForm;
 
@@ -79,7 +73,6 @@
 
         #region Private Event Handlers
 
-        private void Clock_Tick(object sender, EventArgs e) => UpdateTimeDisplay();
         private void TimeDecelerate_Click(object sender, EventArgs e) => Decelerate();
         private void TimeReverse_Click(object sender, EventArgs e) => Reverse();
         private void TimeStop_Click(object sender, EventArgs e) => Stop();
@@ -128,32 +121,7 @@
         private void Stop()
         {
             Clock.Reset();
-            UpdateTimeDisplay();
             UpdateTimeControls();
-        }
-
-        private void UpdateTimeDisplay()
-        {
-            var time = string.Format("t={0:f1}", VirtualSecondsElapsed);
-            if (LastTime != time)
-                LastTime = WorldForm.Tlabel.Text = time;
-        }
-
-        private void UpdateTimeFactor()
-        {
-            string speed;
-            var factor = VirtualTimeFactor;
-            if (factor == 0)
-                speed = "time × 0";
-            else
-            {
-                var divide = Math.Abs(factor) < 1;
-                if (divide)
-                    factor = 1 / factor;
-                speed = divide ? $"time ÷ {factor}" : $"time × {factor}";
-            }
-            if (LastSpeed != speed)
-                LastSpeed = WorldForm.SpeedLabel.Text = speed;
         }
 
         #endregion

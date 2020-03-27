@@ -116,8 +116,11 @@
             GLControl.Invalidate();
         }
 
-        internal void Pulse() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled =
-            AppController.CanPaste;
+        internal void Pulse()
+        {
+            UpdateToolbar();
+            UpdateStatusBar();
+        }
 
         #endregion
 
@@ -125,6 +128,7 @@
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private readonly JsonController JsonController;
+        private string LastSpeed, LastTime, LastFPS;
         private int UpdateCount;
 
         #endregion
@@ -447,7 +451,7 @@
 
         private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
 
-        private int GetFrameMilliseconds() => (int)Math.Round(1000 / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
+        private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
 
         private WorldController GetNewWorldController()
         {
@@ -557,6 +561,13 @@
 
         private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
 
+        private void UpdateFramesPerSecond()
+        {
+            var fps = string.Format("FPS={0:f1}", RenderController.FramesPerSecond);
+            if (LastFPS != fps)
+                LastFPS = WorldForm.FPSlabel.Text = fps;
+        }
+
         private void UpdateSelection()
         {
             Selection.BeginUpdate();
@@ -565,6 +576,41 @@
                 .ToList()
                 .ForEach(p => Selection.Remove(p));
             Selection.EndUpdate();
+        }
+
+        private void UpdateStatusBar()
+        {
+            UpdateTimeFactor();
+            UpdateVirtualTime();
+            UpdateFramesPerSecond();
+        }
+
+        private void UpdateTimeFactor()
+        {
+            string speed;
+            var factor = Clock.VirtualTimeFactor;
+            if (factor == 0)
+                speed = "time × 0";
+            else
+            {
+                var divide = Math.Abs(factor) < 1;
+                if (divide)
+                    factor = 1 / factor;
+                speed = divide ? $"time ÷ {factor}" : $"time × {factor}";
+            }
+            if (LastSpeed != speed)
+                LastSpeed = WorldForm.SpeedLabel.Text = speed;
+
+        }
+
+        private void UpdateToolbar() =>
+            WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppController.CanPaste;
+
+        private void UpdateVirtualTime()
+        {
+            var time = string.Format("t={0:f1}", Clock.VirtualSecondsElapsed);
+            if (LastTime != time)
+                LastTime = WorldForm.Tlabel.Text = time;
         }
 
         #endregion
