@@ -2,9 +2,4 @@
 out vec4 FragColor;
 
 uniform float timeValue;
-uniform int traceIndex;
-
-void execTrace()
-{
-  FragColor = vec4(colour, 0.1);
-}
+uniform int traceNumber;

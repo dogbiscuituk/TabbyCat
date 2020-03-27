@@ -1,1 +1,1 @@
-﻿  execTrace();
+﻿FragColor = vec4(colour, 0.1);

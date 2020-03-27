@@ -37,16 +37,17 @@
                         script.AppendFormat(Resources.Scene_Head, Scene.GLTargetVersion);
                         script.AppendLine($"\n{Scene.GetScript(shaderType)}\n");
                     }
-                    script.AppendFormat(Resources.Trace_Head, traceIndex, trace);
-                    script.AppendLine($"\n{traceScript}\n");
+                    var traceNumber = traceIndex + 1;
+                    script.AppendFormat(Resources.Trace_Head, traceNumber, trace);
+                    script.AppendLine(traceScript.Indent("  "));
                     script.AppendLine(Resources.Trace_Tail);
                 }
             }
             if (script == null)
                 return string.Empty;
             script.AppendLine(Resources.Switch_Statement);
-            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-                script.AppendFormat(Resources.Switch_Case, traceIndex);
+            for (var traceNumber = 1; traceNumber <= Scene.Traces.Count; traceNumber++)
+                script.AppendFormat(Resources.Switch_Case, traceNumber);
             script.AppendLine(Resources.Scene_Tail);
             return script.ToString();
         }
@@ -170,7 +171,8 @@
                     var trace = Scene.Traces[traceIndex];
                     if (!trace.Visible)
                         continue;
-                    LoadTraceIndex(traceIndex);
+                    var traceNumber = traceIndex + 1;
+                    LoadTraceNumber(traceNumber);
                     LoadTransform(trace);
                     ValidateTrace(trace);
                     GL.BindVertexArray(trace._VaoID);
@@ -224,7 +226,7 @@
             Loc_CameraView,
             Loc_Projection,
             Loc_TimeValue,
-            Loc_TraceIndex,
+            Loc_TraceNumber,
             Loc_Transform;
 
         private int
@@ -464,7 +466,7 @@
             Loc_CameraView = GetUniformLocation("cameraView");
             Loc_Projection = GetUniformLocation("projection");
             Loc_TimeValue = GetUniformLocation("timeValue");
-            Loc_TraceIndex = GetUniformLocation("traceIndex");
+            Loc_TraceNumber = GetUniformLocation("traceNumber");
             Loc_Transform = GetUniformLocation("transform");
         }
 
@@ -474,7 +476,7 @@
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
         private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);
-        private void LoadTraceIndex(int traceIndex) => LoadInt(Loc_TraceIndex, traceIndex);
+        private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
         private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
 
