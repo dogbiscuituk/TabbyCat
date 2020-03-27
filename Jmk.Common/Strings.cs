@@ -1,5 +1,6 @@
 ﻿namespace Jmk.Common
 {
+    using System;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -38,7 +39,7 @@
         public static int GetLineCount(this StringBuilder builder) => builder.ToString().GetLineCount();
 
         public static string Indent(this string s, string indent) =>
-            string.Concat(s.Split('\n').Select(p => $"{indent}{p}"));
+            string.Concat(indent, s.Replace(Environment.NewLine, $"{Environment.NewLine}{indent}"));
 
         /// <summary>
         /// Make a legal file name from a given string which may contain prohibited
