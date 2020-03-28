@@ -550,6 +550,52 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     case {0}:
+        ///      execTrace{0}();
+        ///      break;
+        ///.
+        /// </summary>
+        internal static string Format_Case {
+            get {
+                return ResourceManager.GetString("Format_Case", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #version {0}
+        ///
+        ///{1}
+        ///
+        ///{2}void main()
+        ///{{
+        ///  switch (traceNumber)
+        ///  {{
+        ///{3}    default:
+        ///      break;
+        ///  }}
+        ///}}.
+        /// </summary>
+        internal static string Format_Scene {
+            get {
+                return ResourceManager.GetString("Format_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to void execTrace{0}() // {1}
+        ///{{
+        ///{2}
+        ///}}
+        ///
+        ///.
+        /// </summary>
+        internal static string Format_Trace {
+            get {
+                return ResourceManager.GetString("Format_Trace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FormRunHS {
@@ -1040,26 +1086,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #version {0}
-        ///
-        ///{1}
-        ///
-        ///{2}void main()
-        ///{{
-        ///  switch (traceNumber)
-        ///  {{
-        ///{3}    default:
-        ///      break;
-        ///  }}
-        ///}}.
-        /// </summary>
-        internal static string Scene_Format {
-            get {
-                return ResourceManager.GetString("Scene_Format", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The target number of frames per second.
         /// </summary>
         internal static string Scene_FPS {
@@ -1242,18 +1268,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     case {0}:
-        ///      execTrace{0}();
-        ///      break;
-        ///.
-        /// </summary>
-        internal static string Switch_Case {
-            get {
-                return ResourceManager.GetString("Switch_Case", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SychronizeListHS {
@@ -1309,20 +1323,6 @@ namespace TabbyCat.Properties {
         internal static string Trace_Description {
             get {
                 return ResourceManager.GetString("Trace_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to void execTrace{0}() // {1}
-        ///{{
-        ///{2}
-        ///}}
-        ///
-        ///.
-        /// </summary>
-        internal static string Trace_Format {
-            get {
-                return ResourceManager.GetString("Trace_Format", resourceCulture);
             }
         }
         

@@ -87,7 +87,6 @@
             this.EditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.EditInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
-            this.EditRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
@@ -267,7 +266,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 569;
+            this.SplitContainer1.SplitterDistance = 568;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -278,7 +277,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(569, 682);
+            this.GLControl.Size = new System.Drawing.Size(568, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -290,7 +289,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(401, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(402, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -577,7 +576,6 @@
             this.EditSelectAll,
             this.EditInvertSelection,
             this.toolStripMenuItem10,
-            this.EditRefresh,
             this.EditOptions});
             this.EditMenu.Name = "EditMenu";
             this.EditMenu.Size = new System.Drawing.Size(42, 21);
@@ -603,8 +601,7 @@
             this.EditUndo.Image = global::TabbyCat.Properties.Resources.Edit_UndoHS;
             this.EditUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditUndo.Name = "EditUndo";
-            this.EditUndo.ShortcutKeyDisplayString = "^Z";
-            this.EditUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.EditUndo.ShortcutKeyDisplayString = "";
             this.EditUndo.Size = new System.Drawing.Size(197, 22);
             this.EditUndo.Text = "&Undo";
             // 
@@ -614,8 +611,7 @@
             this.EditRedo.Image = global::TabbyCat.Properties.Resources.Edit_RedoHS;
             this.EditRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditRedo.Name = "EditRedo";
-            this.EditRedo.ShortcutKeyDisplayString = "^Y";
-            this.EditRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.EditRedo.ShortcutKeyDisplayString = "";
             this.EditRedo.Size = new System.Drawing.Size(197, 22);
             this.EditRedo.Text = "&Redo";
             // 
@@ -630,8 +626,7 @@
             this.EditCut.Image = global::TabbyCat.Properties.Resources.CutHS;
             this.EditCut.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCut.Name = "EditCut";
-            this.EditCut.ShortcutKeyDisplayString = "^X";
-            this.EditCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.EditCut.ShortcutKeyDisplayString = "";
             this.EditCut.Size = new System.Drawing.Size(197, 22);
             this.EditCut.Text = "Cu&t";
             // 
@@ -641,8 +636,7 @@
             this.EditCopy.Image = global::TabbyCat.Properties.Resources.CopyHS;
             this.EditCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCopy.Name = "EditCopy";
-            this.EditCopy.ShortcutKeyDisplayString = "^C";
-            this.EditCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.EditCopy.ShortcutKeyDisplayString = "";
             this.EditCopy.Size = new System.Drawing.Size(197, 22);
             this.EditCopy.Text = "&Copy";
             // 
@@ -651,8 +645,7 @@
             this.EditPaste.Image = global::TabbyCat.Properties.Resources.PasteHS;
             this.EditPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.EditPaste.Name = "EditPaste";
-            this.EditPaste.ShortcutKeyDisplayString = "^V";
-            this.EditPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.EditPaste.ShortcutKeyDisplayString = "";
             this.EditPaste.Size = new System.Drawing.Size(197, 22);
             this.EditPaste.Text = "&Paste";
             // 
@@ -673,8 +666,7 @@
             // EditSelectAll
             // 
             this.EditSelectAll.Name = "EditSelectAll";
-            this.EditSelectAll.ShortcutKeyDisplayString = "^A";
-            this.EditSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.EditSelectAll.ShortcutKeyDisplayString = "";
             this.EditSelectAll.Size = new System.Drawing.Size(197, 22);
             this.EditSelectAll.Text = "Select &All";
             // 
@@ -688,13 +680,6 @@
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
             this.toolStripMenuItem10.Size = new System.Drawing.Size(194, 6);
-            // 
-            // EditRefresh
-            // 
-            this.EditRefresh.Name = "EditRefresh";
-            this.EditRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.EditRefresh.Size = new System.Drawing.Size(197, 22);
-            this.EditRefresh.Text = "R&efresh";
             // 
             // EditOptions
             // 
@@ -895,7 +880,6 @@
         internal System.Windows.Forms.ToolStripMenuItem EditSelectAll;
         internal System.Windows.Forms.ToolStripMenuItem EditInvertSelection;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
-        internal System.Windows.Forms.ToolStripMenuItem EditRefresh;
         internal System.Windows.Forms.ToolStripMenuItem EditOptions;
         internal System.Windows.Forms.ToolStripMenuItem TimeMenu;
         internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;

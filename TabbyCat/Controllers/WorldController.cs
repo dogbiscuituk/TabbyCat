@@ -176,7 +176,6 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void EditRefresh_Click(object sender, EventArgs e) => RenderController.Refresh();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         // WorldForm
@@ -327,7 +326,6 @@
                 WorldForm.EditSelectAll.Click += EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
                 WorldForm.EditOptions.Click += EditOptions_Click;
-                WorldForm.EditRefresh.Click += EditRefresh_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
             }
@@ -348,7 +346,6 @@
                 WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
                 WorldForm.EditOptions.Click -= EditOptions_Click;
-                WorldForm.EditRefresh.Click -= EditRefresh_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
             }

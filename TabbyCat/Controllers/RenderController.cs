@@ -28,20 +28,20 @@
         public string GetScript(ShaderType shaderType) =>
             !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
             ? string.Empty
-            : string.Format(Resources.Scene_Format,
+            : string.Format(Resources.Format_Scene,
                 Scene.GLTargetVersion,
                 Scene.GetScript(shaderType),
                 string.Concat(
                     Scene.Traces.Select(
                         p => string.Format(
-                            Resources.Trace_Format,
+                            Resources.Format_Trace,
                             p.Index + 1,
                             p,
                             p.GetScript(shaderType).Indent("  ")))),
                 Scene.Traces.Any()
-                ? Scene.Traces.Select(p => string.Format(Resources.Switch_Case, p.Index + 1))
-                    .Aggregate((p, q) => $"{p}{q}")
-                : string.Empty);
+                    ? Scene.Traces.Select(p => string.Format(Resources.Format_Case, p.Index + 1))
+                        .Aggregate((p, q) => $"{p}{q}")
+                    : string.Empty);
 
         public void SetScript(ShaderType shaderType, string value) =>
             throw new System.NotImplementedException();

@@ -49,6 +49,7 @@
 
         #region Private Fields
 
+        private FastColoredTextBox ActiveTextBox;
         private readonly PropertiesController PropertiesController;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
@@ -57,10 +58,6 @@
         #endregion
 
         #region Private Properties
-
-        private FastColoredTextBox ActiveTextBox =>
-            PrimaryTextBox.Focused ? PrimaryTextBox :
-            SecondaryTextBox.Focused ? SecondaryTextBox : null;
 
         private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
@@ -206,7 +203,7 @@
 
         private void Cut_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
 
-        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
+        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.ClearSelected();
 
         private void DocumentMap_Click(object sender, System.EventArgs e) =>
             ShowDocumentMap = !ShowDocumentMap;
@@ -233,7 +230,7 @@
                     File.WriteAllText(dialog.FileName, PrimaryTextBox.Rtf);
         }
 
-        private void Focus_Changed(object sender, EventArgs e) => UpdateUI();
+        private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
         private void Help_Click(object sender, System.EventArgs e) => HotkeysController.Show(WorldForm);
 
@@ -532,6 +529,12 @@
             if (s == ShaderType)
                 s = s.Next();
             ShaderType = s;
+        }
+
+        private void SetActiveTextBox(FastColoredTextBox activeTextBox)
+        {
+            ActiveTextBox = activeTextBox;
+            UpdateUI();
         }
 
         private void UpdateProperties(params string[] propertyNames)

@@ -361,9 +361,6 @@
   <data name="StopHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StopHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Switch_Case" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\switch_case.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="SychronizeListHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SychronizeListHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -544,10 +541,13 @@
   <data name="Built_in_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Trace_Format" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_format.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Format_Case" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\format_case.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Scene_Format" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_format.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
