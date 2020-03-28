@@ -1,0 +1,12 @@
+﻿#version {0}
+
+{1}
+
+{2}void main()
+{{
+  switch (traceNumber)
+  {{
+{3}    default:
+      break;
+  }}
+}}

@@ -25,35 +25,23 @@
 
         #region Public Methods
 
-        public string GetScript(ShaderType shaderType)
-        {
-            StringBuilder script = null;
-            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-            {
-                var trace = Scene.Traces[traceIndex];
-                var traceScript = trace.GetScript(shaderType);
-                if (!string.IsNullOrWhiteSpace(traceScript))
-                {
-                    if (script == null)
-                    {
-                        script = new StringBuilder();
-                        script.AppendFormat(Resources.Scene_Head, Scene.GLTargetVersion);
-                        script.AppendLine($"\n{Scene.GetScript(shaderType)}\n");
-                    }
-                    var traceNumber = traceIndex + 1;
-                    script.AppendFormat(Resources.Trace_Head, traceNumber, trace);
-                    script.AppendLine(traceScript.Indent("  "));
-                    script.AppendLine(Resources.Trace_Tail);
-                }
-            }
-            if (script == null)
-                return string.Empty;
-            script.AppendLine(Resources.Switch_Statement);
-            for (var traceNumber = 1; traceNumber <= Scene.Traces.Count; traceNumber++)
-                script.AppendFormat(Resources.Switch_Case, traceNumber);
-            script.AppendLine(Resources.Scene_Tail);
-            return script.ToString();
-        }
+        public string GetScript(ShaderType shaderType) =>
+            !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
+            ? string.Empty
+            : string.Format(Resources.Scene_Format,
+                Scene.GLTargetVersion,
+                Scene.GetScript(shaderType),
+                string.Concat(
+                    Scene.Traces.Select(
+                        p => string.Format(
+                            Resources.Trace_Format,
+                            p.Index + 1,
+                            p,
+                            p.GetScript(shaderType).Indent("  ")))),
+                Scene.Traces.Any()
+                ? Scene.Traces.Select(p => string.Format(Resources.Switch_Case, p.Index + 1))
+                    .Aggregate((p, q) => $"{p}{q}")
+                : string.Empty);
 
         public void SetScript(ShaderType shaderType, string value) =>
             throw new System.NotImplementedException();
@@ -188,9 +176,9 @@
                     GL.BindVertexArray(0);
                 }
                 GL.UseProgram(0); // Stop Shader
-                GLControl.SwapBuffers();
                 UpdateFPS();
             }
+            GLControl.SwapBuffers();
             MakeCurrent(false);
         }
 
@@ -348,6 +336,23 @@
                 Scene.GPUStatus |= GPUStatus.Warning;
         }
 
+        private bool MakeCurrent(bool current)
+        {
+            if (!GLControl.HasValidContext)
+                return false;
+            if (current)
+            {
+                if (++CurrencyCount == 1)
+                    GLControl.MakeCurrent();
+            }
+            else
+            {
+                if (--CurrencyCount == 0)
+                    GLControl.Context.MakeCurrent(null);
+            }
+            return true;
+        }
+
         private void ValidateCameraView()
         {
             if (CameraViewValid)
@@ -366,16 +371,19 @@
             CreateShaders();
             if (!ShaderTypes.Any())
                 Log("No Trace Shaders found to compile.");
-            Log("Linking program...");
-            BindAttributes();
-            GL.LinkProgram(ProgramID);
-            GL.ValidateProgram(ProgramID);
-            Log(GL.GetProgramInfoLog(ProgramID));
+            if (Scene.GPUStatus == GPUStatus.OK)
+            {
+                Log("Linking program...");
+                BindAttributes();
+                GL.LinkProgram(ProgramID);
+                GL.ValidateProgram(ProgramID);
+                Log(GL.GetProgramInfoLog(ProgramID));
+                GetUniformLocations();
+            }
+            DeleteShaders();
             Log("End of log.");
             Scene.GPULog = GpuLog.ToString().TrimEnd();
             GpuLog = null;
-            GetUniformLocations();
-            DeleteShaders();
             ProgramCompiled = true;
         }
 
@@ -452,29 +460,6 @@
             GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             return vboID;
-        }
-
-        #endregion
-
-        #region Render
-
-        private bool MakeCurrent(bool current)
-        {
-            if (!GLControl.HasValidContext)
-                return false;
-            if (current)
-            {
-                CurrencyCount++;
-                if (CurrencyCount == 1)
-                    GLControl.MakeCurrent();
-            }
-            else
-            {
-                CurrencyCount--;
-                if (CurrencyCount == 0)
-                    GLControl.Context.MakeCurrent(null);
-            }
-            return true;
         }
 
         #endregion

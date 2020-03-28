@@ -370,14 +370,12 @@
             if (connect)
             {
                 textBox.Enter += Focus_Changed;
-                textBox.Leave += Focus_Changed;
                 textBox.SelectionChanged += TextBox_SelectionChanged;
                 textBox.TextChanged += TextBox_TextChanged;
             }
             else
             {
                 textBox.Enter -= Focus_Changed;
-                textBox.Leave -= Focus_Changed;
                 textBox.SelectionChanged -= TextBox_SelectionChanged;
                 textBox.TextChanged -= TextBox_TextChanged;
             }
@@ -550,14 +548,14 @@
         private void UpdateUI()
         {
             Editor.tbExport.Enabled = Editor.tbPrint.Enabled =
-                ActiveTextBox != null && ActiveTextBox.Text != string.Empty;
+                PrimaryTextBox.Text != string.Empty;
             Editor.tbUndo.Enabled = Editor.miUndo.Enabled =
                 ActiveTextBox != null && ActiveTextBox.UndoEnabled;
             Editor.tbRedo.Enabled = Editor.miRedo.Enabled =
                 ActiveTextBox != null && ActiveTextBox.RedoEnabled;
             Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
             Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
-                ActiveTextBox != null && ActiveTextBox.SelectionLength > 0;
+                ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
         }
 
         #endregion

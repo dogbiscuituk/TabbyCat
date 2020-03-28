@@ -1040,21 +1040,31 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to #version {0}
+        ///
+        ///{1}
+        ///
+        ///{2}void main()
+        ///{{
+        ///  switch (traceNumber)
+        ///  {{
+        ///{3}    default:
+        ///      break;
+        ///  }}
+        ///}}.
+        /// </summary>
+        internal static string Scene_Format {
+            get {
+                return ResourceManager.GetString("Scene_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The target number of frames per second.
         /// </summary>
         internal static string Scene_FPS {
             get {
                 return ResourceManager.GetString("Scene_FPS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to #version {0}
-        /// .
-        /// </summary>
-        internal static string Scene_Head {
-            get {
-                return ResourceManager.GetString("Scene_Head", resourceCulture);
             }
         }
         
@@ -1072,30 +1082,11 @@ namespace TabbyCat.Properties {
         ///out vec3 colour;
         ///
         ///uniform float timeValue;
-        ///uniform int traceIndex;
+        ///uniform int traceNumber;
         ///uniform mat4
         ///  transform,
         ///  cameraView,
-        ///  projection;
-        ///
-        ///void execTrace()
-        ///{
-        ///  float
-        ///    t = timeValue,
-        ///    x = position.x,
-        ///    y = position.y,
-        ///    z = position.z,
-        ///    r = 0,
-        ///    g = 0,
-        ///    b = 0;
-        ///
-        ///  z = sqrt(x * x + y * y);
-        ///  z = cos(20 * z - 10 * t) * exp(-3 * z);
-        ///  r = (x + 1) / 2;
-        ///  g = (y + 1) / 2;
-        ///  b = clamp(abs(5 * z), 0, 1);
-        ///
-        ///  gl_Position = projection * cameraView * tr [rest of string was truncated]&quot;;.
+        ///  projection;.
         /// </summary>
         internal static string Scene_Shader1Vertex {
             get {
@@ -1135,12 +1126,7 @@ namespace TabbyCat.Properties {
         ///out vec4 FragColor;
         ///
         ///uniform float timeValue;
-        ///uniform int traceIndex;
-        ///
-        ///void execTrace()
-        ///{
-        ///  FragColor = vec4(colour, 0.1);
-        ///}.
+        ///uniform int traceNumber;.
         /// </summary>
         internal static string Scene_Shader5Fragment {
             get {
@@ -1154,19 +1140,6 @@ namespace TabbyCat.Properties {
         internal static string Scene_Shader6Compute {
             get {
                 return ResourceManager.GetString("Scene_Shader6Compute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     default: break;
-        ///  }
-        ///}
-        /// 
-        /// .
-        /// </summary>
-        internal static string Scene_Tail {
-            get {
-                return ResourceManager.GetString("Scene_Tail", resourceCulture);
             }
         }
         
@@ -1269,24 +1242,14 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     case {0}: execTrace{0}(); break;
+        ///   Looks up a localized string similar to     case {0}:
+        ///      execTrace{0}();
+        ///      break;
         ///.
         /// </summary>
         internal static string Switch_Case {
             get {
                 return ResourceManager.GetString("Switch_Case", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to void main()
-        ///{
-        ///  switch (traceIndex)
-        ///  {.
-        /// </summary>
-        internal static string Switch_Statement {
-            get {
-                return ResourceManager.GetString("Switch_Statement", resourceCulture);
             }
         }
         
@@ -1352,11 +1315,14 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to void execTrace{0}() // {1}
         ///{{
+        ///{2}
+        ///}}
+        ///
         ///.
         /// </summary>
-        internal static string Trace_Head {
+        internal static string Trace_Format {
             get {
-                return ResourceManager.GetString("Trace_Head", resourceCulture);
+                return ResourceManager.GetString("Trace_Format", resourceCulture);
             }
         }
         
@@ -1505,7 +1471,23 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   execTrace();.
+        ///   Looks up a localized string similar to float
+        ///  t = timeValue,
+        ///  x = position.x,
+        ///  y = position.y,
+        ///  z = position.z,
+        ///  r = 0,
+        ///  g = 0,
+        ///  b = 0;
+        ///
+        ///z = sqrt(x * x + y * y);
+        ///z = cos(20 * z - 10 * t) * exp(-3 * z);
+        ///r = (x + 1) / 2;
+        ///g = (y + 1) / 2;
+        ///b = clamp(abs(5 * z), 0, 1);
+        ///
+        ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
+        ///colour = vec3(r, g, b);.
         /// </summary>
         internal static string Trace_Shader1Vertex {
             get {
@@ -1541,7 +1523,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   execTrace();.
+        ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
         /// </summary>
         internal static string Trace_Shader5Fragment {
             get {
@@ -1582,16 +1564,6 @@ namespace TabbyCat.Properties {
         internal static string Trace_StripCountZ {
             get {
                 return ResourceManager.GetString("Trace_StripCountZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to }
-        /// .
-        /// </summary>
-        internal static string Trace_Tail {
-            get {
-                return ResourceManager.GetString("Trace_Tail", resourceCulture);
             }
         }
         

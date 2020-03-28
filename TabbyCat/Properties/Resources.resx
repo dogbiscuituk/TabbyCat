@@ -319,9 +319,6 @@
   <data name="saveHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_head.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="Scene_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -339,9 +336,6 @@
   </data>
   <data name="Scene_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_Tail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_tail.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SearchWebHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SearchWebHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -369,9 +363,6 @@
   </data>
   <data name="Switch_Case" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\switch_case.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Switch_Statement" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\switch_statement.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SychronizeListHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SychronizeListHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -448,9 +439,6 @@
   <data name="Trace_Visible" xml:space="preserve">
     <value>Whether or not this trace is visible</value>
   </data>
-  <data name="Trace_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_head.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="Trace_LocationX" xml:space="preserve">
     <value>The X component of location</value>
   </data>
@@ -474,9 +462,6 @@
   </data>
   <data name="Trace_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Trace_Tail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_tail.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="WebInsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WebInsertHyperlinkHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -558,5 +543,11 @@
   </data>
   <data name="Built_in_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Trace_Format" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_format.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Scene_Format" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_format.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
