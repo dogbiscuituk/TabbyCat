@@ -60,7 +60,7 @@
             this.cbPattern = new System.Windows.Forms.ComboBox();
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
-            this.clbTraceSelector = new Jmk.Controls.JmkCheckedListBox();
+            this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
@@ -121,7 +121,7 @@
             this.TableLayoutPanel.Controls.Add(this.cbPattern, 1, 7);
             this.TableLayoutPanel.Controls.Add(this.cbVisible, 3, 7);
             this.TableLayoutPanel.Controls.Add(this.seLocationX, 1, 1);
-            this.TableLayoutPanel.Controls.Add(this.clbTraceSelector, 1, 8);
+            this.TableLayoutPanel.Controls.Add(this.SelectionToolbar, 1, 8);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -147,9 +147,9 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 208);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 40);
+            this.label9.Size = new System.Drawing.Size(84, 17);
             this.label9.TabIndex = 29;
-            this.label9.Text = "Selected Trace(s)";
+            this.label9.Text = "Selection";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
@@ -695,23 +695,15 @@
             this.seLocationX.TabIndex = 3;
             this.seLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // clbTraceSelector
+            // SelectionToolbar
             // 
-            this.clbTraceSelector.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.clbTraceSelector.CheckOnClick = true;
-            this.TableLayoutPanel.SetColumnSpan(this.clbTraceSelector, 3);
-            this.clbTraceSelector.ColumnWidth = 15;
-            this.clbTraceSelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clbTraceSelector.FormattingEnabled = true;
-            this.clbTraceSelector.HorizontalScrollbar = true;
-            this.clbTraceSelector.IntegralHeight = false;
-            this.clbTraceSelector.Location = new System.Drawing.Point(92, 210);
-            this.clbTraceSelector.Margin = new System.Windows.Forms.Padding(2);
-            this.clbTraceSelector.MultiColumn = true;
-            this.clbTraceSelector.Name = "clbTraceSelector";
-            this.clbTraceSelector.ScrollAlwaysVisible = true;
-            this.clbTraceSelector.Size = new System.Drawing.Size(266, 36);
-            this.clbTraceSelector.TabIndex = 30;
+            this.TableLayoutPanel.SetColumnSpan(this.SelectionToolbar, 3);
+            this.SelectionToolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.SelectionToolbar.Location = new System.Drawing.Point(90, 208);
+            this.SelectionToolbar.Name = "SelectionToolbar";
+            this.SelectionToolbar.Size = new System.Drawing.Size(270, 0);
+            this.SelectionToolbar.TabIndex = 30;
+            this.SelectionToolbar.Text = "toolStrip1";
             // 
             // ToolTip
             // 
@@ -784,6 +776,6 @@
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.Label label9;
-        public Jmk.Controls.JmkCheckedListBox clbTraceSelector;
+        public System.Windows.Forms.ToolStrip SelectionToolbar;
     }
 }

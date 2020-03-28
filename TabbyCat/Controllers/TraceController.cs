@@ -20,6 +20,7 @@
         internal TraceController(PropertiesController propertiesController)
             : base(propertiesController)
         {
+            SelectionController = new SelectionController(this);
             InitCommonControls(Editor.TableLayoutPanel);
             InitLocalControls();
         }
@@ -27,6 +28,8 @@
         #endregion
 
         #region Fields & Properties
+
+        internal ToolStrip SelectionToolbar => Editor.SelectionToolbar;
 
         protected override string[] AllProperties => new[]
         {
@@ -43,8 +46,8 @@
 
         private TraceEdit Editor => WorldEdit.TraceEdit;
         private Selection Selection => WorldController.Selection;
+        private readonly SelectionController SelectionController;
         private bool SelectionUpdating;
-        private JmkCheckedListBox TraceSelector => Editor.clbTraceSelector;
 
         #endregion
 
@@ -77,8 +80,6 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                TraceSelector.MouseInItem += TraceSelector_MouseInItem;
-                TraceSelector.SelectionChanged += TraceSelector_SelectionChanged;
             }
             else
             {
@@ -103,8 +104,6 @@
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                TraceSelector.MouseInItem -= TraceSelector_MouseInItem;
-                TraceSelector.SelectionChanged -= TraceSelector_SelectionChanged;
             }
         }
 
@@ -165,7 +164,7 @@
                         Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
                         break;
                     case PropertyNames.Traces:
-                        InitSelector();
+
                         break;
                     case PropertyNames.Visible:
                         Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
@@ -292,12 +291,6 @@
                 p.StripCount.Y,
                 (float)Editor.seStripCountZ.Value)));
 
-        private void TraceSelector_MouseInItem(object sender, ItemCheckEventArgs e) =>
-            SetToolTip(TraceSelector, e.Index < 0 ? string.Empty : Scene.Traces[e.Index].ToString());
-
-        private void TraceSelector_SelectionChanged(object sender, EventArgs e) =>
-            CopySelectionFromControl();
-
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, Editor.cbVisible.Checked));
 
@@ -310,7 +303,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            Selection.Set(TraceSelector.CheckedIndices.Cast<int>().Select(p => Scene.Traces[p]));
+
             SelectionUpdating = false;
         }
 
@@ -319,7 +312,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            TraceSelector.SetCheckedIndices(Selection.Select(p => p.Index).ToList());
+
             SelectionUpdating = false;
         }
 
@@ -343,18 +336,6 @@
             Editor.seStripCountY.Minimum =
             Editor.seStripCountZ.Minimum = 0;
             Editor.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
-        }
-
-        private void InitSelector()
-        {
-            TraceSelector.BeginUpdate();
-            var items = TraceSelector.Items;
-            var traces = Scene.Traces;
-            while (items.Count > traces.Count)
-                items.RemoveAt(traces.Count);
-            while (items.Count < traces.Count)
-                items.Add(string.Empty);
-            TraceSelector.EndUpdate();
         }
 
         private void InitToolTips()

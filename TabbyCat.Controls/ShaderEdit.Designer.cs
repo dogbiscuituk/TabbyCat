@@ -44,14 +44,6 @@
             this.jmkScrollPanel1 = new Jmk.Controls.JmkScrollPanel();
             this.lblBuiltInHelp = new Jmk.Controls.JmkLinkLabel();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
-            this.tbShader = new System.Windows.Forms.ToolStripSplitButton();
-            this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
-            this.miTessellationEvaluation = new System.Windows.Forms.ToolStripMenuItem();
-            this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
-            this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tbExport = new System.Windows.Forms.ToolStripDropDownButton();
             this.tbExportHTML = new System.Windows.Forms.ToolStripMenuItem();
             this.tbExportRTF = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +62,14 @@
             this.tbDocumentMap = new System.Windows.Forms.ToolStripMenuItem();
             this.tbSplit = new System.Windows.Forms.ToolStripButton();
             this.tbHelp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbShader = new System.Windows.Forms.ToolStripSplitButton();
+            this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
+            this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
+            this.miTessellationEvaluation = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
+            this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
+            this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
             this.PopupEditMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.miRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,7 +180,7 @@
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
             this.TopSplit.Size = new System.Drawing.Size(360, 177);
-            this.TopSplit.SplitterDistance = 234;
+            this.TopSplit.SplitterDistance = 232;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -223,7 +223,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(234, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(232, 149);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -269,7 +269,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(234, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(232, 149);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -284,7 +284,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(234, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(232, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -296,7 +296,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(121, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(123, 177);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             // 
@@ -316,7 +316,7 @@
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
             this.BottomSplit.Size = new System.Drawing.Size(360, 177);
-            this.BottomSplit.SplitterDistance = 234;
+            this.BottomSplit.SplitterDistance = 232;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -329,7 +329,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(234, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(232, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -341,7 +341,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(121, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(123, 177);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             // 
@@ -372,8 +372,6 @@
             this.Toolbar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Toolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbShader,
-            this.toolStripSeparator3,
             this.tbExport,
             this.tbPrint,
             this.toolStripSeparator1,
@@ -386,77 +384,14 @@
             this.toolStripSeparator2,
             this.tbOptions,
             this.tbSplit,
-            this.tbHelp});
-            this.Toolbar.Location = new System.Drawing.Point(3, 0);
+            this.tbHelp,
+            this.toolStripSeparator3,
+            this.tbShader});
+            this.Toolbar.Location = new System.Drawing.Point(0, 0);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(357, 25);
+            this.Toolbar.Size = new System.Drawing.Size(360, 25);
+            this.Toolbar.Stretch = true;
             this.Toolbar.TabIndex = 0;
-            // 
-            // tbShader
-            // 
-            this.tbShader.AutoSize = false;
-            this.tbShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tbShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miVertex,
-            this.miTessellationControl,
-            this.miTessellationEvaluation,
-            this.miGeometry,
-            this.miFragment,
-            this.miCompute});
-            this.tbShader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShader.Image = ((System.Drawing.Image)(resources.GetObject("tbShader.Image")));
-            this.tbShader.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbShader.Name = "tbShader";
-            this.tbShader.Size = new System.Drawing.Size(96, 22);
-            this.tbShader.Text = "Vertex";
-            this.tbShader.ToolTipText = "Selected Shader";
-            // 
-            // miVertex
-            // 
-            this.miVertex.Name = "miVertex";
-            this.miVertex.Size = new System.Drawing.Size(180, 22);
-            this.miVertex.Text = "Vertex";
-            this.miVertex.ToolTipText = "Vertex Shader";
-            // 
-            // miTessellationControl
-            // 
-            this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(180, 22);
-            this.miTessellationControl.Text = "Tess Ctrl";
-            this.miTessellationControl.ToolTipText = "Tessellation Control Shader";
-            // 
-            // miTessellationEvaluation
-            // 
-            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
-            this.miTessellationEvaluation.Size = new System.Drawing.Size(180, 22);
-            this.miTessellationEvaluation.Text = "Tess Eval";
-            this.miTessellationEvaluation.ToolTipText = "Tessellation Evaluation Shader";
-            // 
-            // miGeometry
-            // 
-            this.miGeometry.Name = "miGeometry";
-            this.miGeometry.Size = new System.Drawing.Size(180, 22);
-            this.miGeometry.Text = "Geometry";
-            this.miGeometry.ToolTipText = "Geometry Shader";
-            // 
-            // miFragment
-            // 
-            this.miFragment.Name = "miFragment";
-            this.miFragment.Size = new System.Drawing.Size(180, 22);
-            this.miFragment.Text = "Fragment";
-            this.miFragment.ToolTipText = "Fragment Shader";
-            // 
-            // miCompute
-            // 
-            this.miCompute.Name = "miCompute";
-            this.miCompute.Size = new System.Drawing.Size(180, 22);
-            this.miCompute.Text = "Compute";
-            this.miCompute.ToolTipText = "Compute Shader";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // tbExport
             // 
@@ -592,7 +527,7 @@
             this.tbSplit.Image = global::TabbyCat.Controls.Properties.Resources.TileWindowsHorizontallyHS;
             this.tbSplit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbSplit.Name = "tbSplit";
-            this.tbSplit.Size = new System.Drawing.Size(23, 20);
+            this.tbSplit.Size = new System.Drawing.Size(23, 22);
             this.tbSplit.ToolTipText = "Split";
             // 
             // tbHelp
@@ -601,8 +536,75 @@
             this.tbHelp.Image = global::TabbyCat.Controls.Properties.Resources.info;
             this.tbHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbHelp.Name = "tbHelp";
-            this.tbHelp.Size = new System.Drawing.Size(23, 20);
+            this.tbHelp.Size = new System.Drawing.Size(23, 22);
             this.tbHelp.ToolTipText = "Help";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tbShader
+            // 
+            this.tbShader.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tbShader.AutoSize = false;
+            this.tbShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tbShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miVertex,
+            this.miTessellationControl,
+            this.miTessellationEvaluation,
+            this.miGeometry,
+            this.miFragment,
+            this.miCompute});
+            this.tbShader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbShader.Image = ((System.Drawing.Image)(resources.GetObject("tbShader.Image")));
+            this.tbShader.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbShader.Name = "tbShader";
+            this.tbShader.Size = new System.Drawing.Size(96, 22);
+            this.tbShader.Text = "Vertex";
+            this.tbShader.ToolTipText = "Selected Shader";
+            // 
+            // miVertex
+            // 
+            this.miVertex.Name = "miVertex";
+            this.miVertex.Size = new System.Drawing.Size(180, 22);
+            this.miVertex.Text = "Vertex";
+            this.miVertex.ToolTipText = "Vertex Shader";
+            // 
+            // miTessellationControl
+            // 
+            this.miTessellationControl.Name = "miTessellationControl";
+            this.miTessellationControl.Size = new System.Drawing.Size(180, 22);
+            this.miTessellationControl.Text = "Tess Ctrl";
+            this.miTessellationControl.ToolTipText = "Tessellation Control Shader";
+            // 
+            // miTessellationEvaluation
+            // 
+            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
+            this.miTessellationEvaluation.Size = new System.Drawing.Size(180, 22);
+            this.miTessellationEvaluation.Text = "Tess Eval";
+            this.miTessellationEvaluation.ToolTipText = "Tessellation Evaluation Shader";
+            // 
+            // miGeometry
+            // 
+            this.miGeometry.Name = "miGeometry";
+            this.miGeometry.Size = new System.Drawing.Size(180, 22);
+            this.miGeometry.Text = "Geometry";
+            this.miGeometry.ToolTipText = "Geometry Shader";
+            // 
+            // miFragment
+            // 
+            this.miFragment.Name = "miFragment";
+            this.miFragment.Size = new System.Drawing.Size(180, 22);
+            this.miFragment.Text = "Fragment";
+            this.miFragment.ToolTipText = "Fragment Shader";
+            // 
+            // miCompute
+            // 
+            this.miCompute.Name = "miCompute";
+            this.miCompute.Size = new System.Drawing.Size(180, 22);
+            this.miCompute.Text = "Compute";
+            this.miCompute.ToolTipText = "Compute Shader";
             // 
             // PopupEditMenu
             // 
