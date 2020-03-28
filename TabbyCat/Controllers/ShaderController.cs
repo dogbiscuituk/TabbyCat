@@ -30,7 +30,7 @@
             ShowLineNumbers = false;
             ShowDocumentMap = false;
             SplitType = SplitType.None;
-            var items = Editor.btnShader.DropDownItems;
+            var items = Editor.tbShader.DropDownItems;
             items[0].Tag = ShaderType.VertexShader;
             items[1].Tag = ShaderType.TessControlShader;
             items[2].Tag = ShaderType.TessEvaluationShader;
@@ -44,6 +44,10 @@
         #region Fields & Properties
 
         internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
+
+        private FastColoredTextBox ActiveTextBox =>
+            PrimaryTextBox.Focused ? PrimaryTextBox :
+            SecondaryTextBox.Focused ? SecondaryTextBox : null;
 
         private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
@@ -105,8 +109,8 @@
                 if (ShaderType != value)
                 {
                     _ShaderType = value;
-                    Editor.btnShader.Text =
-                        Editor.btnShader.DropDownItems
+                    Editor.tbShader.Text =
+                        Editor.tbShader.DropDownItems
                         .Cast<ToolStripMenuItem>()
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
@@ -189,6 +193,12 @@
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
             ResizeBuiltInHelp();
 
+        private void Copy_Click(object sender, EventArgs e) => ActiveTextBox.Copy();
+
+        private void Cut_Click(object sender, EventArgs e) => ActiveTextBox.Cut();
+
+        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox.Cut();
+
         private void DocumentMap_Click(object sender, System.EventArgs e) =>
             ShowDocumentMap = !ShowDocumentMap;
 
@@ -214,6 +224,8 @@
                     File.WriteAllText(dialog.FileName, PrimaryTextBox.Rtf);
         }
 
+        private void Focus_Changed(object sender, EventArgs e) => UpdateUI();
+
         private void Help_Click(object sender, System.EventArgs e) => HotkeysController.Show(WorldForm);
 
         private void LineNumbers_Click(object sender, System.EventArgs e) =>
@@ -221,19 +233,21 @@
 
         private void Options_DropDownOpening(object sender, System.EventArgs e)
         {
-            Editor.btnRuler.Checked = ShowRuler;
-            Editor.btnLineNumbers.Checked = ShowLineNumbers;
-            Editor.btnDocumentMap.Checked = ShowDocumentMap;
+            Editor.tbRuler.Checked = ShowRuler;
+            Editor.tbLineNumbers.Checked = ShowLineNumbers;
+            Editor.tbDocumentMap.Checked = ShowDocumentMap;
         }
+
+        private void Paste_Click(object sender, EventArgs e) => PrimaryTextBox.Paste();
 
         private void Print_Click(object sender, System.EventArgs e) =>
             PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
-        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) =>
-            LoadShaderCode();
+        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) => LoadShaderCode();
 
-        private void Ruler_Click(object sender, System.EventArgs e) =>
-            ShowRuler = !ShowRuler;
+        private void Redo_Click(object sender, EventArgs e) => ActiveTextBox.Redo();
+
+        private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
 
         private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
@@ -242,7 +256,7 @@
 
         private void Shader_DropDownOpening(object sender, EventArgs e)
         {
-            foreach (ToolStripMenuItem item in Editor.btnShader.DropDownItems)
+            foreach (ToolStripMenuItem item in Editor.tbShader.DropDownItems)
             {
                 var shaderType = (ShaderType)item.Tag;
                 item.CheckState =
@@ -256,11 +270,15 @@
 
         private void Split_Click(object sender, System.EventArgs e) => CycleSplit();
 
+        private void TextBox_SelectionChanged(object sender, EventArgs e) => UpdateUI();
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SaveShaderCode();
             UpdateUI();
         }
+
+        private void Undo_Click(object sender, EventArgs e) => ActiveTextBox.Undo();
 
         private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             LoadShaderCode();
@@ -276,20 +294,32 @@
         {
             if (connect)
             {
-                Editor.btnDocumentMap.Click += DocumentMap_Click;
-                Editor.btnExportHTML.Click += ExportHTML_Click;
-                Editor.btnExportRTF.Click += ExportRTF_Click;
-                Editor.btnHelp.Click += Help_Click;
-                Editor.btnLineNumbers.Click += LineNumbers_Click;
-                Editor.btnOptions.DropDownOpening += Options_DropDownOpening;
-                Editor.btnPrint.Click += Print_Click;
-                Editor.btnRuler.Click += Ruler_Click;
-                Editor.btnSplit.Click += Split_Click;
-                Editor.btnShader.ButtonClick += Shader_ButtonClick;
-                Editor.btnShader.DropDownOpening += Shader_DropDownOpening;
-                Editor.btnShader.DropDownItemClicked += Shader_DropDownItemClicked;
-                Editor.PrimaryTextBox.TextChanged += TextBox_TextChanged;
-                Editor.SecondaryTextBox.TextChanged += TextBox_TextChanged;
+                Editor.tbDocumentMap.Click += DocumentMap_Click;
+                Editor.tbExportHTML.Click += ExportHTML_Click;
+                Editor.tbExportRTF.Click += ExportRTF_Click;
+                Editor.tbHelp.Click += Help_Click;
+                Editor.tbLineNumbers.Click += LineNumbers_Click;
+                Editor.tbOptions.DropDownOpening += Options_DropDownOpening;
+                Editor.tbPrint.Click += Print_Click;
+                Editor.tbUndo.Click += Undo_Click;
+                Editor.tbRedo.Click += Redo_Click;
+                Editor.tbCut.Click += Cut_Click;
+                Editor.tbCopy.Click += Copy_Click;
+                Editor.tbPaste.Click += Paste_Click;
+                Editor.tbDelete.Click += Delete_Click;
+                Editor.tbRuler.Click += Ruler_Click;
+                Editor.tbSplit.Click += Split_Click;
+                Editor.tbShader.ButtonClick += Shader_ButtonClick;
+                Editor.tbShader.DropDownOpening += Shader_DropDownOpening;
+                Editor.tbShader.DropDownItemClicked += Shader_DropDownItemClicked;
+                PrimaryTextBox.Enter += Focus_Changed;
+                PrimaryTextBox.Leave += Focus_Changed;
+                PrimaryTextBox.SelectionChanged += TextBox_SelectionChanged;
+                PrimaryTextBox.TextChanged += TextBox_TextChanged;
+                SecondaryTextBox.Enter += Focus_Changed;
+                SecondaryTextBox.Leave += Focus_Changed;
+                SecondaryTextBox.SelectionChanged += TextBox_SelectionChanged;
+                SecondaryTextBox.TextChanged += TextBox_TextChanged;
                 Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
@@ -301,20 +331,32 @@
             }
             else
             {
-                Editor.btnDocumentMap.Click -= DocumentMap_Click;
-                Editor.btnExportHTML.Click -= ExportHTML_Click;
-                Editor.btnExportRTF.Click -= ExportRTF_Click;
-                Editor.btnHelp.Click -= Help_Click;
-                Editor.btnLineNumbers.Click -= LineNumbers_Click;
-                Editor.btnOptions.DropDownOpening -= Options_DropDownOpening;
-                Editor.btnPrint.Click -= Print_Click;
-                Editor.btnRuler.Click -= Ruler_Click;
-                Editor.btnSplit.Click -= Split_Click;
-                Editor.btnShader.ButtonClick -= Shader_ButtonClick;
-                Editor.btnShader.DropDownOpening -= Shader_DropDownOpening;
-                Editor.btnShader.DropDownItemClicked -= Shader_DropDownItemClicked;
-                Editor.PrimaryTextBox.TextChanged -= TextBox_TextChanged;
-                Editor.SecondaryTextBox.TextChanged -= TextBox_TextChanged;
+                Editor.tbDocumentMap.Click -= DocumentMap_Click;
+                Editor.tbExportHTML.Click -= ExportHTML_Click;
+                Editor.tbExportRTF.Click -= ExportRTF_Click;
+                Editor.tbHelp.Click -= Help_Click;
+                Editor.tbLineNumbers.Click -= LineNumbers_Click;
+                Editor.tbOptions.DropDownOpening -= Options_DropDownOpening;
+                Editor.tbPrint.Click -= Print_Click;
+                Editor.tbUndo.Click -= Undo_Click;
+                Editor.tbRedo.Click -= Redo_Click;
+                Editor.tbCut.Click -= Cut_Click;
+                Editor.tbCopy.Click -= Copy_Click;
+                Editor.tbPaste.Click -= Paste_Click;
+                Editor.tbDelete.Click -= Delete_Click;
+                Editor.tbRuler.Click -= Ruler_Click;
+                Editor.tbSplit.Click -= Split_Click;
+                Editor.tbShader.ButtonClick -= Shader_ButtonClick;
+                Editor.tbShader.DropDownOpening -= Shader_DropDownOpening;
+                Editor.tbShader.DropDownItemClicked -= Shader_DropDownItemClicked;
+                PrimaryTextBox.Enter -= Focus_Changed;
+                PrimaryTextBox.Leave -= Focus_Changed;
+                PrimaryTextBox.SelectionChanged -= TextBox_SelectionChanged;
+                PrimaryTextBox.TextChanged -= TextBox_TextChanged;
+                SecondaryTextBox.Enter -= Focus_Changed;
+                SecondaryTextBox.Leave -= Focus_Changed;
+                SecondaryTextBox.SelectionChanged -= TextBox_SelectionChanged;
+                SecondaryTextBox.TextChanged -= TextBox_TextChanged;
                 Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
                 Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
                 Editor.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
@@ -437,10 +479,15 @@
             Updating = false;
         }
 
-        private void UpdateUI() =>
-            Editor.btnExport.Enabled =
-            Editor.btnPrint.Enabled =
-            PrimaryTextBox.Text != string.Empty;
+        private void UpdateUI()
+        {
+            Editor.tbExport.Enabled = Editor.tbPrint.Enabled =
+                ActiveTextBox != null && ActiveTextBox.Text != string.Empty;
+            Editor.tbUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
+            Editor.tbRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
+            Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
+                ActiveTextBox != null && ActiveTextBox.SelectionLength > 0;
+        }
 
         #endregion
     }
