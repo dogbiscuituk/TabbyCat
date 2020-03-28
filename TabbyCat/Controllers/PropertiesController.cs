@@ -95,7 +95,7 @@
             else
             {
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
+                WorldForm.ViewMenu.DropDownOpening -= ViewMenu_DropDownOpening;
                 WorldForm.ViewProperties.Click -= ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;
                 WorldForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;

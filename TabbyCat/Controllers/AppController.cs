@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Controls.Types;
     using TabbyCat.Models;
@@ -84,10 +85,12 @@
 
         internal static void Close()
         {
+            /*
             Pulse.Enabled = false;
             Pulse.Tick -= Pulse_Tick;
             Pulse.Dispose();
             Pulse = null;
+            */
             Application.Exit();
         }
 
@@ -118,9 +121,9 @@
         private static AboutDialog _AboutDialog;
 
         private static readonly string DefaultFilesFolderPath =
-            $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\{Application.ProductName}";
+            $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
 
-        private static Timer Pulse;
+        private readonly static Timer Pulse;
 
         private static int PulseCount;
 
@@ -134,7 +137,7 @@
         {
             CanPaste = Clipboard.ContainsData(DataFormat);
             foreach (var worldController in WorldControllers)
-                worldController.Pulse();
+                worldController.OnPulse();
             if (PulseCount < 10)
                 PulseCount++;
             else

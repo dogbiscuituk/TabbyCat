@@ -57,6 +57,7 @@
         #region Internal Events
 
         internal event PropertyChangedEventHandler PropertyChanged;
+        internal event EventHandler Pulse;
         internal event EventHandler SelectionChanged;
 
         #endregion
@@ -116,10 +117,11 @@
             GLControl.Invalidate();
         }
 
-        internal void Pulse()
+        internal void OnPulse()
         {
             UpdateToolbar();
             UpdateStatusBar();
+            Pulse?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

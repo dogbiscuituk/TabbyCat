@@ -41,9 +41,22 @@
 
         #endregion
 
-        #region Fields & Properties
+        #region Internal Properties
 
         internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
+
+        #endregion
+
+        #region Private Fields
+
+        private readonly PropertiesController PropertiesController;
+        private ShaderType _ShaderType = ShaderType.VertexShader;
+        private SplitType _SplitType;
+        private bool Updating;
+
+        #endregion
+
+        #region Private Properties
 
         private FastColoredTextBox ActiveTextBox =>
             PrimaryTextBox.Focused ? PrimaryTextBox :
@@ -52,7 +65,6 @@
         private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
-        private readonly PropertiesController PropertiesController;
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
@@ -62,7 +74,6 @@
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
-        private bool Updating;
         private WorldController WorldController => PropertiesController.WorldController;
         private WorldForm WorldForm => WorldController.WorldForm;
 
@@ -100,7 +111,6 @@
             }
         }
 
-        private ShaderType _ShaderType = ShaderType.VertexShader;
         private ShaderType ShaderType
         {
             get => _ShaderType;
@@ -151,7 +161,6 @@
             }
         }
 
-        private SplitType _SplitType;
         private SplitType SplitType
         {
             get => _SplitType;
@@ -193,11 +202,11 @@
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
             ResizeBuiltInHelp();
 
-        private void Copy_Click(object sender, EventArgs e) => ActiveTextBox.Copy();
+        private void Copy_Click(object sender, EventArgs e) => ActiveTextBox?.Copy();
 
-        private void Cut_Click(object sender, EventArgs e) => ActiveTextBox.Cut();
+        private void Cut_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
 
-        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox.Cut();
+        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
 
         private void DocumentMap_Click(object sender, System.EventArgs e) =>
             ShowDocumentMap = !ShowDocumentMap;
@@ -238,14 +247,14 @@
             Editor.tbDocumentMap.Checked = ShowDocumentMap;
         }
 
-        private void Paste_Click(object sender, EventArgs e) => PrimaryTextBox.Paste();
+        private void Paste_Click(object sender, EventArgs e) => ActiveTextBox?.Paste();
 
         private void Print_Click(object sender, System.EventArgs e) =>
             PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
         private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) => LoadShaderCode();
 
-        private void Redo_Click(object sender, EventArgs e) => ActiveTextBox.Redo();
+        private void Redo_Click(object sender, EventArgs e) => ActiveTextBox?.Redo();
 
         private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
 
@@ -278,7 +287,7 @@
             UpdateUI();
         }
 
-        private void Undo_Click(object sender, EventArgs e) => ActiveTextBox.Undo();
+        private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
         private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             LoadShaderCode();
@@ -286,11 +295,101 @@
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
+        private void WorldController_Pulse(object sender, EventArgs e) =>
+            Editor.tbPaste.Enabled = Clipboard.ContainsText();
+
         #endregion
 
         #region Private Methods
 
         internal void Connect(bool connect)
+        {
+            ConnectMenu(connect);
+            ConnectToolbar(connect);
+            ConnectTextBoxes(connect);
+            ConnectHelp(connect);
+            if (connect)
+            {
+                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.Pulse += WorldController_Pulse;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
+                LoadBuiltInHelp();
+            }
+            else
+            {
+                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.Pulse -= WorldController_Pulse;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+            }
+        }
+
+        private void ConnectHelp(bool connect)
+        {
+            if (connect)
+            {
+                Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
+                Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
+                Editor.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
+                Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
+            }
+            else
+            {
+                Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
+                Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
+                Editor.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
+                Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
+            }
+        }
+
+        private void ConnectMenu(bool connect)
+        {
+            if (connect)
+            {
+                Editor.miUndo.Click += Undo_Click;
+                Editor.miRedo.Click += Redo_Click;
+                Editor.miCut.Click += Cut_Click;
+                Editor.miCopy.Click += Copy_Click;
+                Editor.miPaste.Click += Paste_Click;
+                Editor.miDelete.Click += Delete_Click;
+            }
+            else
+            {
+                Editor.miUndo.Click -= Undo_Click;
+                Editor.miRedo.Click -= Redo_Click;
+                Editor.miCut.Click -= Cut_Click;
+                Editor.miCopy.Click -= Copy_Click;
+                Editor.miPaste.Click -= Paste_Click;
+                Editor.miDelete.Click -= Delete_Click;
+            }
+        }
+
+        private void ConnectTextBox(FastColoredTextBox textBox, bool connect)
+        {
+            if (connect)
+            {
+                textBox.Enter += Focus_Changed;
+                textBox.Leave += Focus_Changed;
+                textBox.SelectionChanged += TextBox_SelectionChanged;
+                textBox.TextChanged += TextBox_TextChanged;
+            }
+            else
+            {
+                textBox.Enter -= Focus_Changed;
+                textBox.Leave -= Focus_Changed;
+                textBox.SelectionChanged -= TextBox_SelectionChanged;
+                textBox.TextChanged -= TextBox_TextChanged;
+            }
+        }
+
+        private void ConnectTextBoxes(bool connect)
+        {
+            ConnectTextBox(PrimaryTextBox, connect);
+            ConnectTextBox(SecondaryTextBox, connect);
+        }
+
+        private void ConnectToolbar(bool connect)
         {
             if (connect)
             {
@@ -312,22 +411,6 @@
                 Editor.tbShader.ButtonClick += Shader_ButtonClick;
                 Editor.tbShader.DropDownOpening += Shader_DropDownOpening;
                 Editor.tbShader.DropDownItemClicked += Shader_DropDownItemClicked;
-                PrimaryTextBox.Enter += Focus_Changed;
-                PrimaryTextBox.Leave += Focus_Changed;
-                PrimaryTextBox.SelectionChanged += TextBox_SelectionChanged;
-                PrimaryTextBox.TextChanged += TextBox_TextChanged;
-                SecondaryTextBox.Enter += Focus_Changed;
-                SecondaryTextBox.Leave += Focus_Changed;
-                SecondaryTextBox.SelectionChanged += TextBox_SelectionChanged;
-                SecondaryTextBox.TextChanged += TextBox_TextChanged;
-                Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
-                Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
-                Editor.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
-                Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
-                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
-                LoadBuiltInHelp();
             }
             else
             {
@@ -349,21 +432,6 @@
                 Editor.tbShader.ButtonClick -= Shader_ButtonClick;
                 Editor.tbShader.DropDownOpening -= Shader_DropDownOpening;
                 Editor.tbShader.DropDownItemClicked -= Shader_DropDownItemClicked;
-                PrimaryTextBox.Enter -= Focus_Changed;
-                PrimaryTextBox.Leave -= Focus_Changed;
-                PrimaryTextBox.SelectionChanged -= TextBox_SelectionChanged;
-                PrimaryTextBox.TextChanged -= TextBox_TextChanged;
-                SecondaryTextBox.Enter -= Focus_Changed;
-                SecondaryTextBox.Leave -= Focus_Changed;
-                SecondaryTextBox.SelectionChanged -= TextBox_SelectionChanged;
-                SecondaryTextBox.TextChanged -= TextBox_TextChanged;
-                Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
-                Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
-                Editor.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
-                Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
-                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
         }
 
@@ -483,9 +551,12 @@
         {
             Editor.tbExport.Enabled = Editor.tbPrint.Enabled =
                 ActiveTextBox != null && ActiveTextBox.Text != string.Empty;
-            Editor.tbUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
-            Editor.tbRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
+            Editor.tbUndo.Enabled = Editor.miUndo.Enabled =
+                ActiveTextBox != null && ActiveTextBox.UndoEnabled;
+            Editor.tbRedo.Enabled = Editor.miRedo.Enabled =
+                ActiveTextBox != null && ActiveTextBox.RedoEnabled;
             Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
+            Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
                 ActiveTextBox != null && ActiveTextBox.SelectionLength > 0;
         }
 
