@@ -61,6 +61,7 @@
         /// </summary>
         public const string
             GPULog = "GPU Log",
-            GPUStatus = "GPU Status";
+            GPUStatus = "GPU Status",
+            GraphicsMode = "Graphics Mode";
     }
 }

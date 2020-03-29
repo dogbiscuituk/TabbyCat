@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.TabControl = new System.Windows.Forms.TabControl();
-            this.tpScene = new System.Windows.Forms.TabPage();
-            this.SceneEdit = new TabbyCat.Controls.SceneEdit();
             this.tpTraces = new System.Windows.Forms.TabPage();
             this.TraceEdit = new TabbyCat.Controls.TraceEdit();
+            this.tpScene = new System.Windows.Forms.TabPage();
+            this.SceneEdit = new TabbyCat.Controls.SceneEdit();
             this.tpGPU = new System.Windows.Forms.TabPage();
-            this.lblGPULog = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
+            this.GpuEdit = new TabbyCat.Controls.GPUEdit();
             this.TabControl.SuspendLayout();
-            this.tpScene.SuspendLayout();
             this.tpTraces.SuspendLayout();
+            this.tpScene.SuspendLayout();
             this.tpGPU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,29 +60,6 @@
             this.TabControl.Size = new System.Drawing.Size(390, 284);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 2;
-            // 
-            // tpScene
-            // 
-            this.tpScene.AutoScroll = true;
-            this.tpScene.BackColor = System.Drawing.SystemColors.Control;
-            this.tpScene.Controls.Add(this.SceneEdit);
-            this.tpScene.Location = new System.Drawing.Point(4, 26);
-            this.tpScene.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpScene.Name = "tpScene";
-            this.tpScene.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpScene.Size = new System.Drawing.Size(382, 254);
-            this.tpScene.TabIndex = 0;
-            this.tpScene.Text = "Scene";
-            // 
-            // SceneEdit
-            // 
-            this.SceneEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.SceneEdit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SceneEdit.Location = new System.Drawing.Point(3, 4);
-            this.SceneEdit.Name = "SceneEdit";
-            this.SceneEdit.Size = new System.Drawing.Size(376, 235);
-            this.SceneEdit.TabIndex = 1;
             // 
             // tpTraces
             // 
@@ -108,42 +84,42 @@
             this.TraceEdit.Size = new System.Drawing.Size(376, 250);
             this.TraceEdit.TabIndex = 0;
             // 
+            // tpScene
+            // 
+            this.tpScene.AutoScroll = true;
+            this.tpScene.BackColor = System.Drawing.SystemColors.Control;
+            this.tpScene.Controls.Add(this.SceneEdit);
+            this.tpScene.Location = new System.Drawing.Point(4, 26);
+            this.tpScene.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tpScene.Name = "tpScene";
+            this.tpScene.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tpScene.Size = new System.Drawing.Size(382, 254);
+            this.tpScene.TabIndex = 0;
+            this.tpScene.Text = "Scene";
+            // 
+            // SceneEdit
+            // 
+            this.SceneEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.SceneEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SceneEdit.Location = new System.Drawing.Point(3, 4);
+            this.SceneEdit.Name = "SceneEdit";
+            this.SceneEdit.Size = new System.Drawing.Size(376, 235);
+            this.SceneEdit.TabIndex = 1;
+            // 
             // tpGPU
             // 
             this.tpGPU.AutoScroll = true;
             this.tpGPU.BackColor = System.Drawing.SystemColors.Control;
-            this.tpGPU.Controls.Add(this.lblGPULog);
-            this.tpGPU.Controls.Add(this.label1);
+            this.tpGPU.Controls.Add(this.GpuEdit);
             this.tpGPU.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpGPU.Location = new System.Drawing.Point(4, 22);
+            this.tpGPU.Location = new System.Drawing.Point(4, 26);
             this.tpGPU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpGPU.Name = "tpGPU";
             this.tpGPU.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tpGPU.Size = new System.Drawing.Size(382, 314);
+            this.tpGPU.Size = new System.Drawing.Size(382, 254);
             this.tpGPU.TabIndex = 2;
             this.tpGPU.Text = "GPU";
-            // 
-            // lblGPULog
-            // 
-            this.lblGPULog.AutoSize = true;
-            this.lblGPULog.Location = new System.Drawing.Point(3, 29);
-            this.lblGPULog.Name = "lblGPULog";
-            this.lblGPULog.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.lblGPULog.Size = new System.Drawing.Size(164, 23);
-            this.lblGPULog.TabIndex = 2;
-            this.lblGPULog.Text = "GPU Log will appear here.";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 4);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(37, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Log";
             // 
             // splitContainer1
             // 
@@ -173,6 +149,16 @@
             this.ShaderEdit.Size = new System.Drawing.Size(390, 489);
             this.ShaderEdit.TabIndex = 3;
             // 
+            // gpuEdit1
+            // 
+            this.GpuEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GpuEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GpuEdit.Location = new System.Drawing.Point(3, 4);
+            this.GpuEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.GpuEdit.Name = "gpuEdit1";
+            this.GpuEdit.Size = new System.Drawing.Size(376, 246);
+            this.GpuEdit.TabIndex = 0;
+            // 
             // PropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -183,10 +169,9 @@
             this.Name = "PropertiesEdit";
             this.Size = new System.Drawing.Size(390, 777);
             this.TabControl.ResumeLayout(false);
-            this.tpScene.ResumeLayout(false);
             this.tpTraces.ResumeLayout(false);
+            this.tpScene.ResumeLayout(false);
             this.tpGPU.ResumeLayout(false);
-            this.tpGPU.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -204,8 +189,7 @@
         public TabbyCat.Controls.TraceEdit TraceEdit;
         public ShaderEdit ShaderEdit;
         public System.Windows.Forms.TabPage tpGPU;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lblGPULog;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        public System.Windows.Forms.SplitContainer splitContainer1;
+        public GPUEdit GpuEdit;
     }
 }

@@ -71,8 +71,14 @@
         {
             switch (e.PropertyName)
             {
+                case PropertyNames.GraphicsMode:
+                    PropertiesEdit.GpuEdit.lblGpuMode.Text = WorldController.GLMode.ToString();
+                    break;
+                case PropertyNames.GPUStatus:
+                    PropertiesEdit.GpuEdit.lblGpuStatus.Text = Scene.GPUStatus.ToString();
+                    break;
                 case PropertyNames.GPULog:
-                    PropertiesEdit.lblGPULog.Text = Scene.GPULog;
+                    PropertiesEdit.GpuEdit.lblGpuLog.Text = Scene.GPULog;
                     break;
             }
         }
