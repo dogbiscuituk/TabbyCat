@@ -185,7 +185,7 @@
 
         private void RemoveLabel()
         {
-            var label = Labels[TraceCount - 1];
+            var label = Labels[TraceCount];
             Labels.Remove(label);
             label.MouseDown -= Label_MouseDown;
             label.Paint -= Label_Paint;

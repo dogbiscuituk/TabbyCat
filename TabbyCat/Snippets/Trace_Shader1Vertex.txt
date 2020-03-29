@@ -7,11 +7,15 @@
   g = 0,
   b = 0;
 
+/* Begin formula */
+
 z = sqrt(x * x + y * y);
 z = cos(20 * z - 10 * t) * exp(-3 * z);
 r = (x + 1) / 2;
 g = (y + 1) / 2;
 b = clamp(abs(5 * z), 0, 1);
+
+/* End formula */
 
 gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
 colour = vec3(r, g, b);

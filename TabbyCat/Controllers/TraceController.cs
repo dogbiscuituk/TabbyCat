@@ -4,6 +4,7 @@
     using Jmk.Controls;
     using OpenTK;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -119,6 +120,18 @@
             base.OnSelectionChanged();
             UpdateAllProperties();
             CopySelectionToControl();
+        }
+
+        protected override void UpdateAllProperties()
+        {
+            base.UpdateAllProperties();
+            UIController.EnableControls(Selection.Any(),
+                Editor.TableLayoutPanel.Controls.Cast<Control>()
+                .Except(new Control[]
+                {
+                    Editor.lblSelectedTraces,
+                    Editor.SelectionToolbar
+                }));
         }
 
         protected override void UpdateProperties(params string[] propertyNames)

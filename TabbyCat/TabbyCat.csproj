@@ -77,7 +77,7 @@
     <Compile Include="Controllers\HostController.cs" />
     <Compile Include="Controllers\HotkeysController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\UIController.cs" />
     <Compile Include="Controllers\MruController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
     <Compile Include="Controllers\PropertiesController.cs" />

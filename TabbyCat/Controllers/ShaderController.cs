@@ -286,14 +286,14 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
-            LoadShaderCode();
-
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
         private void WorldController_Pulse(object sender, EventArgs e) =>
             Editor.tbPaste.Enabled = Clipboard.ContainsText();
+
+        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
+            OnSelectionChanged();
 
         #endregion
 
@@ -497,6 +497,8 @@
             }
         }
 
+        private void OnSelectionChanged() => LoadShaderCode();
+
         private void ResizeBuiltInHelp() => Editor.lblBuiltInHelp.MaximumSize = new Size(
             Editor.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
@@ -550,6 +552,14 @@
 
         private void UpdateUI()
         {
+            UIController.EnableControls(
+                PropertiesTab != PropertiesEditor.tpTraces || Selection.Any(),
+                new Control[]
+                {
+                    Editor.Toolbar,
+                    Editor.PrimaryTextBox,
+                    Editor.SecondaryTextBox
+                });
             Editor.tbExport.Enabled = Editor.tbPrint.Enabled =
                 PrimaryTextBox.Text != string.Empty;
             Editor.tbUndo.Enabled = Editor.miUndo.Enabled =

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblSelectedTraces = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,9 +42,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.seLocationY = new System.Windows.Forms.NumericUpDown();
             this.seLocationZ = new System.Windows.Forms.NumericUpDown();
-            this.seOrientationX = new System.Windows.Forms.NumericUpDown();
-            this.seOrientationY = new System.Windows.Forms.NumericUpDown();
-            this.seOrientationZ = new System.Windows.Forms.NumericUpDown();
+            this.seOrientationX = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seOrientationY = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seOrientationZ = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seScaleX = new System.Windows.Forms.NumericUpDown();
             this.seScaleY = new System.Windows.Forms.NumericUpDown();
             this.seScaleZ = new System.Windows.Forms.NumericUpDown();
@@ -61,8 +61,8 @@
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
-            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -93,7 +93,7 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TableLayoutPanel.Controls.Add(this.label9, 0, 8);
+            this.TableLayoutPanel.Controls.Add(this.lblSelectedTraces, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.label8, 0, 6);
             this.TableLayoutPanel.Controls.Add(this.label2, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.label1, 0, 0);
@@ -142,16 +142,16 @@
             this.TableLayoutPanel.Size = new System.Drawing.Size(360, 251);
             this.TableLayoutPanel.TabIndex = 0;
             // 
-            // label9
+            // lblSelectedTraces
             // 
-            this.label9.BackColor = System.Drawing.SystemColors.Control;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label9.Location = new System.Drawing.Point(3, 208);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 34);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Selected\r\nTrace(s)";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Control;
+            this.lblSelectedTraces.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblSelectedTraces.Location = new System.Drawing.Point(3, 208);
+            this.lblSelectedTraces.Name = "lblSelectedTraces";
+            this.lblSelectedTraces.Size = new System.Drawing.Size(84, 34);
+            this.lblSelectedTraces.TabIndex = 29;
+            this.lblSelectedTraces.Text = "Selected\r\nTrace(s)";
+            this.lblSelectedTraces.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -318,13 +318,7 @@
             // 
             this.seOrientationX.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationX.DecimalPlaces = 3;
             this.seOrientationX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationX.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seOrientationX.Location = new System.Drawing.Point(92, 56);
             this.seOrientationX.Margin = new System.Windows.Forms.Padding(2);
             this.seOrientationX.Maximum = new decimal(new int[] {
@@ -341,13 +335,7 @@
             // 
             this.seOrientationY.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationY.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationY.DecimalPlaces = 3;
             this.seOrientationY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationY.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seOrientationY.Location = new System.Drawing.Point(182, 56);
             this.seOrientationY.Margin = new System.Windows.Forms.Padding(2);
             this.seOrientationY.Maximum = new decimal(new int[] {
@@ -364,13 +352,7 @@
             // 
             this.seOrientationZ.BackColor = System.Drawing.SystemColors.Window;
             this.seOrientationZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationZ.DecimalPlaces = 3;
             this.seOrientationZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationZ.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seOrientationZ.Location = new System.Drawing.Point(272, 56);
             this.seOrientationZ.Margin = new System.Windows.Forms.Padding(2);
             this.seOrientationZ.Maximum = new decimal(new int[] {
@@ -710,15 +692,15 @@
             this.SelectionToolbar.TabIndex = 30;
             this.SelectionToolbar.Text = "toolStrip1";
             // 
-            // ToolTip
-            // 
-            this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
-            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(21, 15);
+            this.toolStripLabel1.Size = new System.Drawing.Size(22, 17);
             this.toolStripLabel1.Text = "All";
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
             // TraceEdit
             // 
@@ -770,9 +752,9 @@
         public System.Windows.Forms.NumericUpDown seLocationX;
         public System.Windows.Forms.NumericUpDown seLocationY;
         public System.Windows.Forms.NumericUpDown seLocationZ;
-        public System.Windows.Forms.NumericUpDown seOrientationX;
-        public System.Windows.Forms.NumericUpDown seOrientationY;
-        public System.Windows.Forms.NumericUpDown seOrientationZ;
+        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationX;
+        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationY;
+        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationZ;
         public System.Windows.Forms.NumericUpDown seScaleX;
         public System.Windows.Forms.NumericUpDown seScaleY;
         public System.Windows.Forms.NumericUpDown seScaleZ;
@@ -788,7 +770,7 @@
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.ToolTip ToolTip;
-        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label lblSelectedTraces;
         public System.Windows.Forms.ToolStrip SelectionToolbar;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }

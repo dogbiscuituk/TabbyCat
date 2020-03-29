@@ -48,12 +48,6 @@
 
         #endregion
 
-        #region Internal Properties
-
-        internal void UpdateAllProperties() => UpdateProperties(AllProperties);
-
-        #endregion
-
         #region Protected Methods
 
         protected void InitCommonControls(Control control)
@@ -72,6 +66,8 @@
             if (ToolTip.GetToolTip(control) != toolTip)
                 ToolTip.SetToolTip(control, toolTip);
         }
+
+        protected virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         protected abstract void UpdateProperties(params string[] propertyNames);
 

@@ -266,7 +266,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 568;
+            this.SplitContainer1.SplitterDistance = 584;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -277,7 +277,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(568, 682);
+            this.GLControl.Size = new System.Drawing.Size(584, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -289,7 +289,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(402, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(386, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu

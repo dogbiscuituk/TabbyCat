@@ -1,9 +1,10 @@
 ﻿namespace TabbyCat.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Forms;
 
-    internal static class MenuController
+    internal static class UIController
     {
         #region Internal Interface
 
@@ -38,6 +39,18 @@
         /// <param name="t">The target, receiving the copies.</param>
         internal static void CloneTo(this ToolStripDropDownItem s, ToolStrip t) =>
             s.DropDownItems.CloneTo(t.Items);
+
+        internal static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
+        {
+            foreach (var item in items)
+                item.Enabled = enabled;
+        }
+
+        internal static void EnableControls(bool enabled, IEnumerable<Control> controls)
+        {
+            foreach (var control in controls)
+                control.Enabled = enabled;
+        }
 
         #endregion
 

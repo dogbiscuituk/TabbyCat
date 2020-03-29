@@ -199,7 +199,7 @@
 
         private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
 
-        internal void BeginUpdate() => ++UpdateCount;
+        private void BeginUpdate() => ++UpdateCount;
 
         private void ClockInit() => Clock.Interval_ms = GetFrameMilliseconds();
 
@@ -396,9 +396,9 @@
             if (!Selection.Any())
                 return;
             var indices = Selection.Select(p => p.Index).OrderByDescending(p => p).ToList();
-            Selection.Clear();
             foreach (var index in indices)
                 CommandProcessor.DeleteTrace(index);
+            Selection.Clear();
         }
 
         private void EditOptions()
@@ -407,7 +407,7 @@
                 optionsController.ShowModal(WorldForm);
         }
 
-        internal void EndUpdate()
+        private void EndUpdate()
         {
             if (--UpdateCount == 0)
             {
@@ -477,13 +477,13 @@
 
         private void OnSelectionChanged()
         {
-            SetEnabled(Selection.Any(),
+            UIController.EnableButtons(Selection.Any(), new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
                 WorldForm.tbCut,
                 WorldForm.tbCopy,
-                WorldForm.tbDelete);
+                WorldForm.tbDelete });
             SelectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -545,12 +545,6 @@
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
         private void SelectAll() => Selection.AddRange(Scene.Traces);
-
-        private void SetEnabled(bool enable, params ToolStripItem[] items)
-        {
-            foreach (var item in items)
-                item.Enabled = enable;
-        }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
