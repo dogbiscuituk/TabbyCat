@@ -134,7 +134,7 @@ namespace TabbyCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1|2|4|8|16")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0|1|2|4|8|16")]
         public string SampleCounts {
             get {
                 return ((string)(this["SampleCounts"]));

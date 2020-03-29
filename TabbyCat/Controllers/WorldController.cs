@@ -534,7 +534,10 @@
             RenderController.Refresh();
             GLControlParent.Owner.ResumeLayout();
             oldControl.Dispose();
+            RefreshGraphicsMode();
         }
+
+        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
 
         private void Resize() => RenderController.InvalidateProjection();
 

@@ -4,6 +4,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -330,10 +331,11 @@
             if (string.IsNullOrWhiteSpace(s))
                 return;
             GpuLog.AppendLine(s.Trim());
-            if (s.Contains("ERROR:"))
-                Scene.GPUStatus |= GPUStatus.Error;
-            if (s.Contains("WARNING:"))
-                Scene.GPUStatus |= GPUStatus.Warning;
+            s = s.ToUpper();
+            if (s.ToUpper().Contains("ERROR"))
+                Scene.GPUStatus = GPUStatus.Error;
+            else if (Scene.GPUStatus == GPUStatus.OK && s.Contains("WARNING"))
+                Scene.GPUStatus = GPUStatus.Warning;
         }
 
         private bool MakeCurrent(bool current)

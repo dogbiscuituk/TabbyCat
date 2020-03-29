@@ -72,7 +72,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label1.Size = new System.Drawing.Size(84, 21);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mode";
+            this.label1.Text = "Graphics";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label2
@@ -85,7 +85,7 @@
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label2.Size = new System.Drawing.Size(84, 21);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Status";
+            this.label2.Text = "GPU Status";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
@@ -98,7 +98,7 @@
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label3.Size = new System.Drawing.Size(84, 21);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Log";
+            this.label3.Text = "Compile Log";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblGpuMode

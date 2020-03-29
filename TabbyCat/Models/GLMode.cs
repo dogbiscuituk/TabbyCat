@@ -135,7 +135,13 @@
         }
 
         public override string ToString() =>
-            $"{ColourFormat}, {AccumColourFormat}, {Buffers}, {Depth}, {Samples}, {Stencil}, {Stereo}";
+            $@"Colour format: {ColourFormat}
+Accumulator colour format: {AccumColourFormat}
+Buffers: {Buffers}
+Depth bits: {Depth}
+Samples: {Samples}
+Stencil bits: {Stencil}
+Stereo: {Stereo}";
 
         #endregion
 

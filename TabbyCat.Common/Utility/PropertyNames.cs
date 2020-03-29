@@ -57,7 +57,7 @@
             TraceCompute = "Trace Compute Shader";
 
         /// <summary>
-        /// Transient Properties.
+        /// GPU Properties.
         /// </summary>
         public const string
             GPULog = "GPU Log",

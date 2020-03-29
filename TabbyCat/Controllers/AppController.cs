@@ -80,19 +80,11 @@
             var worldController = new WorldController();
             WorldControllers.Add(worldController);
             worldController.Show();
+            worldController.RefreshGraphicsMode();
             return worldController;
         }
 
-        internal static void Close()
-        {
-            /*
-            Pulse.Enabled = false;
-            Pulse.Tick -= Pulse_Tick;
-            Pulse.Dispose();
-            Pulse = null;
-            */
-            Application.Exit();
-        }
+        internal static void Close() => Application.Exit();
 
         internal static string GetDefaultFolder(FilterIndex filterIndex)
         {

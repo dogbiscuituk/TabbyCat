@@ -30,7 +30,7 @@
       <Value Profile="(Default)">330|400|410|420|430|440|450|460</Value>
     </Setting>
     <Setting Name="SampleCounts" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1|2|4|8|16</Value>
+      <Value Profile="(Default)">0|1|2|4|8|16</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -40,7 +40,6 @@
             this.lblFieldOfView = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
             this.seCameraFocusX = new System.Windows.Forms.NumericUpDown();
@@ -63,9 +62,9 @@
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.seSampleCount = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).BeginInit();
@@ -78,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -280,23 +280,6 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Far Plane";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // seFieldOfView
-            // 
-            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
-            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFieldOfView.Location = new System.Drawing.Point(92, 106);
-            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(2);
-            this.seFieldOfView.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFieldOfView.Name = "seFieldOfView";
-            this.seFieldOfView.Size = new System.Drawing.Size(86, 21);
-            this.seFieldOfView.TabIndex = 14;
-            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seCameraPositionY
             // 
@@ -685,23 +668,34 @@
             this.seSampleCount.BackColor = System.Drawing.SystemColors.Window;
             this.seSampleCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seSampleCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seSampleCount.Items.Add("16");
-            this.seSampleCount.Items.Add("8");
-            this.seSampleCount.Items.Add("4");
-            this.seSampleCount.Items.Add("2");
-            this.seSampleCount.Items.Add("1");
             this.seSampleCount.Location = new System.Drawing.Point(92, 181);
             this.seSampleCount.Margin = new System.Windows.Forms.Padding(2);
             this.seSampleCount.Name = "seSampleCount";
             this.seSampleCount.ReadOnly = true;
             this.seSampleCount.Size = new System.Drawing.Size(86, 21);
             this.seSampleCount.TabIndex = 26;
-            this.seSampleCount.Text = "1";
             this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ToolTip
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // seFieldOfView
+            // 
+            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
+            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFieldOfView.Location = new System.Drawing.Point(92, 106);
+            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(2);
+            this.seFieldOfView.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFieldOfView.Name = "seFieldOfView";
+            this.seFieldOfView.Size = new System.Drawing.Size(86, 21);
+            this.seFieldOfView.TabIndex = 14;
+            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SceneEdit
             // 
@@ -715,7 +709,6 @@
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).EndInit();
@@ -728,6 +721,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             this.ResumeLayout(false);
 
         }
