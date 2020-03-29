@@ -62,6 +62,7 @@
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -81,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.seStripCountY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seStripCountZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).BeginInit();
+            this.SelectionToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -142,14 +144,13 @@
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.Control;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
             this.label9.Location = new System.Drawing.Point(3, 208);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 17);
+            this.label9.Size = new System.Drawing.Size(84, 34);
             this.label9.TabIndex = 29;
-            this.label9.Text = "Selection";
+            this.label9.Text = "Selected\r\nTrace(s)";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
@@ -698,16 +699,26 @@
             // SelectionToolbar
             // 
             this.TableLayoutPanel.SetColumnSpan(this.SelectionToolbar, 3);
+            this.SelectionToolbar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectionToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1});
             this.SelectionToolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.SelectionToolbar.Location = new System.Drawing.Point(90, 208);
             this.SelectionToolbar.Name = "SelectionToolbar";
-            this.SelectionToolbar.Size = new System.Drawing.Size(270, 0);
+            this.SelectionToolbar.Padding = new System.Windows.Forms.Padding(3, 3, 1, 0);
+            this.SelectionToolbar.Size = new System.Drawing.Size(270, 23);
             this.SelectionToolbar.TabIndex = 30;
             this.SelectionToolbar.Text = "toolStrip1";
             // 
             // ToolTip
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(21, 15);
+            this.toolStripLabel1.Text = "All";
             // 
             // TraceEdit
             // 
@@ -738,6 +749,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.seStripCountY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seStripCountZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).EndInit();
+            this.SelectionToolbar.ResumeLayout(false);
+            this.SelectionToolbar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -777,5 +790,6 @@
         public System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.ToolStrip SelectionToolbar;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

@@ -80,6 +80,7 @@
                 Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
+                SelectionController.SelectionChanged += Selection_Changed;
             }
             else
             {
@@ -104,6 +105,7 @@
                 Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
+                SelectionController.SelectionChanged -= Selection_Changed;
             }
         }
 
@@ -273,6 +275,8 @@
                 p.Scale.Y,
                 (float)Editor.seScaleZ.Value)));
 
+        private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();
+
         private void StripCountX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p.Index, new Vector3(
                 (float)Editor.seStripCountX.Value,
@@ -303,7 +307,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-
+            Selection.Set(SelectionController.Selection.Select(p => Scene.Traces[p]));
             SelectionUpdating = false;
         }
 
@@ -312,7 +316,8 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-
+            SelectionController.TraceCount = Scene.Traces.Count;
+            SelectionController.Selection = Selection.Select(p => p.Index).ToList();
             SelectionUpdating = false;
         }
 
