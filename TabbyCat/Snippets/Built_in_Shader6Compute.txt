@@ -1,4 +1,4 @@
-In the compute shader, built-in variables are declared as follows:
+[Built-in Compute Shader Variables](%GLSLUrl%)
 
 // workgroup dimensions
 in uvec3 gl_NumWorkGroups;

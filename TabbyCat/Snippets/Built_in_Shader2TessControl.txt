@@ -1,4 +1,4 @@
-In the tessellation control shader, built-in variables are intrinsically declared as:
+[Built-in Tessellation Control Shader Variables](%GLSLUrl%)
 
 in gl_PerVertex {
     vec4 gl_Position;
@@ -21,7 +21,7 @@ out gl_PerVertex {
 patch out float gl_TessLevelOuter[4];
 patch out float gl_TessLevelInner[2];
 
-Tessellation Control Input Variables
+[Tessellation Control Input Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance contain the values written in the previous shader stage to the corresponding outputs.
 
@@ -31,7 +31,7 @@ gl_PrimitiveID contains the number of primitives processed by the shader since t
 
 gl_InvocationID contains the number of the output patch vertex assigned to the tessellation control shader invocation. It is assigned integer values in the range [0, N-1], where N is the number of output patch vertices per primitive.
 
-Tessellation Control Output Variables
+[Tessellation Control Output Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance are used in the same fashion as the corresponding output variables in the vertex shader.
 

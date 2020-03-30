@@ -1,4 +1,4 @@
-In the geometry shader, built-in variables are intrinsically declared as:
+[Built-in Geometry Shader Variables](%GLSLUrl%)
 
 in gl_PerVertex {
     vec4 gl_Position;
@@ -21,7 +21,7 @@ out int gl_PrimitiveID;
 out int gl_Layer;
 out int gl_ViewportIndex;
 
-Geometry Shader Input Variables
+[Geometry Shader Input Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance contain the values written in the previous shader stage to the corresponding outputs.
 
@@ -29,7 +29,7 @@ gl_PrimitiveIDIn contains the number of primitives processed by the shader since
 
 gl_InvocationID contains the invocation number assigned to the geometry shader invocation. It is assigned integer values in the range [0, N-1], where N is the number of geometry shader invocations per primitive.
 
-Geometry Shader Output Variables
+[Geometry Shader Output Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance are used in the same fashion as the corresponding output variables in the vertex shader.
 

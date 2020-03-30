@@ -1,9 +1,9 @@
-The built-in vertex shader variables are intrinsically declared as follows:
+[Built-in Vertex Shader Variables](%GLSLUrl%)
 
-in int gl_VertexID;      // only present when not targeting Vulkan
-in int gl_InstanceID;    // only present when not targeting Vulkan
-in int gl_VertexIndex;   // only present when targeting Vulkan
-in int gl_InstanceIndex; // only present when targeting Vulkan
+in int gl_VertexID; // when not targeting Vulkan
+in int gl_InstanceID; // when not targeting Vulkan
+in int gl_VertexIndex; // when targeting Vulkan
+in int gl_InstanceIndex; // when targeting Vulkan
 in int gl_DrawID;
 in int gl_BaseVertex;
 in int gl_BaseInstance;

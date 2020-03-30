@@ -1,4 +1,4 @@
-In the tessellation evaluation shader, built-in variables are intrinsically declared as:
+[Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%)
 
 in gl_PerVertex {
     vec4 gl_Position;
@@ -20,7 +20,7 @@ out gl_PerVertex {
     float gl_CullDistance[];
 };
 
-Tessellation Evaluation Input Variables
+[Tessellation Evaluation Input Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance contain the values written in the previous shader stage to the corresponding outputs.
 
@@ -36,7 +36,7 @@ to aid in replicating subdivision computations.
 
 If a tessellation control shader is active, the input variables gl_TessLevelOuter and gl_TessLevelInner are filled with the corresponding outputs written by the tessellation control shader. Otherwise, they are assigned with default tessellation levels specified in section 11.2.3.3 “Tessellation Evaluation Shader Inputs” of the [OpenGL Specification](%GLSLUrl%#references).
 
-Tessellation Evaluation Output Variables
+[Tessellation Evaluation Output Variables](%GLSLUrl%)
 
 gl_Position, gl_PointSize, gl_ClipDistance, and gl_CullDistance are used in the same fashion as the corresponding output variables in the vertex shader.
 

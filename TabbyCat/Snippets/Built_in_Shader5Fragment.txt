@@ -1,5 +1,4 @@
-The built-in special variables that are accessible from a 
-fragment shader are intrinsically declared as follows:
+[Built-in Fragment Shader Variables](%GLSLUrl%)
 
 in vec4 gl_FragCoord;
 in bool gl_FrontFacing;
