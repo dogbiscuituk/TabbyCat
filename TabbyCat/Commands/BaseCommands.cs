@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using System;
+    using System.Text.RegularExpressions;
     using TabbyCat.Models;
 
     #region Abstract Base Command
@@ -79,7 +80,14 @@
             return result;
         }
 
-        public override string ToString() => $"{PropertyName} = {Value}";
+        public override string ToString()
+        {
+            const int maxLength = 50;
+            var s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
+            if (s.Length > maxLength)
+                s = $"{s.Substring(0, maxLength)}…";
+            return $"{PropertyName} = {s}";
+        }
 
         private string Action => $"{PropertyName} change";
 
