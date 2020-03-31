@@ -135,7 +135,7 @@
                 Camera = new Camera
                 {
                     Position = new Vector3(0, 0, 2),
-                    Focus = new Vector3(0, 0, 0)
+                    Focus = Vector3.Zero
                 };
 
             internal static Color
