@@ -30,7 +30,7 @@
 
         #region Private Fields
 
-        private static List<Vao> Vaos = new List<Vao>();
+        private static readonly List<Vao> Vaos = new List<Vao>();
 
         #endregion
     }

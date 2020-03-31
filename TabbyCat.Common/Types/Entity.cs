@@ -152,7 +152,7 @@
                 case Pattern.Triangles:
                     return GetTriangles(cx, cy);
             }
-            return new int[1] { 0 };
+            return new int[1] { 0 }; // NB: This method is not an iterator.
         }
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
@@ -170,7 +170,7 @@
                 case Pattern.Triangles:
                     return GetTrianglesCount(cx, cy);
             }
-            return 1;
+            return 1; // NB: This method is not an iterator.
         }
 
         private static IEnumerable<int> GetPoints(int cx, int cy, int cz)
