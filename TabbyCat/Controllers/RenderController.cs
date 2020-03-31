@@ -4,7 +4,6 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -129,12 +128,12 @@
 
         internal void InvalidateTrace(Trace trace)
         {
-            trace._VaoValid = false;
             if (MakeCurrent(true))
             {
-                DeleteTraceVao(trace);
+                trace.Vao?.Release();
                 MakeCurrent(false);
             }
+            trace.Vao = null;
         }
 
         internal void Refresh()
@@ -169,10 +168,11 @@
                     LoadTraceNumber(traceNumber);
                     LoadTransform(trace);
                     ValidateTrace(trace);
-                    GL.BindVertexArray(trace._VaoID);
+                    var vao = trace.Vao;
+                    GL.BindVertexArray(vao.ID);
                     GL.EnableVertexAttribArray(0);
                     GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F),
-                        trace._VaoVertexCount, DrawElementsType.UnsignedInt, 0);
+                        vao.ElementCount, DrawElementsType.UnsignedInt, 0);
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
@@ -318,14 +318,6 @@
             DeleteShader(ref ComputeShaderID);
         }
 
-        private void DeleteTraceVao(Trace trace)
-        {
-            DeleteVbo(ref trace._VboVertexID);
-            DeleteVbo(ref trace._VboIndexID);
-            DeleteVao(ref trace._VaoID);
-            trace._VaoVertexCount = 0;
-        }
-
         private void Log(string s)
         {
             if (string.IsNullOrWhiteSpace(s))
@@ -400,19 +392,13 @@
 
         private void ValidateTrace(Trace trace)
         {
-            if (trace._VaoValid)
-                return;
-            DeleteTraceVao(trace);
-            var coords = Entity.GetCoordinates(trace.StripCount);
-            var indices = Entity.GetIndices(trace.Pattern, trace.StripCount);
-            GL.BindVertexArray(trace._VaoID = CreateVao());
-            trace._VboIndexID = BindIndicesBuffer(indices);
-            trace._VboVertexID = StoreDataInAttributeList(0, coords);
-            trace._VaoVertexCount = indices.Length;
-            trace._VaoValid = true;
+            if (trace.Vao == null)
+                trace.Vao = VaoStore.AcquireVao(trace.Pattern, trace.StripCount);
         }
 
         #endregion
+
+        private List<Vao> Vaos = new List<Vao>();
 
         #region Load / Unload Traces
 

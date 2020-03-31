@@ -61,13 +61,7 @@
 
         internal Scene Scene;
 
-        internal int
-            _VaoID,
-            _VaoVertexCount,
-            _VboVertexID,
-            _VboIndexID;
-
-        internal bool _VaoValid;
+        internal Vao Vao;
 
         #endregion
 
@@ -95,7 +89,7 @@
         private class Defaults
         {
             internal const Pattern
-                Pattern = Common.Types.Pattern.Fill;
+                Pattern = Common.Types.Pattern.Points;
 
             internal const bool
                 Visible = true;
@@ -109,7 +103,7 @@
                 Minimum = new Vector3(),
                 Orientation = new Vector3(),
                 Scale = new Vector3(1, 1, 1),
-                StripCount = new Vector3(100, 100, 0);
+                StripCount = new Vector3(2, 2, 0);
         }
 
         #endregion
