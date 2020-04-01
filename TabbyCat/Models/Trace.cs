@@ -89,7 +89,7 @@
         private class Defaults
         {
             internal const Pattern
-                Pattern = Common.Types.Pattern.Fill;
+                Pattern = Common.Types.Pattern.Points;
 
             internal const bool
                 Visible = true;
@@ -98,12 +98,12 @@
                 Index = -1;
 
             internal static Vector3
-                Location = Vector3.Zero,
-                Maximum = Vector3.Zero,
-                Minimum = Vector3.Zero,
-                Orientation = Vector3.Zero,
-                Scale = Vector3.One,
-                StripCount = new Vector3(100, 100, 0);
+                Location = new Vector3(),
+                Maximum = new Vector3(),
+                Minimum = new Vector3(),
+                Orientation = new Vector3(),
+                Scale = new Vector3(1, 1, 1),
+                StripCount = new Vector3(2, 2, 0);
         }
 
         #endregion
