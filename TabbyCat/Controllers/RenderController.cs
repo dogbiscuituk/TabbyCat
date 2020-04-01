@@ -406,7 +406,7 @@
             var indices = Entity.GetIndices(trace.Pattern, trace.StripCount);
             GL.BindVertexArray(trace._VaoID = CreateVao());
             trace._VboIndexID = BindIndicesBuffer(indices);
-            trace._VboVertexID = StoreDataInAttributeList(0, coords);
+            trace._VboVertexID = StoreDataInAttributeList(0, coords.ToArray());
             trace._VaoVertexCount = indices.Length;
             trace._VaoValid = true;
         }

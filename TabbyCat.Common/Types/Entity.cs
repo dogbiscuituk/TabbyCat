@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Common.Types
 {
     using OpenTK;
+    using System.Collections.Generic;
 
     public static class Entity
     {
@@ -17,7 +18,7 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        public static float[] GetCoordinates(Vector3 stripCount) =>
+        public static IEnumerable<float> GetCoordinates(Vector3 stripCount) =>
             GetCoordinates((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         public static int GetCoordinatesCount(Vector3 stripCount) =>
@@ -48,10 +49,8 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        private static float[] GetCoordinates(int cx, int cy, int cz)
+        private static IEnumerable<float> GetCoordinates(int cx, int cy, int cz)
         {
-            var result = new float[3 * (cx + 1) * (cy + 1) * (cz + 1)];
-            var p = 0;
             for (var i = 0; i <= cx; i++)
             {
                 var x = cx == 0 ? 0 : 2f * i / cx - 1;
@@ -61,13 +60,12 @@
                     for (int k = 0; k <= cz; k++)
                     {
                         var z = cz == 0 ? 0 : 2f * k / cz - 1;
-                        result[p++] = x;
-                        result[p++] = y;
-                        result[p++] = z;
+                        yield return x;
+                        yield return y;
+                        yield return z;
                     }
                 }
             }
-            return result;
         }
 
         private static int GetCoordinatesCount(int cx, int cy, int cz) =>
