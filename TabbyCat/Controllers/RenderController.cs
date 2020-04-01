@@ -4,6 +4,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -426,7 +427,20 @@
             GL.BindBuffer(bufferTarget, vboID);
 
             GL.BufferData(bufferTarget, elementCount * sizeof(int), elements.ToArray(), BufferUsageHint.StaticDraw);
+            /*
+            const int TargetCount = (int)100;
+            var byteCount = 4 * elementCount;
 
+            GL.BufferData(bufferTarget, byteCount, IntPtr.Zero, BufferUsageHint.StaticDraw);
+            int actualBytes;
+            T[] chunk;
+            for (int byteOffset = 0; byteOffset < byteCount; byteOffset += actualBytes)
+            {
+                chunk = elements.Take(TargetCount).ToArray();
+                actualBytes = chunk.Length * sizeof(int);
+                GL.BufferSubData(bufferTarget, (IntPtr)byteOffset, actualBytes, chunk);
+            }
+            */
             return vboID;
         }
 
