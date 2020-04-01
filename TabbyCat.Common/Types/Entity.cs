@@ -20,6 +20,19 @@
         public static float[] GetCoordinates(Vector3 stripCount) =>
             GetCoordinates((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
+        public static int GetCoordinatesCount(Vector3 stripCount) =>
+            GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
+        public static int[] GetIndices(Pattern pattern, Vector3 stripCount) =>
+            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
+        public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
+            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
         /// Points are returned ordered by x value, then by y value, and finally by z value.
@@ -35,7 +48,7 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        public static float[] GetCoordinates(int cx = 0, int cy = 0, int cz = 0)
+        private static float[] GetCoordinates(int cx, int cy, int cz)
         {
             var result = new float[3 * (cx + 1) * (cy + 1) * (cz + 1)];
             var p = 0;
@@ -56,6 +69,9 @@
             }
             return result;
         }
+
+        private static int GetCoordinatesCount(int cx, int cy, int cz) =>
+            3 * (cx + 1) * (cy + 1) * (cz + 1);
 
         /// <summary>
         /// Get the order of vertices required to draw a single continuous triangle strip covering
@@ -95,7 +111,7 @@
         /// A total of 1+cx*(1+cy*2) ints ranging from 0 to 3(cx+1)(cy+1)-1 inclusive, which are the
         /// required vertex indices.
         /// </returns>
-        public static int[] GetFill(int cx = 0, int cy = 0)
+        private static int[] GetFill(int cx, int cy)
         {
             var result = new int[cx * (2 * cy + 1) + 1];
             int p = 0, q = 0;
@@ -114,10 +130,10 @@
             return result;
         }
 
-        public static int[] GetIndices(Pattern pattern, Vector3 stripCount) =>
-            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static int GetFillCount(int cx, int cy) =>
+            cx * (2 * cy + 1) + 1;
 
-        public static int[] GetIndices(Pattern pattern, int cx = 0, int cy = 0, int cz = 0)
+        private static int[] GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
             switch (pattern)
             {
@@ -135,18 +151,40 @@
             return new int[1] { 0 };
         }
 
-        public static int[] GetPoints(int cx = 0, int cy = 0, int cz = 0)
+        private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {
-            var n = (cx + 1) * (cy + 1) * (cz + 1);
+            switch (pattern)
+            {
+                case Pattern.Fill:
+                    return GetFillCount(cx, cy);
+                case Pattern.Points:
+                    return GetPointsCount(cx, cy, cz);
+                case Pattern.Rectangles:
+                    return GetRectanglesCount(cx, cy, cz);
+                case Pattern.Saltires:
+                    return GetSaltiresCount(cx, cy);
+                case Pattern.Triangles:
+                    return GetTrianglesCount(cx, cy);
+            }
+            return 1;
+        }
+
+
+        private static int[] GetPoints(int cx, int cy, int cz)
+        {
+            var n = GetPointsCount(cx, cy, cz);
             var result = new int[n];
             for (var p = 0; p < n; p++)
                 result[p] = p;
             return result;
         }
 
-        public static int[] GetRectangles(int cx = 0, int cy = 0, int cz = 0)
+        private static int GetPointsCount(int cx, int cy, int cz) =>
+            (cx + 1) * (cy + 1) * (cz + 1);
+
+        private static int[] GetRectangles(int cx, int cy, int cz)
         {
-            var result = new int[2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz)];
+            var result = new int[GetRectanglesCount(cx, cy, cz)];
             int p = 0, q = 0;
             for (var x = 0; x <= cx; x++)
                 for (var y = 0; y <= cy; y++)
@@ -172,9 +210,12 @@
             return result;
         }
 
-        public static int[] GetSaltires(int cx = 0, int cy = 0)
+        private static int GetRectanglesCount(int cx, int cy, int cz) =>
+            2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
+
+        private static int[] GetSaltires(int cx, int cy)
         {
-            var result = new int[8 * cx * cy + 2 * (cx + cy)];
+            var result = new int[GetSaltiresCount(cx, cy)];
             for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
@@ -200,9 +241,12 @@
             return result;
         }
 
-        public static int[] GetTriangles(int cx = 0, int cy = 0)
+        private static int GetSaltiresCount(int cx, int cy) =>
+            8 * cx * cy + 2 * (cx + cy);
+
+        private static int[] GetTriangles(int cx, int cy)
         {
-            var result = new int[6 * cx * cy + 2 * (cx + cy)];
+            var result = new int[GetTrianglesCount(cx, cy)];
             for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
@@ -226,19 +270,8 @@
             return result;
         }
 
-        #endregion
-
-        #region
-
-        private static void Sort(ref int x1, ref int x2)
-        {
-            if (x1 > x2)
-            {
-                var x = x1;
-                x1 = x2;
-                x2 = x;
-            }
-        }
+        private static int GetTrianglesCount(int cx, int cy) =>
+            6 * cx * cy + 2 * (cx + cy);
 
         #endregion
     }
