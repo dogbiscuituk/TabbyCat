@@ -99,11 +99,7 @@
         internal void RemoveTrace(int index)
         {
             if (index >= 0 && index < Traces.Count)
-            {
-                var trace = Traces[index];
-                Traces.Remove(trace);
-                trace.ReleaseVao();
-            }
+                Traces.RemoveAt(index);
         }
 
         internal void SetCameraView(Matrix4 _) { }

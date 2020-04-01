@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Common.Types
 {
     using OpenTK;
-    using System.Collections.Generic;
 
     public static class Entity
     {
@@ -18,11 +17,8 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        public static IEnumerable<float> GetCoordinates(Vector3 stripCount) =>
+        public static float[] GetCoordinates(Vector3 stripCount) =>
             GetCoordinates((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        public static int GetCoordinatesCount(Vector3 stripCount) =>
-            GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -39,8 +35,10 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        public static IEnumerable<float> GetCoordinates(int cx, int cy, int cz)
+        public static float[] GetCoordinates(int cx = 0, int cy = 0, int cz = 0)
         {
+            var result = new float[3 * (cx + 1) * (cy + 1) * (cz + 1)];
+            var p = 0;
             for (var i = 0; i <= cx; i++)
             {
                 var x = cx == 0 ? 0 : 2f * i / cx - 1;
@@ -50,17 +48,14 @@
                     for (int k = 0; k <= cz; k++)
                     {
                         var z = cz == 0 ? 0 : 2f * k / cz - 1;
-                        yield return x;
-                        yield return y;
-                        yield return z;
+                        result[p++] = x;
+                        result[p++] = y;
+                        result[p++] = z;
                     }
                 }
             }
-            yield break;
+            return result;
         }
-
-        public static int GetCoordinatesCount(int cx, int cy, int cz) =>
-            3 * (cx + 1) * (cy + 1) * (cz + 1);
 
         /// <summary>
         /// Get the order of vertices required to draw a single continuous triangle strip covering
@@ -100,34 +95,29 @@
         /// A total of 1+cx*(1+cy*2) ints ranging from 0 to 3(cx+1)(cy+1)-1 inclusive, which are the
         /// required vertex indices.
         /// </returns>
-        public static IEnumerable<int> GetFill(int cx, int cy)
+        public static int[] GetFill(int cx = 0, int cy = 0)
         {
-            yield return 0;
-            int p = 0;
+            var result = new int[cx * (2 * cy + 1) + 1];
+            int p = 0, q = 0;
             var even = true;
+            result[p++] = 0;
             for (var i = 0; i < cx; i++)
             {
                 for (var j = 0; j < cy; j++)
                 {
-                    yield return p + cy + 1;
-                    yield return even ? ++p : --p;
+                    result[p++] = q + cy + 1;
+                    result[p++] = even ? ++q : --q;
                 }
-                yield return p += cy + 1;
+                result[p++] = q += cy + 1;
                 even = !even;
             }
-            yield break;
+            return result;
         }
 
-        private static int GetFillCount(int cx, int cy) =>
-            (2 * cy + 1) * cx + 1;
-
-        public static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
+        public static int[] GetIndices(Pattern pattern, Vector3 stripCount) =>
             GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
-        public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
-            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        public static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
+        public static int[] GetIndices(Pattern pattern, int cx = 0, int cy = 0, int cz = 0)
         {
             switch (pattern)
             {
@@ -145,122 +135,110 @@
             return new int[1] { 0 };
         }
 
-        private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
+        public static int[] GetPoints(int cx = 0, int cy = 0, int cz = 0)
         {
-            switch (pattern)
-            {
-                case Pattern.Fill:
-                    return GetFillCount(cx, cy);
-                case Pattern.Points:
-                    return GetPointsCount(cx, cy, cz);
-                case Pattern.Rectangles:
-                    return GetRectanglesCount(cx, cy, cz);
-                case Pattern.Saltires:
-                    return GetSaltiresCount(cx, cy);
-                case Pattern.Triangles:
-                    return GetTrianglesCount(cx, cy);
-            }
-            return 1;
-        }
-
-        public static IEnumerable<int> GetPoints(int cx, int cy, int cz)
-        {
-            var n = GetPointsCount(cx, cy, cz);
+            var n = (cx + 1) * (cy + 1) * (cz + 1);
+            var result = new int[n];
             for (var p = 0; p < n; p++)
-                yield return p;
-            yield break;
+                result[p] = p;
+            return result;
         }
 
-        private static int GetPointsCount(int cx, int cy, int cz) =>
-            (cx + 1) * (cy + 1) * (cz + 1);
-
-        public static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
+        public static int[] GetRectangles(int cx = 0, int cy = 0, int cz = 0)
         {
-            int p = 0;
+            var result = new int[2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz)];
+            int p = 0, q = 0;
             for (var x = 0; x <= cx; x++)
                 for (var y = 0; y <= cy; y++)
                     for (var z = 0; z <= cz; z++)
                     {
                         if (x < cx)
                         {
-                            yield return p;
-                            yield return p + (cy + 1) * (cz + 1);
+                            result[p++] = q;
+                            result[p++] = q + (cy + 1) * (cz + 1);
                         }
                         if (y < cy)
                         {
-                            yield return p;
-                            yield return p + cz + 1;
+                            result[p++] = q;
+                            result[p++] = q + cz + 1;
                         }
                         if (z < cz)
                         {
-                            yield return p;
-                            yield return p + 1;
+                            result[p++] = q;
+                            result[p++] = q + 1;
                         }
-                        p++;
+                        q++;
                     }
-            yield break;
+            return result;
         }
 
-        private static int GetRectanglesCount(int cx, int cy, int cz) =>
-            2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
-
-        public static IEnumerable<int> GetSaltires(int cx, int cy)
+        public static int[] GetSaltires(int cx = 0, int cy = 0)
         {
-            for (int i = 0, p = 0; i <= cx; i++)
+            var result = new int[8 * cx * cy + 2 * (cx + cy)];
+            for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        yield return p;
-                        yield return p + 1;
+                        result[p++] = q;
+                        result[p++] = q + 1;
                     }
                     if (i < cx)
                     {
-                        yield return p;
-                        yield return p + cy + 1;
+                        result[p++] = q;
+                        result[p++] = q + cy + 1;
                         if (j < cy)
                         {
-                            yield return p;
-                            yield return p + cy + 2;
-                            yield return p + 1;
-                            yield return p + cy + 1;
+                            result[p++] = q;
+                            result[p++] = q + cy + 2;
+                            result[p++] = q + 1;
+                            result[p++] = q + cy + 1;
                         }
                     }
-                    p++;
+                    q++;
                 }
-            yield break;
+            return result;
         }
 
-        private static int GetSaltiresCount(int cx, int cy) =>
-            8 * cx * cy + 2 * (cx + cy);
-
-        public static IEnumerable<int> GetTriangles(int cx, int cy)
+        public static int[] GetTriangles(int cx = 0, int cy = 0)
         {
-            for (int i = 0, p = 0; i <= cx; i++)
+            var result = new int[6 * cx * cy + 2 * (cx + cy)];
+            for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        yield return p;
-                        yield return p + 1;
+                        result[p++] = q;
+                        result[p++] = q + 1;
                     }
                     if (i < cx)
                     {
-                        yield return p;
-                        yield return p + cy + 1;
+                        result[p++] = q;
+                        result[p++] = q + cy + 1;
                         if (j < cy)
                         {
-                            yield return p + 1;
-                            yield return p + cy + 1;
+                            result[p++] = q + 1;
+                            result[p++] = q + cy + 1;
                         }
                     }
-                    p++;
+                    q++;
                 }
-            yield break;
+            return result;
         }
 
-        private static int GetTrianglesCount(int cx, int cy) =>
-            6 * cx * cy + 2 * (cx + cy);
+        #endregion
+
+        #region
+
+        private static void Sort(ref int x1, ref int x2)
+        {
+            if (x1 > x2)
+            {
+                var x = x1;
+                x1 = x2;
+                x2 = x;
+            }
+        }
 
         #endregion
     }

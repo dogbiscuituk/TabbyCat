@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Controls.Types;
     using TabbyCat.Models;
