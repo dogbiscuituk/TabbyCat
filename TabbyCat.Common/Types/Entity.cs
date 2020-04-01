@@ -21,41 +21,25 @@
         public static IEnumerable<float> GetCoordinates(Vector3 stripCount) =>
             GetCoordinates((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
-        /// <summary>
-        /// Calculate the number of floats which will be returned by a subsequent call to
-        /// GetCoordinates, using a given number of steps along each axis (cx, cy, cz).
-        /// </summary>
-        /// <param name="stripCount">The number of steps along each axis.</param>
-        /// <returns>3(cx+1)(cy+1)(cz+1)</returns>
         public static int GetCoordinatesCount(Vector3 stripCount) =>
             GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         /// <summary>
-        /// Get the order of vertices required to draw a given pattern covering the grid.
-        /// This method uses the vertex return order implemented by GetVertexCoords.
+        /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
+        /// Points are returned ordered by x value, then by y value, and finally by z value.
+        /// In other words, x varies most slowly, and z most quickly.
+        /// To get the points on a regular 2D grid, set the missing axis strip count to 0.
+        /// For example, GetVertexCoords(8, 8, 0) returns the 81 vertices of an 8x8, xy chessboard.
+        /// To get the points along a single axis, set both missing axes' strip counts to 0.
+        /// For example, GetVertexCoords(8, 0, 0) returns 9 points evenly spaced along the x axis.
         /// </summary>
-        /// <param name="pattern">The type of pattern used to cover the grid.</param>
-        /// <param name="stripCount">The number of steps along each axis.</param>
-        /// <returns>A sequence of integers, being the index of each vertex in the
-        /// visitation.</returns>
-        public static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
-            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        /// <summary>
-        /// Calculate the number of indices which will be returned by a subsequent call to
-        /// GetIndices, using a given number of steps along each axis (cx, cy, cz).
-        /// </summary>
-        /// <param name="pattern">The type of pattern used to cover the grid.</param>
-        /// <param name="stripCount">The number of steps along each axis.</param>
-        /// <returns>The total number of vertices in the visitation, including duplicates.</returns>
-        public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
-            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        #endregion
-
-        #region Private Methods
-
-        private static IEnumerable<float> GetCoordinates(int cx, int cy, int cz)
+        /// <param name="cx">The number of steps along the x axis.</param>
+        /// <param name="cy">The number of steps along the y axis.</param>
+        /// <param name="cz">The number of steps along the z axis.</param>
+        /// <returns>
+        /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
+        /// </returns>
+        public static IEnumerable<float> GetCoordinates(int cx, int cy, int cz)
         {
             for (var i = 0; i <= cx; i++)
             {
@@ -75,7 +59,7 @@
             yield break;
         }
 
-        private static int GetCoordinatesCount(int cx, int cy, int cz) =>
+        public static int GetCoordinatesCount(int cx, int cy, int cz) =>
             3 * (cx + 1) * (cy + 1) * (cz + 1);
 
         /// <summary>
@@ -107,7 +91,7 @@
         ///     |      \  /    \  /    \
         ///    0|   00--03--06--09--12--15
         ///    
-        ///         0---1---2---3---4---5-- x
+        ///         0---1---2---3---4---5--- x
         /// 
         /// </summary>
         /// <param name="cx">The number of steps along the first axis.</param>
@@ -116,7 +100,7 @@
         /// A total of 1+cx*(1+cy*2) ints ranging from 0 to 3(cx+1)(cy+1)-1 inclusive, which are the
         /// required vertex indices.
         /// </returns>
-        private static IEnumerable<int> GetFill(int cx, int cy)
+        public static IEnumerable<int> GetFill(int cx, int cy)
         {
             yield return 0;
             int p = 0;
@@ -137,7 +121,13 @@
         private static int GetFillCount(int cx, int cy) =>
             (2 * cy + 1) * cx + 1;
 
-        private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
+        public static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
+            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
+        public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
+            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
+        public static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
             switch (pattern)
             {
@@ -173,7 +163,7 @@
             return 1;
         }
 
-        private static IEnumerable<int> GetPoints(int cx, int cy, int cz)
+        public static IEnumerable<int> GetPoints(int cx, int cy, int cz)
         {
             var n = GetPointsCount(cx, cy, cz);
             for (var p = 0; p < n; p++)
@@ -184,7 +174,7 @@
         private static int GetPointsCount(int cx, int cy, int cz) =>
             (cx + 1) * (cy + 1) * (cz + 1);
 
-        private static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
+        public static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
         {
             int p = 0;
             for (var x = 0; x <= cx; x++)
@@ -214,7 +204,7 @@
         private static int GetRectanglesCount(int cx, int cy, int cz) =>
             2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
 
-        private static IEnumerable<int> GetSaltires(int cx, int cy)
+        public static IEnumerable<int> GetSaltires(int cx, int cy)
         {
             for (int i = 0, p = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
@@ -244,7 +234,7 @@
         private static int GetSaltiresCount(int cx, int cy) =>
             8 * cx * cy + 2 * (cx + cy);
 
-        private static IEnumerable<int> GetTriangles(int cx, int cy)
+        public static IEnumerable<int> GetTriangles(int cx, int cy)
         {
             for (int i = 0, p = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
