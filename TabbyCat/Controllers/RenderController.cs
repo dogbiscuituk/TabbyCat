@@ -407,8 +407,8 @@
             var indicesCount = Entity.GetIndicesCount(trace.Pattern, trace.StripCount);
             var indices = Entity.GetIndices(trace.Pattern, trace.StripCount);
             GL.BindVertexArray(trace._VaoID = CreateVao());
-            trace._VboIndexID = BindIndicesBuffer(indicesCount, indices.ToArray());
-            trace._VboVertexID = StoreDataInAttributeList(0, coordsCount, coords.ToArray());
+            trace._VboIndexID = BindIndicesBuffer(indicesCount, indices);
+            trace._VboVertexID = StoreDataInAttributeList(0, coordsCount, coords);
             trace._VaoVertexCount = Entity.GetIndicesCount(trace.Pattern, trace.StripCount);
             trace._VaoValid = true;
         }
@@ -417,11 +417,16 @@
 
         #region Load / Unload Traces
 
-        private int BindIndicesBuffer(int indicesCount, int[] indices)
+        private int BindIndicesBuffer(int indicesCount, IEnumerable<int> indices) =>
+            BufferData(BufferTarget.ElementArrayBuffer, indicesCount, indices);
+
+        private int BufferData<T>(BufferTarget bufferTarget, int elementCount, IEnumerable<T> elements) where T: struct
         {
             var vboID = CreateVbo();
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, vboID);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, indicesCount * sizeof(int), indices, BufferUsageHint.StaticDraw);
+            GL.BindBuffer(bufferTarget, vboID);
+
+            GL.BufferData(bufferTarget, elementCount * sizeof(int), elements.ToArray(), BufferUsageHint.StaticDraw);
+
             return vboID;
         }
 
@@ -455,11 +460,9 @@
             }
         }
 
-        private int StoreDataInAttributeList(int attributeNumber, int elementCount, float[] data)
+        private int StoreDataInAttributeList(int attributeNumber, int elementCount, IEnumerable<float> data)
         {
-            var vboID = CreateVbo();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
-            GL.BufferData(BufferTarget.ArrayBuffer, elementCount * sizeof(float), data, BufferUsageHint.StaticDraw);
+            var vboID = BufferData(BufferTarget.ArrayBuffer, elementCount, data);
             GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             return vboID;
