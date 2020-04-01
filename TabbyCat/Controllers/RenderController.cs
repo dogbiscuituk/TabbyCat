@@ -419,28 +419,13 @@
         #region Load / Unload Traces
 
         private int BindIndicesBuffer(int indicesCount, IEnumerable<int> indices) =>
-            BufferData(BufferTarget.ElementArrayBuffer, indicesCount, indices);
+            BufferData(BufferTarget.ElementArrayBuffer, indicesCount * sizeof(int), indices);
 
-        private int BufferData<T>(BufferTarget bufferTarget, int elementCount, IEnumerable<T> elements) where T: struct
+        private int BufferData<T>(BufferTarget bufferTarget, int byteCount, IEnumerable<T> elements) where T: struct
         {
             var vboID = CreateVbo();
             GL.BindBuffer(bufferTarget, vboID);
-
-            GL.BufferData(bufferTarget, elementCount * sizeof(int), elements.ToArray(), BufferUsageHint.StaticDraw);
-            /*
-            const int TargetCount = (int)100;
-            var byteCount = 4 * elementCount;
-
-            GL.BufferData(bufferTarget, byteCount, IntPtr.Zero, BufferUsageHint.StaticDraw);
-            int actualBytes;
-            T[] chunk;
-            for (int byteOffset = 0; byteOffset < byteCount; byteOffset += actualBytes)
-            {
-                chunk = elements.Take(TargetCount).ToArray();
-                actualBytes = chunk.Length * sizeof(int);
-                GL.BufferSubData(bufferTarget, (IntPtr)byteOffset, actualBytes, chunk);
-            }
-            */
+            GL.BufferData(bufferTarget, byteCount, elements.ToArray(), BufferUsageHint.StaticDraw);
             return vboID;
         }
 
@@ -476,7 +461,7 @@
 
         private int StoreDataInAttributeList(int attributeNumber, int elementCount, IEnumerable<float> data)
         {
-            var vboID = BufferData(BufferTarget.ArrayBuffer, elementCount, data);
+            var vboID = BufferData(BufferTarget.ArrayBuffer, elementCount * sizeof(float), data);
             GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             return vboID;
