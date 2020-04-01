@@ -88,6 +88,7 @@
     <Compile Include="Controllers\ShaderController.cs" />
     <Compile Include="Controllers\TraceController.cs" />
     <Compile Include="Models\Clock.cs" />
+    <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\FilterIndex.cs" />
     <Compile Include="Models\Code.cs" />
     <Compile Include="Models\GLInfo.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="Models\IShaderSet.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Models\Selection.cs" />
+    <Compile Include="Models\Vao.cs" />
+    <Compile Include="Models\VaoStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

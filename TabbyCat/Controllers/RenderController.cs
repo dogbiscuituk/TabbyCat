@@ -4,7 +4,6 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -129,10 +128,9 @@
 
         internal void InvalidateTrace(Trace trace)
         {
-            trace._VaoValid = false;
-            if (MakeCurrent(true))
+            if (trace.Vao != null && MakeCurrent(true))
             {
-                DeleteTraceVao(trace);
+                trace.ReleaseVao();
                 MakeCurrent(false);
             }
         }
@@ -169,10 +167,10 @@
                     LoadTraceNumber(traceNumber);
                     LoadTransform(trace);
                     ValidateTrace(trace);
-                    GL.BindVertexArray(trace._VaoID);
+                    GL.BindVertexArray(trace.Vao.ID);
                     GL.EnableVertexAttribArray(0);
                     GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F),
-                        trace._VaoVertexCount, DrawElementsType.UnsignedInt, 0);
+                        trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
@@ -318,14 +316,6 @@
             DeleteShader(ref ComputeShaderID);
         }
 
-        private void DeleteTraceVao(Trace trace)
-        {
-            DeleteVbo(ref trace._VboVertexID);
-            DeleteVbo(ref trace._VboIndexID);
-            DeleteVao(ref trace._VaoID);
-            trace._VaoVertexCount = 0;
-        }
-
         private void Log(string s)
         {
             if (string.IsNullOrWhiteSpace(s))
@@ -400,71 +390,11 @@
 
         private void ValidateTrace(Trace trace)
         {
-            if (trace._VaoValid)
-                return;
-            DeleteTraceVao(trace);
-            var coordsCount = Entity.GetCoordinatesCount(trace.StripCount);
-            var coords = Entity.GetCoordinates(trace.StripCount);
-            var indicesCount = Entity.GetIndicesCount(trace.Pattern, trace.StripCount);
-            var indices = Entity.GetIndices(trace.Pattern, trace.StripCount);
-            GL.BindVertexArray(trace._VaoID = CreateVao());
-            trace._VboIndexID = BindIndicesBuffer(indicesCount, indices);
-            trace._VboVertexID = StoreDataInAttributeList(0, coordsCount, coords);
-            trace._VaoVertexCount = Entity.GetIndicesCount(trace.Pattern, trace.StripCount);
-            trace._VaoValid = true;
-        }
-
-        #endregion
-
-        #region Load / Unload Traces
-
-        private int BindIndicesBuffer(int indicesCount, IEnumerable<int> indices) =>
-            BufferData(BufferTarget.ElementArrayBuffer, indicesCount * sizeof(int), indices);
-
-        private int BufferData<T>(BufferTarget bufferTarget, int byteCount, IEnumerable<T> elements) where T: struct
-        {
-            var vboID = CreateVbo();
-            GL.BindBuffer(bufferTarget, vboID);
-            GL.BufferData(bufferTarget, byteCount, elements.ToArray(), BufferUsageHint.StaticDraw);
-            return vboID;
-        }
-
-        private int CreateVao()
-        {
-            GL.GenVertexArrays(1, out int vaoID);
-            return vaoID;
-        }
-
-        private int CreateVbo()
-        {
-            GL.GenBuffers(1, out int vboID);
-            return vboID;
-        }
-
-        private void DeleteVao(ref int vaoID)
-        {
-            if (vaoID != 0)
+            if (trace.Vao == null && MakeCurrent(true))
             {
-                GL.DeleteVertexArray(vaoID);
-                vaoID = 0;
+                trace.Vao = trace.AcquireVao();
+                MakeCurrent(false);
             }
-        }
-
-        private void DeleteVbo(ref int vboID)
-        {
-            if (vboID != 0)
-            {
-                GL.DeleteBuffer(vboID);
-                vboID = 0;
-            }
-        }
-
-        private int StoreDataInAttributeList(int attributeNumber, int elementCount, IEnumerable<float> data)
-        {
-            var vboID = BufferData(BufferTarget.ArrayBuffer, elementCount * sizeof(float), data);
-            GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-            return vboID;
         }
 
         #endregion

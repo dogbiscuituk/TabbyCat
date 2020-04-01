@@ -1,11 +1,28 @@
-﻿namespace TabbyCat.Common.Types
+﻿namespace TabbyCat.Models
 {
     using OpenTK;
     using System.Collections.Generic;
+    using TabbyCat.Common.Types;
 
     public static class Entity
     {
         #region Public Methods
+
+        public static IEnumerable<float> GetCoordinates(this Trace trace) =>
+            GetCoordinates(trace.StripCount);
+
+        public static int GetCoordinatesCount(this Trace trace) =>
+            GetCoordinatesCount(trace.StripCount);
+
+        public static IEnumerable<int> GetIndices(this Trace trace) =>
+            GetIndices(trace.Pattern, trace.StripCount);
+
+        public static int GetIndicesCount(this Trace trace) =>
+            GetIndicesCount(trace.Pattern, trace.StripCount);
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -18,21 +35,8 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        public static IEnumerable<float> GetCoordinates(Vector3 stripCount) =>
+        private static IEnumerable<float> GetCoordinates(Vector3 stripCount) =>
             GetCoordinates((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        public static int GetCoordinatesCount(Vector3 stripCount) =>
-            GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        public static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
-            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
-            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        #endregion
-
-        #region Private Methods
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -67,6 +71,9 @@
                 }
             }
         }
+
+        private static int GetCoordinatesCount(Vector3 stripCount) =>
+            GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         private static int GetCoordinatesCount(int cx, int cy, int cz) =>
             3 * (cx + 1) * (cy + 1) * (cz + 1);
@@ -129,6 +136,9 @@
         private static int GetFillCount(int cx, int cy) =>
             cx * (2 * cy + 1) + 1;
 
+        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
+            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+
         private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
             switch (pattern)
@@ -146,6 +156,9 @@
             }
             return new int[1] { 0 };
         }
+
+        private static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
+            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {

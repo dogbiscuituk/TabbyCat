@@ -61,13 +61,7 @@
 
         internal Scene Scene;
 
-        internal int
-            _VaoID,
-            _VaoVertexCount,
-            _VboVertexID,
-            _VboIndexID;
-
-        internal bool _VaoValid;
+        internal Vao Vao;
 
         #endregion
 
