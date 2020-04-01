@@ -24,7 +24,7 @@
         public static int GetCoordinatesCount(Vector3 stripCount) =>
             GetCoordinatesCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
-        public static int[] GetIndices(Pattern pattern, Vector3 stripCount) =>
+        public static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
             GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         public static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
@@ -109,29 +109,27 @@
         /// A total of 1+cx*(1+cy*2) ints ranging from 0 to 3(cx+1)(cy+1)-1 inclusive, which are the
         /// required vertex indices.
         /// </returns>
-        private static int[] GetFill(int cx, int cy)
+        private static IEnumerable<int> GetFill(int cx, int cy)
         {
-            var result = new int[cx * (2 * cy + 1) + 1];
             int p = 0, q = 0;
             var even = true;
-            result[p++] = 0;
+            yield return 0;
             for (var i = 0; i < cx; i++)
             {
                 for (var j = 0; j < cy; j++)
                 {
-                    result[p++] = q + cy + 1;
-                    result[p++] = even ? ++q : --q;
+                    yield return q + cy + 1;
+                    yield return even ? ++q : --q;
                 }
-                result[p++] = q += cy + 1;
+                yield return q += cy + 1;
                 even = !even;
             }
-            return result;
         }
 
         private static int GetFillCount(int cx, int cy) =>
             cx * (2 * cy + 1) + 1;
 
-        private static int[] GetIndices(Pattern pattern, int cx, int cy, int cz)
+        private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
             switch (pattern)
             {
@@ -168,21 +166,17 @@
         }
 
 
-        private static int[] GetPoints(int cx, int cy, int cz)
+        private static IEnumerable<int> GetPoints(int cx, int cy, int cz)
         {
-            var n = GetPointsCount(cx, cy, cz);
-            var result = new int[n];
-            for (var p = 0; p < n; p++)
-                result[p] = p;
-            return result;
+            for (var p = 0; p < GetPointsCount(cx, cy, cz); p++)
+                yield return p;
         }
 
         private static int GetPointsCount(int cx, int cy, int cz) =>
             (cx + 1) * (cy + 1) * (cz + 1);
 
-        private static int[] GetRectangles(int cx, int cy, int cz)
+        private static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
         {
-            var result = new int[GetRectanglesCount(cx, cy, cz)];
             int p = 0, q = 0;
             for (var x = 0; x <= cx; x++)
                 for (var y = 0; y <= cy; y++)
@@ -190,82 +184,77 @@
                     {
                         if (x < cx)
                         {
-                            result[p++] = q;
-                            result[p++] = q + (cy + 1) * (cz + 1);
+                            yield return q;
+                            yield return q + (cy + 1) * (cz + 1);
                         }
                         if (y < cy)
                         {
-                            result[p++] = q;
-                            result[p++] = q + cz + 1;
+                            yield return q;
+                            yield return q + cz + 1;
                         }
                         if (z < cz)
                         {
-                            result[p++] = q;
-                            result[p++] = q + 1;
+                            yield return q;
+                            yield return q + 1;
                         }
                         q++;
                     }
-            return result;
         }
 
         private static int GetRectanglesCount(int cx, int cy, int cz) =>
             2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
 
-        private static int[] GetSaltires(int cx, int cy)
+        private static IEnumerable<int> GetSaltires(int cx, int cy)
         {
-            var result = new int[GetSaltiresCount(cx, cy)];
             for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        result[p++] = q;
-                        result[p++] = q + 1;
+                        yield return q;
+                        yield return q + 1;
                     }
                     if (i < cx)
                     {
-                        result[p++] = q;
-                        result[p++] = q + cy + 1;
+                        yield return q;
+                        yield return q + cy + 1;
                         if (j < cy)
                         {
-                            result[p++] = q;
-                            result[p++] = q + cy + 2;
-                            result[p++] = q + 1;
-                            result[p++] = q + cy + 1;
+                            yield return q;
+                            yield return q + cy + 2;
+                            yield return q + 1;
+                            yield return q + cy + 1;
                         }
                     }
                     q++;
                 }
-            return result;
         }
 
         private static int GetSaltiresCount(int cx, int cy) =>
             8 * cx * cy + 2 * (cx + cy);
 
-        private static int[] GetTriangles(int cx, int cy)
+        private static IEnumerable<int> GetTriangles(int cx, int cy)
         {
-            var result = new int[GetTrianglesCount(cx, cy)];
             for (int i = 0, p = 0, q = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        result[p++] = q;
-                        result[p++] = q + 1;
+                        yield return q;
+                        yield return q + 1;
                     }
                     if (i < cx)
                     {
-                        result[p++] = q;
-                        result[p++] = q + cy + 1;
+                        yield return q;
+                        yield return q + cy + 1;
                         if (j < cy)
                         {
-                            result[p++] = q + 1;
-                            result[p++] = q + cy + 1;
+                            yield return q + 1;
+                            yield return q + cy + 1;
                         }
                     }
                     q++;
                 }
-            return result;
         }
 
         private static int GetTrianglesCount(int cx, int cy) =>
