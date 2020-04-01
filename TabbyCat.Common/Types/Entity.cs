@@ -111,17 +111,17 @@
         /// </returns>
         private static IEnumerable<int> GetFill(int cx, int cy)
         {
-            int p = 0, q = 0;
+            int p = 0;
             var even = true;
             yield return 0;
             for (var i = 0; i < cx; i++)
             {
                 for (var j = 0; j < cy; j++)
                 {
-                    yield return q + cy + 1;
-                    yield return even ? ++q : --q;
+                    yield return p + cy + 1;
+                    yield return even ? ++p : --p;
                 }
-                yield return q += cy + 1;
+                yield return p += cy + 1;
                 even = !even;
             }
         }
@@ -177,27 +177,27 @@
 
         private static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
         {
-            int p = 0, q = 0;
+            int p = 0;
             for (var x = 0; x <= cx; x++)
                 for (var y = 0; y <= cy; y++)
                     for (var z = 0; z <= cz; z++)
                     {
                         if (x < cx)
                         {
-                            yield return q;
-                            yield return q + (cy + 1) * (cz + 1);
+                            yield return p;
+                            yield return p + (cy + 1) * (cz + 1);
                         }
                         if (y < cy)
                         {
-                            yield return q;
-                            yield return q + cz + 1;
+                            yield return p;
+                            yield return p + cz + 1;
                         }
                         if (z < cz)
                         {
-                            yield return q;
-                            yield return q + 1;
+                            yield return p;
+                            yield return p + 1;
                         }
-                        q++;
+                        p++;
                     }
         }
 
@@ -206,27 +206,27 @@
 
         private static IEnumerable<int> GetSaltires(int cx, int cy)
         {
-            for (int i = 0, p = 0, q = 0; i <= cx; i++)
+            for (int i = 0, p = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        yield return q;
-                        yield return q + 1;
+                        yield return p;
+                        yield return p + 1;
                     }
                     if (i < cx)
                     {
-                        yield return q;
-                        yield return q + cy + 1;
+                        yield return p;
+                        yield return p + cy + 1;
                         if (j < cy)
                         {
-                            yield return q;
-                            yield return q + cy + 2;
-                            yield return q + 1;
-                            yield return q + cy + 1;
+                            yield return p;
+                            yield return p + cy + 2;
+                            yield return p + 1;
+                            yield return p + cy + 1;
                         }
                     }
-                    q++;
+                    p++;
                 }
         }
 
@@ -235,25 +235,25 @@
 
         private static IEnumerable<int> GetTriangles(int cx, int cy)
         {
-            for (int i = 0, p = 0, q = 0; i <= cx; i++)
+            for (int i = 0, p = 0; i <= cx; i++)
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
-                        yield return q;
-                        yield return q + 1;
+                        yield return p;
+                        yield return p + 1;
                     }
                     if (i < cx)
                     {
-                        yield return q;
-                        yield return q + cy + 1;
+                        yield return p;
+                        yield return p + cy + 1;
                         if (j < cy)
                         {
-                            yield return q + 1;
-                            yield return q + cy + 1;
+                            yield return p + 1;
+                            yield return p + cy + 1;
                         }
                     }
-                    q++;
+                    p++;
                 }
         }
 
