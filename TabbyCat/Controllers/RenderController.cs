@@ -263,7 +263,9 @@
 
         #endregion
 
-        #region Private Shader Methods
+        #region Private Methods
+
+        #region Create / Delete Shaders
 
         private void BindAttribute(int attributeIndex, string variableName) =>
             GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
@@ -396,7 +398,61 @@
 
         #endregion
 
-        #region Private Uniform Methods
+        private List<Vao> Vaos = new List<Vao>();
+
+        #region Load / Unload Traces
+
+        private int BindIndicesBuffer(int[] indices)
+        {
+            var vboID = CreateVbo();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, vboID);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(int), indices, BufferUsageHint.StaticDraw);
+            return vboID;
+        }
+
+        private int CreateVao()
+        {
+            GL.GenVertexArrays(1, out int vaoID);
+            return vaoID;
+        }
+
+        private int CreateVbo()
+        {
+            GL.GenBuffers(1, out int vboID);
+            return vboID;
+        }
+
+        private void DeleteVao(ref int vaoID)
+        {
+            if (vaoID != 0)
+            {
+                GL.DeleteVertexArray(vaoID);
+                vaoID = 0;
+            }
+        }
+
+        private void DeleteVbo(ref int vboID)
+        {
+            if (vboID != 0)
+            {
+                GL.DeleteBuffer(vboID);
+                vboID = 0;
+            }
+        }
+
+        private int StoreDataInAttributeList(int attributeNumber, float[] data)
+        {
+            var vboID = CreateVbo();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
+            GL.BufferData(BufferTarget.ArrayBuffer, data.Length * sizeof(float), data, BufferUsageHint.StaticDraw);
+            GL.VertexAttribPointer(attributeNumber, 3, VertexAttribPointerType.Float, false, 0, 0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            return vboID;
+        }
+
+        #endregion
+
+        #region Uniforms
 
         private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
 
@@ -418,6 +474,8 @@
         private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
         private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
+
+        #endregion
 
         #endregion
     }
