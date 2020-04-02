@@ -2,6 +2,9 @@
 {
     using OpenTK.Graphics.OpenGL;
 
+    /// <summary>
+    /// Class representing an OpenTK Vertex Array Object.
+    /// </summary>
     internal class Vao
     {
         #region Constructors

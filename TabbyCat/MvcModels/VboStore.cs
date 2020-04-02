@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Static class for maintaining a list of currently active VBOs.
+    /// </summary>
     internal static class VboStore
     {
         #region Internal Methods

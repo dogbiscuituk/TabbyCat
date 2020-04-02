@@ -6,6 +6,9 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
+    /// <summary>
+    /// Class representing a reference counted OpenTK Vertex Buffer Object.
+    /// </summary>
     internal class Vbo
     {
         #region Constructors
