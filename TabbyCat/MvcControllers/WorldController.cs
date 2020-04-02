@@ -22,6 +22,7 @@
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
+            CameraController = new CameraController(this);
             ClockController = new ClockController(this);
             CommandProcessor = new CommandProcessor(this);
             new FullScreenController(this);
@@ -29,6 +30,7 @@
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
             Connect(true);
+            PopupMenu_Opening(this, new CancelEventArgs());
         }
 
         #endregion
@@ -80,6 +82,7 @@
                 case PropertyNames.FPS:
                     ClockInit();
                     break;
+                case PropertyNames.Camera:
                 case PropertyNames.CameraPosition:
                 case PropertyNames.CameraFocus:
                     RenderController.InvalidateCameraView();
@@ -128,6 +131,7 @@
 
         #region Private Fields
 
+        private readonly CameraController CameraController;
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private readonly JsonController JsonController;
         private string LastSpeed, LastTime, LastFPS;
@@ -160,7 +164,7 @@
         private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
         private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
         private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
-        // Menu
+        // Menus
         private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
         private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
         private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
@@ -178,6 +182,7 @@
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
+        private void PopupMenu_Opening(object sender, CancelEventArgs e) => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
         // WorldForm
         private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
@@ -236,6 +241,7 @@
 
         private void ConnectControllers(bool connect)
         {
+            CameraController.Connect(connect);
             if (connect)
             {
             }
@@ -328,6 +334,7 @@
                 WorldForm.EditOptions.Click += EditOptions_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
+                WorldForm.PopupMenu.Opening += PopupMenu_Opening;
             }
             else
             {
@@ -348,6 +355,7 @@
                 WorldForm.EditOptions.Click -= EditOptions_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
+                WorldForm.PopupMenu.Opening -= PopupMenu_Opening;
             }
         }
 

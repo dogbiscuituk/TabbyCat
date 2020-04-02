@@ -121,15 +121,15 @@
                     case PropertyNames.Background:
                         Editor.cbBackground.Text = Scene.BackgroundColour.Name;
                         break;
+                    case PropertyNames.Camera:
+                        UpdateCameraPosition();
+                        UpdateCameraFocus();
+                        break;
                     case PropertyNames.CameraFocus:
-                        Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
-                        Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
-                        Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
+                        UpdateCameraFocus();
                         break;
                     case PropertyNames.CameraPosition:
-                        Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
-                        Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
-                        Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
+                        UpdateCameraPosition();
                         break;
                     case PropertyNames.FarPlane:
                         Editor.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
@@ -273,6 +273,20 @@
             Updating = true;
             CommandProcessor.Run(command);
             Updating = false;
+        }
+
+        private void UpdateCameraFocus()
+        {
+            Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
+            Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
+            Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
+        }
+
+        private void UpdateCameraPosition()
+        {
+            Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
+            Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
+            Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
         }
 
         private void UpdateUI()

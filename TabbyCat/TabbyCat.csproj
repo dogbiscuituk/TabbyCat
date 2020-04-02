@@ -67,6 +67,7 @@
     <Compile Include="Commands\TraceCommands.cs" />
     <Compile Include="MvcControllers\AboutController.cs" />
     <Compile Include="MvcControllers\AppController.cs" />
+    <Compile Include="MvcControllers\CameraController.cs" />
     <Compile Include="MvcControllers\ClockController.cs" />
     <Compile Include="MvcControllers\SelectionController.cs" />
     <Compile Include="MvcControllers\ShaderSetController.cs" />
@@ -440,6 +441,7 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\ThinkTimenode_8848.png" />
     <Content Include="Snippets\Built_in_Shader1Vertex.txt" />
     <Content Include="Snippets\Built_in_Shader2TessControl.txt" />
     <Content Include="Snippets\Built_in_Shader3TessEvaluation.txt" />

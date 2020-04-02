@@ -92,6 +92,25 @@
             this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveStrafe = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveCircle = new System.Windows.Forms.ToolStripMenuItem();
+            this.CircleLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.CircleRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.CircleUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.CircleDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveZoomRoll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ZoomIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ZoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.RollClockwise = new System.Windows.Forms.ToolStripMenuItem();
+            this.RollAnticlockwise = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +123,7 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -266,7 +286,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 584;
+            this.SplitContainer1.SplitterDistance = 578;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -277,7 +297,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(584, 682);
+            this.GLControl.Size = new System.Drawing.Size(578, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -289,7 +309,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(386, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(392, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -458,6 +478,7 @@
             this.FileMenu,
             this.EditMenu,
             this.ViewMenu,
+            this.MoveMenu,
             this.TimeMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -716,6 +737,169 @@
             this.ViewProperties.Size = new System.Drawing.Size(166, 22);
             this.ViewProperties.Text = "&Properties";
             // 
+            // MoveMenu
+            // 
+            this.MoveMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MoveStrafe,
+            this.MoveCircle,
+            this.MoveZoomRoll});
+            this.MoveMenu.Name = "MoveMenu";
+            this.MoveMenu.Size = new System.Drawing.Size(65, 21);
+            this.MoveMenu.Text = "&Camera";
+            // 
+            // MoveStrafe
+            // 
+            this.MoveStrafe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MoveLeft,
+            this.MoveRight,
+            this.toolStripMenuItem5,
+            this.MoveUp,
+            this.MoveDown});
+            this.MoveStrafe.Name = "MoveStrafe";
+            this.MoveStrafe.Size = new System.Drawing.Size(145, 22);
+            this.MoveStrafe.Text = "&Strafe";
+            // 
+            // MoveLeft
+            // 
+            this.MoveLeft.Name = "MoveLeft";
+            this.MoveLeft.ShortcutKeyDisplayString = "^Left";
+            this.MoveLeft.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
+            this.MoveLeft.Size = new System.Drawing.Size(159, 22);
+            this.MoveLeft.Text = "&Left";
+            // 
+            // MoveRight
+            // 
+            this.MoveRight.Name = "MoveRight";
+            this.MoveRight.ShortcutKeyDisplayString = "^Right";
+            this.MoveRight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
+            this.MoveRight.Size = new System.Drawing.Size(159, 22);
+            this.MoveRight.Text = "&Right";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(156, 6);
+            // 
+            // MoveUp
+            // 
+            this.MoveUp.Name = "MoveUp";
+            this.MoveUp.ShortcutKeyDisplayString = "^Up";
+            this.MoveUp.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Up)));
+            this.MoveUp.Size = new System.Drawing.Size(159, 22);
+            this.MoveUp.Text = "&Up";
+            // 
+            // MoveDown
+            // 
+            this.MoveDown.Name = "MoveDown";
+            this.MoveDown.ShortcutKeyDisplayString = "^Down";
+            this.MoveDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Down)));
+            this.MoveDown.Size = new System.Drawing.Size(159, 22);
+            this.MoveDown.Text = "&Down";
+            // 
+            // MoveCircle
+            // 
+            this.MoveCircle.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CircleLeft,
+            this.CircleRight,
+            this.toolStripMenuItem6,
+            this.CircleUp,
+            this.CircleDown});
+            this.MoveCircle.Name = "MoveCircle";
+            this.MoveCircle.Size = new System.Drawing.Size(145, 22);
+            this.MoveCircle.Text = "&Circle";
+            // 
+            // CircleLeft
+            // 
+            this.CircleLeft.Name = "CircleLeft";
+            this.CircleLeft.ShortcutKeyDisplayString = "Shift+^Left";
+            this.CircleLeft.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Left)));
+            this.CircleLeft.Size = new System.Drawing.Size(193, 22);
+            this.CircleLeft.Text = "&Left";
+            // 
+            // CircleRight
+            // 
+            this.CircleRight.Name = "CircleRight";
+            this.CircleRight.ShortcutKeyDisplayString = "Shift+^Right";
+            this.CircleRight.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Right)));
+            this.CircleRight.Size = new System.Drawing.Size(193, 22);
+            this.CircleRight.Text = "&Right";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(190, 6);
+            // 
+            // CircleUp
+            // 
+            this.CircleUp.Name = "CircleUp";
+            this.CircleUp.ShortcutKeyDisplayString = "Shift+^Up";
+            this.CircleUp.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Up)));
+            this.CircleUp.Size = new System.Drawing.Size(193, 22);
+            this.CircleUp.Text = "&Up";
+            // 
+            // CircleDown
+            // 
+            this.CircleDown.Name = "CircleDown";
+            this.CircleDown.ShortcutKeyDisplayString = "Shift+^Down";
+            this.CircleDown.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Down)));
+            this.CircleDown.Size = new System.Drawing.Size(193, 22);
+            this.CircleDown.Text = "&Down";
+            // 
+            // MoveZoomRoll
+            // 
+            this.MoveZoomRoll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ZoomIn,
+            this.ZoomOut,
+            this.toolStripMenuItem7,
+            this.RollClockwise,
+            this.RollAnticlockwise});
+            this.MoveZoomRoll.Name = "MoveZoomRoll";
+            this.MoveZoomRoll.Size = new System.Drawing.Size(145, 22);
+            this.MoveZoomRoll.Text = "&Zoom / Roll";
+            // 
+            // ZoomIn
+            // 
+            this.ZoomIn.Name = "ZoomIn";
+            this.ZoomIn.ShortcutKeyDisplayString = "^PgUp";
+            this.ZoomIn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.PageUp)));
+            this.ZoomIn.Size = new System.Drawing.Size(260, 22);
+            this.ZoomIn.Text = "Zoom &In";
+            // 
+            // ZoomOut
+            // 
+            this.ZoomOut.Name = "ZoomOut";
+            this.ZoomOut.ShortcutKeyDisplayString = "^PgDn";
+            this.ZoomOut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Next)));
+            this.ZoomOut.Size = new System.Drawing.Size(260, 22);
+            this.ZoomOut.Text = "Zoom &Out";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(257, 6);
+            // 
+            // RollClockwise
+            // 
+            this.RollClockwise.Name = "RollClockwise";
+            this.RollClockwise.ShortcutKeyDisplayString = "Shift+^PgUp";
+            this.RollClockwise.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.PageUp)));
+            this.RollClockwise.Size = new System.Drawing.Size(260, 22);
+            this.RollClockwise.Text = "Roll &Clockwise";
+            // 
+            // RollAnticlockwise
+            // 
+            this.RollAnticlockwise.Name = "RollAnticlockwise";
+            this.RollAnticlockwise.ShortcutKeyDisplayString = "Shift+^PgDn";
+            this.RollAnticlockwise.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Next)));
+            this.RollAnticlockwise.Size = new System.Drawing.Size(260, 22);
+            this.RollAnticlockwise.Text = "Roll &Anticlockwise";
+            // 
             // TimeMenu
             // 
             this.TimeMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -726,6 +910,8 @@
             this.TimePause,
             this.TimeForward,
             this.TimeAccelerate});
+            this.TimeMenu.Image = global::TabbyCat.Properties.Resources.ThinkTimenode_8848;
+            this.TimeMenu.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeMenu.Name = "TimeMenu";
             this.TimeMenu.Size = new System.Drawing.Size(48, 21);
             this.TimeMenu.Text = "&Time";
@@ -735,7 +921,7 @@
             this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
             this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeDecelerate.Name = "TimeDecelerate";
-            this.TimeDecelerate.Size = new System.Drawing.Size(138, 22);
+            this.TimeDecelerate.Size = new System.Drawing.Size(180, 22);
             this.TimeDecelerate.Text = "&Decelerate";
             // 
             // TimeReverse
@@ -743,7 +929,7 @@
             this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
             this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeReverse.Name = "TimeReverse";
-            this.TimeReverse.Size = new System.Drawing.Size(138, 22);
+            this.TimeReverse.Size = new System.Drawing.Size(180, 22);
             this.TimeReverse.Text = "&Reverse";
             // 
             // TimeStop
@@ -751,7 +937,7 @@
             this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
             this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeStop.Name = "TimeStop";
-            this.TimeStop.Size = new System.Drawing.Size(138, 22);
+            this.TimeStop.Size = new System.Drawing.Size(180, 22);
             this.TimeStop.Text = "&Stop";
             // 
             // TimePause
@@ -759,14 +945,14 @@
             this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
             this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
             this.TimePause.Name = "TimePause";
-            this.TimePause.Size = new System.Drawing.Size(138, 22);
+            this.TimePause.Size = new System.Drawing.Size(180, 22);
             this.TimePause.Text = "&Pause";
             // 
             // TimeForward
             // 
             this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
             this.TimeForward.Name = "TimeForward";
-            this.TimeForward.Size = new System.Drawing.Size(138, 22);
+            this.TimeForward.Size = new System.Drawing.Size(180, 22);
             this.TimeForward.Text = "&Forward";
             // 
             // TimeAccelerate
@@ -774,7 +960,7 @@
             this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
             this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeAccelerate.Name = "TimeAccelerate";
-            this.TimeAccelerate.Size = new System.Drawing.Size(138, 22);
+            this.TimeAccelerate.Size = new System.Drawing.Size(180, 22);
             this.TimeAccelerate.Text = "&Accelerate";
             // 
             // HelpMenu
@@ -811,11 +997,17 @@
             this.ToolTip.InitialDelay = 100;
             this.ToolTip.ReshowDelay = 20;
             // 
+            // PopupMenu
+            // 
+            this.PopupMenu.Name = "PopupMenu";
+            this.PopupMenu.Size = new System.Drawing.Size(61, 4);
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ContextMenuStrip = this.PopupMenu;
             this.Controls.Add(this.ToolStripContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.MainMenu;
@@ -923,5 +1115,25 @@
         internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         internal System.Windows.Forms.ToolStripStatusLabel FPSlabel;
+        internal System.Windows.Forms.ToolStripMenuItem MoveMenu;
+        internal System.Windows.Forms.ToolStripMenuItem MoveStrafe;
+        internal System.Windows.Forms.ToolStripMenuItem MoveLeft;
+        internal System.Windows.Forms.ToolStripMenuItem MoveRight;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        internal System.Windows.Forms.ToolStripMenuItem MoveUp;
+        internal System.Windows.Forms.ToolStripMenuItem MoveDown;
+        internal System.Windows.Forms.ToolStripMenuItem MoveCircle;
+        internal System.Windows.Forms.ToolStripMenuItem CircleLeft;
+        internal System.Windows.Forms.ToolStripMenuItem CircleRight;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        internal System.Windows.Forms.ToolStripMenuItem CircleUp;
+        internal System.Windows.Forms.ToolStripMenuItem CircleDown;
+        internal System.Windows.Forms.ToolStripMenuItem MoveZoomRoll;
+        internal System.Windows.Forms.ToolStripMenuItem ZoomIn;
+        internal System.Windows.Forms.ToolStripMenuItem ZoomOut;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        internal System.Windows.Forms.ToolStripMenuItem RollClockwise;
+        internal System.Windows.Forms.ToolStripMenuItem RollAnticlockwise;
+        internal System.Windows.Forms.ContextMenuStrip PopupMenu;
     }
 }

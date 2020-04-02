@@ -128,11 +128,7 @@
                 GPUStatus = GPUStatus.OK;
 
             internal static Camera
-                Camera = new Camera
-                {
-                    Position = new Vector3(0, 0, 2),
-                    Focus = Vector3.Zero
-                };
+                Camera = new Camera(new Vector3(0, 0, 2), Vector3.Zero);
 
             internal static Color
                 BackgroundColour = Color.White;

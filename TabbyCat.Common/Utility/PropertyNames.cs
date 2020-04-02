@@ -7,6 +7,7 @@
         /// </summary>
         public const string
             Background = "Background",
+            Camera = "Camera",
             CameraFocus = "Camera Focus",
             CameraPosition = "Camera Position",
             FarPlane = "Far Plane",

@@ -81,12 +81,12 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The built-in vertex shader variables are intrinsically declared as follows:
+        ///   Looks up a localized string similar to [Built-in Vertex Shader Variables](%GLSLUrl%)
         ///
-        ///in int gl_VertexID;      // only present when not targeting Vulkan
-        ///in int gl_InstanceID;    // only present when not targeting Vulkan
-        ///in int gl_VertexIndex;   // only present when targeting Vulkan
-        ///in int gl_InstanceIndex; // only present when targeting Vulkan
+        ///in int gl_VertexID; // when not targeting Vulkan
+        ///in int gl_InstanceID; // when not targeting Vulkan
+        ///in int gl_VertexIndex; // when targeting Vulkan
+        ///in int gl_InstanceIndex; // when targeting Vulkan
         ///in int gl_DrawID;
         ///in int gl_BaseVertex;
         ///in int gl_BaseInstance;
@@ -95,7 +95,10 @@ namespace TabbyCat.Properties {
         ///  vec4 gl_Position;
         ///  float gl_PointSize;
         ///  float gl_ClipDistance[];
-        ///  float  [rest of string was truncated]&quot;;.
+        ///  float gl_CullDistance[];
+        ///};
+        ///
+        ///The variable gl_Position is intended for writing the homogeneous v [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader1Vertex {
             get {
@@ -104,7 +107,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the tessellation control shader, built-in variables are intrinsically declared as:
+        ///   Looks up a localized string similar to [Built-in Tessellation Control Shader Variables](%GLSLUrl%)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -125,7 +128,7 @@ namespace TabbyCat.Properties {
         ///} gl_out[];
         ///
         ///patch out float gl_TessLevelOuter[4];
-        ///pa [rest of string was truncated]&quot;;.
+        ///patch out float gl_TessLevel [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader2TessControl {
             get {
@@ -134,7 +137,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the tessellation evaluation shader, built-in variables are intrinsically declared as:
+        ///   Looks up a localized string similar to [Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -153,7 +156,9 @@ namespace TabbyCat.Properties {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
         ///    float gl_ClipDistance[];
-        ///    float [rest of string was truncated]&quot;;.
+        ///    float gl_CullDistance[];
+        ///};
+        ///        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader3TessEvaluation {
             get {
@@ -162,7 +167,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the geometry shader, built-in variables are intrinsically declared as:
+        ///   Looks up a localized string similar to [Built-in Geometry Shader Variables](%GLSLUrl%)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -185,8 +190,9 @@ namespace TabbyCat.Properties {
         ///out int gl_Layer;
         ///out int gl_ViewportIndex;
         ///
-        ///Geometry Shader Input Variables
-        ///        /// [rest of string was truncated]&quot;;.
+        ///[Geometry Shader Input Variables](%GLSLUrl%)
+        ///
+        ///gl_Position, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader4Geometry {
             get {
@@ -195,8 +201,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The built-in special variables that are accessible from a 
-        ///fragment shader are intrinsically declared as follows:
+        ///   Looks up a localized string similar to [Built-in Fragment Shader Variables](%GLSLUrl%)
         ///
         ///in vec4 gl_FragCoord;
         ///in bool gl_FrontFacing;
@@ -214,7 +219,7 @@ namespace TabbyCat.Properties {
         ///out float gl_FragDepth;
         ///out int gl_SampleMask[];
         ///
-        ///The output of the fragment shader e [rest of string was truncated]&quot;;.
+        ///The output of the fragment shader executable is processed by the fixed function operations at the back [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader5Fragment {
             get {
@@ -223,7 +228,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the compute shader, built-in variables are declared as follows:
+        ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%)
         ///
         ///// workgroup dimensions
         ///in uvec3 gl_NumWorkGroups;
@@ -237,7 +242,7 @@ namespace TabbyCat.Properties {
         ///in uvec3 gl_GlobalInvocationID;
         ///in uint gl_LocalInvocationIndex;
         ///
-        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the comput [rest of string was truncated]&quot;;.
+        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its conten [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Built_in_Shader6Compute {
             get {
@@ -1310,6 +1315,16 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ThinkTimenode_8848 {
+            get {
+                object obj = ResourceManager.GetObject("ThinkTimenode_8848", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TileWindowsHorizontallyHS {
             get {
                 object obj = ResourceManager.GetObject("TileWindowsHorizontallyHS", resourceCulture);
@@ -1480,11 +1495,15 @@ namespace TabbyCat.Properties {
         ///  g = 0,
         ///  b = 0;
         ///
+        ////* Begin formula */
+        ///
         ///z = sqrt(x * x + y * y);
         ///z = cos(20 * z - 10 * t) * exp(-3 * z);
         ///r = (x + 1) / 2;
         ///g = (y + 1) / 2;
         ///b = clamp(abs(5 * z), 0, 1);
+        ///
+        ////* End formula */
         ///
         ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
         ///colour = vec3(r, g, b);.
