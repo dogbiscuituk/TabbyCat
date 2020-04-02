@@ -15,12 +15,12 @@
             Pattern = trace.Pattern;
             StripCount = trace.StripCount;
             ElementCount = trace.GetIndicesCount();
-            var coordsBytes = sizeof(float) * trace.GetCoordinatesCount();
+            var coordsBytes = sizeof(float) * trace.GetCoordsCount();
             var indicesBytes = sizeof(int) * ElementCount;
             GL.GenVertexArrays(1, out ID);
             GL.BindVertexArray(ID);
             IndexBufferID = BufferData(BufferTarget.ElementArrayBuffer, indicesBytes, trace.GetIndices());
-            VertexBufferID = BufferData(BufferTarget.ArrayBuffer, coordsBytes, trace.GetCoordinates());
+            VertexBufferID = BufferData(BufferTarget.ArrayBuffer, coordsBytes, trace.GetCoords());
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
         }
