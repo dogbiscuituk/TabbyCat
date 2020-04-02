@@ -130,7 +130,8 @@
         {
             if (trace.Vao != null && MakeCurrent(true))
             {
-                trace.ReleaseVao();
+                trace.Vao.ReleaseBuffers();
+                trace.Vao = null;
                 MakeCurrent(false);
             }
         }
@@ -167,7 +168,7 @@
                     LoadTraceNumber(traceNumber);
                     LoadTransform(trace);
                     ValidateTrace(trace);
-                    GL.BindVertexArray(trace.Vao.ID);
+                    GL.BindVertexArray(trace.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
                     GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F),
                         trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
@@ -392,7 +393,7 @@
         {
             if (trace.Vao == null && MakeCurrent(true))
             {
-                trace.Vao = trace.AcquireVao();
+                trace.Vao = new Vao(trace);
                 MakeCurrent(false);
             }
         }

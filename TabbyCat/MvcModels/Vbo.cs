@@ -14,20 +14,27 @@
         {
             Pattern = trace.Pattern;
             StripCount = trace.StripCount;
+            VboType = vboType;
             GL.GenBuffers(1, out BufferID);
             GL.BindBuffer(BufferTarget, BufferID);
-            switch (VboType = vboType)
+            switch (VboType)
             {
                 case VboType.Vertex:
-                    ElementCount = trace.GetCoordsCount();
-                    BufferData(ElementCount * sizeof(float), trace.GetCoords());
+                    ElementsCount = trace.GetCoordsCount();
+                    BufferData(ElementsCount * sizeof(float), trace.GetCoords());
                     break;
                 case VboType.Index:
-                    ElementCount = trace.GetIndicesCount();
-                    BufferData(ElementCount * sizeof(int), trace.GetIndices());
+                    ElementsCount = trace.GetIndicesCount();
+                    BufferData(ElementsCount * sizeof(int), trace.GetIndices());
                     break;
             }
         }
+
+        #endregion
+
+        #region Internal Fields
+
+        internal int ElementsCount;
 
         #endregion
 
@@ -53,8 +60,8 @@
         #region Private Properties
 
         private BufferTarget BufferTarget => VboType == VboType.Vertex
-            ? BufferTarget.ElementArrayBuffer
-            : BufferTarget.ArrayBuffer;
+            ? BufferTarget.ArrayBuffer
+            : BufferTarget.ElementArrayBuffer;
 
         #endregion
 
@@ -65,10 +72,14 @@
 
         #endregion
 
+        #region Internal Fields
+
+        internal readonly int BufferID;
+
+        #endregion
+
         #region Private Fields
 
-        private readonly int BufferID;
-        private readonly int ElementCount;
         private readonly Pattern Pattern;
         private readonly Vector3 StripCount;
         private readonly VboType VboType;

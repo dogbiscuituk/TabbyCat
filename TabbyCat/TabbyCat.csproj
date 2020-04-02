@@ -100,7 +100,6 @@
     <Compile Include="MvcModels\Trace.cs" />
     <Compile Include="MvcModels\Selection.cs" />
     <Compile Include="MvcModels\Vao.cs" />
-    <Compile Include="MvcModels\VaoStore.cs" />
     <Compile Include="MvcModels\Vbo.cs" />
     <Compile Include="MvcModels\VboStore.cs" />
     <Compile Include="MvcModels\VboType.cs" />
