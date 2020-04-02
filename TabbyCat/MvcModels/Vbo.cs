@@ -38,14 +38,14 @@
         internal bool Matches(Trace trace, VboType vboType) =>
             VboType == vboType &&
             StripCount == trace.StripCount &&
-            (VboType == VboType.Vertex || Pattern == trace.Pattern);
+            (VboType != VboType.Index || Pattern == trace.Pattern);
 
         internal bool Release()
         {
-            if (--RefCount > 0)
-                return false;
-            GL.DeleteBuffer(BufferID);
-            return true;
+            var result = --RefCount <= 0;
+            if (result)
+                GL.DeleteBuffer(BufferID);
+            return result;
         }
 
         #endregion
