@@ -2,7 +2,7 @@
 {
     using System;
     using System.Text.RegularExpressions;
-    using TabbyCat.Models;
+    using TabbyCat.MvcModels;
 
     #region Abstract Base Command
 
