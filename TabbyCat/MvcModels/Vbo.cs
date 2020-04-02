@@ -20,8 +20,7 @@
             switch (VboType)
             {
                 case VboType.Vertex:
-                    ElementsCount = trace.GetCoordsCount();
-                    BufferData(ElementsCount * sizeof(float), trace.GetCoords());
+                    BufferData(trace.GetCoordsCount() * sizeof(float), trace.GetCoords());
                     break;
                 case VboType.Index:
                     ElementsCount = trace.GetIndicesCount();
@@ -34,7 +33,7 @@
 
         #region Internal Fields
 
-        internal int ElementsCount;
+        internal readonly int ElementsCount;
 
         #endregion
 
