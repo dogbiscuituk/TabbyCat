@@ -177,7 +177,7 @@
                         Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
                         break;
                     case PropertyNames.Traces:
-
+                        OnSelectionChanged();
                         break;
                     case PropertyNames.Visible:
                         Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
