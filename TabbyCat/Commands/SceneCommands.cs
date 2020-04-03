@@ -13,9 +13,9 @@
         { }
     }
 
-    internal class CameraCommand : ScenePropertyCommand<SimpleCamera>
+    internal class CameraCommand : ScenePropertyCommand<Camera>
     {
-        internal CameraCommand(SimpleCamera value) : base(PropertyNames.Camera,
+        internal CameraCommand(Camera value) : base(PropertyNames.Camera,
             value, p => p.Camera, (p, v) => p.Camera = v)
         { }
     }

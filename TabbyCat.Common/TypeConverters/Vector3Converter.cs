@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.TypeConverters
+﻿namespace TabbyCat.Common.Converters
 {
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;

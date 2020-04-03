@@ -23,7 +23,7 @@
         #region Public Properties
 
         public Color BackgroundColour { get; set; }
-        public SimpleCamera Camera { get; set; }
+        public Camera Camera { get; set; }
         public float FPS { get; set; }
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
@@ -127,8 +127,8 @@
             internal GPUStatus
                 GPUStatus = GPUStatus.OK;
 
-            internal static SimpleCamera
-                Camera = new SimpleCamera(Vector3.UnitZ * 2, Vector3.Zero);
+            internal static Camera
+                Camera = new Camera(new Vector3(0, 0, 2), Vector3.Zero);
 
             internal static Color
                 BackgroundColour = Color.White;

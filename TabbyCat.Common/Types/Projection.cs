@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
     using OpenTK;
-    using TabbyCat.Common.TypeConverters;
+    using TabbyCat.Common.Converters;
 
     public class Projection
     {
