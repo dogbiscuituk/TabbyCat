@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.MvcModels
 {
     using OpenTK.Graphics.OpenGL;
+    using TabbyCat.Common.Types;
 
     /// <summary>
     /// Class representing an OpenTK Vertex Array Object.
@@ -9,7 +10,7 @@
     {
         #region Constructors
 
-        internal Vao(Trace trace)
+        internal Vao(ITrace trace)
         {
             GL.GenVertexArrays(1, out VaoID);
             GL.BindVertexArray(VaoID);

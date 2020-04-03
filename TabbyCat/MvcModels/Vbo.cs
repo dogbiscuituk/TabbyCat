@@ -13,7 +13,7 @@
     {
         #region Constructors
 
-        internal Vbo(Trace trace, VboType vboType)
+        internal Vbo(ITrace trace, VboType vboType)
         {
             Pattern = trace.Pattern;
             StripCount = trace.StripCount;
@@ -44,7 +44,7 @@
 
         internal void AddRef() => RefCount++;
 
-        internal bool Matches(Trace trace, VboType vboType) =>
+        internal bool Matches(ITrace trace, VboType vboType) =>
             VboType == vboType &&
             StripCount == trace.StripCount &&
             (VboType != VboType.Index || Pattern == trace.Pattern);

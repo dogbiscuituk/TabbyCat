@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using TabbyCat.Common.Types;
 
     /// <summary>
     /// Static class for maintaining a list of currently active VBOs.
@@ -10,7 +11,7 @@
     {
         #region Internal Methods
 
-        internal static Vbo AcquireVbo(this Trace trace, VboType vboType)
+        internal static Vbo AcquireVbo(this ITrace trace, VboType vboType)
         {
             var vbo = Vbos.FirstOrDefault(p => p.Matches(trace, vboType));
             if (vbo == null)
