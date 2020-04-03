@@ -416,7 +416,7 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\ThinkTimenode_8848.png" />
+    <None Include="Resources\ThinkTimenode_8848.png" />
     <Content Include="Snippets\Built_in_Shader1Vertex.txt" />
     <Content Include="Snippets\Built_in_Shader2TessControl.txt" />
     <Content Include="Snippets\Built_in_Shader3TessEvaluation.txt" />
