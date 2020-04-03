@@ -251,6 +251,33 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Pitch component of camera direction.
+        /// </summary>
+        internal static string Camera_DirectionX {
+            get {
+                return ResourceManager.GetString("Camera_DirectionX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Yaw component of camera direction.
+        /// </summary>
+        internal static string Camera_DirectionY {
+            get {
+                return ResourceManager.GetString("Camera_DirectionY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Roll component of camera direction.
+        /// </summary>
+        internal static string Camera_DirectionZ {
+            get {
+                return ResourceManager.GetString("Camera_DirectionZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The X component of camera focus.
         /// </summary>
         internal static string Camera_FocusX {
@@ -1423,7 +1450,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of orientation.
+        ///   Looks up a localized string similar to The Pitch component of orientation.
         /// </summary>
         internal static string Trace_OrientationX {
             get {
@@ -1432,7 +1459,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Y component of orientation.
+        ///   Looks up a localized string similar to The Yaw component of orientation.
         /// </summary>
         internal static string Trace_OrientationY {
             get {
@@ -1441,7 +1468,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Z component of orientation.
+        ///   Looks up a localized string similar to The Roll component of orientation.
         /// </summary>
         internal static string Trace_OrientationZ {
             get {
