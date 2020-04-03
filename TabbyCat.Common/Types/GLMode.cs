@@ -1,10 +1,9 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     using OpenTK;
     using OpenTK.Graphics;
     using System;
     using System.ComponentModel;
-    using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
     [TypeConverter(typeof(GLModeTypeConverter))]

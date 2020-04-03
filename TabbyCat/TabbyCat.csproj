@@ -88,10 +88,6 @@
     <Compile Include="MvcControllers\ShaderController.cs" />
     <Compile Include="MvcControllers\TraceController.cs" />
     <Compile Include="MvcModels\Code.cs" />
-    <Compile Include="MvcModels\GLInfo.cs" />
-    <Compile Include="MvcModels\GLInfoTypeConverter.cs" />
-    <Compile Include="MvcModels\GLMode.cs" />
-    <Compile Include="MvcModels\GLModeTypeConverter.cs" />
     <Compile Include="MvcModels\Scene.cs" />
     <Compile Include="MvcModels\Trace.cs" />
     <Compile Include="MvcModels\Selection.cs" />

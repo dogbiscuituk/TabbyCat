@@ -37,6 +37,9 @@
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -57,6 +60,10 @@
     <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\FilterIndex.cs" />
+    <Compile Include="Types\GLInfo.cs" />
+    <Compile Include="Types\GLInfoTypeConverter.cs" />
+    <Compile Include="Types\GLMode.cs" />
+    <Compile Include="Types\GLModeTypeConverter.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
     <Compile Include="Types\ICode.cs" />
     <Compile Include="Types\IScene.cs" />
