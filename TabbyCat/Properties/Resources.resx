@@ -553,13 +553,13 @@
   <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Camera_DirectionX" xml:space="preserve">
+  <data name="Camera_Pitch" xml:space="preserve">
     <value>The Pitch component of camera direction</value>
   </data>
-  <data name="Camera_DirectionY" xml:space="preserve">
+  <data name="Camera_Yaw" xml:space="preserve">
     <value>The Yaw component of camera direction</value>
   </data>
-  <data name="Camera_DirectionZ" xml:space="preserve">
+  <data name="Camera_Roll" xml:space="preserve">
     <value>The Roll component of camera direction</value>
   </data>
 </root>

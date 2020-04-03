@@ -40,11 +40,12 @@
             this.lblFieldOfView = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
-            this.seCameraFocusX = new System.Windows.Forms.NumericUpDown();
-            this.seCameraFocusY = new System.Windows.Forms.NumericUpDown();
-            this.seCameraFocusZ = new System.Windows.Forms.NumericUpDown();
+            this.seCameraPitch = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seCameraYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seCameraRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seFrustumMinX = new System.Windows.Forms.NumericUpDown();
             this.seFrustumMinY = new System.Windows.Forms.NumericUpDown();
             this.seFrustumMinZ = new System.Windows.Forms.NumericUpDown();
@@ -62,14 +63,14 @@
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.seSampleCount = new System.Windows.Forms.DomainUpDown();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).BeginInit();
@@ -77,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -101,9 +101,9 @@
             this.TableLayoutPanel.Controls.Add(this.seFieldOfView, 1, 4);
             this.TableLayoutPanel.Controls.Add(this.seCameraPositionY, 2, 1);
             this.TableLayoutPanel.Controls.Add(this.seCameraPositionZ, 3, 1);
-            this.TableLayoutPanel.Controls.Add(this.seCameraFocusX, 1, 2);
-            this.TableLayoutPanel.Controls.Add(this.seCameraFocusY, 2, 2);
-            this.TableLayoutPanel.Controls.Add(this.seCameraFocusZ, 3, 2);
+            this.TableLayoutPanel.Controls.Add(this.seCameraPitch, 1, 2);
+            this.TableLayoutPanel.Controls.Add(this.seCameraYaw, 2, 2);
+            this.TableLayoutPanel.Controls.Add(this.seCameraRoll, 3, 2);
             this.TableLayoutPanel.Controls.Add(this.seFrustumMinX, 1, 5);
             this.TableLayoutPanel.Controls.Add(this.seFrustumMinY, 2, 5);
             this.TableLayoutPanel.Controls.Add(this.seFrustumMinZ, 3, 5);
@@ -188,8 +188,9 @@
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Camera";
+            this.label2.Text = "Cam. pos\'n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label2, "Camera Position");
             // 
             // label1
             // 
@@ -201,7 +202,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label1.Size = new System.Drawing.Size(84, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Scene Title";
+            this.label1.Text = "Scene title";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // edTitle
@@ -226,8 +227,9 @@
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label3.Size = new System.Drawing.Size(84, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Focus";
+            this.label3.Text = "Cam. dir\'n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label3, "Camera Direction");
             // 
             // label4
             // 
@@ -252,7 +254,7 @@
             this.lblFieldOfView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblFieldOfView.Size = new System.Drawing.Size(84, 25);
             this.lblFieldOfView.TabIndex = 13;
-            this.lblFieldOfView.Text = "Field of View";
+            this.lblFieldOfView.Text = "Field of view";
             this.lblFieldOfView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
@@ -265,7 +267,7 @@
             this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label6.Size = new System.Drawing.Size(84, 25);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Near Plane";
+            this.label6.Text = "Near plane";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
@@ -278,8 +280,25 @@
             this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label7.Size = new System.Drawing.Size(84, 25);
             this.label7.TabIndex = 21;
-            this.label7.Text = "Far Plane";
+            this.label7.Text = "Far plane";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // seFieldOfView
+            // 
+            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
+            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFieldOfView.Location = new System.Drawing.Point(92, 106);
+            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(2);
+            this.seFieldOfView.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFieldOfView.Name = "seFieldOfView";
+            this.seFieldOfView.Size = new System.Drawing.Size(86, 21);
+            this.seFieldOfView.TabIndex = 14;
+            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seCameraPositionY
             // 
@@ -327,74 +346,71 @@
             this.seCameraPositionZ.TabIndex = 5;
             this.seCameraPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // seCameraFocusX
+            // seCameraPitch
             // 
-            this.seCameraFocusX.BackColor = System.Drawing.SystemColors.Window;
-            this.seCameraFocusX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seCameraFocusX.DecimalPlaces = 3;
-            this.seCameraFocusX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraFocusX.Increment = new decimal(new int[] {
+            this.seCameraPitch.BackColor = System.Drawing.SystemColors.Window;
+            this.seCameraPitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seCameraPitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraPitch.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.seCameraFocusX.Location = new System.Drawing.Point(92, 56);
-            this.seCameraFocusX.Margin = new System.Windows.Forms.Padding(2);
-            this.seCameraFocusX.Maximum = new decimal(new int[] {
+            this.seCameraPitch.Location = new System.Drawing.Point(92, 56);
+            this.seCameraPitch.Margin = new System.Windows.Forms.Padding(2);
+            this.seCameraPitch.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.seCameraFocusX.Name = "seCameraFocusX";
-            this.seCameraFocusX.Size = new System.Drawing.Size(86, 21);
-            this.seCameraFocusX.TabIndex = 7;
-            this.seCameraFocusX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraPitch.Name = "seCameraPitch";
+            this.seCameraPitch.Size = new System.Drawing.Size(86, 21);
+            this.seCameraPitch.TabIndex = 7;
+            this.seCameraPitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // seCameraFocusY
+            // seCameraYaw
             // 
-            this.seCameraFocusY.BackColor = System.Drawing.SystemColors.Window;
-            this.seCameraFocusY.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seCameraFocusY.DecimalPlaces = 3;
-            this.seCameraFocusY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraFocusY.Increment = new decimal(new int[] {
+            this.seCameraYaw.BackColor = System.Drawing.SystemColors.Window;
+            this.seCameraYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seCameraYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraYaw.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.seCameraFocusY.Location = new System.Drawing.Point(182, 56);
-            this.seCameraFocusY.Margin = new System.Windows.Forms.Padding(2);
-            this.seCameraFocusY.Maximum = new decimal(new int[] {
+            this.seCameraYaw.Location = new System.Drawing.Point(182, 56);
+            this.seCameraYaw.Margin = new System.Windows.Forms.Padding(2);
+            this.seCameraYaw.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.seCameraFocusY.Name = "seCameraFocusY";
-            this.seCameraFocusY.Size = new System.Drawing.Size(86, 21);
-            this.seCameraFocusY.TabIndex = 8;
-            this.seCameraFocusY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraYaw.Name = "seCameraYaw";
+            this.seCameraYaw.Size = new System.Drawing.Size(86, 21);
+            this.seCameraYaw.TabIndex = 8;
+            this.seCameraYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // seCameraFocusZ
+            // seCameraRoll
             // 
-            this.seCameraFocusZ.BackColor = System.Drawing.SystemColors.Window;
-            this.seCameraFocusZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seCameraFocusZ.DecimalPlaces = 3;
-            this.seCameraFocusZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraFocusZ.Increment = new decimal(new int[] {
+            this.seCameraRoll.BackColor = System.Drawing.SystemColors.Window;
+            this.seCameraRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seCameraRoll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seCameraRoll.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.seCameraFocusZ.Location = new System.Drawing.Point(272, 56);
-            this.seCameraFocusZ.Margin = new System.Windows.Forms.Padding(2);
-            this.seCameraFocusZ.Maximum = new decimal(new int[] {
+            this.seCameraRoll.Location = new System.Drawing.Point(272, 56);
+            this.seCameraRoll.Margin = new System.Windows.Forms.Padding(2);
+            this.seCameraRoll.Maximum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.seCameraFocusZ.Name = "seCameraFocusZ";
-            this.seCameraFocusZ.Size = new System.Drawing.Size(86, 21);
-            this.seCameraFocusZ.TabIndex = 9;
-            this.seCameraFocusZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.seCameraRoll.Name = "seCameraRoll";
+            this.seCameraRoll.Size = new System.Drawing.Size(86, 21);
+            this.seCameraRoll.TabIndex = 9;
+            this.seCameraRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seFrustumMinX
             // 
@@ -583,7 +599,7 @@
             this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label12.Size = new System.Drawing.Size(84, 25);
             this.label12.TabIndex = 27;
-            this.label12.Text = "GL Version";
+            this.label12.Text = "GL version";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // seFPS
@@ -680,23 +696,6 @@
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
-            // seFieldOfView
-            // 
-            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
-            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFieldOfView.Location = new System.Drawing.Point(92, 106);
-            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(2);
-            this.seFieldOfView.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFieldOfView.Name = "seFieldOfView";
-            this.seFieldOfView.Size = new System.Drawing.Size(86, 21);
-            this.seFieldOfView.TabIndex = 14;
-            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // SceneEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -709,11 +708,12 @@
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraFocusZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).EndInit();
@@ -721,7 +721,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -741,9 +740,9 @@
         public Jmk.Controls.JmkNumericUpDownDegrees seFieldOfView;
         public System.Windows.Forms.NumericUpDown seCameraPositionY;
         public System.Windows.Forms.NumericUpDown seCameraPositionZ;
-        public System.Windows.Forms.NumericUpDown seCameraFocusX;
-        public System.Windows.Forms.NumericUpDown seCameraFocusY;
-        public System.Windows.Forms.NumericUpDown seCameraFocusZ;
+        public Jmk.Controls.JmkNumericUpDownDegrees seCameraPitch;
+        public Jmk.Controls.JmkNumericUpDownDegrees seCameraYaw;
+        public Jmk.Controls.JmkNumericUpDownDegrees seCameraRoll;
         public System.Windows.Forms.NumericUpDown seFrustumMinX;
         public System.Windows.Forms.NumericUpDown seFrustumMinY;
         public System.Windows.Forms.NumericUpDown seFrustumMinZ;

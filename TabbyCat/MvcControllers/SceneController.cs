@@ -57,9 +57,9 @@
                 Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
                 Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
                 Editor.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
-                Editor.seCameraFocusX.ValueChanged += CameraFocus_ValueChanged;
-                Editor.seCameraFocusY.ValueChanged += CameraFocus_ValueChanged;
-                Editor.seCameraFocusZ.ValueChanged += CameraFocus_ValueChanged;
+                Editor.seCameraPitch.ValueChanged += CameraFocus_ValueChanged;
+                Editor.seCameraYaw.ValueChanged += CameraFocus_ValueChanged;
+                Editor.seCameraRoll.ValueChanged += CameraFocus_ValueChanged;
                 Editor.seProjectionType.SelectedItemChanged += ProjectionType_SelectedItemChanged;
                 Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged += FPS_ValueChanged;
@@ -80,9 +80,9 @@
                 Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
                 Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
                 Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
-                Editor.seCameraFocusX.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.seCameraFocusY.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.seCameraFocusZ.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.seCameraPitch.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.seCameraYaw.ValueChanged -= CameraFocus_ValueChanged;
+                Editor.seCameraRoll.ValueChanged -= CameraFocus_ValueChanged;
                 Editor.seProjectionType.SelectedItemChanged -= ProjectionType_SelectedItemChanged;
                 Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged -= FPS_ValueChanged;
@@ -176,9 +176,9 @@
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraFocusCommand(new Vector3(
-                (float)Editor.seCameraFocusX.Value,
-                (float)Editor.seCameraFocusY.Value,
-                (float)Editor.seCameraFocusZ.Value)));
+                (float)Editor.seCameraPitch.Value,
+                (float)Editor.seCameraYaw.Value,
+                (float)Editor.seCameraRoll.Value)));
 
         private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraPositionCommand(new Vector3(
@@ -245,9 +245,9 @@
         private void InitToolTips()
         {
             SetToolTip(Editor.cbBackground, Resources.Scene_Background);
-            SetToolTip(Editor.seCameraFocusX, Resources.Camera_FocusX);
-            SetToolTip(Editor.seCameraFocusY, Resources.Camera_FocusY);
-            SetToolTip(Editor.seCameraFocusZ, Resources.Camera_FocusZ);
+            SetToolTip(Editor.seCameraPitch, Resources.Camera_Pitch);
+            SetToolTip(Editor.seCameraYaw, Resources.Camera_Yaw);
+            SetToolTip(Editor.seCameraRoll, Resources.Camera_Roll);
             SetToolTip(Editor.seCameraPositionX, Resources.Camera_PositionX);
             SetToolTip(Editor.seCameraPositionY, Resources.Camera_PositionY);
             SetToolTip(Editor.seCameraPositionZ, Resources.Camera_PositionZ);
@@ -277,9 +277,9 @@
 
         private void UpdateCameraFocus()
         {
-            Editor.seCameraFocusX.Value = (decimal)Scene.Camera.Focus.X;
-            Editor.seCameraFocusY.Value = (decimal)Scene.Camera.Focus.Y;
-            Editor.seCameraFocusZ.Value = (decimal)Scene.Camera.Focus.Z;
+            Editor.seCameraPitch.Value = (decimal)Scene.Camera.Focus.X;
+            Editor.seCameraYaw.Value = (decimal)Scene.Camera.Focus.Y;
+            Editor.seCameraRoll.Value = (decimal)Scene.Camera.Focus.Z;
         }
 
         private void UpdateCameraPosition()

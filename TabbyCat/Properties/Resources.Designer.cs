@@ -251,33 +251,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Pitch component of camera direction.
-        /// </summary>
-        internal static string Camera_DirectionX {
-            get {
-                return ResourceManager.GetString("Camera_DirectionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Yaw component of camera direction.
-        /// </summary>
-        internal static string Camera_DirectionY {
-            get {
-                return ResourceManager.GetString("Camera_DirectionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Roll component of camera direction.
-        /// </summary>
-        internal static string Camera_DirectionZ {
-            get {
-                return ResourceManager.GetString("Camera_DirectionZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The X component of camera focus.
         /// </summary>
         internal static string Camera_FocusX {
@@ -305,6 +278,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Pitch component of camera direction.
+        /// </summary>
+        internal static string Camera_Pitch {
+            get {
+                return ResourceManager.GetString("Camera_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The X component of camera position.
         /// </summary>
         internal static string Camera_PositionX {
@@ -328,6 +310,24 @@ namespace TabbyCat.Properties {
         internal static string Camera_PositionZ {
             get {
                 return ResourceManager.GetString("Camera_PositionZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Roll component of camera direction.
+        /// </summary>
+        internal static string Camera_Roll {
+            get {
+                return ResourceManager.GetString("Camera_Roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Yaw component of camera direction.
+        /// </summary>
+        internal static string Camera_Yaw {
+            get {
+                return ResourceManager.GetString("Camera_Yaw", resourceCulture);
             }
         }
         

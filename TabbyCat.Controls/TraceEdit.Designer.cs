@@ -150,7 +150,7 @@
             this.lblSelectedTraces.Name = "lblSelectedTraces";
             this.lblSelectedTraces.Size = new System.Drawing.Size(84, 34);
             this.lblSelectedTraces.TabIndex = 29;
-            this.lblSelectedTraces.Text = "Selected\r\nTrace(s)";
+            this.lblSelectedTraces.Text = "Selected\r\ntrace(s)";
             this.lblSelectedTraces.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
@@ -163,7 +163,7 @@
             this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.label8.Size = new System.Drawing.Size(84, 25);
             this.label8.TabIndex = 22;
-            this.label8.Text = "Strip Count";
+            this.label8.Text = "#Strips";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
