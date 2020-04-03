@@ -1,10 +1,9 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
     using System.Linq;
-    using TabbyCat.Common.Types;
 
     /// <summary>
     /// Class representing a reference counted OpenTK Vertex Buffer Object.

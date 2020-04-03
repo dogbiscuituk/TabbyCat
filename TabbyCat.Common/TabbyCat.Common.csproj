@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeConverters\ColourFormatTypeConverter.cs" />
     <Compile Include="Types\Camera.cs" />
+    <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
     <Compile Include="Types\ICode.cs" />
@@ -63,6 +64,10 @@
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
     <Compile Include="Types\SplitType.cs" />
+    <Compile Include="Types\Vao.cs" />
+    <Compile Include="Types\Vbo.cs" />
+    <Compile Include="Types\VboStore.cs" />
+    <Compile Include="Types\VboType.cs" />
     <Compile Include="Utility\Colours.cs" />
     <Compile Include="Utility\Maths.cs" />
     <Compile Include="Utility\PropertyNames.cs" />

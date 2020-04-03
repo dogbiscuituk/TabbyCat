@@ -1,16 +1,15 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     using OpenTK.Graphics.OpenGL;
-    using TabbyCat.Common.Types;
 
     /// <summary>
     /// Class representing an OpenTK Vertex Array Object.
     /// </summary>
-    internal class Vao
+    public class Vao
     {
         #region Constructors
 
-        internal Vao(ITrace trace)
+        public Vao(ITrace trace)
         {
             GL.GenVertexArrays(1, out VaoID);
             GL.BindVertexArray(VaoID);
@@ -27,9 +26,9 @@
 
         #region Fields, Properties
 
-        internal int ElementCount => IndexVbo.ElementsCount;
+        public int ElementCount => IndexVbo.ElementsCount;
 
-        internal readonly int VaoID;
+        public readonly int VaoID;
 
         private readonly Vbo
             IndexVbo,
@@ -37,9 +36,9 @@
 
         #endregion
 
-        #region Internal Methods
+        #region Public Methods
 
-        internal bool ReleaseBuffers()
+        public bool ReleaseBuffers()
         {
             VboStore.ReleaseVbo(IndexVbo);
             VboStore.ReleaseVbo(VertexVbo);

@@ -1,8 +1,7 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     using System.Collections.Generic;
     using System.Linq;
-    using TabbyCat.Common.Types;
 
     /// <summary>
     /// Static class for maintaining a list of currently active VBOs.

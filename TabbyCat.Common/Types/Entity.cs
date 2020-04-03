@@ -1,8 +1,7 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     using OpenTK;
     using System.Collections.Generic;
-    using TabbyCat.Common.Types;
 
     public static class Entity
     {

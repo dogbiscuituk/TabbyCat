@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Common.Types
 {
     internal enum VboType
     {
