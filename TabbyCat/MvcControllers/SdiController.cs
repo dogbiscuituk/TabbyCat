@@ -4,6 +4,7 @@
     using System.ComponentModel;
     using System.IO;
     using System.Windows.Forms;
+    using TabbyCat.Common.Types;
     using TabbyCat.MvcModels;
 
     /// <summary>

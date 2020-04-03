@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
+    using TabbyCat.Common.Types;
     using TabbyCat.Controls.Types;
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;

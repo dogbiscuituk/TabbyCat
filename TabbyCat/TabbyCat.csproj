@@ -87,7 +87,6 @@
     <Compile Include="MvcControllers\SdiController.cs" />
     <Compile Include="MvcControllers\ShaderController.cs" />
     <Compile Include="MvcControllers\TraceController.cs" />
-    <Compile Include="MvcModels\FilterIndex.cs" />
     <Compile Include="MvcModels\Code.cs" />
     <Compile Include="MvcModels\GLInfo.cs" />
     <Compile Include="MvcModels\GLInfoTypeConverter.cs" />

@@ -56,6 +56,7 @@
     <Compile Include="Types\Clock.cs" />
     <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
+    <Compile Include="Types\FilterIndex.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
     <Compile Include="Types\ICode.cs" />
     <Compile Include="Types\IScene.cs" />
