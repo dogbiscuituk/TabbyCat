@@ -13,6 +13,7 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
+    using TabbyCat.Controls.Types;
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;

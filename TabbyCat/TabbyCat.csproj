@@ -73,7 +73,6 @@
     <Compile Include="MvcControllers\ShaderSetController.cs" />
     <Compile Include="MvcControllers\ColourController.cs" />
     <Compile Include="MvcControllers\FullScreenController.cs" />
-    <Compile Include="MvcControllers\GLPageController.cs" />
     <Compile Include="MvcControllers\HostController.cs" />
     <Compile Include="MvcControllers\HotkeysController.cs" />
     <Compile Include="MvcControllers\JsonController.cs" />
