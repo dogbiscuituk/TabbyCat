@@ -3,7 +3,6 @@
     using System;
     using System.Windows.Forms;
     using TabbyCat.Controls.Types;
-    using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
 
     internal class OptionsController : IDisposable

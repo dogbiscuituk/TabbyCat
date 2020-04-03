@@ -84,6 +84,7 @@
     <Compile Include="Utility\Shaders.cs" />
     <Compile Include="Types\ColourFormat.cs" />
     <Compile Include="Types\GPUStatus.cs" />
+    <Compile Include="Utility\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

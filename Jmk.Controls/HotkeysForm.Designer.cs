@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.MvcViews
+﻿namespace Jmk.Controls
 {
     partial class HotkeysForm
     {

@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HotkeysController.cs" />
+    <Compile Include="HotkeysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotkeysForm.Designer.cs">
+      <DependentUpon>HotkeysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="JmkCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,6 +93,11 @@
       <Project>{3fcc8674-5e51-4fa1-976e-c0c3966fe77f}</Project>
       <Name>Jmk.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HotkeysForm.resx">
+      <DependentUpon>HotkeysForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

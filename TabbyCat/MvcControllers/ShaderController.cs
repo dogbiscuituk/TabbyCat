@@ -2,6 +2,7 @@
 {
     using FastColoredTextBoxNS;
     using Jmk.Common;
+    using Jmk.Controls;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;

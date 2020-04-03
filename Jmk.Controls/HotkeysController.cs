@@ -1,11 +1,10 @@
-﻿namespace TabbyCat.MvcControllers
+﻿namespace Jmk.Controls
 {
     using System.Windows.Forms;
-    using TabbyCat.MvcViews;
 
-    internal static class HotkeysController
+    public static class HotkeysController
     {
-        internal static void Show(IWin32Window owner)
+        public static void Show(IWin32Window owner)
         {
             if (HotkeysForm.Visible)
                 HotkeysForm.BringToFront();

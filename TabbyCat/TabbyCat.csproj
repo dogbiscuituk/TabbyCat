@@ -74,9 +74,7 @@
     <Compile Include="MvcControllers\ColourController.cs" />
     <Compile Include="MvcControllers\FullScreenController.cs" />
     <Compile Include="MvcControllers\HostController.cs" />
-    <Compile Include="MvcControllers\HotkeysController.cs" />
     <Compile Include="MvcControllers\JsonController.cs" />
-    <Compile Include="MvcControllers\UIController.cs" />
     <Compile Include="MvcControllers\MruController.cs" />
     <Compile Include="MvcControllers\OptionsController.cs" />
     <Compile Include="MvcControllers\PropertiesController.cs" />
@@ -109,12 +107,6 @@
     <Compile Include="MvcViews\HostForm.Designer.cs">
       <DependentUpon>HostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MvcViews\HotkeysForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MvcViews\HotkeysForm.Designer.cs">
-      <DependentUpon>HotkeysForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MvcViews\OptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +129,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MvcViews\HostForm.resx">
       <DependentUpon>HostForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MvcViews\HotkeysForm.resx">
-      <DependentUpon>HotkeysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MvcViews\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>

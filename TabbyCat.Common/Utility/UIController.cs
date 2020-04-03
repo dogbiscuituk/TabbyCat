@@ -1,19 +1,19 @@
-﻿namespace TabbyCat.MvcControllers
+﻿namespace TabbyCat.Common.Utility
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
 
-    internal static class UIController
+    public static class UIController
     {
-        #region Internal Interface
+        #region Public Interface
 
         /// <summary>
         /// Copy the Items from one ToolStrip to another.
         /// </summary>
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
-        internal static void CloneTo(this ToolStrip s, ToolStrip t) =>
+        public static void CloneTo(this ToolStrip s, ToolStrip t) =>
             s.Items.CloneTo(t.Items);
 
         /// <summary>
@@ -21,7 +21,7 @@
         /// </summary>
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
-        internal static void CloneTo(this ToolStripDropDownItem s, ToolStripDropDownItem t) =>
+        public static void CloneTo(this ToolStripDropDownItem s, ToolStripDropDownItem t) =>
             s.DropDownItems.CloneTo(t.DropDownItems);
 
         /// <summary>
@@ -29,7 +29,7 @@
         /// </summary>
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
-        internal static void CloneTo(this ToolStrip s, ToolStripDropDownItem t) =>
+        public static void CloneTo(this ToolStrip s, ToolStripDropDownItem t) =>
             s.Items.CloneTo(t.DropDownItems);
 
         /// <summary>
@@ -37,16 +37,16 @@
         /// </summary>
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
-        internal static void CloneTo(this ToolStripDropDownItem s, ToolStrip t) =>
+        public static void CloneTo(this ToolStripDropDownItem s, ToolStrip t) =>
             s.DropDownItems.CloneTo(t.Items);
 
-        internal static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
+        public static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
         {
             foreach (var item in items)
                 item.Enabled = enabled;
         }
 
-        internal static void EnableControls(bool enabled, IEnumerable<Control> controls)
+        public static void EnableControls(bool enabled, IEnumerable<Control> controls)
         {
             foreach (var control in controls)
                 control.Enabled = enabled;
