@@ -5,7 +5,7 @@
     public interface IScene : ICode
     {
         Color BackgroundColour { get; set; }
-        Camera Camera { get; set; }
+        SimpleCamera Camera { get; set; }
         float FPS { get; set; }
         string GLTargetVersion { get; set; }
         string GPULog { get; set; }

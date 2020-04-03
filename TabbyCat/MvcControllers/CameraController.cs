@@ -52,7 +52,7 @@
 
         #region Private Properties
 
-        private Camera Camera => Scene.Camera;
+        private SimpleCamera Camera => Scene.Camera;
 
         private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
 
@@ -102,8 +102,8 @@
         {
             var shift = delta * CameraBump * basis;
             RunCameraCommand(strafe
-                ? new Camera(Camera.Position + shift, Camera.Focus + shift)
-                : new Camera(Camera.Position + shift, Camera.Focus));
+                ? new SimpleCamera(Camera.Position + shift, Camera.Focus + shift)
+                : new SimpleCamera(Camera.Position + shift, Camera.Focus));
         }
 
         private void CameraMoveFront(int delta) => CameraMove(Camera.Ufront, delta, false);
@@ -116,13 +116,13 @@
                 f = Camera.Focus,
                 p = Camera.Position - f,
                 q = p + delta * CameraBump * basis;
-            RunCameraCommand(new Camera(q * p.Length / q.Length + f, f));
+            RunCameraCommand(new SimpleCamera(q * p.Length / q.Length + f, f));
         }
 
         private void CameraRotateRight(int delta) => CameraRotate(Camera.Uright, delta);
         private void CameraRotateUp(int delta) => CameraRotate(Camera.Uup, delta);
 
-        private void RunCameraCommand(Camera camera) =>
+        private void RunCameraCommand(SimpleCamera camera) =>
             CommandProcessor.Run(new CameraCommand(camera));
 
         #endregion

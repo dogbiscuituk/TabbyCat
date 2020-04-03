@@ -6,10 +6,10 @@
 
     public static class Maths
     {
-        public static Matrix4 CreateCameraView(Camera camera) => CreateCameraView(camera.Position, camera.Focus);
+        public static Matrix4 CreateCameraView(SimpleCamera camera) => CreateCameraView(camera.Position, camera.Focus);
 
         public static Matrix4 CreateCameraView(Vector3 position, Vector3 focus) =>
-            Matrix4.LookAt(position, focus, new Vector3(0, 1, 0));
+            Matrix4.LookAt(position, focus, Vector3.UnitY);
 
         public static Matrix4 CreateProjection(Projection p) => CreateProjection(p, new Size(16, 9));
 

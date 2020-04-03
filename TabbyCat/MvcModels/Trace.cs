@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using OpenTK;
     using System.ComponentModel;
-    using TabbyCat.Common.Converters;
+    using TabbyCat.Common.TypeConverters;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Properties;
