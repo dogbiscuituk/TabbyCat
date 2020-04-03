@@ -3,13 +3,14 @@
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;
+    using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
     /// <summary>
     /// Base class for Scene and Trace (but not Selection).
     /// Provides concrete string properties for shader code.
     /// </summary>
-    public abstract class Code : IShaderSet
+    public abstract class Code : ICode
     {
         #region Constructors
 

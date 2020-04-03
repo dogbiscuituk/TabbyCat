@@ -54,6 +54,10 @@
     <Compile Include="Types\Camera.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
+    <Compile Include="Types\ICode.cs" />
+    <Compile Include="Types\IScene.cs" />
+    <Compile Include="Types\IShaderSet.cs" />
+    <Compile Include="Types\ITrace.cs" />
     <Compile Include="Types\Optimization.cs" />
     <Compile Include="Types\Pattern.cs" />
     <Compile Include="Types\Projection.cs" />

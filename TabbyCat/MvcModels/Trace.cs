@@ -8,7 +8,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Properties;
 
-    public class Trace : Code
+    public class Trace : Code, ITrace
     {
         #region Constructors
 

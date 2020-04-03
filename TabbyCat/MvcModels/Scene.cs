@@ -10,7 +10,7 @@
     using TabbyCat.MvcControllers;
     using TabbyCat.Properties;
 
-    public class Scene : Code
+    public class Scene : Code, IScene
     {
         #region Constructors
 
