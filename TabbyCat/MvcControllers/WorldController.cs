@@ -9,10 +9,11 @@
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
+    using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.MvcModels;
-    using TabbyCat.Properties;
     using TabbyCat.MvcViews;
+    using TabbyCat.Properties;
 
     internal class WorldController
     {

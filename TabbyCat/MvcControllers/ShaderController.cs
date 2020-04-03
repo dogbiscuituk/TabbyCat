@@ -14,8 +14,8 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.MvcModels;
-    using TabbyCat.Properties;
     using TabbyCat.MvcViews;
+    using TabbyCat.Properties;
 
     internal class ShaderController
     {

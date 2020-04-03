@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.MvcControllers
 {
     using System;
-    using TabbyCat.MvcModels;
+    using TabbyCat.Common.Types;
     using TabbyCat.MvcViews;
 
     internal class ClockController
