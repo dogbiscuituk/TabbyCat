@@ -1,7 +1,5 @@
-﻿namespace TabbyCat.MvcModels
+﻿namespace TabbyCat.Controls.Types
 {
-    using TabbyCat.Controls.Types;
-
     public class Options
     {
         public string FilesFolderPath { get; set; }

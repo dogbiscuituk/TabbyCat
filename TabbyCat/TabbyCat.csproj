@@ -92,7 +92,6 @@
     <Compile Include="MvcModels\GLInfoTypeConverter.cs" />
     <Compile Include="MvcModels\GLMode.cs" />
     <Compile Include="MvcModels\GLModeTypeConverter.cs" />
-    <Compile Include="MvcModels\Options.cs" />
     <Compile Include="MvcModels\Scene.cs" />
     <Compile Include="MvcModels\Trace.cs" />
     <Compile Include="MvcModels\Selection.cs" />
