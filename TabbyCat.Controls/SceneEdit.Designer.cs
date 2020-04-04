@@ -188,7 +188,7 @@
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Cam. pos\'n";
+            this.label2.Text = "C-position";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ToolTip.SetToolTip(this.label2, "Camera Position");
             // 
@@ -227,7 +227,7 @@
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label3.Size = new System.Drawing.Size(84, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Cam. dir\'n";
+            this.label3.Text = "C-direction";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ToolTip.SetToolTip(this.label3, "Camera Direction");
             // 
@@ -351,11 +351,6 @@
             this.seCameraPitch.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraPitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraPitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraPitch.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seCameraPitch.Location = new System.Drawing.Point(92, 56);
             this.seCameraPitch.Margin = new System.Windows.Forms.Padding(2);
             this.seCameraPitch.Maximum = new decimal(new int[] {
@@ -373,11 +368,6 @@
             this.seCameraYaw.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraYaw.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seCameraYaw.Location = new System.Drawing.Point(182, 56);
             this.seCameraYaw.Margin = new System.Windows.Forms.Padding(2);
             this.seCameraYaw.Maximum = new decimal(new int[] {
@@ -395,11 +385,6 @@
             this.seCameraRoll.BackColor = System.Drawing.SystemColors.Window;
             this.seCameraRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seCameraRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seCameraRoll.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.seCameraRoll.Location = new System.Drawing.Point(272, 56);
             this.seCameraRoll.Margin = new System.Windows.Forms.Padding(2);
             this.seCameraRoll.Maximum = new decimal(new int[] {

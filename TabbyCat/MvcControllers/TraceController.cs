@@ -62,9 +62,9 @@
                 Editor.seLocationX.ValueChanged += LocationX_ValueChanged;
                 Editor.seLocationY.ValueChanged += LocationY_ValueChanged;
                 Editor.seLocationZ.ValueChanged += LocationZ_ValueChanged;
-                Editor.seOrientationX.ValueChanged += OrientationX_ValueChanged;
-                Editor.seOrientationY.ValueChanged += OrientationY_ValueChanged;
-                Editor.seOrientationZ.ValueChanged += OrientationZ_ValueChanged;
+                Editor.sePitch.ValueChanged += OrientationX_ValueChanged;
+                Editor.seYaw.ValueChanged += OrientationY_ValueChanged;
+                Editor.seRoll.ValueChanged += OrientationZ_ValueChanged;
                 Editor.seScaleX.ValueChanged += ScaleX_ValueChanged;
                 Editor.seScaleY.ValueChanged += ScaleY_ValueChanged;
                 Editor.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
@@ -87,9 +87,9 @@
                 Editor.seLocationX.ValueChanged -= LocationX_ValueChanged;
                 Editor.seLocationY.ValueChanged -= LocationY_ValueChanged;
                 Editor.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
-                Editor.seOrientationX.ValueChanged -= OrientationX_ValueChanged;
-                Editor.seOrientationY.ValueChanged -= OrientationY_ValueChanged;
-                Editor.seOrientationZ.ValueChanged -= OrientationZ_ValueChanged;
+                Editor.sePitch.ValueChanged -= OrientationX_ValueChanged;
+                Editor.seYaw.ValueChanged -= OrientationY_ValueChanged;
+                Editor.seRoll.ValueChanged -= OrientationZ_ValueChanged;
                 Editor.seScaleX.ValueChanged -= ScaleX_ValueChanged;
                 Editor.seScaleY.ValueChanged -= ScaleY_ValueChanged;
                 Editor.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
@@ -159,9 +159,9 @@
                         Editor.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
                         break;
                     case PropertyNames.Orientation:
-                        Editor.seOrientationX.Value = (decimal)Selection.Orientation.X;
-                        Editor.seOrientationY.Value = (decimal)Selection.Orientation.Y;
-                        Editor.seOrientationZ.Value = (decimal)Selection.Orientation.Z;
+                        Editor.sePitch.Value = (decimal)Selection.Orientation.X;
+                        Editor.seYaw.Value = (decimal)Selection.Orientation.Y;
+                        Editor.seRoll.Value = (decimal)Selection.Orientation.Z;
                         break;
                     case PropertyNames.Pattern:
                         Editor.cbPattern.SelectedItem = Selection.Pattern;
@@ -249,21 +249,21 @@
 
         private void OrientationX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
-                (float)Editor.seOrientationX.Value,
+                (float)Editor.sePitch.Value,
                 p.Orientation.Y,
                 p.Orientation.Z)));
 
         private void OrientationY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
                 p.Orientation.X,
-                (float)Editor.seOrientationY.Value,
+                (float)Editor.seYaw.Value,
                 p.Orientation.Z)));
 
         private void OrientationZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
                 p.Orientation.X,
                 p.Orientation.Y,
-                (float)Editor.seOrientationZ.Value)));
+                (float)Editor.seRoll.Value)));
 
         private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
             Run(p => new PatternCommand(p.Index, (Pattern)Editor.cbPattern.SelectedItem));
@@ -366,9 +366,9 @@
             SetToolTip(Editor.seMinimumX, Resources.Trace_MinimumX);
             SetToolTip(Editor.seMinimumY, Resources.Trace_MinimumY);
             SetToolTip(Editor.seMinimumZ, Resources.Trace_MinimumZ);
-            SetToolTip(Editor.seOrientationX, Resources.Trace_OrientationX);
-            SetToolTip(Editor.seOrientationY, Resources.Trace_OrientationY);
-            SetToolTip(Editor.seOrientationZ, Resources.Trace_OrientationZ);
+            SetToolTip(Editor.sePitch, Resources.Trace_OrientationX);
+            SetToolTip(Editor.seYaw, Resources.Trace_OrientationY);
+            SetToolTip(Editor.seRoll, Resources.Trace_OrientationZ);
             SetToolTip(Editor.cbPattern, Resources.Trace_Pattern);
             SetToolTip(Editor.seScaleX, Resources.Trace_ScaleX);
             SetToolTip(Editor.seScaleY, Resources.Trace_ScaleY);

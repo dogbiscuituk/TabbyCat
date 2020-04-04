@@ -42,9 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.seLocationY = new System.Windows.Forms.NumericUpDown();
             this.seLocationZ = new System.Windows.Forms.NumericUpDown();
-            this.seOrientationX = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seOrientationY = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seOrientationZ = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seScaleX = new System.Windows.Forms.NumericUpDown();
             this.seScaleY = new System.Windows.Forms.NumericUpDown();
             this.seScaleZ = new System.Windows.Forms.NumericUpDown();
@@ -63,12 +60,12 @@
             this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).BeginInit();
@@ -83,6 +80,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.seStripCountZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).BeginInit();
             this.SelectionToolbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -105,9 +105,9 @@
             this.TableLayoutPanel.Controls.Add(this.label7, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.seLocationY, 2, 1);
             this.TableLayoutPanel.Controls.Add(this.seLocationZ, 3, 1);
-            this.TableLayoutPanel.Controls.Add(this.seOrientationX, 1, 2);
-            this.TableLayoutPanel.Controls.Add(this.seOrientationY, 2, 2);
-            this.TableLayoutPanel.Controls.Add(this.seOrientationZ, 3, 2);
+            this.TableLayoutPanel.Controls.Add(this.sePitch, 1, 2);
+            this.TableLayoutPanel.Controls.Add(this.seYaw, 2, 2);
+            this.TableLayoutPanel.Controls.Add(this.seRoll, 3, 2);
             this.TableLayoutPanel.Controls.Add(this.seScaleX, 1, 3);
             this.TableLayoutPanel.Controls.Add(this.seScaleY, 2, 3);
             this.TableLayoutPanel.Controls.Add(this.seScaleZ, 3, 3);
@@ -313,57 +313,6 @@
             this.seLocationZ.Size = new System.Drawing.Size(86, 21);
             this.seLocationZ.TabIndex = 5;
             this.seLocationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seOrientationX
-            // 
-            this.seOrientationX.BackColor = System.Drawing.SystemColors.Window;
-            this.seOrientationX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationX.Location = new System.Drawing.Point(92, 56);
-            this.seOrientationX.Margin = new System.Windows.Forms.Padding(2);
-            this.seOrientationX.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seOrientationX.Name = "seOrientationX";
-            this.seOrientationX.Size = new System.Drawing.Size(86, 21);
-            this.seOrientationX.TabIndex = 7;
-            this.seOrientationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seOrientationY
-            // 
-            this.seOrientationY.BackColor = System.Drawing.SystemColors.Window;
-            this.seOrientationY.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationY.Location = new System.Drawing.Point(182, 56);
-            this.seOrientationY.Margin = new System.Windows.Forms.Padding(2);
-            this.seOrientationY.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seOrientationY.Name = "seOrientationY";
-            this.seOrientationY.Size = new System.Drawing.Size(86, 21);
-            this.seOrientationY.TabIndex = 8;
-            this.seOrientationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seOrientationZ
-            // 
-            this.seOrientationZ.BackColor = System.Drawing.SystemColors.Window;
-            this.seOrientationZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seOrientationZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seOrientationZ.Location = new System.Drawing.Point(272, 56);
-            this.seOrientationZ.Margin = new System.Windows.Forms.Padding(2);
-            this.seOrientationZ.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seOrientationZ.Name = "seOrientationZ";
-            this.seOrientationZ.Size = new System.Drawing.Size(86, 21);
-            this.seOrientationZ.TabIndex = 9;
-            this.seOrientationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seScaleX
             // 
@@ -702,6 +651,57 @@
             // 
             this.ToolTip.BackColor = System.Drawing.SystemColors.Window;
             // 
+            // sePitch
+            // 
+            this.sePitch.BackColor = System.Drawing.SystemColors.Window;
+            this.sePitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.sePitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sePitch.Location = new System.Drawing.Point(92, 56);
+            this.sePitch.Margin = new System.Windows.Forms.Padding(2);
+            this.sePitch.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sePitch.Name = "sePitch";
+            this.sePitch.Size = new System.Drawing.Size(86, 21);
+            this.sePitch.TabIndex = 7;
+            this.sePitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seYaw
+            // 
+            this.seYaw.BackColor = System.Drawing.SystemColors.Window;
+            this.seYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seYaw.Location = new System.Drawing.Point(182, 56);
+            this.seYaw.Margin = new System.Windows.Forms.Padding(2);
+            this.seYaw.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seYaw.Name = "seYaw";
+            this.seYaw.Size = new System.Drawing.Size(86, 21);
+            this.seYaw.TabIndex = 8;
+            this.seYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seRoll
+            // 
+            this.seRoll.BackColor = System.Drawing.SystemColors.Window;
+            this.seRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seRoll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seRoll.Location = new System.Drawing.Point(272, 56);
+            this.seRoll.Margin = new System.Windows.Forms.Padding(2);
+            this.seRoll.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seRoll.Name = "seRoll";
+            this.seRoll.Size = new System.Drawing.Size(86, 21);
+            this.seRoll.TabIndex = 9;
+            this.seRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // TraceEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -715,9 +715,6 @@
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seOrientationZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).EndInit();
@@ -733,6 +730,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).EndInit();
             this.SelectionToolbar.ResumeLayout(false);
             this.SelectionToolbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,9 +752,9 @@
         public System.Windows.Forms.NumericUpDown seLocationX;
         public System.Windows.Forms.NumericUpDown seLocationY;
         public System.Windows.Forms.NumericUpDown seLocationZ;
-        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationX;
-        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationY;
-        public Jmk.Controls.JmkNumericUpDownDegrees seOrientationZ;
+        public Jmk.Controls.JmkNumericUpDownDegrees sePitch;
+        public Jmk.Controls.JmkNumericUpDownDegrees seYaw;
+        public Jmk.Controls.JmkNumericUpDownDegrees seRoll;
         public System.Windows.Forms.NumericUpDown seScaleX;
         public System.Windows.Forms.NumericUpDown seScaleY;
         public System.Windows.Forms.NumericUpDown seScaleZ;
