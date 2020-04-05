@@ -347,36 +347,10 @@
 
         private void InitLocalControls()
         {
-            InitToolTips();
             Editor.seStripCountX.Minimum =
             Editor.seStripCountY.Minimum =
             Editor.seStripCountZ.Minimum = 0;
             Editor.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
-        }
-
-        private void InitToolTips()
-        {
-            SetToolTip(Editor.edDescription, Resources.Trace_Description);
-            SetToolTip(Editor.seLocationX, Resources.Trace_LocationX);
-            SetToolTip(Editor.seLocationY, Resources.Trace_LocationY);
-            SetToolTip(Editor.seLocationZ, Resources.Trace_LocationZ);
-            SetToolTip(Editor.seMaximumX, Resources.Trace_MaximumX);
-            SetToolTip(Editor.seMaximumY, Resources.Trace_MaximumY);
-            SetToolTip(Editor.seMaximumZ, Resources.Trace_MaximumZ);
-            SetToolTip(Editor.seMinimumX, Resources.Trace_MinimumX);
-            SetToolTip(Editor.seMinimumY, Resources.Trace_MinimumY);
-            SetToolTip(Editor.seMinimumZ, Resources.Trace_MinimumZ);
-            SetToolTip(Editor.sePitch, Resources.Trace_OrientationX);
-            SetToolTip(Editor.seYaw, Resources.Trace_OrientationY);
-            SetToolTip(Editor.seRoll, Resources.Trace_OrientationZ);
-            SetToolTip(Editor.cbPattern, Resources.Trace_Pattern);
-            SetToolTip(Editor.seScaleX, Resources.Trace_ScaleX);
-            SetToolTip(Editor.seScaleY, Resources.Trace_ScaleY);
-            SetToolTip(Editor.seScaleZ, Resources.Trace_ScaleZ);
-            SetToolTip(Editor.seStripCountX, Resources.Trace_StripCountX);
-            SetToolTip(Editor.seStripCountY, Resources.Trace_StripCountY);
-            SetToolTip(Editor.seStripCountZ, Resources.Trace_StripCountZ);
-            SetToolTip(Editor.cbVisible, Resources.Trace_Visible);
         }
 
         private void Run(Func<Trace, ICommand> command)

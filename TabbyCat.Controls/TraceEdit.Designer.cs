@@ -139,7 +139,7 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 251);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(360, 246);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // lblSelectedTraces
@@ -178,6 +178,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Location";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label2, "Trace location");
             // 
             // label1
             // 
@@ -191,6 +192,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Description";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label1, "The description of this trace");
             // 
             // edDescription
             // 
@@ -203,6 +205,7 @@
             this.edDescription.Name = "edDescription";
             this.edDescription.Size = new System.Drawing.Size(266, 25);
             this.edDescription.TabIndex = 1;
+            this.ToolTip.SetToolTip(this.edDescription, "The description of this trace");
             // 
             // label3
             // 
@@ -229,6 +232,7 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Scale";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label4, "Trace magnification factor");
             // 
             // label5
             // 
@@ -241,6 +245,7 @@
             this.label5.TabIndex = 26;
             this.label5.Text = "Pattern";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label5, "The texture of the trace");
             // 
             // label6
             // 
@@ -290,6 +295,7 @@
             this.seLocationY.Size = new System.Drawing.Size(86, 21);
             this.seLocationY.TabIndex = 4;
             this.seLocationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seLocationY, "Location Y");
             // 
             // seLocationZ
             // 
@@ -313,6 +319,7 @@
             this.seLocationZ.Size = new System.Drawing.Size(86, 21);
             this.seLocationZ.TabIndex = 5;
             this.seLocationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seLocationZ, "Location Z");
             // 
             // seScaleX
             // 
@@ -336,6 +343,7 @@
             this.seScaleX.Size = new System.Drawing.Size(86, 21);
             this.seScaleX.TabIndex = 11;
             this.seScaleX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seScaleX, "The X component of scale");
             // 
             // seScaleY
             // 
@@ -359,6 +367,7 @@
             this.seScaleY.Size = new System.Drawing.Size(86, 21);
             this.seScaleY.TabIndex = 12;
             this.seScaleY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seScaleY, "The Y component of scale");
             // 
             // seScaleZ
             // 
@@ -382,6 +391,7 @@
             this.seScaleZ.Size = new System.Drawing.Size(86, 21);
             this.seScaleZ.TabIndex = 13;
             this.seScaleZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seScaleZ, "The Z component of scale");
             // 
             // seMinimumX
             // 
@@ -405,6 +415,7 @@
             this.seMinimumX.Size = new System.Drawing.Size(86, 21);
             this.seMinimumX.TabIndex = 15;
             this.seMinimumX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMinimumX, "The minimum value of X");
             // 
             // seMinimumY
             // 
@@ -428,6 +439,7 @@
             this.seMinimumY.Size = new System.Drawing.Size(86, 21);
             this.seMinimumY.TabIndex = 16;
             this.seMinimumY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMinimumY, "The minimum value of Y");
             // 
             // seMinimumZ
             // 
@@ -451,6 +463,7 @@
             this.seMinimumZ.Size = new System.Drawing.Size(86, 21);
             this.seMinimumZ.TabIndex = 17;
             this.seMinimumZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMinimumZ, "The minimum value of Z");
             // 
             // seMaximumX
             // 
@@ -474,6 +487,7 @@
             this.seMaximumX.Size = new System.Drawing.Size(86, 21);
             this.seMaximumX.TabIndex = 19;
             this.seMaximumX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMaximumX, "The maximum value of X");
             // 
             // seMaximumY
             // 
@@ -497,6 +511,7 @@
             this.seMaximumY.Size = new System.Drawing.Size(86, 21);
             this.seMaximumY.TabIndex = 20;
             this.seMaximumY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMaximumY, "The maximum value of Y");
             // 
             // seMaximumZ
             // 
@@ -520,6 +535,7 @@
             this.seMaximumZ.Size = new System.Drawing.Size(86, 21);
             this.seMaximumZ.TabIndex = 21;
             this.seMaximumZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seMaximumZ, "The maximum value of Z");
             // 
             // seStripCountX
             // 
@@ -537,6 +553,7 @@
             this.seStripCountX.Size = new System.Drawing.Size(86, 21);
             this.seStripCountX.TabIndex = 23;
             this.seStripCountX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seStripCountX, "The number of strips in the X direction");
             // 
             // seStripCountY
             // 
@@ -554,6 +571,7 @@
             this.seStripCountY.Size = new System.Drawing.Size(86, 21);
             this.seStripCountY.TabIndex = 24;
             this.seStripCountY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seStripCountY, "The number of strips in the Y direction");
             // 
             // seStripCountZ
             // 
@@ -571,6 +589,7 @@
             this.seStripCountZ.Size = new System.Drawing.Size(86, 21);
             this.seStripCountZ.TabIndex = 25;
             this.seStripCountZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seStripCountZ, "The number of strips in the Z direction");
             // 
             // cbPattern
             // 
@@ -585,6 +604,7 @@
             this.cbPattern.Name = "cbPattern";
             this.cbPattern.Size = new System.Drawing.Size(176, 25);
             this.cbPattern.TabIndex = 27;
+            this.ToolTip.SetToolTip(this.cbPattern, "The texture of the trace");
             // 
             // cbVisible
             // 
@@ -602,6 +622,7 @@
             this.cbVisible.TabIndex = 28;
             this.cbVisible.Text = "Visible";
             this.cbVisible.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.cbVisible, "Whether or not this trace is visible");
             this.cbVisible.UseVisualStyleBackColor = false;
             // 
             // seLocationX
@@ -626,6 +647,7 @@
             this.seLocationX.Size = new System.Drawing.Size(86, 21);
             this.seLocationX.TabIndex = 3;
             this.seLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seLocationX, "Location X");
             // 
             // SelectionToolbar
             // 
@@ -667,6 +689,7 @@
             this.sePitch.Size = new System.Drawing.Size(86, 21);
             this.sePitch.TabIndex = 7;
             this.sePitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.sePitch, "Trace pitch");
             // 
             // seYaw
             // 
@@ -684,6 +707,7 @@
             this.seYaw.Size = new System.Drawing.Size(86, 21);
             this.seYaw.TabIndex = 8;
             this.seYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seYaw, "Trace yaw");
             // 
             // seRoll
             // 
@@ -701,6 +725,7 @@
             this.seRoll.Size = new System.Drawing.Size(86, 21);
             this.seRoll.TabIndex = 9;
             this.seRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seRoll, "Trace roll");
             // 
             // TraceEdit
             // 
@@ -710,7 +735,7 @@
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TraceEdit";
-            this.Size = new System.Drawing.Size(360, 251);
+            this.Size = new System.Drawing.Size(360, 246);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();

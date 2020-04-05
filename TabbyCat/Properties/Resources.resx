@@ -148,18 +148,6 @@
   <data name="OpenFileHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OpenFileHS.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Camera_FocusX" xml:space="preserve">
-    <value>The X component of camera focus</value>
-  </data>
-  <data name="Trace_Visible" xml:space="preserve">
-    <value>Whether or not this trace is visible</value>
-  </data>
-  <data name="Trace_StripCountX" xml:space="preserve">
-    <value>The number of strips in the X direction</value>
-  </data>
-  <data name="Scene_Background" xml:space="preserve">
-    <value>The colour of the background</value>
-  </data>
   <data name="openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -175,9 +163,6 @@
   <data name="Scene_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Trace_ScaleY" xml:space="preserve">
-    <value>The Y component of scale</value>
-  </data>
   <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,14 +172,8 @@
   <data name="PrintPreviewHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PrintPreviewHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_FPS" xml:space="preserve">
-    <value>The target number of frames per second</value>
-  </data>
   <data name="DataContainer_MoveLastHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DataContainer_MoveLastHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Projection_Type" xml:space="preserve">
-    <value>Scene projection type</value>
   </data>
   <data name="LegendHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LegendHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,17 +184,11 @@
   <data name="Trace_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Trace_MaximumX" xml:space="preserve">
-    <value>The maximum value of X</value>
-  </data>
   <data name="BackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="openfolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_FocusZ" xml:space="preserve">
-    <value>The Z component of camera focus</value>
   </data>
   <data name="CopyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CopyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,20 +199,8 @@
   <data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_LocationZ" xml:space="preserve">
-    <value>The Z component of location</value>
-  </data>
   <data name="Built_in_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Projection_NearPlaneY" xml:space="preserve">
-    <value>The Y component of the projection near plane</value>
-  </data>
-  <data name="Trace_StripCountY" xml:space="preserve">
-    <value>The number of strips in the Y direction</value>
-  </data>
-  <data name="Trace_MinimumZ" xml:space="preserve">
-    <value>The minimum value of Z</value>
   </data>
   <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -252,9 +213,6 @@
   </data>
   <data name="eps_openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eps_openHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GLSL_TargetVersion" xml:space="preserve">
-    <value>The Shader Language version targeted by this code</value>
   </data>
   <data name="SpeechMicHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeechMicHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,23 +229,11 @@
   <data name="SaveFormDesignHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveFormDesignHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Title" xml:space="preserve">
-    <value>The title of this scene</value>
-  </data>
   <data name="Edit_RedoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_RedoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_LocationY" xml:space="preserve">
-    <value>The Y component of location</value>
-  </data>
-  <data name="Trace_MaximumY" xml:space="preserve">
-    <value>The maximum value of Y</value>
-  </data>
   <data name="saveHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Scene_Samples" xml:space="preserve">
-    <value>The number of samples interpolated over</value>
   </data>
   <data name="ShowGridlines2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowGridlines2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,23 +253,14 @@
   <data name="PieChartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieChartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_MinimumX" xml:space="preserve">
-    <value>The minimum value of X</value>
-  </data>
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Projection_FieldOfView" xml:space="preserve">
-    <value>The perspective field of view angle (degrees)</value>
   </data>
   <data name="Scene_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="FlipHorizontalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_ScaleZ" xml:space="preserve">
-    <value>The Z component of scale</value>
   </data>
   <data name="ShowGridlinesHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowGridlinesHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,17 +271,11 @@
   <data name="FolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Camera_PositionZ" xml:space="preserve">
-    <value>The Z component of camera position</value>
-  </data>
   <data name="OptionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OptionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Trace_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Projection_FarPlaneZ" xml:space="preserve">
-    <value>The Z component of the projection far plane</value>
   </data>
   <data name="Scene_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -364,9 +295,6 @@
   <data name="PauseRecorderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseRecorderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Camera_FocusY" xml:space="preserve">
-    <value>The Y component of camera focus</value>
-  </data>
   <data name="FontDialogHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FontDialogHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -378,9 +306,6 @@
   </data>
   <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_LocationX" xml:space="preserve">
-    <value>The X component of location</value>
   </data>
   <data name="Scene_Shader2TessControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_shader2tesscontrol.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -397,9 +322,6 @@
   <data name="RestartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RestartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_MaximumZ" xml:space="preserve">
-    <value>The maximum value of Z</value>
-  </data>
   <data name="SychronizeListHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SychronizeListHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -414,12 +336,6 @@
   </data>
   <data name="ResizeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ResizeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Projection_FarPlaneY" xml:space="preserve">
-    <value>The Y component of the projection far plane</value>
-  </data>
-  <data name="Trace_OrientationY" xml:space="preserve">
-    <value>The Yaw component of orientation</value>
   </data>
   <data name="GoToNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoToNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -451,9 +367,6 @@
   <data name="PrimaryKeyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PrimaryKeyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Projection_NearPlaneX" xml:space="preserve">
-    <value>The X component of the projection near plane</value>
-  </data>
   <data name="RoutingSlipHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RoutingSlipHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -462,9 +375,6 @@
   </data>
   <data name="RightArrow2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RightArrow2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_PositionX" xml:space="preserve">
-    <value>The X component of camera position</value>
   </data>
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -502,29 +412,11 @@
   <data name="PieChart3DHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieChart3DHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Projection_FarPlaneX" xml:space="preserve">
-    <value>The X component of the projection far plane</value>
-  </data>
-  <data name="Trace_OrientationX" xml:space="preserve">
-    <value>The Pitch component of orientation</value>
-  </data>
-  <data name="Trace_Description" xml:space="preserve">
-    <value>The description of this trace</value>
-  </data>
   <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Scene_VSync" xml:space="preserve">
-    <value>Whether or not to apply vertical sync</value>
-  </data>
   <data name="FindNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FindNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_StripCountZ" xml:space="preserve">
-    <value>The number of strips in the Z direction</value>
-  </data>
-  <data name="Trace_Pattern" xml:space="preserve">
-    <value>The texture of the trace</value>
   </data>
   <data name="RepeatHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RepeatHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -532,34 +424,10 @@
   <data name="EditInformationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditInformationHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_ScaleX" xml:space="preserve">
-    <value>The X component of scale</value>
-  </data>
-  <data name="Trace_MinimumY" xml:space="preserve">
-    <value>The minimum value of Y</value>
-  </data>
-  <data name="Trace_OrientationZ" xml:space="preserve">
-    <value>The Roll component of orientation</value>
-  </data>
-  <data name="Camera_PositionY" xml:space="preserve">
-    <value>The Y component of camera position</value>
-  </data>
   <data name="HomeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HomeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Projection_NearPlaneZ" xml:space="preserve">
-    <value>The Z component of the projection near plane</value>
-  </data>
   <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Camera_Pitch" xml:space="preserve">
-    <value>The Pitch component of camera direction</value>
-  </data>
-  <data name="Camera_Yaw" xml:space="preserve">
-    <value>The Yaw component of camera direction</value>
-  </data>
-  <data name="Camera_Roll" xml:space="preserve">
-    <value>The Roll component of camera direction</value>
   </data>
 </root>

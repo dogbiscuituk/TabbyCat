@@ -251,87 +251,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of camera focus.
-        /// </summary>
-        internal static string Camera_FocusX {
-            get {
-                return ResourceManager.GetString("Camera_FocusX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of camera focus.
-        /// </summary>
-        internal static string Camera_FocusY {
-            get {
-                return ResourceManager.GetString("Camera_FocusY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of camera focus.
-        /// </summary>
-        internal static string Camera_FocusZ {
-            get {
-                return ResourceManager.GetString("Camera_FocusZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Pitch component of camera direction.
-        /// </summary>
-        internal static string Camera_Pitch {
-            get {
-                return ResourceManager.GetString("Camera_Pitch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The X component of camera position.
-        /// </summary>
-        internal static string Camera_PositionX {
-            get {
-                return ResourceManager.GetString("Camera_PositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of camera position.
-        /// </summary>
-        internal static string Camera_PositionY {
-            get {
-                return ResourceManager.GetString("Camera_PositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of camera position.
-        /// </summary>
-        internal static string Camera_PositionZ {
-            get {
-                return ResourceManager.GetString("Camera_PositionZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Roll component of camera direction.
-        /// </summary>
-        internal static string Camera_Roll {
-            get {
-                return ResourceManager.GetString("Camera_Roll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Yaw component of camera direction.
-        /// </summary>
-        internal static string Camera_Yaw {
-            get {
-                return ResourceManager.GetString("Camera_Yaw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Color_fontHS {
@@ -658,15 +577,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Shader Language version targeted by this code.
-        /// </summary>
-        internal static string GLSL_TargetVersion {
-            get {
-                return ResourceManager.GetString("GLSL_TargetVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap GoLtrHS {
@@ -917,78 +827,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The X component of the projection far plane.
-        /// </summary>
-        internal static string Projection_FarPlaneX {
-            get {
-                return ResourceManager.GetString("Projection_FarPlaneX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of the projection far plane.
-        /// </summary>
-        internal static string Projection_FarPlaneY {
-            get {
-                return ResourceManager.GetString("Projection_FarPlaneY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of the projection far plane.
-        /// </summary>
-        internal static string Projection_FarPlaneZ {
-            get {
-                return ResourceManager.GetString("Projection_FarPlaneZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The perspective field of view angle (degrees).
-        /// </summary>
-        internal static string Projection_FieldOfView {
-            get {
-                return ResourceManager.GetString("Projection_FieldOfView", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The X component of the projection near plane.
-        /// </summary>
-        internal static string Projection_NearPlaneX {
-            get {
-                return ResourceManager.GetString("Projection_NearPlaneX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of the projection near plane.
-        /// </summary>
-        internal static string Projection_NearPlaneY {
-            get {
-                return ResourceManager.GetString("Projection_NearPlaneY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of the projection near plane.
-        /// </summary>
-        internal static string Projection_NearPlaneZ {
-            get {
-                return ResourceManager.GetString("Projection_NearPlaneZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene projection type.
-        /// </summary>
-        internal static string Projection_Type {
-            get {
-                return ResourceManager.GetString("Projection_Type", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap RepeatHS {
@@ -1109,33 +947,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The colour of the background.
-        /// </summary>
-        internal static string Scene_Background {
-            get {
-                return ResourceManager.GetString("Scene_Background", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The target number of frames per second.
-        /// </summary>
-        internal static string Scene_FPS {
-            get {
-                return ResourceManager.GetString("Scene_FPS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of samples interpolated over.
-        /// </summary>
-        internal static string Scene_Samples {
-            get {
-                return ResourceManager.GetString("Scene_Samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
         ///out vec3 colour;
         ///
@@ -1198,24 +1009,6 @@ namespace TabbyCat.Properties {
         internal static string Scene_Shader6Compute {
             get {
                 return ResourceManager.GetString("Scene_Shader6Compute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The title of this scene.
-        /// </summary>
-        internal static string Scene_Title {
-            get {
-                return ResourceManager.GetString("Scene_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Whether or not to apply vertical sync.
-        /// </summary>
-        internal static string Scene_VSync {
-            get {
-                return ResourceManager.GetString("Scene_VSync", resourceCulture);
             }
         }
         
@@ -1360,159 +1153,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The description of this trace.
-        /// </summary>
-        internal static string Trace_Description {
-            get {
-                return ResourceManager.GetString("Trace_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The X component of location.
-        /// </summary>
-        internal static string Trace_LocationX {
-            get {
-                return ResourceManager.GetString("Trace_LocationX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of location.
-        /// </summary>
-        internal static string Trace_LocationY {
-            get {
-                return ResourceManager.GetString("Trace_LocationY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of location.
-        /// </summary>
-        internal static string Trace_LocationZ {
-            get {
-                return ResourceManager.GetString("Trace_LocationZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of X.
-        /// </summary>
-        internal static string Trace_MaximumX {
-            get {
-                return ResourceManager.GetString("Trace_MaximumX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of Y.
-        /// </summary>
-        internal static string Trace_MaximumY {
-            get {
-                return ResourceManager.GetString("Trace_MaximumY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of Z.
-        /// </summary>
-        internal static string Trace_MaximumZ {
-            get {
-                return ResourceManager.GetString("Trace_MaximumZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of X.
-        /// </summary>
-        internal static string Trace_MinimumX {
-            get {
-                return ResourceManager.GetString("Trace_MinimumX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of Y.
-        /// </summary>
-        internal static string Trace_MinimumY {
-            get {
-                return ResourceManager.GetString("Trace_MinimumY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of Z.
-        /// </summary>
-        internal static string Trace_MinimumZ {
-            get {
-                return ResourceManager.GetString("Trace_MinimumZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Pitch component of orientation.
-        /// </summary>
-        internal static string Trace_OrientationX {
-            get {
-                return ResourceManager.GetString("Trace_OrientationX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Yaw component of orientation.
-        /// </summary>
-        internal static string Trace_OrientationY {
-            get {
-                return ResourceManager.GetString("Trace_OrientationY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Roll component of orientation.
-        /// </summary>
-        internal static string Trace_OrientationZ {
-            get {
-                return ResourceManager.GetString("Trace_OrientationZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The texture of the trace.
-        /// </summary>
-        internal static string Trace_Pattern {
-            get {
-                return ResourceManager.GetString("Trace_Pattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The X component of scale.
-        /// </summary>
-        internal static string Trace_ScaleX {
-            get {
-                return ResourceManager.GetString("Trace_ScaleX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Y component of scale.
-        /// </summary>
-        internal static string Trace_ScaleY {
-            get {
-                return ResourceManager.GetString("Trace_ScaleY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Z component of scale.
-        /// </summary>
-        internal static string Trace_ScaleZ {
-            get {
-                return ResourceManager.GetString("Trace_ScaleZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to float
         ///  t = timeValue,
         ///  x = position.x,
@@ -1583,42 +1223,6 @@ namespace TabbyCat.Properties {
         internal static string Trace_Shader6Compute {
             get {
                 return ResourceManager.GetString("Trace_Shader6Compute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the X direction.
-        /// </summary>
-        internal static string Trace_StripCountX {
-            get {
-                return ResourceManager.GetString("Trace_StripCountX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the Y direction.
-        /// </summary>
-        internal static string Trace_StripCountY {
-            get {
-                return ResourceManager.GetString("Trace_StripCountY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the Z direction.
-        /// </summary>
-        internal static string Trace_StripCountZ {
-            get {
-                return ResourceManager.GetString("Trace_StripCountZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Whether or not this trace is visible.
-        /// </summary>
-        internal static string Trace_Visible {
-            get {
-                return ResourceManager.GetString("Trace_Visible", resourceCulture);
             }
         }
         

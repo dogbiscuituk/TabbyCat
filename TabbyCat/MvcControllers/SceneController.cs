@@ -232,7 +232,6 @@
             Editor.seFPS.Maximum = 300;
             InitDomainUpDownItems(Editor.seGLSLVersion, Settings.Default.GLSLVersions);
             InitDomainUpDownItems(Editor.seSampleCount, Settings.Default.SampleCounts);
-            InitToolTips();
             new ColourController().AddControls(Editor.cbBackground);
         }
 
@@ -240,30 +239,6 @@
         {
             control.Items.Clear();
             control.Items.AddRange(items.Split('|').Reverse().ToList());
-        }
-
-        private void InitToolTips()
-        {
-            SetToolTip(Editor.cbBackground, Resources.Scene_Background);
-            SetToolTip(Editor.seCameraPitch, Resources.Camera_Pitch);
-            SetToolTip(Editor.seCameraYaw, Resources.Camera_Yaw);
-            SetToolTip(Editor.seCameraRoll, Resources.Camera_Roll);
-            SetToolTip(Editor.seCameraPositionX, Resources.Camera_PositionX);
-            SetToolTip(Editor.seCameraPositionY, Resources.Camera_PositionY);
-            SetToolTip(Editor.seCameraPositionZ, Resources.Camera_PositionZ);
-            SetToolTip(Editor.seFrustumMaxX, Resources.Projection_FarPlaneX);
-            SetToolTip(Editor.seFrustumMaxY, Resources.Projection_FarPlaneY);
-            SetToolTip(Editor.seFrustumMaxZ, Resources.Projection_FarPlaneZ);
-            SetToolTip(Editor.seGLSLVersion, Resources.GLSL_TargetVersion);
-            SetToolTip(Editor.seFieldOfView, Resources.Projection_FieldOfView);
-            SetToolTip(Editor.seFPS, Resources.Scene_FPS);
-            SetToolTip(Editor.seFrustumMinX, Resources.Projection_NearPlaneX);
-            SetToolTip(Editor.seFrustumMinY, Resources.Projection_NearPlaneY);
-            SetToolTip(Editor.seFrustumMinZ, Resources.Projection_NearPlaneZ);
-            SetToolTip(Editor.seProjectionType, Resources.Projection_Type);
-            SetToolTip(Editor.seSampleCount, Resources.Scene_Samples);
-            SetToolTip(Editor.edTitle, Resources.Scene_Title);
-            SetToolTip(Editor.cbVSync, Resources.Scene_VSync);
         }
 
         private void Run(ICommand command)

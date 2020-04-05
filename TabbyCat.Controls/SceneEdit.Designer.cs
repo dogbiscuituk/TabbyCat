@@ -153,6 +153,7 @@
             this.cbStereo.TabIndex = 12;
             this.cbStereo.Text = "Stereo";
             this.cbStereo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.cbStereo, "Whether or not the current display mode is stereoscopic");
             this.cbStereo.UseVisualStyleBackColor = false;
             // 
             // seCameraPositionX
@@ -177,6 +178,7 @@
             this.seCameraPositionX.Size = new System.Drawing.Size(86, 21);
             this.seCameraPositionX.TabIndex = 3;
             this.seCameraPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraPositionX, "Camera X");
             // 
             // label2
             // 
@@ -188,9 +190,9 @@
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 2;
-            this.label2.Text = "C-position";
+            this.label2.Text = "Position";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ToolTip.SetToolTip(this.label2, "Camera Position");
+            this.ToolTip.SetToolTip(this.label2, "Camera position");
             // 
             // label1
             // 
@@ -204,6 +206,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Scene title";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label1, "The title of this scene");
             // 
             // edTitle
             // 
@@ -216,6 +219,7 @@
             this.edTitle.Name = "edTitle";
             this.edTitle.Size = new System.Drawing.Size(266, 25);
             this.edTitle.TabIndex = 1;
+            this.ToolTip.SetToolTip(this.edTitle, "The title of this scene");
             // 
             // label3
             // 
@@ -227,9 +231,9 @@
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label3.Size = new System.Drawing.Size(84, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "C-direction";
+            this.label3.Text = "Direction";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ToolTip.SetToolTip(this.label3, "Camera Direction");
+            this.ToolTip.SetToolTip(this.label3, "Camera direction");
             // 
             // label4
             // 
@@ -243,6 +247,7 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Projection";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label4, "Scene projection type");
             // 
             // lblFieldOfView
             // 
@@ -256,6 +261,7 @@
             this.lblFieldOfView.TabIndex = 13;
             this.lblFieldOfView.Text = "Field of view";
             this.lblFieldOfView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.lblFieldOfView, "The perspective field of view angle (degrees)");
             // 
             // label6
             // 
@@ -299,6 +305,7 @@
             this.seFieldOfView.Size = new System.Drawing.Size(86, 21);
             this.seFieldOfView.TabIndex = 14;
             this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFieldOfView, "The perspective field of view angle (degrees)");
             // 
             // seCameraPositionY
             // 
@@ -322,6 +329,7 @@
             this.seCameraPositionY.Size = new System.Drawing.Size(86, 21);
             this.seCameraPositionY.TabIndex = 4;
             this.seCameraPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraPositionY, "Camera Y");
             // 
             // seCameraPositionZ
             // 
@@ -345,6 +353,7 @@
             this.seCameraPositionZ.Size = new System.Drawing.Size(86, 21);
             this.seCameraPositionZ.TabIndex = 5;
             this.seCameraPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraPositionZ, "Camera Z");
             // 
             // seCameraPitch
             // 
@@ -362,6 +371,7 @@
             this.seCameraPitch.Size = new System.Drawing.Size(86, 21);
             this.seCameraPitch.TabIndex = 7;
             this.seCameraPitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraPitch, "Camera pitch");
             // 
             // seCameraYaw
             // 
@@ -379,6 +389,7 @@
             this.seCameraYaw.Size = new System.Drawing.Size(86, 21);
             this.seCameraYaw.TabIndex = 8;
             this.seCameraYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraYaw, "Camera Yaw");
             // 
             // seCameraRoll
             // 
@@ -396,6 +407,7 @@
             this.seCameraRoll.Size = new System.Drawing.Size(86, 21);
             this.seCameraRoll.TabIndex = 9;
             this.seCameraRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seCameraRoll, "Camera Roll");
             // 
             // seFrustumMinX
             // 
@@ -419,6 +431,7 @@
             this.seFrustumMinX.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMinX.TabIndex = 18;
             this.seFrustumMinX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMinX, "The X component of the projection near plane");
             // 
             // seFrustumMinY
             // 
@@ -442,6 +455,7 @@
             this.seFrustumMinY.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMinY.TabIndex = 19;
             this.seFrustumMinY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMinY, "The Y component of the projection near plane");
             // 
             // seFrustumMinZ
             // 
@@ -465,6 +479,7 @@
             this.seFrustumMinZ.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMinZ.TabIndex = 20;
             this.seFrustumMinZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMinZ, "The Z component of the projection near plane");
             // 
             // seFrustumMaxX
             // 
@@ -488,6 +503,7 @@
             this.seFrustumMaxX.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMaxX.TabIndex = 22;
             this.seFrustumMaxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMaxX, "The X component of the projection far plane");
             // 
             // seFrustumMaxY
             // 
@@ -511,6 +527,7 @@
             this.seFrustumMaxY.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMaxY.TabIndex = 23;
             this.seFrustumMaxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMaxY, "The Y component of the projection far plane");
             // 
             // seFrustumMaxZ
             // 
@@ -534,6 +551,7 @@
             this.seFrustumMaxZ.Size = new System.Drawing.Size(86, 21);
             this.seFrustumMaxZ.TabIndex = 24;
             this.seFrustumMaxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFrustumMaxZ, "The Z component of the projection far plane");
             // 
             // label8
             // 
@@ -547,6 +565,7 @@
             this.label8.TabIndex = 29;
             this.label8.Text = "Background";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label8, "The colour of the scene background");
             // 
             // label9
             // 
@@ -560,6 +579,7 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "Target FPS";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label9, "The target number of frames per second");
             // 
             // label10
             // 
@@ -573,6 +593,7 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "#Samples";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label10, "The number of samples interpolated over");
             // 
             // label12
             // 
@@ -586,6 +607,7 @@
             this.label12.TabIndex = 27;
             this.label12.Text = "GL version";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.label12, "The Shader Language version targeted by this code");
             // 
             // seFPS
             // 
@@ -603,6 +625,7 @@
             this.seFPS.Size = new System.Drawing.Size(86, 21);
             this.seFPS.TabIndex = 16;
             this.seFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seFPS, "The target number of frames per second");
             // 
             // cbVSync
             // 
@@ -620,6 +643,7 @@
             this.cbVSync.TabIndex = 31;
             this.cbVSync.Text = "VSync";
             this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.cbVSync, "Whether or not to apply vertical sync");
             this.cbVSync.UseVisualStyleBackColor = false;
             // 
             // cbBackground
@@ -636,6 +660,7 @@
             this.cbBackground.Name = "cbBackground";
             this.cbBackground.Size = new System.Drawing.Size(176, 26);
             this.cbBackground.TabIndex = 30;
+            this.ToolTip.SetToolTip(this.cbBackground, "The colour of the scene background");
             // 
             // seProjectionType
             // 
@@ -650,6 +675,7 @@
             this.seProjectionType.Size = new System.Drawing.Size(176, 21);
             this.seProjectionType.TabIndex = 11;
             this.seProjectionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seProjectionType, "Scene projection type");
             // 
             // seGLSLVersion
             // 
@@ -663,6 +689,7 @@
             this.seGLSLVersion.Size = new System.Drawing.Size(86, 21);
             this.seGLSLVersion.TabIndex = 28;
             this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seGLSLVersion, "The Shader Language version targeted by this code");
             // 
             // seSampleCount
             // 
@@ -676,6 +703,7 @@
             this.seSampleCount.Size = new System.Drawing.Size(86, 21);
             this.seSampleCount.TabIndex = 26;
             this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ToolTip.SetToolTip(this.seSampleCount, "The number of samples interpolated over");
             // 
             // ToolTip
             // 
