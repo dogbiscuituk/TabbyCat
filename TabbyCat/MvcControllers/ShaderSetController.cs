@@ -7,11 +7,12 @@
     using TabbyCat.Controls;
     using TabbyCat.MvcModels;
 
-    internal abstract class ShaderSetController
+    internal abstract class ShaderSetController : LocalizationController
     {
         #region Constructors
 
-        internal ShaderSetController(PropertiesController propertiesController) =>
+        internal ShaderSetController(PropertiesController propertiesController)
+            : base(propertiesController.WorldController) =>
             PropertiesController = propertiesController;
 
         #endregion
@@ -24,15 +25,15 @@
         protected Scene Scene => WorldController.Scene;
         internal ToolTip ToolTip => PropertiesController.ToolTip;
         protected bool Updating;
-        protected WorldController WorldController => PropertiesController.WorldController;
         protected PropertiesEdit WorldEdit => PropertiesController.PropertiesEdit;
 
         #endregion
 
         #region Protected Internal Methods
 
-        protected internal virtual void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             if (connect)
             {
                 UpdateAllProperties();

@@ -22,7 +22,7 @@ namespace TabbyCat.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TabbyCat.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TabbyCat.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace TabbyCat.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap action_add_16xLG {
+        public static System.Drawing.Bitmap action_add_16xLG {
             get {
                 object obj = ResourceManager.GetObject("action_add_16xLG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackHS {
+        public static System.Drawing.Bitmap BackHS {
             get {
                 object obj = ResourceManager.GetObject("BackHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -100,7 +100,7 @@ namespace TabbyCat.Properties {
         ///
         ///The variable gl_Position is intended for writing the homogeneous v [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader1Vertex {
+        public static string Built_in_Shader1Vertex {
             get {
                 return ResourceManager.GetString("Built_in_Shader1Vertex", resourceCulture);
             }
@@ -130,7 +130,7 @@ namespace TabbyCat.Properties {
         ///patch out float gl_TessLevelOuter[4];
         ///patch out float gl_TessLevel [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader2TessControl {
+        public static string Built_in_Shader2TessControl {
             get {
                 return ResourceManager.GetString("Built_in_Shader2TessControl", resourceCulture);
             }
@@ -160,7 +160,7 @@ namespace TabbyCat.Properties {
         ///};
         ///        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader3TessEvaluation {
+        public static string Built_in_Shader3TessEvaluation {
             get {
                 return ResourceManager.GetString("Built_in_Shader3TessEvaluation", resourceCulture);
             }
@@ -194,7 +194,7 @@ namespace TabbyCat.Properties {
         ///
         ///gl_Position, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader4Geometry {
+        public static string Built_in_Shader4Geometry {
             get {
                 return ResourceManager.GetString("Built_in_Shader4Geometry", resourceCulture);
             }
@@ -221,7 +221,7 @@ namespace TabbyCat.Properties {
         ///
         ///The output of the fragment shader executable is processed by the fixed function operations at the back [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader5Fragment {
+        public static string Built_in_Shader5Fragment {
             get {
                 return ResourceManager.GetString("Built_in_Shader5Fragment", resourceCulture);
             }
@@ -244,7 +244,7 @@ namespace TabbyCat.Properties {
         ///
         ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its conten [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Built_in_Shader6Compute {
+        public static string Built_in_Shader6Compute {
             get {
                 return ResourceManager.GetString("Built_in_Shader6Compute", resourceCulture);
             }
@@ -253,7 +253,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Color_fontHS {
+        public static System.Drawing.Bitmap Color_fontHS {
             get {
                 object obj = ResourceManager.GetObject("Color_fontHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +263,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColorHS {
+        public static System.Drawing.Bitmap ColorHS {
             get {
                 object obj = ResourceManager.GetObject("ColorHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +273,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CopyHS {
+        public static System.Drawing.Bitmap CopyHS {
             get {
                 object obj = ResourceManager.GetObject("CopyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +283,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CutHS {
+        public static System.Drawing.Bitmap CutHS {
             get {
                 object obj = ResourceManager.GetObject("CutHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +293,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DataContainer_MoveFirstHS {
+        public static System.Drawing.Bitmap DataContainer_MoveFirstHS {
             get {
                 object obj = ResourceManager.GetObject("DataContainer_MoveFirstHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +303,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DataContainer_MoveLastHS {
+        public static System.Drawing.Bitmap DataContainer_MoveLastHS {
             get {
                 object obj = ResourceManager.GetObject("DataContainer_MoveLastHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -313,7 +313,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DataContainer_MoveNextHS {
+        public static System.Drawing.Bitmap DataContainer_MoveNextHS {
             get {
                 object obj = ResourceManager.GetObject("DataContainer_MoveNextHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +323,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DataContainer_MovePreviousHS {
+        public static System.Drawing.Bitmap DataContainer_MovePreviousHS {
             get {
                 object obj = ResourceManager.GetObject("DataContainer_MovePreviousHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +333,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Delete {
+        public static System.Drawing.Bitmap Delete {
             get {
                 object obj = ResourceManager.GetObject("Delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +343,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DoubleLeftArrowHS {
+        public static System.Drawing.Bitmap DoubleLeftArrowHS {
             get {
                 object obj = ResourceManager.GetObject("DoubleLeftArrowHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +353,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DoubleRightArrowHS {
+        public static System.Drawing.Bitmap DoubleRightArrowHS {
             get {
                 object obj = ResourceManager.GetObject("DoubleRightArrowHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -363,7 +363,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Edit_RedoHS {
+        public static System.Drawing.Bitmap Edit_RedoHS {
             get {
                 object obj = ResourceManager.GetObject("Edit_RedoHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -373,7 +373,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Edit_UndoHS {
+        public static System.Drawing.Bitmap Edit_UndoHS {
             get {
                 object obj = ResourceManager.GetObject("Edit_UndoHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -383,7 +383,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EditInformationHS {
+        public static System.Drawing.Bitmap EditInformationHS {
             get {
                 object obj = ResourceManager.GetObject("EditInformationHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -393,7 +393,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EditTableHS {
+        public static System.Drawing.Bitmap EditTableHS {
             get {
                 object obj = ResourceManager.GetObject("EditTableHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -403,7 +403,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap eps_closedHS {
+        public static System.Drawing.Bitmap eps_closedHS {
             get {
                 object obj = ResourceManager.GetObject("eps_closedHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -413,7 +413,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap eps_open_largeHS {
+        public static System.Drawing.Bitmap eps_open_largeHS {
             get {
                 object obj = ResourceManager.GetObject("eps_open_largeHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -423,7 +423,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap eps_openHS {
+        public static System.Drawing.Bitmap eps_openHS {
             get {
                 object obj = ResourceManager.GetObject("eps_openHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -433,7 +433,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FFwdHS {
+        public static System.Drawing.Bitmap FFwdHS {
             get {
                 object obj = ResourceManager.GetObject("FFwdHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -443,7 +443,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FindHS {
+        public static System.Drawing.Bitmap FindHS {
             get {
                 object obj = ResourceManager.GetObject("FindHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -453,7 +453,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FindNextHS {
+        public static System.Drawing.Bitmap FindNextHS {
             get {
                 object obj = ResourceManager.GetObject("FindNextHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -463,7 +463,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlipHorizontalHS {
+        public static System.Drawing.Bitmap FlipHorizontalHS {
             get {
                 object obj = ResourceManager.GetObject("FlipHorizontalHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -473,7 +473,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlipVerticalHS {
+        public static System.Drawing.Bitmap FlipVerticalHS {
             get {
                 object obj = ResourceManager.GetObject("FlipVerticalHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -483,7 +483,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FolderHS {
+        public static System.Drawing.Bitmap FolderHS {
             get {
                 object obj = ResourceManager.GetObject("FolderHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -493,7 +493,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FontDialogHS {
+        public static System.Drawing.Bitmap FontDialogHS {
             get {
                 object obj = ResourceManager.GetObject("FontDialogHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -506,7 +506,7 @@ namespace TabbyCat.Properties {
         ///      break;
         ///.
         /// </summary>
-        internal static string Format_Case {
+        public static string Format_Case {
             get {
                 return ResourceManager.GetString("Format_Case", resourceCulture);
             }
@@ -526,7 +526,7 @@ namespace TabbyCat.Properties {
         ///  }}
         ///}}.
         /// </summary>
-        internal static string Format_Scene {
+        public static string Format_Scene {
             get {
                 return ResourceManager.GetString("Format_Scene", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace TabbyCat.Properties {
         ///
         ///.
         /// </summary>
-        internal static string Format_Trace {
+        public static string Format_Trace {
             get {
                 return ResourceManager.GetString("Format_Trace", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FormRunHS {
+        public static System.Drawing.Bitmap FormRunHS {
             get {
                 object obj = ResourceManager.GetObject("FormRunHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -559,7 +559,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FullScreenHS {
+        public static System.Drawing.Bitmap FullScreenHS {
             get {
                 object obj = ResourceManager.GetObject("FullScreenHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -569,7 +569,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FunctionHS {
+        public static System.Drawing.Bitmap FunctionHS {
             get {
                 object obj = ResourceManager.GetObject("FunctionHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -579,7 +579,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GoLtrHS {
+        public static System.Drawing.Bitmap GoLtrHS {
             get {
                 object obj = ResourceManager.GetObject("GoLtrHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -589,7 +589,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GoRtlHS {
+        public static System.Drawing.Bitmap GoRtlHS {
             get {
                 object obj = ResourceManager.GetObject("GoRtlHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -599,7 +599,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GoToNextHS {
+        public static System.Drawing.Bitmap GoToNextHS {
             get {
                 object obj = ResourceManager.GetObject("GoToNextHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -609,7 +609,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap graphhs {
+        public static System.Drawing.Bitmap graphhs {
             get {
                 object obj = ResourceManager.GetObject("graphhs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -619,7 +619,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HomeHS {
+        public static System.Drawing.Bitmap HomeHS {
             get {
                 object obj = ResourceManager.GetObject("HomeHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -629,7 +629,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap info {
+        public static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -639,7 +639,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap InsertHyperlinkHS {
+        public static System.Drawing.Bitmap InsertHyperlinkHS {
             get {
                 object obj = ResourceManager.GetObject("InsertHyperlinkHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -647,9 +647,225 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direction.
+        /// </summary>
+        public static string Label_Camera_Direction {
+            get {
+                return ResourceManager.GetString("Label_Camera_Direction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Label_Camera_Position {
+            get {
+                return ResourceManager.GetString("Label_Camera_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string Label_Scene_Background {
+            get {
+                return ResourceManager.GetString("Label_Scene_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Far plane.
+        /// </summary>
+        public static string Label_Scene_FarPlane {
+            get {
+                return ResourceManager.GetString("Label_Scene_FarPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field of view.
+        /// </summary>
+        public static string Label_Scene_FOV {
+            get {
+                return ResourceManager.GetString("Label_Scene_FOV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GLSL version.
+        /// </summary>
+        public static string Label_Scene_GLSLVersion {
+            get {
+                return ResourceManager.GetString("Label_Scene_GLSLVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near plane.
+        /// </summary>
+        public static string Label_Scene_NearPlane {
+            get {
+                return ResourceManager.GetString("Label_Scene_NearPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projection.
+        /// </summary>
+        public static string Label_Scene_Projection {
+            get {
+                return ResourceManager.GetString("Label_Scene_Projection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #Samples.
+        /// </summary>
+        public static string Label_Scene_Samples {
+            get {
+                return ResourceManager.GetString("Label_Scene_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stereo.
+        /// </summary>
+        public static string Label_Scene_Stereo {
+            get {
+                return ResourceManager.GetString("Label_Scene_Stereo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target FPS.
+        /// </summary>
+        public static string Label_Scene_TargetFPS {
+            get {
+                return ResourceManager.GetString("Label_Scene_TargetFPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene title.
+        /// </summary>
+        public static string Label_Scene_Title {
+            get {
+                return ResourceManager.GetString("Label_Scene_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VSync.
+        /// </summary>
+        public static string Label_Scene_VSync {
+            get {
+                return ResourceManager.GetString("Label_Scene_VSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string Label_Trace_All {
+            get {
+                return ResourceManager.GetString("Label_Trace_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Label_Trace_Description {
+            get {
+                return ResourceManager.GetString("Label_Trace_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Label_Trace_Location {
+            get {
+                return ResourceManager.GetString("Label_Trace_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum.
+        /// </summary>
+        public static string Label_Trace_Maximum {
+            get {
+                return ResourceManager.GetString("Label_Trace_Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum.
+        /// </summary>
+        public static string Label_Trace_Minimum {
+            get {
+                return ResourceManager.GetString("Label_Trace_Minimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orientation.
+        /// </summary>
+        public static string Label_Trace_Orientation {
+            get {
+                return ResourceManager.GetString("Label_Trace_Orientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pattern.
+        /// </summary>
+        public static string Label_Trace_Pattern {
+            get {
+                return ResourceManager.GetString("Label_Trace_Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale.
+        /// </summary>
+        public static string Label_Trace_Scale {
+            get {
+                return ResourceManager.GetString("Label_Trace_Scale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Trace(s).
+        /// </summary>
+        public static string Label_Trace_Selection {
+            get {
+                return ResourceManager.GetString("Label_Trace_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #Strips.
+        /// </summary>
+        public static string Label_Trace_Strips {
+            get {
+                return ResourceManager.GetString("Label_Trace_Strips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        public static string Label_Trace_Visible {
+            get {
+                return ResourceManager.GetString("Label_Trace_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LegendHS {
+        public static System.Drawing.Bitmap LegendHS {
             get {
                 object obj = ResourceManager.GetObject("LegendHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -659,7 +875,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LineColorHS {
+        public static System.Drawing.Bitmap LineColorHS {
             get {
                 object obj = ResourceManager.GetObject("LineColorHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -667,9 +883,459 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Camera.
+        /// </summary>
+        public static string Menu_Camera {
+            get {
+                return ResourceManager.GetString("Menu_Camera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Circle.
+        /// </summary>
+        public static string Menu_Camera_Circle {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Circle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Down.
+        /// </summary>
+        public static string Menu_Camera_Circle_Down {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Circle_Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Left.
+        /// </summary>
+        public static string Menu_Camera_Circle_Left {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Circle_Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Right.
+        /// </summary>
+        public static string Menu_Camera_Circle_Right {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Circle_Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Up.
+        /// </summary>
+        public static string Menu_Camera_Circle_Up {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Circle_Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roll &amp;Left.
+        /// </summary>
+        public static string Menu_Camera_RollLeft {
+            get {
+                return ResourceManager.GetString("Menu_Camera_RollLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roll &amp;Right.
+        /// </summary>
+        public static string Menu_Camera_RollRight {
+            get {
+                return ResourceManager.GetString("Menu_Camera_RollRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Strafe.
+        /// </summary>
+        public static string Menu_Camera_Strafe {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Strafe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Down.
+        /// </summary>
+        public static string Menu_Camera_Strafe_Down {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Strafe_Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Left.
+        /// </summary>
+        public static string Menu_Camera_Strafe_Left {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Strafe_Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Right.
+        /// </summary>
+        public static string Menu_Camera_Strafe_Right {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Strafe_Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Up.
+        /// </summary>
+        public static string Menu_Camera_Strafe_Up {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Strafe_Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom &amp;In.
+        /// </summary>
+        public static string Menu_Camera_ZoomIn {
+            get {
+                return ResourceManager.GetString("Menu_Camera_ZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom &amp;Out.
+        /// </summary>
+        public static string Menu_Camera_ZoomOut {
+            get {
+                return ResourceManager.GetString("Menu_Camera_ZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Zoom / Roll.
+        /// </summary>
+        public static string Menu_Camera_ZoomRoll {
+            get {
+                return ResourceManager.GetString("Menu_Camera_ZoomRoll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit.
+        /// </summary>
+        public static string Menu_Edit {
+            get {
+                return ResourceManager.GetString("Menu_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Add a New Trace.
+        /// </summary>
+        public static string Menu_Edit_AddANewTrace {
+            get {
+                return ResourceManager.GetString("Menu_Edit_AddANewTrace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Copy.
+        /// </summary>
+        public static string Menu_Edit_Copy {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cu&amp;t.
+        /// </summary>
+        public static string Menu_Edit_Cut {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Cut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Delete.
+        /// </summary>
+        public static string Menu_Edit_Delete {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Invert Selection.
+        /// </summary>
+        public static string Menu_Edit_InvertSelection {
+            get {
+                return ResourceManager.GetString("Menu_Edit_InvertSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Options....
+        /// </summary>
+        public static string Menu_Edit_Options {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Paste.
+        /// </summary>
+        public static string Menu_Edit_Paste {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Redo.
+        /// </summary>
+        public static string Menu_Edit_Redo {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Redo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select &amp;All.
+        /// </summary>
+        public static string Menu_Edit_SelectAll {
+            get {
+                return ResourceManager.GetString("Menu_Edit_SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Undo.
+        /// </summary>
+        public static string Menu_Edit_Undo {
+            get {
+                return ResourceManager.GetString("Menu_Edit_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;File.
+        /// </summary>
+        public static string Menu_File {
+            get {
+                return ResourceManager.GetString("Menu_File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Close.
+        /// </summary>
+        public static string Menu_File_Close {
+            get {
+                return ResourceManager.GetString("Menu_File_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit.
+        /// </summary>
+        public static string Menu_File_CloseAllAndExit {
+            get {
+                return ResourceManager.GetString("Menu_File_CloseAllAndExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;New.
+        /// </summary>
+        public static string Menu_File_New {
+            get {
+                return ResourceManager.GetString("Menu_File_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Empty Scene.
+        /// </summary>
+        public static string Menu_File_New_EmptyScene {
+            get {
+                return ResourceManager.GetString("Menu_File_New_EmptyScene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;From Template....
+        /// </summary>
+        public static string Menu_File_New_FromTemplate {
+            get {
+                return ResourceManager.GetString("Menu_File_New_FromTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open....
+        /// </summary>
+        public static string Menu_File_Open {
+            get {
+                return ResourceManager.GetString("Menu_File_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reopen.
+        /// </summary>
+        public static string Menu_File_Reopen {
+            get {
+                return ResourceManager.GetString("Menu_File_Reopen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Save.
+        /// </summary>
+        public static string Menu_File_Save {
+            get {
+                return ResourceManager.GetString("Menu_File_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save &amp;As....
+        /// </summary>
+        public static string Menu_File_SaveAs {
+            get {
+                return ResourceManager.GetString("Menu_File_SaveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Help.
+        /// </summary>
+        public static string Menu_Help {
+            get {
+                return ResourceManager.GetString("Menu_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;About {0}.
+        /// </summary>
+        public static string Menu_Help_About {
+            get {
+                return ResourceManager.GetString("Menu_Help_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OpenGL® Shading Language.
+        /// </summary>
+        public static string Menu_Help_OpenGLShadingLanguage {
+            get {
+                return ResourceManager.GetString("Menu_Help_OpenGLShadingLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Time.
+        /// </summary>
+        public static string Menu_Time {
+            get {
+                return ResourceManager.GetString("Menu_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Accelerate.
+        /// </summary>
+        public static string Menu_Time_Accelerate {
+            get {
+                return ResourceManager.GetString("Menu_Time_Accelerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Decelerate.
+        /// </summary>
+        public static string Menu_Time_Decelerate {
+            get {
+                return ResourceManager.GetString("Menu_Time_Decelerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Forward.
+        /// </summary>
+        public static string Menu_Time_Forward {
+            get {
+                return ResourceManager.GetString("Menu_Time_Forward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Pause.
+        /// </summary>
+        public static string Menu_Time_Pause {
+            get {
+                return ResourceManager.GetString("Menu_Time_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Reverse.
+        /// </summary>
+        public static string Menu_Time_Reverse {
+            get {
+                return ResourceManager.GetString("Menu_Time_Reverse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Stop.
+        /// </summary>
+        public static string Menu_Time_Stop {
+            get {
+                return ResourceManager.GetString("Menu_Time_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;View.
+        /// </summary>
+        public static string Menu_View {
+            get {
+                return ResourceManager.GetString("Menu_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Full Screen.
+        /// </summary>
+        public static string Menu_View_FullScreen {
+            get {
+                return ResourceManager.GetString("Menu_View_FullScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Properties.
+        /// </summary>
+        public static string Menu_View_Properties {
+            get {
+                return ResourceManager.GetString("Menu_View_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NewDocumentHS {
+        public static System.Drawing.Bitmap NewDocumentHS {
             get {
                 object obj = ResourceManager.GetObject("NewDocumentHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -679,7 +1345,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoteHS {
+        public static System.Drawing.Bitmap NoteHS {
             get {
                 object obj = ResourceManager.GetObject("NoteHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -689,7 +1355,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OpenFileHS {
+        public static System.Drawing.Bitmap OpenFileHS {
             get {
                 object obj = ResourceManager.GetObject("OpenFileHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -699,7 +1365,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap openfolderHS {
+        public static System.Drawing.Bitmap openfolderHS {
             get {
                 object obj = ResourceManager.GetObject("openfolderHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -709,7 +1375,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap openHS {
+        public static System.Drawing.Bitmap openHS {
             get {
                 object obj = ResourceManager.GetObject("openHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -719,7 +1385,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OptionsHS {
+        public static System.Drawing.Bitmap OptionsHS {
             get {
                 object obj = ResourceManager.GetObject("OptionsHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -729,7 +1395,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PasteHS {
+        public static System.Drawing.Bitmap PasteHS {
             get {
                 object obj = ResourceManager.GetObject("PasteHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -739,7 +1405,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PauseHS {
+        public static System.Drawing.Bitmap PauseHS {
             get {
                 object obj = ResourceManager.GetObject("PauseHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -749,7 +1415,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PauseRecorderHS {
+        public static System.Drawing.Bitmap PauseRecorderHS {
             get {
                 object obj = ResourceManager.GetObject("PauseRecorderHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -759,7 +1425,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PieChart3DHS {
+        public static System.Drawing.Bitmap PieChart3DHS {
             get {
                 object obj = ResourceManager.GetObject("PieChart3DHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -769,7 +1435,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PieChartHS {
+        public static System.Drawing.Bitmap PieChartHS {
             get {
                 object obj = ResourceManager.GetObject("PieChartHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -779,7 +1445,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PlayHS {
+        public static System.Drawing.Bitmap PlayHS {
             get {
                 object obj = ResourceManager.GetObject("PlayHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -789,7 +1455,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PointerHS {
+        public static System.Drawing.Bitmap PointerHS {
             get {
                 object obj = ResourceManager.GetObject("PointerHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -799,7 +1465,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PrimaryKeyHS {
+        public static System.Drawing.Bitmap PrimaryKeyHS {
             get {
                 object obj = ResourceManager.GetObject("PrimaryKeyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -809,7 +1475,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PrintHS {
+        public static System.Drawing.Bitmap PrintHS {
             get {
                 object obj = ResourceManager.GetObject("PrintHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -819,7 +1485,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PrintPreviewHS {
+        public static System.Drawing.Bitmap PrintPreviewHS {
             get {
                 object obj = ResourceManager.GetObject("PrintPreviewHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -829,7 +1495,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RepeatHS {
+        public static System.Drawing.Bitmap RepeatHS {
             get {
                 object obj = ResourceManager.GetObject("RepeatHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -839,7 +1505,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ResizeHS {
+        public static System.Drawing.Bitmap ResizeHS {
             get {
                 object obj = ResourceManager.GetObject("ResizeHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -849,7 +1515,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RestartHS {
+        public static System.Drawing.Bitmap RestartHS {
             get {
                 object obj = ResourceManager.GetObject("RestartHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -859,7 +1525,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RewindHS {
+        public static System.Drawing.Bitmap RewindHS {
             get {
                 object obj = ResourceManager.GetObject("RewindHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -869,7 +1535,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RightArrow2HS {
+        public static System.Drawing.Bitmap RightArrow2HS {
             get {
                 object obj = ResourceManager.GetObject("RightArrow2HS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -879,7 +1545,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RightArrowHS {
+        public static System.Drawing.Bitmap RightArrowHS {
             get {
                 object obj = ResourceManager.GetObject("RightArrowHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -889,7 +1555,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RightToLeftDoucmentHS {
+        public static System.Drawing.Bitmap RightToLeftDoucmentHS {
             get {
                 object obj = ResourceManager.GetObject("RightToLeftDoucmentHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -899,7 +1565,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RoutingSlipHS {
+        public static System.Drawing.Bitmap RoutingSlipHS {
             get {
                 object obj = ResourceManager.GetObject("RoutingSlipHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -909,7 +1575,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SaveAllHS {
+        public static System.Drawing.Bitmap SaveAllHS {
             get {
                 object obj = ResourceManager.GetObject("SaveAllHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -919,7 +1585,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SaveAsWebPageHS {
+        public static System.Drawing.Bitmap SaveAsWebPageHS {
             get {
                 object obj = ResourceManager.GetObject("SaveAsWebPageHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -929,7 +1595,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SaveFormDesignHS {
+        public static System.Drawing.Bitmap SaveFormDesignHS {
             get {
                 object obj = ResourceManager.GetObject("SaveFormDesignHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -939,7 +1605,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap saveHS {
+        public static System.Drawing.Bitmap saveHS {
             get {
                 object obj = ResourceManager.GetObject("saveHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -957,7 +1623,7 @@ namespace TabbyCat.Properties {
         ///  cameraView,
         ///  projection;.
         /// </summary>
-        internal static string Scene_Shader1Vertex {
+        public static string Scene_Shader1Vertex {
             get {
                 return ResourceManager.GetString("Scene_Shader1Vertex", resourceCulture);
             }
@@ -966,7 +1632,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Scene_Shader2TessControl {
+        public static string Scene_Shader2TessControl {
             get {
                 return ResourceManager.GetString("Scene_Shader2TessControl", resourceCulture);
             }
@@ -975,7 +1641,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Scene_Shader3TessEvaluation {
+        public static string Scene_Shader3TessEvaluation {
             get {
                 return ResourceManager.GetString("Scene_Shader3TessEvaluation", resourceCulture);
             }
@@ -984,7 +1650,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Scene_Shader4Geometry {
+        public static string Scene_Shader4Geometry {
             get {
                 return ResourceManager.GetString("Scene_Shader4Geometry", resourceCulture);
             }
@@ -997,7 +1663,7 @@ namespace TabbyCat.Properties {
         ///uniform float timeValue;
         ///uniform int traceNumber;.
         /// </summary>
-        internal static string Scene_Shader5Fragment {
+        public static string Scene_Shader5Fragment {
             get {
                 return ResourceManager.GetString("Scene_Shader5Fragment", resourceCulture);
             }
@@ -1006,7 +1672,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Scene_Shader6Compute {
+        public static string Scene_Shader6Compute {
             get {
                 return ResourceManager.GetString("Scene_Shader6Compute", resourceCulture);
             }
@@ -1015,7 +1681,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchWebHS {
+        public static System.Drawing.Bitmap SearchWebHS {
             get {
                 object obj = ResourceManager.GetObject("SearchWebHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1025,7 +1691,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SendBackwardHS {
+        public static System.Drawing.Bitmap SendBackwardHS {
             get {
                 object obj = ResourceManager.GetObject("SendBackwardHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1035,7 +1701,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SendToBackHS {
+        public static System.Drawing.Bitmap SendToBackHS {
             get {
                 object obj = ResourceManager.GetObject("SendToBackHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1045,7 +1711,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowAllCommentsHS {
+        public static System.Drawing.Bitmap ShowAllCommentsHS {
             get {
                 object obj = ResourceManager.GetObject("ShowAllCommentsHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1055,7 +1721,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowGridlines2HS {
+        public static System.Drawing.Bitmap ShowGridlines2HS {
             get {
                 object obj = ResourceManager.GetObject("ShowGridlines2HS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1065,7 +1731,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowGridlinesHS {
+        public static System.Drawing.Bitmap ShowGridlinesHS {
             get {
                 object obj = ResourceManager.GetObject("ShowGridlinesHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1075,7 +1741,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SpeechMicHS {
+        public static System.Drawing.Bitmap SpeechMicHS {
             get {
                 object obj = ResourceManager.GetObject("SpeechMicHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1085,7 +1751,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap StopHS {
+        public static System.Drawing.Bitmap StopHS {
             get {
                 object obj = ResourceManager.GetObject("StopHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1095,7 +1761,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SychronizeListHS {
+        public static System.Drawing.Bitmap SychronizeListHS {
             get {
                 object obj = ResourceManager.GetObject("SychronizeListHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1105,7 +1771,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TableHS {
+        public static System.Drawing.Bitmap TableHS {
             get {
                 object obj = ResourceManager.GetObject("TableHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1115,7 +1781,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TaskHS {
+        public static System.Drawing.Bitmap TaskHS {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1125,7 +1791,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TextboxHS {
+        public static System.Drawing.Bitmap TextboxHS {
             get {
                 object obj = ResourceManager.GetObject("TextboxHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1135,7 +1801,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ThinkTimenode_8848 {
+        public static System.Drawing.Bitmap ThinkTimenode_8848 {
             get {
                 object obj = ResourceManager.GetObject("ThinkTimenode_8848", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1145,10 +1811,487 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TileWindowsHorizontallyHS {
+        public static System.Drawing.Bitmap TileWindowsHorizontallyHS {
             get {
                 object obj = ResourceManager.GetObject("TileWindowsHorizontallyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera direction (degrees).
+        /// </summary>
+        public static string Tooltip_Camera_Direction {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_Direction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera pitch (degrees).
+        /// </summary>
+        public static string Tooltip_Camera_Pitch {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera position.
+        /// </summary>
+        public static string Tooltip_Camera_Position {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera x.
+        /// </summary>
+        public static string Tooltip_Camera_PositionX {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_PositionX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera y.
+        /// </summary>
+        public static string Tooltip_Camera_PositionY {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_PositionY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera z.
+        /// </summary>
+        public static string Tooltip_Camera_PositionZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_PositionZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera roll (degrees).
+        /// </summary>
+        public static string Tooltip_Camera_Roll {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_Roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera yaw (degrees).
+        /// </summary>
+        public static string Tooltip_Camera_Yaw {
+            get {
+                return ResourceManager.GetString("Tooltip_Camera_Yaw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The colour of the scene background.
+        /// </summary>
+        public static string Tooltip_Scene_Background {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The far projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_FarPlane {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_FarPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The x-component of the far projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_FarPlaneX {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_FarPlaneX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The y-component of the far projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_FarPlaneY {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_FarPlaneY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The z-component of the far projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_FarPlaneZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_FarPlaneZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The perspective field of view angle (degrees).
+        /// </summary>
+        public static string Tooltip_Scene_FieldOfView {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_FieldOfView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The OpenGL Shader Language version targeted by this code.
+        /// </summary>
+        public static string Tooltip_Scene_GLVersion {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_GLVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The near projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_NearPlane {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_NearPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The x-component of the near projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_NearPlaneX {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_NearPlaneX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The y-component of the near projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_NearPlaneY {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_NearPlaneY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The z-component of the near projective plane.
+        /// </summary>
+        public static string Tooltip_Scene_NearPlaneZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_NearPlaneZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene projection type.
+        /// </summary>
+        public static string Tooltip_Scene_Projection {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_Projection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of samples interpolated over.
+        /// </summary>
+        public static string Tooltip_Scene_Samples {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether or not the current display mode is stereoscopic.
+        /// </summary>
+        public static string Tooltip_Scene_Stereo {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_Stereo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The target number of frames per second.
+        /// </summary>
+        public static string Tooltip_Scene_TargetFPS {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_TargetFPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The title of this scene.
+        /// </summary>
+        public static string Tooltip_Scene_Title {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether or not to use vertical sync.
+        /// </summary>
+        public static string Tooltip_Scene_VSync {
+            get {
+                return ResourceManager.GetString("Tooltip_Scene_VSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace description.
+        /// </summary>
+        public static string Tooltip_Trace_Description {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace location.
+        /// </summary>
+        public static string Tooltip_Trace_Location {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location x.
+        /// </summary>
+        public static string Tooltip_Trace_LocationX {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_LocationX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location y.
+        /// </summary>
+        public static string Tooltip_Trace_LocationY {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_LocationY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location z.
+        /// </summary>
+        public static string Tooltip_Trace_LocationZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_LocationZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upper limit of range.
+        /// </summary>
+        public static string Tooltip_Trace_Maximum {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum value of x.
+        /// </summary>
+        public static string Tooltip_Trace_MaximumX {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MaximumX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum value of y.
+        /// </summary>
+        public static string Tooltip_Trace_MaximumY {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MaximumY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum value of z.
+        /// </summary>
+        public static string Tooltip_Trace_MaximumZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MaximumZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lower limit of range.
+        /// </summary>
+        public static string Tooltip_Trace_Minimum {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Minimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The minimum value of x.
+        /// </summary>
+        public static string Tooltip_Trace_MinimumX {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MinimumX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The minimum value of y.
+        /// </summary>
+        public static string Tooltip_Trace_MinimumY {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MinimumY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The minimum value of z.
+        /// </summary>
+        public static string Tooltip_Trace_MinimumZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_MinimumZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace orientation (degrees).
+        /// </summary>
+        public static string Tooltip_Trace_Orientation {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Orientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The trace rendering pattern.
+        /// </summary>
+        public static string Tooltip_Trace_Pattern {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace pitch (degrees).
+        /// </summary>
+        public static string Tooltip_Trace_Pitch {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace roll (degrees).
+        /// </summary>
+        public static string Tooltip_Trace_Roll {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace magnification factor.
+        /// </summary>
+        public static string Tooltip_Trace_Scale {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Scale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The x-component of scale.
+        /// </summary>
+        public static string Tooltip_Trace_ScaleX {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_ScaleX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The y-component of scale.
+        /// </summary>
+        public static string Tooltip_Trace_ScaleY {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_ScaleY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The z-component of scale.
+        /// </summary>
+        public static string Tooltip_Trace_ScaleZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_ScaleZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected trace(s).
+        /// </summary>
+        public static string Tooltip_Trace_Selection {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strips in each dimension of the trace.
+        /// </summary>
+        public static string Tooltip_Trace_Strips {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Strips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strips in the x-direction.
+        /// </summary>
+        public static string Tooltip_Trace_StripsX {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_StripsX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strips in the y-direction.
+        /// </summary>
+        public static string Tooltip_Trace_StripsY {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_StripsY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strips in the z-direction.
+        /// </summary>
+        public static string Tooltip_Trace_StripsZ {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_StripsZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether or not a trace is visible.
+        /// </summary>
+        public static string Tooltip_Trace_Visible {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace yaw (degrees).
+        /// </summary>
+        public static string Tooltip_Trace_Yaw {
+            get {
+                return ResourceManager.GetString("Tooltip_Trace_Yaw", resourceCulture);
             }
         }
         
@@ -1175,7 +2318,7 @@ namespace TabbyCat.Properties {
         ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
         ///colour = vec3(r, g, b);.
         /// </summary>
-        internal static string Trace_Shader1Vertex {
+        public static string Trace_Shader1Vertex {
             get {
                 return ResourceManager.GetString("Trace_Shader1Vertex", resourceCulture);
             }
@@ -1184,7 +2327,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Trace_Shader2TessControl {
+        public static string Trace_Shader2TessControl {
             get {
                 return ResourceManager.GetString("Trace_Shader2TessControl", resourceCulture);
             }
@@ -1193,7 +2336,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Trace_Shader3TessEvaluation {
+        public static string Trace_Shader3TessEvaluation {
             get {
                 return ResourceManager.GetString("Trace_Shader3TessEvaluation", resourceCulture);
             }
@@ -1202,7 +2345,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Trace_Shader4Geometry {
+        public static string Trace_Shader4Geometry {
             get {
                 return ResourceManager.GetString("Trace_Shader4Geometry", resourceCulture);
             }
@@ -1211,7 +2354,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
         /// </summary>
-        internal static string Trace_Shader5Fragment {
+        public static string Trace_Shader5Fragment {
             get {
                 return ResourceManager.GetString("Trace_Shader5Fragment", resourceCulture);
             }
@@ -1220,7 +2363,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Trace_Shader6Compute {
+        public static string Trace_Shader6Compute {
             get {
                 return ResourceManager.GetString("Trace_Shader6Compute", resourceCulture);
             }
@@ -1229,7 +2372,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap WebInsertHyperlinkHS {
+        public static System.Drawing.Bitmap WebInsertHyperlinkHS {
             get {
                 object obj = ResourceManager.GetObject("WebInsertHyperlinkHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1239,7 +2382,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ZoomHS {
+        public static System.Drawing.Bitmap ZoomHS {
             get {
                 object obj = ResourceManager.GetObject("ZoomHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

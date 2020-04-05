@@ -103,6 +103,54 @@
 
         #region Protected Methods
 
+        protected override void InitTexts()
+        {
+            base.InitTexts();
+            Editor.lblTitle.Text = Resources.Label_Scene_Title;
+            Editor.lblPosition.Text = Resources.Label_Camera_Position;
+            Editor.lblDirection.Text = Resources.Label_Camera_Direction;
+            Editor.lblProjection.Text = Resources.Label_Scene_Projection;
+            Editor.cbStereo.Text = Resources.Label_Scene_Stereo;
+            Editor.lblFieldOfView.Text = Resources.Label_Scene_FOV;
+            Editor.lblTargetFPS.Text = Resources.Label_Scene_TargetFPS;
+            Editor.lblNearPlane.Text = Resources.Label_Scene_NearPlane;
+            Editor.lblFarPlane.Text = Resources.Label_Scene_FarPlane;
+            Editor.lblSamples.Text = Resources.Label_Scene_Samples;
+            Editor.lblGLSLVersion.Text = Resources.Label_Scene_GLSLVersion;
+            Editor.lblBackground.Text = Resources.Label_Scene_Background;
+            Editor.cbVSync.Text = Resources.Label_Scene_VSync;
+        }
+
+        protected override void InitTooltips()
+        {
+            base.InitTooltips();
+            InitTooltip(Resources.Tooltip_Scene_Title, Editor.lblTitle, Editor.edTitle);
+            InitTooltip(Resources.Tooltip_Camera_Position, Editor.lblPosition);
+            InitTooltip(Resources.Tooltip_Camera_PositionX, Editor.seCameraPositionX);
+            InitTooltip(Resources.Tooltip_Camera_PositionY, Editor.seCameraPositionY);
+            InitTooltip(Resources.Tooltip_Camera_PositionZ, Editor.seCameraPositionZ);
+            InitTooltip(Resources.Tooltip_Camera_Direction, Editor.lblDirection);
+            InitTooltip(Resources.Tooltip_Camera_Pitch, Editor.seCameraPitch);
+            InitTooltip(Resources.Tooltip_Camera_Yaw, Editor.seCameraYaw);
+            InitTooltip(Resources.Tooltip_Camera_Roll, Editor.seCameraRoll);
+            InitTooltip(Resources.Tooltip_Scene_Projection, Editor.lblProjection, Editor.seProjectionType);
+            InitTooltip(Resources.Tooltip_Scene_Stereo, Editor.cbStereo);
+            InitTooltip(Resources.Tooltip_Scene_FieldOfView, Editor.lblFieldOfView, Editor.seFieldOfView);
+            InitTooltip(Resources.Tooltip_Scene_TargetFPS, Editor.lblTargetFPS, Editor.seFPS);
+            InitTooltip(Resources.Tooltip_Scene_NearPlane, Editor.lblNearPlane);
+            InitTooltip(Resources.Tooltip_Scene_NearPlaneX, Editor.seFrustumMinX);
+            InitTooltip(Resources.Tooltip_Scene_NearPlaneY, Editor.seFrustumMinY);
+            InitTooltip(Resources.Tooltip_Scene_NearPlaneZ, Editor.seFrustumMinZ);
+            InitTooltip(Resources.Tooltip_Scene_FarPlane, Editor.lblFarPlane);
+            InitTooltip(Resources.Tooltip_Scene_FarPlaneX, Editor.seFrustumMaxX);
+            InitTooltip(Resources.Tooltip_Scene_FarPlaneY, Editor.seFrustumMaxY);
+            InitTooltip(Resources.Tooltip_Scene_FarPlaneZ, Editor.seFrustumMaxZ);
+            InitTooltip(Resources.Tooltip_Scene_Samples, Editor.lblSamples, Editor.seSampleCount);
+            InitTooltip(Resources.Tooltip_Scene_GLVersion, Editor.lblGLSLVersion, Editor.seGLSLVersion);
+            InitTooltip(Resources.Tooltip_Scene_Background, Editor.lblBackground, Editor.cbBackground);
+            InitTooltip(Resources.Tooltip_Scene_VSync, Editor.cbVSync);
+        }
+
         protected override void UpdateProperties(params string[] propertyNames)
         {
             foreach (var propertyName in propertyNames)
@@ -225,6 +273,7 @@
 
         private void InitLocalControls()
         {
+            InitTooltips();
             Editor.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
             Editor.seFieldOfView.Minimum = 1;
             Editor.seFieldOfView.Maximum = 179;

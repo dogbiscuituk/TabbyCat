@@ -409,7 +409,7 @@
             this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
             this.tbAdd.Name = "tbAdd";
             this.tbAdd.Size = new System.Drawing.Size(31, 20);
-            this.tbAdd.ToolTipText = "Add a new Trace (F2)";
+            this.tbAdd.ToolTipText = "Add a new trace (F2)";
             // 
             // tbUndo
             // 
@@ -468,7 +468,7 @@
             this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tbDelete.Name = "tbDelete";
             this.tbDelete.Size = new System.Drawing.Size(31, 20);
-            this.tbDelete.ToolTipText = "Delete selected Trace(s)";
+            this.tbDelete.ToolTipText = "Delete selected trace(s)";
             // 
             // MainMenu
             // 

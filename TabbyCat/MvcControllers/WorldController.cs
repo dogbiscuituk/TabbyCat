@@ -15,11 +15,11 @@
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
 
-    internal class WorldController
+    internal class WorldController : LocalizationController
     {
         #region Constructor
 
-        internal WorldController()
+        internal WorldController() : base(null)
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
@@ -32,9 +32,33 @@
             RenderController = new RenderController(this);
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
+            WorldController = this;
         }
 
         #endregion
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                ConnectEventHandlers(true);
+                ConnectControllers(true);
+                CommandProcessor.Clear();
+                Clock.Tick += Clock_Tick;
+                ClockStartup();
+            }
+            else
+            {
+                ClockShutdown();
+                Clock.Tick -= Clock_Tick;
+                RenderController.InvalidateProgram();
+                CommandProcessor.Clear();
+                ConnectControllers(false);
+                ConnectEventHandlers(false);
+                AppController.Remove(this);
+            }
+        }
 
         #region Internal Fields
 
@@ -66,6 +90,61 @@
         #endregion
 
         #region Internal Methods
+
+        protected override void InitTexts()
+        {
+            base.InitTexts();
+            InitMenuItems(Resources.Menu_File, WorldForm.FileMenu);
+            InitMenuItems(Resources.Menu_File_New, WorldForm.FileNew);
+            InitMenuItems(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene);
+            InitMenuItems(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate);
+            InitMenuItems(Resources.Menu_File_Open, WorldForm.FileOpen);
+            InitMenuItems(Resources.Menu_File_Reopen, WorldForm.FileReopen);
+            InitMenuItems(Resources.Menu_File_Save, WorldForm.FileSave);
+            InitMenuItems(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
+            InitMenuItems(Resources.Menu_File_Close, WorldForm.FileClose);
+            InitMenuItems(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
+            InitMenuItems(Resources.Menu_Edit, WorldForm.EditMenu);
+            InitMenuItems(Resources.Menu_Edit_AddANewTrace, WorldForm.EditAddNewTrace);
+            InitMenuItems(Resources.Menu_Edit_Undo, WorldForm.EditUndo);
+            InitMenuItems(Resources.Menu_Edit_Redo, WorldForm.EditRedo);
+            InitMenuItems(Resources.Menu_Edit_Cut, WorldForm.EditCut);
+            InitMenuItems(Resources.Menu_Edit_Copy, WorldForm.EditCopy);
+            InitMenuItems(Resources.Menu_Edit_Paste, WorldForm.EditPaste);
+            InitMenuItems(Resources.Menu_Edit_Delete, WorldForm.EditDelete);
+            InitMenuItems(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
+            InitMenuItems(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
+            InitMenuItems(Resources.Menu_Edit_Options, WorldForm.EditOptions);
+            InitMenuItems(Resources.Menu_View, WorldForm.ViewMenu);
+            InitMenuItems(Resources.Menu_View_FullScreen, WorldForm.ViewFullScreen);
+            InitMenuItems(Resources.Menu_View_Properties, WorldForm.ViewProperties);
+            InitMenuItems(Resources.Menu_Camera, WorldForm.MoveMenu);
+            InitMenuItems(Resources.Menu_Camera_Strafe, WorldForm.MoveStrafe);
+            InitMenuItems(Resources.Menu_Camera_Strafe_Down, WorldForm.MoveDown);
+            InitMenuItems(Resources.Menu_Camera_Strafe_Left, WorldForm.MoveLeft);
+            InitMenuItems(Resources.Menu_Camera_Strafe_Right, WorldForm.MoveRight);
+            InitMenuItems(Resources.Menu_Camera_Strafe_Up, WorldForm.MoveUp);
+            InitMenuItems(Resources.Menu_Camera_Circle, WorldForm.MoveCircle);
+            InitMenuItems(Resources.Menu_Camera_Circle_Down, WorldForm.CircleDown);
+            InitMenuItems(Resources.Menu_Camera_Circle_Left, WorldForm.CircleLeft);
+            InitMenuItems(Resources.Menu_Camera_Circle_Right, WorldForm.CircleRight);
+            InitMenuItems(Resources.Menu_Camera_Circle_Up, WorldForm.CircleUp);
+            InitMenuItems(Resources.Menu_Camera_ZoomRoll, WorldForm.MoveZoomRoll);
+            InitMenuItems(Resources.Menu_Camera_ZoomIn, WorldForm.ZoomIn);
+            InitMenuItems(Resources.Menu_Camera_ZoomOut, WorldForm.ZoomOut);
+            InitMenuItems(Resources.Menu_Camera_RollLeft, WorldForm.RollAnticlockwise);
+            InitMenuItems(Resources.Menu_Camera_RollRight, WorldForm.RollClockwise);
+            InitMenuItems(Resources.Menu_Time, WorldForm.TimeMenu);
+            InitMenuItems(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
+            InitMenuItems(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
+            InitMenuItems(Resources.Menu_Time_Forward, WorldForm.TimeForward);
+            InitMenuItems(Resources.Menu_Time_Pause, WorldForm.TimePause);
+            InitMenuItems(Resources.Menu_Time_Reverse, WorldForm.TimeReverse);
+            InitMenuItems(Resources.Menu_Time_Stop, WorldForm.TimeStop);
+            InitMenuItems(Resources.Menu_Help, WorldForm.HelpMenu);
+            InitMenuItems(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
+            InitMenuItems(Resources.Menu_Help_About, WorldForm.HelpAbout);
+        }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
@@ -216,28 +295,6 @@
             ClockInit();
             Clock.Start();
             ClockController.UpdateTimeControls();
-        }
-
-        private void Connect(bool connect)
-        {
-            if (connect)
-            {
-                ConnectEventHandlers(true);
-                ConnectControllers(true);
-                CommandProcessor.Clear();
-                Clock.Tick += Clock_Tick;
-                ClockStartup();
-            }
-            else
-            {
-                ClockShutdown();
-                Clock.Tick -= Clock_Tick;
-                RenderController.InvalidateProgram();
-                CommandProcessor.Clear();
-                ConnectControllers(false);
-                ConnectEventHandlers(false);
-                AppController.Remove(this);
-            }
         }
 
         private void ConnectControllers(bool connect)

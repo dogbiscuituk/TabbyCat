@@ -112,6 +112,55 @@
 
         #region Protected Methods
 
+        protected override void InitTexts()
+        {
+            base.InitTexts();
+            Editor.lblDescription.Text = Resources.Label_Trace_Description;
+            Editor.lblLocation.Text = Resources.Label_Trace_Location;
+            Editor.lblOrientation.Text = Resources.Label_Trace_Orientation;
+            Editor.lblScale.Text = Resources.Label_Trace_Scale;
+            Editor.lblMinimum.Text = Resources.Label_Trace_Minimum;
+            Editor.lblMaximum.Text = Resources.Label_Trace_Maximum;
+            Editor.lblStrips.Text = Resources.Label_Trace_Strips;
+            Editor.lblPattern.Text = Resources.Label_Trace_Pattern;
+            Editor.cbVisible.Text = Resources.Label_Trace_Visible;
+            Editor.lblSelectedTraces.Text = Resources.Label_Trace_Selection;
+            Editor.lblAll.Text = Resources.Label_Trace_All;
+        }
+
+        protected override void InitTooltips()
+        {
+            base.InitTooltips();
+            InitTooltip(Resources.Tooltip_Trace_Description, Editor.lblDescription, Editor.edDescription);
+            InitTooltip(Resources.Tooltip_Trace_Location, Editor.lblLocation);
+            InitTooltip(Resources.Tooltip_Trace_LocationX, Editor.seLocationX);
+            InitTooltip(Resources.Tooltip_Trace_LocationY, Editor.seLocationY);
+            InitTooltip(Resources.Tooltip_Trace_LocationZ, Editor.seLocationZ);
+            InitTooltip(Resources.Tooltip_Trace_Orientation, Editor.lblOrientation);
+            InitTooltip(Resources.Tooltip_Trace_Pitch, Editor.sePitch);
+            InitTooltip(Resources.Tooltip_Trace_Yaw, Editor.seYaw);
+            InitTooltip(Resources.Tooltip_Trace_Roll, Editor.seRoll);
+            InitTooltip(Resources.Tooltip_Trace_Scale, Editor.lblScale);
+            InitTooltip(Resources.Tooltip_Trace_ScaleX, Editor.seScaleX);
+            InitTooltip(Resources.Tooltip_Trace_ScaleY, Editor.seScaleY);
+            InitTooltip(Resources.Tooltip_Trace_ScaleZ, Editor.seScaleZ);
+            InitTooltip(Resources.Tooltip_Trace_Minimum, Editor.lblMinimum);
+            InitTooltip(Resources.Tooltip_Trace_MinimumX, Editor.seMinimumX);
+            InitTooltip(Resources.Tooltip_Trace_MinimumY, Editor.seMinimumY);
+            InitTooltip(Resources.Tooltip_Trace_MinimumZ, Editor.seMinimumZ);
+            InitTooltip(Resources.Tooltip_Trace_Maximum, Editor.lblMaximum);
+            InitTooltip(Resources.Tooltip_Trace_MaximumX, Editor.seMaximumX);
+            InitTooltip(Resources.Tooltip_Trace_MaximumY, Editor.seMaximumY);
+            InitTooltip(Resources.Tooltip_Trace_MaximumZ, Editor.seMaximumZ);
+            InitTooltip(Resources.Tooltip_Trace_Strips, Editor.lblStrips);
+            InitTooltip(Resources.Tooltip_Trace_StripsX, Editor.seStripCountX);
+            InitTooltip(Resources.Tooltip_Trace_StripsY, Editor.seStripCountY);
+            InitTooltip(Resources.Tooltip_Trace_StripsZ, Editor.seStripCountZ);
+            InitTooltip(Resources.Tooltip_Trace_Pattern, Editor.lblPattern, Editor.cbPattern);
+            InitTooltip(Resources.Tooltip_Trace_Visible, Editor.cbVisible);
+            InitTooltip(Resources.Tooltip_Trace_Selection, Editor.lblSelectedTraces);
+        }
+
         protected override void OnSelectionChanged()
         {
             $"Selection = {{{Selection}}}".Spit();
