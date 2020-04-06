@@ -1045,7 +1045,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Copy.
+        ///   Looks up a localized string similar to &amp;Copy|Copy selected trace(s).
         /// </summary>
         public static string Menu_Edit_Copy {
             get {
@@ -1054,7 +1054,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cu&amp;t.
+        ///   Looks up a localized string similar to Cu&amp;t|Cut selected trace(s).
         /// </summary>
         public static string Menu_Edit_Cut {
             get {
@@ -1063,7 +1063,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Delete.
+        ///   Looks up a localized string similar to &amp;Delete|Delete selected trace(s).
         /// </summary>
         public static string Menu_Edit_Delete {
             get {
@@ -1090,7 +1090,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Paste.
+        ///   Looks up a localized string similar to &amp;Paste|Paste trace(s) from clipboard.
         /// </summary>
         public static string Menu_Edit_Paste {
             get {
@@ -1108,7 +1108,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select &amp;All.
+        ///   Looks up a localized string similar to Select &amp;All|Select all traces.
         /// </summary>
         public static string Menu_Edit_SelectAll {
             get {
@@ -1162,7 +1162,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Empty Scene.
+        ///   Looks up a localized string similar to &amp;Empty Scene|Create a new empty scene|^N.
         /// </summary>
         public static string Menu_File_New_EmptyScene {
             get {

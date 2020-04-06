@@ -10,16 +10,23 @@
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(params string[] args)
         {
+            ParseCommandLine(args);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //var culture = new System.Globalization.CultureInfo("fr-FR");
-            //System.Threading.Thread.CurrentThread.CurrentCulture = culture;
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
-            //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
-            //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
             Application.Run(AppController.AboutDialog);
+        }
+
+        private static void ParseCommandLine(string[] args)
+        {
+            if (args.Length < 1)
+                return;
+            var culture = new System.Globalization.CultureInfo(args[0]);
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
         }
     }
 }

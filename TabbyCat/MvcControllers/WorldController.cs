@@ -96,7 +96,7 @@
             base.InitTexts();
             InitMenuItems(Resources.Menu_File, WorldForm.FileMenu);
             InitMenuItems(Resources.Menu_File_New, WorldForm.FileNew);
-            InitMenuItems(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene);
+            InitMenuItems(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
             InitMenuItems(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate);
             InitMenuItems(Resources.Menu_File_Open, WorldForm.FileOpen);
             InitMenuItems(Resources.Menu_File_Reopen, WorldForm.FileReopen);
@@ -143,7 +143,7 @@
             InitMenuItems(Resources.Menu_Time_Stop, WorldForm.TimeStop);
             InitMenuItems(Resources.Menu_Help, WorldForm.HelpMenu);
             InitMenuItems(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
-            InitMenuItems(Resources.Menu_Help_About, WorldForm.HelpAbout);
+            InitMenuItems(string.Format(Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
         }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);

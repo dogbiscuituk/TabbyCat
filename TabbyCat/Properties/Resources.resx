@@ -716,13 +716,13 @@
     <value>&amp;Add a New Trace</value>
   </data>
   <data name="Menu_Edit_Copy" xml:space="preserve">
-    <value>&amp;Copy</value>
+    <value>&amp;Copy|Copy selected trace(s)</value>
   </data>
   <data name="Menu_Edit_Cut" xml:space="preserve">
-    <value>Cu&amp;t</value>
+    <value>Cu&amp;t|Cut selected trace(s)</value>
   </data>
   <data name="Menu_Edit_Delete" xml:space="preserve">
-    <value>&amp;Delete</value>
+    <value>&amp;Delete|Delete selected trace(s)</value>
   </data>
   <data name="Menu_Edit_InvertSelection" xml:space="preserve">
     <value>&amp;Invert Selection</value>
@@ -731,13 +731,13 @@
     <value>&amp;Options...</value>
   </data>
   <data name="Menu_Edit_Paste" xml:space="preserve">
-    <value>&amp;Paste</value>
+    <value>&amp;Paste|Paste trace(s) from clipboard</value>
   </data>
   <data name="Menu_Edit_Redo" xml:space="preserve">
     <value>&amp;Redo</value>
   </data>
   <data name="Menu_Edit_SelectAll" xml:space="preserve">
-    <value>Select &amp;All</value>
+    <value>Select &amp;All|Select all traces</value>
   </data>
   <data name="Menu_Edit_Undo" xml:space="preserve">
     <value>&amp;Undo</value>
@@ -755,7 +755,7 @@
     <value>&amp;New</value>
   </data>
   <data name="Menu_File_New_EmptyScene" xml:space="preserve">
-    <value>&amp;Empty Scene</value>
+    <value>&amp;Empty Scene|Create a new empty scene|^N</value>
   </data>
   <data name="Menu_File_New_FromTemplate" xml:space="preserve">
     <value>&amp;From Template...</value>
