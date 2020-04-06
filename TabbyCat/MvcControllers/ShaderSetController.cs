@@ -11,16 +11,18 @@
     {
         #region Constructors
 
-        internal ShaderSetController(WorldController worldController)
-            : base(worldController) { }
+        internal ShaderSetController(PropertiesController propertiesController)
+            : base(propertiesController.WorldController) =>
+            PropertiesController = propertiesController;
 
         #endregion
 
         #region Fields & Properties
 
         protected abstract string[] AllProperties { get; }
-        protected CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
-        protected Scene Scene => WorldCon.Scene;
+        protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        private readonly PropertiesController PropertiesController;
+        protected Scene Scene => WorldController.Scene;
         internal ToolTip ToolTip => PropertiesController.ToolTip;
         protected bool Updating;
         protected PropertiesEdit WorldEdit => PropertiesController.PropertiesEdit;
@@ -35,13 +37,13 @@
             if (connect)
             {
                 UpdateAllProperties();
-                WorldCon.PropertyChanged += WorldController_PropertyChanged;
-                WorldCon.SelectionChanged += WorldController_SelectionChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
             }
             else
             {
-                WorldCon.PropertyChanged -= WorldController_PropertyChanged;
-                WorldCon.SelectionChanged -= WorldController_SelectionChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
         }
 
@@ -59,6 +61,12 @@
         }
 
         protected virtual void OnSelectionChanged() { }
+
+        protected void SetToolTip(Control control, string toolTip)
+        {
+            if (ToolTip.GetToolTip(control) != toolTip)
+                ToolTip.SetToolTip(control, toolTip);
+        }
 
         protected virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 

@@ -6,12 +6,15 @@
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
 
-    internal abstract class HostController : LocalizationController
+    internal abstract class HostController
     {
         #region Constructor
 
         protected HostController(WorldController worldController, string caption)
-            : base(worldController) => _Caption = caption;
+        {
+            WorldController = worldController;
+            _Caption = caption;
+        }
 
         #endregion
 
@@ -34,6 +37,12 @@
 
         #endregion
 
+        #region Protected Fields
+
+        protected internal readonly WorldController WorldController;
+
+        #endregion
+
         #region Protected Properties
 
         protected abstract Control Editor { get; }
@@ -53,9 +62,9 @@
 
         protected abstract Control EditorParent { get; }
 
-        protected Scene Scene => WorldCon.Scene;
+        protected Scene Scene => WorldController.Scene;
 
-        protected WorldForm WorldForm => WorldCon.WorldForm;
+        protected WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion
 

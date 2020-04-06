@@ -28,14 +28,14 @@
             CommandProcessor = new CommandProcessor(this);
             new FullScreenController(this);
             JsonController = new JsonController(this);
+            PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
+            WorldController = this;
         }
 
         #endregion
-
-        protected override WorldController WorldCon => this;
 
         protected internal override void Connect(bool connect)
         {
@@ -63,6 +63,7 @@
         #region Internal Fields
 
         internal ClockController ClockController;
+        internal PropertiesController PropertiesController;
         internal readonly RenderController RenderController;
         internal Scene Scene;
         internal Selection Selection = new Selection();
@@ -72,9 +73,11 @@
 
         #region Internal Properties
 
+        internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
+        internal ToolTip ToolTip => WorldForm.ToolTip;
 
         #endregion
 
@@ -87,6 +90,60 @@
         #endregion
 
         #region Internal Methods
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_File, WorldForm.FileMenu);
+            Localize(Resources.Menu_File_New, WorldForm.FileNew);
+            Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
+            Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
+            Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
+            Localize(Resources.Menu_File_Reopen, WorldForm.FileReopen);
+            Localize(Resources.Menu_File_Save, WorldForm.FileSave, WorldForm.tbSave);
+            Localize(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
+            Localize(Resources.Menu_File_Close, WorldForm.FileClose);
+            Localize(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
+            Localize(Resources.Menu_Edit, WorldForm.EditMenu);
+            Localize(Resources.Menu_Edit_AddANewTrace, WorldForm.EditAddNewTrace, WorldForm.tbAdd);
+            Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
+            Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
+            Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
+            Localize(Resources.Menu_Edit_Copy, WorldForm.EditCopy, WorldForm.tbCopy);
+            Localize(Resources.Menu_Edit_Paste, WorldForm.EditPaste, WorldForm.tbPaste);
+            Localize(Resources.Menu_Edit_Delete, WorldForm.EditDelete, WorldForm.tbDelete);
+            Localize(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
+            Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
+            Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
+            Localize(Resources.Menu_View, WorldForm.ViewMenu);
+            Localize(Resources.Menu_View_FullScreen, WorldForm.ViewFullScreen);
+            Localize(Resources.Menu_View_Properties, WorldForm.ViewProperties);
+            Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
+            Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
+            Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
+            Localize(Resources.Menu_Camera_Strafe_Left, WorldForm.CameraStrafeLeft);
+            Localize(Resources.Menu_Camera_Strafe_Right, WorldForm.CameraStrafeRight);
+            Localize(Resources.Menu_Camera_Strafe_Up, WorldForm.CameraStrafeUp);
+            Localize(Resources.Menu_Camera_Circle, WorldForm.CameraMove);
+            Localize(Resources.Menu_Camera_Circle_Down, WorldForm.CameraMoveDown);
+            Localize(Resources.Menu_Camera_Circle_Left, WorldForm.CameraMoveLeft);
+            Localize(Resources.Menu_Camera_Circle_Right, WorldForm.CameraMoveRight);
+            Localize(Resources.Menu_Camera_Circle_Up, WorldForm.CameraMoveUp);
+            Localize(Resources.Menu_Camera_ZoomIn, WorldForm.CameraZoomIn);
+            Localize(Resources.Menu_Camera_ZoomOut, WorldForm.CameraZoomOut);
+            Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
+            Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
+            Localize(Resources.Menu_Time, WorldForm.TimeMenu);
+            Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate, WorldForm.tbAccelerate);
+            Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate, WorldForm.tbDecelerate);
+            Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward, WorldForm.tbForward);
+            Localize(Resources.Menu_Time_Pause, WorldForm.TimePause, WorldForm.tbPause);
+            Localize(Resources.Menu_Time_Reverse, WorldForm.TimeReverse, WorldForm.tbReverse);
+            Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop, WorldForm.tbStop);
+            Localize(Resources.Menu_Help, WorldForm.HelpMenu);
+            Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
+            Localize(string.Format(Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
+        }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
@@ -147,63 +204,6 @@
             UpdateToolbar();
             UpdateStatusBar();
             Pulse?.Invoke(this, EventArgs.Empty);
-        }
-
-        #endregion
-
-        #region Protected Methods
-
-        protected override void Localize()
-        {
-            Localize(Resources.Menu_File, WorldForm.FileMenu);
-            Localize(Resources.Menu_File_New, WorldForm.FileNew);
-            Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
-            Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
-            Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
-            Localize(Resources.Menu_File_Reopen, WorldForm.FileReopen);
-            Localize(Resources.Menu_File_Save, WorldForm.FileSave, WorldForm.tbSave);
-            Localize(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
-            Localize(Resources.Menu_File_Close, WorldForm.FileClose);
-            Localize(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
-            Localize(Resources.Menu_Edit, WorldForm.EditMenu);
-            Localize(Resources.Menu_Edit_AddANewTrace, WorldForm.EditAddNewTrace, WorldForm.tbAdd);
-            Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
-            Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
-            Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
-            Localize(Resources.Menu_Edit_Copy, WorldForm.EditCopy, WorldForm.tbCopy);
-            Localize(Resources.Menu_Edit_Paste, WorldForm.EditPaste, WorldForm.tbPaste);
-            Localize(Resources.Menu_Edit_Delete, WorldForm.EditDelete, WorldForm.tbDelete);
-            Localize(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
-            Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
-            Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
-            Localize(Resources.Menu_View, WorldForm.ViewMenu);
-            Localize(Resources.Menu_View_FullScreen, WorldForm.ViewFullScreen);
-            Localize(Resources.Menu_View_Properties, WorldForm.ViewProperties);
-            Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
-            Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
-            Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
-            Localize(Resources.Menu_Camera_Strafe_Left, WorldForm.CameraStrafeLeft);
-            Localize(Resources.Menu_Camera_Strafe_Right, WorldForm.CameraStrafeRight);
-            Localize(Resources.Menu_Camera_Strafe_Up, WorldForm.CameraStrafeUp);
-            Localize(Resources.Menu_Camera_Circle, WorldForm.CameraMove);
-            Localize(Resources.Menu_Camera_Circle_Down, WorldForm.CameraMoveDown);
-            Localize(Resources.Menu_Camera_Circle_Left, WorldForm.CameraMoveLeft);
-            Localize(Resources.Menu_Camera_Circle_Right, WorldForm.CameraMoveRight);
-            Localize(Resources.Menu_Camera_Circle_Up, WorldForm.CameraMoveUp);
-            Localize(Resources.Menu_Camera_ZoomIn, WorldForm.CameraZoomIn);
-            Localize(Resources.Menu_Camera_ZoomOut, WorldForm.CameraZoomOut);
-            Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
-            Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
-            Localize(Resources.Menu_Time, WorldForm.TimeMenu);
-            Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate, WorldForm.tbAccelerate);
-            Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate, WorldForm.tbDecelerate);
-            Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward, WorldForm.tbForward);
-            Localize(Resources.Menu_Time_Pause, WorldForm.TimePause, WorldForm.tbPause);
-            Localize(Resources.Menu_Time_Reverse, WorldForm.TimeReverse, WorldForm.tbReverse);
-            Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop, WorldForm.tbStop);
-            Localize(Resources.Menu_Help, WorldForm.HelpMenu);
-            Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
-            Localize(string.Format(Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
         }
 
         #endregion

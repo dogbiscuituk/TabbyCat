@@ -464,13 +464,13 @@
     <value>Target FPS</value>
   </data>
   <data name="Label_Scene_Title" xml:space="preserve">
-    <value>Scene title</value>
+    <value>Titre</value>
   </data>
   <data name="Label_Scene_VSync" xml:space="preserve">
     <value>VSync</value>
   </data>
   <data name="Label_Trace_All" xml:space="preserve">
-    <value>All</value>
+    <value>Tous</value>
   </data>
   <data name="Label_Trace_Description" xml:space="preserve">
     <value>Description</value>
@@ -503,7 +503,7 @@
     <value>Visible</value>
   </data>
   <data name="Tooltip_Camera_Direction" xml:space="preserve">
-    <value>Camera direction (degrees)</value>
+    <value>Direction de la caméra (degrés)</value>
   </data>
   <data name="Tooltip_Camera_Pitch" xml:space="preserve">
     <value>Camera pitch (degrees)</value>
@@ -668,109 +668,112 @@
     <value>&amp;Circle</value>
   </data>
   <data name="Menu_Camera_Circle_Down" xml:space="preserve">
-    <value>&amp;Down|Move the camera down while keeping it pointed at an object|^Down</value>
+    <value>&amp;Down</value>
   </data>
   <data name="Menu_Camera_Circle_Left" xml:space="preserve">
-    <value>&amp;Left|Move the camera left while keeping it pointed at an object|^Left</value>
+    <value>&amp;Left</value>
   </data>
   <data name="Menu_Camera_Circle_Right" xml:space="preserve">
-    <value>&amp;Right|Move the camera right while keeping it pointed at an object|^Right</value>
+    <value>&amp;Right</value>
   </data>
   <data name="Menu_Camera_Circle_Up" xml:space="preserve">
-    <value>&amp;Up|Move the camera up while keeping it pointed at an object|^Up</value>
+    <value>&amp;Up</value>
   </data>
   <data name="Menu_Camera_RollLeft" xml:space="preserve">
-    <value>Roll &amp;Left|Roll the camera to the left|Shift+^PgUp</value>
+    <value>Roll &amp;Left</value>
   </data>
   <data name="Menu_Camera_RollRight" xml:space="preserve">
-    <value>Roll &amp;Right|Roll the camera to the right|Shift+^PgDn</value>
+    <value>Roll &amp;Right</value>
   </data>
   <data name="Menu_Camera_Strafe" xml:space="preserve">
     <value>&amp;Strafe</value>
   </data>
   <data name="Menu_Camera_Strafe_Down" xml:space="preserve">
-    <value>&amp;Down|Move the camera straight down|Shift+^Down</value>
+    <value>&amp;Down</value>
   </data>
   <data name="Menu_Camera_Strafe_Left" xml:space="preserve">
-    <value>&amp;Left|Strafe to the left|Shift+^Left</value>
+    <value>&amp;Left</value>
   </data>
   <data name="Menu_Camera_Strafe_Right" xml:space="preserve">
-    <value>&amp;Right|Strafe to the right|Shift+^Right</value>
+    <value>&amp;Right</value>
   </data>
   <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
-    <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
+    <value>&amp;Up</value>
   </data>
   <data name="Menu_Camera_ZoomIn" xml:space="preserve">
-    <value>Zoom &amp;In|Move the camera forward|^PgUp</value>
+    <value>Zoom &amp;In</value>
   </data>
   <data name="Menu_Camera_ZoomOut" xml:space="preserve">
-    <value>Zoom &amp;Out|Move the camera back|^PgDn</value>
+    <value>Zoom &amp;Out</value>
   </data>
   <data name="Menu_Edit" xml:space="preserve">
-    <value>&amp;Edit</value>
+    <value>&amp;Édition</value>
   </data>
   <data name="Menu_Edit_AddANewTrace" xml:space="preserve">
-    <value>&amp;Add a New Trace|Add a new trace to this scene|F2</value>
+    <value>Ajouter</value>
   </data>
   <data name="Menu_Edit_Copy" xml:space="preserve">
-    <value>&amp;Copy|Copy selected trace(s)</value>
+    <value>&amp;Copier</value>
   </data>
   <data name="Menu_Edit_Cut" xml:space="preserve">
-    <value>Cu&amp;t|Cut selected trace(s)</value>
+    <value>Couper</value>
   </data>
   <data name="Menu_Edit_Delete" xml:space="preserve">
-    <value>&amp;Delete|Delete selected trace(s)</value>
+    <value>&amp;Supprimer</value>
   </data>
   <data name="Menu_Edit_InvertSelection" xml:space="preserve">
-    <value>&amp;Invert Selection|Toggle the selected status of each trace</value>
+    <value>Invert Selection</value>
   </data>
   <data name="Menu_Edit_Options" xml:space="preserve">
     <value>&amp;Options...</value>
   </data>
   <data name="Menu_Edit_Paste" xml:space="preserve">
-    <value>&amp;Paste|Paste trace(s) from clipboard</value>
+    <value>C&amp;oller</value>
   </data>
   <data name="Menu_Edit_Redo" xml:space="preserve">
-    <value>&amp;Redo</value>
+    <value>&amp;Rétablir</value>
   </data>
   <data name="Menu_Edit_SelectAll" xml:space="preserve">
-    <value>Select &amp;All|Select all traces</value>
+    <value>&amp;Tout sélectionner</value>
   </data>
   <data name="Menu_Edit_Undo" xml:space="preserve">
-    <value>&amp;Undo</value>
+    <value>&amp;Annuler</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>&amp;File</value>
+    <value>&amp;Fichier</value>
   </data>
   <data name="Menu_File_Close" xml:space="preserve">
-    <value>&amp;Close|Close this scene|^F4</value>
+    <value>Fer&amp;mer</value>
+  </data>
+  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
+    <value>&amp;Quitter</value>
   </data>
   <data name="Menu_File_New" xml:space="preserve">
-    <value>&amp;New|Create a new scene</value>
+    <value>&amp;Nouveau</value>
   </data>
   <data name="Menu_File_New_EmptyScene" xml:space="preserve">
-    <value>&amp;Empty Scene|Create a new empty scene|^N</value>
+    <value>&amp;Empty Scene</value>
   </data>
   <data name="Menu_File_New_FromTemplate" xml:space="preserve">
-    <value>&amp;From Template...|Create a new scene based on an existing template</value>
+    <value>&amp;From Template...</value>
   </data>
   <data name="Menu_File_Open" xml:space="preserve">
-    <value>&amp;Open...|Open an existing scene|^O</value>
+    <value>&amp;Ouvrir...</value>
   </data>
   <data name="Menu_File_Reopen" xml:space="preserve">
-    <value>Reopen|Reopen a recently used scene</value>
+    <value>Ouvrir &amp;récent</value>
   </data>
   <data name="Menu_File_Save" xml:space="preserve">
-    <value>&amp;Save|Save this scene|^S</value>
+    <value>&amp;Enregistrer</value>
   </data>
   <data name="Menu_File_SaveAs" xml:space="preserve">
-    <value>Save &amp;As...|Save this scene under a different filename</value>
+    <value>Enregistrer &amp;sous...</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>&amp;About {0}</value>
+    <value>À propos de {0}</value>
   </data>
   <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
     <value>OpenGL® Shading Language</value>
@@ -779,39 +782,36 @@
     <value>&amp;Time</value>
   </data>
   <data name="Menu_Time_Accelerate" xml:space="preserve">
-    <value>&amp;Accelerate|Speed up the passage of time</value>
+    <value>&amp;Accelerate</value>
   </data>
   <data name="Menu_Time_Decelerate" xml:space="preserve">
-    <value>&amp;Decelerate|Slow down the passage of time</value>
+    <value>&amp;Decelerate</value>
   </data>
   <data name="Menu_Time_Forward" xml:space="preserve">
-    <value>&amp;Forward|Make time run forward</value>
+    <value>&amp;Forward</value>
   </data>
   <data name="Menu_Time_Pause" xml:space="preserve">
-    <value>&amp;Pause|Pause the passage of time</value>
+    <value>&amp;Pause</value>
   </data>
   <data name="Menu_Time_Reverse" xml:space="preserve">
-    <value>&amp;Reverse|Make time run in reverse</value>
+    <value>&amp;Reverse</value>
   </data>
   <data name="Menu_Time_Stop" xml:space="preserve">
-    <value>&amp;Stop|Stop the passage of time and reset the timer to zero</value>
+    <value>&amp;Stop</value>
   </data>
   <data name="Menu_View" xml:space="preserve">
     <value>&amp;View</value>
   </data>
   <data name="Menu_View_FullScreen" xml:space="preserve">
-    <value>&amp;Full Screen|Use the entire display area for the scene|F11</value>
+    <value>&amp;Full Screen</value>
   </data>
   <data name="Menu_View_Properties" xml:space="preserve">
     <value>&amp;Properties</value>
-  </data>
-  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
-    <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4</value>
   </data>
   <data name="A_Sample_Entry_1" xml:space="preserve">
     <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
   </data>
   <data name="A_Sample_Entry_2" xml:space="preserve">
-    <value>Copy|Copy to clipboard|^C</value>
+    <value>&amp;Copier|Copy to clipboard|^C</value>
   </data>
 </root>
