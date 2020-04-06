@@ -61,6 +61,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text|ToolTipText|ShortcutKeyDisplayString.
+        /// </summary>
+        public static string A_Sample_Entry_1 {
+            get {
+                return ResourceManager.GetString("A_Sample_Entry_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy|Copy to clipboard|^C.
+        /// </summary>
+        public static string A_Sample_Entry_2 {
+            get {
+                return ResourceManager.GetString("A_Sample_Entry_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap action_add_16xLG {
@@ -901,7 +919,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Down.
+        ///   Looks up a localized string similar to &amp;Down|Move the camera down while keeping it pointed at an object|^Down.
         /// </summary>
         public static string Menu_Camera_Circle_Down {
             get {
@@ -910,7 +928,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Left.
+        ///   Looks up a localized string similar to &amp;Left|Move the camera left while keeping it pointed at an object|^Left.
         /// </summary>
         public static string Menu_Camera_Circle_Left {
             get {
@@ -919,7 +937,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Right.
+        ///   Looks up a localized string similar to &amp;Right|Move the camera right while keeping it pointed at an object|^Right.
         /// </summary>
         public static string Menu_Camera_Circle_Right {
             get {
@@ -928,7 +946,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Up.
+        ///   Looks up a localized string similar to &amp;Up|Move the camera up while keeping it pointed at an object|^Up.
         /// </summary>
         public static string Menu_Camera_Circle_Up {
             get {
@@ -937,7 +955,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;Left.
+        ///   Looks up a localized string similar to Roll &amp;Left|Roll the camera to the left|Shift+^PgUp.
         /// </summary>
         public static string Menu_Camera_RollLeft {
             get {
@@ -946,7 +964,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;Right.
+        ///   Looks up a localized string similar to Roll &amp;Right|Roll the camera to the right|Shift+^PgDn.
         /// </summary>
         public static string Menu_Camera_RollRight {
             get {
@@ -964,7 +982,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Down.
+        ///   Looks up a localized string similar to &amp;Down|Move the camera straight down|Shift+^Down.
         /// </summary>
         public static string Menu_Camera_Strafe_Down {
             get {
@@ -973,7 +991,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Left.
+        ///   Looks up a localized string similar to &amp;Left|Strafe to the left|Shift+^Left.
         /// </summary>
         public static string Menu_Camera_Strafe_Left {
             get {
@@ -982,7 +1000,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Right.
+        ///   Looks up a localized string similar to &amp;Right|Strafe to the right|Shift+^Right.
         /// </summary>
         public static string Menu_Camera_Strafe_Right {
             get {
@@ -991,7 +1009,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Up.
+        ///   Looks up a localized string similar to &amp;Up|Move the camera straight up|Shift+^Up.
         /// </summary>
         public static string Menu_Camera_Strafe_Up {
             get {
@@ -1000,7 +1018,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zoom &amp;In.
+        ///   Looks up a localized string similar to Zoom &amp;In|Move the camera forward|^PgUp.
         /// </summary>
         public static string Menu_Camera_ZoomIn {
             get {
@@ -1009,20 +1027,11 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zoom &amp;Out.
+        ///   Looks up a localized string similar to Zoom &amp;Out|Move the camera back|^PgDn.
         /// </summary>
         public static string Menu_Camera_ZoomOut {
             get {
                 return ResourceManager.GetString("Menu_Camera_ZoomOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Zoom / Roll.
-        /// </summary>
-        public static string Menu_Camera_ZoomRoll {
-            get {
-                return ResourceManager.GetString("Menu_Camera_ZoomRoll", resourceCulture);
             }
         }
         
@@ -1036,7 +1045,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add a New Trace|Add another new trace to this scene|F2.
+        ///   Looks up a localized string similar to &amp;Add a New Trace|Add a new trace to this scene|F2.
         /// </summary>
         public static string Menu_Edit_AddANewTrace {
             get {
@@ -1135,7 +1144,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Close|Close this scene.
+        ///   Looks up a localized string similar to &amp;Close|Close this scene|^F4.
         /// </summary>
         public static string Menu_File_Close {
             get {
@@ -1144,7 +1153,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit|Close all open scenes and quit.
+        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4.
         /// </summary>
         public static string Menu_File_CloseAllAndExit {
             get {
@@ -1315,7 +1324,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Full Screen.
+        ///   Looks up a localized string similar to &amp;Full Screen|Use the entire display area for the scene|F11.
         /// </summary>
         public static string Menu_View_FullScreen {
             get {

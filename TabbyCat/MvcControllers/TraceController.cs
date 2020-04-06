@@ -112,9 +112,9 @@
 
         #region Protected Methods
 
-        protected override void InitTexts()
+        protected override void Localize()
         {
-            base.InitTexts();
+            base.Localize();
             Editor.lblDescription.Text = Resources.Label_Trace_Description;
             Editor.lblLocation.Text = Resources.Label_Trace_Location;
             Editor.lblOrientation.Text = Resources.Label_Trace_Orientation;

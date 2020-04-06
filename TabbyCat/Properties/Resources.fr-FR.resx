@@ -706,9 +706,6 @@
   <data name="Menu_Camera_ZoomOut" xml:space="preserve">
     <value>Zoom &amp;Out</value>
   </data>
-  <data name="Menu_Camera_ZoomRoll" xml:space="preserve">
-    <value>&amp;Zoom / Roll</value>
-  </data>
   <data name="Menu_Edit" xml:space="preserve">
     <value>&amp;Édition</value>
   </data>
@@ -810,5 +807,11 @@
   </data>
   <data name="Menu_View_Properties" xml:space="preserve">
     <value>&amp;Properties</value>
+  </data>
+  <data name="A_Sample_Entry_1" xml:space="preserve">
+    <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
+  </data>
+  <data name="A_Sample_Entry_2" xml:space="preserve">
+    <value>&amp;Copier|Copy to clipboard|^C</value>
   </data>
 </root>

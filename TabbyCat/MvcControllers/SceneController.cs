@@ -103,9 +103,9 @@
 
         #region Protected Methods
 
-        protected override void InitTexts()
+        protected override void Localize()
         {
-            base.InitTexts();
+            base.Localize();
             Editor.lblTitle.Text = Resources.Label_Scene_Title;
             Editor.lblPosition.Text = Resources.Label_Camera_Position;
             Editor.lblDirection.Text = Resources.Label_Camera_Direction;

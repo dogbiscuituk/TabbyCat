@@ -668,52 +668,49 @@
     <value>&amp;Circle</value>
   </data>
   <data name="Menu_Camera_Circle_Down" xml:space="preserve">
-    <value>&amp;Down</value>
+    <value>&amp;Down|Move the camera down while keeping it pointed at an object|^Down</value>
   </data>
   <data name="Menu_Camera_Circle_Left" xml:space="preserve">
-    <value>&amp;Left</value>
+    <value>&amp;Left|Move the camera left while keeping it pointed at an object|^Left</value>
   </data>
   <data name="Menu_Camera_Circle_Right" xml:space="preserve">
-    <value>&amp;Right</value>
+    <value>&amp;Right|Move the camera right while keeping it pointed at an object|^Right</value>
   </data>
   <data name="Menu_Camera_Circle_Up" xml:space="preserve">
-    <value>&amp;Up</value>
+    <value>&amp;Up|Move the camera up while keeping it pointed at an object|^Up</value>
   </data>
   <data name="Menu_Camera_RollLeft" xml:space="preserve">
-    <value>Roll &amp;Left</value>
+    <value>Roll &amp;Left|Roll the camera to the left|Shift+^PgUp</value>
   </data>
   <data name="Menu_Camera_RollRight" xml:space="preserve">
-    <value>Roll &amp;Right</value>
+    <value>Roll &amp;Right|Roll the camera to the right|Shift+^PgDn</value>
   </data>
   <data name="Menu_Camera_Strafe" xml:space="preserve">
     <value>&amp;Strafe</value>
   </data>
   <data name="Menu_Camera_Strafe_Down" xml:space="preserve">
-    <value>&amp;Down</value>
+    <value>&amp;Down|Move the camera straight down|Shift+^Down</value>
   </data>
   <data name="Menu_Camera_Strafe_Left" xml:space="preserve">
-    <value>&amp;Left</value>
+    <value>&amp;Left|Strafe to the left|Shift+^Left</value>
   </data>
   <data name="Menu_Camera_Strafe_Right" xml:space="preserve">
-    <value>&amp;Right</value>
+    <value>&amp;Right|Strafe to the right|Shift+^Right</value>
   </data>
   <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
-    <value>&amp;Up</value>
+    <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
   </data>
   <data name="Menu_Camera_ZoomIn" xml:space="preserve">
-    <value>Zoom &amp;In</value>
+    <value>Zoom &amp;In|Move the camera forward|^PgUp</value>
   </data>
   <data name="Menu_Camera_ZoomOut" xml:space="preserve">
-    <value>Zoom &amp;Out</value>
-  </data>
-  <data name="Menu_Camera_ZoomRoll" xml:space="preserve">
-    <value>&amp;Zoom / Roll</value>
+    <value>Zoom &amp;Out|Move the camera back|^PgDn</value>
   </data>
   <data name="Menu_Edit" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="Menu_Edit_AddANewTrace" xml:space="preserve">
-    <value>&amp;Add a New Trace|Add another new trace to this scene|F2</value>
+    <value>&amp;Add a New Trace|Add a new trace to this scene|F2</value>
   </data>
   <data name="Menu_Edit_Copy" xml:space="preserve">
     <value>&amp;Copy|Copy selected trace(s)</value>
@@ -746,7 +743,7 @@
     <value>&amp;File</value>
   </data>
   <data name="Menu_File_Close" xml:space="preserve">
-    <value>&amp;Close|Close this scene</value>
+    <value>&amp;Close|Close this scene|^F4</value>
   </data>
   <data name="Menu_File_New" xml:space="preserve">
     <value>&amp;New|Create a new scene</value>
@@ -803,12 +800,18 @@
     <value>&amp;View</value>
   </data>
   <data name="Menu_View_FullScreen" xml:space="preserve">
-    <value>&amp;Full Screen</value>
+    <value>&amp;Full Screen|Use the entire display area for the scene|F11</value>
   </data>
   <data name="Menu_View_Properties" xml:space="preserve">
     <value>&amp;Properties</value>
   </data>
   <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
-    <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit</value>
+    <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4</value>
+  </data>
+  <data name="A_Sample_Entry_1" xml:space="preserve">
+    <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
+  </data>
+  <data name="A_Sample_Entry_2" xml:space="preserve">
+    <value>Copy|Copy to clipboard|^C</value>
   </data>
 </root>

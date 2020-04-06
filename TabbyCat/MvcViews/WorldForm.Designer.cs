@@ -92,25 +92,23 @@
             this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveStrafe = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveCircle = new System.Windows.Forms.ToolStripMenuItem();
-            this.CircleLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.CircleRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.CircleUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.CircleDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.MoveZoomRoll = new System.Windows.Forms.ToolStripMenuItem();
-            this.ZoomIn = new System.Windows.Forms.ToolStripMenuItem();
-            this.ZoomOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.RollClockwise = new System.Windows.Forms.ToolStripMenuItem();
-            this.RollAnticlockwise = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
+            this.CameraZoomIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraZoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraStrafe = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraStrafeLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraStrafeRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraStrafeUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraStrafeDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
+            this.CameraRollLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraRollRight = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
@@ -287,7 +285,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 577;
+            this.SplitContainer1.SplitterDistance = 568;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -298,7 +296,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(577, 682);
+            this.GLControl.Size = new System.Drawing.Size(568, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -310,7 +308,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(393, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(402, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -364,21 +362,18 @@
             this.tbNew.ImageTransparentColor = System.Drawing.Color.White;
             this.tbNew.Name = "tbNew";
             this.tbNew.Size = new System.Drawing.Size(31, 20);
-            this.tbNew.ToolTipText = "Create a new file (^N)";
             // 
             // tbNewEmptyScene
             // 
             this.tbNewEmptyScene.Name = "tbNewEmptyScene";
-            this.tbNewEmptyScene.ShortcutKeyDisplayString = "^N";
-            this.tbNewEmptyScene.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.tbNewEmptyScene.Size = new System.Drawing.Size(193, 22);
-            this.tbNewEmptyScene.Text = "&New Empty Scene";
+            this.tbNewEmptyScene.Size = new System.Drawing.Size(187, 22);
+            this.tbNewEmptyScene.Text = "New Empty Scene";
             // 
             // tbNewFromTemplate
             // 
             this.tbNewFromTemplate.Name = "tbNewFromTemplate";
-            this.tbNewFromTemplate.Size = new System.Drawing.Size(193, 22);
-            this.tbNewFromTemplate.Text = "New from &Template...";
+            this.tbNewFromTemplate.Size = new System.Drawing.Size(187, 22);
+            this.tbNewFromTemplate.Text = "New from Template...";
             // 
             // tbOpen
             // 
@@ -387,7 +382,6 @@
             this.tbOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.tbOpen.Name = "tbOpen";
             this.tbOpen.Size = new System.Drawing.Size(31, 20);
-            this.tbOpen.ToolTipText = "Open an existing file (^O)";
             // 
             // tbSave
             // 
@@ -396,7 +390,6 @@
             this.tbSave.ImageTransparentColor = System.Drawing.Color.White;
             this.tbSave.Name = "tbSave";
             this.tbSave.Size = new System.Drawing.Size(31, 20);
-            this.tbSave.ToolTipText = "Save to file (^S)";
             // 
             // toolStripSeparator1
             // 
@@ -410,7 +403,6 @@
             this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
             this.tbAdd.Name = "tbAdd";
             this.tbAdd.Size = new System.Drawing.Size(31, 20);
-            this.tbAdd.ToolTipText = "Add a new trace (F2)";
             // 
             // tbUndo
             // 
@@ -420,7 +412,6 @@
             this.tbUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.tbUndo.Name = "tbUndo";
             this.tbUndo.Size = new System.Drawing.Size(31, 20);
-            this.tbUndo.ToolTipText = "Undo (^Z)";
             // 
             // tbRedo
             // 
@@ -430,7 +421,6 @@
             this.tbRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.tbRedo.Name = "tbRedo";
             this.tbRedo.Size = new System.Drawing.Size(31, 20);
-            this.tbRedo.ToolTipText = "Redo (^Y)";
             // 
             // tbCut
             // 
@@ -440,7 +430,6 @@
             this.tbCut.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCut.Name = "tbCut";
             this.tbCut.Size = new System.Drawing.Size(31, 20);
-            this.tbCut.ToolTipText = "Cut";
             // 
             // tbCopy
             // 
@@ -450,7 +439,6 @@
             this.tbCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCopy.Name = "tbCopy";
             this.tbCopy.Size = new System.Drawing.Size(31, 20);
-            this.tbCopy.ToolTipText = "Copy";
             // 
             // tbPaste
             // 
@@ -459,7 +447,6 @@
             this.tbPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.tbPaste.Name = "tbPaste";
             this.tbPaste.Size = new System.Drawing.Size(31, 20);
-            this.tbPaste.ToolTipText = "Paste";
             // 
             // tbDelete
             // 
@@ -469,7 +456,6 @@
             this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tbDelete.Name = "tbDelete";
             this.tbDelete.Size = new System.Drawing.Size(31, 20);
-            this.tbDelete.ToolTipText = "Delete selected trace(s)";
             // 
             // MainMenu
             // 
@@ -479,7 +465,7 @@
             this.FileMenu,
             this.EditMenu,
             this.ViewMenu,
-            this.MoveMenu,
+            this.CameraMenu,
             this.TimeMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -501,7 +487,7 @@
             this.FileExit});
             this.FileMenu.Name = "FileMenu";
             this.FileMenu.Size = new System.Drawing.Size(39, 21);
-            this.FileMenu.Text = "&File";
+            this.FileMenu.Text = "File";
             // 
             // FileNew
             // 
@@ -510,21 +496,19 @@
             this.FileNewFromTemplate});
             this.FileNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.FileNew.Name = "FileNew";
-            this.FileNew.Size = new System.Drawing.Size(209, 22);
-            this.FileNew.Text = "&New";
+            this.FileNew.Size = new System.Drawing.Size(180, 22);
+            this.FileNew.Text = "New";
             // 
             // FileNewEmptyScene
             // 
             this.FileNewEmptyScene.Name = "FileNewEmptyScene";
-            this.FileNewEmptyScene.ShortcutKeyDisplayString = "^N";
-            this.FileNewEmptyScene.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.FileNewEmptyScene.Size = new System.Drawing.Size(177, 22);
+            this.FileNewEmptyScene.Size = new System.Drawing.Size(180, 22);
             this.FileNewEmptyScene.Text = "&Empty Scene";
             // 
             // FileNewFromTemplate
             // 
             this.FileNewFromTemplate.Name = "FileNewFromTemplate";
-            this.FileNewFromTemplate.Size = new System.Drawing.Size(177, 22);
+            this.FileNewFromTemplate.Size = new System.Drawing.Size(180, 22);
             this.FileNewFromTemplate.Text = "&From Template...";
             // 
             // FileOpen
@@ -532,55 +516,49 @@
             this.FileOpen.Image = global::TabbyCat.Properties.Resources.OpenFileHS;
             this.FileOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileOpen.Name = "FileOpen";
-            this.FileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.FileOpen.Size = new System.Drawing.Size(209, 22);
-            this.FileOpen.Text = "&Open...";
+            this.FileOpen.Size = new System.Drawing.Size(180, 22);
+            this.FileOpen.Text = "Open...";
             // 
             // FileReopen
             // 
             this.FileReopen.Name = "FileReopen";
-            this.FileReopen.Size = new System.Drawing.Size(209, 22);
-            this.FileReopen.Text = "&Reopen";
+            this.FileReopen.Size = new System.Drawing.Size(180, 22);
+            this.FileReopen.Text = "Reopen";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(206, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // FileSave
             // 
             this.FileSave.Image = global::TabbyCat.Properties.Resources.saveHS;
             this.FileSave.Name = "FileSave";
-            this.FileSave.ShortcutKeyDisplayString = "^S";
-            this.FileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.FileSave.Size = new System.Drawing.Size(209, 22);
-            this.FileSave.Text = "&Save";
+            this.FileSave.Size = new System.Drawing.Size(180, 22);
+            this.FileSave.Text = "Save";
             // 
             // FileSaveAs
             // 
             this.FileSaveAs.Name = "FileSaveAs";
-            this.FileSaveAs.Size = new System.Drawing.Size(209, 22);
-            this.FileSaveAs.Text = "Save &As...";
+            this.FileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.FileSaveAs.Text = "Save As...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(206, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // FileClose
             // 
             this.FileClose.Name = "FileClose";
-            this.FileClose.ShortcutKeyDisplayString = "^F4";
-            this.FileClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.FileClose.Size = new System.Drawing.Size(209, 22);
-            this.FileClose.Text = "&Close";
+            this.FileClose.Size = new System.Drawing.Size(180, 22);
+            this.FileClose.Text = "Close";
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
-            this.FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.FileExit.Size = new System.Drawing.Size(209, 22);
-            this.FileExit.Text = "Close All && E&xit";
+            this.FileExit.Size = new System.Drawing.Size(180, 22);
+            this.FileExit.Text = "Close All && Exit";
             // 
             // EditMenu
             // 
@@ -601,21 +579,20 @@
             this.EditOptions});
             this.EditMenu.Name = "EditMenu";
             this.EditMenu.Size = new System.Drawing.Size(42, 21);
-            this.EditMenu.Text = "&Edit";
+            this.EditMenu.Text = "Edit";
             // 
             // EditAddNewTrace
             // 
             this.EditAddNewTrace.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.EditAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
             this.EditAddNewTrace.Name = "EditAddNewTrace";
-            this.EditAddNewTrace.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.EditAddNewTrace.Size = new System.Drawing.Size(197, 22);
-            this.EditAddNewTrace.Text = "&Add a New Trace";
+            this.EditAddNewTrace.Size = new System.Drawing.Size(180, 22);
+            this.EditAddNewTrace.Text = "Add a New Trace";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
             // 
             // EditUndo
             // 
@@ -623,9 +600,8 @@
             this.EditUndo.Image = global::TabbyCat.Properties.Resources.Edit_UndoHS;
             this.EditUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditUndo.Name = "EditUndo";
-            this.EditUndo.ShortcutKeyDisplayString = "";
-            this.EditUndo.Size = new System.Drawing.Size(197, 22);
-            this.EditUndo.Text = "&Undo";
+            this.EditUndo.Size = new System.Drawing.Size(180, 22);
+            this.EditUndo.Text = "Undo";
             // 
             // EditRedo
             // 
@@ -633,14 +609,13 @@
             this.EditRedo.Image = global::TabbyCat.Properties.Resources.Edit_RedoHS;
             this.EditRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditRedo.Name = "EditRedo";
-            this.EditRedo.ShortcutKeyDisplayString = "";
-            this.EditRedo.Size = new System.Drawing.Size(197, 22);
-            this.EditRedo.Text = "&Redo";
+            this.EditRedo.Size = new System.Drawing.Size(180, 22);
+            this.EditRedo.Text = "Redo";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(194, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
             // 
             // EditCut
             // 
@@ -648,9 +623,8 @@
             this.EditCut.Image = global::TabbyCat.Properties.Resources.CutHS;
             this.EditCut.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCut.Name = "EditCut";
-            this.EditCut.ShortcutKeyDisplayString = "";
-            this.EditCut.Size = new System.Drawing.Size(197, 22);
-            this.EditCut.Text = "Cu&t";
+            this.EditCut.Size = new System.Drawing.Size(180, 22);
+            this.EditCut.Text = "Cut";
             // 
             // EditCopy
             // 
@@ -658,18 +632,16 @@
             this.EditCopy.Image = global::TabbyCat.Properties.Resources.CopyHS;
             this.EditCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCopy.Name = "EditCopy";
-            this.EditCopy.ShortcutKeyDisplayString = "";
-            this.EditCopy.Size = new System.Drawing.Size(197, 22);
-            this.EditCopy.Text = "&Copy";
+            this.EditCopy.Size = new System.Drawing.Size(180, 22);
+            this.EditCopy.Text = "Copy";
             // 
             // EditPaste
             // 
             this.EditPaste.Image = global::TabbyCat.Properties.Resources.PasteHS;
             this.EditPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.EditPaste.Name = "EditPaste";
-            this.EditPaste.ShortcutKeyDisplayString = "";
-            this.EditPaste.Size = new System.Drawing.Size(197, 22);
-            this.EditPaste.Text = "&Paste";
+            this.EditPaste.Size = new System.Drawing.Size(180, 22);
+            this.EditPaste.Text = "Paste";
             // 
             // EditDelete
             // 
@@ -677,37 +649,36 @@
             this.EditDelete.Image = global::TabbyCat.Properties.Resources.Delete;
             this.EditDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.EditDelete.Name = "EditDelete";
-            this.EditDelete.Size = new System.Drawing.Size(197, 22);
-            this.EditDelete.Text = "&Delete";
+            this.EditDelete.Size = new System.Drawing.Size(180, 22);
+            this.EditDelete.Text = "Delete";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(194, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(177, 6);
             // 
             // EditSelectAll
             // 
             this.EditSelectAll.Name = "EditSelectAll";
-            this.EditSelectAll.ShortcutKeyDisplayString = "";
-            this.EditSelectAll.Size = new System.Drawing.Size(197, 22);
-            this.EditSelectAll.Text = "Select &All";
+            this.EditSelectAll.Size = new System.Drawing.Size(180, 22);
+            this.EditSelectAll.Text = "Select All";
             // 
             // EditInvertSelection
             // 
             this.EditInvertSelection.Name = "EditInvertSelection";
-            this.EditInvertSelection.Size = new System.Drawing.Size(197, 22);
-            this.EditInvertSelection.Text = "&Invert Selection";
+            this.EditInvertSelection.Size = new System.Drawing.Size(180, 22);
+            this.EditInvertSelection.Text = "Invert Selection";
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(194, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(177, 6);
             // 
             // EditOptions
             // 
             this.EditOptions.Name = "EditOptions";
-            this.EditOptions.Size = new System.Drawing.Size(197, 22);
-            this.EditOptions.Text = "&Options...";
+            this.EditOptions.Size = new System.Drawing.Size(180, 22);
+            this.EditOptions.Text = "Options...";
             // 
             // ViewMenu
             // 
@@ -717,189 +688,144 @@
             this.ViewProperties});
             this.ViewMenu.Name = "ViewMenu";
             this.ViewMenu.Size = new System.Drawing.Size(47, 21);
-            this.ViewMenu.Text = "&View";
+            this.ViewMenu.Text = "View";
             // 
             // ViewFullScreen
             // 
             this.ViewFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
             this.ViewFullScreen.Name = "ViewFullScreen";
-            this.ViewFullScreen.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.ViewFullScreen.Size = new System.Drawing.Size(166, 22);
-            this.ViewFullScreen.Text = "&Full Screen";
+            this.ViewFullScreen.Size = new System.Drawing.Size(180, 22);
+            this.ViewFullScreen.Text = "Full Screen";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(163, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // ViewProperties
             // 
             this.ViewProperties.Name = "ViewProperties";
-            this.ViewProperties.Size = new System.Drawing.Size(166, 22);
-            this.ViewProperties.Text = "&Properties";
+            this.ViewProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewProperties.Text = "Properties";
             // 
-            // MoveMenu
+            // CameraMenu
             // 
-            this.MoveMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MoveStrafe,
-            this.MoveCircle,
-            this.MoveZoomRoll});
-            this.MoveMenu.Name = "MoveMenu";
-            this.MoveMenu.Size = new System.Drawing.Size(65, 21);
-            this.MoveMenu.Text = "&Camera";
+            this.CameraMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CameraMove,
+            this.CameraStrafe});
+            this.CameraMenu.Name = "CameraMenu";
+            this.CameraMenu.Size = new System.Drawing.Size(65, 21);
+            this.CameraMenu.Text = "Camera";
             // 
-            // MoveStrafe
+            // CameraMove
             // 
-            this.MoveStrafe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MoveLeft,
-            this.MoveRight,
-            this.toolStripMenuItem5,
-            this.MoveUp,
-            this.MoveDown});
-            this.MoveStrafe.Name = "MoveStrafe";
-            this.MoveStrafe.Size = new System.Drawing.Size(145, 22);
-            this.MoveStrafe.Text = "&Strafe";
+            this.CameraMove.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CameraMoveLeft,
+            this.CameraMoveRight,
+            this.CameraMoveUp,
+            this.CameraMoveDown,
+            this.toolStripMenuItem11,
+            this.CameraZoomIn,
+            this.CameraZoomOut});
+            this.CameraMove.Name = "CameraMove";
+            this.CameraMove.Size = new System.Drawing.Size(180, 22);
+            this.CameraMove.Text = "Move";
             // 
-            // MoveLeft
+            // CameraMoveLeft
             // 
-            this.MoveLeft.Name = "MoveLeft";
-            this.MoveLeft.ShortcutKeyDisplayString = "^Left";
-            this.MoveLeft.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
-            this.MoveLeft.Size = new System.Drawing.Size(159, 22);
-            this.MoveLeft.Text = "&Left";
+            this.CameraMoveLeft.Name = "CameraMoveLeft";
+            this.CameraMoveLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveLeft.Text = "Left";
             // 
-            // MoveRight
+            // CameraMoveRight
             // 
-            this.MoveRight.Name = "MoveRight";
-            this.MoveRight.ShortcutKeyDisplayString = "^Right";
-            this.MoveRight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
-            this.MoveRight.Size = new System.Drawing.Size(159, 22);
-            this.MoveRight.Text = "&Right";
+            this.CameraMoveRight.Name = "CameraMoveRight";
+            this.CameraMoveRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveRight.Text = "Right";
             // 
-            // toolStripMenuItem5
+            // CameraMoveUp
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(156, 6);
+            this.CameraMoveUp.Name = "CameraMoveUp";
+            this.CameraMoveUp.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveUp.Text = "Up";
             // 
-            // MoveUp
+            // CameraMoveDown
             // 
-            this.MoveUp.Name = "MoveUp";
-            this.MoveUp.ShortcutKeyDisplayString = "^Up";
-            this.MoveUp.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Up)));
-            this.MoveUp.Size = new System.Drawing.Size(159, 22);
-            this.MoveUp.Text = "&Up";
+            this.CameraMoveDown.Name = "CameraMoveDown";
+            this.CameraMoveDown.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveDown.Text = "Down";
             // 
-            // MoveDown
+            // toolStripMenuItem11
             // 
-            this.MoveDown.Name = "MoveDown";
-            this.MoveDown.ShortcutKeyDisplayString = "^Down";
-            this.MoveDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Down)));
-            this.MoveDown.Size = new System.Drawing.Size(159, 22);
-            this.MoveDown.Text = "&Down";
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(177, 6);
             // 
-            // MoveCircle
+            // CameraZoomIn
             // 
-            this.MoveCircle.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CircleLeft,
-            this.CircleRight,
-            this.toolStripMenuItem6,
-            this.CircleUp,
-            this.CircleDown});
-            this.MoveCircle.Name = "MoveCircle";
-            this.MoveCircle.Size = new System.Drawing.Size(145, 22);
-            this.MoveCircle.Text = "&Circle";
+            this.CameraZoomIn.Name = "CameraZoomIn";
+            this.CameraZoomIn.Size = new System.Drawing.Size(180, 22);
+            this.CameraZoomIn.Text = "Zoom In";
             // 
-            // CircleLeft
+            // CameraZoomOut
             // 
-            this.CircleLeft.Name = "CircleLeft";
-            this.CircleLeft.ShortcutKeyDisplayString = "Shift+^Left";
-            this.CircleLeft.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Left)));
-            this.CircleLeft.Size = new System.Drawing.Size(193, 22);
-            this.CircleLeft.Text = "&Left";
+            this.CameraZoomOut.Name = "CameraZoomOut";
+            this.CameraZoomOut.Size = new System.Drawing.Size(180, 22);
+            this.CameraZoomOut.Text = "Zoom Out";
             // 
-            // CircleRight
+            // CameraStrafe
             // 
-            this.CircleRight.Name = "CircleRight";
-            this.CircleRight.ShortcutKeyDisplayString = "Shift+^Right";
-            this.CircleRight.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Right)));
-            this.CircleRight.Size = new System.Drawing.Size(193, 22);
-            this.CircleRight.Text = "&Right";
+            this.CameraStrafe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CameraStrafeLeft,
+            this.CameraStrafeRight,
+            this.CameraStrafeUp,
+            this.CameraStrafeDown,
+            this.toolStripMenuItem13,
+            this.CameraRollLeft,
+            this.CameraRollRight});
+            this.CameraStrafe.Name = "CameraStrafe";
+            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafe.Text = "Strafe";
             // 
-            // toolStripMenuItem6
+            // CameraStrafeLeft
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(190, 6);
+            this.CameraStrafeLeft.Name = "CameraStrafeLeft";
+            this.CameraStrafeLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeLeft.Text = "Left";
             // 
-            // CircleUp
+            // CameraStrafeRight
             // 
-            this.CircleUp.Name = "CircleUp";
-            this.CircleUp.ShortcutKeyDisplayString = "Shift+^Up";
-            this.CircleUp.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Up)));
-            this.CircleUp.Size = new System.Drawing.Size(193, 22);
-            this.CircleUp.Text = "&Up";
+            this.CameraStrafeRight.Name = "CameraStrafeRight";
+            this.CameraStrafeRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeRight.Text = "Right";
             // 
-            // CircleDown
+            // CameraStrafeUp
             // 
-            this.CircleDown.Name = "CircleDown";
-            this.CircleDown.ShortcutKeyDisplayString = "Shift+^Down";
-            this.CircleDown.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Down)));
-            this.CircleDown.Size = new System.Drawing.Size(193, 22);
-            this.CircleDown.Text = "&Down";
+            this.CameraStrafeUp.Name = "CameraStrafeUp";
+            this.CameraStrafeUp.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeUp.Text = "Up";
             // 
-            // MoveZoomRoll
+            // CameraStrafeDown
             // 
-            this.MoveZoomRoll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ZoomIn,
-            this.ZoomOut,
-            this.toolStripMenuItem7,
-            this.RollClockwise,
-            this.RollAnticlockwise});
-            this.MoveZoomRoll.Name = "MoveZoomRoll";
-            this.MoveZoomRoll.Size = new System.Drawing.Size(145, 22);
-            this.MoveZoomRoll.Text = "&Zoom / Roll";
+            this.CameraStrafeDown.Name = "CameraStrafeDown";
+            this.CameraStrafeDown.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeDown.Text = "Down";
             // 
-            // ZoomIn
+            // toolStripMenuItem13
             // 
-            this.ZoomIn.Name = "ZoomIn";
-            this.ZoomIn.ShortcutKeyDisplayString = "^PgUp";
-            this.ZoomIn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.PageUp)));
-            this.ZoomIn.Size = new System.Drawing.Size(260, 22);
-            this.ZoomIn.Text = "Zoom &In";
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(177, 6);
             // 
-            // ZoomOut
+            // CameraRollLeft
             // 
-            this.ZoomOut.Name = "ZoomOut";
-            this.ZoomOut.ShortcutKeyDisplayString = "^PgDn";
-            this.ZoomOut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Next)));
-            this.ZoomOut.Size = new System.Drawing.Size(260, 22);
-            this.ZoomOut.Text = "Zoom &Out";
+            this.CameraRollLeft.Name = "CameraRollLeft";
+            this.CameraRollLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollLeft.Text = "Roll Left";
             // 
-            // toolStripMenuItem7
+            // CameraRollRight
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(257, 6);
-            // 
-            // RollClockwise
-            // 
-            this.RollClockwise.Name = "RollClockwise";
-            this.RollClockwise.ShortcutKeyDisplayString = "Shift+^PgUp";
-            this.RollClockwise.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.PageUp)));
-            this.RollClockwise.Size = new System.Drawing.Size(260, 22);
-            this.RollClockwise.Text = "Roll &Clockwise";
-            // 
-            // RollAnticlockwise
-            // 
-            this.RollAnticlockwise.Name = "RollAnticlockwise";
-            this.RollAnticlockwise.ShortcutKeyDisplayString = "Shift+^PgDn";
-            this.RollAnticlockwise.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Next)));
-            this.RollAnticlockwise.Size = new System.Drawing.Size(260, 22);
-            this.RollAnticlockwise.Text = "Roll &Anticlockwise";
+            this.CameraRollRight.Name = "CameraRollRight";
+            this.CameraRollRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollRight.Text = "Roll Right";
             // 
             // TimeMenu
             // 
@@ -915,54 +841,54 @@
             this.TimeMenu.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeMenu.Name = "TimeMenu";
             this.TimeMenu.Size = new System.Drawing.Size(48, 21);
-            this.TimeMenu.Text = "&Time";
+            this.TimeMenu.Text = "Time";
             // 
             // TimeDecelerate
             // 
             this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
             this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeDecelerate.Name = "TimeDecelerate";
-            this.TimeDecelerate.Size = new System.Drawing.Size(138, 22);
-            this.TimeDecelerate.Text = "&Decelerate";
+            this.TimeDecelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeDecelerate.Text = "Decelerate";
             // 
             // TimeReverse
             // 
             this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
             this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeReverse.Name = "TimeReverse";
-            this.TimeReverse.Size = new System.Drawing.Size(138, 22);
-            this.TimeReverse.Text = "&Reverse";
+            this.TimeReverse.Size = new System.Drawing.Size(180, 22);
+            this.TimeReverse.Text = "Reverse";
             // 
             // TimeStop
             // 
             this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
             this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeStop.Name = "TimeStop";
-            this.TimeStop.Size = new System.Drawing.Size(138, 22);
-            this.TimeStop.Text = "&Stop";
+            this.TimeStop.Size = new System.Drawing.Size(180, 22);
+            this.TimeStop.Text = "Stop";
             // 
             // TimePause
             // 
             this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
             this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
             this.TimePause.Name = "TimePause";
-            this.TimePause.Size = new System.Drawing.Size(138, 22);
-            this.TimePause.Text = "&Pause";
+            this.TimePause.Size = new System.Drawing.Size(180, 22);
+            this.TimePause.Text = "Pause";
             // 
             // TimeForward
             // 
             this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
             this.TimeForward.Name = "TimeForward";
-            this.TimeForward.Size = new System.Drawing.Size(138, 22);
-            this.TimeForward.Text = "&Forward";
+            this.TimeForward.Size = new System.Drawing.Size(180, 22);
+            this.TimeForward.Text = "Forward";
             // 
             // TimeAccelerate
             // 
             this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
             this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeAccelerate.Name = "TimeAccelerate";
-            this.TimeAccelerate.Size = new System.Drawing.Size(138, 22);
-            this.TimeAccelerate.Text = "&Accelerate";
+            this.TimeAccelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeAccelerate.Text = "Accelerate";
             // 
             // HelpMenu
             // 
@@ -972,7 +898,7 @@
             this.HelpAbout});
             this.HelpMenu.Name = "HelpMenu";
             this.HelpMenu.Size = new System.Drawing.Size(47, 21);
-            this.HelpMenu.Text = "&Help";
+            this.HelpMenu.Text = "Help";
             // 
             // HelpOpenGLShadingLanguage
             // 
@@ -989,7 +915,7 @@
             // 
             this.HelpAbout.Name = "HelpAbout";
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
-            this.HelpAbout.Text = "&About";
+            this.HelpAbout.Text = "About";
             // 
             // ToolTip
             // 
@@ -1116,25 +1042,23 @@
         internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         internal System.Windows.Forms.ToolStripStatusLabel FPSlabel;
-        internal System.Windows.Forms.ToolStripMenuItem MoveMenu;
-        internal System.Windows.Forms.ToolStripMenuItem MoveStrafe;
-        internal System.Windows.Forms.ToolStripMenuItem MoveLeft;
-        internal System.Windows.Forms.ToolStripMenuItem MoveRight;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        internal System.Windows.Forms.ToolStripMenuItem MoveUp;
-        internal System.Windows.Forms.ToolStripMenuItem MoveDown;
-        internal System.Windows.Forms.ToolStripMenuItem MoveCircle;
-        internal System.Windows.Forms.ToolStripMenuItem CircleLeft;
-        internal System.Windows.Forms.ToolStripMenuItem CircleRight;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        internal System.Windows.Forms.ToolStripMenuItem CircleUp;
-        internal System.Windows.Forms.ToolStripMenuItem CircleDown;
-        internal System.Windows.Forms.ToolStripMenuItem MoveZoomRoll;
-        internal System.Windows.Forms.ToolStripMenuItem ZoomIn;
-        internal System.Windows.Forms.ToolStripMenuItem ZoomOut;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
-        internal System.Windows.Forms.ToolStripMenuItem RollClockwise;
-        internal System.Windows.Forms.ToolStripMenuItem RollAnticlockwise;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMenu;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMove;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveLeft;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveRight;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveUp;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveDown;
         internal System.Windows.Forms.ContextMenuStrip PopupMenu;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
+        internal System.Windows.Forms.ToolStripMenuItem CameraZoomIn;
+        internal System.Windows.Forms.ToolStripMenuItem CameraZoomOut;
+        internal System.Windows.Forms.ToolStripMenuItem CameraStrafe;
+        internal System.Windows.Forms.ToolStripMenuItem CameraStrafeLeft;
+        internal System.Windows.Forms.ToolStripMenuItem CameraStrafeRight;
+        internal System.Windows.Forms.ToolStripMenuItem CameraStrafeUp;
+        internal System.Windows.Forms.ToolStripMenuItem CameraStrafeDown;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
+        internal System.Windows.Forms.ToolStripMenuItem CameraRollLeft;
+        internal System.Windows.Forms.ToolStripMenuItem CameraRollRight;
     }
 }

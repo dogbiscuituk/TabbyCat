@@ -20,7 +20,7 @@
         {
             if (connect)
             {
-                InitTexts();
+                Localize();
                 InitTooltips();
             }
             else
@@ -33,19 +33,24 @@
 
         #region Protected Methods
 
-        protected virtual void InitMenuItems(string info, params ToolStripItem[] items)
+        private string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
             var infos = info.Split('|');
-            string
-                text = infos[0],
-                hint = string.Empty,
-                keys = string.Empty;
-            Keys shortcut = Keys.None;
+            hint = string.Empty;
+            keys = string.Empty;
+            shortcut = Keys.None;
             if (infos.Length > 2)
             {
                 keys = infos[2];
                 if (!string.IsNullOrWhiteSpace(keys))
-                    shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
+                    try
+                    {
+                        shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"InitMenuItems(\"{info}\", ...): {ex.Message}");
+                    }
             }
             if (infos.Length > 1)
             {
@@ -53,6 +58,24 @@
                 if (shortcut != Keys.None)
                     hint = $"{hint} ({keys})";
             }
+            return infos[0];
+        }
+
+        protected virtual void Localize(string info, params Control[] controls)
+        {
+            string hint, text = Parse(info, out hint, out _, out _);
+            foreach (var control in controls)
+            {
+                if (control is Label || control is CheckBox)
+                    control.Text = text;
+                ToolTip.SetToolTip(control, hint);
+            }
+        }
+
+        protected virtual void Localize(string info, params ToolStripItem[] items)
+        {
+            Keys shortcut;
+            string hint, keys, text = Parse(info, out hint, out keys, out shortcut);
             foreach (var item in items)
             {
                 item.Text = text;
@@ -65,7 +88,7 @@
             }
         }
 
-        protected virtual void InitTexts() { }
+        protected virtual void Localize() { }
 
         protected void InitTooltip(string text, params Control[] controls) =>
             Array.ForEach(controls, p => ToolTip.SetToolTip(p, text));

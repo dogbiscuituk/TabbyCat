@@ -22,29 +22,29 @@
         {
             if (connect)
             {
-                WorldForm.MoveLeft.Click += CameraMoveLeft_Click;
-                WorldForm.MoveRight.Click += CameraMoveRight_Click;
-                WorldForm.ZoomIn.Click += CameraMoveForward_Click;
-                WorldForm.ZoomOut.Click += CameraMoveBack_Click;
-                WorldForm.MoveUp.Click += CameraMoveUp_Click;
-                WorldForm.MoveDown.Click += CameraMoveDown_Click;
-                WorldForm.CircleLeft.Click += CameraRotateLeft_Click;
-                WorldForm.CircleRight.Click += CameraRotateRight_Click;
-                WorldForm.CircleUp.Click += CameraRotateUp_Click;
-                WorldForm.CircleDown.Click += CameraRotateDown_Click;
+                WorldForm.CameraStrafeLeft.Click += CameraMoveLeft_Click;
+                WorldForm.CameraStrafeRight.Click += CameraMoveRight_Click;
+                WorldForm.CameraZoomIn.Click += CameraMoveForward_Click;
+                WorldForm.CameraZoomOut.Click += CameraMoveBack_Click;
+                WorldForm.CameraStrafeUp.Click += CameraMoveUp_Click;
+                WorldForm.CameraStrafeDown.Click += CameraMoveDown_Click;
+                WorldForm.CameraMoveLeft.Click += CameraRotateLeft_Click;
+                WorldForm.CameraMoveRight.Click += CameraRotateRight_Click;
+                WorldForm.CameraMoveUp.Click += CameraRotateUp_Click;
+                WorldForm.CameraMoveDown.Click += CameraRotateDown_Click;
             }
             else
             {
-                WorldForm.MoveLeft.Click -= CameraMoveLeft_Click;
-                WorldForm.MoveRight.Click -= CameraMoveRight_Click;
-                WorldForm.ZoomIn.Click -= CameraMoveForward_Click;
-                WorldForm.ZoomOut.Click -= CameraMoveBack_Click;
-                WorldForm.MoveUp.Click -= CameraMoveUp_Click;
-                WorldForm.MoveDown.Click -= CameraMoveDown_Click;
-                WorldForm.CircleLeft.Click -= CameraRotateLeft_Click;
-                WorldForm.CircleRight.Click -= CameraRotateRight_Click;
-                WorldForm.CircleUp.Click -= CameraRotateUp_Click;
-                WorldForm.CircleDown.Click -= CameraRotateDown_Click;
+                WorldForm.CameraStrafeLeft.Click -= CameraMoveLeft_Click;
+                WorldForm.CameraStrafeRight.Click -= CameraMoveRight_Click;
+                WorldForm.CameraZoomIn.Click -= CameraMoveForward_Click;
+                WorldForm.CameraZoomOut.Click -= CameraMoveBack_Click;
+                WorldForm.CameraStrafeUp.Click -= CameraMoveUp_Click;
+                WorldForm.CameraStrafeDown.Click -= CameraMoveDown_Click;
+                WorldForm.CameraMoveLeft.Click -= CameraRotateLeft_Click;
+                WorldForm.CameraMoveRight.Click -= CameraRotateRight_Click;
+                WorldForm.CameraMoveUp.Click -= CameraRotateUp_Click;
+                WorldForm.CameraMoveDown.Click -= CameraRotateDown_Click;
             }
         }
 
