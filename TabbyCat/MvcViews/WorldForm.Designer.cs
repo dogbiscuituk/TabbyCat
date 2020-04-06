@@ -98,15 +98,13 @@
             this.CameraMoveRight = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveUp = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
-            this.CameraZoomIn = new System.Windows.Forms.ToolStripMenuItem();
-            this.CameraZoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveForward = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraMoveBack = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraStrafe = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraStrafeLeft = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraStrafeRight = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraStrafeUp = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraStrafeDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.CameraRollLeft = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraRollRight = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -285,7 +283,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 568;
+            this.SplitContainer1.SplitterDistance = 567;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -296,7 +294,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(568, 682);
+            this.GLControl.Size = new System.Drawing.Size(567, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -308,7 +306,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(402, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(403, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -496,19 +494,19 @@
             this.FileNewFromTemplate});
             this.FileNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.FileNew.Name = "FileNew";
-            this.FileNew.Size = new System.Drawing.Size(180, 22);
+            this.FileNew.Size = new System.Drawing.Size(164, 22);
             this.FileNew.Text = "New";
             // 
             // FileNewEmptyScene
             // 
             this.FileNewEmptyScene.Name = "FileNewEmptyScene";
-            this.FileNewEmptyScene.Size = new System.Drawing.Size(180, 22);
+            this.FileNewEmptyScene.Size = new System.Drawing.Size(172, 22);
             this.FileNewEmptyScene.Text = "&Empty Scene";
             // 
             // FileNewFromTemplate
             // 
             this.FileNewFromTemplate.Name = "FileNewFromTemplate";
-            this.FileNewFromTemplate.Size = new System.Drawing.Size(180, 22);
+            this.FileNewFromTemplate.Size = new System.Drawing.Size(172, 22);
             this.FileNewFromTemplate.Text = "&From Template...";
             // 
             // FileOpen
@@ -516,48 +514,48 @@
             this.FileOpen.Image = global::TabbyCat.Properties.Resources.OpenFileHS;
             this.FileOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileOpen.Name = "FileOpen";
-            this.FileOpen.Size = new System.Drawing.Size(180, 22);
+            this.FileOpen.Size = new System.Drawing.Size(164, 22);
             this.FileOpen.Text = "Open...";
             // 
             // FileReopen
             // 
             this.FileReopen.Name = "FileReopen";
-            this.FileReopen.Size = new System.Drawing.Size(180, 22);
+            this.FileReopen.Size = new System.Drawing.Size(164, 22);
             this.FileReopen.Text = "Reopen";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
             // 
             // FileSave
             // 
             this.FileSave.Image = global::TabbyCat.Properties.Resources.saveHS;
             this.FileSave.Name = "FileSave";
-            this.FileSave.Size = new System.Drawing.Size(180, 22);
+            this.FileSave.Size = new System.Drawing.Size(164, 22);
             this.FileSave.Text = "Save";
             // 
             // FileSaveAs
             // 
             this.FileSaveAs.Name = "FileSaveAs";
-            this.FileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.FileSaveAs.Size = new System.Drawing.Size(164, 22);
             this.FileSaveAs.Text = "Save As...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(161, 6);
             // 
             // FileClose
             // 
             this.FileClose.Name = "FileClose";
-            this.FileClose.Size = new System.Drawing.Size(180, 22);
+            this.FileClose.Size = new System.Drawing.Size(164, 22);
             this.FileClose.Text = "Close";
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
-            this.FileExit.Size = new System.Drawing.Size(180, 22);
+            this.FileExit.Size = new System.Drawing.Size(164, 22);
             this.FileExit.Text = "Close All && Exit";
             // 
             // EditMenu
@@ -586,13 +584,13 @@
             this.EditAddNewTrace.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.EditAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
             this.EditAddNewTrace.Name = "EditAddNewTrace";
-            this.EditAddNewTrace.Size = new System.Drawing.Size(180, 22);
+            this.EditAddNewTrace.Size = new System.Drawing.Size(176, 22);
             this.EditAddNewTrace.Text = "Add a New Trace";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 6);
             // 
             // EditUndo
             // 
@@ -600,7 +598,7 @@
             this.EditUndo.Image = global::TabbyCat.Properties.Resources.Edit_UndoHS;
             this.EditUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditUndo.Name = "EditUndo";
-            this.EditUndo.Size = new System.Drawing.Size(180, 22);
+            this.EditUndo.Size = new System.Drawing.Size(176, 22);
             this.EditUndo.Text = "Undo";
             // 
             // EditRedo
@@ -609,13 +607,13 @@
             this.EditRedo.Image = global::TabbyCat.Properties.Resources.Edit_RedoHS;
             this.EditRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditRedo.Name = "EditRedo";
-            this.EditRedo.Size = new System.Drawing.Size(180, 22);
+            this.EditRedo.Size = new System.Drawing.Size(176, 22);
             this.EditRedo.Text = "Redo";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(173, 6);
             // 
             // EditCut
             // 
@@ -623,7 +621,7 @@
             this.EditCut.Image = global::TabbyCat.Properties.Resources.CutHS;
             this.EditCut.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCut.Name = "EditCut";
-            this.EditCut.Size = new System.Drawing.Size(180, 22);
+            this.EditCut.Size = new System.Drawing.Size(176, 22);
             this.EditCut.Text = "Cut";
             // 
             // EditCopy
@@ -632,7 +630,7 @@
             this.EditCopy.Image = global::TabbyCat.Properties.Resources.CopyHS;
             this.EditCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCopy.Name = "EditCopy";
-            this.EditCopy.Size = new System.Drawing.Size(180, 22);
+            this.EditCopy.Size = new System.Drawing.Size(176, 22);
             this.EditCopy.Text = "Copy";
             // 
             // EditPaste
@@ -640,7 +638,7 @@
             this.EditPaste.Image = global::TabbyCat.Properties.Resources.PasteHS;
             this.EditPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.EditPaste.Name = "EditPaste";
-            this.EditPaste.Size = new System.Drawing.Size(180, 22);
+            this.EditPaste.Size = new System.Drawing.Size(176, 22);
             this.EditPaste.Text = "Paste";
             // 
             // EditDelete
@@ -649,35 +647,35 @@
             this.EditDelete.Image = global::TabbyCat.Properties.Resources.Delete;
             this.EditDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.EditDelete.Name = "EditDelete";
-            this.EditDelete.Size = new System.Drawing.Size(180, 22);
+            this.EditDelete.Size = new System.Drawing.Size(176, 22);
             this.EditDelete.Text = "Delete";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(173, 6);
             // 
             // EditSelectAll
             // 
             this.EditSelectAll.Name = "EditSelectAll";
-            this.EditSelectAll.Size = new System.Drawing.Size(180, 22);
+            this.EditSelectAll.Size = new System.Drawing.Size(176, 22);
             this.EditSelectAll.Text = "Select All";
             // 
             // EditInvertSelection
             // 
             this.EditInvertSelection.Name = "EditInvertSelection";
-            this.EditInvertSelection.Size = new System.Drawing.Size(180, 22);
+            this.EditInvertSelection.Size = new System.Drawing.Size(176, 22);
             this.EditInvertSelection.Text = "Invert Selection";
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(173, 6);
             // 
             // EditOptions
             // 
             this.EditOptions.Name = "EditOptions";
-            this.EditOptions.Size = new System.Drawing.Size(180, 22);
+            this.EditOptions.Size = new System.Drawing.Size(176, 22);
             this.EditOptions.Text = "Options...";
             // 
             // ViewMenu
@@ -694,18 +692,18 @@
             // 
             this.ViewFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
             this.ViewFullScreen.Name = "ViewFullScreen";
-            this.ViewFullScreen.Size = new System.Drawing.Size(180, 22);
+            this.ViewFullScreen.Size = new System.Drawing.Size(138, 22);
             this.ViewFullScreen.Text = "Full Screen";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(135, 6);
             // 
             // ViewProperties
             // 
             this.ViewProperties.Name = "ViewProperties";
-            this.ViewProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewProperties.Size = new System.Drawing.Size(138, 22);
             this.ViewProperties.Text = "Properties";
             // 
             // CameraMenu
@@ -724,9 +722,8 @@
             this.CameraMoveRight,
             this.CameraMoveUp,
             this.CameraMoveDown,
-            this.toolStripMenuItem11,
-            this.CameraZoomIn,
-            this.CameraZoomOut});
+            this.CameraMoveForward,
+            this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
             this.CameraMove.Size = new System.Drawing.Size(180, 22);
             this.CameraMove.Text = "Move";
@@ -755,22 +752,17 @@
             this.CameraMoveDown.Size = new System.Drawing.Size(180, 22);
             this.CameraMoveDown.Text = "Down";
             // 
-            // toolStripMenuItem11
+            // CameraMoveForward
             // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(177, 6);
+            this.CameraMoveForward.Name = "CameraMoveForward";
+            this.CameraMoveForward.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveForward.Text = "Forward";
             // 
-            // CameraZoomIn
+            // CameraMoveBack
             // 
-            this.CameraZoomIn.Name = "CameraZoomIn";
-            this.CameraZoomIn.Size = new System.Drawing.Size(180, 22);
-            this.CameraZoomIn.Text = "Zoom In";
-            // 
-            // CameraZoomOut
-            // 
-            this.CameraZoomOut.Name = "CameraZoomOut";
-            this.CameraZoomOut.Size = new System.Drawing.Size(180, 22);
-            this.CameraZoomOut.Text = "Zoom Out";
+            this.CameraMoveBack.Name = "CameraMoveBack";
+            this.CameraMoveBack.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveBack.Text = "Back";
             // 
             // CameraStrafe
             // 
@@ -779,7 +771,6 @@
             this.CameraStrafeRight,
             this.CameraStrafeUp,
             this.CameraStrafeDown,
-            this.toolStripMenuItem13,
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
@@ -789,42 +780,37 @@
             // CameraStrafeLeft
             // 
             this.CameraStrafeLeft.Name = "CameraStrafeLeft";
-            this.CameraStrafeLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeLeft.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeLeft.Text = "Left";
             // 
             // CameraStrafeRight
             // 
             this.CameraStrafeRight.Name = "CameraStrafeRight";
-            this.CameraStrafeRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeRight.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeRight.Text = "Right";
             // 
             // CameraStrafeUp
             // 
             this.CameraStrafeUp.Name = "CameraStrafeUp";
-            this.CameraStrafeUp.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeUp.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeUp.Text = "Up";
             // 
             // CameraStrafeDown
             // 
             this.CameraStrafeDown.Name = "CameraStrafeDown";
-            this.CameraStrafeDown.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeDown.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeDown.Text = "Down";
-            // 
-            // toolStripMenuItem13
-            // 
-            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(177, 6);
             // 
             // CameraRollLeft
             // 
             this.CameraRollLeft.Name = "CameraRollLeft";
-            this.CameraRollLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollLeft.Size = new System.Drawing.Size(132, 22);
             this.CameraRollLeft.Text = "Roll Left";
             // 
             // CameraRollRight
             // 
             this.CameraRollRight.Name = "CameraRollRight";
-            this.CameraRollRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollRight.Size = new System.Drawing.Size(132, 22);
             this.CameraRollRight.Text = "Roll Right";
             // 
             // TimeMenu
@@ -848,7 +834,7 @@
             this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
             this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeDecelerate.Name = "TimeDecelerate";
-            this.TimeDecelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeDecelerate.Size = new System.Drawing.Size(138, 22);
             this.TimeDecelerate.Text = "Decelerate";
             // 
             // TimeReverse
@@ -856,7 +842,7 @@
             this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
             this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeReverse.Name = "TimeReverse";
-            this.TimeReverse.Size = new System.Drawing.Size(180, 22);
+            this.TimeReverse.Size = new System.Drawing.Size(138, 22);
             this.TimeReverse.Text = "Reverse";
             // 
             // TimeStop
@@ -864,7 +850,7 @@
             this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
             this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeStop.Name = "TimeStop";
-            this.TimeStop.Size = new System.Drawing.Size(180, 22);
+            this.TimeStop.Size = new System.Drawing.Size(138, 22);
             this.TimeStop.Text = "Stop";
             // 
             // TimePause
@@ -872,14 +858,14 @@
             this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
             this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
             this.TimePause.Name = "TimePause";
-            this.TimePause.Size = new System.Drawing.Size(180, 22);
+            this.TimePause.Size = new System.Drawing.Size(138, 22);
             this.TimePause.Text = "Pause";
             // 
             // TimeForward
             // 
             this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
             this.TimeForward.Name = "TimeForward";
-            this.TimeForward.Size = new System.Drawing.Size(180, 22);
+            this.TimeForward.Size = new System.Drawing.Size(138, 22);
             this.TimeForward.Text = "Forward";
             // 
             // TimeAccelerate
@@ -887,7 +873,7 @@
             this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
             this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeAccelerate.Name = "TimeAccelerate";
-            this.TimeAccelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeAccelerate.Size = new System.Drawing.Size(138, 22);
             this.TimeAccelerate.Text = "Accelerate";
             // 
             // HelpMenu
@@ -1049,15 +1035,13 @@
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveUp;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveDown;
         internal System.Windows.Forms.ContextMenuStrip PopupMenu;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
-        internal System.Windows.Forms.ToolStripMenuItem CameraZoomIn;
-        internal System.Windows.Forms.ToolStripMenuItem CameraZoomOut;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveForward;
+        internal System.Windows.Forms.ToolStripMenuItem CameraMoveBack;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafe;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeLeft;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeRight;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeUp;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeDown;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollLeft;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollRight;
     }

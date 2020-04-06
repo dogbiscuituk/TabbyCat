@@ -1171,47 +1171,65 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Circle.
+        ///   Looks up a localized string similar to &amp;Move.
         /// </summary>
-        public static string Menu_Camera_Circle {
+        public static string Menu_Camera_Move {
             get {
-                return ResourceManager.GetString("Menu_Camera_Circle", resourceCulture);
+                return ResourceManager.GetString("Menu_Camera_Move", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Back|Move the camera back|^PgDn.
+        /// </summary>
+        public static string Menu_Camera_Move_Back {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Move_Back", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Down|Move the camera down while keeping it pointed at an object|^Down.
         /// </summary>
-        public static string Menu_Camera_Circle_Down {
+        public static string Menu_Camera_Move_Down {
             get {
-                return ResourceManager.GetString("Menu_Camera_Circle_Down", resourceCulture);
+                return ResourceManager.GetString("Menu_Camera_Move_Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Forward|Move the camera forward|^PgUp.
+        /// </summary>
+        public static string Menu_Camera_Move_Forward {
+            get {
+                return ResourceManager.GetString("Menu_Camera_Move_Forward", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Left|Move the camera left while keeping it pointed at an object|^Left.
         /// </summary>
-        public static string Menu_Camera_Circle_Left {
+        public static string Menu_Camera_Move_Left {
             get {
-                return ResourceManager.GetString("Menu_Camera_Circle_Left", resourceCulture);
+                return ResourceManager.GetString("Menu_Camera_Move_Left", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Right|Move the camera right while keeping it pointed at an object|^Right.
         /// </summary>
-        public static string Menu_Camera_Circle_Right {
+        public static string Menu_Camera_Move_Right {
             get {
-                return ResourceManager.GetString("Menu_Camera_Circle_Right", resourceCulture);
+                return ResourceManager.GetString("Menu_Camera_Move_Right", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &amp;Up|Move the camera up while keeping it pointed at an object|^Up.
         /// </summary>
-        public static string Menu_Camera_Circle_Up {
+        public static string Menu_Camera_Move_Up {
             get {
-                return ResourceManager.GetString("Menu_Camera_Circle_Up", resourceCulture);
+                return ResourceManager.GetString("Menu_Camera_Move_Up", resourceCulture);
             }
         }
         
@@ -1275,24 +1293,6 @@ namespace TabbyCat.Properties {
         public static string Menu_Camera_Strafe_Up {
             get {
                 return ResourceManager.GetString("Menu_Camera_Strafe_Up", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom &amp;In|Move the camera forward|^PgUp.
-        /// </summary>
-        public static string Menu_Camera_ZoomIn {
-            get {
-                return ResourceManager.GetString("Menu_Camera_ZoomIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom &amp;Out|Move the camera back|^PgDn.
-        /// </summary>
-        public static string Menu_Camera_ZoomOut {
-            get {
-                return ResourceManager.GetString("Menu_Camera_ZoomOut", resourceCulture);
             }
         }
         

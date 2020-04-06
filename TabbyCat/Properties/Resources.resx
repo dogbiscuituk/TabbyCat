@@ -595,19 +595,19 @@
   <data name="Menu_Camera" xml:space="preserve">
     <value>&amp;Camera</value>
   </data>
-  <data name="Menu_Camera_Circle" xml:space="preserve">
-    <value>&amp;Circle</value>
+  <data name="Menu_Camera_Move" xml:space="preserve">
+    <value>&amp;Move</value>
   </data>
-  <data name="Menu_Camera_Circle_Down" xml:space="preserve">
+  <data name="Menu_Camera_Move_Down" xml:space="preserve">
     <value>&amp;Down|Move the camera down while keeping it pointed at an object|^Down</value>
   </data>
-  <data name="Menu_Camera_Circle_Left" xml:space="preserve">
+  <data name="Menu_Camera_Move_Left" xml:space="preserve">
     <value>&amp;Left|Move the camera left while keeping it pointed at an object|^Left</value>
   </data>
-  <data name="Menu_Camera_Circle_Right" xml:space="preserve">
+  <data name="Menu_Camera_Move_Right" xml:space="preserve">
     <value>&amp;Right|Move the camera right while keeping it pointed at an object|^Right</value>
   </data>
-  <data name="Menu_Camera_Circle_Up" xml:space="preserve">
+  <data name="Menu_Camera_Move_Up" xml:space="preserve">
     <value>&amp;Up|Move the camera up while keeping it pointed at an object|^Up</value>
   </data>
   <data name="Menu_Camera_RollLeft" xml:space="preserve">
@@ -631,11 +631,11 @@
   <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
     <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
   </data>
-  <data name="Menu_Camera_ZoomIn" xml:space="preserve">
-    <value>Zoom &amp;In|Move the camera forward|^PgUp</value>
+  <data name="Menu_Camera_Move_Forward" xml:space="preserve">
+    <value>&amp;Forward|Move the camera forward|^PgUp</value>
   </data>
-  <data name="Menu_Camera_ZoomOut" xml:space="preserve">
-    <value>Zoom &amp;Out|Move the camera back|^PgDn</value>
+  <data name="Menu_Camera_Move_Back" xml:space="preserve">
+    <value>&amp;Back|Move the camera back|^PgDn</value>
   </data>
   <data name="Menu_Edit" xml:space="preserve">
     <value>&amp;Edit</value>

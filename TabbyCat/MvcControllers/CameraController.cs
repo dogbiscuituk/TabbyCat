@@ -24,8 +24,8 @@
             {
                 WorldForm.CameraStrafeLeft.Click += CameraMoveLeft_Click;
                 WorldForm.CameraStrafeRight.Click += CameraMoveRight_Click;
-                WorldForm.CameraZoomIn.Click += CameraMoveForward_Click;
-                WorldForm.CameraZoomOut.Click += CameraMoveBack_Click;
+                WorldForm.CameraMoveForward.Click += CameraMoveForward_Click;
+                WorldForm.CameraMoveBack.Click += CameraMoveBack_Click;
                 WorldForm.CameraStrafeUp.Click += CameraMoveUp_Click;
                 WorldForm.CameraStrafeDown.Click += CameraMoveDown_Click;
                 WorldForm.CameraMoveLeft.Click += CameraRotateLeft_Click;
@@ -37,8 +37,8 @@
             {
                 WorldForm.CameraStrafeLeft.Click -= CameraMoveLeft_Click;
                 WorldForm.CameraStrafeRight.Click -= CameraMoveRight_Click;
-                WorldForm.CameraZoomIn.Click -= CameraMoveForward_Click;
-                WorldForm.CameraZoomOut.Click -= CameraMoveBack_Click;
+                WorldForm.CameraMoveForward.Click -= CameraMoveForward_Click;
+                WorldForm.CameraMoveBack.Click -= CameraMoveBack_Click;
                 WorldForm.CameraStrafeUp.Click -= CameraMoveUp_Click;
                 WorldForm.CameraStrafeDown.Click -= CameraMoveDown_Click;
                 WorldForm.CameraMoveLeft.Click -= CameraRotateLeft_Click;
