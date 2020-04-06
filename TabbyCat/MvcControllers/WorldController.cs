@@ -96,7 +96,7 @@
             base.InitTexts();
             InitMenuItems(Resources.Menu_File, WorldForm.FileMenu);
             InitMenuItems(Resources.Menu_File_New, WorldForm.FileNew);
-            InitMenuItems(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
+            InitMenuItems(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene);
             InitMenuItems(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate);
             InitMenuItems(Resources.Menu_File_Open, WorldForm.FileOpen);
             InitMenuItems(Resources.Menu_File_Reopen, WorldForm.FileReopen);
@@ -135,12 +135,12 @@
             InitMenuItems(Resources.Menu_Camera_RollLeft, WorldForm.RollAnticlockwise);
             InitMenuItems(Resources.Menu_Camera_RollRight, WorldForm.RollClockwise);
             InitMenuItems(Resources.Menu_Time, WorldForm.TimeMenu);
-            InitMenuItems(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
-            InitMenuItems(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
-            InitMenuItems(Resources.Menu_Time_Forward, WorldForm.TimeForward);
-            InitMenuItems(Resources.Menu_Time_Pause, WorldForm.TimePause);
-            InitMenuItems(Resources.Menu_Time_Reverse, WorldForm.TimeReverse);
-            InitMenuItems(Resources.Menu_Time_Stop, WorldForm.TimeStop);
+            InitMenuItems(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate, WorldForm.tbAccelerate);
+            InitMenuItems(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate, WorldForm.tbDecelerate);
+            InitMenuItems(Resources.Menu_Time_Forward, WorldForm.TimeForward, WorldForm.tbForward);
+            InitMenuItems(Resources.Menu_Time_Pause, WorldForm.TimePause, WorldForm.tbPause);
+            InitMenuItems(Resources.Menu_Time_Reverse, WorldForm.TimeReverse, WorldForm.tbReverse);
+            InitMenuItems(Resources.Menu_Time_Stop, WorldForm.TimeStop, WorldForm.tbStop);
             InitMenuItems(Resources.Menu_Help, WorldForm.HelpMenu);
             InitMenuItems(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
             InitMenuItems(string.Format(Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);

@@ -183,6 +183,7 @@
             this.FPSlabel});
             this.StatusBar.Location = new System.Drawing.Point(0, 0);
             this.StatusBar.Name = "StatusBar";
+            this.StatusBar.ShowItemToolTips = true;
             this.StatusBar.Size = new System.Drawing.Size(1008, 22);
             this.StatusBar.TabIndex = 0;
             // 
@@ -286,7 +287,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 578;
+            this.SplitContainer1.SplitterDistance = 577;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -297,7 +298,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(578, 682);
+            this.GLControl.Size = new System.Drawing.Size(577, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -309,7 +310,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(392, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(393, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -921,7 +922,7 @@
             this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
             this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeDecelerate.Name = "TimeDecelerate";
-            this.TimeDecelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeDecelerate.Size = new System.Drawing.Size(138, 22);
             this.TimeDecelerate.Text = "&Decelerate";
             // 
             // TimeReverse
@@ -929,7 +930,7 @@
             this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
             this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeReverse.Name = "TimeReverse";
-            this.TimeReverse.Size = new System.Drawing.Size(180, 22);
+            this.TimeReverse.Size = new System.Drawing.Size(138, 22);
             this.TimeReverse.Text = "&Reverse";
             // 
             // TimeStop
@@ -937,7 +938,7 @@
             this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
             this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeStop.Name = "TimeStop";
-            this.TimeStop.Size = new System.Drawing.Size(180, 22);
+            this.TimeStop.Size = new System.Drawing.Size(138, 22);
             this.TimeStop.Text = "&Stop";
             // 
             // TimePause
@@ -945,14 +946,14 @@
             this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
             this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
             this.TimePause.Name = "TimePause";
-            this.TimePause.Size = new System.Drawing.Size(180, 22);
+            this.TimePause.Size = new System.Drawing.Size(138, 22);
             this.TimePause.Text = "&Pause";
             // 
             // TimeForward
             // 
             this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
             this.TimeForward.Name = "TimeForward";
-            this.TimeForward.Size = new System.Drawing.Size(180, 22);
+            this.TimeForward.Size = new System.Drawing.Size(138, 22);
             this.TimeForward.Text = "&Forward";
             // 
             // TimeAccelerate
@@ -960,7 +961,7 @@
             this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
             this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
             this.TimeAccelerate.Name = "TimeAccelerate";
-            this.TimeAccelerate.Size = new System.Drawing.Size(180, 22);
+            this.TimeAccelerate.Size = new System.Drawing.Size(138, 22);
             this.TimeAccelerate.Text = "&Accelerate";
             // 
             // HelpMenu

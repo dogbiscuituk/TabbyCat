@@ -713,7 +713,7 @@
     <value>&amp;Edit</value>
   </data>
   <data name="Menu_Edit_AddANewTrace" xml:space="preserve">
-    <value>&amp;Add a New Trace</value>
+    <value>&amp;Add a New Trace|Add another new trace to this scene|F2</value>
   </data>
   <data name="Menu_Edit_Copy" xml:space="preserve">
     <value>&amp;Copy|Copy selected trace(s)</value>
@@ -725,7 +725,7 @@
     <value>&amp;Delete|Delete selected trace(s)</value>
   </data>
   <data name="Menu_Edit_InvertSelection" xml:space="preserve">
-    <value>&amp;Invert Selection</value>
+    <value>&amp;Invert Selection|Toggle the selected status of each trace</value>
   </data>
   <data name="Menu_Edit_Options" xml:space="preserve">
     <value>&amp;Options...</value>
@@ -746,31 +746,28 @@
     <value>&amp;File</value>
   </data>
   <data name="Menu_File_Close" xml:space="preserve">
-    <value>&amp;Close</value>
-  </data>
-  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
-    <value>Close All &amp;&amp; E&amp;xit</value>
+    <value>&amp;Close|Close this scene</value>
   </data>
   <data name="Menu_File_New" xml:space="preserve">
-    <value>&amp;New</value>
+    <value>&amp;New|Create a new scene</value>
   </data>
   <data name="Menu_File_New_EmptyScene" xml:space="preserve">
     <value>&amp;Empty Scene|Create a new empty scene|^N</value>
   </data>
   <data name="Menu_File_New_FromTemplate" xml:space="preserve">
-    <value>&amp;From Template...</value>
+    <value>&amp;From Template...|Create a new scene based on an existing template</value>
   </data>
   <data name="Menu_File_Open" xml:space="preserve">
-    <value>&amp;Open...</value>
+    <value>&amp;Open...|Open an existing scene|^O</value>
   </data>
   <data name="Menu_File_Reopen" xml:space="preserve">
-    <value>Reopen</value>
+    <value>Reopen|Reopen a recently used scene</value>
   </data>
   <data name="Menu_File_Save" xml:space="preserve">
-    <value>&amp;Save</value>
+    <value>&amp;Save|Save this scene|^S</value>
   </data>
   <data name="Menu_File_SaveAs" xml:space="preserve">
-    <value>Save &amp;As...</value>
+    <value>Save &amp;As...|Save this scene under a different filename</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Help</value>
@@ -785,22 +782,22 @@
     <value>&amp;Time</value>
   </data>
   <data name="Menu_Time_Accelerate" xml:space="preserve">
-    <value>&amp;Accelerate</value>
+    <value>&amp;Accelerate|Speed up the passage of time</value>
   </data>
   <data name="Menu_Time_Decelerate" xml:space="preserve">
-    <value>&amp;Decelerate</value>
+    <value>&amp;Decelerate|Slow down the passage of time</value>
   </data>
   <data name="Menu_Time_Forward" xml:space="preserve">
-    <value>&amp;Forward</value>
+    <value>&amp;Forward|Make time run forward</value>
   </data>
   <data name="Menu_Time_Pause" xml:space="preserve">
-    <value>&amp;Pause</value>
+    <value>&amp;Pause|Pause the passage of time</value>
   </data>
   <data name="Menu_Time_Reverse" xml:space="preserve">
-    <value>&amp;Reverse</value>
+    <value>&amp;Reverse|Make time run in reverse</value>
   </data>
   <data name="Menu_Time_Stop" xml:space="preserve">
-    <value>&amp;Stop</value>
+    <value>&amp;Stop|Stop the passage of time and reset the timer to zero</value>
   </data>
   <data name="Menu_View" xml:space="preserve">
     <value>&amp;View</value>
@@ -810,5 +807,8 @@
   </data>
   <data name="Menu_View_Properties" xml:space="preserve">
     <value>&amp;Properties</value>
+  </data>
+  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
+    <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit</value>
   </data>
 </root>

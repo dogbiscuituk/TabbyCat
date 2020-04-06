@@ -33,7 +33,7 @@
 
         #region Protected Methods
 
-        protected virtual void InitMenuItems(string info, params ToolStripMenuItem[] items)
+        protected virtual void InitMenuItems(string info, params ToolStripItem[] items)
         {
             var infos = info.Split('|');
             string
@@ -41,27 +41,26 @@
                 hint = string.Empty,
                 keys = string.Empty;
             Keys shortcut = Keys.None;
-            switch (infos.Length)
+            if (infos.Length > 2)
             {
-                case 2:
-                    hint = infos[1];
-                    if (shortcut != Keys.None)
-                        hint = $"{hint} ({keys})";
-                    break;
-                case 3:
-                    keys = infos[2];
-                    if (!string.IsNullOrWhiteSpace(keys))
-                        shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
-                    goto case 2;
+                keys = infos[2];
+                if (!string.IsNullOrWhiteSpace(keys))
+                    shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
+            }
+            if (infos.Length > 1)
+            {
+                hint = infos[1];
+                if (shortcut != Keys.None)
+                    hint = $"{hint} ({keys})";
             }
             foreach (var item in items)
             {
                 item.Text = text;
                 item.ToolTipText = hint;
-                if (shortcut != Keys.None)
+                if (shortcut != Keys.None && item is ToolStripMenuItem menuItem)
                 {
-                    item.ShortcutKeys = shortcut;
-                    item.ShortcutKeyDisplayString = keys;
+                    menuItem.ShortcutKeys = shortcut;
+                    menuItem.ShortcutKeyDisplayString = keys;
                 }
             }
         }

@@ -1036,7 +1036,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add a New Trace.
+        ///   Looks up a localized string similar to &amp;Add a New Trace|Add another new trace to this scene|F2.
         /// </summary>
         public static string Menu_Edit_AddANewTrace {
             get {
@@ -1072,7 +1072,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Invert Selection.
+        ///   Looks up a localized string similar to &amp;Invert Selection|Toggle the selected status of each trace.
         /// </summary>
         public static string Menu_Edit_InvertSelection {
             get {
@@ -1135,7 +1135,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Close.
+        ///   Looks up a localized string similar to &amp;Close|Close this scene.
         /// </summary>
         public static string Menu_File_Close {
             get {
@@ -1144,7 +1144,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit.
+        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit|Close all open scenes and quit.
         /// </summary>
         public static string Menu_File_CloseAllAndExit {
             get {
@@ -1153,7 +1153,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;New.
+        ///   Looks up a localized string similar to &amp;New|Create a new scene.
         /// </summary>
         public static string Menu_File_New {
             get {
@@ -1171,7 +1171,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;From Template....
+        ///   Looks up a localized string similar to &amp;From Template...|Create a new scene based on an existing template.
         /// </summary>
         public static string Menu_File_New_FromTemplate {
             get {
@@ -1180,7 +1180,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Open....
+        ///   Looks up a localized string similar to &amp;Open...|Open an existing scene|^O.
         /// </summary>
         public static string Menu_File_Open {
             get {
@@ -1189,7 +1189,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reopen.
+        ///   Looks up a localized string similar to Reopen|Reopen a recently used scene.
         /// </summary>
         public static string Menu_File_Reopen {
             get {
@@ -1198,7 +1198,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Save.
+        ///   Looks up a localized string similar to &amp;Save|Save this scene|^S.
         /// </summary>
         public static string Menu_File_Save {
             get {
@@ -1207,7 +1207,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save &amp;As....
+        ///   Looks up a localized string similar to Save &amp;As...|Save this scene under a different filename.
         /// </summary>
         public static string Menu_File_SaveAs {
             get {
@@ -1252,7 +1252,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Accelerate.
+        ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time.
         /// </summary>
         public static string Menu_Time_Accelerate {
             get {
@@ -1261,7 +1261,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Decelerate.
+        ///   Looks up a localized string similar to &amp;Decelerate|Slow down the passage of time.
         /// </summary>
         public static string Menu_Time_Decelerate {
             get {
@@ -1270,7 +1270,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Forward.
+        ///   Looks up a localized string similar to &amp;Forward|Make time run forward.
         /// </summary>
         public static string Menu_Time_Forward {
             get {
@@ -1279,7 +1279,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Pause.
+        ///   Looks up a localized string similar to &amp;Pause|Pause the passage of time.
         /// </summary>
         public static string Menu_Time_Pause {
             get {
@@ -1288,7 +1288,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Reverse.
+        ///   Looks up a localized string similar to &amp;Reverse|Make time run in reverse.
         /// </summary>
         public static string Menu_Time_Reverse {
             get {
@@ -1297,7 +1297,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Stop.
+        ///   Looks up a localized string similar to &amp;Stop|Stop the passage of time and reset the timer to zero.
         /// </summary>
         public static string Menu_Time_Stop {
             get {
