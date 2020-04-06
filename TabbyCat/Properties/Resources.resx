@@ -430,236 +430,167 @@
   <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Label_Camera_Direction" xml:space="preserve">
-    <value>Direction</value>
+  <data name="Menu_Trace_All" xml:space="preserve">
+    <value>All|Select / deselect all traces</value>
   </data>
-  <data name="Label_Camera_Position" xml:space="preserve">
-    <value>Position</value>
+  <data name="Control_Camera_Direction" xml:space="preserve">
+    <value>Direction|Camera direction (degrees)</value>
   </data>
-  <data name="Label_Scene_Background" xml:space="preserve">
-    <value>Background</value>
+  <data name="Control_Camera_Pitch" xml:space="preserve">
+    <value>|Camera pitch (degrees)</value>
   </data>
-  <data name="Label_Scene_FarPlane" xml:space="preserve">
-    <value>Far plane</value>
+  <data name="Control_Camera_Position" xml:space="preserve">
+    <value>Position|Camera position</value>
   </data>
-  <data name="Label_Scene_FOV" xml:space="preserve">
-    <value>Field of view</value>
+  <data name="Control_Camera_PositionX" xml:space="preserve">
+    <value>|Camera x</value>
   </data>
-  <data name="Label_Scene_GLSLVersion" xml:space="preserve">
-    <value>GLSL version</value>
+  <data name="Control_Camera_PositionY" xml:space="preserve">
+    <value>|Camera y</value>
   </data>
-  <data name="Label_Scene_NearPlane" xml:space="preserve">
-    <value>Near plane</value>
+  <data name="Control_Camera_PositionZ" xml:space="preserve">
+    <value>|Camera z</value>
   </data>
-  <data name="Label_Scene_Projection" xml:space="preserve">
-    <value>Projection</value>
+  <data name="Control_Camera_Roll" xml:space="preserve">
+    <value>|Camera roll (degrees)</value>
   </data>
-  <data name="Label_Scene_Samples" xml:space="preserve">
-    <value>#Samples</value>
+  <data name="Control_Camera_Yaw" xml:space="preserve">
+    <value>|Camera yaw (degrees)</value>
   </data>
-  <data name="Label_Scene_Stereo" xml:space="preserve">
-    <value>Stereo</value>
+  <data name="Control_Scene_Background" xml:space="preserve">
+    <value>Background|The colour of the scene background</value>
   </data>
-  <data name="Label_Scene_TargetFPS" xml:space="preserve">
-    <value>Target FPS</value>
+  <data name="Control_Scene_FarPlane" xml:space="preserve">
+    <value>Far plane|The far projective plane</value>
   </data>
-  <data name="Label_Scene_Title" xml:space="preserve">
-    <value>Scene title</value>
+  <data name="Control_Scene_FarPlaneX" xml:space="preserve">
+    <value>|The x-component of the far projective plane</value>
   </data>
-  <data name="Label_Scene_VSync" xml:space="preserve">
-    <value>VSync</value>
+  <data name="Control_Scene_FarPlaneY" xml:space="preserve">
+    <value>|The y-component of the far projective plane</value>
   </data>
-  <data name="Label_Trace_All" xml:space="preserve">
-    <value>All</value>
+  <data name="Control_Scene_FarPlaneZ" xml:space="preserve">
+    <value>|The z-component of the far projective plane</value>
   </data>
-  <data name="Label_Trace_Description" xml:space="preserve">
-    <value>Description</value>
+  <data name="Control_Scene_FieldOfView" xml:space="preserve">
+    <value>|The perspective field of view angle (degrees)</value>
   </data>
-  <data name="Label_Trace_Location" xml:space="preserve">
-    <value>Location</value>
+  <data name="Control_Scene_GLVersion" xml:space="preserve">
+    <value>GLSL version|The OpenGL Shader Language version targeted by this code</value>
   </data>
-  <data name="Label_Trace_Maximum" xml:space="preserve">
-    <value>Maximum</value>
+  <data name="Control_Scene_NearPlane" xml:space="preserve">
+    <value>Near plane|The near projective plane</value>
   </data>
-  <data name="Label_Trace_Minimum" xml:space="preserve">
-    <value>Minimum</value>
+  <data name="Control_Scene_NearPlaneX" xml:space="preserve">
+    <value>|The x-component of the near projective plane</value>
   </data>
-  <data name="Label_Trace_Orientation" xml:space="preserve">
-    <value>Orientation</value>
+  <data name="Control_Scene_NearPlaneY" xml:space="preserve">
+    <value>|The y-component of the near projective plane</value>
   </data>
-  <data name="Label_Trace_Pattern" xml:space="preserve">
-    <value>Pattern</value>
+  <data name="Control_Scene_NearPlaneZ" xml:space="preserve">
+    <value>|The z-component of the near projective plane</value>
   </data>
-  <data name="Label_Trace_Scale" xml:space="preserve">
-    <value>Scale</value>
+  <data name="Control_Scene_Projection" xml:space="preserve">
+    <value>Projection|Scene projection type</value>
   </data>
-  <data name="Label_Trace_Selection" xml:space="preserve">
-    <value>Selected Trace(s)</value>
+  <data name="Control_Scene_Samples" xml:space="preserve">
+    <value>#Samples|The number of samples interpolated over</value>
   </data>
-  <data name="Label_Trace_Strips" xml:space="preserve">
-    <value>#Strips</value>
+  <data name="Control_Scene_Stereo" xml:space="preserve">
+    <value>Stereo|Whether or not the current display mode is stereoscopic</value>
   </data>
-  <data name="Label_Trace_Visible" xml:space="preserve">
-    <value>Visible</value>
+  <data name="Control_Scene_TargetFPS" xml:space="preserve">
+    <value>Target FPS|The target number of frames per second</value>
   </data>
-  <data name="Tooltip_Camera_Direction" xml:space="preserve">
-    <value>Camera direction (degrees)</value>
+  <data name="Control_Scene_Title" xml:space="preserve">
+    <value>Scene Title|The title of this scene</value>
   </data>
-  <data name="Tooltip_Camera_Pitch" xml:space="preserve">
-    <value>Camera pitch (degrees)</value>
+  <data name="Control_Scene_VSync" xml:space="preserve">
+    <value>VSync|Whether or not to use vertical sync</value>
   </data>
-  <data name="Tooltip_Camera_Position" xml:space="preserve">
-    <value>Camera position</value>
+  <data name="Control_Trace_Description" xml:space="preserve">
+    <value>Description|Trace description</value>
   </data>
-  <data name="Tooltip_Camera_PositionX" xml:space="preserve">
-    <value>Camera x</value>
+  <data name="Control_Trace_Location" xml:space="preserve">
+    <value>Location|Trace location</value>
   </data>
-  <data name="Tooltip_Camera_PositionY" xml:space="preserve">
-    <value>Camera y</value>
+  <data name="Control_Trace_LocationX" xml:space="preserve">
+    <value>|Location x</value>
   </data>
-  <data name="Tooltip_Camera_PositionZ" xml:space="preserve">
-    <value>Camera z</value>
+  <data name="Control_Trace_LocationY" xml:space="preserve">
+    <value>|Location y</value>
   </data>
-  <data name="Tooltip_Camera_Roll" xml:space="preserve">
-    <value>Camera roll (degrees)</value>
+  <data name="Control_Trace_LocationZ" xml:space="preserve">
+    <value>|Location z</value>
   </data>
-  <data name="Tooltip_Camera_Yaw" xml:space="preserve">
-    <value>Camera yaw (degrees)</value>
+  <data name="Control_Trace_Maximum" xml:space="preserve">
+    <value>Maximum|Upper limit of range</value>
   </data>
-  <data name="Tooltip_Scene_Background" xml:space="preserve">
-    <value>The colour of the scene background</value>
+  <data name="Control_Trace_MaximumX" xml:space="preserve">
+    <value>|The maximum value of x</value>
   </data>
-  <data name="Tooltip_Scene_FarPlane" xml:space="preserve">
-    <value>The far projective plane</value>
+  <data name="Control_Trace_MaximumY" xml:space="preserve">
+    <value>|The maximum value of y</value>
   </data>
-  <data name="Tooltip_Scene_FarPlaneX" xml:space="preserve">
-    <value>The x-component of the far projective plane</value>
+  <data name="Control_Trace_MaximumZ" xml:space="preserve">
+    <value>|The maximum value of z</value>
   </data>
-  <data name="Tooltip_Scene_FarPlaneY" xml:space="preserve">
-    <value>The y-component of the far projective plane</value>
+  <data name="Control_Trace_Minimum" xml:space="preserve">
+    <value>Minimum|Lower limit of range</value>
   </data>
-  <data name="Tooltip_Scene_FarPlaneZ" xml:space="preserve">
-    <value>The z-component of the far projective plane</value>
+  <data name="Control_Trace_MinimumX" xml:space="preserve">
+    <value>|The minimum value of x</value>
   </data>
-  <data name="Tooltip_Scene_FieldOfView" xml:space="preserve">
-    <value>The perspective field of view angle (degrees)</value>
+  <data name="Control_Trace_MinimumY" xml:space="preserve">
+    <value>|The minimum value of y</value>
   </data>
-  <data name="Tooltip_Scene_GLVersion" xml:space="preserve">
-    <value>The OpenGL Shader Language version targeted by this code</value>
+  <data name="Control_Trace_MinimumZ" xml:space="preserve">
+    <value>|The minimum value of z</value>
   </data>
-  <data name="Tooltip_Scene_NearPlane" xml:space="preserve">
-    <value>The near projective plane</value>
+  <data name="Control_Trace_Orientation" xml:space="preserve">
+    <value>Orientation|Trace orientation (degrees)</value>
   </data>
-  <data name="Tooltip_Scene_NearPlaneX" xml:space="preserve">
-    <value>The x-component of the near projective plane</value>
+  <data name="Control_Trace_Pattern" xml:space="preserve">
+    <value>Pattern|The trace rendering pattern</value>
   </data>
-  <data name="Tooltip_Scene_NearPlaneY" xml:space="preserve">
-    <value>The y-component of the near projective plane</value>
+  <data name="Control_Trace_Pitch" xml:space="preserve">
+    <value>|Trace pitch (degrees)</value>
   </data>
-  <data name="Tooltip_Scene_NearPlaneZ" xml:space="preserve">
-    <value>The z-component of the near projective plane</value>
+  <data name="Control_Trace_Roll" xml:space="preserve">
+    <value>|Trace roll (degrees)</value>
   </data>
-  <data name="Tooltip_Scene_Projection" xml:space="preserve">
-    <value>Scene projection type</value>
+  <data name="Control_Trace_Scale" xml:space="preserve">
+    <value>Scale|Trace magnification factor</value>
   </data>
-  <data name="Tooltip_Scene_Samples" xml:space="preserve">
-    <value>The number of samples interpolated over</value>
+  <data name="Control_Trace_ScaleX" xml:space="preserve">
+    <value>|The x-component of scale</value>
   </data>
-  <data name="Tooltip_Scene_Stereo" xml:space="preserve">
-    <value>Whether or not the current display mode is stereoscopic</value>
+  <data name="Control_Trace_ScaleY" xml:space="preserve">
+    <value>|The y-component of scale</value>
   </data>
-  <data name="Tooltip_Scene_TargetFPS" xml:space="preserve">
-    <value>The target number of frames per second</value>
+  <data name="Control_Trace_ScaleZ" xml:space="preserve">
+    <value>|The z-component of scale</value>
   </data>
-  <data name="Tooltip_Scene_Title" xml:space="preserve">
-    <value>The title of this scene</value>
+  <data name="Control_Trace_Selection" xml:space="preserve">
+    <value>Selected trace(s)|The set of selected traces</value>
   </data>
-  <data name="Tooltip_Scene_VSync" xml:space="preserve">
-    <value>Whether or not to use vertical sync</value>
+  <data name="Control_Trace_Strips" xml:space="preserve">
+    <value>Strip count|The number of strips in each dimension of the trace</value>
   </data>
-  <data name="Tooltip_Trace_Description" xml:space="preserve">
-    <value>Trace description</value>
+  <data name="Control_Trace_StripsX" xml:space="preserve">
+    <value>|The number of strips in the x-direction</value>
   </data>
-  <data name="Tooltip_Trace_Location" xml:space="preserve">
-    <value>Trace location</value>
+  <data name="Control_Trace_StripsY" xml:space="preserve">
+    <value>|The number of strips in the y-direction</value>
   </data>
-  <data name="Tooltip_Trace_LocationX" xml:space="preserve">
-    <value>Location x</value>
+  <data name="Control_Trace_StripsZ" xml:space="preserve">
+    <value>|The number of strips in the z-direction</value>
   </data>
-  <data name="Tooltip_Trace_LocationY" xml:space="preserve">
-    <value>Location y</value>
+  <data name="Control_Trace_Visible" xml:space="preserve">
+    <value>Visible|Whether or not a trace is visible</value>
   </data>
-  <data name="Tooltip_Trace_LocationZ" xml:space="preserve">
-    <value>Location z</value>
-  </data>
-  <data name="Tooltip_Trace_Maximum" xml:space="preserve">
-    <value>Upper limit of range</value>
-  </data>
-  <data name="Tooltip_Trace_MaximumX" xml:space="preserve">
-    <value>The maximum value of x</value>
-  </data>
-  <data name="Tooltip_Trace_MaximumY" xml:space="preserve">
-    <value>The maximum value of y</value>
-  </data>
-  <data name="Tooltip_Trace_MaximumZ" xml:space="preserve">
-    <value>The maximum value of z</value>
-  </data>
-  <data name="Tooltip_Trace_Minimum" xml:space="preserve">
-    <value>Lower limit of range</value>
-  </data>
-  <data name="Tooltip_Trace_MinimumX" xml:space="preserve">
-    <value>The minimum value of x</value>
-  </data>
-  <data name="Tooltip_Trace_MinimumY" xml:space="preserve">
-    <value>The minimum value of y</value>
-  </data>
-  <data name="Tooltip_Trace_MinimumZ" xml:space="preserve">
-    <value>The minimum value of z</value>
-  </data>
-  <data name="Tooltip_Trace_Orientation" xml:space="preserve">
-    <value>Trace orientation (degrees)</value>
-  </data>
-  <data name="Tooltip_Trace_Pattern" xml:space="preserve">
-    <value>The trace rendering pattern</value>
-  </data>
-  <data name="Tooltip_Trace_Pitch" xml:space="preserve">
-    <value>Trace pitch (degrees)</value>
-  </data>
-  <data name="Tooltip_Trace_Roll" xml:space="preserve">
-    <value>Trace roll (degrees)</value>
-  </data>
-  <data name="Tooltip_Trace_Scale" xml:space="preserve">
-    <value>Trace magnification factor</value>
-  </data>
-  <data name="Tooltip_Trace_ScaleX" xml:space="preserve">
-    <value>The x-component of scale</value>
-  </data>
-  <data name="Tooltip_Trace_ScaleY" xml:space="preserve">
-    <value>The y-component of scale</value>
-  </data>
-  <data name="Tooltip_Trace_ScaleZ" xml:space="preserve">
-    <value>The z-component of scale</value>
-  </data>
-  <data name="Tooltip_Trace_Selection" xml:space="preserve">
-    <value>Selected trace(s)</value>
-  </data>
-  <data name="Tooltip_Trace_Strips" xml:space="preserve">
-    <value>The number of strips in each dimension of the trace</value>
-  </data>
-  <data name="Tooltip_Trace_StripsX" xml:space="preserve">
-    <value>The number of strips in the x-direction</value>
-  </data>
-  <data name="Tooltip_Trace_StripsY" xml:space="preserve">
-    <value>The number of strips in the y-direction</value>
-  </data>
-  <data name="Tooltip_Trace_StripsZ" xml:space="preserve">
-    <value>The number of strips in the z-direction</value>
-  </data>
-  <data name="Tooltip_Trace_Visible" xml:space="preserve">
-    <value>Whether or not a trace is visible</value>
-  </data>
-  <data name="Tooltip_Trace_Yaw" xml:space="preserve">
-    <value>Trace yaw (degrees)</value>
+  <data name="Control_Trace_Yaw" xml:space="preserve">
+    <value>|Trace yaw (degrees)</value>
   </data>
   <data name="Menu_Camera" xml:space="preserve">
     <value>&amp;Camera</value>

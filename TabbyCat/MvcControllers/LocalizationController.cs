@@ -7,10 +7,8 @@
     {
         #region Constructors
 
-        internal LocalizationController(WorldController worldController)
-        {
+        internal LocalizationController(WorldController worldController) =>
             WorldController = worldController;
-        }
 
         #endregion
 
@@ -66,7 +64,7 @@
             string hint, text = Parse(info, out hint, out _, out _);
             foreach (var control in controls)
             {
-                if (control is Label || control is CheckBox)
+                if (!string.IsNullOrWhiteSpace(text))
                     control.Text = text;
                 ToolTip.SetToolTip(control, hint);
             }
@@ -74,8 +72,7 @@
 
         protected virtual void Localize(string info, params ToolStripItem[] items)
         {
-            Keys shortcut;
-            string hint, keys, text = Parse(info, out hint, out keys, out shortcut);
+            var text = Parse(info, out string hint, out string keys, out Keys shortcut);
             foreach (var item in items)
             {
                 item.Text = text;
