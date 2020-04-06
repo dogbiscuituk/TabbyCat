@@ -176,7 +176,8 @@ namespace TabbyCat.Properties {
         ///    float gl_ClipDistance[];
         ///    float gl_CullDistance[];
         ///};
-        ///        /// [rest of string was truncated]&quot;;.
+        ///
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_Shader3TessEvaluation {
             get {
@@ -285,6 +286,492 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("ColorHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direction|Camera direction (degrees).
+        /// </summary>
+        public static string Control_Camera_Direction {
+            get {
+                return ResourceManager.GetString("Control_Camera_Direction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera pitch (degrees).
+        /// </summary>
+        public static string Control_Camera_Pitch {
+            get {
+                return ResourceManager.GetString("Control_Camera_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position|Camera position.
+        /// </summary>
+        public static string Control_Camera_Position {
+            get {
+                return ResourceManager.GetString("Control_Camera_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera x.
+        /// </summary>
+        public static string Control_Camera_PositionX {
+            get {
+                return ResourceManager.GetString("Control_Camera_PositionX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera y.
+        /// </summary>
+        public static string Control_Camera_PositionY {
+            get {
+                return ResourceManager.GetString("Control_Camera_PositionY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera z.
+        /// </summary>
+        public static string Control_Camera_PositionZ {
+            get {
+                return ResourceManager.GetString("Control_Camera_PositionZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera roll (degrees).
+        /// </summary>
+        public static string Control_Camera_Roll {
+            get {
+                return ResourceManager.GetString("Control_Camera_Roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Camera yaw (degrees).
+        /// </summary>
+        public static string Control_Camera_Yaw {
+            get {
+                return ResourceManager.GetString("Control_Camera_Yaw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background|The colour of the scene background.
+        /// </summary>
+        public static string Control_Scene_Background {
+            get {
+                return ResourceManager.GetString("Control_Scene_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Far plane|The far projective plane.
+        /// </summary>
+        public static string Control_Scene_FarPlane {
+            get {
+                return ResourceManager.GetString("Control_Scene_FarPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The x-component of the far projective plane.
+        /// </summary>
+        public static string Control_Scene_FarPlaneX {
+            get {
+                return ResourceManager.GetString("Control_Scene_FarPlaneX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The y-component of the far projective plane.
+        /// </summary>
+        public static string Control_Scene_FarPlaneY {
+            get {
+                return ResourceManager.GetString("Control_Scene_FarPlaneY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The z-component of the far projective plane.
+        /// </summary>
+        public static string Control_Scene_FarPlaneZ {
+            get {
+                return ResourceManager.GetString("Control_Scene_FarPlaneZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field of view|The perspective field of view angle (degrees).
+        /// </summary>
+        public static string Control_Scene_FieldOfView {
+            get {
+                return ResourceManager.GetString("Control_Scene_FieldOfView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GLSL version|The OpenGL Shader Language version targeted by this code.
+        /// </summary>
+        public static string Control_Scene_GLVersion {
+            get {
+                return ResourceManager.GetString("Control_Scene_GLVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near plane|The near projective plane.
+        /// </summary>
+        public static string Control_Scene_NearPlane {
+            get {
+                return ResourceManager.GetString("Control_Scene_NearPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The x-component of the near projective plane.
+        /// </summary>
+        public static string Control_Scene_NearPlaneX {
+            get {
+                return ResourceManager.GetString("Control_Scene_NearPlaneX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The y-component of the near projective plane.
+        /// </summary>
+        public static string Control_Scene_NearPlaneY {
+            get {
+                return ResourceManager.GetString("Control_Scene_NearPlaneY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The z-component of the near projective plane.
+        /// </summary>
+        public static string Control_Scene_NearPlaneZ {
+            get {
+                return ResourceManager.GetString("Control_Scene_NearPlaneZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projection|Scene projection type.
+        /// </summary>
+        public static string Control_Scene_Projection {
+            get {
+                return ResourceManager.GetString("Control_Scene_Projection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #Samples|The number of samples interpolated over.
+        /// </summary>
+        public static string Control_Scene_Samples {
+            get {
+                return ResourceManager.GetString("Control_Scene_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stereo|Whether or not the current display mode is stereoscopic.
+        /// </summary>
+        public static string Control_Scene_Stereo {
+            get {
+                return ResourceManager.GetString("Control_Scene_Stereo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target FPS|The target number of frames per second.
+        /// </summary>
+        public static string Control_Scene_TargetFPS {
+            get {
+                return ResourceManager.GetString("Control_Scene_TargetFPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene title|The title of this scene.
+        /// </summary>
+        public static string Control_Scene_Title {
+            get {
+                return ResourceManager.GetString("Control_Scene_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VSync|Whether or not to use vertical sync.
+        /// </summary>
+        public static string Control_Scene_VSync {
+            get {
+                return ResourceManager.GetString("Control_Scene_VSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All|Select or deselect all traces.
+        /// </summary>
+        public static string Control_Selection_All {
+            get {
+                return ResourceManager.GetString("Control_Selection_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description|Trace description.
+        /// </summary>
+        public static string Control_Trace_Description {
+            get {
+                return ResourceManager.GetString("Control_Trace_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location|Trace location.
+        /// </summary>
+        public static string Control_Trace_Location {
+            get {
+                return ResourceManager.GetString("Control_Trace_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Location x.
+        /// </summary>
+        public static string Control_Trace_LocationX {
+            get {
+                return ResourceManager.GetString("Control_Trace_LocationX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Location y.
+        /// </summary>
+        public static string Control_Trace_LocationY {
+            get {
+                return ResourceManager.GetString("Control_Trace_LocationY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Location z.
+        /// </summary>
+        public static string Control_Trace_LocationZ {
+            get {
+                return ResourceManager.GetString("Control_Trace_LocationZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum|Upper limit of range.
+        /// </summary>
+        public static string Control_Trace_Maximum {
+            get {
+                return ResourceManager.GetString("Control_Trace_Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The maximum value of x.
+        /// </summary>
+        public static string Control_Trace_MaximumX {
+            get {
+                return ResourceManager.GetString("Control_Trace_MaximumX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The maximum value of y.
+        /// </summary>
+        public static string Control_Trace_MaximumY {
+            get {
+                return ResourceManager.GetString("Control_Trace_MaximumY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The maximum value of z.
+        /// </summary>
+        public static string Control_Trace_MaximumZ {
+            get {
+                return ResourceManager.GetString("Control_Trace_MaximumZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum|Lower limit of range.
+        /// </summary>
+        public static string Control_Trace_Minimum {
+            get {
+                return ResourceManager.GetString("Control_Trace_Minimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The minimum value of x.
+        /// </summary>
+        public static string Control_Trace_MinimumX {
+            get {
+                return ResourceManager.GetString("Control_Trace_MinimumX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The minimum value of y.
+        /// </summary>
+        public static string Control_Trace_MinimumY {
+            get {
+                return ResourceManager.GetString("Control_Trace_MinimumY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The minimum value of z.
+        /// </summary>
+        public static string Control_Trace_MinimumZ {
+            get {
+                return ResourceManager.GetString("Control_Trace_MinimumZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orientation|Trace orientation (degrees).
+        /// </summary>
+        public static string Control_Trace_Orientation {
+            get {
+                return ResourceManager.GetString("Control_Trace_Orientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pattern|The trace rendering pattern.
+        /// </summary>
+        public static string Control_Trace_Pattern {
+            get {
+                return ResourceManager.GetString("Control_Trace_Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Trace pitch (degrees).
+        /// </summary>
+        public static string Control_Trace_Pitch {
+            get {
+                return ResourceManager.GetString("Control_Trace_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Trace roll (degrees).
+        /// </summary>
+        public static string Control_Trace_Roll {
+            get {
+                return ResourceManager.GetString("Control_Trace_Roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale|Trace magnification factor.
+        /// </summary>
+        public static string Control_Trace_Scale {
+            get {
+                return ResourceManager.GetString("Control_Trace_Scale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The x-component of scale.
+        /// </summary>
+        public static string Control_Trace_ScaleX {
+            get {
+                return ResourceManager.GetString("Control_Trace_ScaleX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The y-component of scale.
+        /// </summary>
+        public static string Control_Trace_ScaleY {
+            get {
+                return ResourceManager.GetString("Control_Trace_ScaleY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The z-component of scale.
+        /// </summary>
+        public static string Control_Trace_ScaleZ {
+            get {
+                return ResourceManager.GetString("Control_Trace_ScaleZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected trace(s)|Selected trace(s).
+        /// </summary>
+        public static string Control_Trace_Selection {
+            get {
+                return ResourceManager.GetString("Control_Trace_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strip count|The number of strips in each dimension of the trace.
+        /// </summary>
+        public static string Control_Trace_Strips {
+            get {
+                return ResourceManager.GetString("Control_Trace_Strips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The number of strips in the x-direction.
+        /// </summary>
+        public static string Control_Trace_StripsX {
+            get {
+                return ResourceManager.GetString("Control_Trace_StripsX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The number of strips in the y-direction.
+        /// </summary>
+        public static string Control_Trace_StripsY {
+            get {
+                return ResourceManager.GetString("Control_Trace_StripsY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |The number of strips in the z-direction.
+        /// </summary>
+        public static string Control_Trace_StripsZ {
+            get {
+                return ResourceManager.GetString("Control_Trace_StripsZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible|Whether or not a trace is visible.
+        /// </summary>
+        public static string Control_Trace_Visible {
+            get {
+                return ResourceManager.GetString("Control_Trace_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Trace yaw (degrees).
+        /// </summary>
+        public static string Control_Trace_Yaw {
+            get {
+                return ResourceManager.GetString("Control_Trace_Yaw", resourceCulture);
             }
         }
         
@@ -661,222 +1148,6 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("InsertHyperlinkHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Direction.
-        /// </summary>
-        public static string Label_Camera_Direction {
-            get {
-                return ResourceManager.GetString("Label_Camera_Direction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Position.
-        /// </summary>
-        public static string Label_Camera_Position {
-            get {
-                return ResourceManager.GetString("Label_Camera_Position", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Background.
-        /// </summary>
-        public static string Label_Scene_Background {
-            get {
-                return ResourceManager.GetString("Label_Scene_Background", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Far plane.
-        /// </summary>
-        public static string Label_Scene_FarPlane {
-            get {
-                return ResourceManager.GetString("Label_Scene_FarPlane", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Field of view.
-        /// </summary>
-        public static string Label_Scene_FOV {
-            get {
-                return ResourceManager.GetString("Label_Scene_FOV", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to GLSL version.
-        /// </summary>
-        public static string Label_Scene_GLSLVersion {
-            get {
-                return ResourceManager.GetString("Label_Scene_GLSLVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Near plane.
-        /// </summary>
-        public static string Label_Scene_NearPlane {
-            get {
-                return ResourceManager.GetString("Label_Scene_NearPlane", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Projection.
-        /// </summary>
-        public static string Label_Scene_Projection {
-            get {
-                return ResourceManager.GetString("Label_Scene_Projection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to #Samples.
-        /// </summary>
-        public static string Label_Scene_Samples {
-            get {
-                return ResourceManager.GetString("Label_Scene_Samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stereo.
-        /// </summary>
-        public static string Label_Scene_Stereo {
-            get {
-                return ResourceManager.GetString("Label_Scene_Stereo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Target FPS.
-        /// </summary>
-        public static string Label_Scene_TargetFPS {
-            get {
-                return ResourceManager.GetString("Label_Scene_TargetFPS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene title.
-        /// </summary>
-        public static string Label_Scene_Title {
-            get {
-                return ResourceManager.GetString("Label_Scene_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VSync.
-        /// </summary>
-        public static string Label_Scene_VSync {
-            get {
-                return ResourceManager.GetString("Label_Scene_VSync", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All.
-        /// </summary>
-        public static string Label_Trace_All {
-            get {
-                return ResourceManager.GetString("Label_Trace_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Description.
-        /// </summary>
-        public static string Label_Trace_Description {
-            get {
-                return ResourceManager.GetString("Label_Trace_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Location.
-        /// </summary>
-        public static string Label_Trace_Location {
-            get {
-                return ResourceManager.GetString("Label_Trace_Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maximum.
-        /// </summary>
-        public static string Label_Trace_Maximum {
-            get {
-                return ResourceManager.GetString("Label_Trace_Maximum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minimum.
-        /// </summary>
-        public static string Label_Trace_Minimum {
-            get {
-                return ResourceManager.GetString("Label_Trace_Minimum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Orientation.
-        /// </summary>
-        public static string Label_Trace_Orientation {
-            get {
-                return ResourceManager.GetString("Label_Trace_Orientation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pattern.
-        /// </summary>
-        public static string Label_Trace_Pattern {
-            get {
-                return ResourceManager.GetString("Label_Trace_Pattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scale.
-        /// </summary>
-        public static string Label_Trace_Scale {
-            get {
-                return ResourceManager.GetString("Label_Trace_Scale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected Trace(s).
-        /// </summary>
-        public static string Label_Trace_Selection {
-            get {
-                return ResourceManager.GetString("Label_Trace_Selection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to #Strips.
-        /// </summary>
-        public static string Label_Trace_Strips {
-            get {
-                return ResourceManager.GetString("Label_Trace_Strips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Visible.
-        /// </summary>
-        public static string Label_Trace_Visible {
-            get {
-                return ResourceManager.GetString("Label_Trace_Visible", resourceCulture);
             }
         }
         
@@ -1824,483 +2095,6 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TileWindowsHorizontallyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera direction (degrees).
-        /// </summary>
-        public static string Tooltip_Camera_Direction {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_Direction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera pitch (degrees).
-        /// </summary>
-        public static string Tooltip_Camera_Pitch {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_Pitch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera position.
-        /// </summary>
-        public static string Tooltip_Camera_Position {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_Position", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera x.
-        /// </summary>
-        public static string Tooltip_Camera_PositionX {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_PositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera y.
-        /// </summary>
-        public static string Tooltip_Camera_PositionY {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_PositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera z.
-        /// </summary>
-        public static string Tooltip_Camera_PositionZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_PositionZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera roll (degrees).
-        /// </summary>
-        public static string Tooltip_Camera_Roll {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_Roll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Camera yaw (degrees).
-        /// </summary>
-        public static string Tooltip_Camera_Yaw {
-            get {
-                return ResourceManager.GetString("Tooltip_Camera_Yaw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The colour of the scene background.
-        /// </summary>
-        public static string Tooltip_Scene_Background {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_Background", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The far projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_FarPlane {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_FarPlane", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The x-component of the far projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_FarPlaneX {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_FarPlaneX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The y-component of the far projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_FarPlaneY {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_FarPlaneY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The z-component of the far projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_FarPlaneZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_FarPlaneZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The perspective field of view angle (degrees).
-        /// </summary>
-        public static string Tooltip_Scene_FieldOfView {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_FieldOfView", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The OpenGL Shader Language version targeted by this code.
-        /// </summary>
-        public static string Tooltip_Scene_GLVersion {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_GLVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The near projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_NearPlane {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_NearPlane", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The x-component of the near projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_NearPlaneX {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_NearPlaneX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The y-component of the near projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_NearPlaneY {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_NearPlaneY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The z-component of the near projective plane.
-        /// </summary>
-        public static string Tooltip_Scene_NearPlaneZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_NearPlaneZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene projection type.
-        /// </summary>
-        public static string Tooltip_Scene_Projection {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_Projection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of samples interpolated over.
-        /// </summary>
-        public static string Tooltip_Scene_Samples {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_Samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Whether or not the current display mode is stereoscopic.
-        /// </summary>
-        public static string Tooltip_Scene_Stereo {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_Stereo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The target number of frames per second.
-        /// </summary>
-        public static string Tooltip_Scene_TargetFPS {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_TargetFPS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The title of this scene.
-        /// </summary>
-        public static string Tooltip_Scene_Title {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Whether or not to use vertical sync.
-        /// </summary>
-        public static string Tooltip_Scene_VSync {
-            get {
-                return ResourceManager.GetString("Tooltip_Scene_VSync", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace description.
-        /// </summary>
-        public static string Tooltip_Trace_Description {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace location.
-        /// </summary>
-        public static string Tooltip_Trace_Location {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Location x.
-        /// </summary>
-        public static string Tooltip_Trace_LocationX {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_LocationX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Location y.
-        /// </summary>
-        public static string Tooltip_Trace_LocationY {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_LocationY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Location z.
-        /// </summary>
-        public static string Tooltip_Trace_LocationZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_LocationZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Upper limit of range.
-        /// </summary>
-        public static string Tooltip_Trace_Maximum {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Maximum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of x.
-        /// </summary>
-        public static string Tooltip_Trace_MaximumX {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MaximumX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of y.
-        /// </summary>
-        public static string Tooltip_Trace_MaximumY {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MaximumY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The maximum value of z.
-        /// </summary>
-        public static string Tooltip_Trace_MaximumZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MaximumZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lower limit of range.
-        /// </summary>
-        public static string Tooltip_Trace_Minimum {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Minimum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of x.
-        /// </summary>
-        public static string Tooltip_Trace_MinimumX {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MinimumX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of y.
-        /// </summary>
-        public static string Tooltip_Trace_MinimumY {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MinimumY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The minimum value of z.
-        /// </summary>
-        public static string Tooltip_Trace_MinimumZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_MinimumZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace orientation (degrees).
-        /// </summary>
-        public static string Tooltip_Trace_Orientation {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Orientation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The trace rendering pattern.
-        /// </summary>
-        public static string Tooltip_Trace_Pattern {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Pattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace pitch (degrees).
-        /// </summary>
-        public static string Tooltip_Trace_Pitch {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Pitch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace roll (degrees).
-        /// </summary>
-        public static string Tooltip_Trace_Roll {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Roll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace magnification factor.
-        /// </summary>
-        public static string Tooltip_Trace_Scale {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Scale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The x-component of scale.
-        /// </summary>
-        public static string Tooltip_Trace_ScaleX {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_ScaleX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The y-component of scale.
-        /// </summary>
-        public static string Tooltip_Trace_ScaleY {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_ScaleY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The z-component of scale.
-        /// </summary>
-        public static string Tooltip_Trace_ScaleZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_ScaleZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected trace(s).
-        /// </summary>
-        public static string Tooltip_Trace_Selection {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Selection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in each dimension of the trace.
-        /// </summary>
-        public static string Tooltip_Trace_Strips {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Strips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the x-direction.
-        /// </summary>
-        public static string Tooltip_Trace_StripsX {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_StripsX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the y-direction.
-        /// </summary>
-        public static string Tooltip_Trace_StripsY {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_StripsY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of strips in the z-direction.
-        /// </summary>
-        public static string Tooltip_Trace_StripsZ {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_StripsZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Whether or not a trace is visible.
-        /// </summary>
-        public static string Tooltip_Trace_Visible {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Visible", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace yaw (degrees).
-        /// </summary>
-        public static string Tooltip_Trace_Yaw {
-            get {
-                return ResourceManager.GetString("Tooltip_Trace_Yaw", resourceCulture);
             }
         }
         

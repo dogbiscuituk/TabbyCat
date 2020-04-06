@@ -13,9 +13,9 @@
         internal PropertiesController(WorldController worldController)
             : base(worldController, "Properties")
         {
-            SceneController = new SceneController(this);
-            ShaderController = new ShaderController(this);
-            TraceController = new TraceController(this);
+            SceneController = new SceneController(worldController);
+            ShaderController = new ShaderController(worldController);
+            TraceController = new TraceController(worldController);
             Connect(true);
         }
 
@@ -24,7 +24,7 @@
         #region Fields & Properties
 
         internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
-        internal ToolTip ToolTip => WorldController.ToolTip;
+        internal ToolTip ToolTip => WorldCon.ToolTip;
 
         protected override Control Editor => PropertiesEdit;
         protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
@@ -51,6 +51,10 @@
 
         protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel2Collapsed = collapse;
 
+        protected override void Localize()
+        {
+        }
+
         #endregion
 
         #region Private Event Handlers
@@ -72,7 +76,7 @@
             switch (e.PropertyName)
             {
                 case PropertyNames.GraphicsMode:
-                    PropertiesEdit.GpuEdit.lblGpuMode.Text = WorldController.GLMode.ToString();
+                    PropertiesEdit.GpuEdit.lblGpuMode.Text = WorldCon.GLMode.ToString();
                     break;
                 case PropertyNames.GPUStatus:
                     PropertiesEdit.GpuEdit.lblGpuStatus.Text = Scene.GPUStatus.ToString();
@@ -87,11 +91,11 @@
 
         #region Private Methods
 
-        private void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
             if (connect)
             {
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldCon.PropertyChanged += WorldController_PropertyChanged;
                 WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
                 WorldForm.ViewProperties.Click += ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening += PopupPropertiesMenu_Opening;
@@ -100,7 +104,7 @@
             }
             else
             {
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldCon.PropertyChanged -= WorldController_PropertyChanged;
                 WorldForm.ViewMenu.DropDownOpening -= ViewMenu_DropDownOpening;
                 WorldForm.ViewProperties.Click -= ToggleEditor;
                 WorldForm.PopupPropertiesMenu.Opening -= PopupPropertiesMenu_Opening;

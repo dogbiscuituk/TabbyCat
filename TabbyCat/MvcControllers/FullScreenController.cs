@@ -4,13 +4,13 @@
     using System.Windows.Forms;
     using TabbyCat.MvcViews;
 
-    internal class FullScreenController
+    internal class FullScreenController : LocalizationController
     {
         #region Constructor
 
         internal FullScreenController(WorldController worldController)
+            : base(worldController)
         {
-            WorldController = worldController;
             Form.ViewFullScreen.Click += ZoomFullScreen_Click;
         }
 
@@ -39,9 +39,7 @@
 
         #region Private Properties
 
-        private PropertiesController PropertiesController => WorldController.PropertiesController;
-        private readonly WorldController WorldController;
-        private WorldForm Form => WorldController.WorldForm;
+        private WorldForm Form => WorldCon.WorldForm;
 
         private FormState SavedFormState;
 
@@ -108,6 +106,11 @@
         }
 
         private void ToggleFullScreen() => FullScreen = !FullScreen;
+
+        protected override void Localize()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

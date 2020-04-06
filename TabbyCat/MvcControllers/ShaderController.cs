@@ -19,13 +19,13 @@
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
 
-    internal class ShaderController
+    internal class ShaderController : LocalizationController
     {
         #region Constructors
 
-        internal ShaderController(PropertiesController propertiesController)
+        internal ShaderController(WorldController worldController)
+            : base(worldController)
         {
-            PropertiesController = propertiesController;
             new GLPageController(PrimaryTextBox);
             new GLPageController(SecondaryTextBox);
             ShowRuler = false;
@@ -52,7 +52,6 @@
         #region Private Fields
 
         private FastColoredTextBox ActiveTextBox;
-        private readonly PropertiesController PropertiesController;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
         private bool Updating;
@@ -61,20 +60,19 @@
 
         #region Private Properties
 
-        private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        private CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
-        private RenderController RenderController => WorldController.RenderController;
-        private Scene Scene => WorldController.Scene;
-        private Selection Selection => WorldController.Selection;
+        private RenderController RenderController => WorldCon.RenderController;
+        private Scene Scene => WorldCon.Scene;
+        private Selection Selection => WorldCon.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
-        private WorldController WorldController => PropertiesController.WorldController;
-        private WorldForm WorldForm => WorldController.WorldForm;
+        private WorldForm WorldForm => WorldCon.WorldForm;
 
         private string ShaderName
         {
@@ -301,8 +299,9 @@
 
         #region Private Methods
 
-        internal void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             ConnectMenu(connect);
             ConnectToolbar(connect);
             ConnectTextBoxes(connect);
@@ -310,17 +309,17 @@
             if (connect)
             {
                 PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.Pulse += WorldController_Pulse;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
+                WorldCon.PropertyChanged += WorldController_PropertyChanged;
+                WorldCon.Pulse += WorldController_Pulse;
+                WorldCon.SelectionChanged += WorldController_SelectionChanged;
                 LoadBuiltInHelp();
             }
             else
             {
                 PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.Pulse -= WorldController_Pulse;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+                WorldCon.PropertyChanged -= WorldController_PropertyChanged;
+                WorldCon.Pulse -= WorldController_Pulse;
+                WorldCon.SelectionChanged -= WorldController_SelectionChanged;
             }
         }
 
@@ -571,6 +570,11 @@
             Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
             Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
+        }
+
+        protected override void Localize()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

@@ -16,12 +16,10 @@
     {
         #region Constructors
 
-        internal TraceController(PropertiesController propertiesController)
-            : base(propertiesController)
+        internal TraceController(WorldController worldController)
+            : base(worldController)
         {
             SelectionController = new SelectionController(this);
-            InitCommonControls(Editor.TableLayoutPanel);
-            InitLocalControls();
         }
 
         #endregion
@@ -44,7 +42,7 @@
         };
 
         private TraceEdit Editor => WorldEdit.TraceEdit;
-        private Selection Selection => WorldController.Selection;
+        private Selection Selection => WorldCon.Selection;
         private readonly SelectionController SelectionController;
         private bool SelectionUpdating;
 
@@ -57,6 +55,8 @@
             base.Connect(connect);
             if (connect)
             {
+                InitCommonControls(Editor.TableLayoutPanel);
+                InitLocalControls();
                 UpdateAllProperties();
                 Editor.edDescription.TextChanged += Description_TextChanged;
                 Editor.seLocationX.ValueChanged += LocationX_ValueChanged;
@@ -114,51 +114,35 @@
 
         protected override void Localize()
         {
-            base.Localize();
-            Editor.lblDescription.Text = Resources.Label_Trace_Description;
-            Editor.lblLocation.Text = Resources.Label_Trace_Location;
-            Editor.lblOrientation.Text = Resources.Label_Trace_Orientation;
-            Editor.lblScale.Text = Resources.Label_Trace_Scale;
-            Editor.lblMinimum.Text = Resources.Label_Trace_Minimum;
-            Editor.lblMaximum.Text = Resources.Label_Trace_Maximum;
-            Editor.lblStrips.Text = Resources.Label_Trace_Strips;
-            Editor.lblPattern.Text = Resources.Label_Trace_Pattern;
-            Editor.cbVisible.Text = Resources.Label_Trace_Visible;
-            Editor.lblSelectedTraces.Text = Resources.Label_Trace_Selection;
-            Editor.lblAll.Text = Resources.Label_Trace_All;
-        }
-
-        protected override void InitTooltips()
-        {
-            base.InitTooltips();
-            InitTooltip(Resources.Tooltip_Trace_Description, Editor.lblDescription, Editor.edDescription);
-            InitTooltip(Resources.Tooltip_Trace_Location, Editor.lblLocation);
-            InitTooltip(Resources.Tooltip_Trace_LocationX, Editor.seLocationX);
-            InitTooltip(Resources.Tooltip_Trace_LocationY, Editor.seLocationY);
-            InitTooltip(Resources.Tooltip_Trace_LocationZ, Editor.seLocationZ);
-            InitTooltip(Resources.Tooltip_Trace_Orientation, Editor.lblOrientation);
-            InitTooltip(Resources.Tooltip_Trace_Pitch, Editor.sePitch);
-            InitTooltip(Resources.Tooltip_Trace_Yaw, Editor.seYaw);
-            InitTooltip(Resources.Tooltip_Trace_Roll, Editor.seRoll);
-            InitTooltip(Resources.Tooltip_Trace_Scale, Editor.lblScale);
-            InitTooltip(Resources.Tooltip_Trace_ScaleX, Editor.seScaleX);
-            InitTooltip(Resources.Tooltip_Trace_ScaleY, Editor.seScaleY);
-            InitTooltip(Resources.Tooltip_Trace_ScaleZ, Editor.seScaleZ);
-            InitTooltip(Resources.Tooltip_Trace_Minimum, Editor.lblMinimum);
-            InitTooltip(Resources.Tooltip_Trace_MinimumX, Editor.seMinimumX);
-            InitTooltip(Resources.Tooltip_Trace_MinimumY, Editor.seMinimumY);
-            InitTooltip(Resources.Tooltip_Trace_MinimumZ, Editor.seMinimumZ);
-            InitTooltip(Resources.Tooltip_Trace_Maximum, Editor.lblMaximum);
-            InitTooltip(Resources.Tooltip_Trace_MaximumX, Editor.seMaximumX);
-            InitTooltip(Resources.Tooltip_Trace_MaximumY, Editor.seMaximumY);
-            InitTooltip(Resources.Tooltip_Trace_MaximumZ, Editor.seMaximumZ);
-            InitTooltip(Resources.Tooltip_Trace_Strips, Editor.lblStrips);
-            InitTooltip(Resources.Tooltip_Trace_StripsX, Editor.seStripCountX);
-            InitTooltip(Resources.Tooltip_Trace_StripsY, Editor.seStripCountY);
-            InitTooltip(Resources.Tooltip_Trace_StripsZ, Editor.seStripCountZ);
-            InitTooltip(Resources.Tooltip_Trace_Pattern, Editor.lblPattern, Editor.cbPattern);
-            InitTooltip(Resources.Tooltip_Trace_Visible, Editor.cbVisible);
-            InitTooltip(Resources.Tooltip_Trace_Selection, Editor.lblSelectedTraces);
+            Localize(Resources.Control_Trace_Description, Editor.lblDescription, Editor.edDescription);
+            Localize(Resources.Control_Trace_Location, Editor.lblLocation);
+            Localize(Resources.Control_Trace_LocationX, Editor.seLocationX);
+            Localize(Resources.Control_Trace_LocationY, Editor.seLocationY);
+            Localize(Resources.Control_Trace_LocationZ, Editor.seLocationZ);
+            Localize(Resources.Control_Trace_Orientation, Editor.lblOrientation);
+            Localize(Resources.Control_Trace_Pitch, Editor.sePitch);
+            Localize(Resources.Control_Trace_Yaw, Editor.seYaw);
+            Localize(Resources.Control_Trace_Roll, Editor.seRoll);
+            Localize(Resources.Control_Trace_Scale, Editor.lblScale);
+            Localize(Resources.Control_Trace_ScaleX, Editor.seScaleX);
+            Localize(Resources.Control_Trace_ScaleY, Editor.seScaleY);
+            Localize(Resources.Control_Trace_ScaleZ, Editor.seScaleZ);
+            Localize(Resources.Control_Trace_Minimum, Editor.lblMinimum);
+            Localize(Resources.Control_Trace_MinimumX, Editor.seMinimumX);
+            Localize(Resources.Control_Trace_MinimumY, Editor.seMinimumY);
+            Localize(Resources.Control_Trace_MinimumZ, Editor.seMinimumZ);
+            Localize(Resources.Control_Trace_Maximum, Editor.lblMaximum);
+            Localize(Resources.Control_Trace_MaximumX, Editor.seMaximumX);
+            Localize(Resources.Control_Trace_MaximumY, Editor.seMaximumY);
+            Localize(Resources.Control_Trace_MaximumZ, Editor.seMaximumZ);
+            Localize(Resources.Control_Trace_Strips, Editor.lblStrips);
+            Localize(Resources.Control_Trace_StripsX, Editor.seStripCountX);
+            Localize(Resources.Control_Trace_StripsY, Editor.seStripCountY);
+            Localize(Resources.Control_Trace_StripsZ, Editor.seStripCountZ);
+            Localize(Resources.Control_Trace_Pattern, Editor.lblPattern, Editor.cbPattern);
+            Localize(Resources.Control_Trace_Visible, Editor.cbVisible);
+            Localize(Resources.Control_Trace_Selection, Editor.lblSelectedTraces);
+            Localize(Resources.Control_Selection_All, Editor.lblAll);
         }
 
         protected override void OnSelectionChanged()

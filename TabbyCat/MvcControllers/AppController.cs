@@ -78,6 +78,7 @@
         internal static WorldController AddNewWorldController()
         {
             var worldController = new WorldController();
+            worldController.Connect(true);
             WorldControllers.Add(worldController);
             worldController.Show();
             worldController.RefreshGraphicsMode();
