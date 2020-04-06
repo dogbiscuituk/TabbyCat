@@ -135,6 +135,7 @@
 
         private void AddLabel()
         {
+            var traceIndex = TraceCount;
             var label = new ToolStripLabel($"{TraceCount + 1}");
             Labels.Add(label);
             label.MouseDown += Label_MouseDown;

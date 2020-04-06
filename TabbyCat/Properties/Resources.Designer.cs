@@ -415,7 +415,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GLSL version|The OpenGL Shader Language version targeted by this code.
+        ///   Looks up a localized string similar to GLSL version|The OpenGL Shader Language version
+        ///targeted by this code.
         /// </summary>
         public static string Control_Scene_GLVersion {
             get {
@@ -478,7 +479,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stereo|Whether or not the current display mode is stereoscopic.
+        ///   Looks up a localized string similar to Stereo|Whether or not the current display mode
+        ///is stereoscopic.
         /// </summary>
         public static string Control_Scene_Stereo {
             get {
@@ -1189,7 +1191,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Down|Move the camera down while keeping it pointed at an object|^Down.
+        ///   Looks up a localized string similar to &amp;Down|Move the camera down while
+        ///keeping it pointed at an object|^Down.
         /// </summary>
         public static string Menu_Camera_Move_Down {
             get {
@@ -1207,7 +1210,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Left|Move the camera left while keeping it pointed at an object|^Left.
+        ///   Looks up a localized string similar to &amp;Left|Move the camera left while
+        ///keeping it pointed at an object|^Left.
         /// </summary>
         public static string Menu_Camera_Move_Left {
             get {
@@ -1216,7 +1220,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Right|Move the camera right while keeping it pointed at an object|^Right.
+        ///   Looks up a localized string similar to &amp;Right|Move the camera right while
+        ///keeping it pointed at an object|^Right.
         /// </summary>
         public static string Menu_Camera_Move_Right {
             get {
@@ -1225,7 +1230,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Up|Move the camera up while keeping it pointed at an object|^Up.
+        ///   Looks up a localized string similar to &amp;Up|Move the camera up while
+        ///keeping it pointed at an object|^Up.
         /// </summary>
         public static string Menu_Camera_Move_Up {
             get {
@@ -1522,7 +1528,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time.
+        ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time
+        ///(or slow down if in reverse).
         /// </summary>
         public static string Menu_Time_Accelerate {
             get {
@@ -1531,7 +1538,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Decelerate|Slow down the passage of time.
+        ///   Looks up a localized string similar to &amp;Decelerate|Slow down the passage of time
+        ///(or speed up if in reverse).
         /// </summary>
         public static string Menu_Time_Decelerate {
             get {
@@ -1567,7 +1575,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Stop|Stop the passage of time and reset the timer to zero.
+        ///   Looks up a localized string similar to &amp;Stop|Stop the passage of time
+        ///and reset the timer to zero.
         /// </summary>
         public static string Menu_Time_Stop {
             get {

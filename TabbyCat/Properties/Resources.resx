@@ -476,7 +476,8 @@
     <value>|The perspective field of view angle (degrees)</value>
   </data>
   <data name="Control_Scene_GLVersion" xml:space="preserve">
-    <value>GLSL version|The OpenGL Shader Language version targeted by this code</value>
+    <value>GLSL version|The OpenGL Shader Language version
+targeted by this code</value>
   </data>
   <data name="Control_Scene_NearPlane" xml:space="preserve">
     <value>Near plane|The near projective plane</value>
@@ -497,7 +498,8 @@
     <value>#Samples|The number of samples interpolated over</value>
   </data>
   <data name="Control_Scene_Stereo" xml:space="preserve">
-    <value>Stereo|Whether or not the current display mode is stereoscopic</value>
+    <value>Stereo|Whether or not the current display mode
+is stereoscopic</value>
   </data>
   <data name="Control_Scene_TargetFPS" xml:space="preserve">
     <value>Target FPS|The target number of frames per second</value>
@@ -599,16 +601,20 @@
     <value>&amp;Move</value>
   </data>
   <data name="Menu_Camera_Move_Down" xml:space="preserve">
-    <value>&amp;Down|Move the camera down while keeping it pointed at an object|^Down</value>
+    <value>&amp;Down|Move the camera down while
+keeping it pointed at an object|^Down</value>
   </data>
   <data name="Menu_Camera_Move_Left" xml:space="preserve">
-    <value>&amp;Left|Move the camera left while keeping it pointed at an object|^Left</value>
+    <value>&amp;Left|Move the camera left while
+keeping it pointed at an object|^Left</value>
   </data>
   <data name="Menu_Camera_Move_Right" xml:space="preserve">
-    <value>&amp;Right|Move the camera right while keeping it pointed at an object|^Right</value>
+    <value>&amp;Right|Move the camera right while
+keeping it pointed at an object|^Right</value>
   </data>
   <data name="Menu_Camera_Move_Up" xml:space="preserve">
-    <value>&amp;Up|Move the camera up while keeping it pointed at an object|^Up</value>
+    <value>&amp;Up|Move the camera up while
+keeping it pointed at an object|^Up</value>
   </data>
   <data name="Menu_Camera_RollLeft" xml:space="preserve">
     <value>Roll &amp;Left|Roll the camera to the left|Shift+^PgUp</value>
@@ -710,10 +716,12 @@
     <value>&amp;Time</value>
   </data>
   <data name="Menu_Time_Accelerate" xml:space="preserve">
-    <value>&amp;Accelerate|Speed up the passage of time</value>
+    <value>&amp;Accelerate|Speed up the passage of time
+(or slow down if in reverse)</value>
   </data>
   <data name="Menu_Time_Decelerate" xml:space="preserve">
-    <value>&amp;Decelerate|Slow down the passage of time</value>
+    <value>&amp;Decelerate|Slow down the passage of time
+(or speed up if in reverse)</value>
   </data>
   <data name="Menu_Time_Forward" xml:space="preserve">
     <value>&amp;Forward|Make time run forward</value>
@@ -725,7 +733,8 @@
     <value>&amp;Reverse|Make time run in reverse</value>
   </data>
   <data name="Menu_Time_Stop" xml:space="preserve">
-    <value>&amp;Stop|Stop the passage of time and reset the timer to zero</value>
+    <value>&amp;Stop|Stop the passage of time
+and reset the timer to zero</value>
   </data>
   <data name="Menu_View" xml:space="preserve">
     <value>&amp;View</value>

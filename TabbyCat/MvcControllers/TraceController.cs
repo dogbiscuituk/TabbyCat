@@ -26,9 +26,13 @@
 
         #endregion
 
-        #region Fields & Properties
+        #region Internal Properties
 
         internal ToolStrip SelectionToolbar => Editor.SelectionToolbar;
+
+        #endregion
+
+        #region Protected Properties
 
         protected override string[] AllProperties => new[]
         {
@@ -42,11 +46,6 @@
             PropertyNames.StripCount,
             PropertyNames.Visible
         };
-
-        private TraceEdit Editor => WorldEdit.TraceEdit;
-        private Selection Selection => WorldController.Selection;
-        private readonly SelectionController SelectionController;
-        private bool SelectionUpdating;
 
         #endregion
 
@@ -219,6 +218,20 @@
                 }
             Updating = false;
         }
+
+        #endregion
+
+        #region Private Fields
+
+        private readonly SelectionController SelectionController;
+        private bool SelectionUpdating;
+
+        #endregion
+
+        #region Private Properties
+
+        private TraceEdit Editor => WorldEdit.TraceEdit;
+        private Selection Selection => WorldController.Selection;
 
         #endregion
 

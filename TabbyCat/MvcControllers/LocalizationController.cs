@@ -19,7 +19,6 @@
             if (connect)
             {
                 Localize();
-                InitTooltips();
             }
             else
             {
@@ -89,8 +88,6 @@
 
         protected void InitTooltip(string text, params Control[] controls) =>
             Array.ForEach(controls, p => ToolTip.SetToolTip(p, text));
-
-        protected virtual void InitTooltips() { }
 
         #endregion
 

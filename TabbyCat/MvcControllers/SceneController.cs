@@ -42,8 +42,6 @@
             PropertyNames.VSync
         };
 
-        private SceneEdit Editor => WorldEdit.SceneEdit;
-
         #endregion
 
         #region Protected Internal Methods
@@ -199,6 +197,12 @@
 
         #endregion
 
+        #region Private Properties
+
+        private SceneEdit Editor => WorldEdit.SceneEdit;
+
+        #endregion
+
         #region Private Event Handlers
 
         private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
@@ -253,9 +257,14 @@
 
         #region Private Methods
 
+        private static void InitDomainUpDownItems(DomainUpDown control, string items)
+        {
+            control.Items.Clear();
+            control.Items.AddRange(items.Split('|').Reverse().ToList());
+        }
+
         private void InitLocalControls()
         {
-            InitTooltips();
             Editor.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
             Editor.seFieldOfView.Minimum = 1;
             Editor.seFieldOfView.Maximum = 179;
@@ -264,12 +273,6 @@
             InitDomainUpDownItems(Editor.seGLSLVersion, Settings.Default.GLSLVersions);
             InitDomainUpDownItems(Editor.seSampleCount, Settings.Default.SampleCounts);
             new ColourController().AddControls(Editor.cbBackground);
-        }
-
-        private static void InitDomainUpDownItems(DomainUpDown control, string items)
-        {
-            control.Items.Clear();
-            control.Items.AddRange(items.Split('|').Reverse().ToList());
         }
 
         private void Run(ICommand command)

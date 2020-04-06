@@ -95,7 +95,7 @@
         {
             base.Localize();
             Localize(Resources.Menu_File, WorldForm.FileMenu);
-            Localize(Resources.Menu_File_New, WorldForm.FileNew);
+            Localize(Resources.Menu_File_New, WorldForm.FileNew, WorldForm.tbNew);
             Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
             Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
             Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
