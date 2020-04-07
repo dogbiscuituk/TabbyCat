@@ -84,7 +84,7 @@
 
         #region Internal Fields
 
-        internal Selection Selection = new Selection();
+        internal TraceCollection Selection = new TraceCollection();
 
         #endregion
 
@@ -644,7 +644,7 @@
 
         private void UpdateFramesPerSecond()
         {
-            var fps = string.Format("FPS={0:f1}", RenderController.FramesPerSecond);
+            var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderController.FramesPerSecond);
             if (LastFPS != fps)
                 LastFPS = WorldForm.FPSlabel.Text = fps;
         }
@@ -689,7 +689,7 @@
 
         private void UpdateVirtualTime()
         {
-            var time = string.Format("t={0:f1}", Clock.VirtualSecondsElapsed);
+            var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
             if (LastTime != time)
                 LastTime = WorldForm.Tlabel.Text = time;
         }

@@ -7,7 +7,7 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class Selection : List<Trace>, IShaderSet
+    public class TraceCollection : List<Trace>, IShaderSet
     {
         #region Public Properties
 

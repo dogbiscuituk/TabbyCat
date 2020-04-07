@@ -19,15 +19,15 @@
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
 
-    internal class ShaderController : LocalizationController
+    internal class ShaderController : LocalizationController, IDisposable
     {
         #region Constructors
 
         internal ShaderController(WorldController worldController)
             : base(worldController)
         {
-            new GLPageController(PrimaryTextBox);
-            new GLPageController(SecondaryTextBox);
+            PrimaryController = new GLPageController(PrimaryTextBox);
+            SecondaryController = new GLPageController(SecondaryTextBox);
             ShowRuler = false;
             ShowLineNumbers = false;
             ShowDocumentMap = false;
@@ -56,6 +56,10 @@
         private SplitType _SplitType;
         private bool Updating;
 
+        private GLPageController
+            PrimaryController,
+            SecondaryController;
+
         #endregion
 
         #region Private Properties
@@ -65,7 +69,7 @@
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
-        private Selection Selection => WorldController.Selection;
+        private TraceCollection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
@@ -567,6 +571,31 @@
             Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    PrimaryController?.Dispose();
+                    SecondaryController?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

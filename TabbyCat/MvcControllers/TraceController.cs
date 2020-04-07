@@ -231,7 +231,7 @@
         #region Private Properties
 
         private TraceEdit Editor => TraceEdit;
-        private Selection Selection => WorldController.Selection;
+        private TraceCollection Selection => WorldController.Selection;
 
         #endregion
 

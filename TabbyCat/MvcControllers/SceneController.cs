@@ -246,7 +246,7 @@
             Run(new ProjectionTypeCommand((ProjectionType)Editor.seProjectionType.SelectedIndex));
 
         private void Samples_ValueChanged(object sender, EventArgs e) =>
-            Run(new SamplesCommand(int.Parse(Editor.seSampleCount.Text)));
+            Run(new SamplesCommand(int.Parse(Editor.seSampleCount.Text, CultureInfo.CurrentCulture)));
 
         private void SceneTitle_TextChanged(object sender, EventArgs e) =>
             Run(new TitleCommand(Editor.edTitle.Text));

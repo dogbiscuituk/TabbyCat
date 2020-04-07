@@ -93,7 +93,7 @@
     <Compile Include="MvcModels\Code.cs" />
     <Compile Include="MvcModels\Scene.cs" />
     <Compile Include="MvcModels\Trace.cs" />
-    <Compile Include="MvcModels\Selection.cs" />
+    <Compile Include="MvcModels\TraceCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

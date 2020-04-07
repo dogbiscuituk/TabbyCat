@@ -23,23 +23,32 @@
 
         #region Public Methods
 
-        public string GetScript(ShaderType shaderType) =>
-            !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
-            ? string.Empty
-            : string.Format(Resources.Format_Scene,
-                Scene.GLTargetVersion,
-                Scene.GetScript(shaderType),
-                string.Concat(
-                    Scene.Traces.Select(
-                        p => string.Format(
-                            Resources.Format_Trace,
-                            p.Index + 1,
-                            p,
-                            p.GetScript(shaderType).Indent("  ")))),
-                Scene.Traces.Any()
-                    ? Scene.Traces.Select(p => string.Format(Resources.Format_Case, p.Index + 1))
-                        .Aggregate((p, q) => $"{p}{q}")
-                    : string.Empty);
+        public string GetScript(ShaderType shaderType)
+        {
+            var version = Scene.GLTargetVersion;
+            var sceneScript = Scene.GetScript(shaderType);
+            var traceScripts = string.Concat(Scene.Traces.Select(
+                p => string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.Format_Trace,
+                    p.Index + 1,
+                    p,
+                    p.GetScript(shaderType).Indent("  "))));
+            var cases = !Scene.Traces.Any()
+                ? string.Empty
+                : Scene.Traces
+                    .Select(p => string.Format(CultureInfo.InvariantCulture, Resources.Format_Case, p.Index + 1))
+                    .Aggregate((p, q) => $"{p}{q}");
+            return !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
+                ? string.Empty
+                : string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.Format_Scene,
+                    version,
+                    sceneScript,
+                    traceScripts,
+                    cases);
+        }
 
         public void SetScript(ShaderType shaderType, string value) =>
             throw new System.NotImplementedException();
