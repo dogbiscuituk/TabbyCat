@@ -25,8 +25,15 @@
         #region Protected Properties
 
         protected Camera Camera => Scene.Camera;
-        protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
-        protected Scene Scene => WorldController.Scene;
+
+        protected internal virtual CommandProcessor CommandProcessor
+        {
+            get => WorldController.CommandProcessor;
+            protected set { }
+        }
+
+        protected virtual Scene Scene => WorldController.Scene;
+
         protected WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion

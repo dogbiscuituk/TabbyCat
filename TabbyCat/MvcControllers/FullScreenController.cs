@@ -4,14 +4,29 @@
     using System.Windows.Forms;
     using TabbyCat.MvcViews;
 
-    internal class FullScreenController
+    internal class FullScreenController : LocalizationController
     {
         #region Constructor
 
         internal FullScreenController(WorldController worldController)
+            : base(worldController)
+        { }
+
+        #endregion
+
+        #region Protected Internal Methods
+
+        protected internal override void Connect(bool connect)
         {
-            WorldController = worldController;
-            Form.ViewFullScreen.Click += ZoomFullScreen_Click;
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.ViewFullScreen.Click += ZoomFullScreen_Click;
+            }
+            else
+            {
+                WorldForm.ViewFullScreen.Click -= ZoomFullScreen_Click;
+            }
         }
 
         #endregion
@@ -40,17 +55,15 @@
         #region Private Properties
 
         private PropertiesController PropertiesController => WorldController.PropertiesController;
-        private readonly WorldController WorldController;
-        private WorldForm Form => WorldController.WorldForm;
 
         private FormState SavedFormState;
 
         private bool FullScreen
         {
-            get => Form.ViewFullScreen.Checked;
+            get => WorldForm.ViewFullScreen.Checked;
             set
             {
-                Form.ViewFullScreen.Checked = value;
+                WorldForm.ViewFullScreen.Checked = value;
                 AdjustFullScreen();
             }
         }
@@ -59,23 +72,23 @@
         {
             get => new FormState
             {
-                BorderStyle = Form.FormBorderStyle,
+                BorderStyle = WorldForm.FormBorderStyle,
                 Elements = FormElements.None
-                | (Form.MainMenuStrip.Visible ? FormElements.MainMenu : 0)
-                | (Form.Toolbar.Visible ? FormElements.Toolbar : 0)
-                | (Form.StatusBar.Visible ? FormElements.StatusBar : 0)
+                | (WorldForm.MainMenuStrip.Visible ? FormElements.MainMenu : 0)
+                | (WorldForm.Toolbar.Visible ? FormElements.Toolbar : 0)
+                | (WorldForm.StatusBar.Visible ? FormElements.StatusBar : 0)
                 | (PropertiesController.EditorVisible ? FormElements.Properties : 0),
-                WindowState = Form.WindowState
+                WindowState = WorldForm.WindowState
             };
             set
             {
-                Form.FormBorderStyle = value.BorderStyle;
+                WorldForm.FormBorderStyle = value.BorderStyle;
                 var elements = value.Elements;
-                Form.MainMenuStrip.Visible = (elements & FormElements.MainMenu) != 0;
-                Form.Toolbar.Visible = (elements & FormElements.Toolbar) != 0;
-                Form.StatusBar.Visible = (elements & FormElements.StatusBar) != 0;
+                WorldForm.MainMenuStrip.Visible = (elements & FormElements.MainMenu) != 0;
+                WorldForm.Toolbar.Visible = (elements & FormElements.Toolbar) != 0;
+                WorldForm.StatusBar.Visible = (elements & FormElements.StatusBar) != 0;
                 PropertiesController.EditorVisible = (elements & FormElements.Properties) != 0;
-                Form.WindowState = value.WindowState;
+                WorldForm.WindowState = value.WindowState;
             }
         }
 

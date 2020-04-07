@@ -26,7 +26,7 @@
             CameraController = new CameraController(this);
             ClockController = new ClockController(this);
             CommandProcessor = new CommandProcessor(this);
-            new FullScreenController(this);
+            FullScreenController = new FullScreenController(this);
             JsonController = new JsonController(this);
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
@@ -71,9 +71,14 @@
 
         #endregion
 
+        #region Protected Internal Properties
+
+        protected internal override CommandProcessor CommandProcessor { get; protected set;  }
+
+        #endregion
+
         #region Internal Properties
 
-        internal CommandProcessor CommandProcessor { get; private set; }
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
         internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
@@ -212,6 +217,7 @@
 
         private readonly CameraController CameraController;
         private readonly List<string> ChangedPropertyNames = new List<string>();
+        private readonly FullScreenController FullScreenController;
         private readonly JsonController JsonController;
         private string LastSpeed, LastTime, LastFPS;
         private int UpdateCount;
@@ -299,6 +305,8 @@
         private void ConnectControllers(bool connect)
         {
             CameraController.Connect(connect);
+            ClockController.Connect(connect);
+            FullScreenController.Connect(connect);
             if (connect)
             {
             }
