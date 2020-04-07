@@ -18,6 +18,7 @@
             ProjectionType = "Projection Type",
             Samples = "Samples",
             SceneTitle = "Scene Title",
+            Stereo = "Stereo",
             Traces = "Traces",
             VSync = "VSync";
 

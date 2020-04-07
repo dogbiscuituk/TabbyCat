@@ -29,6 +29,7 @@
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
         public int Samples { get; set; }
+        public bool Stereo { get; set; }
 
         [DefaultValue("")]
         public string Title { get; set; }

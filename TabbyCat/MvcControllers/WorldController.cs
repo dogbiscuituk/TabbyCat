@@ -172,6 +172,7 @@
 
         internal void OnPropertyChanged(string propertyName)
         {
+            GraphicsMode gm;
             switch (propertyName)
             {
                 case PropertyNames.Traces:
@@ -208,15 +209,26 @@
                     RenderController.InvalidateProjection();
                     break;
                 case PropertyNames.Samples:
-                    var m = GraphicsMode;
+                    gm = GraphicsMode;
                     RecreateGLControl(new GraphicsMode(
-                        accum: m.AccumulatorFormat,
-                        buffers: m.Buffers,
-                        color: m.ColorFormat,
-                        depth: m.Depth,
+                        accum: gm.AccumulatorFormat,
+                        buffers: gm.Buffers,
+                        color: gm.ColorFormat,
+                        depth: gm.Depth,
                         samples: Scene.Samples,
-                        stencil: m.Stencil,
-                        stereo: m.Stereo));
+                        stencil: gm.Stencil,
+                        stereo: gm.Stereo));
+                    break;
+                case PropertyNames.Stereo:
+                    gm = GraphicsMode;
+                    RecreateGLControl(new GraphicsMode(
+                        accum: gm.AccumulatorFormat,
+                        buffers: gm.Buffers,
+                        color: gm.ColorFormat,
+                        depth: gm.Depth,
+                        samples: gm.Samples,
+                        stencil: gm.Stencil,
+                        stereo: Scene.Stereo));
                     break;
                 case PropertyNames.Pattern:
                 case PropertyNames.StripCount:

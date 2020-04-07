@@ -40,6 +40,7 @@
             PropertyNames.ProjectionType,
             PropertyNames.Samples,
             PropertyNames.SceneTitle,
+            PropertyNames.Stereo,
             PropertyNames.VSync
         };
 
@@ -60,6 +61,7 @@
                 Editor.seCameraYaw.ValueChanged += CameraFocus_ValueChanged;
                 Editor.seCameraRoll.ValueChanged += CameraFocus_ValueChanged;
                 Editor.seProjectionType.SelectedItemChanged += ProjectionType_SelectedItemChanged;
+                Editor.cbStereo.CheckedChanged += Stereo_CheckedChanged;
                 Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged += FPS_ValueChanged;
                 Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
@@ -83,6 +85,7 @@
                 Editor.seCameraYaw.ValueChanged -= CameraFocus_ValueChanged;
                 Editor.seCameraRoll.ValueChanged -= CameraFocus_ValueChanged;
                 Editor.seProjectionType.SelectedItemChanged -= ProjectionType_SelectedItemChanged;
+                Editor.cbStereo.CheckedChanged -= Stereo_CheckedChanged;
                 Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
                 Editor.seFPS.ValueChanged -= FPS_ValueChanged;
                 Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
@@ -188,6 +191,9 @@
                     case PropertyNames.SceneTitle:
                         Editor.edTitle.Text = Scene.Title;
                         break;
+                    case PropertyNames.Stereo:
+                        Editor.cbStereo.Checked = Scene.Stereo;
+                        break;
                     case PropertyNames.VSync:
                         Editor.cbVSync.Checked = Scene.VSync;
                         break;
@@ -250,6 +256,9 @@
 
         private void SceneTitle_TextChanged(object sender, EventArgs e) =>
             Run(new TitleCommand(Editor.edTitle.Text));
+
+        private void Stereo_CheckedChanged(object sender, EventArgs e) =>
+            Run(new StereoCommand(Editor.cbStereo.Checked));
 
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
             Run(new VSyncCommand(Editor.cbVSync.Checked));

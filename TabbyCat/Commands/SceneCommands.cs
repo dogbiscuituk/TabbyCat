@@ -93,6 +93,13 @@
         { }
     }
 
+    internal class StereoCommand : ScenePropertyCommand<bool>
+    {
+        internal StereoCommand(bool value) : base(PropertyNames.Stereo,
+            value, s => s.Stereo, (s, v) => s.Stereo = v)
+        { }
+    }
+
     internal class TitleCommand : ScenePropertyCommand<string>
     {
         internal TitleCommand(string value) : base(PropertyNames.SceneTitle,
