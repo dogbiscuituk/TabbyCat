@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.MvcModels
 {
     using OpenTK;
+    using OpenTK.Graphics;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
@@ -66,7 +67,7 @@
         #region Internal Properties
 
         internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
-        internal GLMode GLMode => WorldController?.GLMode;
+        internal GraphicsMode GraphicsMode => WorldController?.GraphicsMode;
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
         internal WorldController WorldController;
 
@@ -86,7 +87,7 @@
 
         internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
 
-        internal GLMode GetGLMode() => WorldController?.GLMode;
+        internal GraphicsMode GetGraphicsMode() => WorldController?.GraphicsMode;
 
         internal Matrix4 GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
 

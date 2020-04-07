@@ -96,7 +96,7 @@
 
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
-        internal GLMode GLMode => RenderController._GLMode ?? RenderController?.GLMode;
+        internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
         internal ToolTip ToolTip => WorldForm.ToolTip;
 
         #endregion
@@ -208,7 +208,15 @@
                     RenderController.InvalidateProjection();
                     break;
                 case PropertyNames.Samples:
-                    RecreateGLControl(new GLMode(GLMode) { Samples = Scene.Samples });
+                    var m = GraphicsMode;
+                    RecreateGLControl(new GraphicsMode(
+                        accum: m.AccumulatorFormat,
+                        buffers: m.Buffers,
+                        color: m.ColorFormat,
+                        depth: m.Depth,
+                        samples: Scene.Samples,
+                        stencil: m.Stencil,
+                        stereo: m.Stereo));
                     break;
                 case PropertyNames.Pattern:
                 case PropertyNames.StripCount:
@@ -515,7 +523,7 @@
             CommandProcessor.Clear();
             EndUpdate();
             ConnectControllers(true);
-            RecreateGLControl(Scene.GLMode);
+            RecreateGLControl(Scene.GraphicsMode);
         }
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)

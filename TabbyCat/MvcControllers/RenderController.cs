@@ -2,6 +2,7 @@
 {
     using Jmk.Common;
     using OpenTK;
+    using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.Collections.Generic;
@@ -75,19 +76,19 @@
             }
         }
 
-        internal static GLMode _GLMode;
-        internal GLMode GLMode
+        internal static GraphicsMode _GraphicsMode;
+        internal GraphicsMode GraphicsMode
         {
             get
             {
-                if (_GLMode == null && MakeCurrent(true))
+                if (_GraphicsMode == null && MakeCurrent(true))
                 {
-                    var mode = new GLMode(GLControl);
+                    var mode = GLControl.GraphicsMode;
                     MakeCurrent(false);
                     lock (GLModeSyncRoot)
-                        _GLMode = mode;
+                        _GraphicsMode = mode;
                 }
-                return _GLMode;
+                return _GraphicsMode;
             }
         }
 
@@ -146,7 +147,7 @@
         internal void Refresh()
         {
             lock (GLModeSyncRoot)
-                _GLMode = null;
+                _GraphicsMode = null;
             InvalidateProgram();
             InvalidateAllTraces();
         }
