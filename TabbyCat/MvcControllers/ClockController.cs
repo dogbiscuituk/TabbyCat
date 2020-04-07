@@ -4,27 +4,54 @@
     using TabbyCat.Common.Types;
     using TabbyCat.MvcViews;
 
-    internal class ClockController : IDisposable
+    internal class ClockController : LocalizationController, IDisposable
     {
         #region Constructors
 
         internal ClockController(WorldController worldController)
+            : base(worldController)
         {
-            WorldController = worldController;
-            WorldForm.TimeDecelerate.Click += TimeDecelerate_Click;
-            WorldForm.tbDecelerate.Click += TimeDecelerate_Click;
-            WorldForm.TimeReverse.Click += TimeReverse_Click;
-            WorldForm.tbReverse.Click += TimeReverse_Click;
-            WorldForm.TimeStop.Click += TimeStop_Click;
-            WorldForm.tbStop.Click += TimeStop_Click;
-            WorldForm.TimePause.Click += TimePause_Click;
-            WorldForm.tbPause.Click += TimePause_Click;
-            WorldForm.TimeForward.Click += TimeForward_Click;
-            WorldForm.tbForward.Click += TimeForward_Click;
-            WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
-            WorldForm.tbAccelerate.Click += TimeAccelerate_Click;
             Clock = new Clock();
             UpdateTimeControls();
+        }
+
+        #endregion
+
+        #region Protected Internal Methods
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.TimeDecelerate.Click += TimeDecelerate_Click;
+                WorldForm.tbDecelerate.Click += TimeDecelerate_Click;
+                WorldForm.TimeReverse.Click += TimeReverse_Click;
+                WorldForm.tbReverse.Click += TimeReverse_Click;
+                WorldForm.TimeStop.Click += TimeStop_Click;
+                WorldForm.tbStop.Click += TimeStop_Click;
+                WorldForm.TimePause.Click += TimePause_Click;
+                WorldForm.tbPause.Click += TimePause_Click;
+                WorldForm.TimeForward.Click += TimeForward_Click;
+                WorldForm.tbForward.Click += TimeForward_Click;
+                WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
+                WorldForm.tbAccelerate.Click += TimeAccelerate_Click;
+            }
+            else
+            {
+                WorldForm.TimeDecelerate.Click -= TimeDecelerate_Click;
+                WorldForm.tbDecelerate.Click -= TimeDecelerate_Click;
+                WorldForm.TimeReverse.Click -= TimeReverse_Click;
+                WorldForm.tbReverse.Click -= TimeReverse_Click;
+                WorldForm.TimeStop.Click -= TimeStop_Click;
+                WorldForm.tbStop.Click -= TimeStop_Click;
+                WorldForm.TimePause.Click -= TimePause_Click;
+                WorldForm.tbPause.Click -= TimePause_Click;
+                WorldForm.TimeForward.Click -= TimeForward_Click;
+                WorldForm.tbForward.Click -= TimeForward_Click;
+                WorldForm.TimeAccelerate.Click -= TimeAccelerate_Click;
+                WorldForm.tbAccelerate.Click -= TimeAccelerate_Click;
+            }
         }
 
         #endregion
@@ -65,9 +92,6 @@
         private bool CanReverse => !Clock.Running || VirtualTimeFactor > 0;
         private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
         private bool CanStop => Clock.Running;
-
-        private readonly WorldController WorldController;
-        private WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion
 

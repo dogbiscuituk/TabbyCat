@@ -6,13 +6,14 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.MvcViews;
+    using TabbyCat.Properties;
 
     internal class PropertiesController : HostController, IDisposable
     {
         #region Constructors
 
         internal PropertiesController(WorldController worldController)
-            : base(worldController, "Properties")
+            : base(worldController, Resources.Text_Properties)
         {
             SceneController = new SceneController(this);
             ShaderController = new ShaderController(this);
@@ -56,16 +57,16 @@
 
         #region Private Event Handlers
 
-        private void PopupPropertiesHide_Click(object sender, System.EventArgs e) =>
+        private void PopupPropertiesHide_Click(object sender, EventArgs e) =>
             EditorVisible = false;
 
-        private void PopupPropertiesMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) =>
+        private void PopupPropertiesMenu_Opening(object sender, CancelEventArgs e) =>
             WorldForm.PopupPropertiesUndock.Text = EditorDocked ? "&Undock" : "&Dock";
 
-        private void PopupPropertiesUndock_Click(object sender, System.EventArgs e) =>
+        private void PopupPropertiesUndock_Click(object sender, EventArgs e) =>
             EditorDocked = !EditorDocked;
 
-        private void ViewMenu_DropDownOpening(object sender, System.EventArgs e) =>
+        private void ViewMenu_DropDownOpening(object sender, EventArgs e) =>
             WorldForm.ViewProperties.Checked = EditorVisible;
 
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)

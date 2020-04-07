@@ -1519,6 +1519,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Dock.
+        /// </summary>
+        public static string Menu_Host_Dock {
+            get {
+                return ResourceManager.GetString("Menu_Host_Dock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Undock.
+        /// </summary>
+        public static string Menu_Host_Undock {
+            get {
+                return ResourceManager.GetString("Menu_Host_Undock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Time.
         /// </summary>
         public static string Menu_Time {
@@ -2073,6 +2091,15 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties.
+        /// </summary>
+        public static string Text_Properties {
+            get {
+                return ResourceManager.GetString("Text_Properties", resourceCulture);
             }
         }
         

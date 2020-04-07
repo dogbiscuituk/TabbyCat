@@ -45,6 +45,8 @@
 
         public void AddSystemRange(Range range)
         {
+            if (range == null)
+                return;
             var rangeAll = TextBox.Range;
             if (range.End.iLine > rangeAll.End.iLine)
                 range.End = rangeAll.End;
@@ -111,7 +113,7 @@
         {
             if (Language == "GLSL")
                 SyntaxHighlightGLSL(e);
-            if (TextBox.Text.Trim().StartsWith("<?xml"))
+            if (TextBox.Text.Trim().StartsWith("<?xml", ignoreCase: false, CultureInfo.InvariantCulture))
             {
                 TextBox.Language = Languages.XML;
                 InitStylesPriority(TextBox);
@@ -223,6 +225,8 @@
 
         public static void ApplyStyles(TextStyleInfos styles)
         {
+            if (styles == null)
+                return;
             InitStyle(styles.Comments, CommentStyle);
             InitStyle(styles.Directives, DirectiveStyle);
             InitStyle(styles.Functions, FunctionStyle);

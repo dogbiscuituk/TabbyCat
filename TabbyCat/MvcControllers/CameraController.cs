@@ -7,19 +7,21 @@
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
 
-    internal class CameraController
+    internal class CameraController : LocalizationController
     {
         #region Constructors
 
-        internal CameraController(WorldController worldController) =>
-            WorldController = worldController;
+        internal CameraController(WorldController worldController)
+            : base(worldController)
+        { }
 
         #endregion
 
         #region Internal Methods
 
-        internal void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             if (connect)
             {
                 WorldForm.CameraStrafeLeft.Click += CameraMoveLeft_Click;
@@ -50,23 +52,9 @@
 
         #endregion
 
-        #region Private Properties
-
-        private Camera Camera => Scene.Camera;
-
-        private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
-
-        private Scene Scene => WorldController.Scene;
-
-        private WorldForm WorldForm => WorldController.WorldForm;
-
-        #endregion
-
         #region Private Fields
 
         private const float CameraBump = 0.1f;
-
-        private readonly WorldController WorldController;
 
         #endregion
 

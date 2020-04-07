@@ -285,7 +285,7 @@
 
         private void BeginUpdate() => ++UpdateCount;
 
-        private void ClockInit() => Clock.Interval_ms = GetFrameMilliseconds();
+        private void ClockInit() => Clock.IntervalMilliseconds = GetFrameMilliseconds();
 
         private void ClockShutdown() => Clock.Stop();
 

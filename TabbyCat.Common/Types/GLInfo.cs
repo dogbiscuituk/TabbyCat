@@ -3,7 +3,6 @@
     using OpenTK.Graphics.OpenGL;
     using System.ComponentModel;
 
-    [TypeConverter(typeof(GLInfoTypeConverter))]
     public class GLInfo
     {
         #region Constructors

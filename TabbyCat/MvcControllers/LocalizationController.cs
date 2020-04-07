@@ -2,6 +2,10 @@
 {
     using System;
     using System.Windows.Forms;
+    using TabbyCat.Commands;
+    using TabbyCat.Common.Types;
+    using TabbyCat.MvcModels;
+    using TabbyCat.MvcViews;
 
     internal class LocalizationController
     {
@@ -9,6 +13,21 @@
 
         internal LocalizationController(WorldController worldController) =>
             WorldController = worldController;
+
+        #endregion
+
+        #region Protected Fields
+
+        protected WorldController WorldController;
+
+        #endregion
+
+        #region Protected Properties
+
+        protected Camera Camera => Scene.Camera;
+        protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        protected Scene Scene => WorldController.Scene;
+        protected WorldForm WorldForm => WorldController.WorldForm;
 
         #endregion
 
@@ -88,12 +107,6 @@
 
         protected void InitTooltip(string text, params Control[] controls) =>
             Array.ForEach(controls, p => ToolTip.SetToolTip(p, text));
-
-        #endregion
-
-        #region Private Fields
-
-        protected WorldController WorldController;
 
         #endregion
 

@@ -8,11 +8,12 @@
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
 
-    internal class CommandProcessor
+    internal class CommandProcessor : LocalizationController
     {
         #region Public/Internal Interface
 
         internal CommandProcessor(WorldController worldController)
+            : base(worldController)
         {
             WorldController = worldController;
             WorldForm.EditUndo.Click += EditUndo_Click;
@@ -72,9 +73,6 @@
 
         private string UndoAction => UndoStack.Peek().UndoAction;
         private string RedoAction => RedoStack.Peek().RedoAction;
-
-        private readonly WorldController WorldController;
-        private WorldForm WorldForm => WorldController.WorldForm;
 
         private int LastSave, UpdateCount;
 

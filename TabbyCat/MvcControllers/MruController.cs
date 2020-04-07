@@ -2,6 +2,7 @@
 {
     using Jmk.Controls;
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.MvcModels;
@@ -23,9 +24,10 @@
         protected MruController(WorldController worldController, string subKeyName)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
-                throw new ArgumentNullException("subKeyName");
+                throw new ArgumentNullException(nameof(subKeyName));
             WorldController = worldController;
             SubKeyName = string.Format(
+                CultureInfo.InvariantCulture,
                 @"Software\{0}\{1}\{2}",
                 Application.CompanyName,
                 Application.ProductName,

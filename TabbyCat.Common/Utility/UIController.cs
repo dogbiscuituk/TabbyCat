@@ -14,7 +14,7 @@
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
         public static void CloneTo(this ToolStrip s, ToolStrip t) =>
-            s.Items.CloneTo(t.Items);
+            s?.Items.CloneTo(t?.Items);
 
         /// <summary>
         /// Copy the Items from one ToolStripDropDownItem to another.
@@ -22,7 +22,7 @@
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
         public static void CloneTo(this ToolStripDropDownItem s, ToolStripDropDownItem t) =>
-            s.DropDownItems.CloneTo(t.DropDownItems);
+            s?.DropDownItems.CloneTo(t?.DropDownItems);
 
         /// <summary>
         /// Copy the Items from a ToolStrip to a ToolStripDropDownItem.
@@ -30,7 +30,7 @@
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
         public static void CloneTo(this ToolStrip s, ToolStripDropDownItem t) =>
-            s.Items.CloneTo(t.DropDownItems);
+            s?.Items.CloneTo(t?.DropDownItems);
 
         /// <summary>
         /// Copy the DropDownItems from a ToolStripDropDownItem to a ToolStrip.
@@ -38,18 +38,20 @@
         /// <param name="s">The source, contributing the items to be copied.</param>
         /// <param name="t">The target, receiving the copies.</param>
         public static void CloneTo(this ToolStripDropDownItem s, ToolStrip t) =>
-            s.DropDownItems.CloneTo(t.Items);
+            s?.DropDownItems.CloneTo(t?.Items);
 
         public static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
         {
-            foreach (var item in items)
-                item.Enabled = enabled;
+            if (items != null)
+                foreach (var item in items)
+                    item.Enabled = enabled;
         }
 
         public static void EnableControls(bool enabled, IEnumerable<Control> controls)
         {
-            foreach (var control in controls)
-                control.Enabled = enabled;
+            if (controls != null)
+                foreach (var control in controls)
+                    control.Enabled = enabled;
         }
 
         #endregion

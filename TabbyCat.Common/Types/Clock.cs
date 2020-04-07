@@ -45,7 +45,7 @@
         public float RealSecondsElapsed => (float)RealTimeElapsed.TotalSeconds;
         public float VirtualSecondsElapsed => (float)VirtualTimeElapsed.TotalSeconds;
 
-        public int Interval_ms
+        public int IntervalMilliseconds
         {
             get => Timer.Interval;
             set => Timer.Interval = value;

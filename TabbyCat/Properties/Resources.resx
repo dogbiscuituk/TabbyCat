@@ -754,4 +754,13 @@ and reset the timer to zero</value>
   <data name="A_Sample_Entry_2" xml:space="preserve">
     <value>Copy|Copy to clipboard|^C</value>
   </data>
+  <data name="Menu_Host_Dock" xml:space="preserve">
+    <value>&amp;Dock</value>
+  </data>
+  <data name="Menu_Host_Undock" xml:space="preserve">
+    <value>&amp;Undock</value>
+  </data>
+  <data name="Text_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
 </root>

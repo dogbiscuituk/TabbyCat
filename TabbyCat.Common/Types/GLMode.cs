@@ -7,7 +7,6 @@
     using System.Globalization;
     using TabbyCat.Common.Utility;
 
-    [TypeConverter(typeof(GLModeTypeConverter))]
     public class GLMode
     {
         #region Constructors
@@ -124,27 +123,6 @@
         public override int GetHashCode() =>
             ColourFormat.GetHashCode() ^ AccumColourFormat.GetHashCode() ^
             Buffers ^ Depth ^ Samples ^ Stencil ^ (Stereo ? 1 : 0);
-
-        public static GLMode Parse(string s)
-        {
-            var t = s.Split(',');
-            return new GLMode((IntPtr?)0,
-                new ColourFormat(
-                    int.Parse(t[0], CultureInfo.CurrentCulture),
-                    int.Parse(t[1]),
-                    int.Parse(t[2]),
-                    int.Parse(t[3])),
-                new ColourFormat(
-                    int.Parse(t[4]),
-                    int.Parse(t[5]),
-                    int.Parse(t[6]),
-                    int.Parse(t[7])),
-                int.Parse(t[8]),
-                int.Parse(t[9]),
-                int.Parse(t[10]),
-                int.Parse(t[11]),
-                bool.Parse(t[12]));
-        }
 
         public override string ToString() =>
             $@"Colour format: {ColourFormat}
