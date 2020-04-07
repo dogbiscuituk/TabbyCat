@@ -3,6 +3,7 @@
     using OpenTK;
     using System;
     using System.Drawing;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -182,7 +183,7 @@
                         Editor.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
                     case PropertyNames.Samples:
-                        Editor.seSampleCount.Text = Scene.Samples.ToString();
+                        Editor.seSampleCount.Text = Scene.Samples.ToString(CultureInfo.CurrentCulture);
                         break;
                     case PropertyNames.SceneTitle:
                         Editor.edTitle.Text = Scene.Title;

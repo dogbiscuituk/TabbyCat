@@ -5,6 +5,7 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using TabbyCat.Common.Types;
@@ -315,8 +316,8 @@
             if (string.IsNullOrWhiteSpace(s))
                 return;
             GpuLog.AppendLine(s.Trim());
-            s = s.ToUpper();
-            if (s.ToUpper().Contains("ERROR"))
+            s = s.ToUpper(CultureInfo.InvariantCulture);
+            if (s.Contains("ERROR"))
                 Scene.GPUStatus = GPUStatus.Error;
             else if (Scene.GPUStatus == GPUStatus.OK && s.Contains("WARNING"))
                 Scene.GPUStatus = GPUStatus.Warning;

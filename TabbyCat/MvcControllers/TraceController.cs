@@ -19,7 +19,7 @@
         internal TraceController(WorldController worldController)
             : base(worldController)
         {
-            SelectionController = new SelectionController(this);
+            SelectionController = new SelectionController(worldController);
             InitCommonControls(Editor.TableLayoutPanel);
             InitLocalControls();
         }

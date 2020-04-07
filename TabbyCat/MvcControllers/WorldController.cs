@@ -6,12 +6,12 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
-    using TabbyCat.Controls;
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
@@ -34,15 +34,26 @@
             SceneController = new SceneController(this);
             ShaderController = new ShaderController(this);
             TraceController = new TraceController(this);
-
-            PropertiesController.Connect(true);
-
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
             WorldController = this;
         }
 
         #endregion
+
+        protected override ClockController ClockController { get; set; }
+
+        internal override CommandProcessor CommandProcessor { get; set; }
+
+        protected override PropertiesController PropertiesController { get; set; }
+
+        protected override RenderController RenderController { get; set; }
+
+        protected override SceneController SceneController { get; set; }
+
+        protected override ShaderController ShaderController { get; set; }
+
+        protected override TraceController TraceController { get; set; }
 
         protected internal override WorldForm WorldForm { get; set; }
 
@@ -71,17 +82,7 @@
 
         protected internal override Scene Scene { get; set; }
 
-        protected internal override RenderController RenderController { get; set; }
-
         #region Internal Fields
-
-        protected internal override PropertiesController PropertiesController { get; set; }
-
-        protected internal override ShaderController ShaderController { get; set; }
-
-        protected internal override SceneController SceneController { get; set; }
-
-        protected internal override TraceController TraceController { get; set; }
 
         internal Selection Selection = new Selection();
 
@@ -89,13 +90,9 @@
 
         #region Protected Internal Properties
 
-        protected internal override CommandProcessor CommandProcessor { get; protected set;  }
-
         #endregion
 
         #region Internal Properties
-
-        protected override ClockController ClockController { get; set; }
 
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
@@ -165,7 +162,7 @@
             Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop, WorldForm.tbStop);
             Localize(Resources.Menu_Help, WorldForm.HelpMenu);
             Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
-            Localize(string.Format(Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
+            Localize(string.Format(CultureInfo.CurrentCulture, Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
         }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
@@ -325,6 +322,8 @@
             CameraController.Connect(connect);
             ClockController.Connect(connect);
             FullScreenController.Connect(connect);
+            ConnectJsonController(connect);
+            PropertiesController.Connect(connect);
             if (connect)
             {
             }
@@ -336,7 +335,6 @@
 
         private void ConnectEventHandlers(bool connect)
         {
-            ConnectJsonController(connect);
             ConnectMainMenu(connect);
             ConnectToolbar(connect);
             if (connect)
@@ -549,7 +547,7 @@
             return this;
         }
 
-        private void HelpAbout() => new AboutController().ShowDialog(WorldForm);
+        private void HelpAbout() => new AboutController(this).ShowDialog(WorldForm);
 
         private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Contains(p)).ToList());
 

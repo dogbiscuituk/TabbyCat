@@ -5,7 +5,6 @@
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.MvcModels;
     using TabbyCat.Properties;
     using Win32 = Microsoft.Win32;
 
@@ -93,7 +92,7 @@
                 try
                 {
                     DeleteItem(key, item);
-                    key.SetValue(string.Format("{0:yyyyMMddHHmmssFF}", DateTime.Now), item);
+                    key.SetValue(DateTime.Now.ToString("yyyyMMddHHmmssFF", CultureInfo.CurrentCulture), item);
                 }
                 finally
                 {

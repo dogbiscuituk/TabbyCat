@@ -4,11 +4,12 @@
     using System.Windows.Forms;
     using TabbyCat.MvcViews;
 
-    internal class AboutController
+    internal class AboutController : LocalizationController
     {
         #region Internal Interface
 
-        internal AboutController()
+        internal AboutController(WorldController worldController)
+            : base(worldController)
         {
             View = new AboutDialog();
             var asm = Assembly.GetExecutingAssembly();
@@ -18,7 +19,7 @@
             View.lblVersion.Text = Application.ProductVersion;
             View.lblAuthor.Text = Application.CompanyName;
             View.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            var info = AppController.WorldControllers[0].RenderController.GLInfo;
+            var info = AppController.WorldControllers[0].GLInfo;
             View.lblOpenGLVersion.Text = info.Number;
             View.lblGLSLVersion.Text = info.Shader;
             View.lblVendorName.Text = info.Vendor;

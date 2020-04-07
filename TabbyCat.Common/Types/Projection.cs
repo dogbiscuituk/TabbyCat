@@ -16,10 +16,15 @@
             FrustumMax = frustumMax;
         }
 
-        public Projection(Projection projection) :
-            this(projection.ProjectionType, projection.FieldOfView, projection.FrustumMin, projection.FrustumMax)
+        public Projection(Projection projection)
         {
-        }
+            if (projection == null)
+                return;
+            ProjectionType = projection.ProjectionType;
+            FieldOfView = projection.FieldOfView;
+            FrustumMin = projection.FrustumMin;
+            FrustumMax = projection.FrustumMax;
+    }
 
         public Projection(float width, float height, float near, float far)
         {

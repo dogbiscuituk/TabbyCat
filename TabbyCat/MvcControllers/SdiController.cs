@@ -2,10 +2,12 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using TabbyCat.MvcModels;
+    using TabbyCat.Properties;
 
     /// <summary>
     /// "Single Document Interface" Controller.
@@ -21,8 +23,8 @@
         protected SdiController(WorldController worldController, string filter, string subKeyName)
             : base(worldController, subKeyName)
         {
-            OpenFileDialog = new OpenFileDialog { Filter = filter, Title = "Select the file to open" };
-            SaveFileDialog = new SaveFileDialog { Filter = filter, Title = "Save file" };
+            OpenFileDialog = new OpenFileDialog { Filter = filter, Title = Resources.OpenFileDialog_Title };
+            SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
         }
 
         #endregion
@@ -50,8 +52,8 @@
             var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
             {
-                if (MessageBox.Show(string.Format("File \"{0}\" no longer exists. Remove from menu?", filePath),
-                    "Reopen file", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
+                    Resources.Message_FileNotFound_Caption, MessageBoxButtons.YesNo) == DialogResult.Yes)
                     RemoveItem(filePath);
                 return;
             }
@@ -109,8 +111,8 @@
         {
             if (Scene.IsModified)
                 switch (MessageBox.Show(
-                    "The contents of this file have changed. Do you want to save the changes?",
-                    "File modified",
+                    Resources.Message_FileModified_Text,
+                    Resources.Message_FileModified_Caption,
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Warning))
                 {

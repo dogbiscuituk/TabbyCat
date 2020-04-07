@@ -32,7 +32,7 @@
         [DefaultValue("")]
         public string Title { get; set; }
 
-        public List<Trace> Traces { get; private set; } = new List<Trace>();
+        public List<Trace> Traces { get; set; } = new List<Trace>();
         public bool VSync { get; set; }
 
         private GPUStatus _GPUStatus;

@@ -1648,6 +1648,42 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Message_FileModified_Caption {
+            get {
+                return ResourceManager.GetString("Message_FileModified_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
+        /// </summary>
+        public static string Message_FileModified_Text {
+            get {
+                return ResourceManager.GetString("Message_FileModified_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reopen file.
+        /// </summary>
+        public static string Message_FileNotFound_Caption {
+            get {
+                return ResourceManager.GetString("Message_FileNotFound_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File &quot;{0}&quot; no longer exists. Remove from menu?.
+        /// </summary>
+        public static string Message_FileNotFound_Text {
+            get {
+                return ResourceManager.GetString("Message_FileNotFound_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap NewDocumentHS {
@@ -1664,6 +1700,15 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("NoteHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the file to open.
+        /// </summary>
+        public static string OpenFileDialog_Title {
+            get {
+                return ResourceManager.GetString("OpenFileDialog_Title", resourceCulture);
             }
         }
         
@@ -1908,6 +1953,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save file.
+        /// </summary>
+        public static string SaveFileDialog_Title {
+            get {
+                return ResourceManager.GetString("SaveFileDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap SaveFormDesignHS {
@@ -1924,6 +1978,42 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("saveHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTML with &lt;PRE&gt;|*.html|HTML without &lt;PRE&gt;|*.html.
+        /// </summary>
+        public static string SaveHtmlDialog_Filter {
+            get {
+                return ResourceManager.GetString("SaveHtmlDialog_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export as HTML.
+        /// </summary>
+        public static string SaveHtmlDialog_Title {
+            get {
+                return ResourceManager.GetString("SaveHtmlDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rich Text Format|*.rtf.
+        /// </summary>
+        public static string SaveRtfDialog_Filter {
+            get {
+                return ResourceManager.GetString("SaveRtfDialog_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export As RTF.
+        /// </summary>
+        public static string SaveRtfDialog_Title {
+            get {
+                return ResourceManager.GetString("SaveRtfDialog_Title", resourceCulture);
             }
         }
         

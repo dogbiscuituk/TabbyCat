@@ -11,11 +11,20 @@
     {
         #region Constructors
 
-        public GLMode(GLControl control) : this(control.GraphicsMode) { }
+        public GLMode(GLControl control) : this(control?.GraphicsMode) { }
 
-        public GLMode(GLMode mode) =>
-            Init(mode.Index, mode.ColourFormat, mode.AccumColourFormat,
-            mode.Buffers, mode.Depth, mode.Samples, mode.Stencil, mode.Stereo);
+        public GLMode(GLMode mode)
+        {
+            if (mode != null) Init(
+                mode.Index,
+                mode.ColourFormat,
+                mode.AccumColourFormat,
+                mode.Buffers,
+                mode.Depth,
+                mode.Samples,
+                mode.Stencil,
+                mode.Stereo);
+        }
 
         public GLMode(IntPtr? index, ColourFormat colourFormat, ColourFormat accumColourFormat,
             int buffers, int depth, int samples, int stencil, bool stereo) =>
@@ -51,6 +60,8 @@
                     return;
             }
             var v = (int)value;
+            if (field == null)
+                return;
             var fields = field.Split('.');
             var p = fields[0] == "GLMode_AccumColourFormat" ? AccumColourFormat : ColourFormat;
             switch (fields[1])
@@ -88,24 +99,26 @@
 
         #region Public Operators
 
-        public static implicit operator GLMode(GraphicsMode p) => new GLMode(
-            index: p.Index,
-            colourFormat: new ColourFormat(p.ColorFormat),
-            accumColourFormat: new ColourFormat(p.AccumulatorFormat),
-            buffers: p.Buffers,
-            depth: p.Depth,
-            samples: p.Samples,
-            stencil: p.Stencil,
-            stereo: p.Stereo);
+        public static implicit operator GLMode(GraphicsMode p) =>
+            p == null ? null : new GLMode(
+                index: p.Index,
+                colourFormat: new ColourFormat(p.ColorFormat),
+                accumColourFormat: new ColourFormat(p.AccumulatorFormat),
+                buffers: p.Buffers,
+                depth: p.Depth,
+                samples: p.Samples,
+                stencil: p.Stencil,
+                stereo: p.Stereo);
 
-        public static implicit operator GraphicsMode(GLMode p) => new GraphicsMode(
-            color: p.ColourFormat,
-            accum: p.AccumColourFormat,
-            buffers: p.Buffers,
-            depth: p.Depth,
-            samples: p.Samples,
-            stencil: p.Stencil,
-            stereo: p.Stereo);
+        public static implicit operator GraphicsMode(GLMode p) =>
+            p == null ? null : new GraphicsMode(
+                color: p.ColourFormat,
+                accum: p.AccumColourFormat,
+                buffers: p.Buffers,
+                depth: p.Depth,
+                samples: p.Samples,
+                stencil: p.Stencil,
+                stereo: p.Stereo);
 
         #endregion
 

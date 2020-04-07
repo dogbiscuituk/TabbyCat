@@ -208,8 +208,8 @@
         {
             using (var dialog = new SaveFileDialog
             {
-                Filter = "HTML with <PRE>|*.html|HTML without <PRE>|*.html",
-                Title = "Export as HTML"
+                Filter = Resources.SaveHtmlDialog_Filter,
+                Title = Resources.SaveHtmlDialog_Title
             })
                 if (dialog.ShowDialog() == DialogResult.OK)
                     File.WriteAllText(dialog.FileName, GetHTML(dialog.FilterIndex));
@@ -219,8 +219,8 @@
         {
             using (var dialog = new SaveFileDialog
             {
-                Filter = "Rich Text Format|*.rtf",
-                Title = "Export As RTF"
+                Filter = Resources.SaveRtfDialog_Filter,
+                Title = Resources.SaveRtfDialog_Title
             })
                 if (dialog.ShowDialog() == DialogResult.OK)
                     File.WriteAllText(dialog.FileName, PrimaryTextBox.Rtf);

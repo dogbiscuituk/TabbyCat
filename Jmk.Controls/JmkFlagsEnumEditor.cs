@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel;
     using System.Drawing.Design;
+    using System.Globalization;
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
@@ -29,7 +30,8 @@
                 var service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
                 if (service != null)
                 {
-                    FlagsCheckedListBox.EnumValue = (Enum)Convert.ChangeType(value, context.PropertyDescriptor.PropertyType);
+                    FlagsCheckedListBox.EnumValue = (Enum)Convert.ChangeType(
+                        value, context.PropertyDescriptor.PropertyType, CultureInfo.InvariantCulture);
                     service.DropDownControl(FlagsCheckedListBox);
                     return FlagsCheckedListBox.EnumValue;
                 }

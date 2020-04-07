@@ -2,6 +2,7 @@
 {
     using OpenTK.Graphics;
     using System.ComponentModel;
+    using System.Globalization;
     using TabbyCat.Common.TypeConverters;
 
     [TypeConverter(typeof(ColourFormatTypeConverter))]
@@ -94,8 +95,13 @@
         public static bool operator ==(ColourFormat p, ColourFormat q) => p is null ? q is null : p.Equals(q);
         public static bool operator !=(ColourFormat p, ColourFormat q) => !(p == q);
 
-        public static implicit operator ColorFormat(ColourFormat p) => new ColorFormat(p.Red, p.Green, p.Blue, p.Alpha);
-        public static implicit operator ColourFormat(ColorFormat p) => new ColourFormat(p.Red, p.Green, p.Blue, p.Alpha);
+        public static implicit operator ColorFormat(ColourFormat p) => p != null
+            ? new ColorFormat(p.Red, p.Green, p.Blue, p.Alpha)
+            : ColorFormat.Empty;
+
+        public static implicit operator ColourFormat(ColorFormat p) => p != null
+            ? new ColourFormat(p.Red, p.Green, p.Blue, p.Alpha)
+            : null;
 
         #endregion
 
@@ -108,8 +114,14 @@
 
         public static ColourFormat Parse(string s)
         {
+            if (s == null)
+                return null;
             var t = s.Split(',');
-            return new ColourFormat(int.Parse(t[0]), int.Parse(t[1]), int.Parse(t[2]), int.Parse(t[3]));
+            return new ColourFormat(
+                int.Parse(t[0], CultureInfo.InvariantCulture),
+                int.Parse(t[1], CultureInfo.InvariantCulture),
+                int.Parse(t[2], CultureInfo.InvariantCulture),
+                int.Parse(t[3], CultureInfo.InvariantCulture));
         }
 
         public override string ToString() => $"{Red}, {Green}, {Blue}, {Alpha}";

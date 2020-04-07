@@ -31,7 +31,7 @@
             get
             {
                 if (_AboutDialog == null)
-                    _AboutDialog = new AboutController().View;
+                    _AboutDialog = new AboutController(null).View;
                 return _AboutDialog;
             }
         }

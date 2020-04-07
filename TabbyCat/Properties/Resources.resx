@@ -766,4 +766,34 @@ and reset the timer to zero</value>
   <data name="Menu_File_ClearThisList" xml:space="preserve">
     <value>Clear this list|Delete all recently used file names</value>
   </data>
+  <data name="Message_FileModified_Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Message_FileModified_Text" xml:space="preserve">
+    <value>The contents of this file have changed. Do you want to save the changes?</value>
+  </data>
+  <data name="Message_FileNotFound_Caption" xml:space="preserve">
+    <value>Reopen file</value>
+  </data>
+  <data name="Message_FileNotFound_Text" xml:space="preserve">
+    <value>File "{0}" no longer exists. Remove from menu?</value>
+  </data>
+  <data name="OpenFileDialog_Title" xml:space="preserve">
+    <value>Select the file to open</value>
+  </data>
+  <data name="SaveFileDialog_Title" xml:space="preserve">
+    <value>Save file</value>
+  </data>
+  <data name="SaveHtmlDialog_Filter" xml:space="preserve">
+    <value>HTML with &lt;PRE&gt;|*.html|HTML without &lt;PRE&gt;|*.html</value>
+  </data>
+  <data name="SaveHtmlDialog_Title" xml:space="preserve">
+    <value>Export as HTML</value>
+  </data>
+  <data name="SaveRtfDialog_Filter" xml:space="preserve">
+    <value>Rich Text Format|*.rtf</value>
+  </data>
+  <data name="SaveRtfDialog_Title" xml:space="preserve">
+    <value>Export As RTF</value>
+  </data>
 </root>

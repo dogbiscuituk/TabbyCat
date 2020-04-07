@@ -6,18 +6,30 @@
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
+    using TabbyCat.Properties;
 
-    internal class SelectionController : IDisposable
+    internal class SelectionController : LocalizationController, IDisposable
     {
         #region Constructor
 
-        internal SelectionController(TraceController traceController)
-        {
-            TraceController = traceController;
-            Init();
-        }
+        internal SelectionController(WorldController worldController)
+            : base(worldController)
+        { }
 
         #endregion
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                Init();
+            }
+            else
+            {
+
+            }
+        }
 
         #region Internal Fields
 
@@ -61,11 +73,16 @@
 
         #region Private Fields
 
-        private Brush Highlight,HighlightText;
-        private Font HighlightFont;
+        private readonly Brush
+            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush(),
+            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
+
+        private Font _HighlightFont;
+        private Font HighlightFont => _HighlightFont ??
+            (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
+
         private int LastIndex = -1;
         private List<int> _Selection = new List<int>();
-        private readonly TraceController TraceController;
 
         #endregion
 
@@ -168,11 +185,9 @@
 
         private void Init()
         {
-            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush();
-            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
-            HighlightFont = new Font(Toolbar.Font, FontStyle.Bold);
             Labels.Clear();
-            var label = new ToolStripLabel("All");
+            var label = new ToolStripLabel(string.Empty);
+            Localize(Resources.Menu_Trace_All, label);
             Labels.Add(label);
             label.MouseDown += LabelAll_MouseDown;
             label.Paint += LabelAll_Paint;

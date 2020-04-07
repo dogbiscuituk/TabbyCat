@@ -54,8 +54,6 @@
 
         #region Private Properties
 
-        private PropertiesController PropertiesController => WorldController.PropertiesController;
-
         private FormState SavedFormState;
 
         private bool FullScreen

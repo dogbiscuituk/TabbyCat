@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Globalization;
     using System.Windows.Forms;
 
     public partial class JmkFlagsCheckedListBox : CheckedListBox
@@ -103,13 +104,16 @@
 
         #region Private Methods
 
-        private void Apply() => UpdateItems((int)Convert.ChangeType(_EnumValue, typeof(int)));
+        private void Apply() => UpdateItems(ChangeType(_EnumValue));
 
         private void Populate()
         {
             foreach (var name in Enum.GetNames(_EnumType))
-                Add(name, (int)Convert.ChangeType(Enum.Parse(_EnumType, name), typeof(int)));
+                Add(name, ChangeType(Enum.Parse(_EnumType, name)));
         }
+
+        private static int ChangeType(object value) =>
+            (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);
 
         #endregion
     }
