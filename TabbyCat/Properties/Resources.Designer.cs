@@ -1411,6 +1411,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear this list|Delete all recently used file names.
+        /// </summary>
+        public static string Menu_File_ClearThisList {
+            get {
+                return ResourceManager.GetString("Menu_File_ClearThisList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Close|Close this scene|^F4.
         /// </summary>
         public static string Menu_File_Close {

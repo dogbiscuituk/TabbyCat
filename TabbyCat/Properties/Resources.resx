@@ -763,4 +763,7 @@ and reset the timer to zero</value>
   <data name="Text_Properties" xml:space="preserve">
     <value>Properties</value>
   </data>
+  <data name="Menu_File_ClearThisList" xml:space="preserve">
+    <value>Clear this list|Delete all recently used file names</value>
+  </data>
 </root>

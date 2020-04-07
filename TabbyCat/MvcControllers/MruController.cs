@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.MvcModels;
+    using TabbyCat.Properties;
     using Win32 = Microsoft.Win32;
 
     /// <summary>
@@ -17,15 +18,15 @@
     /// Provide a "Clear" subitem to reset the content of this submenu to (empty).
     /// Note: unsafe code is used to abbreviate long paths (see CompactMenuText method).
     /// </summary>
-    internal class MruController
+    internal class MruController : LocalizationController
     {
         #region Constructors
 
         protected MruController(WorldController worldController, string subKeyName)
+            : base(worldController)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
                 throw new ArgumentNullException(nameof(subKeyName));
-            WorldController = worldController;
             SubKeyName = string.Format(
                 CultureInfo.InvariantCulture,
                 @"Software\{0}\{1}\{2}",
@@ -46,14 +47,6 @@
         #region Protected Properties
 
         protected ToolStripDropDownItem RecentMenu => WorldController.WorldForm.FileReopen;
-
-        protected Scene Scene
-        {
-            get => WorldController.Scene;
-            set => WorldController.Scene = value;
-        }
-
-        protected readonly WorldController WorldController;
 
         #endregion
 
@@ -201,8 +194,11 @@
                 ok = items.Count > 0;
                 if (ok)
                 {
-                    items.Add("-");
-                    items.Add("Clear this list").Click += OnRecentClear_Click;
+                    items.Add(new ToolStripSeparator());
+                    var item = items.Add(string.Empty);
+                    Localize(Resources.Menu_File_ClearThisList, item);
+                    item.Click += OnRecentClear_Click;
+
                 }
             }
             RecentMenu.Enabled = ok;

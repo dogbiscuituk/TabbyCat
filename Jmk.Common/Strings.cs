@@ -1,6 +1,7 @@
 ﻿namespace Jmk.Common
 {
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -55,8 +56,8 @@
         }
 
         public static string ToTitleCase(this string s) =>
-            s == string.Empty
+            string.IsNullOrWhiteSpace(s)
             ? string.Empty
-            : $"{char.ToUpper(s[0])}{s.ToLower().Substring(1)}";
+            : $"{char.ToUpper(s[0], CultureInfo.CurrentCulture)}{s.ToLower(CultureInfo.CurrentCulture).Substring(1)}";
     }
 }
