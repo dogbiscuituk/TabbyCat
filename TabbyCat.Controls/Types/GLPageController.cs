@@ -14,7 +14,7 @@
     /// FastColoredTextBox controller class.
     /// Adds GLSL to list of supported languages.
     /// </summary>
-    public class GLPageController
+    public class GLPageController : IDisposable
     {
         #region Constructor
 
@@ -280,6 +280,31 @@
 
         private static TextStyle NewTextStyle() =>
             new TextStyle(Brushes.Black, Brushes.Transparent, 0);
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    AutocompleteMenu?.Dispose();
+                    TextBox?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

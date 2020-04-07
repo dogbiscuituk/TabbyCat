@@ -54,10 +54,10 @@
         {
             switch (fieldName)
             {
-                case DisplayNames.Red: Red = value; break;
-                case DisplayNames.Green: Green = value; break;
-                case DisplayNames.Blue: Blue = value; break;
-                case DisplayNames.Alpha: Alpha = value; break;
+                case "Red": Red = value; break;
+                case "Green": Green = value; break;
+                case "Blue": Blue = value; break;
+                case "Alpha": Alpha = value; break;
             }
         }
 
@@ -67,22 +67,18 @@
 
         [DefaultValue(0)]
         [Description(Descriptions.Red)]
-        [DisplayName(DisplayNames.Red)]
         public int Red { get; set; }
 
         [DefaultValue(0)]
         [Description(Descriptions.Green)]
-        [DisplayName(DisplayNames.Green)]
         public int Green { get; set; }
 
         [DefaultValue(0)]
         [Description(Descriptions.Blue)]
-        [DisplayName(DisplayNames.Blue)]
         public int Blue { get; set; }
 
         [DefaultValue(0)]
         [Description(Descriptions.Alpha)]
-        [DisplayName(DisplayNames.Alpha)]
         public int Alpha { get; set; }
 
         #endregion
@@ -123,15 +119,6 @@
                 Green = "The Green component of the colour format.",
                 Blue = "The Blue component of the colour format.",
                 Alpha = "The Alpha component of the colour format.";
-        }
-
-        public static class DisplayNames
-        {
-            public const string
-                Red = "Red",
-                Green = "Green",
-                Blue = "Blue",
-                Alpha = "Alpha";
         }
 
         #endregion

@@ -7,16 +7,16 @@
 
     public static class Processes
     {
-        public static void Launch(this string url)
+        public static void Launch(this string path)
         {
             try
             {
-                Process.Start(url);
+                Process.Start(path);
             }
             catch (Win32Exception ex)
             {
                 MessageBox.Show(
-                    $"{ex.Message}:\n\n{url}",
+                    $"{ex.Message}:\n\n{path}",
                     ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

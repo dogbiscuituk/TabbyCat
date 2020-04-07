@@ -6,7 +6,7 @@
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
-    public class JmkFlagsEnumEditor : UITypeEditor
+    public class JmkFlagsEnumEditor : UITypeEditor, IDisposable
     {
         #region Constructors
 
@@ -44,6 +44,30 @@
         #region Private Properties
 
         private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    FlagsCheckedListBox?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

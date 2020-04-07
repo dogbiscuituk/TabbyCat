@@ -3,7 +3,7 @@
     using System;
     using System.Windows.Forms;
 
-    public class Clock
+    public class Clock : IDisposable
     {
         #region Constructors
 
@@ -161,6 +161,30 @@
                     return LimitFactor;
             }
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    Timer?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

@@ -195,7 +195,7 @@
         private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
             e.Link.LinkData.ToString().Launch();
 
-        private void BuiltInHelp_LookupParameterValue(object sender, Jmk.Controls.JmkLinkLabel.LookupParameterEventArgs e) =>
+        private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) =>
             e.Value = LookupParameterValue(e.Name);
 
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
@@ -493,7 +493,7 @@
             switch (parameterName)
             {
                 case "GLSLUrl":
-                    return AppController.Options.GLSLUrl;
+                    return AppController.Options.GLSLPath;
                 default:
                     return string.Empty;
             }

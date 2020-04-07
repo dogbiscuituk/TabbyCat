@@ -7,7 +7,7 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal class SelectionController
+    internal class SelectionController : IDisposable
     {
         #region Constructor
 
@@ -206,6 +206,32 @@
             items == null || !items.Any()
             ? string.Empty
             : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    Highlight?.Dispose();
+                    HighlightFont?.Dispose();
+                    HighlightText?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

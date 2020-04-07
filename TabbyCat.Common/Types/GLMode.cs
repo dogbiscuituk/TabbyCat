@@ -55,10 +55,10 @@
             var p = fields[0] == "GLMode_AccumColourFormat" ? AccumColourFormat : ColourFormat;
             switch (fields[1])
             {
-                case ColourFormat.DisplayNames.Red: p.Red = v; break;
-                case ColourFormat.DisplayNames.Green: p.Green = v; break;
-                case ColourFormat.DisplayNames.Blue: p.Blue = v; break;
-                case ColourFormat.DisplayNames.Alpha: p.Alpha = v; break;
+                case "Red": p.Red = v; break;
+                case "Green": p.Green = v; break;
+                case "Blue": p.Blue = v; break;
+                case "Alpha": p.Alpha = v; break;
             }
             switch (fields[0])
             {

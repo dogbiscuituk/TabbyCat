@@ -50,7 +50,7 @@
                     FilesFolderPath = Settings.FilesFolderPath,
                     TemplatesFolderPath = Settings.TemplatesFolderPath,
                     SyntaxHighlightStyles = Settings.SyntaxHighlightStyles ?? new TextStyleInfos(),
-                    GLSLUrl = Settings.GLSLUrl
+                    GLSLPath = Settings.GLSLUrl
                 };
                 if (string.IsNullOrWhiteSpace(options.FilesFolderPath))
                     options.FilesFolderPath = DefaultFilesFolderPath;
@@ -63,7 +63,7 @@
                 Settings.Options_OpenInNewWindow = value.OpenInNewWindow;
                 Settings.FilesFolderPath = value.FilesFolderPath;
                 Settings.TemplatesFolderPath = value.TemplatesFolderPath;
-                Settings.GLSLUrl = value.GLSLUrl;
+                Settings.GLSLUrl = value.GLSLPath;
                 Settings.Save();
                 ApplyOptions();
             }

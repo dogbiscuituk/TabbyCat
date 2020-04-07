@@ -1,12 +1,13 @@
 ﻿namespace TabbyCat.MvcControllers
 {
+    using System;
     using System.ComponentModel;
     using System.Windows.Forms;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.MvcViews;
 
-    internal class PropertiesController : HostController
+    internal class PropertiesController : HostController, IDisposable
     {
         #region Constructors
 
@@ -111,6 +112,30 @@
             TraceController.Connect(connect);
             ShaderController.Connect(connect);
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    TraceController?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

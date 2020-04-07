@@ -15,7 +15,7 @@
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
 
-    internal class WorldController : LocalizationController
+    internal class WorldController : LocalizationController, IDisposable
     {
         #region Constructor
 
@@ -669,6 +669,32 @@
             if (LastTime != time)
                 LastTime = WorldForm.Tlabel.Text = time;
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    ClockController?.Dispose();
+                    JsonController?.Dispose();
+                    WorldForm?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

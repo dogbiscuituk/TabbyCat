@@ -12,7 +12,7 @@
     using TabbyCat.MvcModels;
     using TabbyCat.Properties;
 
-    internal class TraceController : ShaderSetController
+    internal class TraceController : ShaderSetController, IDisposable
     {
         #region Constructors
 
@@ -408,6 +408,30 @@
             Selection.ForEach(p => CommandProcessor.Run(command(p)));
             Updating = false;
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    SelectionController?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

@@ -6,7 +6,7 @@
     /// <summary>
     /// https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf
     /// </summary>
-    public class GLSL
+    public static class GLSL
     {
         #region Private Fields
 

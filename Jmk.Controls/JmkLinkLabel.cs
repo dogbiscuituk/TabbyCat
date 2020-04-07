@@ -27,18 +27,8 @@
     /// if that's what your LookupParameterValue event handler returns for the variable name URL.
     /// Note that such values are substituted on each assignment to the JmkLinkLabel's Text property.
     /// </summary>
-    public class JmkLinkLabel : LinkLabel
+    public partial class JmkLinkLabel : LinkLabel
     {
-        #region Public Classes
-
-        public class LookupParameterEventArgs : EventArgs
-        {
-            public string Name { get; set; }
-            public string Value { get; set; }
-        }
-
-        #endregion
-
         #region Fields, Properties, Events
 
         public Link ActiveLink { get; private set; }

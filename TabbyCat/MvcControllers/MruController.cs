@@ -67,23 +67,16 @@
 
         private void OnRecentClear_Click(object sender, EventArgs e)
         {
-            try
+            Win32.RegistryKey key = OpenSubKey(true);
+            if (key == null)
+                return;
+            foreach (string name in key.GetValueNames())
+                key.DeleteValue(name, true);
+            key.Close();
+            if (RecentMenu != null)
             {
-                Win32.RegistryKey key = OpenSubKey(true);
-                if (key == null)
-                    return;
-                foreach (string name in key.GetValueNames())
-                    key.DeleteValue(name, true);
-                key.Close();
-                if (RecentMenu != null)
-                {
-                    RecentMenu.DropDownItems.Clear();
-                    RecentMenu.Enabled = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                RecentMenu.DropDownItems.Clear();
+                RecentMenu.Enabled = false;
             }
         }
 
@@ -91,6 +84,10 @@
 
         #region Protected Methods
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design",
+            "CA1031:Do not catch general exception types",
+            Justification = "Multiple exception types can be thrown, all can be ignored.")]
         protected void AddItem(string item)
         {
             try
@@ -110,11 +107,15 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex);
             }
             RefreshRecentMenu();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design",
+            "CA1031:Do not catch general exception types",
+            Justification = "Multiple exception types can be thrown, all can be ignored.")]
         protected void RemoveItem(string item)
         {
             try
@@ -160,6 +161,10 @@
         private Win32.RegistryKey OpenSubKey(bool writable) =>
             Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design",
+            "CA1031:Do not catch general exception types",
+            Justification = "Multiple exception types can be thrown, all can be ignored.")]
         private void RefreshRecentMenu()
         {
             if (RecentMenu == null)

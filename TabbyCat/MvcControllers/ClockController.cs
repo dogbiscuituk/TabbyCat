@@ -4,7 +4,7 @@
     using TabbyCat.Common.Types;
     using TabbyCat.MvcViews;
 
-    internal class ClockController
+    internal class ClockController : IDisposable
     {
         #region Constructors
 
@@ -123,6 +123,30 @@
             Clock.Reset();
             UpdateTimeControls();
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    Clock?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

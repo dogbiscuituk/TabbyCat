@@ -14,7 +14,7 @@
     /// Keep track of the document/model's "Modified" state, prompting for "Save" as necessary
     /// (for example, prior to "File|New" or "File|Open", or application closing).
     /// </summary>
-    internal abstract class SdiController : MruController
+    internal abstract class SdiController : MruController, IDisposable
     {
         #region Constructors
 
@@ -169,6 +169,10 @@
 
         protected abstract bool SaveToStream(Stream stream);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design",
+            "CA1031:Do not catch general exception types",
+            Justification = "Can't predict what exception types the client-supplied action may throw, but must swallow them all.")]
         protected bool UseStream(Action action)
         {
             var result = true;
@@ -264,6 +268,31 @@
                 }
             return result;
         }
+
+        #endregion
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    OpenFileDialog?.Dispose();
+                    SaveFileDialog?.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        private bool disposed;
 
         #endregion
     }

@@ -30,7 +30,9 @@
         #region Private Properties
 
         private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
-        private OptionsDialog OptionsDialog;
+
+        private readonly OptionsDialog OptionsDialog;
+
         private Options Options
         {
             get => GetOptions();
@@ -69,7 +71,7 @@
             FilesFolderPath = OptionsDialog.edFilesFolder.Text,
             TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
             SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
-            GLSLUrl = OptionsDialog.edGLSLUrl.Text
+            GLSLPath = OptionsDialog.edGLSLUrl.Text
         };
 
         private void SetOptions(Options options)
@@ -79,29 +81,32 @@
             OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;
             OptionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
             StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
-            OptionsDialog.edGLSLUrl.Text = options.GLSLUrl;
+            OptionsDialog.edGLSLUrl.Text = options.GLSLPath;
         }
 
         #endregion
 
         #region IDisposable
 
-        public void Dispose() => Dispose(true);
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-                DisposeOptionsDialog();
-        }
-
-        private void DisposeOptionsDialog()
-        {
-            if (OptionsDialog != null)
+            if (!disposed)
             {
-                OptionsDialog.Dispose();
-                OptionsDialog = null;
+                if (disposing)
+                {
+                    OptionsDialog?.Dispose();
+                }
+                disposed = true;
             }
         }
+
+        private bool disposed;
 
         #endregion
     }

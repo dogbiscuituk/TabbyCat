@@ -11,7 +11,7 @@
 
         public Vao(ITrace trace)
         {
-            GL.GenVertexArrays(1, out VaoID);
+            GL.GenVertexArrays(1, out _VaoID);
             GL.BindVertexArray(VaoID);
             VertexVbo = VboStore.AcquireVbo(trace, VboType.Vertex);
             IndexVbo = VboStore.AcquireVbo(trace, VboType.Index);
@@ -28,7 +28,9 @@
 
         public int ElementCount => IndexVbo.ElementsCount;
 
-        public readonly int VaoID;
+        private readonly int _VaoID;
+
+        public int VaoID => _VaoID;
 
         private readonly Vbo
             IndexVbo,

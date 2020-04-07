@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Common.Types
 {
-    public class FillType
+    public static class FillType
     {
         public const int
             None = 0x00,

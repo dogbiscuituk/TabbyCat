@@ -30,7 +30,7 @@
         public static void FirstFocus(this Control control, ref Message m)
         {
             const int WM_MOUSEACTIVATE = 0x21;
-            if (m.Msg == WM_MOUSEACTIVATE && control.CanFocus && !control.Focused)
+            if (m.Msg == WM_MOUSEACTIVATE && control != null && control.CanFocus && !control.Focused)
                 control.Focus();
         }
     }

@@ -14,8 +14,8 @@
 
         #region Public Properties
 
-        public string Text;
-        public int Value;
+        public string Text { get; set; }
+        public int Value { get; set; }
 
         #endregion
 
