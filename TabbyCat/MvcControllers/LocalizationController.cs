@@ -4,6 +4,7 @@
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
+    using TabbyCat.Controls;
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
 
@@ -44,13 +45,61 @@
             set { }
         }
 
+        protected internal virtual PropertiesController PropertiesController
+        {
+            get => WorldController.PropertiesController;
+            set { }
+        }
+
+        protected internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
+
+        protected internal virtual RenderController RenderController
+        {
+            get => WorldController.RenderController;
+            set { }
+        }
+
+        protected internal virtual SceneEdit SceneEdit
+        {
+            get => PropertiesEdit.SceneEdit;
+            set { }
+        }
+
+        protected internal virtual SceneController SceneController
+        {
+            get => WorldController.SceneController;
+            set { }
+        }
+
+        protected internal virtual ShaderController ShaderController
+        {
+            get => WorldController.ShaderController;
+            set { }
+        }
+
+        protected internal virtual TraceController TraceController
+        {
+            get => WorldController.TraceController;
+            set { }
+        }
+
+        protected internal virtual TraceEdit TraceEdit
+        {
+            get => PropertiesEdit.TraceEdit;
+            set { }
+        }
+
         protected internal virtual Scene Scene
         {
             get => WorldController.Scene;
             set { }
         }
 
-        protected WorldForm WorldForm => WorldController.WorldForm;
+        protected internal virtual WorldForm WorldForm
+        {
+            get => WorldController.WorldForm;
+            set { }
+        }
 
         #endregion
 

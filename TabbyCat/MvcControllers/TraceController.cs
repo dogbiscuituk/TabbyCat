@@ -16,8 +16,8 @@
     {
         #region Constructors
 
-        internal TraceController(PropertiesController propertiesController)
-            : base(propertiesController)
+        internal TraceController(WorldController worldController)
+            : base(worldController)
         {
             SelectionController = new SelectionController(this);
             InitCommonControls(Editor.TableLayoutPanel);
@@ -230,7 +230,7 @@
 
         #region Private Properties
 
-        private TraceEdit Editor => WorldEdit.TraceEdit;
+        private TraceEdit Editor => TraceEdit;
         private Selection Selection => WorldController.Selection;
 
         #endregion

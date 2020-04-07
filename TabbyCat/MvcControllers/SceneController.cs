@@ -15,8 +15,8 @@
     {
         #region Constructors
 
-        internal SceneController(PropertiesController propertiesController)
-            : base(propertiesController)
+        internal SceneController(WorldController worldController)
+            : base(worldController)
         {
             InitCommonControls(Editor.TableLayoutPanel);
             InitLocalControls();
@@ -199,7 +199,7 @@
 
         #region Private Properties
 
-        private SceneEdit Editor => WorldEdit.SceneEdit;
+        private SceneEdit Editor => PropertiesEdit.SceneEdit;
 
         #endregion
 

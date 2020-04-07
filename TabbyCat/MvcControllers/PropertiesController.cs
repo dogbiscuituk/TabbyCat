@@ -14,26 +14,16 @@
 
         internal PropertiesController(WorldController worldController)
             : base(worldController, Resources.Text_Properties)
-        {
-            SceneController = new SceneController(this);
-            ShaderController = new ShaderController(this);
-            TraceController = new TraceController(this);
-            Connect(true);
-        }
+        { }
 
         #endregion
 
         #region Fields & Properties
 
-        internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
         internal ToolTip ToolTip => WorldController.ToolTip;
 
         protected override Control Editor => PropertiesEdit;
         protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
-
-        private readonly SceneController SceneController;
-        private readonly ShaderController ShaderController;
-        private readonly TraceController TraceController;
 
         #endregion
 
@@ -89,8 +79,12 @@
 
         #region Private Methods
 
-        private void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
+            SceneController.Connect(connect);
+            ShaderController.Connect(connect);
+            TraceController.Connect(connect);
             if (connect)
             {
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
@@ -109,9 +103,6 @@
                 WorldForm.PopupPropertiesHide.Click -= PopupPropertiesHide_Click;
                 WorldForm.PopupPropertiesUndock.Click -= PopupPropertiesUndock_Click;
             }
-            SceneController.Connect(connect);
-            TraceController.Connect(connect);
-            ShaderController.Connect(connect);
         }
 
         #endregion

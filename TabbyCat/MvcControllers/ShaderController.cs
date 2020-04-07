@@ -19,13 +19,13 @@
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
 
-    internal class ShaderController
+    internal class ShaderController : LocalizationController
     {
         #region Constructors
 
-        internal ShaderController(PropertiesController propertiesController)
+        internal ShaderController(WorldController worldController)
+            : base(worldController)
         {
-            PropertiesController = propertiesController;
             new GLPageController(PrimaryTextBox);
             new GLPageController(SecondaryTextBox);
             ShowRuler = false;
@@ -52,7 +52,6 @@
         #region Private Fields
 
         private FastColoredTextBox ActiveTextBox;
-        private readonly PropertiesController PropertiesController;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
         private bool Updating;
@@ -61,20 +60,15 @@
 
         #region Private Properties
 
-        private CommandProcessor CommandProcessor => WorldController.CommandProcessor;
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
-        private RenderController RenderController => WorldController.RenderController;
-        private Scene Scene => WorldController.Scene;
         private Selection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
-        private WorldController WorldController => PropertiesController.WorldController;
-        private WorldForm WorldForm => WorldController.WorldForm;
 
         private string ShaderName
         {
@@ -301,8 +295,9 @@
 
         #region Private Methods
 
-        internal void Connect(bool connect)
+        protected internal override void Connect(bool connect)
         {
+            base.Connect(connect);
             ConnectMenu(connect);
             ConnectToolbar(connect);
             ConnectTextBoxes(connect);

@@ -11,6 +11,7 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Controls;
     using TabbyCat.MvcModels;
     using TabbyCat.MvcViews;
     using TabbyCat.Properties;
@@ -30,12 +31,20 @@
             JsonController = new JsonController(this);
             PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
+            SceneController = new SceneController(this);
+            ShaderController = new ShaderController(this);
+            TraceController = new TraceController(this);
+
+            PropertiesController.Connect(true);
+
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
             WorldController = this;
         }
 
         #endregion
+
+        protected internal override WorldForm WorldForm { get; set; }
 
         protected internal override void Connect(bool connect)
         {
@@ -62,13 +71,19 @@
 
         protected internal override Scene Scene { get; set; }
 
+        protected internal override RenderController RenderController { get; set; }
+
         #region Internal Fields
 
-        internal PropertiesController PropertiesController;
-        internal readonly RenderController RenderController;
-        //internal Scene Scene;
+        protected internal override PropertiesController PropertiesController { get; set; }
+
+        protected internal override ShaderController ShaderController { get; set; }
+
+        protected internal override SceneController SceneController { get; set; }
+
+        protected internal override TraceController TraceController { get; set; }
+
         internal Selection Selection = new Selection();
-        internal WorldForm WorldForm;
 
         #endregion
 

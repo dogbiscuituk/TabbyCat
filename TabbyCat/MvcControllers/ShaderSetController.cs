@@ -11,21 +11,17 @@
     {
         #region Constructors
 
-        internal ShaderSetController(PropertiesController propertiesController)
-            : base(propertiesController.WorldController) =>
-            PropertiesController = propertiesController;
+        internal ShaderSetController(WorldController worldController)
+            : base(worldController)
+        { }
 
         #endregion
 
         #region Fields & Properties
 
         protected abstract string[] AllProperties { get; }
-        protected CommandProcessor CommandProcessor => WorldController.CommandProcessor;
-        private readonly PropertiesController PropertiesController;
-        protected Scene Scene => WorldController.Scene;
-        internal ToolTip ToolTip => PropertiesController.ToolTip;
+        internal ToolTip ToolTip => WorldController.ToolTip;
         protected bool Updating;
-        protected PropertiesEdit WorldEdit => PropertiesController.PropertiesEdit;
 
         #endregion
 
