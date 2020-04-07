@@ -62,7 +62,6 @@
     <Compile Include="TypeConverters\QuaternionConverter.cs" />
     <Compile Include="TypeConverters\Vector3Converter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeConverters\ColourFormatTypeConverter.cs" />
     <Compile Include="Types\Camera.cs" />
     <Compile Include="Types\Clock.cs" />
     <Compile Include="Types\Entity.cs" />
@@ -88,7 +87,6 @@
     <Compile Include="Utility\Maths.cs" />
     <Compile Include="Utility\PropertyNames.cs" />
     <Compile Include="Utility\Shaders.cs" />
-    <Compile Include="Types\ColourFormat.cs" />
     <Compile Include="Types\GPUStatus.cs" />
     <Compile Include="Utility\UIController.cs" />
   </ItemGroup>

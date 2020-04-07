@@ -3,9 +3,6 @@
     using OpenTK;
     using OpenTK.Graphics;
     using System;
-    using System.ComponentModel;
-    using System.Globalization;
-    using TabbyCat.Common.Utility;
 
     public class GLMode
     {
@@ -26,69 +23,17 @@
                 mode.Stereo);
         }
 
-        public GLMode(IntPtr? index, ColourFormat colourFormat, ColourFormat accumColourFormat,
+        public GLMode(IntPtr? index, ColorFormat colourFormat, ColorFormat accumColourFormat,
             int buffers, int depth, int samples, int stencil, bool stereo) =>
             Init(index, colourFormat, accumColourFormat, buffers, depth, samples, stencil, stereo);
-
-        public GLMode(GLMode mode, string field, object value) : this(mode)
-        {
-            switch (field)
-            {
-                case "GLMode_Index":
-                    Index = (IntPtr?)value;
-                    return;
-                case "GLMode_ColourFormat":
-                    ColourFormat = new ColourFormat((ColourFormat)value);
-                    return;
-                case "GLMode_AccumColourFormat":
-                    AccumColourFormat = new ColourFormat((ColourFormat)value);
-                    return;
-                case "GLMode_Buffers":
-                    Buffers = (int)value;
-                    return;
-                case "GLMode_Depth":
-                    Depth = (int)value;
-                    return;
-                case PropertyNames.Samples:
-                    Samples = (int)value;
-                    return;
-                case "GLMode_Stencil":
-                    Stencil = (int)value;
-                    return;
-                case "GLMode_Stereo":
-                    Stereo = (bool)value;
-                    return;
-            }
-            var v = (int)value;
-            if (field == null)
-                return;
-            var fields = field.Split('.');
-            var p = fields[0] == "GLMode_AccumColourFormat" ? AccumColourFormat : ColourFormat;
-            switch (fields[1])
-            {
-                case "Red": p.Red = v; break;
-                case "Green": p.Green = v; break;
-                case "Blue": p.Blue = v; break;
-                case "Alpha": p.Alpha = v; break;
-            }
-            switch (fields[0])
-            {
-                case "GLMode_AccumColourFormat":
-                    AccumColourFormat = p;
-                    break;
-                case "GLMode_ColourFormat":
-                    ColourFormat = p;
-                    break;
-            }
-        }
 
         #endregion
 
         #region Public Properties
 
         public IntPtr? Index { get; set; }
-        public ColourFormat ColourFormat { get; set; }
-        public ColourFormat AccumColourFormat { get; set; }
+        public ColorFormat ColourFormat { get; set; }
+        public ColorFormat AccumColourFormat { get; set; }
         public int Buffers { get; set; }
         public int Depth { get; set; }
         public int Samples { get; set; }
@@ -102,8 +47,8 @@
         public static implicit operator GLMode(GraphicsMode p) =>
             p == null ? null : new GLMode(
                 index: p.Index,
-                colourFormat: new ColourFormat(p.ColorFormat),
-                accumColourFormat: new ColourFormat(p.AccumulatorFormat),
+                colourFormat: p.ColorFormat,
+                accumColourFormat: p.AccumulatorFormat,
                 buffers: p.Buffers,
                 depth: p.Depth,
                 samples: p.Samples,
@@ -153,12 +98,12 @@ Stereo: {Stereo}";
         public static string AsString(ColorFormat source) =>
             $"{source.Red}, {source.Green}, {source.Blue}, {source.Alpha}";
 
-        private void Init(IntPtr? index, ColourFormat colourFormat, ColourFormat accumColourFormat,
+        private void Init(IntPtr? index, ColorFormat colourFormat, ColorFormat accumColourFormat,
             int buffers, int depth, int samples, int stencil, bool stereo)
         {
             Index = index;
-            ColourFormat = new ColourFormat(colourFormat);
-            AccumColourFormat = new ColourFormat(accumColourFormat);
+            ColourFormat = colourFormat;
+            AccumColourFormat = accumColourFormat;
             Buffers = buffers;
             Depth = depth;
             Samples = samples;

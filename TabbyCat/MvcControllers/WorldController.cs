@@ -208,7 +208,7 @@
                     RenderController.InvalidateProjection();
                     break;
                 case PropertyNames.Samples:
-                    RecreateGLControl(new GLMode(GLMode, propertyName, Scene.Samples));
+                    RecreateGLControl(new GLMode(GLMode) { Samples = Scene.Samples });
                     break;
                 case PropertyNames.Pattern:
                 case PropertyNames.StripCount:
