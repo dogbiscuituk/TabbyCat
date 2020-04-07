@@ -60,12 +60,13 @@
             }
         }
 
+        protected internal override Scene Scene { get; set; }
+
         #region Internal Fields
 
-        internal ClockController ClockController;
         internal PropertiesController PropertiesController;
         internal readonly RenderController RenderController;
-        internal Scene Scene;
+        //internal Scene Scene;
         internal Selection Selection = new Selection();
         internal WorldForm WorldForm;
 
@@ -78,6 +79,8 @@
         #endregion
 
         #region Internal Properties
+
+        protected override ClockController ClockController { get; set; }
 
         internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
@@ -476,8 +479,8 @@
 
         private void EditOptions()
         {
-            using (var optionsController = new OptionsController())
-                optionsController.ShowModal(WorldForm);
+            using (var optionsController = new OptionsController(this))
+                optionsController.ShowModal();
         }
 
         private void EndUpdate()

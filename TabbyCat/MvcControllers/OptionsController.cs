@@ -5,21 +5,22 @@
     using TabbyCat.Controls.Types;
     using TabbyCat.MvcViews;
 
-    internal class OptionsController : IDisposable
+    internal class OptionsController : LocalizationController, IDisposable
     {
         #region Internal Interface
 
-        internal OptionsController()
+        internal OptionsController(WorldController worldController)
+            :base(worldController)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
             OptionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
         }
 
-        internal DialogResult ShowModal(IWin32Window owner)
+        internal DialogResult ShowModal()
         {
             Options = AppController.Options;
-            var result = OptionsDialog.ShowDialog(owner);
+            var result = OptionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
                 AppController.Options = Options;
             return result;

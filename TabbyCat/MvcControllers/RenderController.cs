@@ -11,15 +11,12 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.MvcModels;
 
-    public class RenderController : IShaderSet
+    internal class RenderController : LocalizationController, IShaderSet
     {
         #region Constructors
 
         internal RenderController(WorldController worldController)
-        {
-            WorldController = worldController;
-            Stopwatch.Start();
-        }
+            : base(worldController) => Stopwatch.Start();
 
         #endregion
 
@@ -215,7 +212,6 @@
         private readonly System.Diagnostics.Stopwatch Stopwatch = new System.Diagnostics.Stopwatch();
         private readonly long[] Ticks = new long[64];
         private int TickCount, TickIndex;
-        private readonly WorldController WorldController;
 
         /// <summary>
         /// Program and Shader IDs.
@@ -254,11 +250,8 @@
 
         #region Private Properties
 
-        private Clock Clock => ClockController.Clock;
-        private ClockController ClockController => WorldController.ClockController;
         private GLControl GLControl => WorldController.GLControl;
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
-        private Scene Scene => WorldController.Scene;
 
         #endregion
 

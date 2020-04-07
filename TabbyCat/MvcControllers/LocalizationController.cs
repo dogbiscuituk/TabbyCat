@@ -32,7 +32,23 @@
             protected set { }
         }
 
-        protected virtual Scene Scene => WorldController.Scene;
+        protected virtual ClockController ClockController
+        {
+            get => WorldController.ClockController;
+            set { }
+        }
+
+        protected virtual Clock Clock
+        {
+            get => ClockController.Clock;
+            set { }
+        }
+
+        protected internal virtual Scene Scene
+        {
+            get => WorldController.Scene;
+            set { }
+        }
 
         protected WorldForm WorldForm => WorldController.WorldForm;
 
