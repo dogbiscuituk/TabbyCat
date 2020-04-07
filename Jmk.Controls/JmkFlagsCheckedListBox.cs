@@ -57,12 +57,14 @@
         protected override void OnItemCheck(ItemCheckEventArgs e)
         {
             base.OnItemCheck(e);
-            if (!Updating)
+            if (!Updating && e != null)
                 UpdateItems((JmkFlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
         }
 
         protected void UpdateItems(JmkFlagsCheckedListBoxItem item, CheckState state)
         {
+            if (item == null)
+                return;
             if (item.Value == 0)
                 UpdateItems(0);
             var result = 0;
