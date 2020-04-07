@@ -32,10 +32,13 @@
                     .Select(Color.FromKnownColor)
                     .Where(c => !c.IsSystemColor);
 
-        public static IEnumerable<string> GetNonSystemColourNames(string orderByColourProperties) =>
-            GetColours()
-            .OrderByColourProperties(orderByColourProperties)
-            .Select(c => c.Name);
+        public static IEnumerable<string> GetNonSystemColourNames(string orderByColourProperties)
+        {
+            var colours = GetColours();
+            if (orderByColourProperties != null)
+                colours = colours.OrderByColourProperties(orderByColourProperties);
+            return colours.Select(c => c.Name);
+        }
 
         public static bool IsBright(this Color colour) => colour.Luma() > 0.5;
         public static bool IsDark(this Color colour) => colour.Luma() <= 0.5;
@@ -71,6 +74,8 @@
 
         public static void SetOptimization(this Graphics g, Optimization optimization)
         {
+            if (g == null)
+                return;
             switch (optimization)
             {
                 case Optimization.HighSpeed:

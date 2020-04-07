@@ -25,7 +25,7 @@
         public static string AmpersandUnescape(this string s) => s?.Replace("&&", "&");
 
         public static string Indent(this string s, string indent) =>
-            string.Concat(indent, s.Replace(Environment.NewLine, $"{Environment.NewLine}{indent}"));
+            string.Concat(indent, s?.Replace(Environment.NewLine, $"{Environment.NewLine}{indent}"));
 
         /// <summary>
         /// Make a legal file name from a given string which may contain prohibited

@@ -26,6 +26,8 @@
 
         public override void WriteJson(JsonWriter writer, Quaternion value, JsonSerializer s)
         {
+            if (writer == null)
+                return;
             writer.WriteStartArray();
             writer.WriteValue(value.X);
             writer.WriteValue(value.Y);

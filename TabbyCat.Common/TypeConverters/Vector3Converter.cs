@@ -25,6 +25,8 @@
 
         public override void WriteJson(JsonWriter writer, Vector3 value, JsonSerializer s)
         {
+            if (writer == null)
+                return;
             writer.WriteStartArray();
             writer.WriteValue(value.X);
             writer.WriteValue(value.Y);

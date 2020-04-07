@@ -53,6 +53,8 @@
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
+            if (e == null)
+                return;
             var link = PointInLink(e.X, e.Y);
             if (link == ActiveLink)
                 return;

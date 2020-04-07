@@ -6,7 +6,8 @@
 
     public static class Maths
     {
-        public static Matrix4 CreateCameraView(Camera camera) => CreateCameraView(camera.Position, camera.Focus);
+        public static Matrix4 CreateCameraView(Camera camera) =>
+            camera != null ? CreateCameraView(camera.Position, camera.Focus) : Matrix4.Identity;
 
         public static Matrix4 CreateCameraView(Vector3 position, Vector3 focus) =>
             Matrix4.LookAt(position, focus, new Vector3(0, 1, 0));
@@ -15,7 +16,7 @@
 
         public static Matrix4 CreateProjection(Projection p, Size s)
         {
-            switch (p.ProjectionType)
+            switch (p?.ProjectionType)
             {
                 case ProjectionType.Orthographic:
                     return Matrix4.CreateOrthographic(p.Width, p.Height, p.Near, p.Far);

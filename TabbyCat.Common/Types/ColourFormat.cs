@@ -39,9 +39,15 @@
         /// Copy Constructor.
         /// </summary>
         /// <param name="colourFormat"></param>
-        public ColourFormat(ColourFormat colourFormat) :
-            this(colourFormat.Red, colourFormat.Green, colourFormat.Blue, colourFormat.Alpha)
-        { }
+        public ColourFormat(ColourFormat colourFormat)
+        {
+            if (colourFormat == null)
+                return;
+            Red = colourFormat.Red;
+            Green = colourFormat.Green;
+            Blue = colourFormat.Blue;
+            Alpha = colourFormat.Alpha;
+        }
 
         /// <summary>
         /// Copy & Modify Constructor.

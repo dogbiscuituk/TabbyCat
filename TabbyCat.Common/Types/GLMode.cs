@@ -4,6 +4,7 @@
     using OpenTK.Graphics;
     using System;
     using System.ComponentModel;
+    using System.Globalization;
     using TabbyCat.Common.Utility;
 
     [TypeConverter(typeof(GLModeTypeConverter))]
@@ -128,9 +129,21 @@
         {
             var t = s.Split(',');
             return new GLMode((IntPtr?)0,
-                new ColourFormat(int.Parse(t[0]), int.Parse(t[1]), int.Parse(t[2]), int.Parse(t[3])),
-                new ColourFormat(int.Parse(t[4]), int.Parse(t[5]), int.Parse(t[6]), int.Parse(t[7])),
-                int.Parse(t[8]), int.Parse(t[9]), int.Parse(t[10]), int.Parse(t[11]), bool.Parse(t[12]));
+                new ColourFormat(
+                    int.Parse(t[0], CultureInfo.CurrentCulture),
+                    int.Parse(t[1]),
+                    int.Parse(t[2]),
+                    int.Parse(t[3])),
+                new ColourFormat(
+                    int.Parse(t[4]),
+                    int.Parse(t[5]),
+                    int.Parse(t[6]),
+                    int.Parse(t[7])),
+                int.Parse(t[8]),
+                int.Parse(t[9]),
+                int.Parse(t[10]),
+                int.Parse(t[11]),
+                bool.Parse(t[12]));
         }
 
         public override string ToString() =>

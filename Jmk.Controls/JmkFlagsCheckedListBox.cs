@@ -22,7 +22,7 @@
             {
                 Items.Clear();
                 _EnumValue = value;
-                _EnumType = value.GetType();
+                _EnumType = value?.GetType();
                 Populate();
                 Apply();
             }

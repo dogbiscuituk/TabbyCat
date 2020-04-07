@@ -8,16 +8,16 @@
         #region Public Methods
 
         public static IEnumerable<float> GetCoords(this ITrace trace) =>
-            GetCoords(trace.StripCount);
+            trace != null ? GetCoords(trace.StripCount) : null;
 
         public static int GetCoordsCount(this ITrace trace) =>
-            GetCoordsCount(trace.StripCount);
+            trace != null ? GetCoordsCount(trace.StripCount) : 0;
 
         public static IEnumerable<int> GetIndices(this ITrace trace) =>
-            GetIndices(trace.Pattern, trace.StripCount);
+            trace != null ? GetIndices(trace.Pattern, trace.StripCount) : null;
 
         public static int GetIndicesCount(this ITrace trace) =>
-            GetIndicesCount(trace.Pattern, trace.StripCount);
+            trace != null ? GetIndicesCount(trace.Pattern, trace.StripCount) : 0;
 
         #endregion
 

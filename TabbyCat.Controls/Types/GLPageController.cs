@@ -4,10 +4,12 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Globalization;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Controls.Properties;
     using Languages = FastColoredTextBoxNS.Language;
 
     /// <summary>
@@ -20,7 +22,8 @@
 
         public GLPageController(FastColoredTextBox textBox)
         {
-            TextBox = textBox ?? throw new NullReferenceException($"{nameof(textBox)} cannot be null.");
+            TextBox = textBox ?? throw new NullReferenceException(
+                string.Format(CultureInfo.CurrentCulture, Resources.Text_ParameterCannotBeNull, nameof(textBox)));
             Init();
         }
 
