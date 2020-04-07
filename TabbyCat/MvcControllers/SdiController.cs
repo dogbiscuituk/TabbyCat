@@ -98,7 +98,7 @@
             return filterIndex;
         }
 
-        private void InitFolderPath(FileDialog dialog, FilterIndex filterIndex)
+        private static void InitFolderPath(FileDialog dialog, FilterIndex filterIndex)
         {
             var folderPath = string.Empty;
             if (!string.IsNullOrWhiteSpace(dialog.FileName))
@@ -175,7 +175,7 @@
             "Design",
             "CA1031:Do not catch general exception types",
             Justification = "Can't predict what exception types the client-supplied action may throw, but must swallow them all.")]
-        protected bool UseStream(Action action)
+        protected static bool UseStream(Action action)
         {
             var result = true;
             try

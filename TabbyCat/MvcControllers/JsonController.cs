@@ -25,7 +25,7 @@
 
         #region Internal Methods
 
-        internal bool ClipboardCopy(IEnumerable<Trace> traces)
+        internal static bool ClipboardCopy(IEnumerable<Trace> traces)
         {
             bool result;
             string text;
@@ -47,7 +47,7 @@
             return result;
         }
 
-        internal IEnumerable<Trace> ClipboardPaste()
+        internal static IEnumerable<Trace> ClipboardPaste()
         {
             IEnumerable<Trace> traces = null;
             if (AppController.CanPaste)

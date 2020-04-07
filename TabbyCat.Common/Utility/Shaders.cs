@@ -1,10 +1,11 @@
 ﻿namespace TabbyCat.Common.Utility
 {
     using OpenTK.Graphics.OpenGL;
+    using System.Collections.Generic;
 
     public static class Shaders
     {
-        public static ShaderType[] All = new[]
+        public static IEnumerable<ShaderType> All { get; } = new[]
         {
             ShaderType.VertexShader,
             ShaderType.TessControlShader,

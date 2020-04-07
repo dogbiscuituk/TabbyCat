@@ -25,7 +25,7 @@
         }
 
         internal bool IsModified => LastSave != UndoStack.Count;
-        internal Scene Scene => WorldController.Scene;
+
         internal List<Trace> Traces => Scene.Traces;
 
         internal void Clear()

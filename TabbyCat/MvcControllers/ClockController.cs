@@ -11,11 +11,12 @@
         internal ClockController(WorldController worldController)
             : base(worldController)
         {
-            Clock = new Clock();
             UpdateTimeControls();
         }
 
         #endregion
+
+        protected override Clock Clock { get; set; } = new Clock();
 
         #region Protected Internal Methods
 
@@ -58,7 +59,6 @@
 
         #region Internal Properties
 
-        internal Clock Clock;
         internal bool ClockRunning => Clock.Running;
         internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
 

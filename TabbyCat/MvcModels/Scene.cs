@@ -110,7 +110,7 @@
 
         #region Private Classes
 
-        private class Defaults
+        private static class Defaults
         {
             internal const string
                 GLTargetVersion = "330",
@@ -124,8 +124,8 @@
             internal const float
                 FPS = 60;
 
-            internal GPUStatus
-                GPUStatus = GPUStatus.OK;
+            internal const GPUStatus
+                GpuStatus = GPUStatus.OK;
 
             internal static Camera
                 Camera = new Camera(new Vector3(0, 0, 2), Vector3.Zero);

@@ -150,7 +150,7 @@ Stereo: {Stereo}";
 
         #region Private Methods
 
-        public string AsString(ColorFormat source) =>
+        public static string AsString(ColorFormat source) =>
             $"{source.Red}, {source.Green}, {source.Blue}, {source.Alpha}";
 
         private void Init(IntPtr? index, ColourFormat colourFormat, ColourFormat accumColourFormat,

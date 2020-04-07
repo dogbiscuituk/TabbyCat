@@ -241,9 +241,9 @@
 
         #region Private Properties
 
-        private Clock Clock => ClockController.Clock;
         private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
-        private string GLSLUrl => Settings.Default.GLSLUrl;
+
+        private static string GLSLUrl => Settings.Default.GLSLUrl;
 
         #endregion
 

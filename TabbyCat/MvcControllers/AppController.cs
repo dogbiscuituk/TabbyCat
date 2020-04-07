@@ -16,7 +16,6 @@
 
         static AppController()
         {
-            Pulse = new Timer { Interval = 200, Enabled = true };
             Pulse.Tick += Pulse_Tick;
             ApplyOptions();
             AddNewWorldController();
@@ -115,7 +114,7 @@
         private static readonly string DefaultFilesFolderPath =
             $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
 
-        private readonly static Timer Pulse;
+        private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
         private static int PulseCount;
 

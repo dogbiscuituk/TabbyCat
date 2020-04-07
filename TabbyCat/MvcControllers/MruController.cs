@@ -143,7 +143,7 @@
                 SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
         }
 
-        private void DeleteItem(Win32.RegistryKey key, string item)
+        private static void DeleteItem(Win32.RegistryKey key, string item)
         {
             var name = key.GetValueNames()
                 .Where(n => key.GetValue(n, null) as string == item)

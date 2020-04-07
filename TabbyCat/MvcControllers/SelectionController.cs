@@ -239,8 +239,8 @@
                 if (disposing)
                 {
                     Highlight?.Dispose();
-                    HighlightFont?.Dispose();
                     HighlightText?.Dispose();
+                    _HighlightFont?.Dispose();
                 }
                 disposed = true;
             }

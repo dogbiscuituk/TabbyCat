@@ -44,7 +44,7 @@
 
         protected Camera Camera => Scene.Camera;
 
-        protected Clock Clock => ClockController.Clock;
+        protected virtual Clock Clock { get => ClockController.Clock; set { } }
 
         internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
 

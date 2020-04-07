@@ -3,6 +3,7 @@
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;
+    using System.Linq;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
@@ -84,7 +85,7 @@
         #region Private Methods
 
         private void CopyFrom(IShaderSet source) => Array.ForEach(
-            Shaders.All,
+            Shaders.All.ToArray(),
             p => SetScript(p, source.GetScript(p)));
 
         #endregion

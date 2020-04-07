@@ -56,7 +56,7 @@
         private SplitType _SplitType;
         private bool Updating;
 
-        private GLPageController
+        private readonly GLPageController
             PrimaryController,
             SecondaryController;
 
@@ -561,12 +561,9 @@
                     Editor.PrimaryTextBox,
                     Editor.SecondaryTextBox
                 });
-            Editor.tbExport.Enabled = Editor.tbPrint.Enabled =
-                PrimaryTextBox.Text != string.Empty;
-            Editor.tbUndo.Enabled = Editor.miUndo.Enabled =
-                ActiveTextBox != null && ActiveTextBox.UndoEnabled;
-            Editor.tbRedo.Enabled = Editor.miRedo.Enabled =
-                ActiveTextBox != null && ActiveTextBox.RedoEnabled;
+            Editor.tbExport.Enabled = Editor.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
+            Editor.tbUndo.Enabled = Editor.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
+            Editor.tbRedo.Enabled = Editor.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
             Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
             Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
