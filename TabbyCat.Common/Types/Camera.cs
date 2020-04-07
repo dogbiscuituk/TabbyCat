@@ -17,7 +17,7 @@
 
         [JsonIgnore] public Vector3 Ufront => (Focus - Position).Normalized();
         [JsonIgnore] public Vector3 Uright => Vector3.Cross(Ufront, Uup).Normalized();
-        [JsonIgnore] public Vector3 Uup => new Vector3(0, 1, 0);
+        [JsonIgnore] public Vector3 Uup { get; set; } = new Vector3(0, 1, 0);
 
         public static bool operator ==(Camera a, Camera b) => a?.Position == b?.Position && a?.Focus == b?.Focus;
         public static bool operator !=(Camera a, Camera b) => !(a == b);
