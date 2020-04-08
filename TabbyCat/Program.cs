@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
-    using TabbyCat.MvcControllers;
+    using TabbyCat.Controllers;
 
     static class Program
     {

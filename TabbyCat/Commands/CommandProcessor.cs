@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
-    using TabbyCat.MvcControllers;
-    using TabbyCat.MvcModels;
-    using TabbyCat.MvcViews;
+    using TabbyCat.Controllers;
+    using TabbyCat.Models;
+    using TabbyCat.Views;
 
     internal class CommandProcessor : LocalizationController
     {

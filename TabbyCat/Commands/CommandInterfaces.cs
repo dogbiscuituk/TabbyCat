@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Commands
 {
-    using TabbyCat.MvcModels;
+    using TabbyCat.Models;
 
     internal interface ICollectionCommand : ICommand
     {

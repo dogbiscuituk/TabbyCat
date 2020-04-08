@@ -70,30 +70,30 @@
     <Compile Include="Commands\CommandProcessor.cs" />
     <Compile Include="Commands\SceneCommands.cs" />
     <Compile Include="Commands\TraceCommands.cs" />
-    <Compile Include="MvcControllers\AboutController.cs" />
-    <Compile Include="MvcControllers\AppController.cs" />
-    <Compile Include="MvcControllers\CameraController.cs" />
-    <Compile Include="MvcControllers\ClockController.cs" />
-    <Compile Include="MvcControllers\LocalizationController.cs" />
-    <Compile Include="MvcControllers\SelectionController.cs" />
-    <Compile Include="MvcControllers\ShaderSetController.cs" />
-    <Compile Include="MvcControllers\ColourController.cs" />
-    <Compile Include="MvcControllers\FullScreenController.cs" />
-    <Compile Include="MvcControllers\HostController.cs" />
-    <Compile Include="MvcControllers\JsonController.cs" />
-    <Compile Include="MvcControllers\MruController.cs" />
-    <Compile Include="MvcControllers\OptionsController.cs" />
-    <Compile Include="MvcControllers\PropertiesController.cs" />
-    <Compile Include="MvcControllers\RenderController.cs" />
-    <Compile Include="MvcControllers\WorldController.cs" />
-    <Compile Include="MvcControllers\SceneController.cs" />
-    <Compile Include="MvcControllers\SdiController.cs" />
-    <Compile Include="MvcControllers\ShaderController.cs" />
-    <Compile Include="MvcControllers\TraceController.cs" />
-    <Compile Include="MvcModels\Code.cs" />
-    <Compile Include="MvcModels\Scene.cs" />
-    <Compile Include="MvcModels\Trace.cs" />
-    <Compile Include="MvcModels\TraceCollection.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\CameraController.cs" />
+    <Compile Include="Controllers\ClockController.cs" />
+    <Compile Include="Controllers\LocalizationController.cs" />
+    <Compile Include="Controllers\SelectionController.cs" />
+    <Compile Include="Controllers\ShaderSetController.cs" />
+    <Compile Include="Controllers\ColourController.cs" />
+    <Compile Include="Controllers\FullScreenController.cs" />
+    <Compile Include="Controllers\HostController.cs" />
+    <Compile Include="Controllers\JsonController.cs" />
+    <Compile Include="Controllers\MruController.cs" />
+    <Compile Include="Controllers\OptionsController.cs" />
+    <Compile Include="Controllers\PropertiesController.cs" />
+    <Compile Include="Controllers\RenderController.cs" />
+    <Compile Include="Controllers\WorldController.cs" />
+    <Compile Include="Controllers\SceneController.cs" />
+    <Compile Include="Controllers\SdiController.cs" />
+    <Compile Include="Controllers\ShaderController.cs" />
+    <Compile Include="Controllers\TraceController.cs" />
+    <Compile Include="Models\Code.cs" />
+    <Compile Include="Models\Scene.cs" />
+    <Compile Include="Models\Trace.cs" />
+    <Compile Include="Models\TraceCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -101,28 +101,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="MvcViews\AboutDialog.cs">
+    <Compile Include="Views\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MvcViews\AboutDialog.designer.cs">
+    <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MvcViews\HostForm.cs">
+    <Compile Include="Views\HostForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MvcViews\HostForm.Designer.cs">
+    <Compile Include="Views\HostForm.Designer.cs">
       <DependentUpon>HostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MvcViews\OptionsDialog.cs">
+    <Compile Include="Views\OptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MvcViews\OptionsDialog.Designer.cs">
+    <Compile Include="Views\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MvcViews\WorldForm.cs">
+    <Compile Include="Views\WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MvcViews\WorldForm.Designer.cs">
+    <Compile Include="Views\WorldForm.Designer.cs">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.en-US.Designer.cs">
@@ -135,16 +135,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="MvcViews\AboutDialog.resx">
+    <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MvcViews\HostForm.resx">
+    <EmbeddedResource Include="Views\HostForm.resx">
       <DependentUpon>HostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MvcViews\OptionsDialog.resx">
+    <EmbeddedResource Include="Views\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MvcViews\WorldForm.resx">
+    <EmbeddedResource Include="Views\WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
