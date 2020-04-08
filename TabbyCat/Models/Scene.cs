@@ -39,7 +39,7 @@
         [JsonProperty]
         public List<Trace> Traces { get; set; }
 
-        private GPUStatus _GPUStatus;
+        [JsonIgnore]
         public GPUStatus GPUStatus
         {
             get => _GPUStatus;
@@ -52,7 +52,7 @@
             }
         }
 
-        private string _GPULog = string.Empty;
+        [JsonIgnore]
         public string GPULog
         {
             get => _GPULog;
@@ -143,6 +143,13 @@
             internal static List<Trace>
                 Traces => new List<Trace>();
         }
+
+        #endregion
+
+        #region Private Fields
+
+        private string _GPULog = string.Empty;
+        private GPUStatus _GPUStatus;
 
         #endregion
 
