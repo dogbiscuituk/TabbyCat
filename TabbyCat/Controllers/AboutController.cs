@@ -6,8 +6,6 @@
 
     internal class AboutController : LocalizationController
     {
-        #region Internal Interface
-
         internal AboutController(WorldController worldController)
             : base(worldController)
         {
@@ -40,12 +38,6 @@
 
         internal AboutDialog View { get; set; }
 
-        #endregion
-
-        #region Private Methods
-
         private void Init(bool showOK) => View.btnOK.Visible = showOK;
-
-        #endregion
     }
 }

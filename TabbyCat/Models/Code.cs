@@ -8,20 +8,14 @@
     using TabbyCat.Common.Utility;
 
     /// <summary>
-    /// Base class for Scene and Trace (but not Selection).
+    /// Base class for Scene and Trace (but not TraceSelection).
     /// Provides concrete string properties for shader code.
     /// </summary>
     public abstract class Code : ICode
     {
-        #region Constructors
-
         protected Code() { }
 
         protected Code(Code code) => CopyFrom(code);
-
-        #endregion
-
-        #region Public Properties
 
         [DefaultValue("")] public string Shader1Vertex { get; set; } = string.Empty;
         [DefaultValue("")] public string Shader2TessControl { get; set; } = string.Empty;
@@ -29,10 +23,6 @@
         [DefaultValue("")] public string Shader4Geometry { get; set; } = string.Empty;
         [DefaultValue("")] public string Shader5Fragment { get; set; } = string.Empty;
         [DefaultValue("")] public string Shader6Compute { get; set; } = string.Empty;
-
-        #endregion
-
-        #region Public Methods
 
         public string GetScript(ShaderType shaderType)
         {
@@ -80,14 +70,8 @@
             }
         }
 
-        #endregion
-
-        #region Private Methods
-
         private void CopyFrom(IShaderSet source) => Array.ForEach(
             Shaders.All.ToArray(),
             p => SetScript(p, source.GetScript(p)));
-
-        #endregion
     }
 }

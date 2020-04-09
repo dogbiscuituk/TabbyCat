@@ -10,7 +10,7 @@
 
     internal class CommandProcessor : LocalizationController
     {
-        #region Public/Internal Interface
+        // Constructors
 
         internal CommandProcessor(WorldController worldController)
             : base(worldController)
@@ -24,67 +24,36 @@
             WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
         }
 
-        internal bool IsModified => LastSave != UndoStack.Count;
+        // Fields
 
-        internal List<Trace> Traces => Scene.Traces;
-
-        internal void Clear()
-        {
-            LastSave = 0;
-            UndoStack.Clear();
-            RedoStack.Clear();
-            UpdateUI();
-        }
-
-        internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
-        internal void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
-        internal void InsertTrace(int index) => Run(new TraceInsertCommand(index));
-
-        /// <summary>
-        /// Run a command, pushing its memento on to the Undo stack.
-        /// </summary>
-        /// <param name="command">The command to run.</param>
-        /// <returns>True if the command actually caused a property change.</returns>
-        public bool Run(ICommand command)
-        {
-            if (command == null)
-                return false;
-            if (LastSave > UndoStack.Count)
-                LastSave = -1;
-            RedoStack.Clear();
-            return Redo(command);
-        }
-
-        public void Save()
-        {
-            LastSave = UndoStack.Count;
-            UpdateUI();
-        }
-
-        #endregion
-
-        #region Private Properties
-
-        private bool CanUndo => UndoStack.Count > 0;
-        private bool CanRedo => RedoStack.Count > 0;
+        private int LastSave, UpdateCount;
 
         private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
         private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
 
+        // Properties
+
+        internal bool IsModified => LastSave != UndoStack.Count;
+        internal List<Trace> Traces => Scene.Traces;
+
+        private bool CanUndo => UndoStack.Count > 0;
+        private bool CanRedo => RedoStack.Count > 0;
+
         private string UndoAction => UndoStack.Peek().UndoAction;
         private string RedoAction => RedoStack.Peek().RedoAction;
 
-        private int LastSave, UpdateCount;
+        // Event Handlers
 
-        #endregion
-
-        #region Private Event Handlers
+        private void EditRedo_Click(object sender, EventArgs e) => Redo();
 
         private void EditUndo_Click(object sender, EventArgs e) => Undo();
+
         private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
-        private void EditRedo_Click(object sender, EventArgs e) => Redo();
+
         private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
+
         private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
+
         private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
         private void RedoMultiple(object sender, EventArgs e)
@@ -103,9 +72,44 @@
             EndUpdate();
         }
 
-        #endregion
+        // Internal Methods
 
-        #region Private Methods
+        internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
+
+        internal void Clear()
+        {
+            LastSave = 0;
+            UndoStack.Clear();
+            RedoStack.Clear();
+            UpdateUI();
+        }
+
+        internal void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
+
+        internal void InsertTrace(int index) => Run(new TraceInsertCommand(index));
+
+        /// <summary>
+        /// Run a command, pushing its memento on to the Undo stack.
+        /// </summary>
+        /// <param name="command">The command to run.</param>
+        /// <returns>True if the command actually caused a property change.</returns>
+        internal bool Run(ICommand command)
+        {
+            if (command == null)
+                return false;
+            if (LastSave > UndoStack.Count)
+                LastSave = -1;
+            RedoStack.Clear();
+            return Redo(command);
+        }
+
+        internal void Save()
+        {
+            LastSave = UndoStack.Count;
+            UpdateUI();
+        }
+
+        // Private Methods
 
         private void BeginUpdate() { ++UpdateCount; }
 
@@ -205,7 +209,5 @@
             WorldForm.tbRedo.ToolTipText = $"{redo} (^Y)";
             WorldController.ModifiedChanged();
         }
-
-        #endregion
     }
 }
