@@ -76,14 +76,11 @@
 
         protected override bool LoadFromStream(Stream stream)
         {
+            bool result;
             using (var streamReader = new StreamReader(stream))
             using (var textReader = new JsonTextReader(streamReader))
-            {
-                // return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
-                var serializer = GetSerializer();
-                Scene = serializer.Deserialize<Scene>(textReader);
-                return true;
-            }
+                result = UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+            return result;
         }
 
         protected override void OnFileReopen(string filePath) =>
