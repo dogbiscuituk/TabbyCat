@@ -7,7 +7,7 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class TraceCollection : List<Trace>, IShaderSet
+    public class TraceSelection : IShaderSet
     {
         #region Public Properties
 
@@ -69,28 +69,23 @@
 
         #region Public Methods
 
-        private bool Updated;
-        private int UpdateCount;
-
-        public void BeginUpdate() => UpdateCount++;
-
-        public void EndUpdate()
-        {
-            if (--UpdateCount > 0 || !Updated)
-                return;
-            Updated = false;
-            OnChanged();
-        }
-
         public string GetScript(ShaderType shaderType) =>
             GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
 
         public void SetScript(ShaderType shaderType, string value) =>
             SetProperty(p => p.SetScript(shaderType, value));
 
-        public override string ToString() => Count < 1
+        public override string ToString() => IsEmpty
             ? string.Empty
-            : this.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+            : _Traces.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+
+        #endregion
+
+        #region Internal Properties
+
+        internal bool IsEmpty => !_Traces.Any();
+
+        internal IEnumerable<Trace> Traces => _Traces.OrderBy(p => p.Index);
 
         #endregion
 
@@ -102,49 +97,61 @@
 
         #region Internal Methods
 
-        internal new void Add(Trace trace)
+        internal void Add(Trace trace)
         {
-            if (Contains(trace))
+            if (_Traces.Contains(trace))
                 return;
-            base.Add(trace);
+            _Traces.Add(trace);
             OnChanged();
         }
 
-        internal new void AddRange(IEnumerable<Trace> traces)
+        internal void AddRange(IEnumerable<Trace> traces)
         {
-            traces = traces.Where(p => !Contains(p)).ToList();
-            if (!traces.Any())
+            traces = traces.Where(p => !_Traces.Contains(p)).ToList();
+            if (IsEmpty)
                 return;
-            base.AddRange(traces);
+            _Traces.AddRange(traces);
             OnChanged();
         }
 
-        internal new void Clear()
+        internal void BeginUpdate() => UpdateCount++;
+
+        internal void Clear()
         {
-            if (!this.Any())
+            if (IsEmpty)
                 return;
-            base.Clear();
+            _Traces.Clear();
+            OnChanged();
+        }
+        internal void EndUpdate()
+        {
+            if (--UpdateCount > 0 || !Updated)
+                return;
+            Updated = false;
             OnChanged();
         }
 
-        internal new void ForEach(Action<Trace> action)
+        internal void ForEach(Action<Trace> action)
         {
-            foreach (var trace in this)
+            foreach (var trace in _Traces)
                 action(trace);
         }
 
-        internal new void Remove(Trace trace)
+        internal IEnumerable<int> GetTraceIndices() =>
+            _Traces.Select(p => p.Index);
+
+        internal void Remove(Trace trace)
         {
-            if (!Contains(trace))
+            if (!_Traces.Contains(trace))
                 return;
-            base.Remove(trace);
+            _Traces.Remove(trace);
             OnChanged();
         }
 
         internal void Set(IEnumerable<Trace> traces)
         {
-            base.Clear();
-            base.AddRange(traces);
+            _Traces.Clear();
+            _Traces.AddRange(traces);
             OnChanged();
         }
 
@@ -162,24 +169,32 @@
 
         #endregion
 
+        #region Private Fields
+
+        private readonly List<Trace> _Traces = new List<Trace>();
+        private bool Updated;
+        private int UpdateCount;
+
+        #endregion
+
         #region Private Methods
 
         private bool? GetBool(Func<Trace, bool> f)
         {
-            if (!this.Any())
+            if (IsEmpty)
                 return default;
-            bool first = f(this.First());
-            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
+            bool first = f(_Traces.First());
+            return _Traces.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? (bool?)null
                 : first;
         }
 
         private T GetProperty<T>(Func<Trace, T> f) where T : IEquatable<T>
         {
-            if (!this.Any())
+            if (IsEmpty)
                 return default;
-            T first = f(this.First());
-            return this.FirstOrDefault(p => !Equals(f(p), first)) != null
+            T first = f(_Traces.First());
+            return _Traces.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? default
                 : first;
         }

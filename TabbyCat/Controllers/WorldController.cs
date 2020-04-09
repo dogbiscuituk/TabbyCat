@@ -84,7 +84,7 @@
 
         #region Internal Fields
 
-        internal TraceCollection Selection = new TraceCollection();
+        internal TraceSelection Selection = new TraceSelection();
 
         #endregion
 
@@ -498,13 +498,13 @@
             DeleteSelection();
         }
 
-        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection);
+        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection.Traces);
 
         private void DeleteSelection()
         {
-            if (!Selection.Any())
+            if (Selection.IsEmpty)
                 return;
-            var indices = Selection.Select(p => p.Index).OrderByDescending(p => p).ToList();
+            var indices = Selection.GetTraceIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
                 CommandProcessor.DeleteTrace(index);
             Selection.Clear();
@@ -569,7 +569,8 @@
 
         private void HelpAbout() => new AboutController(this).ShowDialog(WorldForm);
 
-        private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Contains(p)).ToList());
+        private void InvertSelection() =>
+            Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
 
         private void NewEmptyScene()
         {
@@ -586,7 +587,7 @@
 
         private void OnSelectionChanged()
         {
-            UIController.EnableButtons(Selection.Any(), new ToolStripItem[] {
+            UIController.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
@@ -672,7 +673,7 @@
         private void UpdateSelection()
         {
             Selection.BeginUpdate();
-            Selection
+            Selection.Traces
                 .Where(p => !Scene.Traces.Contains(p))
                 .ToList()
                 .ForEach(p => Selection.Remove(p));

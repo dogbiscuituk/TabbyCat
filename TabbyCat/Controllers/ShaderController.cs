@@ -69,7 +69,7 @@
         private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
         private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
-        private TraceCollection Selection => WorldController.Selection;
+        private TraceSelection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
@@ -554,7 +554,7 @@
         private void UpdateUI()
         {
             UIController.EnableControls(
-                PropertiesTab != PropertiesEditor.tpTraces || Selection.Any(),
+                PropertiesTab != PropertiesEditor.tpTraces || !Selection.IsEmpty,
                 new Control[]
                 {
                     Editor.Toolbar,

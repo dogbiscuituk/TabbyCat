@@ -156,7 +156,7 @@
         protected override void UpdateAllProperties()
         {
             base.UpdateAllProperties();
-            UIController.EnableControls(Selection.Any(),
+            UIController.EnableControls(!Selection.IsEmpty,
                 Editor.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]
                 {
@@ -231,7 +231,7 @@
         #region Private Properties
 
         private TraceEdit Editor => TraceEdit;
-        private TraceCollection Selection => WorldController.Selection;
+        private TraceSelection Selection => WorldController.Selection;
 
         #endregion
 
@@ -375,7 +375,7 @@
                 return;
             SelectionUpdating = true;
             SelectionController.TraceCount = Scene.Traces.Count;
-            SelectionController.Selection = Selection.Select(p => p.Index).ToList();
+            SelectionController.Selection = Selection.GetTraceIndices().ToList();
             SelectionUpdating = false;
         }
 
@@ -402,7 +402,7 @@
 
         private void Run(Func<Trace, ICommand> command)
         {
-            if (Updating || !Selection.Any())
+            if (Updating || Selection.IsEmpty)
                 return;
             Updating = true;
             Selection.ForEach(p => CommandProcessor.Run(command(p)));
