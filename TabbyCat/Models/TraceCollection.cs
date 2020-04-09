@@ -67,12 +67,6 @@
 
         #endregion
 
-        #region Public Events
-
-        public event EventHandler Changed;
-
-        #endregion
-
         #region Public Methods
 
         private bool Updated;
@@ -97,6 +91,12 @@
         public override string ToString() => Count < 1
             ? string.Empty
             : this.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+
+        #endregion
+
+        #region Internal Events
+
+        internal event EventHandler Changed;
 
         #endregion
 

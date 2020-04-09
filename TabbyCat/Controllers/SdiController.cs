@@ -174,7 +174,9 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Design",
             "CA1031:Do not catch general exception types",
-            Justification = "Can't predict what exception types the client-supplied action may throw, but must swallow them all.")]
+            Justification = @"
+Can't predict what exception types the client-supplied action may throw,
+but the sole purpose of this method is simply to swallow them all.")]
         protected static bool UseStream(Action action)
         {
             var result = true;

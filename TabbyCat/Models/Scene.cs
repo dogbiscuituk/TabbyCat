@@ -37,7 +37,7 @@
         public string Title { get; set; }
 
         [JsonProperty]
-        public List<Trace> Traces { get; set; }
+        public List<Trace> Traces { get; private set; }
 
         [JsonIgnore]
         public GPUStatus GPUStatus
@@ -132,7 +132,7 @@
                 GpuStatus = GPUStatus.OK;
 
             internal static Camera
-                Camera = new Camera(new Vector3(0, 0, 2), Vector3.Zero);
+                Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
 
             internal static Color
                 BackgroundColour = Color.White;

@@ -96,7 +96,12 @@
         {
             using (var streamReader = new StreamReader(stream))
             using (var textReader = new JsonTextReader(streamReader))
-                return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+            {
+                // return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+                var serializer = GetSerializer();
+                Scene = serializer.Deserialize<Scene>(textReader);
+                return true;
+            }
         }
 
         protected override void OnFileReopen(string filePath) =>
@@ -116,7 +121,8 @@
         private static JsonSerializer GetSerializer() => new JsonSerializer
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
-            Formatting = Formatting.Indented
+            Formatting = Formatting.Indented,
+            MissingMemberHandling = MissingMemberHandling.Error,
         };
 
         #endregion
