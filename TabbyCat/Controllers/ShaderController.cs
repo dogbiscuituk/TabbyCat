@@ -21,8 +21,6 @@
 
     internal class ShaderController : LocalizationController, IDisposable
     {
-        #region Constructors
-
         internal ShaderController(WorldController worldController)
             : base(worldController)
         {
@@ -41,16 +39,6 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
-        #endregion
-
-        #region Internal Properties
-
-        internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
-
-        #endregion
-
-        #region Private Fields
-
         private FastColoredTextBox ActiveTextBox;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
@@ -60,9 +48,7 @@
             PrimaryController,
             SecondaryController;
 
-        #endregion
-
-        #region Private Properties
+        internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
 
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
@@ -183,9 +169,29 @@
             }
         }
 
-        #endregion
-
-        #region Private Event Handlers
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            ConnectMenu(connect);
+            ConnectToolbar(connect);
+            ConnectTextBoxes(connect);
+            ConnectHelp(connect);
+            if (connect)
+            {
+                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldController.Pulse += WorldController_Pulse;
+                WorldController.SelectionChanged += WorldController_SelectionChanged;
+                LoadBuiltInHelp();
+            }
+            else
+            {
+                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldController.Pulse -= WorldController_Pulse;
+                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+            }
+        }
 
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) =>
             WorldForm.ToolTip.SetToolTip(Editor.lblBuiltInHelp, Editor.lblBuiltInHelp.ActiveLink?.Description);
@@ -294,34 +300,6 @@
 
         private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             OnSelectionChanged();
-
-        #endregion
-
-        #region Private Methods
-
-        protected internal override void Connect(bool connect)
-        {
-            base.Connect(connect);
-            ConnectMenu(connect);
-            ConnectToolbar(connect);
-            ConnectTextBoxes(connect);
-            ConnectHelp(connect);
-            if (connect)
-            {
-                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.Pulse += WorldController_Pulse;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
-                LoadBuiltInHelp();
-            }
-            else
-            {
-                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.Pulse -= WorldController_Pulse;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
-            }
-        }
 
         private void ConnectHelp(bool connect)
         {
@@ -569,9 +547,9 @@
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
         }
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -581,18 +559,16 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     PrimaryController?.Dispose();
                     SecondaryController?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

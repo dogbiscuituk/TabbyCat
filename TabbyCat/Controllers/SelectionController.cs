@@ -10,28 +10,19 @@
 
     internal class SelectionController : LocalizationController, IDisposable
     {
-        #region Constructor
-
         internal SelectionController(WorldController worldController)
             : base(worldController)
         { }
 
-        #endregion
+        private int LastIndex = -1;
 
-        protected internal override void Connect(bool connect)
-        {
-            base.Connect(connect);
-            if (connect)
-            {
-                Init();
-            }
-            else
-            {
+        private List<int> _Selection = new List<int>();
 
-            }
-        }
+        private readonly Brush
+            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush(),
+            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
 
-        #region Internal Fields
+        private Font _HighlightFont;
 
         internal List<int> Selection
         {
@@ -45,9 +36,7 @@
             }
         }
 
-        #endregion
-
-        #region Internal Properties
+        internal ToolStripItemCollection Labels => Toolbar.Items;
 
         internal int TraceCount
         {
@@ -61,94 +50,27 @@
             }
         }
 
-        internal ToolStripItemCollection Labels => Toolbar.Items;
+        private bool AllSelected => Selection.Count == TraceCount;
 
-        #endregion
-
-        #region Internal Events
-
-        internal event EventHandler SelectionChanged;
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly Brush
-            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush(),
-            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
-
-        private Font _HighlightFont;
         private Font HighlightFont => _HighlightFont ??
             (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
 
-        private int LastIndex = -1;
-        private List<int> _Selection = new List<int>();
-
-        #endregion
-
-        #region Private Properties
-
-        private bool AllSelected => Selection.Count == TraceCount;
-
         private ToolStrip Toolbar => TraceController.SelectionToolbar;
 
-        #endregion
+        internal event EventHandler SelectionChanged;
 
-        #region Private Event Handlers
-
-        private void LabelAll_MouseDown(object sender, MouseEventArgs e)
+        protected internal override void Connect(bool connect)
         {
-            if (AllSelected)
-                ClearSelection();
-            else
-                SelectAll();
-            OnSelectionChanged();
-        }
-
-        private void LabelAll_Paint(object sender, PaintEventArgs e)
-        {
-            if (TraceCount > 0 && AllSelected)
-                Paint_Highlight(sender, e);
-        }
-
-        private void Label_MouseDown(object sender, MouseEventArgs e)
-        {
-            var traceIndex = Labels.IndexOf(sender as ToolStripItem) - 1;
-            bool
-                shift = (Control.ModifierKeys & Keys.Shift) != 0,
-                ctrl = (Control.ModifierKeys & Keys.Control) != 0;
-            if (!ctrl)
-                ClearSelection();
-            if (shift && LastIndex >= 0)
-                IncludeRange(LastIndex, traceIndex);
+            base.Connect(connect);
+            if (connect)
+            {
+                Init();
+            }
             else
             {
-                if (ctrl)
-                    Toggle(traceIndex);
-                else
-                    Include(traceIndex);
-                LastIndex = traceIndex;
+
             }
-            OnSelectionChanged();
         }
-
-        private void Label_Paint(object sender, PaintEventArgs e)
-        {
-            if (_Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
-                Paint_Highlight(sender, e);
-        }
-
-        private void Paint_Highlight(object sender, PaintEventArgs e)
-        {
-            var item = (ToolStripItem)sender;
-            var g = e.Graphics;
-            g.FillRectangle(Highlight, 1, 1, item.Width - 2, item.Height - 1);
-            g.DrawString(item.Text, HighlightFont, HighlightText, 1, 0);
-        }
-
-        #endregion
-
-        #region Private Methods
 
         private void AddLabel()
         {
@@ -193,10 +115,60 @@
             label.Paint += LabelAll_Paint;
         }
 
+        private void LabelAll_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (AllSelected)
+                ClearSelection();
+            else
+                SelectAll();
+            OnSelectionChanged();
+        }
+
+        private void LabelAll_Paint(object sender, PaintEventArgs e)
+        {
+            if (TraceCount > 0 && AllSelected)
+                Paint_Highlight(sender, e);
+        }
+
+        private void Label_MouseDown(object sender, MouseEventArgs e)
+        {
+            var traceIndex = Labels.IndexOf(sender as ToolStripItem) - 1;
+            bool
+                shift = (Control.ModifierKeys & Keys.Shift) != 0,
+                ctrl = (Control.ModifierKeys & Keys.Control) != 0;
+            if (!ctrl)
+                ClearSelection();
+            if (shift && LastIndex >= 0)
+                IncludeRange(LastIndex, traceIndex);
+            else
+            {
+                if (ctrl)
+                    Toggle(traceIndex);
+                else
+                    Include(traceIndex);
+                LastIndex = traceIndex;
+            }
+            OnSelectionChanged();
+        }
+
+        private void Label_Paint(object sender, PaintEventArgs e)
+        {
+            if (_Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
+                Paint_Highlight(sender, e);
+        }
+
         private void OnSelectionChanged()
         {
             Toolbar.Invalidate();
             SelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Paint_Highlight(object sender, PaintEventArgs e)
+        {
+            var item = (ToolStripItem)sender;
+            var g = e.Graphics;
+            g.FillRectangle(Highlight, 1, 1, item.Width - 2, item.Height - 1);
+            g.DrawString(item.Text, HighlightFont, HighlightText, 1, 0);
         }
 
         private void RemoveLabel()
@@ -222,9 +194,9 @@
             ? string.Empty
             : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -234,7 +206,7 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
@@ -242,11 +214,9 @@
                     HighlightText?.Dispose();
                     _HighlightFont?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

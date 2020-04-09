@@ -6,14 +6,11 @@
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using TabbyCat.Controls.Types;
-    using TabbyCat.Models;
     using TabbyCat.Views;
     using TabbyCat.Properties;
 
     internal static class AppController
     {
-        #region Static Constructor
-
         static AppController()
         {
             Pulse.Tick += Pulse_Tick;
@@ -21,9 +18,20 @@
             AddNewWorldController();
         }
 
-        #endregion
+        internal static bool CanPaste;
 
-        #region Internal Properties
+        internal static string DataFormat = "TabbyCatDataFormat";
+
+        internal static List<WorldController> WorldControllers = new List<WorldController>();
+
+        private static AboutDialog _AboutDialog;
+
+        private static readonly string DefaultFilesFolderPath =
+            $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
+
+        private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
+
+        private static int PulseCount;
 
         internal static AboutDialog AboutDialog
         {
@@ -34,10 +42,6 @@
                 return _AboutDialog;
             }
         }
-
-        internal static bool CanPaste;
-
-        internal static string DataFormat = "TabbyCatDataFormat";
 
         internal static Options Options
         {
@@ -68,11 +72,7 @@
             }
         }
 
-        internal static List<WorldController> WorldControllers = new List<WorldController>();
-
-        #endregion
-
-        #region Internal Methods
+        private static Settings Settings => Settings.Default;
 
         internal static WorldController AddNewWorldController()
         {
@@ -105,24 +105,14 @@
                 Close();
         }
 
-        #endregion
-
-        #region Private Properties
-
-        private static AboutDialog _AboutDialog;
-
-        private static readonly string DefaultFilesFolderPath =
-            $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
-
-        private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
-
-        private static int PulseCount;
-
-        private static Settings Settings => Settings.Default;
-
-        #endregion
-
-        #region Private Event Handlers
+        private static void ApplyOptions()
+        {
+            if (!Directory.Exists(Options.FilesFolderPath))
+                Directory.CreateDirectory(Options.FilesFolderPath);
+            if (!Directory.Exists(Options.TemplatesFolderPath))
+                Directory.CreateDirectory(Options.TemplatesFolderPath);
+            GLPageController.ApplyStyles(Options.SyntaxHighlightStyles);
+        }
 
         private static void Pulse_Tick(object sender, EventArgs e)
         {
@@ -134,20 +124,5 @@
             else
                 AboutDialog.Hide();
         }
-
-        #endregion
-
-        #region Private Methods
-
-        private static void ApplyOptions()
-        {
-            if (!Directory.Exists(Options.FilesFolderPath))
-                Directory.CreateDirectory(Options.FilesFolderPath);
-            if (!Directory.Exists(Options.TemplatesFolderPath))
-                Directory.CreateDirectory(Options.TemplatesFolderPath);
-            GLPageController.ApplyStyles(Options.SyntaxHighlightStyles);
-        }
-
-        #endregion
     }
 }

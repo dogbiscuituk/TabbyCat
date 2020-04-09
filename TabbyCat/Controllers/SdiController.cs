@@ -18,8 +18,6 @@
     /// </summary>
     internal abstract class SdiController : MruController, IDisposable
     {
-        #region Constructors
-
         protected SdiController(WorldController worldController, string filter, string subKeyName)
             : base(worldController, subKeyName)
         {
@@ -27,9 +25,41 @@
             SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
         }
 
-        #endregion
+        internal class FilePathEventArgs : EventArgs
+        {
+            internal FilePathEventArgs(string filePath) { FilePath = filePath; }
+            internal string FilePath { get; set; }
+        }
 
-        #region Internal Interface
+        internal event EventHandler<CancelEventArgs>
+            FileLoading,
+            FileSaving;
+
+        internal event EventHandler
+            FileLoaded,
+            FilePathChanged,
+            FileSaved;
+
+        internal event EventHandler<FilePathEventArgs> FilePathRequest;
+
+        private string _filePath = string.Empty;
+
+        private readonly OpenFileDialog OpenFileDialog;
+
+        private readonly SaveFileDialog SaveFileDialog;
+
+        protected internal string FilePath
+        {
+            get => _filePath;
+            set
+            {
+                if (FilePath != value)
+                {
+                    _filePath = value;
+                    OnFilePathChanged();
+                }
+            }
+        }
 
         internal void Clear()
         {
@@ -126,57 +156,14 @@
             return true;
         }
 
-        internal event EventHandler<CancelEventArgs> FileLoading, FileSaving;
-        internal event EventHandler FileLoaded, FilePathChanged, FileSaved;
-        internal event EventHandler<FilePathEventArgs> FilePathRequest;
-
-        internal class FilePathEventArgs : EventArgs
-        {
-            internal FilePathEventArgs(string filePath) { FilePath = filePath; }
-            internal string FilePath { get; set; }
-        }
-
-        #endregion
-
-        #region Protected Properties
-
-        protected internal string FilePath
-        {
-            get => _filePath;
-            set
-            {
-                if (FilePath != value)
-                {
-                    _filePath = value;
-                    OnFilePathChanged();
-                }
-            }
-        }
-
-        #endregion
-
-        #region Private Properties
-
-        private string _filePath = string.Empty;
-        private readonly OpenFileDialog OpenFileDialog;
-        private readonly SaveFileDialog SaveFileDialog;
-
-        #endregion
-
-        #region Protected Methods
-
         protected abstract void ClearDocument();
 
         protected abstract bool LoadFromStream(Stream stream);
 
         protected abstract bool SaveToStream(Stream stream);
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Design",
-            "CA1031:Do not catch general exception types",
-            Justification = @"
-Can't predict what exception types the client-supplied action may throw,
-but the sole purpose of this method is simply to swallow them all.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types",
+            Justification = "Can't predict what exception types the client-supplied action may throw, but the sole purpose of this method is simply to swallow them all.")]
         protected static bool UseStream(Action action)
         {
             var result = true;
@@ -228,10 +215,6 @@ but the sole purpose of this method is simply to swallow them all.")]
             return result;
         }
 
-        #endregion
-
-        #region Private Methods
-
         internal bool LoadFromFile(string filePath)
         {
             var result = false;
@@ -273,9 +256,9 @@ but the sole purpose of this method is simply to swallow them all.")]
             return result;
         }
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -285,18 +268,16 @@ but the sole purpose of this method is simply to swallow them all.")]
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     OpenFileDialog?.Dispose();
                     SaveFileDialog?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

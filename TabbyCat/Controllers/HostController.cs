@@ -7,33 +7,16 @@
 
     internal abstract class HostController : LocalizationController
     {
-        #region Constructor
-
         protected HostController(WorldController worldController, string caption)
             : base(worldController) => _Caption = caption;
 
-        #endregion
+        private readonly string _Caption;
 
-        #region Protected Internal Properties
+        private bool
+            _EditorDocked = true,
+            _EditorVisible = true;
 
-        protected internal bool EditorVisible
-        {
-            get => _EditorVisible;
-            set
-            {
-                if (EditorVisible == value)
-                    return;
-                _EditorVisible = value;
-                UpdateConfiguration();
-                Refresh();
-            }
-        }
-
-        protected internal abstract void Refresh();
-
-        #endregion
-
-        #region Protected Properties
+        private HostForm _HostForm;
 
         protected abstract Control Editor { get; }
 
@@ -50,39 +33,19 @@
             }
         }
 
+        protected internal bool EditorVisible
+        {
+            get => _EditorVisible;
+            set
+            {
+                if (EditorVisible == value)
+                    return;
+                _EditorVisible = value;
+                UpdateConfiguration();
+            }
+        }
+
         protected abstract Control EditorParent { get; }
-
-        #endregion
-
-        #region Protected Event Handlers
-
-        protected void PopupEditorFloat_Click(object sender, EventArgs e) =>
-            EditorDocked = !EditorDocked;
-
-        protected void PopupEditorHide_Click(object sender, EventArgs e) =>
-            EditorVisible = false;
-
-        protected void ToggleEditor(object sender, EventArgs e) =>
-            EditorVisible = !EditorVisible;
-
-        #endregion
-
-        #region Protected Methods
-
-        protected abstract void Collapse(bool collapse);
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly string _Caption;
-        private bool _EditorDocked = true;
-        private bool _EditorVisible = true;
-        private HostForm _HostForm;
-
-        #endregion
-
-        #region Private Properties
 
         private bool FormVisible
         {
@@ -106,9 +69,16 @@
 
         private HostForm HostForm => _HostForm ?? (_HostForm = CreateHostForm());
 
-        #endregion
+        protected void PopupEditorFloat_Click(object sender, EventArgs e) =>
+            EditorDocked = !EditorDocked;
 
-        #region Private Event Handlers
+        protected void PopupEditorHide_Click(object sender, EventArgs e) =>
+            EditorVisible = false;
+
+        protected void ToggleEditor(object sender, EventArgs e) =>
+            EditorVisible = !EditorVisible;
+
+        protected abstract void Collapse(bool collapse);
 
         private void HostForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -128,10 +98,6 @@
             }
         }
 
-        #endregion
-
-        #region Private Methods
-
         private HostForm CreateHostForm()
         {
             var hostForm = new HostForm
@@ -149,7 +115,5 @@
             Collapse(!(EditorDocked && EditorVisible));
             FormVisible = EditorVisible && !EditorDocked;
         }
-
-        #endregion
     }
 }

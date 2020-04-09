@@ -7,57 +7,89 @@
 
     internal class DescriptionCommand : TracePropertyCommand<string>
     {
-        internal DescriptionCommand(int index, string value) : base(index, PropertyNames.Description,
-            value, t => t.Description, (t, v) => t.Description = v)
+        internal DescriptionCommand(int index, string value) : base(
+            index,
+            PropertyNames.Description,
+            value,
+            t => t.Description,
+            (t, v) => t.Description = v)
         { }
     }
 
     internal class LocationCommand : TracePropertyCommand<Vector3>
     {
-        internal LocationCommand(int index, Vector3 value) : base(index, PropertyNames.Location,
-            value, e => e.Location, (e, v) => e.Location = v)
+        internal LocationCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.Location,
+            value,
+            e => e.Location,
+            (e, v) => e.Location = v)
         { }
     }
 
     internal class MaximumCommand : TracePropertyCommand<Vector3>
     {
-        internal MaximumCommand(int index, Vector3 value) : base(index, PropertyNames.Maximum,
-            value, t => t.Maximum, (t, v) => t.Maximum = v)
+        internal MaximumCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.Maximum,
+            value,
+            t => t.Maximum,
+            (t, v) => t.Maximum = v)
         { }
     }
 
     internal class MinimumCommand : TracePropertyCommand<Vector3>
     {
-        internal MinimumCommand(int index, Vector3 value) : base(index, PropertyNames.Minimum,
-            value, t => t.Minimum, (t, v) => t.Minimum = v)
+        internal MinimumCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.Minimum,
+            value,
+            t => t.Minimum,
+            (t, v) => t.Minimum = v)
         { }
     }
 
     internal class OrientationCommand : TracePropertyCommand<Vector3>
     {
-        internal OrientationCommand(int index, Vector3 value) : base(index, PropertyNames.Orientation,
-            value, e => e.Orientation, (e, v) => e.Orientation = v)
+        internal OrientationCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.Orientation,
+            value,
+            e => e.Orientation,
+            (e, v) => e.Orientation = v)
         { }
     }
 
     internal class PatternCommand : TracePropertyCommand<Pattern>
     {
-        internal PatternCommand(int index, Pattern value) : base(index, PropertyNames.Pattern,
-            value, t => t.Pattern, (t, v) => t.Pattern = v)
+        internal PatternCommand(int index, Pattern value) : base(
+            index,
+            PropertyNames.Pattern,
+            value,
+            t => t.Pattern,
+            (t, v) => t.Pattern = v)
         { }
     }
 
     internal class ScaleCommand : TracePropertyCommand<Vector3>
     {
-        internal ScaleCommand(int index, Vector3 value) : base(index, PropertyNames.Scale,
-            value, e => e.Scale, (e, v) => e.Scale = v)
+        internal ScaleCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.Scale,
+            value,
+            e => e.Scale,
+            (e, v) => e.Scale = v)
         { }
     }
 
     internal class StripCountCommand : TracePropertyCommand<Vector3>
     {
-        internal StripCountCommand(int index, Vector3 value) : base(index, PropertyNames.StripCount,
-            value, t => t.StripCount, (t, v) => t.StripCount = v)
+        internal StripCountCommand(int index, Vector3 value) : base(
+            index,
+            PropertyNames.StripCount,
+            value,
+            t => t.StripCount,
+            (t, v) => t.StripCount = v)
         { }
     }
 
@@ -74,8 +106,12 @@
 
     internal class VisibleCommand : TracePropertyCommand<bool>
     {
-        internal VisibleCommand(int index, bool value) : base(index, PropertyNames.Visible,
-            value, t => t.Visible, (t, v) => t.Visible = v)
+        internal VisibleCommand(int index, bool value) : base(
+            index,
+            PropertyNames.Visible,
+            value,
+            t => t.Visible,
+            (t, v) => t.Visible = v)
         { }
     }
 }

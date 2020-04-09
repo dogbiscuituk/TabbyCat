@@ -14,8 +14,6 @@
 
     internal class TraceController : ShaderSetController, IDisposable
     {
-        #region Constructors
-
         internal TraceController(WorldController worldController)
             : base(worldController)
         {
@@ -24,15 +22,11 @@
             InitLocalControls();
         }
 
-        #endregion
+        private readonly SelectionController SelectionController;
 
-        #region Internal Properties
+        private bool SelectionUpdating;
 
         internal ToolStrip SelectionToolbar => Editor.SelectionToolbar;
-
-        #endregion
-
-        #region Protected Properties
 
         protected override string[] AllProperties => new[]
         {
@@ -47,9 +41,9 @@
             PropertyNames.Visible
         };
 
-        #endregion
+        private TraceEdit Editor => TraceEdit;
 
-        #region Protected Internal Methods
+        private TraceSelection Selection => WorldController.Selection;
 
         protected internal override void Connect(bool connect)
         {
@@ -106,10 +100,6 @@
                 SelectionController.SelectionChanged -= Selection_Changed;
             }
         }
-
-        #endregion
-
-        #region Protected Methods
 
         protected override void Localize()
         {
@@ -218,24 +208,6 @@
                 }
             Updating = false;
         }
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly SelectionController SelectionController;
-        private bool SelectionUpdating;
-
-        #endregion
-
-        #region Private Properties
-
-        private TraceEdit Editor => TraceEdit;
-        private TraceSelection Selection => WorldController.Selection;
-
-        #endregion
-
-        #region Private Event Handlers
 
         private void Description_TextChanged(object sender, System.EventArgs e) =>
             Run(p => new DescriptionCommand(p.Index, Editor.edDescription.Text));
@@ -356,10 +328,6 @@
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, Editor.cbVisible.Checked));
 
-        #endregion
-
-        #region Private Methods
-
         private void CopySelectionFromControl()
         {
             if (SelectionUpdating)
@@ -409,9 +377,9 @@
             Updating = false;
         }
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -421,17 +389,15 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     SelectionController?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

@@ -10,8 +10,6 @@
 
     internal class ColourController
     {
-        #region Internal Interface
-
         internal ColourController() { }
 
         internal readonly List<ComboBox> Controls = new List<ComboBox>();
@@ -55,10 +53,6 @@
             comboBox.Invalidate();
         }
 
-        #endregion
-
-        #region Private Implementation
-
         private static readonly string[] NonSystemColourNames =
             Colours.GetNonSystemColourNames(Properties.Settings.Default.KnownColorSortOrder).ToArray();
 
@@ -98,7 +92,5 @@
                     }
             }
         }
-
-        #endregion
     }
 }

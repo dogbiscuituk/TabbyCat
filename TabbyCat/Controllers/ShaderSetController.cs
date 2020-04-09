@@ -3,29 +3,18 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
-    using TabbyCat.Controls;
-    using TabbyCat.Models;
 
     internal abstract class ShaderSetController : LocalizationController
     {
-        #region Constructors
-
         internal ShaderSetController(WorldController worldController)
             : base(worldController)
         { }
 
-        #endregion
-
-        #region Fields & Properties
-
-        protected abstract string[] AllProperties { get; }
-        internal ToolTip ToolTip => WorldController.ToolTip;
         protected bool Updating;
 
-        #endregion
+        protected abstract string[] AllProperties { get; }
 
-        #region Protected Internal Methods
+        internal ToolTip ToolTip => WorldController.ToolTip;
 
         protected internal override void Connect(bool connect)
         {
@@ -42,10 +31,6 @@
                 WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
         }
-
-        #endregion
-
-        #region Protected Methods
 
         protected void InitCommonControls(Control control)
         {
@@ -68,16 +53,10 @@
 
         protected abstract void UpdateProperties(params string[] propertyNames);
 
-        #endregion
-
-        #region Private Event Handlers
-
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
         private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
             OnSelectionChanged();
-
-        #endregion
     }
 }

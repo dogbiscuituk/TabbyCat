@@ -15,14 +15,86 @@
 
     internal class RenderController : LocalizationController, IShaderSet
     {
-        #region Constructors
-
         internal RenderController(WorldController worldController)
             : base(worldController) => Stopwatch.Start();
 
-        #endregion
+        internal float FramesPerSecond;
 
-        #region Public Methods
+        internal static GLInfo _GLInfo;
+
+        internal static GraphicsMode _GraphicsMode;
+
+        private bool
+            CameraViewValid,
+            ProgramCompiled,
+            ProjectionValid;
+
+        private int
+            CurrencyCount,
+            TickCount,
+            TickIndex;
+
+        private int
+            ProgramID,
+            VertexShaderID,
+            TessControlShaderID,
+            TessEvaluationShaderID,
+            GeometryShaderID,
+            FragmentShaderID,
+            ComputeShaderID;
+
+        private int
+            Loc_CameraView,
+            Loc_Projection,
+            Loc_TimeValue,
+            Loc_TraceNumber,
+            Loc_Transform;
+
+        private readonly long[] Ticks = new long[64];
+
+        private static readonly object GLInfoSyncRoot = new object();
+
+        private static readonly object GLModeSyncRoot = new object();
+
+        private StringBuilder GpuLog;
+
+        private readonly System.Diagnostics.Stopwatch Stopwatch = new System.Diagnostics.Stopwatch();
+
+        internal GLInfo GLInfo
+        {
+            get
+            {
+                if (_GLInfo == null && MakeCurrent(true))
+                {
+                    var info = new GLInfo();
+                    MakeCurrent(false);
+                    lock (GLInfoSyncRoot)
+                        _GLInfo = info;
+                }
+                return _GLInfo;
+            }
+        }
+
+        internal GraphicsMode GraphicsMode
+        {
+            get
+            {
+                if (_GraphicsMode == null && MakeCurrent(true))
+                {
+                    var mode = GLControl.GraphicsMode;
+                    MakeCurrent(false);
+                    lock (GLModeSyncRoot)
+                        _GraphicsMode = mode;
+                }
+                return _GraphicsMode;
+            }
+        }
+
+        internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
+
+        private GLControl GLControl => WorldController.GLControl;
+
+        private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
         public string GetScript(ShaderType shaderType)
         {
@@ -53,50 +125,6 @@
 
         public void SetScript(ShaderType shaderType, string value) =>
             throw new System.NotImplementedException();
-
-        #endregion
-
-        #region Internal Properties
-
-        internal float FramesPerSecond;
-
-        internal static GLInfo _GLInfo;
-        internal GLInfo GLInfo
-        {
-            get
-            {
-                if (_GLInfo == null && MakeCurrent(true))
-                {
-                    var info = new GLInfo();
-                    MakeCurrent(false);
-                    lock (GLInfoSyncRoot)
-                        _GLInfo = info;
-                }
-                return _GLInfo;
-            }
-        }
-
-        internal static GraphicsMode _GraphicsMode;
-        internal GraphicsMode GraphicsMode
-        {
-            get
-            {
-                if (_GraphicsMode == null && MakeCurrent(true))
-                {
-                    var mode = GLControl.GraphicsMode;
-                    MakeCurrent(false);
-                    lock (GLModeSyncRoot)
-                        _GraphicsMode = mode;
-                }
-                return _GraphicsMode;
-            }
-        }
-
-        internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
-
-        #endregion
-
-        #region Internal Methods
 
         internal GLInfo GetGLInfo()
         {
@@ -214,62 +242,6 @@
             return result;
         }
 
-        #endregion
-
-        #region Private Fields
-
-        private static readonly object GLInfoSyncRoot = new object();
-        private static readonly object GLModeSyncRoot = new object();
-        private readonly System.Diagnostics.Stopwatch Stopwatch = new System.Diagnostics.Stopwatch();
-        private readonly long[] Ticks = new long[64];
-        private int TickCount, TickIndex;
-
-        /// <summary>
-        /// Program and Shader IDs.
-        /// </summary>
-        private int
-            ProgramID,
-            VertexShaderID,
-            TessControlShaderID,
-            TessEvaluationShaderID,
-            GeometryShaderID,
-            FragmentShaderID,
-            ComputeShaderID;
-
-        /// <summary>
-        /// Uniform locations.
-        /// </summary>
-        private int
-            Loc_CameraView,
-            Loc_Projection,
-            Loc_TimeValue,
-            Loc_TraceNumber,
-            Loc_Transform;
-
-        private int
-            CurrencyCount;
-
-        private bool
-            CameraViewValid,
-            ProgramCompiled,
-            ProjectionValid;
-
-        private StringBuilder
-            GpuLog;
-
-        #endregion
-
-        #region Private Properties
-
-        private GLControl GLControl => WorldController.GLControl;
-        private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
-
-        #endregion
-
-        #region Private Methods
-
-        #region Create / Delete Shaders
-
         private void BindAttribute(int attributeIndex, string variableName) =>
             GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
@@ -320,6 +292,33 @@
             DeleteShader(ref FragmentShaderID);
             DeleteShader(ref ComputeShaderID);
         }
+
+        private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
+
+        private void GetUniformLocations()
+        {
+            Loc_CameraView = GetUniformLocation("cameraView");
+            Loc_Projection = GetUniformLocation("projection");
+            Loc_TimeValue = GetUniformLocation("timeValue");
+            Loc_TraceNumber = GetUniformLocation("traceNumber");
+            Loc_Transform = GetUniformLocation("transform");
+        }
+
+        private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
+
+        private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
+
+        private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
+
+        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
+
+        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
+
+        private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);
+
+        private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
+
+        private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
 
         private void Log(string s)
         {
@@ -401,34 +400,5 @@
                 MakeCurrent(false);
             }
         }
-
-        #endregion
-
-        #region Uniforms
-
-        private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
-
-        private void GetUniformLocations()
-        {
-            Loc_CameraView = GetUniformLocation("cameraView");
-            Loc_Projection = GetUniformLocation("projection");
-            Loc_TimeValue = GetUniformLocation("timeValue");
-            Loc_TraceNumber = GetUniformLocation("traceNumber");
-            Loc_Transform = GetUniformLocation("transform");
-        }
-
-        private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
-        private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
-        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
-
-        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
-        private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);
-        private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
-        private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
-        private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
-
-        #endregion
-
-        #endregion
     }
 }

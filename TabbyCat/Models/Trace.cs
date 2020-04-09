@@ -10,20 +10,34 @@
 
     public class Trace : Code, ITrace
     {
-        #region Constructors
-
-        public Trace() => Init();
+        public Trace()
+        {
+            Description = string.Empty;
+            Index = -1;
+            Location = Vector3.Zero;
+            Maximum = Vector3.Zero;
+            Minimum = Vector3.Zero;
+            Orientation = Vector3.Zero;
+            Pattern = Pattern.Fill;
+            Scale = Vector3.One;
+            Shader1Vertex = Resources.Trace_Shader1Vertex;
+            Shader2TessControl = Resources.Trace_Shader2TessControl;
+            Shader3TessEvaluation = Resources.Trace_Shader3TessEvaluation;
+            Shader4Geometry = Resources.Trace_Shader4Geometry;
+            Shader5Fragment = Resources.Trace_Shader5Fragment;
+            Shader6Compute = Resources.Trace_Shader6Compute;
+            StripCount = new Vector3(100, 100, 0);
+            Visible = true;
+        }
 
         internal Trace(Scene scene) : this() => Scene = scene;
 
         internal Trace(Trace trace) : base(trace) => CopyFrom(trace);
 
-        #endregion
-
-        #region Public Properties
+        private int _Index;
 
         [DefaultValue("")]
-        public string Description { get; set; } = "";
+        public string Description { get; set; }
 
         public Pattern Pattern { get; set; }
 
@@ -37,22 +51,6 @@
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Scale { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 StripCount { get; set; }
 
-        #endregion
-
-        #region Public Methods
-
-        public override string ToString() =>
-            !string.IsNullOrWhiteSpace(Description)
-            ? Description
-            : Index >= 0
-            ? $"Trace #{Index + 1}"
-            : "New trace";
-
-        #endregion
-
-        #region Internal Properties
-
-        private int _Index;
         internal int Index
         {
             get => Scene?.Traces.IndexOf(this) ?? _Index;
@@ -63,9 +61,12 @@
 
         internal Vao Vao;
 
-        #endregion
-
-        #region Internal Methods
+        public override string ToString() =>
+            !string.IsNullOrWhiteSpace(Description)
+            ? Description
+            : Index >= 0
+            ? $"Trace #{Index + 1}"
+            : "New trace";
 
         internal Matrix4 GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
 
@@ -82,34 +83,6 @@
             SetScale(transform.ExtractScale());
         }*/
 
-        #endregion
-
-        #region Private Classes
-
-        private class Defaults
-        {
-            internal const Pattern
-                Pattern = Common.Types.Pattern.Fill;
-
-            internal const bool
-                Visible = true;
-
-            internal const int
-                Index = -1;
-
-            internal static Vector3
-                Location = Vector3.Zero,
-                Maximum = Vector3.Zero,
-                Minimum = Vector3.Zero,
-                Orientation = Vector3.Zero,
-                Scale = Vector3.One,
-                StripCount = new Vector3(100, 100, 0);
-        }
-
-        #endregion
-
-        #region Private Methods
-
         private void CopyFrom(Trace trace)
         {
             Description = trace.Description;
@@ -123,25 +96,5 @@
             StripCount = new Vector3(trace.StripCount);
             Visible = trace.Visible;
         }
-
-        private void Init()
-        {
-            Index = Defaults.Index;
-            Location = Defaults.Location;
-            Maximum = Defaults.Maximum;
-            Minimum = Defaults.Maximum;
-            Orientation = Defaults.Orientation;
-            Pattern = Defaults.Pattern;
-            Scale = Defaults.Scale;
-            Shader1Vertex = Resources.Trace_Shader1Vertex;
-            Shader2TessControl = Resources.Trace_Shader2TessControl;
-            Shader3TessEvaluation = Resources.Trace_Shader3TessEvaluation;
-            Shader4Geometry = Resources.Trace_Shader4Geometry;
-            Shader5Fragment = Resources.Trace_Shader5Fragment;
-            Shader6Compute = Resources.Trace_Shader6Compute;
-            StripCount = Defaults.StripCount;
-        }
-
-        #endregion
     }
 }

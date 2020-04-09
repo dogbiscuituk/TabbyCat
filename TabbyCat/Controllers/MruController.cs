@@ -19,8 +19,6 @@
     /// </summary>
     internal class MruController : LocalizationController
     {
-        #region Constructors
-
         protected MruController(WorldController worldController, string subKeyName)
             : base(worldController)
         {
@@ -35,48 +33,11 @@
             RefreshRecentMenu();
         }
 
-        #endregion
-
-        #region Internal Interface
-
-        internal virtual void Reopen(ToolStripItem menuItem) { }
-
-        #endregion
-
-        #region Protected Properties
+        private readonly string SubKeyName;
 
         protected ToolStripDropDownItem RecentMenu => WorldController.WorldForm.FileReopen;
 
-        #endregion
-
-        #region Private Properties
-
-        private readonly string SubKeyName;
-
-        #endregion
-
-        #region Private Event Handlers
-
-        private void OnItemClick(object sender, EventArgs e) => Reopen((ToolStripItem)sender);
-
-        private void OnRecentClear_Click(object sender, EventArgs e)
-        {
-            Win32.RegistryKey key = OpenSubKey(true);
-            if (key == null)
-                return;
-            foreach (string name in key.GetValueNames())
-                key.DeleteValue(name, true);
-            key.Close();
-            if (RecentMenu != null)
-            {
-                RecentMenu.DropDownItems.Clear();
-                RecentMenu.Enabled = false;
-            }
-        }
-
-        #endregion
-
-        #region Protected Methods
+        internal virtual void Reopen(ToolStripItem menuItem) { }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Design",
@@ -133,10 +94,6 @@
             RefreshRecentMenu();
         }
 
-        #endregion
-
-        #region Private Methods
-
         private Win32.RegistryKey CreateSubKey()
         {
             return Win32.Registry.CurrentUser.CreateSubKey(
@@ -154,6 +111,23 @@
 
         private Win32.RegistryKey OpenSubKey(bool writable) =>
             Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
+
+        private void RecentItemClick(object sender, EventArgs e) => Reopen((ToolStripItem)sender);
+
+        private void RecentClear_Click(object sender, EventArgs e)
+        {
+            Win32.RegistryKey key = OpenSubKey(true);
+            if (key == null)
+                return;
+            foreach (string name in key.GetValueNames())
+                key.DeleteValue(name, true);
+            key.Close();
+            if (RecentMenu != null)
+            {
+                RecentMenu.DropDownItems.Clear();
+                RecentMenu.Enabled = false;
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Design",
@@ -182,7 +156,7 @@
                         try
                         {
                             var text = value.Split('|')[0].CompactMenuText();
-                            var item = items.Add(text, null, OnItemClick);
+                            var item = items.Add(text, null, RecentItemClick);
                             item.Tag = value;
                             item.ToolTipText = value.Replace('|', '\n');
                         }
@@ -196,13 +170,11 @@
                     items.Add(new ToolStripSeparator());
                     var item = items.Add(string.Empty);
                     Localize(Resources.Menu_File_ClearThisList, item);
-                    item.Click += OnRecentClear_Click;
+                    item.Click += RecentClear_Click;
 
                 }
             }
             RecentMenu.Enabled = ok;
         }
-
-        #endregion
     }
 }

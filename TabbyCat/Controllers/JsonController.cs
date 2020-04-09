@@ -15,15 +15,23 @@
     /// </summary>
     internal class JsonController : SdiController
     {
-        #region Constructor
-
         internal JsonController(WorldController worldController)
             : base(worldController, Properties.Settings.Default.FileFilter, "LibraryMRU")
         { }
 
-        #endregion
+        internal string WindowCaption
+        {
+            get
+            {
+                var text = Path.GetFileNameWithoutExtension(FilePath).ToFilename();
+                if (Scene.IsModified)
+                    text = string.Concat("* ", text);
+                text = string.Concat(text, " - ", Application.ProductName);
+                return text;
+            }
+        }
 
-        #region Internal Methods
+        internal event EventHandler<FilePathEventArgs> FileReopen;
 
         internal static bool ClipboardCopy(IEnumerable<Trace> traces)
         {
@@ -64,32 +72,6 @@
             return traces;
         }
 
-        #endregion
-
-        #region Internal Properties
-
-        internal string WindowCaption
-        {
-            get
-            {
-                var text = Path.GetFileNameWithoutExtension(FilePath).ToFilename();
-                if (Scene.IsModified)
-                    text = string.Concat("* ", text);
-                text = string.Concat(text, " - ", Application.ProductName);
-                return text;
-            }
-        }
-
-        #endregion
-
-        #region Internal Events
-
-        internal event EventHandler<FilePathEventArgs> FileReopen;
-
-        #endregion
-
-        #region Protected Methods
-
         protected override void ClearDocument() => Scene.Clear();
 
         protected override bool LoadFromStream(Stream stream)
@@ -114,17 +96,11 @@
                 return UseStream(() => GetSerializer().Serialize(TextWriter, Scene));
         }
 
-        #endregion
-
-        #region Private Methods
-
         private static JsonSerializer GetSerializer() => new JsonSerializer
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented,
             MissingMemberHandling = MissingMemberHandling.Error,
         };
-
-        #endregion
     }
 }

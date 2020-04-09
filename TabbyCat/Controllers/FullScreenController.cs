@@ -6,32 +6,9 @@
 
     internal class FullScreenController : LocalizationController
     {
-        #region Constructor
-
         internal FullScreenController(WorldController worldController)
             : base(worldController)
         { }
-
-        #endregion
-
-        #region Protected Internal Methods
-
-        protected internal override void Connect(bool connect)
-        {
-            base.Connect(connect);
-            if (connect)
-            {
-                WorldForm.ViewFullScreen.Click += ZoomFullScreen_Click;
-            }
-            else
-            {
-                WorldForm.ViewFullScreen.Click -= ZoomFullScreen_Click;
-            }
-        }
-
-        #endregion
-
-        #region Private Types
 
         [Flags]
         internal enum FormElements
@@ -50,9 +27,12 @@
             internal FormWindowState WindowState;
         }
 
-        #endregion
-
-        #region Private Properties
+        private static readonly FormState FullScreenState = new FormState
+        {
+            BorderStyle = FormBorderStyle.None,
+            Elements = FormElements.None,
+            WindowState = FormWindowState.Maximized
+        };
 
         private FormState SavedFormState;
 
@@ -90,22 +70,18 @@
             }
         }
 
-        private static readonly FormState FullScreenState = new FormState
+        protected internal override void Connect(bool connect)
         {
-            BorderStyle = FormBorderStyle.None,
-            Elements = FormElements.None,
-            WindowState = FormWindowState.Maximized
-        };
-
-        #endregion
-
-        #region Private Event Handlers
-
-        private void ZoomFullScreen_Click(object sender, EventArgs e) => ToggleFullScreen();
-
-        #endregion
-
-        #region Private Methods
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.ViewFullScreen.Click += ZoomFullScreen_Click;
+            }
+            else
+            {
+                WorldForm.ViewFullScreen.Click -= ZoomFullScreen_Click;
+            }
+        }
 
         private void AdjustFullScreen()
         {
@@ -120,6 +96,6 @@
 
         private void ToggleFullScreen() => FullScreen = !FullScreen;
 
-        #endregion
+        private void ZoomFullScreen_Click(object sender, EventArgs e) => ToggleFullScreen();
     }
 }

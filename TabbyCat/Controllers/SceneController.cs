@@ -14,18 +14,12 @@
 
     internal class SceneController : ShaderSetController
     {
-        #region Constructors
-
         internal SceneController(WorldController worldController)
             : base(worldController)
         {
             InitCommonControls(Editor.TableLayoutPanel);
             InitLocalControls();
         }
-
-        #endregion
-
-        #region Fields & Properties
 
         protected override string[] AllProperties => new[]
         {
@@ -44,9 +38,7 @@
             PropertyNames.VSync
         };
 
-        #endregion
-
-        #region Protected Internal Methods
+        private SceneEdit Editor => PropertiesEdit.SceneEdit;
 
         protected internal override void Connect(bool connect)
         {
@@ -100,10 +92,6 @@
                 Editor.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
             }
         }
-
-        #endregion
-
-        #region Protected Methods
 
         protected override void Localize()
         {
@@ -202,16 +190,6 @@
             UpdateUI();
         }
 
-        #endregion
-
-        #region Private Properties
-
-        private SceneEdit Editor => PropertiesEdit.SceneEdit;
-
-        #endregion
-
-        #region Private Event Handlers
-
         private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
             Run(new BackgroundColourCommand(Color.FromName(Editor.cbBackground.Text)));
 
@@ -262,10 +240,6 @@
 
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
             Run(new VSyncCommand(Editor.cbVSync.Checked));
-
-        #endregion
-
-        #region Private Methods
 
         private static void InitDomainUpDownItems(DomainUpDown control, string items)
         {
@@ -318,7 +292,5 @@
             Editor.seFrustumMaxX.Visible =
             Editor.seFrustumMaxY.Visible = !perspective;
         }
-
-        #endregion
     }
 }

@@ -10,8 +10,6 @@
 
     internal class CommandProcessor : LocalizationController
     {
-        // Constructors
-
         internal CommandProcessor(WorldController worldController)
             : base(worldController)
         {
@@ -24,14 +22,10 @@
             WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
         }
 
-        // Fields
-
         private int LastSave, UpdateCount;
 
         private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
         private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
-
-        // Properties
 
         internal bool IsModified => LastSave != UndoStack.Count;
         internal List<Trace> Traces => Scene.Traces;
@@ -41,8 +35,6 @@
 
         private string UndoAction => UndoStack.Peek().UndoAction;
         private string RedoAction => RedoStack.Peek().RedoAction;
-
-        // Event Handlers
 
         private void EditRedo_Click(object sender, EventArgs e) => Redo();
 
@@ -71,8 +63,6 @@
             do Undo(); while (RedoStack.Peek() != peek);
             EndUpdate();
         }
-
-        // Internal Methods
 
         internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
 
@@ -108,8 +98,6 @@
             LastSave = UndoStack.Count;
             UpdateUI();
         }
-
-        // Private Methods
 
         private void BeginUpdate() { ++UpdateCount; }
 

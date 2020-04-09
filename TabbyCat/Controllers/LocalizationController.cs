@@ -10,19 +10,9 @@
 
     internal class LocalizationController
     {
-        #region Constructors
-
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
 
-        #endregion
-
-        #region Fields
-
         protected WorldController WorldController;
-
-        #endregion
-
-        #region Controllers
 
         protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
 
@@ -38,10 +28,6 @@
 
         protected virtual TraceController TraceController { get => WorldController.TraceController; set { } }
 
-        #endregion
-
-        #region Protected Properties
-
         protected Camera Camera => Scene.Camera;
 
         protected virtual Clock Clock { get => ClockController.Clock; set { } }
@@ -54,9 +40,7 @@
 
         protected internal virtual WorldForm WorldForm { get => WorldController.WorldForm; set { } }
 
-        #endregion
-
-        #region Protected Internal Methods
+        private ToolTip ToolTip => WorldController.WorldForm.ToolTip;
 
         protected internal virtual void Connect(bool connect)
         {
@@ -69,10 +53,6 @@
 
             }
         }
-
-        #endregion
-
-        #region Protected Methods
 
         protected virtual void Localize() { }
 
@@ -102,16 +82,6 @@
             }
         }
 
-        #endregion
-
-        #region Private Properties
-
-        private ToolTip ToolTip => WorldController.WorldForm.ToolTip;
-
-        #endregion
-
-        #region Private Methods
-
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
             var infos = info.Split('|');
@@ -139,7 +109,5 @@
             }
             return infos[0];
         }
-
-        #endregion
     }
 }

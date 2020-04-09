@@ -7,8 +7,6 @@
 
     internal class OptionsController : LocalizationController, IDisposable
     {
-        #region Internal Interface
-
         internal OptionsController(WorldController worldController)
             :base(worldController)
         {
@@ -16,6 +14,16 @@
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
             OptionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
         }
+
+        private readonly OptionsDialog OptionsDialog;
+
+        private Options Options
+        {
+            get => GetOptions();
+            set => SetOptions(value);
+        }
+
+        private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
 
         internal DialogResult ShowModal()
         {
@@ -26,33 +34,11 @@
             return result;
         }
 
-        #endregion
-
-        #region Private Properties
-
-        private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
-
-        private readonly OptionsDialog OptionsDialog;
-
-        private Options Options
-        {
-            get => GetOptions();
-            set => SetOptions(value);
-        }
-
-        #endregion
-
-        #region Private Event Handlers
-
         private void BtnFilesFolder_Click(object sender, EventArgs e) =>
             BrowseFolder("files", OptionsDialog.edFilesFolder);
 
         private void BtnTemplatesFolder_Click(object sender, EventArgs e) =>
             BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
-
-        #endregion
-
-        #region Private Methods
 
         private void BrowseFolder(string detail, TextBox textBox)
         {
@@ -85,9 +71,9 @@
             OptionsDialog.edGLSLUrl.Text = options.GLSLPath;
         }
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -97,17 +83,15 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     OptionsDialog?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

@@ -18,8 +18,6 @@
 
     internal class WorldController : LocalizationController, IDisposable
     {
-        #region Constructor
-
         internal WorldController() : base(null)
         {
             WorldForm = new WorldForm();
@@ -39,23 +37,38 @@
             WorldController = this;
         }
 
-        #endregion
+        internal TraceSelection Selection = new TraceSelection();
 
-        protected override ClockController ClockController { get; set; }
+        private readonly CameraController CameraController;
+        private readonly List<string> ChangedPropertyNames = new List<string>();
+        private readonly FullScreenController FullScreenController;
+        private static string GLSLUrl => Settings.Default.GLSLUrl;
+        private readonly JsonController JsonController;
+        private string LastSpeed, LastTime, LastFPS;
+        private int UpdateCount;
+
+        protected internal override Scene Scene { get; set; }
 
         internal override CommandProcessor CommandProcessor { get; set; }
 
+        internal GLControl GLControl => GLControlParent[0] as GLControl;
+        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
+        internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
+        internal ToolTip ToolTip => WorldForm.ToolTip;
+
+        protected override ClockController ClockController { get; set; }
         protected override PropertiesController PropertiesController { get; set; }
-
         protected override RenderController RenderController { get; set; }
-
         protected override SceneController SceneController { get; set; }
-
         protected override ShaderController ShaderController { get; set; }
-
         protected override TraceController TraceController { get; set; }
-
         protected internal override WorldForm WorldForm { get; set; }
+
+        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
+
+        internal event PropertyChangedEventHandler PropertyChanged;
+        internal event EventHandler Pulse;
+        internal event EventHandler SelectionChanged;
 
         protected internal override void Connect(bool connect)
         {
@@ -79,37 +92,6 @@
                 AppController.Remove(this);
             }
         }
-
-        protected internal override Scene Scene { get; set; }
-
-        #region Internal Fields
-
-        internal TraceSelection Selection = new TraceSelection();
-
-        #endregion
-
-        #region Protected Internal Properties
-
-        #endregion
-
-        #region Internal Properties
-
-        internal GLControl GLControl => GLControlParent[0] as GLControl;
-        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
-        internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
-        internal ToolTip ToolTip => WorldForm.ToolTip;
-
-        #endregion
-
-        #region Internal Events
-
-        internal event PropertyChangedEventHandler PropertyChanged;
-        internal event EventHandler Pulse;
-        internal event EventHandler SelectionChanged;
-
-        #endregion
-
-        #region Internal Methods
 
         protected override void Localize()
         {
@@ -166,8 +148,11 @@
         }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
+
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
+
         internal void Show() => WorldForm.Show();
+
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
         internal void OnPropertyChanged(string propertyName)
@@ -246,45 +231,22 @@
             Pulse?.Invoke(this, EventArgs.Empty);
         }
 
-        #endregion
 
-        #region Private Fields
-
-        private readonly CameraController CameraController;
-        private readonly List<string> ChangedPropertyNames = new List<string>();
-        private readonly FullScreenController FullScreenController;
-        private readonly JsonController JsonController;
-        private string LastSpeed, LastTime, LastFPS;
-        private int UpdateCount;
-
-        #endregion
-
-        #region Private Properties
-
-        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
-
-        private static string GLSLUrl => Settings.Default.GLSLUrl;
-
-        #endregion
-
-        #region Private Event Handlers
-
-        // Clock
         private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
-        // GLControl
+
         private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
         private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
         private void GLControl_Load(object sender, EventArgs e) { }
         private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
         private void GLControl_Resize(object sender, EventArgs e) { }
-        // JsonController
+
         private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
         private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
         private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
         private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
         private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
         private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
-        // Menus
+
         private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
         private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
         private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
@@ -303,18 +265,14 @@
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
-        // WorldForm
+
         private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
-        // Selection
+
         private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
-        // Toolbar
+
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
-
-        #endregion
-
-        #region Private Methods
 
         private void AddNewTrace()
         {
@@ -715,9 +673,9 @@
                 LastTime = WorldForm.Tlabel.Text = time;
         }
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -727,7 +685,7 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
@@ -735,11 +693,9 @@
                     JsonController?.Dispose();
                     WorldForm?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

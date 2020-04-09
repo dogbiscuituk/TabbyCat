@@ -6,19 +6,23 @@
 
     internal class ClockController : LocalizationController, IDisposable
     {
-        #region Constructors
-
         internal ClockController(WorldController worldController)
             : base(worldController)
         {
             UpdateTimeControls();
         }
 
-        #endregion
-
         protected override Clock Clock { get; set; } = new Clock();
 
-        #region Protected Internal Methods
+        internal bool ClockRunning => Clock.Running;
+
+        internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
+
+        internal float VirtualTimeFactor
+        {
+            get => Clock.VirtualTimeFactor;
+            set => Clock.VirtualTimeFactor = value;
+        }
 
         protected internal override void Connect(bool connect)
         {
@@ -55,23 +59,6 @@
             }
         }
 
-        #endregion
-
-        #region Internal Properties
-
-        internal bool ClockRunning => Clock.Running;
-        internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
-
-        internal float VirtualTimeFactor
-        {
-            get => Clock.VirtualTimeFactor;
-            set => Clock.VirtualTimeFactor = value;
-        }
-
-        #endregion
-
-        #region Internal Methods
-
         internal void UpdateTimeControls()
         {
             WorldForm.TimeAccelerate.Enabled = WorldForm.tbAccelerate.Enabled = CanAccelerate;
@@ -82,10 +69,6 @@
             WorldForm.TimeStop.Enabled = WorldForm.tbStop.Enabled = CanStop;
         }
 
-        #endregion
-
-        #region Private Properties
-
         private bool CanAccelerate => VirtualTimeFactor < +32;
         private bool CanDecelerate => VirtualTimeFactor > -32;
         private bool CanPause => Clock.Running;
@@ -93,20 +76,12 @@
         private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
         private bool CanStop => Clock.Running;
 
-        #endregion
-
-        #region Private Event Handlers
-
         private void TimeDecelerate_Click(object sender, EventArgs e) => Decelerate();
         private void TimeReverse_Click(object sender, EventArgs e) => Reverse();
         private void TimeStop_Click(object sender, EventArgs e) => Stop();
         private void TimePause_Click(object sender, EventArgs e) => Pause();
         private void TimeForward_Click(object sender, EventArgs e) => Forward();
         private void TimeAccelerate_Click(object sender, EventArgs e) => Accelerate();
-
-        #endregion
-
-        #region Private Methods
 
         private void Accelerate()
         {
@@ -148,10 +123,6 @@
             UpdateTimeControls();
         }
 
-        #endregion
-
-        #region IDisposable
-
         public void Dispose()
         {
             Dispose(true);
@@ -160,18 +131,16 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     Clock?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
 
-        private bool disposed;
-
-        #endregion
+        private bool Disposed;
     }
 }

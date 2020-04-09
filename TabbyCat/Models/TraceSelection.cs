@@ -9,7 +9,9 @@
 
     public class TraceSelection : IShaderSet
     {
-        #region Public Properties
+        private readonly List<Trace> _Traces = new List<Trace>();
+        private bool Updated;
+        private int UpdateCount;
 
         public string Description
         {
@@ -65,10 +67,6 @@
             set => SetProperty(p => p.Visible = value == true);
         }
 
-        #endregion
-
-        #region Public Methods
-
         public string GetScript(ShaderType shaderType) =>
             GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
 
@@ -79,23 +77,11 @@
             ? string.Empty
             : _Traces.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
 
-        #endregion
-
-        #region Internal Properties
-
         internal bool IsEmpty => !_Traces.Any();
 
         internal IEnumerable<Trace> Traces => _Traces.OrderBy(p => p.Index);
 
-        #endregion
-
-        #region Internal Events
-
         internal event EventHandler Changed;
-
-        #endregion
-
-        #region Internal Methods
 
         internal void Add(Trace trace)
         {
@@ -123,6 +109,7 @@
             _Traces.Clear();
             OnChanged();
         }
+
         internal void EndUpdate()
         {
             if (--UpdateCount > 0 || !Updated)
@@ -155,10 +142,6 @@
             OnChanged();
         }
 
-        #endregion
-
-        #region Protected Methods
-
         protected virtual void OnChanged()
         {
             if (UpdateCount > 0)
@@ -166,18 +149,6 @@
             else
                 Changed?.Invoke(this, EventArgs.Empty);
         }
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly List<Trace> _Traces = new List<Trace>();
-        private bool Updated;
-        private int UpdateCount;
-
-        #endregion
-
-        #region Private Methods
 
         private bool? GetBool(Func<Trace, bool> f)
         {
@@ -205,7 +176,5 @@
             GetProperty(p => f(p).Z));
 
         private void SetProperty(Action<Trace> set) => ForEach(p => set(p));
-
-        #endregion
     }
 }
