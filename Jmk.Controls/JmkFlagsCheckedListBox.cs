@@ -7,13 +7,11 @@
 
     public partial class JmkFlagsCheckedListBox : CheckedListBox
     {
-        #region Constructors
-
         public JmkFlagsCheckedListBox() => InitializeComponent();
 
-        #endregion
-
-        #region Public Properties
+        private Type _EnumType;
+        private Enum _EnumValue;
+        private bool Updating;
 
         [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
         public Enum EnumValue
@@ -28,10 +26,6 @@
                 Apply();
             }
         }
-
-        #endregion
-
-        #region Public Methods
 
         public JmkFlagsCheckedListBoxItem Add(string text, int value) =>
             Add(new JmkFlagsCheckedListBoxItem(text, value));
@@ -50,10 +44,6 @@
                     result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
             return result;
         }
-
-        #endregion
-
-        #region Protected Methods
 
         protected override void OnItemCheck(ItemCheckEventArgs e)
         {
@@ -92,18 +82,6 @@
             Updating = false;
         }
 
-        #endregion
-
-        #region Private Fields
-
-        private Type _EnumType;
-        private Enum _EnumValue;
-        private bool Updating;
-
-        #endregion
-
-        #region Private Methods
-
         private void Apply() => UpdateItems(ChangeType(_EnumValue));
 
         private void Populate()
@@ -114,7 +92,5 @@
 
         private static int ChangeType(object value) =>
             (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);
-
-        #endregion
     }
 }

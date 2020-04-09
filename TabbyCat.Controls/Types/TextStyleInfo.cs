@@ -9,10 +9,7 @@
     [TypeConverter(typeof(TextStyleInfoTypeConverter))]
     public class TextStyleInfo
     {
-        #region Constructors
-
-        public TextStyleInfo(Color foreground, FontStyle fontStyle = 0)
-            : this(foreground, Color.Transparent, fontStyle) { }
+        public TextStyleInfo(Color foreground, FontStyle fontStyle = 0) : this(foreground, Color.Transparent, fontStyle) { }
 
         public TextStyleInfo(Color foreground, Color background, FontStyle fontStyle = 0)
         {
@@ -20,10 +17,6 @@
             Background = background;
             FontStyle = fontStyle;
         }
-
-        #endregion
-
-        #region Public Properties
 
         [Description("The foreground colour of the text style.")]
         [DisplayName("Foreground Colour")]
@@ -40,10 +33,6 @@
         [Editor(typeof(JmkFlagsEnumEditor), typeof(UITypeEditor))]
         public FontStyle FontStyle { get; set; }
 
-        #endregion
-
-        #region Public Methods
-
         public static TextStyleInfo Parse(string s)
         {
             if (s == null)
@@ -57,9 +46,6 @@
             );
         }
 
-        public override string ToString() =>
-            $"{Foreground.Name}; {Background.Name}; {FontStyle}";
-
-        #endregion
+        public override string ToString() => $"{Foreground.Name}; {Background.Name}; {FontStyle}";
     }
 }

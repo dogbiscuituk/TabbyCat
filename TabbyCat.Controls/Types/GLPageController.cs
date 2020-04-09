@@ -18,8 +18,6 @@
     /// </summary>
     public class GLPageController : IDisposable
     {
-        #region Constructor
-
         public GLPageController(FastColoredTextBox textBox)
         {
             TextBox = textBox ?? throw new NullReferenceException(
@@ -27,9 +25,8 @@
             Init();
         }
 
-        #endregion
-
-        #region Internal Properties
+        private AutocompleteMenu AutocompleteMenu;
+        private string TextBoxLanguage;
 
         internal string Language
         {
@@ -38,10 +35,6 @@
         }
 
         internal readonly FastColoredTextBox TextBox;
-
-        #endregion
-
-        #region Internal Methods
 
         public void AddSystemRange(Range range)
         {
@@ -80,17 +73,6 @@
             return ranges;
         }
 
-        #endregion
-
-        #region Private Fields
-
-        private AutocompleteMenu AutocompleteMenu;
-        private string TextBoxLanguage;
-
-        #endregion
-
-        #region Private Event Handlers
-
         private void TextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             switch (e.KeyData)
@@ -126,10 +108,6 @@
             var selection = TextBox.Selection;
             e.Cancel = selection.IsReadOnlyLeftChar() || selection.IsReadOnlyRightChar();
         }
-
-        #endregion
-
-        #region Private Methods
 
         private void CreateAutocompleteMenu()
         {
@@ -182,10 +160,6 @@
             ApplyStylesGLSL(e.ChangedRange);
         }
 
-        #endregion
-
-        #region Private Static Language Resources
-
         private static Languages GetLanguage(string language)
         {
             switch (language)
@@ -202,10 +176,6 @@
                 default: return Languages.Custom;
             }
         }
-
-        #endregion
-
-        #region Private Static Style Resources
 
         private static readonly MarkerStyle
             SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
@@ -288,9 +258,9 @@
         private static TextStyle NewTextStyle() =>
             new TextStyle(Brushes.Black, Brushes.Transparent, 0);
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -300,18 +270,16 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     AutocompleteMenu?.Dispose();
                     TextBox?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

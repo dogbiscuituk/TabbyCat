@@ -1,12 +1,9 @@
 ﻿namespace TabbyCat.Common.Types
 {
     using OpenTK.Graphics.OpenGL;
-    using System.ComponentModel;
 
     public class GLInfo
     {
-        #region Constructors
-
         public GLInfo() : this(
             number: GL.GetString(StringName.Version),
             major: GL.GetInteger(GetPName.MajorVersion),
@@ -26,10 +23,6 @@
             Renderer = renderer;
         }
 
-        #endregion
-
-        #region Public Properties
-
         public string Number { get; }
         public int Major { get; }
         public int Minor { get; }
@@ -37,13 +30,6 @@
         public string Vendor { get; }
         public string Renderer { get; }
 
-        #endregion
-
-        #region Public Methods
-
-        public override string ToString() =>
-            $"{Number}, {Major}, {Minor}, {Shader}, {Vendor}, {Renderer}";
-
-        #endregion
+        public override string ToString() => $"{Number}, {Major}, {Minor}, {Shader}, {Vendor}, {Renderer}";
     }
 }

@@ -6,8 +6,6 @@
     [TypeConverter(typeof(TextStyleInfosTypeConverter))]
     public class TextStyleInfos
     {
-        #region Public Properties
-
         [Description("The text style used to highlight comments in the GPU code.")]
         [DisplayName("Comments")]
         public TextStyleInfo Comments { get; set; } = new TextStyleInfo(Color.Green);
@@ -40,10 +38,6 @@
         [DisplayName("String Literals")]
         public TextStyleInfo Strings { get; set; } = new TextStyleInfo(Color.Brown);
 
-        #endregion
-
-        #region Public Methods
-
         public static TextStyleInfos Parse(string s)
         {
             if (s == null)
@@ -64,7 +58,5 @@
 
         public override string ToString() =>
             $"{Comments}:{Directives}:{Functions}:{Keywords}:{Numbers}:{ReadOnly}:{ReservedWords}:{Strings}";
-
-        #endregion
     }
 }

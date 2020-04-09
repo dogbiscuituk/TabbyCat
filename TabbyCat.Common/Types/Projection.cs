@@ -6,8 +6,6 @@
 
     public class Projection
     {
-        #region Constructors
-
         public Projection(ProjectionType projectionType, float fieldOfView, Vector3 frustumMin, Vector3 frustumMax)
         {
             ProjectionType = projectionType;
@@ -66,8 +64,6 @@
                     return;
             }
         }
-
-        #endregion
 
         public float FieldOfView { get; set; }
         public ProjectionType ProjectionType { get; set; }

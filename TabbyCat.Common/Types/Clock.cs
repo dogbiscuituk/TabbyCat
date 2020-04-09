@@ -5,17 +5,19 @@
 
     public class Clock : IDisposable
     {
-        #region Constructors
-
         public Clock()
         {
             Timer = new Timer { Enabled = false };
             Timer.Tick += Timer_Tick;
         }
 
-        #endregion
-
-        #region Public Properties
+        private const int LimitFactor = 32;
+        private bool _Running;
+        private DateTime _StartedAt;
+        private TimeSpan _RealTimeElapsed, _VirtualTimeElapsed;
+        private int _SuspendCount;
+        private readonly Timer Timer;
+        private float _VirtualTimeFactor = 1;
 
         public bool Running
         {
@@ -75,17 +77,10 @@
             }
         }
 
-        #endregion
-
-        #region Public Events
-
         public event EventHandler<EventArgs> Tick;
 
-        #endregion
-
-        #region Public Methods
-
         public void Accelerate() => VirtualTimeFactor = +Scale(+VirtualTimeFactor);
+
         public void Decelerate() => VirtualTimeFactor = -Scale(-VirtualTimeFactor);
 
         public void Reset()
@@ -120,28 +115,6 @@
             Running = false;
         }
 
-        #endregion
-
-        #region Private Fields
-
-        private const int LimitFactor = 32;
-        private bool _Running;
-        private DateTime _StartedAt;
-        private TimeSpan _RealTimeElapsed, _VirtualTimeElapsed;
-        private int _SuspendCount;
-        private readonly Timer Timer;
-        private float _VirtualTimeFactor = 1;
-
-        #endregion
-
-        #region Private Event Handlers
-
-        private void Timer_Tick(object sender, EventArgs e) => Tick?.Invoke(this, EventArgs.Empty);
-
-        #endregion
-
-        #region Private Methods
-
         private TimeSpan GetVirtualIncrement(DateTime now) =>
             TimeSpan.FromSeconds((now - _StartedAt).TotalSeconds * VirtualTimeFactor);
 
@@ -162,9 +135,11 @@
             }
         }
 
-        #endregion
+        private void Timer_Tick(object sender, EventArgs e) => Tick?.Invoke(this, EventArgs.Empty);
 
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -174,17 +149,15 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     Timer?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

@@ -6,8 +6,6 @@
 
     public static class UIController
     {
-        #region Public Interface
-
         /// <summary>
         /// Copy the Items from one ToolStrip to another.
         /// </summary>
@@ -54,10 +52,6 @@
                     control.Enabled = enabled;
         }
 
-        #endregion
-
-        #region Private Methods
-
         private static ToolStripItem Clone(this ToolStripItem s)
         {
             switch (s)
@@ -89,7 +83,5 @@
             foreach (ToolStripItem i in s)
                 t.Add(i.Clone());
         }
-
-        #endregion
     }
 }

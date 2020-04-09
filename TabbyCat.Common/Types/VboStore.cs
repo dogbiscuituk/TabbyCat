@@ -8,7 +8,7 @@
     /// </summary>
     internal static class VboStore
     {
-        #region Internal Methods
+        private static readonly List<Vbo> Vbos = new List<Vbo>();
 
         internal static Vbo AcquireVbo(this ITrace trace, VboType vboType)
         {
@@ -24,13 +24,5 @@
             if (vbo != null && vbo.Release())
                 Vbos.Remove(vbo);
         }
-
-        #endregion
-
-        #region Private Fields
-
-        private static readonly List<Vbo> Vbos = new List<Vbo>();
-
-        #endregion
     }
 }

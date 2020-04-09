@@ -29,8 +29,6 @@
     /// </summary>
     public partial class JmkLinkLabel : LinkLabel
     {
-        #region Fields, Properties, Events
-
         public Link ActiveLink { get; private set; }
 
         public override string Text
@@ -43,10 +41,6 @@
         public event EventHandler<LookupParameterEventArgs> LookupParameterValue;
 
         private int Offset;
-
-        #endregion
-
-        #region Protected Methods
 
         protected virtual void OnActiveLinkChanged() => ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
 
@@ -67,10 +61,6 @@
             this.FirstFocus(ref m);
             base.WndProc(ref m);
         }
-
-        #endregion
-
-        #region Private Methods
 
         private string EvaluateLink(Match match)
         {
@@ -123,7 +113,5 @@
                 LinkPattern,
                 EvaluateLink);
         }
-
-        #endregion
     }
 }

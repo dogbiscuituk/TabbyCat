@@ -7,8 +7,6 @@
     /// </summary>
     public class Vao
     {
-        #region Constructors
-
         public Vao(ITrace trace)
         {
             GL.GenVertexArrays(1, out _VaoID);
@@ -22,32 +20,21 @@
             GL.BindVertexArray(0);
         }
 
-        #endregion
-
-        #region Fields, Properties
-
-        public int ElementCount => IndexVbo.ElementsCount;
-
         private readonly int _VaoID;
-
-        public int VaoID => _VaoID;
 
         private readonly Vbo
             IndexVbo,
             VertexVbo;
 
-        #endregion
+        public int ElementCount => IndexVbo.ElementsCount;
 
-        #region Public Methods
+        public int VaoID => _VaoID;
 
-        public bool ReleaseBuffers()
+        public void ReleaseBuffers()
         {
             VboStore.ReleaseVbo(IndexVbo);
             VboStore.ReleaseVbo(VertexVbo);
             GL.DeleteVertexArray(VaoID);
-            return true;
         }
-
-        #endregion
     }
 }

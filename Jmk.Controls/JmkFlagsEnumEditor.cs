@@ -9,8 +9,6 @@
 
     public class JmkFlagsEnumEditor : UITypeEditor, IDisposable
     {
-        #region Constructors
-
         public JmkFlagsEnumEditor()
         {
             FlagsCheckedListBox = new JmkFlagsCheckedListBox
@@ -18,10 +16,6 @@
                 BorderStyle = BorderStyle.None
             };
         }
-
-        #endregion
-
-        #region Public Methods
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
@@ -41,15 +35,11 @@
 
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
 
-        #endregion
-
-        #region Private Properties
-
         private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
 
-        #endregion
-
         #region IDisposable
+
+        private bool Disposed;
 
         public void Dispose()
         {
@@ -59,17 +49,15 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!Disposed)
             {
                 if (disposing)
                 {
                     FlagsCheckedListBox?.Dispose();
                 }
-                disposed = true;
+                Disposed = true;
             }
         }
-
-        private bool disposed;
 
         #endregion
     }

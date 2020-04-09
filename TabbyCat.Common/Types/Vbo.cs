@@ -10,8 +10,6 @@
     /// </summary>
     internal class Vbo
     {
-        #region Constructors
-
         internal Vbo(ITrace trace, VboType vboType)
         {
             Pattern = trace.Pattern;
@@ -31,15 +29,19 @@
             }
         }
 
-        #endregion
+        internal readonly int 
+            BufferID,
+            ElementsCount;
 
-        #region Internal Fields
+        private readonly Pattern Pattern;
+        private readonly Vector3 StripCount;
+        private readonly VboType VboType;
 
-        internal readonly int ElementsCount;
+        private int RefCount;
 
-        #endregion
-
-        #region Internal Methods
+        private BufferTarget BufferTarget => VboType == VboType.Vertex
+            ? BufferTarget.ArrayBuffer
+            : BufferTarget.ElementArrayBuffer;
 
         internal void AddRef() => RefCount++;
 
@@ -56,37 +58,7 @@
             return result;
         }
 
-        #endregion
-
-        #region Private Properties
-
-        private BufferTarget BufferTarget => VboType == VboType.Vertex
-            ? BufferTarget.ArrayBuffer
-            : BufferTarget.ElementArrayBuffer;
-
-        #endregion
-
-        #region Private Methods
-
         private void BufferData<T>(int byteCount, IEnumerable<T> data) where T : struct =>
             GL.BufferData(BufferTarget, byteCount, data.ToArray(), BufferUsageHint.StaticDraw);
-
-        #endregion
-
-        #region Internal Fields
-
-        internal readonly int BufferID;
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly Pattern Pattern;
-        private readonly Vector3 StripCount;
-        private readonly VboType VboType;
-
-        private int RefCount;
-
-        #endregion
     }
 }

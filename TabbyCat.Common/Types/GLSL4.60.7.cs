@@ -8,8 +8,6 @@
     /// </summary>
     public static class GLSL
     {
-        #region Private Fields
-
         private static readonly string[]
 
             _Directives = new[]
@@ -110,10 +108,6 @@
                 "superp", "template", "this", "typedef", "union", "unsigned", "using"
             };
 
-        #endregion
-
-        #region Public Fields
-
         public const string
             Comments1 = @"//.*$",
             Comments2 = @"(/\*.*?\*/)|(/\*.*)",
@@ -130,13 +124,7 @@
         public static List<string> AutocompleteItems { get; } =
             _Directives.Select(p => $"#{p}").Union(_Functions).Union(_Keywords).ToList();
 
-        #endregion
-
-        #region Private Methods
-
         private static string Concat(IEnumerable<string> words) =>
             string.Concat("(", words.Aggregate((s, t) => $"{s}|{t}"), ")");
-
-        #endregion
     }
 }

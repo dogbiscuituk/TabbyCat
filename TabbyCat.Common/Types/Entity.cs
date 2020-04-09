@@ -5,8 +5,6 @@
 
     public static class Entity
     {
-        #region Public Methods
-
         public static IEnumerable<float> GetCoords(this ITrace trace) =>
             trace != null ? GetCoords(trace.StripCount) : null;
 
@@ -18,10 +16,6 @@
 
         public static int GetIndicesCount(this ITrace trace) =>
             trace != null ? GetIndicesCount(trace.Pattern, trace.StripCount) : 0;
-
-        #endregion
-
-        #region Private Data Methods
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -229,15 +223,9 @@
                 }
         }
 
-        #endregion
+        private static int GetCoordsCount(Vector3 stripCount) => GetCoordsCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
-        #region Private Count Methods
-
-        private static int GetCoordsCount(Vector3 stripCount) =>
-            GetCoordsCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
-
-        private static int GetIndicesCount(Pattern pattern, Vector3 stripCount) =>
-            GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static int GetIndicesCount(Pattern pattern, Vector3 stripCount) => GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {
@@ -263,7 +251,5 @@
         private static int GetRectanglesCount(int cx, int cy, int cz) => 2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
         private static int GetSaltiresCount(int cx, int cy) => 8 * cx * cy + 2 * (cx + cy);
         private static int GetTrianglesCount(int cx, int cy) => 6 * cx * cy + 2 * (cx + cy);
-
-        #endregion
     }
 }
