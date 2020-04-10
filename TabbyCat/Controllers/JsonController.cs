@@ -77,18 +77,9 @@
 
         protected override bool LoadFromStream(Stream stream)
         {
-            string s;
             using (var streamReader = new StreamReader(stream))
-                s = streamReader.ReadToEnd();
-            var textReader = new StringReader(s);
-            var serializer = GetSerializer();
-            using (var jsonReader = new JsonTextReader(textReader))
-                Scene = serializer.Deserialize<Scene>(jsonReader);
-            return true;
-
-            //using (var streamReader = new StreamReader(stream))
-            //using (var textReader = new JsonTextReader(streamReader))
-            //    return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+            using (var textReader = new JsonTextReader(streamReader))
+                return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
         }
 
         protected override void OnFileReopen(string filePath) =>
