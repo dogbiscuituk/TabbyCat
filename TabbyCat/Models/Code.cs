@@ -17,16 +17,58 @@
 
         protected Code(Code code) => CopyFrom(code);
 
-        public abstract string GetScript(ShaderType shaderType);
+        public string GetScript(ShaderType shaderType)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    return VertexShader;
+                case ShaderType.TessControlShader:
+                    return TessControlShader;
+                case ShaderType.TessEvaluationShader:
+                    return TessEvaluationShader;
+                case ShaderType.GeometryShader:
+                    return GeometryShader;
+                case ShaderType.FragmentShader:
+                    return FragmentShader;
+                case ShaderType.ComputeShader:
+                    return ComputeShader;
+                default:
+                    return string.Empty;
+            }
+        }
 
-        public abstract void SetScript(ShaderType shaderType, string value);
+        public void SetScript(ShaderType shaderType, string value)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    VertexShader = value;
+                    break;
+                case ShaderType.TessControlShader:
+                    TessControlShader = value;
+                    break;
+                case ShaderType.TessEvaluationShader:
+                    TessEvaluationShader = value;
+                    break;
+                case ShaderType.GeometryShader:
+                    GeometryShader = value;
+                    break;
+                case ShaderType.FragmentShader:
+                    FragmentShader = value;
+                    break;
+                case ShaderType.ComputeShader:
+                    ComputeShader = value;
+                    break;
+            }
+        }
 
-        public abstract string VertexShader { get; set; }
-        public abstract string TessControlShader { get; set; }
-        public abstract string TessEvaluationShader { get; set; }
-        public abstract string GeometryShader { get; set; }
-        public abstract string FragmentShader { get; set; }
-        public abstract string ComputeShader { get; set; }
+        [DefaultValue("")] public string VertexShader { get; set; }
+        [DefaultValue("")] public string TessControlShader { get; set; }
+        [DefaultValue("")] public string TessEvaluationShader { get; set; }
+        [DefaultValue("")] public string GeometryShader { get; set; }
+        [DefaultValue("")] public string FragmentShader { get; set; }
+        [DefaultValue("")] public string ComputeShader { get; set; }
 
         private void CopyFrom(IShaderSet source) => Array.ForEach(
             Shaders.All.ToArray(),

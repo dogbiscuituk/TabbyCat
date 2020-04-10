@@ -11,78 +11,7 @@
 
     public class Trace : Code, ITrace
     {
-        public override string GetScript(ShaderType shaderType)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    return VertexShader;
-                case ShaderType.TessControlShader:
-                    return TessControlShader;
-                case ShaderType.TessEvaluationShader:
-                    return TessEvaluationShader;
-                case ShaderType.GeometryShader:
-                    return GeometryShader;
-                case ShaderType.FragmentShader:
-                    return FragmentShader;
-                case ShaderType.ComputeShader:
-                    return ComputeShader;
-                default:
-                    return string.Empty;
-            }
-        }
-
-        public override void SetScript(ShaderType shaderType, string value)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    VertexShader = value;
-                    break;
-                case ShaderType.TessControlShader:
-                    TessControlShader = value;
-                    break;
-                case ShaderType.TessEvaluationShader:
-                    TessEvaluationShader = value;
-                    break;
-                case ShaderType.GeometryShader:
-                    GeometryShader = value;
-                    break;
-                case ShaderType.FragmentShader:
-                    FragmentShader = value;
-                    break;
-                case ShaderType.ComputeShader:
-                    ComputeShader = value;
-                    break;
-            }
-        }
-
-        [DefaultValue("")] public override string VertexShader { get; set; }
-        [DefaultValue("")] public override string TessControlShader { get; set; }
-        [DefaultValue("")] public override string TessEvaluationShader { get; set; }
-        [DefaultValue("")] public override string GeometryShader { get; set; }
-        [DefaultValue("")] public override string FragmentShader { get; set; }
-        [DefaultValue("")] public override string ComputeShader { get; set; }
-
-        public Trace()
-        {
-            Description = string.Empty;
-            Index = -1;
-            Location = Vector3.Zero;
-            Maximum = Vector3.Zero;
-            Minimum = Vector3.Zero;
-            Orientation = Vector3.Zero;
-            Pattern = Pattern.Fill;
-            Scale = Vector3.One;
-            VertexShader = Resources.Trace_VertexShader;
-            TessControlShader = Resources.Trace_TessControlShader;
-            TessEvaluationShader = Resources.Trace_TessEvaluationShader;
-            GeometryShader = Resources.Trace_GeometryShader;
-            FragmentShader = Resources.Trace_FragmentShader;
-            ComputeShader = Resources.Trace_ComputeShader;
-            StripCount = new Vector3(100, 100, 0);
-            Visible = true;
-        }
+        public Trace() => Clear();
 
         internal Trace(Scene scene) : this() => Scene = scene;
 
@@ -136,6 +65,26 @@
             SetOrientation(transform.ExtractRotation());
             SetScale(transform.ExtractScale());
         }*/
+
+        private void Clear()
+        {
+            Description = string.Empty;
+            Index = -1;
+            Location = Vector3.Zero;
+            Maximum = Vector3.Zero;
+            Minimum = Vector3.Zero;
+            Orientation = Vector3.Zero;
+            Pattern = Pattern.Fill;
+            Scale = Vector3.One;
+            VertexShader = Resources.Trace_VertexShader;
+            TessControlShader = Resources.Trace_TessControlShader;
+            TessEvaluationShader = Resources.Trace_TessEvaluationShader;
+            GeometryShader = Resources.Trace_GeometryShader;
+            FragmentShader = Resources.Trace_FragmentShader;
+            ComputeShader = Resources.Trace_ComputeShader;
+            StripCount = new Vector3(100, 100, 0);
+            Visible = true;
+        }
 
         private void CopyFrom(Trace trace)
         {

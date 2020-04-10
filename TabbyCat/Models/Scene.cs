@@ -15,78 +15,7 @@
 
     public class Scene : Code, IScene
     {
-        public override string GetScript(ShaderType shaderType)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    return VertexShader;
-                case ShaderType.TessControlShader:
-                    return TessControlShader;
-                case ShaderType.TessEvaluationShader:
-                    return TessEvaluationShader;
-                case ShaderType.GeometryShader:
-                    return GeometryShader;
-                case ShaderType.FragmentShader:
-                    return FragmentShader;
-                case ShaderType.ComputeShader:
-                    return ComputeShader;
-                default:
-                    return string.Empty;
-            }
-        }
-
-        public override void SetScript(ShaderType shaderType, string value)
-        {
-            switch (shaderType)
-            {
-                case ShaderType.VertexShader:
-                    VertexShader = value;
-                    break;
-                case ShaderType.TessControlShader:
-                    TessControlShader = value;
-                    break;
-                case ShaderType.TessEvaluationShader:
-                    TessEvaluationShader = value;
-                    break;
-                case ShaderType.GeometryShader:
-                    GeometryShader = value;
-                    break;
-                case ShaderType.FragmentShader:
-                    FragmentShader = value;
-                    break;
-                case ShaderType.ComputeShader:
-                    ComputeShader = value;
-                    break;
-            }
-        }
-
-        [DefaultValue("")] public override string VertexShader { get; set; }
-        [DefaultValue("")] public override string TessControlShader { get; set; }
-        [DefaultValue("")] public override string TessEvaluationShader { get; set; }
-        [DefaultValue("")] public override string GeometryShader { get; set; }
-        [DefaultValue("")] public override string FragmentShader { get; set; }
-        [DefaultValue("")] public override string ComputeShader { get; set; }
-
-        public Scene()
-        {
-            BackgroundColour = Color.White;
-            Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
-            FPS = 60;
-            GLTargetVersion = "330";
-            GPULog = string.Empty;
-            GPUStatus = GPUStatus.OK;
-            Projection = new Projection(75, 16, 9, 0.1f, 1000);
-            VertexShader = Resources.Scene_VertexShader;
-            TessControlShader = Resources.Scene_TessControlShader;
-            TessEvaluationShader = Resources.Scene_TessEvaluationShader;
-            GeometryShader = Resources.Scene_GeometryShader;
-            FragmentShader = Resources.Scene_FragmentShader;
-            ComputeShader = Resources.Scene_ComputeShader;
-            Title = string.Empty;
-            Traces = new List<Trace>();
-            VSync = false;
-        }
+        public Scene() => Clear();
 
         internal Scene(WorldController worldController) : this() => WorldController = worldController;
 
@@ -152,7 +81,25 @@
                 trace.Scene = this;
         }
 
-        internal void Clear() { }
+        internal void Clear()
+        {
+            BackgroundColour = Color.White;
+            Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
+            FPS = 60;
+            GLTargetVersion = "330";
+            GPULog = string.Empty;
+            GPUStatus = GPUStatus.OK;
+            Projection = new Projection(75, 16, 9, 0.1f, 1000);
+            VertexShader = Resources.Scene_VertexShader;
+            TessControlShader = Resources.Scene_TessControlShader;
+            TessEvaluationShader = Resources.Scene_TessEvaluationShader;
+            GeometryShader = Resources.Scene_GeometryShader;
+            FragmentShader = Resources.Scene_FragmentShader;
+            ComputeShader = Resources.Scene_ComputeShader;
+            Title = string.Empty;
+            Traces = new List<Trace>();
+            VSync = false;
+        }
 
         internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
 
