@@ -377,7 +377,8 @@
     <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Menu_Trace_All" xml:space="preserve">
-    <value>All|Select / deselect all traces</value>
+    <value>All</value>
+    <comment>Do not provide a tooltip (one will be supplied by the toolbar's MouseMove event).</comment>
   </data>
   <data name="Control_Camera_Direction" xml:space="preserve">
     <value>Direction|Camera direction (degrees)</value>
@@ -795,5 +796,8 @@ and reset the timer to zero</value>
   </data>
   <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
+    <value>Select / deselect all traces</value>
   </data>
 </root>

@@ -99,6 +99,7 @@
                 Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
                 SelectionController.SelectionChanged -= Selection_Changed;
             }
+            SelectionController.Connect(connect);
         }
 
         protected override void Localize()

@@ -16,6 +16,8 @@
 
         private int LastIndex = -1;
 
+        private ToolStripLabel PrevLabel;
+
         private List<int> _Selection = new List<int>();
 
         private readonly Brush
@@ -57,6 +59,8 @@
 
         private ToolStrip Toolbar => TraceController.SelectionToolbar;
 
+        private ToolTip ToolTip => TraceController.ToolTip;
+
         internal event EventHandler SelectionChanged;
 
         protected internal override void Connect(bool connect)
@@ -65,10 +69,11 @@
             if (connect)
             {
                 Init();
+                Toolbar.MouseMove += Toolbar_MouseMove;
             }
             else
             {
-
+                Toolbar.MouseMove -= Toolbar_MouseMove;
             }
         }
 
@@ -78,6 +83,7 @@
             var label = new ToolStripLabel($"{TraceCount + 1}");
             Labels.Add(label);
             label.MouseDown += Label_MouseDown;
+            label.MouseMove += Label_MouseMove;
             label.Paint += Label_Paint;
         }
 
@@ -112,6 +118,7 @@
             Localize(Resources.Menu_Trace_All, label);
             Labels.Add(label);
             label.MouseDown += LabelAll_MouseDown;
+            label.MouseMove += Label_MouseMove;
             label.Paint += LabelAll_Paint;
         }
 
@@ -151,10 +158,28 @@
             OnSelectionChanged();
         }
 
+        private void Label_MouseMove(object sender, MouseEventArgs e) => MouseMove(sender);
+
         private void Label_Paint(object sender, PaintEventArgs e)
         {
             if (_Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
                 Paint_Highlight(sender, e);
+        }
+
+        private void MouseMove(object sender)
+        {
+            var label = sender as ToolStripLabel;
+            if (label == PrevLabel)
+                return;
+            PrevLabel = label;
+            var index = Labels.IndexOf(label);
+            var
+                tooltip = index < 0
+                ? string.Empty
+                : index == 0
+                ? Resources.Text_SelectDeselectAllTraces
+                : TraceController.Scene.Traces[index - 1].ToString();
+            ToolTip.SetToolTip(Toolbar, tooltip);
         }
 
         private void OnSelectionChanged()
@@ -180,6 +205,8 @@
         }
 
         private void SelectAll() => IncludeRange(0, TraceCount - 1);
+
+        private void Toolbar_MouseMove(object sender, MouseEventArgs e) => MouseMove(Toolbar.GetItemAt(e.X, e.Y));
 
         private void Toggle(int traceIndex)
         {

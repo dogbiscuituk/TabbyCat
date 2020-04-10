@@ -1612,7 +1612,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All|Select / deselect all traces.
+        ///   Looks up a localized string similar to All.
         /// </summary>
         public static string Menu_Trace_All {
             get {
@@ -2199,6 +2199,15 @@ namespace TabbyCat.Properties {
         public static string Text_Properties {
             get {
                 return ResourceManager.GetString("Text_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select / deselect all traces.
+        /// </summary>
+        public static string Text_SelectDeselectAllTraces {
+            get {
+                return ResourceManager.GetString("Text_SelectDeselectAllTraces", resourceCulture);
             }
         }
         
