@@ -3,7 +3,6 @@
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics;
-    using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
@@ -15,7 +14,7 @@
 
     public class Scene : Code, IScene
     {
-        public Scene() => Clear();
+        public Scene() : base() => Init();
 
         internal Scene(WorldController worldController) : this() => WorldController = worldController;
 
@@ -81,25 +80,7 @@
                 trace.Scene = this;
         }
 
-        internal void Clear()
-        {
-            BackgroundColour = Color.White;
-            Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
-            FPS = 60;
-            GLTargetVersion = "330";
-            GPULog = string.Empty;
-            GPUStatus = GPUStatus.OK;
-            Projection = new Projection(75, 16, 9, 0.1f, 1000);
-            VertexShader = Resources.Scene_VertexShader;
-            TessControlShader = Resources.Scene_TessControlShader;
-            TessEvaluationShader = Resources.Scene_TessEvaluationShader;
-            GeometryShader = Resources.Scene_GeometryShader;
-            FragmentShader = Resources.Scene_FragmentShader;
-            ComputeShader = Resources.Scene_ComputeShader;
-            Title = string.Empty;
-            Traces = new List<Trace>();
-            VSync = false;
-        }
+        internal void Clear() => Init();
 
         internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
 
@@ -122,5 +103,30 @@
         internal void SetCameraView(Matrix4 _) { }
 
         internal void SetProjection(Matrix4 _) { }
+
+        private void Init()
+        {
+            InitShaders();
+            BackgroundColour = Color.White;
+            Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
+            FPS = 60;
+            GLTargetVersion = "330";
+            GPULog = string.Empty;
+            GPUStatus = GPUStatus.OK;
+            Projection = new Projection(75, 16, 9, 0.1f, 1000);
+            Title = string.Empty;
+            Traces = new List<Trace>();
+            VSync = false;
+        }
+
+        private void InitShaders()
+        {
+            VertexShader = Resources.Scene_VertexShader;
+            TessControlShader = Resources.Scene_TessControlShader;
+            TessEvaluationShader = Resources.Scene_TessEvaluationShader;
+            GeometryShader = Resources.Scene_GeometryShader;
+            FragmentShader = Resources.Scene_FragmentShader;
+            ComputeShader = Resources.Scene_ComputeShader;
+        }
     }
 }

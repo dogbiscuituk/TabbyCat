@@ -17,6 +17,13 @@
 
         protected Code(Code code) => CopyFrom(code);
 
+        [DefaultValue("")] public string VertexShader { get; set; }
+        [DefaultValue("")] public string TessControlShader { get; set; }
+        [DefaultValue("")] public string TessEvaluationShader { get; set; }
+        [DefaultValue("")] public string GeometryShader { get; set; }
+        [DefaultValue("")] public string FragmentShader { get; set; }
+        [DefaultValue("")] public string ComputeShader { get; set; }
+
         public string GetScript(ShaderType shaderType)
         {
             switch (shaderType)
@@ -62,13 +69,6 @@
                     break;
             }
         }
-
-        [DefaultValue("")] public string VertexShader { get; set; }
-        [DefaultValue("")] public string TessControlShader { get; set; }
-        [DefaultValue("")] public string TessEvaluationShader { get; set; }
-        [DefaultValue("")] public string GeometryShader { get; set; }
-        [DefaultValue("")] public string FragmentShader { get; set; }
-        [DefaultValue("")] public string ComputeShader { get; set; }
 
         private void CopyFrom(IShaderSet source) => Array.ForEach(
             Shaders.All.ToArray(),

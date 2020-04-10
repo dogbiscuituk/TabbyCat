@@ -2,7 +2,6 @@
 {
     using Newtonsoft.Json;
     using OpenTK;
-    using OpenTK.Graphics.OpenGL;
     using System.ComponentModel;
     using TabbyCat.Common.Converters;
     using TabbyCat.Common.Types;
@@ -11,7 +10,7 @@
 
     public class Trace : Code, ITrace
     {
-        public Trace() => Clear();
+        public Trace() : base() => Init();
 
         internal Trace(Scene scene) : this() => Scene = scene;
 
@@ -66,26 +65,6 @@
             SetScale(transform.ExtractScale());
         }*/
 
-        private void Clear()
-        {
-            Description = string.Empty;
-            Index = -1;
-            Location = Vector3.Zero;
-            Maximum = Vector3.Zero;
-            Minimum = Vector3.Zero;
-            Orientation = Vector3.Zero;
-            Pattern = Pattern.Fill;
-            Scale = Vector3.One;
-            VertexShader = Resources.Trace_VertexShader;
-            TessControlShader = Resources.Trace_TessControlShader;
-            TessEvaluationShader = Resources.Trace_TessEvaluationShader;
-            GeometryShader = Resources.Trace_GeometryShader;
-            FragmentShader = Resources.Trace_FragmentShader;
-            ComputeShader = Resources.Trace_ComputeShader;
-            StripCount = new Vector3(100, 100, 0);
-            Visible = true;
-        }
-
         private void CopyFrom(Trace trace)
         {
             Description = trace.Description;
@@ -98,6 +77,31 @@
             Scale = new Vector3(trace.Scale);
             StripCount = new Vector3(trace.StripCount);
             Visible = trace.Visible;
+        }
+
+        private void Init()
+        {
+            InitShaders();
+            Description = string.Empty;
+            Index = -1;
+            Location = Vector3.Zero;
+            Maximum = Vector3.Zero;
+            Minimum = Vector3.Zero;
+            Orientation = Vector3.Zero;
+            Pattern = Pattern.Fill;
+            Scale = Vector3.One;
+            StripCount = new Vector3(100, 100, 0);
+            Visible = true;
+        }
+
+        private void InitShaders()
+        {
+            VertexShader = Resources.Trace_VertexShader;
+            TessControlShader = Resources.Trace_TessControlShader;
+            TessEvaluationShader = Resources.Trace_TessEvaluationShader;
+            GeometryShader = Resources.Trace_GeometryShader;
+            FragmentShader = Resources.Trace_FragmentShader;
+            ComputeShader = Resources.Trace_ComputeShader;
         }
     }
 }
