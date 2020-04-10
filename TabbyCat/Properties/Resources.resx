@@ -121,23 +121,14 @@
   <data name="RightToLeftDoucmentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RightToLeftDoucmentHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="RewindHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RewindHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Built_in_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="TaskHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TaskHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewDocumentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewDocumentHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Built_in_Shader4Geometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader4geometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="TableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,9 +151,6 @@
   <data name="FindHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FindHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Shader1Vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader1vertex.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,9 +169,6 @@
   <data name="graphhs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\graphhs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="BackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,9 +184,6 @@
   <data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Built_in_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -216,9 +198,6 @@
   </data>
   <data name="SpeechMicHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeechMicHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Built_in_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Format_Case" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_case.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -244,9 +223,6 @@
   <data name="DoubleLeftArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DoubleLeftArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Built_in_Shader2TessControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader2tesscontrol.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="TileWindowsHorizontallyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TileWindowsHorizontallyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -256,17 +232,11 @@
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="FlipHorizontalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ShowGridlinesHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowGridlinesHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Built_in_Shader3TessEvaluation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_shader3tessevaluation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="FolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,17 +244,8 @@
   <data name="OptionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OptionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="eps_open_largeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eps_open_largeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_Shader2TessControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader2tesscontrol.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="PasteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PasteHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,9 +268,6 @@
   <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Shader2TessControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader2tesscontrol.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="LineColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LineColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -328,9 +286,6 @@
   <data name="ShowAllCommentsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowAllCommentsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_Shader4Geometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader4geometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="DataContainer_MovePreviousHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DataContainer_MovePreviousHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -348,9 +303,6 @@
   </data>
   <data name="EditTableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditTableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Scene_Shader4Geometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader4geometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="ColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -385,9 +337,6 @@
   <data name="GoLtrHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoLtrHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene_Shader6Compute" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_shader6compute.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="SendBackwardHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SendBackwardHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -405,9 +354,6 @@
   </data>
   <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_Shader5Fragment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_shader5fragment.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PieChart3DHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieChart3DHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -795,5 +741,59 @@ and reset the timer to zero</value>
   </data>
   <data name="SaveRtfDialog_Title" xml:space="preserve">
     <value>Export As RTF</value>
+  </data>
+  <data name="Built_in_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Built_in_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Scene_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Trace_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Trace_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Trace_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Trace_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Trace_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

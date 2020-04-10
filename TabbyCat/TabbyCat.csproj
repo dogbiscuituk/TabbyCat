@@ -125,11 +125,6 @@
     <Compile Include="Views\WorldForm.Designer.cs">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.en-US.Designer.cs">
-      <DependentUpon>Resources.en-US.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -146,11 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
@@ -432,28 +422,28 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Snippets\Scene_ComputeShader.txt" />
+    <Content Include="Snippets\Scene_FragmentShader.txt" />
+    <Content Include="Snippets\Scene_GeometryShader.txt" />
+    <Content Include="Snippets\Scene_TessControlShader.txt" />
+    <Content Include="Snippets\Scene_TessEvaluationShader.txt" />
+    <Content Include="Snippets\Scene_VertexShader.txt" />
+    <Content Include="Snippets\Trace_ComputeShader.txt" />
+    <Content Include="Snippets\Trace_FragmentShader.txt" />
+    <Content Include="Snippets\Trace_GeometryShader.txt" />
+    <Content Include="Snippets\Trace_TessControlShader.txt" />
+    <Content Include="Snippets\Trace_TessEvaluationShader.txt" />
+    <Content Include="Snippets\Trace_VertexShader.txt" />
     <None Include="Resources\ThinkTimenode_8848.png" />
-    <Content Include="Snippets\Built_in_Shader1Vertex.txt" />
-    <Content Include="Snippets\Built_in_Shader2TessControl.txt" />
-    <Content Include="Snippets\Built_in_Shader3TessEvaluation.txt" />
-    <Content Include="Snippets\Built_in_Shader4Geometry.txt" />
-    <Content Include="Snippets\Built_in_Shader5Fragment.txt" />
-    <Content Include="Snippets\Built_in_Shader6Compute.txt" />
+    <Content Include="Snippets\Built_in_ComputeShader.txt" />
+    <Content Include="Snippets\Built_in_FragmentShader.txt" />
+    <Content Include="Snippets\Built_in_GeometryShader.txt" />
+    <Content Include="Snippets\Built_in_TessControlShader.txt" />
+    <Content Include="Snippets\Built_in_TessEvaluationShader.txt" />
+    <Content Include="Snippets\Built_in_VertexShader.txt" />
     <Content Include="Snippets\Format_Scene.txt" />
-    <Content Include="Snippets\Scene_Shader1Vertex.txt" />
-    <Content Include="Snippets\Scene_Shader2TessControl.txt" />
-    <Content Include="Snippets\Scene_Shader3TessEvaluation.txt" />
-    <Content Include="Snippets\Scene_Shader4Geometry.txt" />
-    <Content Include="Snippets\Scene_Shader5Fragment.txt" />
-    <Content Include="Snippets\Scene_Shader6Compute.txt" />
     <Content Include="Snippets\Format_Case.txt" />
     <Content Include="Snippets\Format_Trace.txt" />
-    <Content Include="Snippets\Trace_Shader1Vertex.txt" />
-    <Content Include="Snippets\Trace_Shader2TessControl.txt" />
-    <Content Include="Snippets\Trace_Shader3TessEvaluation.txt" />
-    <Content Include="Snippets\Trace_Shader4Geometry.txt" />
-    <Content Include="Snippets\Trace_Shader5Fragment.txt" />
-    <Content Include="Snippets\Trace_Shader6Compute.txt" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />

@@ -2,6 +2,7 @@
 {
     using Jmk.Common;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -79,7 +80,12 @@
             bool result;
             using (var streamReader = new StreamReader(stream))
             using (var textReader = new JsonTextReader(streamReader))
-                result = UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+            {
+                var serializer = GetSerializer();
+                Scene = serializer.Deserialize<Scene>(textReader);
+                result = true;
+            }
+            //result = UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
             return result;
         }
 
@@ -97,7 +103,7 @@
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented,
-            MissingMemberHandling = MissingMemberHandling.Error,
+            MissingMemberHandling = MissingMemberHandling.Error
         };
     }
 }

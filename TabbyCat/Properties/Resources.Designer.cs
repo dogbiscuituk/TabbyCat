@@ -99,88 +99,52 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Vertex Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%)
         ///
-        ///in int gl_VertexID; // when not targeting Vulkan
-        ///in int gl_InstanceID; // when not targeting Vulkan
-        ///in int gl_VertexIndex; // when targeting Vulkan
-        ///in int gl_InstanceIndex; // when targeting Vulkan
-        ///in int gl_DrawID;
-        ///in int gl_BaseVertex;
-        ///in int gl_BaseInstance;
+        ///// workgroup dimensions
+        ///in uvec3 gl_NumWorkGroups;
+        ///const uvec3 gl_WorkGroupSize;
         ///
-        ///out gl_PerVertex {
-        ///  vec4 gl_Position;
-        ///  float gl_PointSize;
-        ///  float gl_ClipDistance[];
-        ///  float gl_CullDistance[];
-        ///};
+        ///// workgroup and invocation IDs
+        ///in uvec3 gl_WorkGroupID;
+        ///in uvec3 gl_LocalInvocationID;
         ///
-        ///The variable gl_Position is intended for writing the homogeneous v [rest of string was truncated]&quot;;.
+        ///// derived variables
+        ///in uvec3 gl_GlobalInvocationID;
+        ///in uint gl_LocalInvocationIndex;
+        ///
+        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its conten [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Built_in_Shader1Vertex {
+        public static string Built_in_ComputeShader {
             get {
-                return ResourceManager.GetString("Built_in_Shader1Vertex", resourceCulture);
+                return ResourceManager.GetString("Built_in_ComputeShader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Tessellation Control Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Fragment Shader Variables](%GLSLUrl%)
         ///
-        ///in gl_PerVertex {
-        ///    vec4 gl_Position;
-        ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///} gl_in[gl_MaxPatchVertices];
-        ///
-        ///in int gl_PatchVerticesIn;
+        ///in vec4 gl_FragCoord;
+        ///in bool gl_FrontFacing;
+        ///in float gl_ClipDistance[];
+        ///in float gl_CullDistance[];
+        ///in vec2 gl_PointCoord;
         ///in int gl_PrimitiveID;
-        ///in int gl_InvocationID;
+        ///in int gl_SampleID;
+        ///in vec2 gl_SamplePosition;
+        ///in int gl_SampleMaskIn[];
+        ///in int gl_Layer;
+        ///in int gl_ViewportIndex;
+        ///in bool gl_HelperInvocation;
         ///
-        ///out gl_PerVertex {
-        ///    vec4 gl_Position;
-        ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///} gl_out[];
+        ///out float gl_FragDepth;
+        ///out int gl_SampleMask[];
         ///
-        ///patch out float gl_TessLevelOuter[4];
-        ///patch out float gl_TessLevel [rest of string was truncated]&quot;;.
+        ///The output of the fragment shader executable is processed by the fixed function operations at the back [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Built_in_Shader2TessControl {
+        public static string Built_in_FragmentShader {
             get {
-                return ResourceManager.GetString("Built_in_Shader2TessControl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%)
-        ///
-        ///in gl_PerVertex {
-        ///    vec4 gl_Position;
-        ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///} gl_in[gl_MaxPatchVertices];
-        ///
-        ///in int gl_PatchVerticesIn;
-        ///in int gl_PrimitiveID;
-        ///in vec3 gl_TessCoord;
-        ///patch in float gl_TessLevelOuter[4];
-        ///patch in float gl_TessLevelInner[2];
-        ///
-        ///out gl_PerVertex {
-        ///    vec4 gl_Position;
-        ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///};
-        ///        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string Built_in_Shader3TessEvaluation {
-            get {
-                return ResourceManager.GetString("Built_in_Shader3TessEvaluation", resourceCulture);
+                return ResourceManager.GetString("Built_in_FragmentShader", resourceCulture);
             }
         }
         
@@ -212,59 +176,95 @@ namespace TabbyCat.Properties {
         ///
         ///gl_Position, [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Built_in_Shader4Geometry {
+        public static string Built_in_GeometryShader {
             get {
-                return ResourceManager.GetString("Built_in_Shader4Geometry", resourceCulture);
+                return ResourceManager.GetString("Built_in_GeometryShader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Fragment Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Tessellation Control Shader Variables](%GLSLUrl%)
         ///
-        ///in vec4 gl_FragCoord;
-        ///in bool gl_FrontFacing;
-        ///in float gl_ClipDistance[];
-        ///in float gl_CullDistance[];
-        ///in vec2 gl_PointCoord;
+        ///in gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_in[gl_MaxPatchVertices];
+        ///
+        ///in int gl_PatchVerticesIn;
         ///in int gl_PrimitiveID;
-        ///in int gl_SampleID;
-        ///in vec2 gl_SamplePosition;
-        ///in int gl_SampleMaskIn[];
-        ///in int gl_Layer;
-        ///in int gl_ViewportIndex;
-        ///in bool gl_HelperInvocation;
+        ///in int gl_InvocationID;
         ///
-        ///out float gl_FragDepth;
-        ///out int gl_SampleMask[];
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_out[];
         ///
-        ///The output of the fragment shader executable is processed by the fixed function operations at the back [rest of string was truncated]&quot;;.
+        ///patch out float gl_TessLevelOuter[4];
+        ///patch out float gl_TessLevel [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Built_in_Shader5Fragment {
+        public static string Built_in_TessControlShader {
             get {
-                return ResourceManager.GetString("Built_in_Shader5Fragment", resourceCulture);
+                return ResourceManager.GetString("Built_in_TessControlShader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%)
         ///
-        ///// workgroup dimensions
-        ///in uvec3 gl_NumWorkGroups;
-        ///const uvec3 gl_WorkGroupSize;
+        ///in gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///} gl_in[gl_MaxPatchVertices];
         ///
-        ///// workgroup and invocation IDs
-        ///in uvec3 gl_WorkGroupID;
-        ///in uvec3 gl_LocalInvocationID;
+        ///in int gl_PatchVerticesIn;
+        ///in int gl_PrimitiveID;
+        ///in vec3 gl_TessCoord;
+        ///patch in float gl_TessLevelOuter[4];
+        ///patch in float gl_TessLevelInner[2];
         ///
-        ///// derived variables
-        ///in uvec3 gl_GlobalInvocationID;
-        ///in uint gl_LocalInvocationIndex;
-        ///
-        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its conten [rest of string was truncated]&quot;;.
+        ///out gl_PerVertex {
+        ///    vec4 gl_Position;
+        ///    float gl_PointSize;
+        ///    float gl_ClipDistance[];
+        ///    float gl_CullDistance[];
+        ///};
+        ///        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Built_in_Shader6Compute {
+        public static string Built_in_TessEvaluationShader {
             get {
-                return ResourceManager.GetString("Built_in_Shader6Compute", resourceCulture);
+                return ResourceManager.GetString("Built_in_TessEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Built-in Vertex Shader Variables](%GLSLUrl%)
+        ///
+        ///in int gl_VertexID; // when not targeting Vulkan
+        ///in int gl_InstanceID; // when not targeting Vulkan
+        ///in int gl_VertexIndex; // when targeting Vulkan
+        ///in int gl_InstanceIndex; // when targeting Vulkan
+        ///in int gl_DrawID;
+        ///in int gl_BaseVertex;
+        ///in int gl_BaseInstance;
+        ///
+        ///out gl_PerVertex {
+        ///  vec4 gl_Position;
+        ///  float gl_PointSize;
+        ///  float gl_ClipDistance[];
+        ///  float gl_CullDistance[];
+        ///};
+        ///
+        ///The variable gl_Position is intended for writing the homogeneous v [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Built_in_VertexShader {
+            get {
+                return ResourceManager.GetString("Built_in_VertexShader", resourceCulture);
             }
         }
         
@@ -2018,46 +2018,11 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
-        ///out vec3 colour;
-        ///
-        ///uniform float timeValue;
-        ///uniform int traceNumber;
-        ///uniform mat4
-        ///  transform,
-        ///  cameraView,
-        ///  projection;.
-        /// </summary>
-        public static string Scene_Shader1Vertex {
-            get {
-                return ResourceManager.GetString("Scene_Shader1Vertex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Scene_Shader2TessControl {
+        public static string Scene_ComputeShader {
             get {
-                return ResourceManager.GetString("Scene_Shader2TessControl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Scene_Shader3TessEvaluation {
-            get {
-                return ResourceManager.GetString("Scene_Shader3TessEvaluation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Scene_Shader4Geometry {
-            get {
-                return ResourceManager.GetString("Scene_Shader4Geometry", resourceCulture);
+                return ResourceManager.GetString("Scene_ComputeShader", resourceCulture);
             }
         }
         
@@ -2068,18 +2033,53 @@ namespace TabbyCat.Properties {
         ///uniform float timeValue;
         ///uniform int traceNumber;.
         /// </summary>
-        public static string Scene_Shader5Fragment {
+        public static string Scene_FragmentShader {
             get {
-                return ResourceManager.GetString("Scene_Shader5Fragment", resourceCulture);
+                return ResourceManager.GetString("Scene_FragmentShader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Scene_Shader6Compute {
+        public static string Scene_GeometryShader {
             get {
-                return ResourceManager.GetString("Scene_Shader6Compute", resourceCulture);
+                return ResourceManager.GetString("Scene_GeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Scene_TessControlShader {
+            get {
+                return ResourceManager.GetString("Scene_TessControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Scene_TessEvaluationShader {
+            get {
+                return ResourceManager.GetString("Scene_TessEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
+        ///out vec3 colour;
+        ///
+        ///uniform float timeValue;
+        ///uniform int traceNumber;
+        ///uniform mat4
+        ///  transform,
+        ///  cameraView,
+        ///  projection;.
+        /// </summary>
+        public static string Scene_VertexShader {
+            get {
+                return ResourceManager.GetString("Scene_VertexShader", resourceCulture);
             }
         }
         
@@ -2233,6 +2233,51 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Trace_ComputeShader {
+            get {
+                return ResourceManager.GetString("Trace_ComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
+        /// </summary>
+        public static string Trace_FragmentShader {
+            get {
+                return ResourceManager.GetString("Trace_FragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Trace_GeometryShader {
+            get {
+                return ResourceManager.GetString("Trace_GeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Trace_TessControlShader {
+            get {
+                return ResourceManager.GetString("Trace_TessControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Trace_TessEvaluationShader {
+            get {
+                return ResourceManager.GetString("Trace_TessEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to float
         ///  t = timeValue,
         ///  x = position.x,
@@ -2255,54 +2300,9 @@ namespace TabbyCat.Properties {
         ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
         ///colour = vec3(r, g, b);.
         /// </summary>
-        public static string Trace_Shader1Vertex {
+        public static string Trace_VertexShader {
             get {
-                return ResourceManager.GetString("Trace_Shader1Vertex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_Shader2TessControl {
-            get {
-                return ResourceManager.GetString("Trace_Shader2TessControl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_Shader3TessEvaluation {
-            get {
-                return ResourceManager.GetString("Trace_Shader3TessEvaluation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_Shader4Geometry {
-            get {
-                return ResourceManager.GetString("Trace_Shader4Geometry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
-        /// </summary>
-        public static string Trace_Shader5Fragment {
-            get {
-                return ResourceManager.GetString("Trace_Shader5Fragment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_Shader6Compute {
-            get {
-                return ResourceManager.GetString("Trace_Shader6Compute", resourceCulture);
+                return ResourceManager.GetString("Trace_VertexShader", resourceCulture);
             }
         }
         

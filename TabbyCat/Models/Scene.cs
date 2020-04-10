@@ -3,6 +3,7 @@
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics;
+    using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
@@ -14,6 +15,59 @@
 
     public class Scene : Code, IScene
     {
+        public override string GetScript(ShaderType shaderType)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    return VertexShader;
+                case ShaderType.TessControlShader:
+                    return TessControlShader;
+                case ShaderType.TessEvaluationShader:
+                    return TessEvaluationShader;
+                case ShaderType.GeometryShader:
+                    return GeometryShader;
+                case ShaderType.FragmentShader:
+                    return FragmentShader;
+                case ShaderType.ComputeShader:
+                    return ComputeShader;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public override void SetScript(ShaderType shaderType, string value)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    VertexShader = value;
+                    break;
+                case ShaderType.TessControlShader:
+                    TessControlShader = value;
+                    break;
+                case ShaderType.TessEvaluationShader:
+                    TessEvaluationShader = value;
+                    break;
+                case ShaderType.GeometryShader:
+                    GeometryShader = value;
+                    break;
+                case ShaderType.FragmentShader:
+                    FragmentShader = value;
+                    break;
+                case ShaderType.ComputeShader:
+                    ComputeShader = value;
+                    break;
+            }
+        }
+
+        [DefaultValue("")] public override string VertexShader { get; set; }
+        [DefaultValue("")] public override string TessControlShader { get; set; }
+        [DefaultValue("")] public override string TessEvaluationShader { get; set; }
+        [DefaultValue("")] public override string GeometryShader { get; set; }
+        [DefaultValue("")] public override string FragmentShader { get; set; }
+        [DefaultValue("")] public override string ComputeShader { get; set; }
+
         public Scene()
         {
             BackgroundColour = Color.White;
@@ -23,12 +77,12 @@
             GPULog = string.Empty;
             GPUStatus = GPUStatus.OK;
             Projection = new Projection(75, 16, 9, 0.1f, 1000);
-            Shader1Vertex = Resources.Scene_Shader1Vertex;
-            Shader2TessControl = Resources.Scene_Shader2TessControl;
-            Shader3TessEvaluation = Resources.Scene_Shader3TessEvaluation;
-            Shader4Geometry = Resources.Scene_Shader4Geometry;
-            Shader5Fragment = Resources.Scene_Shader5Fragment;
-            Shader6Compute = Resources.Scene_Shader6Compute;
+            VertexShader = Resources.Scene_VertexShader;
+            TessControlShader = Resources.Scene_TessControlShader;
+            TessEvaluationShader = Resources.Scene_TessEvaluationShader;
+            GeometryShader = Resources.Scene_GeometryShader;
+            FragmentShader = Resources.Scene_FragmentShader;
+            ComputeShader = Resources.Scene_ComputeShader;
             Title = string.Empty;
             Traces = new List<Trace>();
             VSync = false;

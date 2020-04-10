@@ -416,17 +416,17 @@
             switch (ShaderType)
             {
                 case ShaderType.VertexShader:
-                    return Resources.Built_in_Shader1Vertex;
+                    return Resources.Built_in_VertexShader;
                 case ShaderType.TessControlShader:
-                    return Resources.Built_in_Shader2TessControl;
+                    return Resources.Built_in_TessControlShader;
                 case ShaderType.TessEvaluationShader:
-                    return Resources.Built_in_Shader3TessEvaluation;
+                    return Resources.Built_in_TessEvaluationShader;
                 case ShaderType.GeometryShader:
-                    return Resources.Built_in_Shader4Geometry;
+                    return Resources.Built_in_GeometryShader;
                 case ShaderType.FragmentShader:
-                    return Resources.Built_in_Shader5Fragment;
+                    return Resources.Built_in_FragmentShader;
                 case ShaderType.ComputeShader:
-                    return Resources.Built_in_Shader6Compute;
+                    return Resources.Built_in_ComputeShader;
                 default:
                     return string.Empty;
             }
