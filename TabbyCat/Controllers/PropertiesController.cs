@@ -51,6 +51,8 @@
             }
         }
 
+        internal void InitViewProperties() => WorldForm.ViewProperties.Checked = EditorVisible;
+
         protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel2Collapsed = collapse;
 
         private void PopupPropertiesHide_Click(object sender, EventArgs e) => EditorVisible = false;
@@ -61,7 +63,7 @@
 
         private void PopupPropertiesUndock_Click(object sender, EventArgs e) => EditorDocked = !EditorDocked;
 
-        private void ViewMenu_DropDownOpening(object sender, EventArgs e) => WorldForm.ViewProperties.Checked = EditorVisible;
+        private void ViewMenu_DropDownOpening(object sender, EventArgs e) => InitViewProperties();
 
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

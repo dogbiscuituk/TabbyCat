@@ -269,7 +269,7 @@
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
-        private void PopupMenu_Opening(object sender, CancelEventArgs e) => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
+        private void PopupMenu_Opening(object sender, CancelEventArgs e) => CloneMainMenu();
 
         private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
@@ -298,6 +298,12 @@
             ClockInit();
             Clock.Start();
             ClockController.UpdateTimeControls();
+        }
+
+        private void CloneMainMenu()
+        {
+            PropertiesController.InitViewProperties(); // Copy the checked state of the ViewProperties menu item.
+            WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
         }
 
         private void ConnectControllers(bool connect)

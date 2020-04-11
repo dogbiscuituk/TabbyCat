@@ -9,34 +9,34 @@
         /// <summary>
         /// Copy the Items from one ToolStrip to another.
         /// </summary>
-        /// <param name="s">The source, contributing the items to be copied.</param>
-        /// <param name="t">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStrip s, ToolStrip t) =>
-            s?.Items.CloneTo(t?.Items);
+        /// <param name="source">The source, contributing the items to be copied.</param>
+        /// <param name="target">The target, receiving the copies.</param>
+        public static void CloneTo(this ToolStrip source, ToolStrip target) =>
+            source?.Items.CloneTo(target?.Items);
 
         /// <summary>
         /// Copy the Items from one ToolStripDropDownItem to another.
         /// </summary>
-        /// <param name="s">The source, contributing the items to be copied.</param>
-        /// <param name="t">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStripDropDownItem s, ToolStripDropDownItem t) =>
-            s?.DropDownItems.CloneTo(t?.DropDownItems);
+        /// <param name="source">The source, contributing the items to be copied.</param>
+        /// <param name="target">The target, receiving the copies.</param>
+        public static void CloneTo(this ToolStripDropDownItem source, ToolStripDropDownItem target) =>
+            source?.DropDownItems.CloneTo(target?.DropDownItems);
 
         /// <summary>
         /// Copy the Items from a ToolStrip to a ToolStripDropDownItem.
         /// </summary>
-        /// <param name="s">The source, contributing the items to be copied.</param>
-        /// <param name="t">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStrip s, ToolStripDropDownItem t) =>
-            s?.Items.CloneTo(t?.DropDownItems);
+        /// <param name="source">The source, contributing the items to be copied.</param>
+        /// <param name="target">The target, receiving the copies.</param>
+        public static void CloneTo(this ToolStrip source, ToolStripDropDownItem target) =>
+            source?.Items.CloneTo(target?.DropDownItems);
 
         /// <summary>
         /// Copy the DropDownItems from a ToolStripDropDownItem to a ToolStrip.
         /// </summary>
-        /// <param name="s">The source, contributing the items to be copied.</param>
-        /// <param name="t">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStripDropDownItem s, ToolStrip t) =>
-            s?.DropDownItems.CloneTo(t?.Items);
+        /// <param name="source">The source, contributing the items to be copied.</param>
+        /// <param name="target">The target, receiving the copies.</param>
+        public static void CloneTo(this ToolStripDropDownItem source, ToolStrip target) =>
+            source?.DropDownItems.CloneTo(target?.Items);
 
         public static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
         {
@@ -52,27 +52,29 @@
                     control.Enabled = enabled;
         }
 
-        private static ToolStripItem Clone(this ToolStripItem s)
+        private static ToolStripItem Clone(this ToolStripItem source)
         {
-            switch (s)
+            switch (source)
             {
-                case ToolStripSeparator p:
+                case ToolStripSeparator _:
                     return new ToolStripSeparator();
-                case ToolStripMenuItem m:
-                    var t = new ToolStripMenuItem(m.Text, m.Image,
-                        (object sender, EventArgs e) => m.PerformClick(),
-                        m.ShortcutKeys)
+                case ToolStripMenuItem menuItem:
+                    var target = new ToolStripMenuItem(
+                        menuItem.Text,
+                        menuItem.Image,
+                        (object sender, EventArgs e) => menuItem.PerformClick(),
+                        menuItem.ShortcutKeys)
                     {
-                        Checked = m.Checked,
-                        Enabled = m.Enabled,
-                        Font = m.Font,
-                        ShortcutKeyDisplayString = m.ShortcutKeyDisplayString,
-                        Tag = m.Tag,
-                        ToolTipText = m.ToolTipText
+                        Checked = menuItem.Checked,
+                        Enabled = menuItem.Enabled,
+                        Font = menuItem.Font,
+                        ShortcutKeyDisplayString = menuItem.ShortcutKeyDisplayString,
+                        Tag = menuItem.Tag,
+                        ToolTipText = menuItem.ToolTipText
                     };
-                    if (m.HasDropDownItems)
-                        m.DropDownItems.CloneTo(t.DropDownItems);
-                    return t;
+                    if (menuItem.HasDropDownItems)
+                        menuItem.DropDownItems.CloneTo(target.DropDownItems);
+                    return target;
             }
             return null;
         }
