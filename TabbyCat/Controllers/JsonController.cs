@@ -73,7 +73,12 @@
             return traces;
         }
 
-        protected override void ClearDocument() => Scene.Clear();
+        protected override void ClearDocument()
+        {
+            CommandProcessor.Clear();
+            Scene.Clear();
+            WorldController.UpdateAllProperties();
+        }
 
         protected override bool LoadFromStream(Stream stream)
         {

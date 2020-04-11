@@ -518,7 +518,7 @@
             UpdateUI();
         }
 
-        private void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
                 return;

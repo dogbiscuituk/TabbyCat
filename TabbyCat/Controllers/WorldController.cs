@@ -147,6 +147,11 @@
             Localize(string.Format(CultureInfo.CurrentCulture, Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
         }
 
+        protected internal override void UpdateAllProperties()
+        {
+            PropertiesController.UpdateAllProperties();
+        }
+
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
 
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
@@ -530,11 +535,7 @@
         private void InvertSelection() =>
             Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
 
-        private void NewEmptyScene()
-        {
-            GetNewWorldController();
-            CommandProcessor.Clear();
-        }
+        private void NewEmptyScene() => GetNewWorldController();
 
         private void NewFromTemplate()
         {

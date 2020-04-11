@@ -14,6 +14,8 @@
 
         protected WorldController WorldController;
 
+        protected virtual string[] AllProperties => Array.Empty<string>();
+
         protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
 
         internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
@@ -54,6 +56,8 @@
             }
         }
 
+        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+
         protected virtual void Localize() { }
 
         protected virtual void Localize(string info, params Control[] controls)
@@ -81,6 +85,8 @@
                 }
             }
         }
+
+        protected virtual void UpdateProperties(params string[] propertyNames) { }
 
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {

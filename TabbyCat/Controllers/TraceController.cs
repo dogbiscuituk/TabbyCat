@@ -138,15 +138,14 @@
 
         protected override void OnSelectionChanged()
         {
-            $"Selection = {{{Selection}}}".Spit();
             base.OnSelectionChanged();
             UpdateAllProperties();
-            CopySelectionToControl();
         }
 
-        protected override void UpdateAllProperties()
+        protected internal override void UpdateAllProperties()
         {
             base.UpdateAllProperties();
+            CopySelectionToControl();
             UIController.EnableControls(!Selection.IsEmpty,
                 Editor.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]

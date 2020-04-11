@@ -12,8 +12,6 @@
 
         protected bool Updating;
 
-        protected abstract string[] AllProperties { get; }
-
         internal ToolTip ToolTip => WorldController.ToolTip;
 
         protected internal override void Connect(bool connect)
@@ -48,10 +46,6 @@
             if (ToolTip.GetToolTip(control) != toolTip)
                 ToolTip.SetToolTip(control, toolTip);
         }
-
-        protected virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
-
-        protected abstract void UpdateProperties(params string[] propertyNames);
 
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);

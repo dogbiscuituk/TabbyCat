@@ -18,6 +18,13 @@
 
         protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
 
+        protected internal override void UpdateAllProperties()
+        {
+            SceneController.UpdateAllProperties();
+            TraceController.UpdateAllProperties();
+            ShaderController.UpdateAllProperties();
+        }
+
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
