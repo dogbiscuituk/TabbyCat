@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Jmk.Common;
     using OpenTK;
     using System;
     using System.Linq;

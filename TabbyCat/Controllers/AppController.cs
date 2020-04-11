@@ -6,8 +6,8 @@
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using TabbyCat.Controls.Types;
-    using TabbyCat.Views;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal static class AppController
     {

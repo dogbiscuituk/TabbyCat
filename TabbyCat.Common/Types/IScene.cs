@@ -13,7 +13,6 @@
         Projection Projection { get; set; }
         int Samples { get; set; }
         string Title { get; set; }
-        // public List<Trace> Traces = new List<Trace>();
         bool VSync { get; set; }
     }
 }

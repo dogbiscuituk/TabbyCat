@@ -13,8 +13,8 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
-    using TabbyCat.Views;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal class WorldController : LocalizationController, IDisposable
     {

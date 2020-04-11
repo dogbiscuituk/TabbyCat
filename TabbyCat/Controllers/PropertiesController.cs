@@ -5,8 +5,8 @@
     using System.Windows.Forms;
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
-    using TabbyCat.Views;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal class PropertiesController : HostController, IDisposable
     {

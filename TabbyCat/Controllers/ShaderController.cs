@@ -16,8 +16,8 @@
     using TabbyCat.Controls;
     using TabbyCat.Controls.Types;
     using TabbyCat.Models;
-    using TabbyCat.Views;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal class ShaderController : LocalizationController, IDisposable
     {
