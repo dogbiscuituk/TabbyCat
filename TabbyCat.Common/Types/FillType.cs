@@ -6,8 +6,9 @@
             None = 0x00,
             Fill = 0x10,
             Points = 0x20,
-            Rectangles = 0x30,
-            Saltires = 0x40,
-            Triangles = 0x50;
+            Lines = 0x30,
+            Rectangles = 0x40,
+            Saltires = 0x50,
+            Triangles = 0x60;
     }
 }

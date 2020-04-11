@@ -131,6 +131,8 @@
                     return GetFill(cx, cy);
                 case Pattern.Points:
                     return GetPoints(cx, cy, cz);
+                case Pattern.Lines:
+                    return GetLines(cx, cy, cz);
                 case Pattern.Rectangles:
                     return GetRectangles(cx, cy, cz);
                 case Pattern.Saltires:
@@ -141,9 +143,12 @@
             return new int[1] { 0 };
         }
 
+        private static IEnumerable<int> GetLines(int cx, int cy, int cz) => GetPoints(cx, cy, cz);
+
         private static IEnumerable<int> GetPoints(int cx, int cy, int cz)
         {
-            for (var p = 0; p < GetPointsCount(cx, cy, cz); p++)
+            var n = GetPointsCount(cx, cy, cz);
+            for (var p = 0; p < n ; p++)
                 yield return p;
         }
 
@@ -235,6 +240,8 @@
                     return GetFillCount(cx, cy);
                 case Pattern.Points:
                     return GetPointsCount(cx, cy, cz);
+                case Pattern.Lines:
+                    return GetLinesCount(cx, cy, cz);
                 case Pattern.Rectangles:
                     return GetRectanglesCount(cx, cy, cz);
                 case Pattern.Saltires:
@@ -247,6 +254,7 @@
 
         private static int GetCoordsCount(int cx, int cy, int cz) => 3 * (cx + 1) * (cy + 1) * (cz + 1);
         private static int GetFillCount(int cx, int cy) => cx * (2 * cy + 1) + 1;
+        private static int GetLinesCount(int cx, int cy, int cz) => GetPointsCount(cx, cy,cz);
         private static int GetPointsCount(int cx, int cy, int cz) => (cx + 1) * (cy + 1) * (cz + 1);
         private static int GetRectanglesCount(int cx, int cy, int cz) => 2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
         private static int GetSaltiresCount(int cx, int cy) => 8 * cx * cy + 2 * (cx + cy);

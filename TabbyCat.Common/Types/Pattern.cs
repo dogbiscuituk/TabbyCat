@@ -14,6 +14,9 @@
         [Description("Points")]
         Points = FillType.Points | PrimitiveType.Points,
 
+        [Description("Lines")]
+        Lines = FillType.Lines | PrimitiveType.LineStrip,
+
         [Description("Rectangles")]
         Rectangles = FillType.Rectangles | PrimitiveType.Lines,
 
