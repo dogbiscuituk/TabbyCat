@@ -8,7 +8,7 @@
     using System.Windows.Forms;
     using TabbyCat.Properties;
 
-    internal class SelectionController : LocalizationController, IDisposable
+    internal class SelectionController : LocalizationController
     {
         internal SelectionController(WorldController worldController)
             : base(worldController)
@@ -75,6 +75,14 @@
             {
                 Toolbar.MouseMove -= Toolbar_MouseMove;
             }
+        }
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            Highlight?.Dispose();
+            HighlightText?.Dispose();
+            _HighlightFont?.Dispose();
         }
 
         private void AddLabel()
@@ -220,31 +228,5 @@
             items == null || !items.Any()
             ? string.Empty
             : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    Highlight?.Dispose();
-                    HighlightText?.Dispose();
-                    _HighlightFont?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

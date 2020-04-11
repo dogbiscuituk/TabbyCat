@@ -8,7 +8,7 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class PropertiesController : HostController, IDisposable
+    internal class PropertiesController : HostController
     {
         internal PropertiesController(WorldController worldController) : base(worldController, Resources.Text_Properties) { }
 
@@ -55,6 +55,12 @@
 
         protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel2Collapsed = collapse;
 
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            TraceController?.Dispose();
+        }
+
         private void PopupPropertiesHide_Click(object sender, EventArgs e) => EditorVisible = false;
 
         private void PopupPropertiesMenu_Opening(object sender, CancelEventArgs e) =>
@@ -80,29 +86,5 @@
                     break;
             }
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    TraceController?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

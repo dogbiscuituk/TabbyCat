@@ -19,7 +19,7 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class ShaderController : LocalizationController, IDisposable
+    internal class ShaderController : LocalizationController
     {
         internal ShaderController(WorldController worldController)
             : base(worldController)
@@ -191,6 +191,13 @@
                 WorldController.Pulse -= WorldController_Pulse;
                 WorldController.SelectionChanged -= WorldController_SelectionChanged;
             }
+        }
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            PrimaryController?.Dispose();
+            SecondaryController?.Dispose();
         }
 
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) =>
@@ -546,30 +553,5 @@
             Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    PrimaryController?.Dispose();
-                    SecondaryController?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

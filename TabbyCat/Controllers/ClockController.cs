@@ -4,7 +4,7 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Views;
 
-    internal class ClockController : LocalizationController, IDisposable
+    internal class ClockController : LocalizationController
     {
         internal ClockController(WorldController worldController)
             : base(worldController)
@@ -57,6 +57,12 @@
                 WorldForm.TimeAccelerate.Click -= TimeAccelerate_Click;
                 WorldForm.tbAccelerate.Click -= TimeAccelerate_Click;
             }
+        }
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            Clock?.Dispose();
         }
 
         internal void UpdateTimeControls()
@@ -122,25 +128,5 @@
             Clock.Reset();
             UpdateTimeControls();
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    Clock?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        private bool Disposed;
     }
 }

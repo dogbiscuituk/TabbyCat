@@ -11,7 +11,7 @@
     using TabbyCat.Models;
     using TabbyCat.Properties;
 
-    internal class TraceController : ShaderSetController, IDisposable
+    internal class TraceController : ShaderSetController
     {
         internal TraceController(WorldController worldController)
             : base(worldController)
@@ -99,6 +99,12 @@
                 SelectionController.SelectionChanged -= Selection_Changed;
             }
             SelectionController.Connect(connect);
+        }
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            SelectionController?.Dispose();
         }
 
         protected override void Localize()
@@ -375,29 +381,5 @@
             Selection.ForEach(p => CommandProcessor.Run(command(p)));
             Updating = false;
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    SelectionController?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

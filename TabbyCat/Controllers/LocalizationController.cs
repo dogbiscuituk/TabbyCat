@@ -8,9 +8,11 @@
     using TabbyCat.Models;
     using TabbyCat.Views;
 
-    internal class LocalizationController
+    internal class LocalizationController : IDisposable
     {
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
+
+        private bool Disposed;
 
         protected WorldController WorldController;
 
@@ -19,6 +21,8 @@
         protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
 
         internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
+
+        protected virtual void DisposeManagedState() { }
 
         protected virtual PropertiesController PropertiesController { get => WorldController.PropertiesController; set { } }
 
@@ -54,6 +58,16 @@
             {
 
             }
+        }
+
+        public void Dispose()
+        {
+            if (!Disposed)
+            {
+                DisposeManagedState();
+                Disposed = true;
+            }
+            GC.SuppressFinalize(this);
         }
 
         protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);

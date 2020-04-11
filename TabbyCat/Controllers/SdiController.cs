@@ -16,7 +16,7 @@
     /// Keep track of the document/model's "Modified" state, prompting for "Save" as necessary
     /// (for example, prior to "File|New" or "File|Open", or application closing).
     /// </summary>
-    internal abstract class SdiController : MruController, IDisposable
+    internal abstract class SdiController : MruController
     {
         protected SdiController(WorldController worldController, string filter, string subKeyName)
             : base(worldController, subKeyName)
@@ -158,6 +158,13 @@
 
         protected abstract void ClearDocument();
 
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            OpenFileDialog?.Dispose();
+            SaveFileDialog?.Dispose();
+        }
+
         protected abstract bool LoadFromStream(Stream stream);
 
         protected abstract bool SaveToStream(Stream stream);
@@ -255,30 +262,5 @@
                 }
             return result;
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    OpenFileDialog?.Dispose();
-                    SaveFileDialog?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

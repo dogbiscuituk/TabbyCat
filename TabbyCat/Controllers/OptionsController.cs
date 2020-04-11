@@ -5,7 +5,7 @@
     using TabbyCat.Controls.Types;
     using TabbyCat.Views;
 
-    internal class OptionsController : LocalizationController, IDisposable
+    internal class OptionsController : LocalizationController
     {
         internal OptionsController(WorldController worldController)
             :base(worldController)
@@ -24,6 +24,12 @@
         }
 
         private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            OptionsDialog?.Dispose();
+        }
 
         internal DialogResult ShowModal()
         {
@@ -70,29 +76,5 @@
             StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
             OptionsDialog.edGLSLUrl.Text = options.GLSLPath;
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    OptionsDialog?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

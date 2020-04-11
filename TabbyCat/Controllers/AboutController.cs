@@ -6,8 +6,7 @@
 
     internal class AboutController : LocalizationController
     {
-        internal AboutController(WorldController worldController)
-            : base(worldController)
+        internal AboutController(WorldController worldController) : base(worldController)
         {
             View = new AboutDialog();
             var asm = Assembly.GetExecutingAssembly();

@@ -73,7 +73,7 @@
             return ranges;
         }
 
-        private void TextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyData)
             {

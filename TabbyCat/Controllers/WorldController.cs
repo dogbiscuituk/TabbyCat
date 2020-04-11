@@ -16,7 +16,7 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class WorldController : LocalizationController, IDisposable
+    internal class WorldController : LocalizationController
     {
         internal WorldController() : base(null)
         {
@@ -91,6 +91,14 @@
                 ConnectEventHandlers(false);
                 AppController.Remove(this);
             }
+        }
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            ClockController?.Dispose();
+            JsonController?.Dispose();
+            WorldForm?.Dispose();
         }
 
         protected override void Localize()
@@ -536,7 +544,11 @@
             return this;
         }
 
-        private void HelpAbout() => new AboutController(this).ShowDialog(WorldForm);
+        private void HelpAbout()
+        {
+            using (AboutController aboutController = new AboutController(this))
+                aboutController.ShowDialog(WorldForm);
+        }
 
         private void InvertSelection() =>
             Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
@@ -679,31 +691,5 @@
             if (LastTime != time)
                 LastTime = WorldForm.Tlabel.Text = time;
         }
-
-        #region IDisposable
-
-        private bool Disposed;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    ClockController?.Dispose();
-                    JsonController?.Dispose();
-                    WorldForm?.Dispose();
-                }
-                Disposed = true;
-            }
-        }
-
-        #endregion
     }
 }
