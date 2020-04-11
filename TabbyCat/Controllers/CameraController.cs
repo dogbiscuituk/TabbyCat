@@ -8,9 +8,11 @@
 
     internal class CameraController : LocalizationController
     {
-        internal CameraController(WorldController worldController) : base(worldController) { }
+        internal CameraController(WorldController worldController) : base(worldController) => SetDefaultCamera();
 
         private const float CameraBump = 0.1f;
+
+        private Camera DefaultCamera;
 
         protected internal override void Connect(bool connect)
         {
@@ -27,6 +29,7 @@
                 WorldForm.CameraMoveRight.Click += CameraRotateRight_Click;
                 WorldForm.CameraMoveUp.Click += CameraRotateUp_Click;
                 WorldForm.CameraMoveDown.Click += CameraRotateDown_Click;
+                WorldForm.CameraReset.Click += CameraReset_Click;
             }
             else
             {
@@ -40,6 +43,7 @@
                 WorldForm.CameraMoveRight.Click -= CameraRotateRight_Click;
                 WorldForm.CameraMoveUp.Click -= CameraRotateUp_Click;
                 WorldForm.CameraMoveDown.Click -= CameraRotateDown_Click;
+                WorldForm.CameraReset.Click -= CameraReset_Click;
             }
         }
 
@@ -53,6 +57,7 @@
         internal void CameraRotateLeft() => CameraRotateRight(-1);
         internal void CameraRotateRight() => CameraRotateRight(+1);
         internal void CameraRotateUp() => CameraRotateUp(+1);
+        internal void SetDefaultCamera() => DefaultCamera = new Camera(Camera);
 
         private void CameraMoveBack_Click(object sender, EventArgs e) => CameraMoveBack();
         private void CameraMoveDown_Click(object sender, EventArgs e) => CameraMoveDown();
@@ -64,6 +69,7 @@
         private void CameraRotateLeft_Click(object sender, EventArgs e) => CameraRotateLeft();
         private void CameraRotateRight_Click(object sender, EventArgs e) => CameraRotateRight();
         private void CameraRotateUp_Click(object sender, EventArgs e) => CameraRotateUp();
+        private void CameraReset_Click(object sender, EventArgs e) => CameraReset();
 
         private void CameraMoveFront(int delta) => CameraMove(Camera.Ufront, delta, false);
         private void CameraMoveRight(int delta) => CameraMove(Camera.Uright, delta, true);
@@ -78,6 +84,8 @@
                 ? new Camera(Camera.Position + shift, Camera.Focus + shift)
                 : new Camera(Camera.Position + shift, Camera.Focus));
         }
+
+        private void CameraReset() => RunCameraCommand(DefaultCamera);
 
         private void CameraRotate(Vector3 basis, float delta)
         {

@@ -120,6 +120,8 @@
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.CameraReset = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -283,7 +285,7 @@
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 567;
+            this.SplitContainer1.SplitterDistance = 566;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
             // 
@@ -294,7 +296,7 @@
             this.GLControl.Location = new System.Drawing.Point(0, 0);
             this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(567, 682);
+            this.GLControl.Size = new System.Drawing.Size(566, 682);
             this.GLControl.TabIndex = 0;
             this.GLControl.VSync = false;
             // 
@@ -306,7 +308,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(403, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(404, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -710,7 +712,9 @@
             // 
             this.CameraMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CameraMove,
-            this.CameraStrafe});
+            this.CameraStrafe,
+            this.toolStripMenuItem5,
+            this.CameraReset});
             this.CameraMenu.Name = "CameraMenu";
             this.CameraMenu.Size = new System.Drawing.Size(65, 21);
             this.CameraMenu.Text = "Camera";
@@ -780,37 +784,37 @@
             // CameraStrafeLeft
             // 
             this.CameraStrafeLeft.Name = "CameraStrafeLeft";
-            this.CameraStrafeLeft.Size = new System.Drawing.Size(132, 22);
+            this.CameraStrafeLeft.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafeLeft.Text = "Left";
             // 
             // CameraStrafeRight
             // 
             this.CameraStrafeRight.Name = "CameraStrafeRight";
-            this.CameraStrafeRight.Size = new System.Drawing.Size(132, 22);
+            this.CameraStrafeRight.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafeRight.Text = "Right";
             // 
             // CameraStrafeUp
             // 
             this.CameraStrafeUp.Name = "CameraStrafeUp";
-            this.CameraStrafeUp.Size = new System.Drawing.Size(132, 22);
+            this.CameraStrafeUp.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafeUp.Text = "Up";
             // 
             // CameraStrafeDown
             // 
             this.CameraStrafeDown.Name = "CameraStrafeDown";
-            this.CameraStrafeDown.Size = new System.Drawing.Size(132, 22);
+            this.CameraStrafeDown.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafeDown.Text = "Down";
             // 
             // CameraRollLeft
             // 
             this.CameraRollLeft.Name = "CameraRollLeft";
-            this.CameraRollLeft.Size = new System.Drawing.Size(132, 22);
+            this.CameraRollLeft.Size = new System.Drawing.Size(180, 22);
             this.CameraRollLeft.Text = "Roll Left";
             // 
             // CameraRollRight
             // 
             this.CameraRollRight.Name = "CameraRollRight";
-            this.CameraRollRight.Size = new System.Drawing.Size(132, 22);
+            this.CameraRollRight.Size = new System.Drawing.Size(180, 22);
             this.CameraRollRight.Text = "Roll Right";
             // 
             // TimeMenu
@@ -914,6 +918,17 @@
             // 
             this.PopupMenu.Name = "PopupMenu";
             this.PopupMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // CameraReset
+            // 
+            this.CameraReset.Name = "CameraReset";
+            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Text = "Reset";
             // 
             // WorldForm
             // 
@@ -1044,5 +1059,7 @@
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeDown;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollLeft;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollRight;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        internal System.Windows.Forms.ToolStripMenuItem CameraReset;
     }
 }

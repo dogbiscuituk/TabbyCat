@@ -800,4 +800,8 @@ and reset the timer to zero</value>
   <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
     <value>Select / deselect all traces</value>
   </data>
+  <data name="Menu_Camera_Reset" xml:space="preserve">
+    <value>&amp;Reset|Return the camera to its original starting position &amp; direction
+(or that occupied after the most recent file new/open/save operation)|^Home</value>
+  </data>
 </root>

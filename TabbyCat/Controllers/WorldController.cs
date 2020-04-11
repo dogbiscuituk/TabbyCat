@@ -143,6 +143,7 @@
             Localize(Resources.Menu_Camera_Move_Back, WorldForm.CameraMoveBack);
             Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
             Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
+            Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
             Localize(Resources.Menu_Time, WorldForm.TimeMenu);
             Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate, WorldForm.tbAccelerate);
             Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate, WorldForm.tbDecelerate);
@@ -243,7 +244,6 @@
             UpdateStatusBar();
             Pulse?.Invoke(this, EventArgs.Empty);
         }
-
 
         private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
 
@@ -513,6 +513,7 @@
             EndUpdate();
             ConnectControllers(true);
             RecreateGLControl(Scene.GraphicsMode);
+            SetDefaultCamera();
         }
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)
@@ -526,6 +527,7 @@
             BeginUpdate();
             CommandProcessor.Save();
             EndUpdate();
+            SetDefaultCamera();
         }
 
         private void FormClosed() => Connect(false);
@@ -541,6 +543,7 @@
             if (!JsonController.SaveIfModified())
                 return null;
             JsonController.Clear();
+            SetDefaultCamera();
             return this;
         }
 
@@ -635,6 +638,8 @@
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
         private void SelectAll() => Selection.AddRange(Scene.Traces);
+
+        private void SetDefaultCamera() => CameraController.SetDefaultCamera();
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 

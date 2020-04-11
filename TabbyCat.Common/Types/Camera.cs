@@ -12,6 +12,14 @@
             Focus = focus;
         }
 
+        public Camera(Camera camera)
+        {
+            if (camera == null)
+                return;
+            Position = camera.Position;
+            Focus = camera.Focus;
+        }
+
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Focus { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Position { get; set; }
 
