@@ -52,7 +52,13 @@
         {
             BeginUpdate();
             var peek = ((ToolStripItem)sender).Tag;
-            do Redo(); while (UndoStack.Peek() != peek);
+            bool more;
+            do
+            {
+                more = RedoStack.Peek() != peek;
+                Redo();
+            }
+            while (more);
             EndUpdate();
         }
 
@@ -60,7 +66,13 @@
         {
             BeginUpdate();
             var peek = ((ToolStripItem)sender).Tag;
-            do Undo(); while (RedoStack.Peek() != peek);
+            bool more;
+            do
+            {
+                more = UndoStack.Peek() != peek;
+                Undo();
+            }
+            while (more);
             EndUpdate();
         }
 

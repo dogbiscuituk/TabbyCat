@@ -9,6 +9,7 @@
     using System.Drawing;
     using System.IO;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -302,11 +303,22 @@
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
-        private void WorldController_Pulse(object sender, EventArgs e) =>
-            Editor.tbPaste.Enabled = Clipboard.ContainsText();
+        private void WorldController_Pulse(object sender, EventArgs e) => Editor.tbPaste.Enabled = CanPaste();
 
         private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             OnSelectionChanged();
+
+        private static bool CanPaste()
+        {
+            try
+            {
+                return Clipboard.ContainsText();
+            }
+            catch (ExternalException)
+            {
+                return false;
+            }
+        }
 
         private void ConnectHelp(bool connect)
         {
