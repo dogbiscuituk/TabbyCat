@@ -514,6 +514,7 @@
             ConnectControllers(true);
             RecreateGLControl(Scene.GraphicsMode);
             SetDefaultCamera();
+            UpdateAllProperties();
         }
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)
@@ -528,6 +529,7 @@
             CommandProcessor.Save();
             EndUpdate();
             SetDefaultCamera();
+            UpdateAllProperties();
         }
 
         private void FormClosed() => Connect(false);
