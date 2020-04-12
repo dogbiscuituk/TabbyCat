@@ -1240,8 +1240,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Reset|Return the camera to its original starting position &amp; direction
-        ///(or that occupied after the most recent file new/open/save operation)|^Home.
+        ///   Looks up a localized string similar to &amp;Reset|Return the camera to its default position &amp; direction, 
+        ///as it was after the last new/open/save operation|^Home.
         /// </summary>
         public static string Menu_Camera_Reset {
             get {
