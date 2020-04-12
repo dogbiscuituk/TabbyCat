@@ -48,33 +48,9 @@
 
         private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
-        private void RedoMultiple(object sender, EventArgs e)
-        {
-            BeginUpdate();
-            var peek = ((ToolStripItem)sender).Tag;
-            bool more;
-            do
-            {
-                more = RedoStack.Peek() != peek;
-                Redo();
-            }
-            while (more);
-            EndUpdate();
-        }
+        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
 
-        private void UndoMultiple(object sender, EventArgs e)
-        {
-            BeginUpdate();
-            var peek = ((ToolStripItem)sender).Tag;
-            bool more;
-            do
-            {
-                more = UndoStack.Peek() != peek;
-                Undo();
-            }
-            while (more);
-            EndUpdate();
-        }
+        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
         internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
 
@@ -151,6 +127,20 @@
                 item.MouseEnter += UndoRedoItems_MouseEnter;
                 item.Paint += UndoRedoItems_Paint;
             }
+        }
+
+        private void DoMultiple(object sender, Stack<ICommand> stack, Action act)
+        {
+            BeginUpdate();
+            var peek = ((ToolStripItem)sender).Tag;
+            bool more;
+            do
+            {
+                more = stack.Peek() != peek;
+                act();
+            }
+            while (more);
+            EndUpdate();
         }
 
         private void EndUpdate()
