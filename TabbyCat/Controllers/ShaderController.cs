@@ -552,12 +552,7 @@
         {
             UIController.EnableControls(
                 PropertiesTab != PropertiesEditor.tpTraces || !Selection.IsEmpty,
-                new Control[]
-                {
-                    Editor.Toolbar,
-                    Editor.PrimaryTextBox,
-                    Editor.SecondaryTextBox
-                });
+                new Control[] { Editor.Toolbar, Editor.PrimaryTextBox, Editor.SecondaryTextBox });
             Editor.tbExport.Enabled = Editor.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
             Editor.tbUndo.Enabled = Editor.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
             Editor.tbRedo.Enabled = Editor.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;

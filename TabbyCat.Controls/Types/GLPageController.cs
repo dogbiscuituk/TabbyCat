@@ -16,7 +16,7 @@
     /// FastColoredTextBox controller class.
     /// Adds GLSL to list of supported languages.
     /// </summary>
-    public class GLPageController : IDisposable
+    public partial class GLPageController
     {
         public GLPageController(FastColoredTextBox textBox)
         {
@@ -257,9 +257,10 @@
 
         private static TextStyle NewTextStyle() =>
             new TextStyle(Brushes.Black, Brushes.Transparent, 0);
+    }
 
-        #region IDisposable
-
+    public partial class GLPageController : IDisposable
+    {
         private bool Disposed;
 
         public void Dispose()
@@ -280,7 +281,5 @@
                 Disposed = true;
             }
         }
-
-        #endregion
     }
 }

@@ -17,7 +17,7 @@
             {
                 { "Alpha", c => c.A },
                 { "Red", c => c.R },
-                { "Green", c=> c.G },
+                { "Green", c => c.G },
                 { "Blue", c => c.B },
                 { "Hue", c => c.GetHue() },
                 { "Saturation", c => c.GetSaturation() },

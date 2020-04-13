@@ -23,6 +23,8 @@
             View.lblRendererName.Text = info.Renderer;
         }
 
+        internal AboutDialog View { get; set; }
+
         internal void Show(IWin32Window owner)
         {
             Init(false);
@@ -34,8 +36,6 @@
             Init(true);
             View.ShowDialog(owner);
         }
-
-        internal AboutDialog View { get; set; }
 
         private void Init(bool showOK) => View.btnOK.Visible = showOK;
     }

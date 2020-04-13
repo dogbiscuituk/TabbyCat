@@ -67,6 +67,25 @@
             ClearDocument();
         }
 
+        internal bool SaveIfModified()
+        {
+            if (Scene.IsModified)
+                switch (MessageBox.Show(
+                    Resources.Message_FileModified_Text,
+                    Resources.Message_FileModified_Caption,
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning))
+                {
+                    case DialogResult.Yes:
+                        return Save();
+                    case DialogResult.No:
+                        return true;
+                    case DialogResult.Cancel:
+                        return false;
+                }
+            return true;
+        }
+
         internal string SelectFilePath(FilterIndex filterIndex = FilterIndex.Default)
         {
             filterIndex = EvalFilterIndex(filterIndex);
@@ -82,13 +101,16 @@
             var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
             {
-                if (MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
-                    Resources.Message_FileNotFound_Caption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(
+                    string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
+                    Resources.Message_FileNotFound_Caption,
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
                     RemoveItem(filePath);
+                }
                 return;
             }
             OnFileReopen(filePath);
-
         }
 
         protected virtual void OnFileReopen(string filePath)
@@ -137,25 +159,6 @@
                 dialog.InitialDirectory = AppController.GetDefaultFolder(filterIndex);
         }
 
-        internal bool SaveIfModified()
-        {
-            if (Scene.IsModified)
-                switch (MessageBox.Show(
-                    Resources.Message_FileModified_Text,
-                    Resources.Message_FileModified_Caption,
-                    MessageBoxButtons.YesNoCancel,
-                    MessageBoxIcon.Warning))
-                {
-                    case DialogResult.Yes:
-                        return Save();
-                    case DialogResult.No:
-                        return true;
-                    case DialogResult.Cancel:
-                        return false;
-                }
-            return true;
-        }
-
         protected abstract void ClearDocument();
 
         protected override void DisposeManagedState()
@@ -169,7 +172,9 @@
 
         protected abstract bool SaveToStream(Stream stream);
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types",
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design",
+            "CA1031:Do not catch general exception types",
             Justification = "Can't predict what exception types the client-supplied action may throw, but the sole purpose of this method is simply to swallow them all.")]
         protected static bool UseStream(Action action)
         {

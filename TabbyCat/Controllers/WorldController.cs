@@ -165,10 +165,6 @@
 
         internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
 
-        internal void Show() => WorldForm.Show();
-
-        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
-
         internal void OnPropertyChanged(string propertyName)
         {
             GraphicsMode gm;
@@ -244,6 +240,14 @@
             UpdateStatusBar();
             Pulse?.Invoke(this, EventArgs.Empty);
         }
+
+        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
+
+        internal void Show() => WorldForm.Show();
+
+        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
+
+        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
         private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
 
@@ -569,13 +573,16 @@
 
         private void OnSelectionChanged()
         {
-            UIController.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
+            var items = new ToolStripItem[]
+            {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
                 WorldForm.tbCut,
                 WorldForm.tbCopy,
-                WorldForm.tbDelete });
+                WorldForm.tbDelete
+            };
+            UIController.EnableButtons(!Selection.IsEmpty, items);
             SelectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -629,8 +636,6 @@
             RefreshGraphicsMode();
         }
 
-        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
-
         private void Resize() => RenderController.InvalidateProjection();
 
         private bool SaveFile() => JsonController.Save();
@@ -642,8 +647,6 @@
         private void SelectAll() => Selection.AddRange(Scene.Traces);
 
         private void SetDefaultCamera() => CameraController.SetDefaultCamera();
-
-        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
         private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
 

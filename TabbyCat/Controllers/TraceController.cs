@@ -151,7 +151,8 @@
         {
             base.UpdateAllProperties();
             CopySelectionToControl();
-            UIController.EnableControls(!Selection.IsEmpty,
+            UIController.EnableControls(
+                !Selection.IsEmpty,
                 Editor.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]
                 {

@@ -10,6 +10,10 @@
 
     internal class CommandProcessor : LocalizationController
     {
+        private int
+            LastSave,
+            UpdateCount;
+
         internal CommandProcessor(WorldController worldController)
             : base(worldController)
         {
@@ -21,36 +25,6 @@
             WorldForm.tbRedo.ButtonClick += EditRedo_Click;
             WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
         }
-
-        private int LastSave, UpdateCount;
-
-        private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
-        private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
-
-        internal bool IsModified => LastSave != UndoStack.Count;
-        internal List<Trace> Traces => Scene.Traces;
-
-        private bool CanUndo => UndoStack.Count > 0;
-        private bool CanRedo => RedoStack.Count > 0;
-
-        private string UndoAction => UndoStack.Peek().UndoAction;
-        private string RedoAction => RedoStack.Peek().RedoAction;
-
-        private void EditRedo_Click(object sender, EventArgs e) => Redo();
-
-        private void EditUndo_Click(object sender, EventArgs e) => Undo();
-
-        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
-
-        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
-
-        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
-
-        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
-
-        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
-
-        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
         internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
 
@@ -86,6 +60,34 @@
             LastSave = UndoStack.Count;
             UpdateUI();
         }
+
+        private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
+        private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
+
+        internal bool IsModified => LastSave != UndoStack.Count;
+        internal List<Trace> Traces => Scene.Traces;
+
+        private bool CanUndo => UndoStack.Count > 0;
+        private bool CanRedo => RedoStack.Count > 0;
+
+        private string UndoAction => UndoStack.Peek().UndoAction;
+        private string RedoAction => RedoStack.Peek().RedoAction;
+
+        private void EditRedo_Click(object sender, EventArgs e) => Redo();
+
+        private void EditUndo_Click(object sender, EventArgs e) => Undo();
+
+        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
+
+        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
+
+        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
+
+        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
+
+        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
+
+        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
         private void BeginUpdate() { ++UpdateCount; }
 

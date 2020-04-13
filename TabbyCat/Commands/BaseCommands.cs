@@ -110,8 +110,7 @@
 
     internal abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
-        protected PropertyCommand(int index, string propertyName,
-            TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set)
+        protected PropertyCommand(int index, string propertyName, TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set)
             : base(index)
         {
             PropertyName = propertyName;
@@ -160,8 +159,7 @@
 
     internal abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
     {
-        protected ScenePropertyCommand(string propertyName,
-            TValue value, Func<Scene, TValue> get, Action<Scene, TValue> set)
+        protected ScenePropertyCommand(string propertyName, TValue value, Func<Scene, TValue> get, Action<Scene, TValue> set)
             : base(0, propertyName, value, get, set) { }
 
         public bool RunOn(Scene scene)
@@ -182,8 +180,7 @@
 
     internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
     {
-        protected TracePropertyCommand(int index, string propertyName,
-            TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set)
+        protected TracePropertyCommand(int index, string propertyName, TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set)
             : base(index, propertyName, value, get, set) { }
 
         public bool RunOn(Trace trace)

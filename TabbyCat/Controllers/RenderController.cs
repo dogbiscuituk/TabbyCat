@@ -4,7 +4,6 @@
     using OpenTK;
     using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
-    using Properties;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -12,6 +11,7 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
 
     internal class RenderController : LocalizationController, IShaderSet
     {
@@ -206,8 +206,7 @@
                     ValidateTrace(trace);
                     GL.BindVertexArray(trace.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
-                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F),
-                        trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
@@ -216,19 +215,6 @@
             }
             GLControl.SwapBuffers();
             MakeCurrent(false);
-        }
-
-        private void UpdateFPS()
-        {
-            Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
-            if (TickCount < Ticks.Length) TickCount++;
-            var fps = 0f;
-            if (TickCount > 1)
-            {
-                var ticks = Ticks.Take(TickCount);
-                fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
-            }
-            FramesPerSecond = fps;
         }
 
         internal bool Unload()
@@ -347,6 +333,19 @@
                     GLControl.Context.MakeCurrent(null);
             }
             return true;
+        }
+
+        private void UpdateFPS()
+        {
+            Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
+            if (TickCount < Ticks.Length) TickCount++;
+            var fps = 0f;
+            if (TickCount > 1)
+            {
+                var ticks = Ticks.Take(TickCount);
+                fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
+            }
+            FramesPerSecond = fps;
         }
 
         private void ValidateCameraView()

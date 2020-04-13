@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using System;
-    using System.Drawing;
     using System.Windows.Forms;
     using TabbyCat.Views;
 
@@ -103,7 +102,7 @@
             var hostForm = new HostForm
             {
                 ClientSize = Editor.Size,
-                Location = Editor.PointToScreen(new Point()),
+                Location = Editor.PointToScreen(default),
                 Text = _Caption
             };
             hostForm.FormClosing += HostForm_FormClosing;

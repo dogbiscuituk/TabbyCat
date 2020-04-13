@@ -29,7 +29,7 @@
             }
         }
 
-        internal readonly int 
+        internal readonly int
             BufferID,
             ElementsCount;
 

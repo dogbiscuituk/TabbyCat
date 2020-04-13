@@ -7,7 +7,7 @@
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
-    public class JmkFlagsEnumEditor : UITypeEditor, IDisposable
+    public partial class JmkFlagsEnumEditor : UITypeEditor
     {
         public JmkFlagsEnumEditor()
         {
@@ -36,9 +36,10 @@
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
 
         private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
+    }
 
-        #region IDisposable
-
+    partial class JmkFlagsEnumEditor : IDisposable
+    {
         private bool Disposed;
 
         public void Dispose()
@@ -58,7 +59,5 @@
                 Disposed = true;
             }
         }
-
-        #endregion
     }
 }

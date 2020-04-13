@@ -75,9 +75,9 @@
             for (var index = 0; index < Items.Count; index++)
             {
                 var item = (JmkFlagsCheckedListBoxItem)Items[index];
-                SetItemChecked(index, item.Value == 0
-                    ? value == 0
-                    : (item.Value & value) == item.Value && item.Value != 0);
+                SetItemChecked(
+                    index,
+                    item.Value == 0 ? value == 0 : (item.Value & value) == item.Value && item.Value != 0);
             }
             Updating = false;
         }
