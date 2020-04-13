@@ -57,6 +57,7 @@
             switch (source)
             {
                 case ToolStripSeparator _:
+                case ToolStripMenuItem separator when separator.Text == "-":
                     return new ToolStripSeparator();
                 case ToolStripMenuItem menuItem:
                     var target = new ToolStripMenuItem(
