@@ -40,10 +40,7 @@
 
         internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
 
-        protected internal virtual Scene Scene
-        {
-            get => WorldController.Scene; set => WorldController.Scene = value;
-        }
+        protected internal virtual Scene Scene { get => WorldController.Scene; set { WorldController.Scene = value; } }
 
         protected TraceEdit TraceEdit => PropertiesEdit.TraceEdit;
 

@@ -22,7 +22,7 @@
             FieldOfView = projection.FieldOfView;
             FrustumMin = projection.FrustumMin;
             FrustumMax = projection.FrustumMax;
-        }
+    }
 
         public Projection(float width, float height, float near, float far)
         {

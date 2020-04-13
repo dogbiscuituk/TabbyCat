@@ -7,7 +7,8 @@
 
     internal class OptionsController : LocalizationController
     {
-        internal OptionsController(WorldController worldController) : base(worldController)
+        internal OptionsController(WorldController worldController)
+            :base(worldController)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;

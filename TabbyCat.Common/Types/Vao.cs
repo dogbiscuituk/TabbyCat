@@ -7,12 +7,6 @@
     /// </summary>
     public class Vao
     {
-        private readonly int _VaoID;
-
-        private readonly Vbo
-            IndexVbo,
-            VertexVbo;
-
         public Vao(ITrace trace)
         {
             GL.GenVertexArrays(1, out _VaoID);
@@ -25,6 +19,12 @@
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexVbo.BufferID);
             GL.BindVertexArray(0);
         }
+
+        private readonly int _VaoID;
+
+        private readonly Vbo
+            IndexVbo,
+            VertexVbo;
 
         public int ElementCount => IndexVbo.ElementsCount;
 

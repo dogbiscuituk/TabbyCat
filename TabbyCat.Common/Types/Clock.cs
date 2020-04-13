@@ -3,7 +3,7 @@
     using System;
     using System.Windows.Forms;
 
-    public partial class Clock
+    public class Clock : IDisposable
     {
         public Clock()
         {
@@ -136,10 +136,9 @@
         }
 
         private void Timer_Tick(object sender, EventArgs e) => Tick?.Invoke(this, EventArgs.Empty);
-    }
 
-    partial class Clock : IDisposable
-    {
+        #region IDisposable
+
         private bool Disposed;
 
         public void Dispose()
@@ -159,5 +158,7 @@
                 Disposed = true;
             }
         }
+
+        #endregion
     }
 }

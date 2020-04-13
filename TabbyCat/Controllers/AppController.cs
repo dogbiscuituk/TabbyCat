@@ -11,6 +11,13 @@
 
     internal static class AppController
     {
+        static AppController()
+        {
+            Pulse.Tick += Pulse_Tick;
+            ApplyOptions();
+            AddNewWorldController();
+        }
+
         internal static bool CanPaste;
 
         internal static string DataFormat = "TabbyCatDataFormat";
@@ -25,13 +32,6 @@
         private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
         private static int PulseCount;
-
-        static AppController()
-        {
-            Pulse.Tick += Pulse_Tick;
-            ApplyOptions();
-            AddNewWorldController();
-        }
 
         internal static AboutDialog AboutDialog
         {

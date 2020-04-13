@@ -51,12 +51,8 @@
             t.Replace('.', ',');
             foreach (var c in Path.GetInvalidFileNameChars()) t.Replace(c, '_');
             s = t.ToString();
-            return Regex.IsMatch(
-                s,
-                @"(^CON$|^PRN$|^AUX$|^CLOCK\$$|^NUL$|^COM[0-9]$|^LPT[0-9]$)",
-                RegexOptions.IgnoreCase)
-                ? s + "_"
-                : s;
+            return Regex.IsMatch(s, @"(^CON$|^PRN$|^AUX$|^CLOCK\$$|^NUL$|^COM[0-9]$|^LPT[0-9]$)",
+                RegexOptions.IgnoreCase) ? s + "_" : s;
         }
 
         public static string ToTitleCase(this string s) =>

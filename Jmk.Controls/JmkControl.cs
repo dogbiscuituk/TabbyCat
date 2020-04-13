@@ -19,7 +19,8 @@
                 updated via unsafe code to the new compacted string." -- Sam.
             */
             TextRenderer.MeasureText(
-                result, SystemFonts.MenuFont, new Size(320, 0), TextFormatFlags.PathEllipsis | TextFormatFlags.ModifyString);
+                result, SystemFonts.MenuFont, new Size(320, 0),
+                TextFormatFlags.PathEllipsis | TextFormatFlags.ModifyString);
             var length = result.IndexOf((char)0);
             if (length >= 0)
                 result = result.Substring(0, length);

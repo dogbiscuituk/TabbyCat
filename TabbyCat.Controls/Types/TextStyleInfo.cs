@@ -38,10 +38,12 @@
             if (s == null)
                 return null;
             var t = s.Split(';');
-            return new TextStyleInfo(
+            return new TextStyleInfo
+            (
                 Color.FromName(t[0]),
                 Color.FromName(t[1]),
-                (FontStyle)Enum.Parse(typeof(FontStyle), t[2]));
+                (FontStyle)Enum.Parse(typeof(FontStyle), t[2])
+            );
         }
 
         public override string ToString() => $"{Foreground.Name}; {Background.Name}; {FontStyle}";

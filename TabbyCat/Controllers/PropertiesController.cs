@@ -63,9 +63,9 @@
 
         private void PopupPropertiesHide_Click(object sender, EventArgs e) => EditorVisible = false;
 
-        private void PopupPropertiesMenu_Opening(object sender, CancelEventArgs e) => Localize(
-            EditorDocked ? Resources.Menu_Host_Undock : Resources.Menu_Host_Dock,
-            WorldForm.PopupPropertiesUndock);
+        private void PopupPropertiesMenu_Opening(object sender, CancelEventArgs e) =>
+            Localize(EditorDocked ? Resources.Menu_Host_Undock : Resources.Menu_Host_Dock,
+                WorldForm.PopupPropertiesUndock);
 
         private void PopupPropertiesUndock_Click(object sender, EventArgs e) => EditorDocked = !EditorDocked;
 
