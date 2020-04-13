@@ -64,7 +64,7 @@
         protected override TraceController TraceController { get; set; }
         protected internal override WorldForm WorldForm { get; set; }
 
-        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel1.Controls;
+        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel2.Controls;
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler Pulse;
@@ -144,13 +144,12 @@
             Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
             Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
             Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
-            Localize(Resources.Menu_Time, WorldForm.TimeMenu);
-            Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate, WorldForm.tbAccelerate);
-            Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate, WorldForm.tbDecelerate);
-            Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward, WorldForm.tbForward);
-            Localize(Resources.Menu_Time_Pause, WorldForm.TimePause, WorldForm.tbPause);
-            Localize(Resources.Menu_Time_Reverse, WorldForm.TimeReverse, WorldForm.tbReverse);
-            Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop, WorldForm.tbStop);
+            Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
+            Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
+            Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
+            Localize(Resources.Menu_Time_Pause, WorldForm.TimePause);
+            Localize(Resources.Menu_Time_Reverse, WorldForm.TimeReverse);
+            Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop);
             Localize(Resources.Menu_Help, WorldForm.HelpMenu);
             Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
             Localize(string.Format(CultureInfo.CurrentCulture, Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
@@ -277,7 +276,7 @@
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
-        private void PopupMenu_Opening(object sender, CancelEventArgs e) => CloneMainMenu();
+        private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
 
         private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
@@ -308,10 +307,11 @@
             ClockController.UpdateTimeControls();
         }
 
-        private void CloneMainMenu()
+        private void CreateMainMenuClone()
         {
             PropertiesController.InitViewProperties(); // Copy the checked state of the ViewProperties menu item.
             WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
+            WorldForm.PopupMenu.Items.Insert(6, new ToolStripSeparator());
         }
 
         private void ConnectControllers(bool connect)

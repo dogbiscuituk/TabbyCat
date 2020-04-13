@@ -31,21 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.StatusBar = new Jmk.Controls.JmkStatusStrip();
-            this.tbDecelerate = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbReverse = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbStop = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbPause = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbForward = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbAccelerate = new System.Windows.Forms.ToolStripDropDownButton();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.GLControl = new OpenTK.GLControl();
             this.PropertiesEdit = new TabbyCat.Controls.PropertiesEdit();
             this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
             this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
+            this.GLControl = new OpenTK.GLControl();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +55,12 @@
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
             this.MainMenu = new Jmk.Controls.JmkMenuStrip();
+            this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimePause = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeForward = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeAccelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,21 +107,14 @@
             this.CameraStrafeDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraRollLeft = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraRollRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeStop = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimePause = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeForward = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeAccelerate = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.CameraReset = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.CameraReset = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
@@ -170,12 +163,6 @@
             this.StatusBar.Dock = System.Windows.Forms.DockStyle.None;
             this.StatusBar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbDecelerate,
-            this.tbReverse,
-            this.tbStop,
-            this.tbPause,
-            this.tbForward,
-            this.tbAccelerate,
             this.SpeedLabel,
             this.Tlabel,
             this.FPSlabel});
@@ -184,66 +171,6 @@
             this.StatusBar.ShowItemToolTips = true;
             this.StatusBar.Size = new System.Drawing.Size(1008, 22);
             this.StatusBar.TabIndex = 0;
-            // 
-            // tbDecelerate
-            // 
-            this.tbDecelerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
-            this.tbDecelerate.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbDecelerate.Name = "tbDecelerate";
-            this.tbDecelerate.ShowDropDownArrow = false;
-            this.tbDecelerate.Size = new System.Drawing.Size(20, 20);
-            this.tbDecelerate.ToolTipText = "Decelerate";
-            // 
-            // tbReverse
-            // 
-            this.tbReverse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
-            this.tbReverse.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbReverse.Name = "tbReverse";
-            this.tbReverse.ShowDropDownArrow = false;
-            this.tbReverse.Size = new System.Drawing.Size(20, 20);
-            this.tbReverse.ToolTipText = "Reverse";
-            // 
-            // tbStop
-            // 
-            this.tbStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbStop.Image = global::TabbyCat.Properties.Resources.StopHS;
-            this.tbStop.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbStop.Name = "tbStop";
-            this.tbStop.ShowDropDownArrow = false;
-            this.tbStop.Size = new System.Drawing.Size(20, 20);
-            this.tbStop.ToolTipText = "Stop";
-            // 
-            // tbPause
-            // 
-            this.tbPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbPause.Image = global::TabbyCat.Properties.Resources.PauseHS;
-            this.tbPause.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbPause.Name = "tbPause";
-            this.tbPause.ShowDropDownArrow = false;
-            this.tbPause.Size = new System.Drawing.Size(20, 20);
-            this.tbPause.ToolTipText = "Pause";
-            // 
-            // tbForward
-            // 
-            this.tbForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
-            this.tbForward.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbForward.Name = "tbForward";
-            this.tbForward.ShowDropDownArrow = false;
-            this.tbForward.Size = new System.Drawing.Size(20, 20);
-            this.tbForward.ToolTipText = "Forward";
-            // 
-            // tbAccelerate
-            // 
-            this.tbAccelerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
-            this.tbAccelerate.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbAccelerate.Name = "tbAccelerate";
-            this.tbAccelerate.ShowDropDownArrow = false;
-            this.tbAccelerate.Size = new System.Drawing.Size(20, 20);
-            this.tbAccelerate.ToolTipText = "Accelerate";
             // 
             // SpeedLabel
             // 
@@ -269,36 +196,25 @@
             // SplitContainer1
             // 
             this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.SplitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SplitContainer1.Name = "SplitContainer1";
             // 
             // SplitContainer1.Panel1
             // 
-            this.SplitContainer1.Panel1.Controls.Add(this.GLControl);
+            this.SplitContainer1.Panel1.Controls.Add(this.PropertiesEdit);
             this.SplitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SplitContainer1.Panel1MinSize = 380;
             // 
             // SplitContainer1.Panel2
             // 
-            this.SplitContainer1.Panel2.Controls.Add(this.PropertiesEdit);
+            this.SplitContainer1.Panel2.Controls.Add(this.GLControl);
             this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SplitContainer1.Panel2MinSize = 386;
             this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 566;
+            this.SplitContainer1.SplitterDistance = 380;
             this.SplitContainer1.SplitterWidth = 5;
             this.SplitContainer1.TabIndex = 1;
-            // 
-            // GLControl
-            // 
-            this.GLControl.BackColor = System.Drawing.Color.Black;
-            this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GLControl.Location = new System.Drawing.Point(0, 0);
-            this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(566, 682);
-            this.GLControl.TabIndex = 0;
-            this.GLControl.VSync = false;
             // 
             // PropertiesEdit
             // 
@@ -308,7 +224,7 @@
             this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(404, 682);
+            this.PropertiesEdit.Size = new System.Drawing.Size(380, 682);
             this.PropertiesEdit.TabIndex = 0;
             // 
             // PopupPropertiesMenu
@@ -330,6 +246,17 @@
             this.PopupPropertiesHide.Name = "PopupPropertiesHide";
             this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
             this.PopupPropertiesHide.Text = "&Hide";
+            // 
+            // GLControl
+            // 
+            this.GLControl.BackColor = System.Drawing.Color.Black;
+            this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GLControl.Location = new System.Drawing.Point(0, 0);
+            this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.GLControl.Name = "GLControl";
+            this.GLControl.Size = new System.Drawing.Size(590, 682);
+            this.GLControl.TabIndex = 0;
+            this.GLControl.VSync = false;
             // 
             // Toolbar
             // 
@@ -462,16 +389,87 @@
             this.MainMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.MainMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TimeDecelerate,
+            this.TimeReverse,
+            this.TimeStop,
+            this.TimePause,
+            this.TimeForward,
+            this.TimeAccelerate,
             this.FileMenu,
             this.EditMenu,
             this.ViewMenu,
             this.CameraMenu,
-            this.TimeMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
+            this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.Size = new System.Drawing.Size(1008, 25);
             this.MainMenu.TabIndex = 0;
+            // 
+            // TimeDecelerate
+            // 
+            this.TimeDecelerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
+            this.TimeDecelerate.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
+            this.TimeDecelerate.Name = "TimeDecelerate";
+            this.TimeDecelerate.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeDecelerate.Size = new System.Drawing.Size(20, 21);
+            this.TimeDecelerate.Text = "Decelerate";
+            // 
+            // TimeReverse
+            // 
+            this.TimeReverse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
+            this.TimeReverse.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
+            this.TimeReverse.Name = "TimeReverse";
+            this.TimeReverse.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeReverse.Size = new System.Drawing.Size(20, 21);
+            this.TimeReverse.Text = "Reverse";
+            // 
+            // TimeStop
+            // 
+            this.TimeStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
+            this.TimeStop.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
+            this.TimeStop.Name = "TimeStop";
+            this.TimeStop.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeStop.Size = new System.Drawing.Size(20, 21);
+            this.TimeStop.Text = "Stop";
+            // 
+            // TimePause
+            // 
+            this.TimePause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
+            this.TimePause.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
+            this.TimePause.Name = "TimePause";
+            this.TimePause.Padding = new System.Windows.Forms.Padding(0);
+            this.TimePause.Size = new System.Drawing.Size(20, 21);
+            this.TimePause.Text = "Pause";
+            // 
+            // TimeForward
+            // 
+            this.TimeForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
+            this.TimeForward.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimeForward.Name = "TimeForward";
+            this.TimeForward.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeForward.Size = new System.Drawing.Size(20, 21);
+            this.TimeForward.Text = "Forward";
+            // 
+            // TimeAccelerate
+            // 
+            this.TimeAccelerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
+            this.TimeAccelerate.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
+            this.TimeAccelerate.Name = "TimeAccelerate";
+            this.TimeAccelerate.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeAccelerate.Size = new System.Drawing.Size(20, 21);
+            this.TimeAccelerate.Text = "Accelerate";
             // 
             // FileMenu
             // 
@@ -735,37 +733,37 @@
             // CameraMoveLeft
             // 
             this.CameraMoveLeft.Name = "CameraMoveLeft";
-            this.CameraMoveLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveLeft.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveLeft.Text = "Left";
             // 
             // CameraMoveRight
             // 
             this.CameraMoveRight.Name = "CameraMoveRight";
-            this.CameraMoveRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveRight.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveRight.Text = "Right";
             // 
             // CameraMoveUp
             // 
             this.CameraMoveUp.Name = "CameraMoveUp";
-            this.CameraMoveUp.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveUp.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveUp.Text = "Up";
             // 
             // CameraMoveDown
             // 
             this.CameraMoveDown.Name = "CameraMoveDown";
-            this.CameraMoveDown.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveDown.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveDown.Text = "Down";
             // 
             // CameraMoveForward
             // 
             this.CameraMoveForward.Name = "CameraMoveForward";
-            this.CameraMoveForward.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveForward.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveForward.Text = "Forward";
             // 
             // CameraMoveBack
             // 
             this.CameraMoveBack.Name = "CameraMoveBack";
-            this.CameraMoveBack.Size = new System.Drawing.Size(180, 22);
+            this.CameraMoveBack.Size = new System.Drawing.Size(124, 22);
             this.CameraMoveBack.Text = "Back";
             // 
             // CameraStrafe
@@ -784,101 +782,49 @@
             // CameraStrafeLeft
             // 
             this.CameraStrafeLeft.Name = "CameraStrafeLeft";
-            this.CameraStrafeLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeLeft.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeLeft.Text = "Left";
             // 
             // CameraStrafeRight
             // 
             this.CameraStrafeRight.Name = "CameraStrafeRight";
-            this.CameraStrafeRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeRight.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeRight.Text = "Right";
             // 
             // CameraStrafeUp
             // 
             this.CameraStrafeUp.Name = "CameraStrafeUp";
-            this.CameraStrafeUp.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeUp.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeUp.Text = "Up";
             // 
             // CameraStrafeDown
             // 
             this.CameraStrafeDown.Name = "CameraStrafeDown";
-            this.CameraStrafeDown.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafeDown.Size = new System.Drawing.Size(132, 22);
             this.CameraStrafeDown.Text = "Down";
             // 
             // CameraRollLeft
             // 
             this.CameraRollLeft.Name = "CameraRollLeft";
-            this.CameraRollLeft.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollLeft.Size = new System.Drawing.Size(132, 22);
             this.CameraRollLeft.Text = "Roll Left";
             // 
             // CameraRollRight
             // 
             this.CameraRollRight.Name = "CameraRollRight";
-            this.CameraRollRight.Size = new System.Drawing.Size(180, 22);
+            this.CameraRollRight.Size = new System.Drawing.Size(132, 22);
             this.CameraRollRight.Text = "Roll Right";
             // 
-            // TimeMenu
+            // toolStripMenuItem5
             // 
-            this.TimeMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TimeMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TimeDecelerate,
-            this.TimeReverse,
-            this.TimeStop,
-            this.TimePause,
-            this.TimeForward,
-            this.TimeAccelerate});
-            this.TimeMenu.Image = global::TabbyCat.Properties.Resources.ThinkTimenode_8848;
-            this.TimeMenu.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimeMenu.Name = "TimeMenu";
-            this.TimeMenu.Size = new System.Drawing.Size(48, 21);
-            this.TimeMenu.Text = "Time";
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
             // 
-            // TimeDecelerate
+            // CameraReset
             // 
-            this.TimeDecelerate.Image = global::TabbyCat.Properties.Resources.RewindHS;
-            this.TimeDecelerate.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimeDecelerate.Name = "TimeDecelerate";
-            this.TimeDecelerate.Size = new System.Drawing.Size(138, 22);
-            this.TimeDecelerate.Text = "Decelerate";
-            // 
-            // TimeReverse
-            // 
-            this.TimeReverse.Image = global::TabbyCat.Properties.Resources.BackHS;
-            this.TimeReverse.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimeReverse.Name = "TimeReverse";
-            this.TimeReverse.Size = new System.Drawing.Size(138, 22);
-            this.TimeReverse.Text = "Reverse";
-            // 
-            // TimeStop
-            // 
-            this.TimeStop.Image = global::TabbyCat.Properties.Resources.StopHS;
-            this.TimeStop.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimeStop.Name = "TimeStop";
-            this.TimeStop.Size = new System.Drawing.Size(138, 22);
-            this.TimeStop.Text = "Stop";
-            // 
-            // TimePause
-            // 
-            this.TimePause.Image = global::TabbyCat.Properties.Resources.PauseHS;
-            this.TimePause.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimePause.Name = "TimePause";
-            this.TimePause.Size = new System.Drawing.Size(138, 22);
-            this.TimePause.Text = "Pause";
-            // 
-            // TimeForward
-            // 
-            this.TimeForward.Image = global::TabbyCat.Properties.Resources.PlayHS;
-            this.TimeForward.Name = "TimeForward";
-            this.TimeForward.Size = new System.Drawing.Size(138, 22);
-            this.TimeForward.Text = "Forward";
-            // 
-            // TimeAccelerate
-            // 
-            this.TimeAccelerate.Image = global::TabbyCat.Properties.Resources.FFwdHS;
-            this.TimeAccelerate.ImageTransparentColor = System.Drawing.Color.White;
-            this.TimeAccelerate.Name = "TimeAccelerate";
-            this.TimeAccelerate.Size = new System.Drawing.Size(138, 22);
-            this.TimeAccelerate.Text = "Accelerate";
+            this.CameraReset.Name = "CameraReset";
+            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
             // 
@@ -918,17 +864,6 @@
             // 
             this.PopupMenu.Name = "PopupMenu";
             this.PopupMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
-            // 
-            // CameraReset
-            // 
-            this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(180, 22);
-            this.CameraReset.Text = "Reset";
             // 
             // WorldForm
             // 
@@ -1001,13 +936,6 @@
         internal System.Windows.Forms.ToolStripMenuItem EditInvertSelection;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         internal System.Windows.Forms.ToolStripMenuItem EditOptions;
-        internal System.Windows.Forms.ToolStripMenuItem TimeMenu;
-        internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
-        internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
-        internal System.Windows.Forms.ToolStripMenuItem TimeStop;
-        internal System.Windows.Forms.ToolStripMenuItem TimePause;
-        internal System.Windows.Forms.ToolStripMenuItem TimeForward;
-        internal System.Windows.Forms.ToolStripMenuItem TimeAccelerate;
         internal System.Windows.Forms.ToolStripMenuItem HelpOpenGLShadingLanguage;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
         internal System.Windows.Forms.ToolStripMenuItem HelpAbout;
@@ -1026,12 +954,6 @@
         internal System.Windows.Forms.ToolStripButton tbAdd;
         internal System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        internal System.Windows.Forms.ToolStripDropDownButton tbDecelerate;
-        internal System.Windows.Forms.ToolStripDropDownButton tbReverse;
-        internal System.Windows.Forms.ToolStripDropDownButton tbStop;
-        internal System.Windows.Forms.ToolStripDropDownButton tbPause;
-        internal System.Windows.Forms.ToolStripDropDownButton tbForward;
-        internal System.Windows.Forms.ToolStripDropDownButton tbAccelerate;
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
         internal System.Windows.Forms.SplitContainer SplitContainer1;
@@ -1059,7 +981,13 @@
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafeDown;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollLeft;
         internal System.Windows.Forms.ToolStripMenuItem CameraRollRight;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         internal System.Windows.Forms.ToolStripMenuItem CameraReset;
+        internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
+        internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
+        internal System.Windows.Forms.ToolStripMenuItem TimeStop;
+        internal System.Windows.Forms.ToolStripMenuItem TimePause;
+        internal System.Windows.Forms.ToolStripMenuItem TimeForward;
+        internal System.Windows.Forms.ToolStripMenuItem TimeAccelerate;
     }
 }

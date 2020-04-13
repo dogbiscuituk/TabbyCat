@@ -30,32 +30,20 @@
             if (connect)
             {
                 WorldForm.TimeDecelerate.Click += TimeDecelerate_Click;
-                WorldForm.tbDecelerate.Click += TimeDecelerate_Click;
                 WorldForm.TimeReverse.Click += TimeReverse_Click;
-                WorldForm.tbReverse.Click += TimeReverse_Click;
                 WorldForm.TimeStop.Click += TimeStop_Click;
-                WorldForm.tbStop.Click += TimeStop_Click;
                 WorldForm.TimePause.Click += TimePause_Click;
-                WorldForm.tbPause.Click += TimePause_Click;
                 WorldForm.TimeForward.Click += TimeForward_Click;
-                WorldForm.tbForward.Click += TimeForward_Click;
                 WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
-                WorldForm.tbAccelerate.Click += TimeAccelerate_Click;
             }
             else
             {
                 WorldForm.TimeDecelerate.Click -= TimeDecelerate_Click;
-                WorldForm.tbDecelerate.Click -= TimeDecelerate_Click;
                 WorldForm.TimeReverse.Click -= TimeReverse_Click;
-                WorldForm.tbReverse.Click -= TimeReverse_Click;
                 WorldForm.TimeStop.Click -= TimeStop_Click;
-                WorldForm.tbStop.Click -= TimeStop_Click;
                 WorldForm.TimePause.Click -= TimePause_Click;
-                WorldForm.tbPause.Click -= TimePause_Click;
                 WorldForm.TimeForward.Click -= TimeForward_Click;
-                WorldForm.tbForward.Click -= TimeForward_Click;
                 WorldForm.TimeAccelerate.Click -= TimeAccelerate_Click;
-                WorldForm.tbAccelerate.Click -= TimeAccelerate_Click;
             }
         }
 
@@ -67,12 +55,12 @@
 
         internal void UpdateTimeControls()
         {
-            WorldForm.TimeAccelerate.Enabled = WorldForm.tbAccelerate.Enabled = CanAccelerate;
-            WorldForm.TimeDecelerate.Enabled = WorldForm.tbDecelerate.Enabled = CanDecelerate;
-            WorldForm.TimeForward.Enabled = WorldForm.tbForward.Enabled = CanStart;
-            WorldForm.TimePause.Enabled = WorldForm.tbPause.Enabled = CanPause;
-            WorldForm.TimeReverse.Enabled = WorldForm.tbReverse.Enabled = CanReverse;
-            WorldForm.TimeStop.Enabled = WorldForm.tbStop.Enabled = CanStop;
+            WorldForm.TimeAccelerate.Enabled = CanAccelerate;
+            WorldForm.TimeDecelerate.Enabled = CanDecelerate;
+            WorldForm.TimeForward.Enabled = CanStart;
+            WorldForm.TimePause.Enabled = CanPause;
+            WorldForm.TimeReverse.Enabled = CanReverse;
+            WorldForm.TimeStop.Enabled = CanStop;
         }
 
         private bool CanAccelerate => VirtualTimeFactor < +32;

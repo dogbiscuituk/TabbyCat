@@ -16,7 +16,7 @@
 
         protected override Control Editor => PropertiesEdit;
 
-        protected override Control EditorParent => WorldForm.SplitContainer1.Panel2;
+        protected override Control EditorParent => WorldForm.SplitContainer1.Panel1;
 
         protected internal override void UpdateAllProperties()
         {
@@ -53,7 +53,7 @@
 
         internal void InitViewProperties() => WorldForm.ViewProperties.Checked = EditorVisible;
 
-        protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel2Collapsed = collapse;
+        protected override void Collapse(bool collapse) => WorldForm.SplitContainer1.Panel1Collapsed = collapse;
 
         protected override void DisposeManagedState()
         {

@@ -1556,15 +1556,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Time.
-        /// </summary>
-        public static string Menu_Time {
-            get {
-                return ResourceManager.GetString("Menu_Time", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time
         ///(or slow down if in reverse).
         /// </summary>

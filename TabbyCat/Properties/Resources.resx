@@ -659,9 +659,6 @@ keeping it pointed at an object|^Up</value>
   <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
     <value>OpenGL® Shading Language</value>
   </data>
-  <data name="Menu_Time" xml:space="preserve">
-    <value>&amp;Time</value>
-  </data>
   <data name="Menu_Time_Accelerate" xml:space="preserve">
     <value>&amp;Accelerate|Speed up the passage of time
 (or slow down if in reverse)</value>

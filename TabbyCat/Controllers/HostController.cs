@@ -103,7 +103,7 @@
             var hostForm = new HostForm
             {
                 ClientSize = Editor.Size,
-                Location = Editor.PointToScreen(new Point()),
+                Location = Editor.PointToScreen(Point.Empty),
                 Text = _Caption
             };
             hostForm.FormClosing += HostForm_FormClosing;

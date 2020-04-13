@@ -79,11 +79,11 @@
             return null;
         }
 
-        private static void CloneTo(this ToolStripItemCollection s, ToolStripItemCollection t)
+        private static void CloneTo(this ToolStripItemCollection source, ToolStripItemCollection target)
         {
-            t.Clear();
-            foreach (ToolStripItem i in s)
-                t.Add(i.Clone());
+            target.Clear();
+            foreach (ToolStripItem item in source)
+                target.Add(item.Clone());
         }
     }
 }
