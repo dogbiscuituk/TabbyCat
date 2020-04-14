@@ -1,37 +1,55 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Jmk.Common;
-    using OpenTK;
-    using OpenTK.Graphics;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using Jmk.Common;
+    using OpenTK;
+    using OpenTK.Graphics;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
+    using WeifenLuo.WinFormsUI.Docking;
 
     internal class WorldController : LocalizationController
     {
+        protected internal override GLControlForm GLControlForm => GLController.GLControlForm;
+
+        private readonly CameraController CameraController;
+        protected override ClockController ClockController { get; set; }
+        internal override CommandProcessor CommandProcessor { get; set; }
+        protected override GLController GLController { get; set; }
+        protected override RenderController RenderController { get; set; }
+        protected override SceneController SceneController { get; set; }
+        protected override TraceController TraceController { get; set; }
+
+
+        protected internal override WorldForm WorldForm { get; set; }
+
         internal WorldController() : base(null)
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
+
             CameraController = new CameraController(this);
             ClockController = new ClockController(this);
             CommandProcessor = new CommandProcessor(this);
-            FullScreenController = new FullScreenController(this);
+            GLController = new GLController(this);
             JsonController = new JsonController(this);
-            PropertiesController = new PropertiesController(this);
             RenderController = new RenderController(this);
             SceneController = new SceneController(this);
-            ShaderController = new ShaderController(this);
             TraceController = new TraceController(this);
+
+            SceneController.SceneForm.Show(WorldForm.DockPanel, DockState.DockLeft);
+            TraceController.TraceForm.Show(WorldForm.DockPanel, DockState.DockRight);
+            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
+
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
             WorldController = this;
@@ -39,9 +57,7 @@
 
         internal TraceSelection Selection = new TraceSelection();
 
-        private readonly CameraController CameraController;
         private readonly List<string> ChangedPropertyNames = new List<string>();
-        private readonly FullScreenController FullScreenController;
         private static string GLSLUrl => Settings.Default.GLSLUrl;
         private readonly JsonController JsonController;
         private string LastSpeed, LastTime, LastFPS;
@@ -49,22 +65,10 @@
 
         protected internal override Scene Scene { get; set; }
 
-        internal override CommandProcessor CommandProcessor { get; set; }
-
-        internal GLControl GLControl => GLControlParent[0] as GLControl;
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
         internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
         internal ToolTip ToolTip => WorldForm.ToolTip;
 
-        protected override ClockController ClockController { get; set; }
-        protected override PropertiesController PropertiesController { get; set; }
-        protected override RenderController RenderController { get; set; }
-        protected override SceneController SceneController { get; set; }
-        protected override ShaderController ShaderController { get; set; }
-        protected override TraceController TraceController { get; set; }
-        protected internal override WorldForm WorldForm { get; set; }
-
-        private Control.ControlCollection GLControlParent => WorldForm?.SplitContainer1.Panel2.Controls;
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler Pulse;
@@ -157,7 +161,8 @@
 
         protected internal override void UpdateAllProperties()
         {
-            PropertiesController.UpdateAllProperties();
+            TraceController.UpdateAllProperties();
+            SceneController.UpdateAllProperties();
         }
 
         internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
@@ -309,7 +314,6 @@
 
         private void CreateMainMenuClone()
         {
-            PropertiesController.InitViewProperties(); // Copy the checked state of the ViewProperties menu item.
             WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
             WorldForm.PopupMenu.Items.Insert(6, new ToolStripSeparator());
         }
@@ -318,9 +322,9 @@
         {
             CameraController.Connect(connect);
             ClockController.Connect(connect);
-            FullScreenController.Connect(connect);
             ConnectJsonController(connect);
-            PropertiesController.Connect(connect);
+            TraceController.Connect(connect);
+            SceneController.Connect(connect);
             if (connect)
             {
             }
@@ -607,7 +611,7 @@
 
         private void RecreateGLControl(GraphicsMode mode = null)
         {
-            GLControl
+            /*GLControl
                 oldControl = GLControl,
                 newControl = mode == null ? new GLControl() : new GLControl(mode);
             newControl.BackColor = Scene.BackgroundColour;
@@ -626,7 +630,7 @@
             RenderController.Refresh();
             GLControlParent.Owner.ResumeLayout();
             oldControl.Dispose();
-            RefreshGraphicsMode();
+            RefreshGraphicsMode();*/
         }
 
         internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);

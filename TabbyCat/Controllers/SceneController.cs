@@ -11,15 +11,22 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Controls;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal class SceneController : ShaderSetController
     {
+        internal readonly SceneForm SceneForm;
+
         internal SceneController(WorldController worldController)
             : base(worldController)
         {
-            InitCommonControls(Editor.TableLayoutPanel);
+            SceneForm = new SceneForm();
+
+            InitCommonControls(SceneForm.SceneEdit.TableLayoutPanel);
             InitLocalControls();
         }
+
+        private SceneEdit SceneEdit => SceneForm.SceneEdit;
 
         protected override string[] AllProperties => new[]
         {
@@ -38,89 +45,87 @@
             PropertyNames.VSync
         };
 
-        private SceneEdit Editor => PropertiesEdit.SceneEdit;
-
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
             {
-                Editor.edTitle.TextChanged += SceneTitle_TextChanged;
-                Editor.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
-                Editor.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
-                Editor.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
-                Editor.seCameraPitch.ValueChanged += CameraFocus_ValueChanged;
-                Editor.seCameraYaw.ValueChanged += CameraFocus_ValueChanged;
-                Editor.seCameraRoll.ValueChanged += CameraFocus_ValueChanged;
-                Editor.seProjectionType.SelectedItemChanged += ProjectionType_SelectedItemChanged;
-                Editor.cbStereo.CheckedChanged += Stereo_CheckedChanged;
-                Editor.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
-                Editor.seFPS.ValueChanged += FPS_ValueChanged;
-                Editor.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
-                Editor.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
-                Editor.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
-                Editor.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
-                Editor.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
-                Editor.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
-                Editor.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
-                Editor.cbVSync.CheckedChanged += VSync_CheckedChanged;
-                Editor.seSampleCount.SelectedItemChanged += Samples_ValueChanged;
-                Editor.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
+                SceneEdit.edTitle.TextChanged += SceneTitle_TextChanged;
+                SceneEdit.seCameraPositionX.ValueChanged += CameraPosition_ValueChanged;
+                SceneEdit.seCameraPositionY.ValueChanged += CameraPosition_ValueChanged;
+                SceneEdit.seCameraPositionZ.ValueChanged += CameraPosition_ValueChanged;
+                SceneEdit.seCameraPitch.ValueChanged += CameraFocus_ValueChanged;
+                SceneEdit.seCameraYaw.ValueChanged += CameraFocus_ValueChanged;
+                SceneEdit.seCameraRoll.ValueChanged += CameraFocus_ValueChanged;
+                SceneEdit.seProjectionType.SelectedItemChanged += ProjectionType_SelectedItemChanged;
+                SceneEdit.cbStereo.CheckedChanged += Stereo_CheckedChanged;
+                SceneEdit.seFieldOfView.ValueChanged += FieldOfView_ValueChanged;
+                SceneEdit.seFPS.ValueChanged += FPS_ValueChanged;
+                SceneEdit.seFrustumMinX.ValueChanged += FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMinY.ValueChanged += FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMinZ.ValueChanged += FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMaxX.ValueChanged += FrustumMax_ValueChanged;
+                SceneEdit.seFrustumMaxY.ValueChanged += FrustumMax_ValueChanged;
+                SceneEdit.seFrustumMaxZ.ValueChanged += FrustumMax_ValueChanged;
+                SceneEdit.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
+                SceneEdit.cbVSync.CheckedChanged += VSync_CheckedChanged;
+                SceneEdit.seSampleCount.SelectedItemChanged += Samples_ValueChanged;
+                SceneEdit.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
             }
             else
             {
-                Editor.edTitle.TextChanged -= SceneTitle_TextChanged;
-                Editor.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
-                Editor.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
-                Editor.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
-                Editor.seCameraPitch.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.seCameraYaw.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.seCameraRoll.ValueChanged -= CameraFocus_ValueChanged;
-                Editor.seProjectionType.SelectedItemChanged -= ProjectionType_SelectedItemChanged;
-                Editor.cbStereo.CheckedChanged -= Stereo_CheckedChanged;
-                Editor.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
-                Editor.seFPS.ValueChanged -= FPS_ValueChanged;
-                Editor.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
-                Editor.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
-                Editor.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
-                Editor.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
-                Editor.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
-                Editor.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
-                Editor.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
-                Editor.cbVSync.CheckedChanged -= VSync_CheckedChanged;
-                Editor.seSampleCount.SelectedItemChanged -= Samples_ValueChanged;
-                Editor.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
+                SceneEdit.edTitle.TextChanged -= SceneTitle_TextChanged;
+                SceneEdit.seCameraPositionX.ValueChanged -= CameraPosition_ValueChanged;
+                SceneEdit.seCameraPositionY.ValueChanged -= CameraPosition_ValueChanged;
+                SceneEdit.seCameraPositionZ.ValueChanged -= CameraPosition_ValueChanged;
+                SceneEdit.seCameraPitch.ValueChanged -= CameraFocus_ValueChanged;
+                SceneEdit.seCameraYaw.ValueChanged -= CameraFocus_ValueChanged;
+                SceneEdit.seCameraRoll.ValueChanged -= CameraFocus_ValueChanged;
+                SceneEdit.seProjectionType.SelectedItemChanged -= ProjectionType_SelectedItemChanged;
+                SceneEdit.cbStereo.CheckedChanged -= Stereo_CheckedChanged;
+                SceneEdit.seFieldOfView.ValueChanged -= FieldOfView_ValueChanged;
+                SceneEdit.seFPS.ValueChanged -= FPS_ValueChanged;
+                SceneEdit.seFrustumMinX.ValueChanged -= FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMinY.ValueChanged -= FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMinZ.ValueChanged -= FrustumMin_ValueChanged;
+                SceneEdit.seFrustumMaxX.ValueChanged -= FrustumMax_ValueChanged;
+                SceneEdit.seFrustumMaxY.ValueChanged -= FrustumMax_ValueChanged;
+                SceneEdit.seFrustumMaxZ.ValueChanged -= FrustumMax_ValueChanged;
+                SceneEdit.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
+                SceneEdit.cbVSync.CheckedChanged -= VSync_CheckedChanged;
+                SceneEdit.seSampleCount.SelectedItemChanged -= Samples_ValueChanged;
+                SceneEdit.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
             }
         }
 
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Control_Scene_Title, Editor.lblTitle, Editor.edTitle);
-            Localize(Resources.Control_Camera_Position, Editor.lblPosition);
-            Localize(Resources.Control_Camera_PositionX, Editor.seCameraPositionX);
-            Localize(Resources.Control_Camera_PositionY, Editor.seCameraPositionY);
-            Localize(Resources.Control_Camera_PositionZ, Editor.seCameraPositionZ);
-            Localize(Resources.Control_Camera_Direction, Editor.lblDirection);
-            Localize(Resources.Control_Camera_Pitch, Editor.seCameraPitch);
-            Localize(Resources.Control_Camera_Yaw, Editor.seCameraYaw);
-            Localize(Resources.Control_Camera_Roll, Editor.seCameraRoll);
-            Localize(Resources.Control_Scene_Projection, Editor.lblProjection, Editor.seProjectionType);
-            Localize(Resources.Control_Scene_Stereo, Editor.cbStereo);
-            Localize(Resources.Control_Scene_FieldOfView, Editor.lblFieldOfView, Editor.seFieldOfView);
-            Localize(Resources.Control_Scene_TargetFPS, Editor.lblTargetFPS, Editor.seFPS);
-            Localize(Resources.Control_Scene_NearPlane, Editor.lblNearPlane);
-            Localize(Resources.Control_Scene_NearPlaneX, Editor.seFrustumMinX);
-            Localize(Resources.Control_Scene_NearPlaneY, Editor.seFrustumMinY);
-            Localize(Resources.Control_Scene_NearPlaneZ, Editor.seFrustumMinZ);
-            Localize(Resources.Control_Scene_FarPlane, Editor.lblFarPlane);
-            Localize(Resources.Control_Scene_FarPlaneX, Editor.seFrustumMaxX);
-            Localize(Resources.Control_Scene_FarPlaneY, Editor.seFrustumMaxY);
-            Localize(Resources.Control_Scene_FarPlaneZ, Editor.seFrustumMaxZ);
-            Localize(Resources.Control_Scene_Samples, Editor.lblSamples, Editor.seSampleCount);
-            Localize(Resources.Control_Scene_GLVersion, Editor.lblGLSLVersion, Editor.seGLSLVersion);
-            Localize(Resources.Control_Scene_Background, Editor.lblBackground, Editor.cbBackground);
-            Localize(Resources.Control_Scene_VSync, Editor.cbVSync);
+            Localize(Resources.Control_Scene_Title, SceneEdit.lblTitle, SceneEdit.edTitle);
+            Localize(Resources.Control_Camera_Position, SceneEdit.lblPosition);
+            Localize(Resources.Control_Camera_PositionX, SceneEdit.seCameraPositionX);
+            Localize(Resources.Control_Camera_PositionY, SceneEdit.seCameraPositionY);
+            Localize(Resources.Control_Camera_PositionZ, SceneEdit.seCameraPositionZ);
+            Localize(Resources.Control_Camera_Direction, SceneEdit.lblDirection);
+            Localize(Resources.Control_Camera_Pitch, SceneEdit.seCameraPitch);
+            Localize(Resources.Control_Camera_Yaw, SceneEdit.seCameraYaw);
+            Localize(Resources.Control_Camera_Roll, SceneEdit.seCameraRoll);
+            Localize(Resources.Control_Scene_Projection, SceneEdit.lblProjection, SceneEdit.seProjectionType);
+            Localize(Resources.Control_Scene_Stereo, SceneEdit.cbStereo);
+            Localize(Resources.Control_Scene_FieldOfView, SceneEdit.lblFieldOfView, SceneEdit.seFieldOfView);
+            Localize(Resources.Control_Scene_TargetFPS, SceneEdit.lblTargetFPS, SceneEdit.seFPS);
+            Localize(Resources.Control_Scene_NearPlane, SceneEdit.lblNearPlane);
+            Localize(Resources.Control_Scene_NearPlaneX, SceneEdit.seFrustumMinX);
+            Localize(Resources.Control_Scene_NearPlaneY, SceneEdit.seFrustumMinY);
+            Localize(Resources.Control_Scene_NearPlaneZ, SceneEdit.seFrustumMinZ);
+            Localize(Resources.Control_Scene_FarPlane, SceneEdit.lblFarPlane);
+            Localize(Resources.Control_Scene_FarPlaneX, SceneEdit.seFrustumMaxX);
+            Localize(Resources.Control_Scene_FarPlaneY, SceneEdit.seFrustumMaxY);
+            Localize(Resources.Control_Scene_FarPlaneZ, SceneEdit.seFrustumMaxZ);
+            Localize(Resources.Control_Scene_Samples, SceneEdit.lblSamples, SceneEdit.seSampleCount);
+            Localize(Resources.Control_Scene_GLVersion, SceneEdit.lblGLSLVersion, SceneEdit.seGLSLVersion);
+            Localize(Resources.Control_Scene_Background, SceneEdit.lblBackground, SceneEdit.cbBackground);
+            Localize(Resources.Control_Scene_VSync, SceneEdit.cbVSync);
         }
 
         protected override void UpdateProperties(params string[] propertyNames)
@@ -139,7 +144,7 @@
                 switch (propertyName)
                 {
                     case PropertyNames.Background:
-                        Editor.cbBackground.Text = Scene.BackgroundColour.Name;
+                        SceneEdit.cbBackground.Text = Scene.BackgroundColour.Name;
                         break;
                     case PropertyNames.Camera:
                         UpdateCameraPosition();
@@ -152,38 +157,38 @@
                         UpdateCameraPosition();
                         break;
                     case PropertyNames.FarPlane:
-                        Editor.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
-                        Editor.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
-                        Editor.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
+                        SceneEdit.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
+                        SceneEdit.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
+                        SceneEdit.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
                         break;
                     case PropertyNames.FieldOfView:
-                        Editor.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
+                        SceneEdit.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
                         break;
                     case PropertyNames.FPS:
-                        Editor.seFPS.Value = (decimal)Scene.FPS;
+                        SceneEdit.seFPS.Value = (decimal)Scene.FPS;
                         break;
                     case PropertyNames.GLTargetVersion:
-                        Editor.seGLSLVersion.Text = Scene.GLTargetVersion;
+                        SceneEdit.seGLSLVersion.Text = Scene.GLTargetVersion;
                         break;
                     case PropertyNames.NearPlane:
-                        Editor.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
-                        Editor.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
-                        Editor.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
+                        SceneEdit.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
+                        SceneEdit.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
+                        SceneEdit.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
                         break;
                     case PropertyNames.ProjectionType:
-                        Editor.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
+                        SceneEdit.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
                     case PropertyNames.Samples:
-                        Editor.seSampleCount.Text = Scene.Samples.ToString(CultureInfo.CurrentCulture);
+                        SceneEdit.seSampleCount.Text = Scene.Samples.ToString(CultureInfo.CurrentCulture);
                         break;
                     case PropertyNames.SceneTitle:
-                        Editor.edTitle.Text = Scene.Title;
+                        SceneEdit.edTitle.Text = Scene.Title;
                         break;
                     case PropertyNames.Stereo:
-                        Editor.cbStereo.Checked = Scene.Stereo;
+                        SceneEdit.cbStereo.Checked = Scene.Stereo;
                         break;
                     case PropertyNames.VSync:
-                        Editor.cbVSync.Checked = Scene.VSync;
+                        SceneEdit.cbVSync.Checked = Scene.VSync;
                         break;
                 }
             Updating = false;
@@ -191,55 +196,55 @@
         }
 
         private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
-            Run(new BackgroundColourCommand(Color.FromName(Editor.cbBackground.Text)));
+            Run(new BackgroundColourCommand(Color.FromName(SceneEdit.cbBackground.Text)));
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraFocusCommand(new Vector3(
-                (float)Editor.seCameraPitch.Value,
-                (float)Editor.seCameraYaw.Value,
-                (float)Editor.seCameraRoll.Value)));
+                (float)SceneEdit.seCameraPitch.Value,
+                (float)SceneEdit.seCameraYaw.Value,
+                (float)SceneEdit.seCameraRoll.Value)));
 
         private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraPositionCommand(new Vector3(
-                (float)Editor.seCameraPositionX.Value,
-                (float)Editor.seCameraPositionY.Value,
-                (float)Editor.seCameraPositionZ.Value)));
+                (float)SceneEdit.seCameraPositionX.Value,
+                (float)SceneEdit.seCameraPositionY.Value,
+                (float)SceneEdit.seCameraPositionZ.Value)));
 
         private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
-            Run(new FieldOfViewCommand((float)Editor.seFieldOfView.Value));
+            Run(new FieldOfViewCommand((float)SceneEdit.seFieldOfView.Value));
 
         private void FPS_ValueChanged(object sender, EventArgs e) =>
-            Run(new FpsCommand((float)Editor.seFPS.Value));
+            Run(new FpsCommand((float)SceneEdit.seFPS.Value));
 
         private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
             Run(new FrustumMaxCommand(new Vector3(
-                (float)Editor.seFrustumMaxX.Value,
-                (float)Editor.seFrustumMaxY.Value,
-                (float)Editor.seFrustumMaxZ.Value)));
+                (float)SceneEdit.seFrustumMaxX.Value,
+                (float)SceneEdit.seFrustumMaxY.Value,
+                (float)SceneEdit.seFrustumMaxZ.Value)));
 
         private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
             Run(new FrustumMinCommand(new Vector3(
-                (float)Editor.seFrustumMinX.Value,
-                (float)Editor.seFrustumMinY.Value,
-                (float)Editor.seFrustumMinZ.Value)));
+                (float)SceneEdit.seFrustumMinX.Value,
+                (float)SceneEdit.seFrustumMinY.Value,
+                (float)SceneEdit.seFrustumMinZ.Value)));
 
         private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new GLTargetVersionCommand(Editor.seGLSLVersion.Text));
+            Run(new GLTargetVersionCommand(SceneEdit.seGLSLVersion.Text));
 
         private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new ProjectionTypeCommand((ProjectionType)Editor.seProjectionType.SelectedIndex));
+            Run(new ProjectionTypeCommand((ProjectionType)SceneEdit.seProjectionType.SelectedIndex));
 
         private void Samples_ValueChanged(object sender, EventArgs e) =>
-            Run(new SamplesCommand(int.Parse(Editor.seSampleCount.Text, CultureInfo.CurrentCulture)));
+            Run(new SamplesCommand(int.Parse(SceneEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
 
         private void SceneTitle_TextChanged(object sender, EventArgs e) =>
-            Run(new TitleCommand(Editor.edTitle.Text));
+            Run(new TitleCommand(SceneEdit.edTitle.Text));
 
         private void Stereo_CheckedChanged(object sender, EventArgs e) =>
-            Run(new StereoCommand(Editor.cbStereo.Checked));
+            Run(new StereoCommand(SceneEdit.cbStereo.Checked));
 
         private void VSync_CheckedChanged(object sender, EventArgs e) =>
-            Run(new VSyncCommand(Editor.cbVSync.Checked));
+            Run(new VSyncCommand(SceneEdit.cbVSync.Checked));
 
         private static void InitDomainUpDownItems(DomainUpDown control, string items)
         {
@@ -249,14 +254,14 @@
 
         private void InitLocalControls()
         {
-            Editor.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
-            Editor.seFieldOfView.Minimum = 1;
-            Editor.seFieldOfView.Maximum = 179;
-            Editor.seFPS.Minimum = 1;
-            Editor.seFPS.Maximum = 300;
-            InitDomainUpDownItems(Editor.seGLSLVersion, Settings.Default.GLSLVersions);
-            InitDomainUpDownItems(Editor.seSampleCount, Settings.Default.SampleCounts);
-            new ColourController().AddControls(Editor.cbBackground);
+            SceneEdit.seProjectionType.Items.AddRange(Enum.GetNames(typeof(ProjectionType)));
+            SceneEdit.seFieldOfView.Minimum = 1;
+            SceneEdit.seFieldOfView.Maximum = 179;
+            SceneEdit.seFPS.Minimum = 1;
+            SceneEdit.seFPS.Maximum = 300;
+            InitDomainUpDownItems(SceneEdit.seGLSLVersion, Settings.Default.GLSLVersions);
+            InitDomainUpDownItems(SceneEdit.seSampleCount, Settings.Default.SampleCounts);
+            new ColourController().AddControls(SceneEdit.cbBackground);
         }
 
         private void Run(ICommand command)
@@ -270,27 +275,27 @@
 
         private void UpdateCameraFocus()
         {
-            Editor.seCameraPitch.Value = (decimal)Scene.Camera.Focus.X;
-            Editor.seCameraYaw.Value = (decimal)Scene.Camera.Focus.Y;
-            Editor.seCameraRoll.Value = (decimal)Scene.Camera.Focus.Z;
+            SceneEdit.seCameraPitch.Value = (decimal)Scene.Camera.Focus.X;
+            SceneEdit.seCameraYaw.Value = (decimal)Scene.Camera.Focus.Y;
+            SceneEdit.seCameraRoll.Value = (decimal)Scene.Camera.Focus.Z;
         }
 
         private void UpdateCameraPosition()
         {
-            Editor.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
-            Editor.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
-            Editor.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
+            SceneEdit.seCameraPositionX.Value = (decimal)Scene.Camera.Position.X;
+            SceneEdit.seCameraPositionY.Value = (decimal)Scene.Camera.Position.Y;
+            SceneEdit.seCameraPositionZ.Value = (decimal)Scene.Camera.Position.Z;
         }
 
         private void UpdateUI()
         {
-            var perspective = Editor.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
-            Editor.lblFieldOfView.Visible =
-            Editor.seFieldOfView.Visible = perspective;
-            Editor.seFrustumMinX.Visible =
-            Editor.seFrustumMinY.Visible =
-            Editor.seFrustumMaxX.Visible =
-            Editor.seFrustumMaxY.Visible = !perspective;
+            var perspective = SceneEdit.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            SceneEdit.lblFieldOfView.Visible =
+            SceneEdit.seFieldOfView.Visible = perspective;
+            SceneEdit.seFrustumMinX.Visible =
+            SceneEdit.seFrustumMinY.Visible =
+            SceneEdit.seFrustumMaxX.Visible =
+            SceneEdit.seFrustumMaxY.Visible = !perspective;
         }
     }
 }

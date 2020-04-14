@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.traceEdit1 = new TabbyCat.Controls.TraceEdit();
+            this.TraceEdit = new TabbyCat.Controls.TraceEdit();
             this.SuspendLayout();
             // 
-            // traceEdit1
+            // TraceEdit
             // 
-            this.traceEdit1.BackColor = System.Drawing.SystemColors.Control;
-            this.traceEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.traceEdit1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.traceEdit1.Location = new System.Drawing.Point(0, 0);
-            this.traceEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.traceEdit1.Name = "traceEdit1";
-            this.traceEdit1.Size = new System.Drawing.Size(383, 254);
-            this.traceEdit1.TabIndex = 0;
+            this.TraceEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.TraceEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TraceEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TraceEdit.Location = new System.Drawing.Point(0, 0);
+            this.TraceEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TraceEdit.Name = "TraceEdit";
+            this.TraceEdit.Size = new System.Drawing.Size(383, 254);
+            this.TraceEdit.TabIndex = 0;
             // 
             // TraceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 254);
-            this.Controls.Add(this.traceEdit1);
+            this.Controls.Add(this.TraceEdit);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TraceForm";
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private Controls.TraceEdit traceEdit1;
+        internal Controls.TraceEdit TraceEdit;
     }
 }

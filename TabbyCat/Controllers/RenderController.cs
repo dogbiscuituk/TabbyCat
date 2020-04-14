@@ -92,8 +92,6 @@
 
         internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
-        private GLControl GLControl => WorldController.GLControl;
-
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
         public string GetScript(ShaderType shaderType)

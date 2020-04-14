@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sceneEdit1 = new TabbyCat.Controls.SceneEdit();
+            this.SceneEdit = new TabbyCat.Controls.SceneEdit();
             this.SuspendLayout();
             // 
-            // sceneEdit1
+            // SceneEdit
             // 
-            this.sceneEdit1.BackColor = System.Drawing.SystemColors.Control;
-            this.sceneEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sceneEdit1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sceneEdit1.Location = new System.Drawing.Point(0, 0);
-            this.sceneEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sceneEdit1.Name = "sceneEdit1";
-            this.sceneEdit1.Size = new System.Drawing.Size(374, 262);
-            this.sceneEdit1.TabIndex = 0;
+            this.SceneEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.SceneEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SceneEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SceneEdit.Location = new System.Drawing.Point(0, 0);
+            this.SceneEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SceneEdit.Name = "SceneEdit";
+            this.SceneEdit.Size = new System.Drawing.Size(374, 262);
+            this.SceneEdit.TabIndex = 0;
             // 
             // SceneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 262);
-            this.Controls.Add(this.sceneEdit1);
+            this.Controls.Add(this.SceneEdit);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SceneForm";
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private Controls.SceneEdit sceneEdit1;
+        internal Controls.SceneEdit SceneEdit;
     }
 }

@@ -10,22 +10,28 @@
     using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Properties;
+    using TabbyCat.Views;
 
     internal class TraceController : ShaderSetController
     {
-        internal TraceController(WorldController worldController)
-            : base(worldController)
+        internal readonly TraceForm TraceForm;
+
+        internal TraceController(WorldController worldController) : base(worldController)
         {
+            TraceForm = new TraceForm();
+
             SelectionController = new SelectionController(worldController);
-            InitCommonControls(Editor.TableLayoutPanel);
+            InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();
         }
+
+        private TraceEdit TraceEdit => TraceForm.TraceEdit;
 
         private readonly SelectionController SelectionController;
 
         private bool SelectionUpdating;
 
-        internal ToolStrip SelectionToolbar => Editor.SelectionToolbar;
+        internal ToolStrip SelectionToolbar => TraceEdit.SelectionToolbar;
 
         protected override string[] AllProperties => new[]
         {
@@ -40,8 +46,6 @@
             PropertyNames.Visible
         };
 
-        private TraceEdit Editor => TraceEdit;
-
         private TraceSelection Selection => WorldController.Selection;
 
         protected internal override void Connect(bool connect)
@@ -50,52 +54,52 @@
             if (connect)
             {
                 UpdateAllProperties();
-                Editor.edDescription.TextChanged += Description_TextChanged;
-                Editor.seLocationX.ValueChanged += LocationX_ValueChanged;
-                Editor.seLocationY.ValueChanged += LocationY_ValueChanged;
-                Editor.seLocationZ.ValueChanged += LocationZ_ValueChanged;
-                Editor.sePitch.ValueChanged += OrientationX_ValueChanged;
-                Editor.seYaw.ValueChanged += OrientationY_ValueChanged;
-                Editor.seRoll.ValueChanged += OrientationZ_ValueChanged;
-                Editor.seScaleX.ValueChanged += ScaleX_ValueChanged;
-                Editor.seScaleY.ValueChanged += ScaleY_ValueChanged;
-                Editor.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
-                Editor.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
-                Editor.seMinimumX.ValueChanged += MinimumX_ValueChanged;
-                Editor.seMinimumY.ValueChanged += MinimumY_ValueChanged;
-                Editor.seMinimumZ.ValueChanged += MinimumZ_ValueChanged;
-                Editor.seMaximumX.ValueChanged += MaximumX_ValueChanged;
-                Editor.seMaximumY.ValueChanged += MaximumY_ValueChanged;
-                Editor.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
-                Editor.seStripCountX.ValueChanged += StripCountX_ValueChanged;
-                Editor.seStripCountY.ValueChanged += StripCountY_ValueChanged;
-                Editor.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
-                Editor.cbVisible.CheckedChanged += Visible_CheckedChanged;
+                TraceEdit.edDescription.TextChanged += Description_TextChanged;
+                TraceEdit.seLocationX.ValueChanged += LocationX_ValueChanged;
+                TraceEdit.seLocationY.ValueChanged += LocationY_ValueChanged;
+                TraceEdit.seLocationZ.ValueChanged += LocationZ_ValueChanged;
+                TraceEdit.sePitch.ValueChanged += OrientationX_ValueChanged;
+                TraceEdit.seYaw.ValueChanged += OrientationY_ValueChanged;
+                TraceEdit.seRoll.ValueChanged += OrientationZ_ValueChanged;
+                TraceEdit.seScaleX.ValueChanged += ScaleX_ValueChanged;
+                TraceEdit.seScaleY.ValueChanged += ScaleY_ValueChanged;
+                TraceEdit.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
+                TraceEdit.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
+                TraceEdit.seMinimumX.ValueChanged += MinimumX_ValueChanged;
+                TraceEdit.seMinimumY.ValueChanged += MinimumY_ValueChanged;
+                TraceEdit.seMinimumZ.ValueChanged += MinimumZ_ValueChanged;
+                TraceEdit.seMaximumX.ValueChanged += MaximumX_ValueChanged;
+                TraceEdit.seMaximumY.ValueChanged += MaximumY_ValueChanged;
+                TraceEdit.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
+                TraceEdit.seStripCountX.ValueChanged += StripCountX_ValueChanged;
+                TraceEdit.seStripCountY.ValueChanged += StripCountY_ValueChanged;
+                TraceEdit.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
+                TraceEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
                 SelectionController.SelectionChanged += Selection_Changed;
             }
             else
             {
-                Editor.edDescription.TextChanged -= Description_TextChanged;
-                Editor.seLocationX.ValueChanged -= LocationX_ValueChanged;
-                Editor.seLocationY.ValueChanged -= LocationY_ValueChanged;
-                Editor.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
-                Editor.sePitch.ValueChanged -= OrientationX_ValueChanged;
-                Editor.seYaw.ValueChanged -= OrientationY_ValueChanged;
-                Editor.seRoll.ValueChanged -= OrientationZ_ValueChanged;
-                Editor.seScaleX.ValueChanged -= ScaleX_ValueChanged;
-                Editor.seScaleY.ValueChanged -= ScaleY_ValueChanged;
-                Editor.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
-                Editor.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
-                Editor.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
-                Editor.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
-                Editor.seMinimumZ.ValueChanged -= MinimumZ_ValueChanged;
-                Editor.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
-                Editor.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
-                Editor.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
-                Editor.seStripCountX.ValueChanged -= StripCountX_ValueChanged;
-                Editor.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
-                Editor.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
-                Editor.cbVisible.CheckedChanged -= Visible_CheckedChanged;
+                TraceEdit.edDescription.TextChanged -= Description_TextChanged;
+                TraceEdit.seLocationX.ValueChanged -= LocationX_ValueChanged;
+                TraceEdit.seLocationY.ValueChanged -= LocationY_ValueChanged;
+                TraceEdit.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
+                TraceEdit.sePitch.ValueChanged -= OrientationX_ValueChanged;
+                TraceEdit.seYaw.ValueChanged -= OrientationY_ValueChanged;
+                TraceEdit.seRoll.ValueChanged -= OrientationZ_ValueChanged;
+                TraceEdit.seScaleX.ValueChanged -= ScaleX_ValueChanged;
+                TraceEdit.seScaleY.ValueChanged -= ScaleY_ValueChanged;
+                TraceEdit.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
+                TraceEdit.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
+                TraceEdit.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
+                TraceEdit.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
+                TraceEdit.seMinimumZ.ValueChanged -= MinimumZ_ValueChanged;
+                TraceEdit.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
+                TraceEdit.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
+                TraceEdit.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
+                TraceEdit.seStripCountX.ValueChanged -= StripCountX_ValueChanged;
+                TraceEdit.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
+                TraceEdit.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
+                TraceEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
                 SelectionController.SelectionChanged -= Selection_Changed;
             }
             SelectionController.Connect(connect);
@@ -110,35 +114,35 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Control_Trace_Description, Editor.lblDescription, Editor.edDescription);
-            Localize(Resources.Control_Trace_Location, Editor.lblLocation);
-            Localize(Resources.Control_Trace_LocationX, Editor.seLocationX);
-            Localize(Resources.Control_Trace_LocationY, Editor.seLocationY);
-            Localize(Resources.Control_Trace_LocationZ, Editor.seLocationZ);
-            Localize(Resources.Control_Trace_Orientation, Editor.lblOrientation);
-            Localize(Resources.Control_Trace_Pitch, Editor.sePitch);
-            Localize(Resources.Control_Trace_Yaw, Editor.seYaw);
-            Localize(Resources.Control_Trace_Roll, Editor.seRoll);
-            Localize(Resources.Control_Trace_Scale, Editor.lblScale);
-            Localize(Resources.Control_Trace_ScaleX, Editor.seScaleX);
-            Localize(Resources.Control_Trace_ScaleY, Editor.seScaleY);
-            Localize(Resources.Control_Trace_ScaleZ, Editor.seScaleZ);
-            Localize(Resources.Control_Trace_Minimum, Editor.lblMinimum);
-            Localize(Resources.Control_Trace_MinimumX, Editor.seMinimumX);
-            Localize(Resources.Control_Trace_MinimumY, Editor.seMinimumY);
-            Localize(Resources.Control_Trace_MinimumZ, Editor.seMinimumZ);
-            Localize(Resources.Control_Trace_Maximum, Editor.lblMaximum);
-            Localize(Resources.Control_Trace_MaximumX, Editor.seMaximumX);
-            Localize(Resources.Control_Trace_MaximumY, Editor.seMaximumY);
-            Localize(Resources.Control_Trace_MaximumZ, Editor.seMaximumZ);
-            Localize(Resources.Control_Trace_Strips, Editor.lblStrips);
-            Localize(Resources.Control_Trace_StripsX, Editor.seStripCountX);
-            Localize(Resources.Control_Trace_StripsY, Editor.seStripCountY);
-            Localize(Resources.Control_Trace_StripsZ, Editor.seStripCountZ);
-            Localize(Resources.Control_Trace_Pattern, Editor.lblPattern, Editor.cbPattern);
-            Localize(Resources.Control_Trace_Visible, Editor.cbVisible);
-            Localize(Resources.Control_Trace_Selection, Editor.lblSelectedTraces);
-            Localize(Resources.Menu_Trace_All, Editor.lblAll);
+            Localize(Resources.Control_Trace_Description, TraceEdit.lblDescription, TraceEdit.edDescription);
+            Localize(Resources.Control_Trace_Location, TraceEdit.lblLocation);
+            Localize(Resources.Control_Trace_LocationX, TraceEdit.seLocationX);
+            Localize(Resources.Control_Trace_LocationY, TraceEdit.seLocationY);
+            Localize(Resources.Control_Trace_LocationZ, TraceEdit.seLocationZ);
+            Localize(Resources.Control_Trace_Orientation, TraceEdit.lblOrientation);
+            Localize(Resources.Control_Trace_Pitch, TraceEdit.sePitch);
+            Localize(Resources.Control_Trace_Yaw, TraceEdit.seYaw);
+            Localize(Resources.Control_Trace_Roll, TraceEdit.seRoll);
+            Localize(Resources.Control_Trace_Scale, TraceEdit.lblScale);
+            Localize(Resources.Control_Trace_ScaleX, TraceEdit.seScaleX);
+            Localize(Resources.Control_Trace_ScaleY, TraceEdit.seScaleY);
+            Localize(Resources.Control_Trace_ScaleZ, TraceEdit.seScaleZ);
+            Localize(Resources.Control_Trace_Minimum, TraceEdit.lblMinimum);
+            Localize(Resources.Control_Trace_MinimumX, TraceEdit.seMinimumX);
+            Localize(Resources.Control_Trace_MinimumY, TraceEdit.seMinimumY);
+            Localize(Resources.Control_Trace_MinimumZ, TraceEdit.seMinimumZ);
+            Localize(Resources.Control_Trace_Maximum, TraceEdit.lblMaximum);
+            Localize(Resources.Control_Trace_MaximumX, TraceEdit.seMaximumX);
+            Localize(Resources.Control_Trace_MaximumY, TraceEdit.seMaximumY);
+            Localize(Resources.Control_Trace_MaximumZ, TraceEdit.seMaximumZ);
+            Localize(Resources.Control_Trace_Strips, TraceEdit.lblStrips);
+            Localize(Resources.Control_Trace_StripsX, TraceEdit.seStripCountX);
+            Localize(Resources.Control_Trace_StripsY, TraceEdit.seStripCountY);
+            Localize(Resources.Control_Trace_StripsZ, TraceEdit.seStripCountZ);
+            Localize(Resources.Control_Trace_Pattern, TraceEdit.lblPattern, TraceEdit.cbPattern);
+            Localize(Resources.Control_Trace_Visible, TraceEdit.cbVisible);
+            Localize(Resources.Control_Trace_Selection, TraceEdit.lblSelectedTraces);
+            Localize(Resources.Menu_Trace_All, TraceEdit.lblAll);
         }
 
         protected override void OnSelectionChanged()
@@ -152,11 +156,11 @@
             base.UpdateAllProperties();
             CopySelectionToControl();
             UIController.EnableControls(!Selection.IsEmpty,
-                Editor.TableLayoutPanel.Controls.Cast<Control>()
+                TraceEdit.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]
                 {
-                    Editor.lblSelectedTraces,
-                    Editor.SelectionToolbar
+                    TraceEdit.lblSelectedTraces,
+                    TraceEdit.SelectionToolbar
                 }));
         }
 
@@ -169,169 +173,169 @@
                 switch (propertyName)
                 {
                     case PropertyNames.Description:
-                        Editor.edDescription.Text = Selection.Description;
+                        TraceEdit.edDescription.Text = Selection.Description;
                         break;
                     case PropertyNames.Location:
-                        Editor.seLocationX.Value = (decimal)Selection.Location.X;
-                        Editor.seLocationY.Value = (decimal)Selection.Location.Y;
-                        Editor.seLocationZ.Value = (decimal)Selection.Location.Z;
+                        TraceEdit.seLocationX.Value = (decimal)Selection.Location.X;
+                        TraceEdit.seLocationY.Value = (decimal)Selection.Location.Y;
+                        TraceEdit.seLocationZ.Value = (decimal)Selection.Location.Z;
                         break;
                     case PropertyNames.Maximum:
-                        Editor.seMaximumX.Value = (decimal)Selection.Maximum.X;
-                        Editor.seMaximumY.Value = (decimal)Selection.Maximum.Y;
-                        Editor.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
+                        TraceEdit.seMaximumX.Value = (decimal)Selection.Maximum.X;
+                        TraceEdit.seMaximumY.Value = (decimal)Selection.Maximum.Y;
+                        TraceEdit.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
                         break;
                     case PropertyNames.Minimum:
-                        Editor.seMinimumX.Value = (decimal)Selection.Minimum.X;
-                        Editor.seMinimumY.Value = (decimal)Selection.Minimum.Y;
-                        Editor.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
+                        TraceEdit.seMinimumX.Value = (decimal)Selection.Minimum.X;
+                        TraceEdit.seMinimumY.Value = (decimal)Selection.Minimum.Y;
+                        TraceEdit.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
                         break;
                     case PropertyNames.Orientation:
-                        Editor.sePitch.Value = (decimal)Selection.Orientation.X;
-                        Editor.seYaw.Value = (decimal)Selection.Orientation.Y;
-                        Editor.seRoll.Value = (decimal)Selection.Orientation.Z;
+                        TraceEdit.sePitch.Value = (decimal)Selection.Orientation.X;
+                        TraceEdit.seYaw.Value = (decimal)Selection.Orientation.Y;
+                        TraceEdit.seRoll.Value = (decimal)Selection.Orientation.Z;
                         break;
                     case PropertyNames.Pattern:
-                        Editor.cbPattern.SelectedItem = Selection.Pattern;
+                        TraceEdit.cbPattern.SelectedItem = Selection.Pattern;
                         break;
                     case PropertyNames.Scale:
-                        Editor.seScaleX.Value = (decimal)Selection.Scale.X;
-                        Editor.seScaleY.Value = (decimal)Selection.Scale.Y;
-                        Editor.seScaleZ.Value = (decimal)Selection.Scale.Z;
+                        TraceEdit.seScaleX.Value = (decimal)Selection.Scale.X;
+                        TraceEdit.seScaleY.Value = (decimal)Selection.Scale.Y;
+                        TraceEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
                         break;
                     case PropertyNames.StripCount:
-                        Editor.seStripCountX.Value = (decimal)Selection.StripCount.X;
-                        Editor.seStripCountY.Value = (decimal)Selection.StripCount.Y;
-                        Editor.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
+                        TraceEdit.seStripCountX.Value = (decimal)Selection.StripCount.X;
+                        TraceEdit.seStripCountY.Value = (decimal)Selection.StripCount.Y;
+                        TraceEdit.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
                         break;
                     case PropertyNames.Traces:
                         OnSelectionChanged();
                         break;
                     case PropertyNames.Visible:
-                        Editor.cbVisible.CheckState = GetCheckState(Selection.Visible);
+                        TraceEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);
                         break;
                 }
             Updating = false;
         }
 
         private void Description_TextChanged(object sender, System.EventArgs e) =>
-            Run(p => new DescriptionCommand(p.Index, Editor.edDescription.Text));
+            Run(p => new DescriptionCommand(p.Index, TraceEdit.edDescription.Text));
 
         private void LocationX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new LocationCommand(p.Index, new Vector3(
-                (float)Editor.seLocationX.Value,
+                (float)TraceEdit.seLocationX.Value,
                 p.Location.Y,
                 p.Location.Z)));
 
         private void LocationY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new LocationCommand(p.Index, new Vector3(
                 p.Location.X,
-                (float)Editor.seLocationY.Value,
+                (float)TraceEdit.seLocationY.Value,
                 p.Location.Z)));
 
         private void LocationZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new LocationCommand(p.Index, new Vector3(
                 p.Location.X,
                 p.Location.Y,
-                (float)Editor.seLocationZ.Value)));
+                (float)TraceEdit.seLocationZ.Value)));
 
         private void MaximumX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MaximumCommand(p.Index, new Vector3(
-                (float)Editor.seMaximumX.Value,
+                (float)TraceEdit.seMaximumX.Value,
                 p.Maximum.Y,
                 p.Maximum.Z)));
 
         private void MaximumY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MaximumCommand(p.Index, new Vector3(
                 p.Maximum.X,
-                (float)Editor.seMaximumY.Value,
+                (float)TraceEdit.seMaximumY.Value,
                 p.Maximum.Z)));
 
         private void MaximumZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MaximumCommand(p.Index, new Vector3(
                 p.Maximum.X,
                 p.Maximum.Y,
-                (float)Editor.seMaximumZ.Value)));
+                (float)TraceEdit.seMaximumZ.Value)));
 
         private void MinimumX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MinimumCommand(p.Index, new Vector3(
-                (float)Editor.seMinimumX.Value,
+                (float)TraceEdit.seMinimumX.Value,
                 p.Minimum.Y,
                 p.Minimum.Z)));
 
         private void MinimumY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MinimumCommand(p.Index, new Vector3(
                 p.Minimum.X,
-                (float)Editor.seMinimumY.Value,
+                (float)TraceEdit.seMinimumY.Value,
                 p.Minimum.Z)));
 
         private void MinimumZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new MinimumCommand(p.Index, new Vector3(
                 p.Minimum.X,
                 p.Minimum.Y,
-                (float)Editor.seMinimumZ.Value)));
+                (float)TraceEdit.seMinimumZ.Value)));
 
         private void OrientationX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
-                (float)Editor.sePitch.Value,
+                (float)TraceEdit.sePitch.Value,
                 p.Orientation.Y,
                 p.Orientation.Z)));
 
         private void OrientationY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
                 p.Orientation.X,
-                (float)Editor.seYaw.Value,
+                (float)TraceEdit.seYaw.Value,
                 p.Orientation.Z)));
 
         private void OrientationZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new OrientationCommand(p.Index, new Vector3(
                 p.Orientation.X,
                 p.Orientation.Y,
-                (float)Editor.seRoll.Value)));
+                (float)TraceEdit.seRoll.Value)));
 
         private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new PatternCommand(p.Index, (Pattern)Editor.cbPattern.SelectedItem));
+            Run(p => new PatternCommand(p.Index, (Pattern)TraceEdit.cbPattern.SelectedItem));
 
         private void ScaleX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new ScaleCommand(p.Index, new Vector3(
-                (float)Editor.seScaleX.Value,
+                (float)TraceEdit.seScaleX.Value,
                 p.Scale.Y,
                 p.Scale.Z)));
 
         private void ScaleY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new ScaleCommand(p.Index, new Vector3(
                 p.Scale.X,
-                (float)Editor.seScaleY.Value,
+                (float)TraceEdit.seScaleY.Value,
                 p.Scale.Z)));
 
         private void ScaleZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new ScaleCommand(p.Index, new Vector3(
                 p.Scale.X,
                 p.Scale.Y,
-                (float)Editor.seScaleZ.Value)));
+                (float)TraceEdit.seScaleZ.Value)));
 
         private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();
 
         private void StripCountX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p.Index, new Vector3(
-                (float)Editor.seStripCountX.Value,
+                (float)TraceEdit.seStripCountX.Value,
                 p.StripCount.Y,
                 p.StripCount.Z)));
 
         private void StripCountY_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p.Index, new Vector3(
                 p.StripCount.X,
-                (float)Editor.seStripCountY.Value,
+                (float)TraceEdit.seStripCountY.Value,
                 p.StripCount.Z)));
 
         private void StripCountZ_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p.Index, new Vector3(
                 p.StripCount.X,
                 p.StripCount.Y,
-                (float)Editor.seStripCountZ.Value)));
+                (float)TraceEdit.seStripCountZ.Value)));
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
-            Run(p => new VisibleCommand(p.Index, Editor.cbVisible.Checked));
+            Run(p => new VisibleCommand(p.Index, TraceEdit.cbVisible.Checked));
 
         private void CopySelectionFromControl()
         {
@@ -367,10 +371,10 @@
 
         private void InitLocalControls()
         {
-            Editor.seStripCountX.Minimum =
-            Editor.seStripCountY.Minimum =
-            Editor.seStripCountZ.Minimum = 0;
-            Editor.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
+            TraceEdit.seStripCountX.Minimum =
+            TraceEdit.seStripCountY.Minimum =
+            TraceEdit.seStripCountZ.Minimum = 0;
+            TraceEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
         }
 
         private void Run(Func<Trace, ICommand> command)

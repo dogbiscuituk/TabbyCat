@@ -49,12 +49,8 @@
             PrimaryController,
             SecondaryController;
 
-        internal ShaderEdit Editor => PropertiesEditor.ShaderEdit;
-
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
-        private PropertiesEdit PropertiesEditor => PropertiesController.PropertiesEdit;
-        private TabControl PropertiesTabControl => PropertiesEditor.TabControl;
         private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
         private TraceSelection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;

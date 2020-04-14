@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
+            this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
+            this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.StatusBar = new Jmk.Controls.JmkStatusStrip();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.PropertiesEdit = new TabbyCat.Controls.PropertiesEdit();
-            this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
-            this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
-            this.GLControl = new OpenTK.GLControl();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,64 +111,57 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripContainer.BottomToolStripPanel.SuspendLayout();
-            this.ToolStripContainer.ContentPanel.SuspendLayout();
-            this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
-            this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
-            this.ToolStripContainer.SuspendLayout();
-            this.StatusBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
-            this.SplitContainer1.Panel1.SuspendLayout();
-            this.SplitContainer1.Panel2.SuspendLayout();
-            this.SplitContainer1.SuspendLayout();
+            this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.PopupPropertiesMenu.SuspendLayout();
+            this.StatusBar.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ToolStripContainer
+            // PopupPropertiesMenu
             // 
+            this.PopupPropertiesMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PopupPropertiesUndock,
+            this.PopupPropertiesHide});
+            this.PopupPropertiesMenu.Name = "PopupPropertiesMenu";
+            this.PopupPropertiesMenu.Size = new System.Drawing.Size(116, 48);
             // 
-            // ToolStripContainer.BottomToolStripPanel
+            // PopupPropertiesUndock
             // 
-            this.ToolStripContainer.BottomToolStripPanel.Controls.Add(this.StatusBar);
+            this.PopupPropertiesUndock.Name = "PopupPropertiesUndock";
+            this.PopupPropertiesUndock.Size = new System.Drawing.Size(115, 22);
+            this.PopupPropertiesUndock.Text = "&Undock";
             // 
-            // ToolStripContainer.ContentPanel
+            // PopupPropertiesHide
             // 
-            this.ToolStripContainer.ContentPanel.Controls.Add(this.SplitContainer1);
-            this.ToolStripContainer.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(975, 682);
-            this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PopupPropertiesHide.Name = "PopupPropertiesHide";
+            this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
+            this.PopupPropertiesHide.Text = "&Hide";
             // 
-            // ToolStripContainer.LeftToolStripPanel
+            // ToolTip
             // 
-            this.ToolStripContainer.LeftToolStripPanel.Controls.Add(this.Toolbar);
-            this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
-            this.ToolStripContainer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ToolStripContainer.Name = "ToolStripContainer";
-            this.ToolStripContainer.Size = new System.Drawing.Size(1008, 729);
-            this.ToolStripContainer.TabIndex = 0;
-            this.ToolStripContainer.Text = "toolStripContainer1";
+            this.ToolTip.AutomaticDelay = 100;
+            this.ToolTip.AutoPopDelay = 10000;
+            this.ToolTip.InitialDelay = 100;
+            this.ToolTip.ReshowDelay = 20;
             // 
-            // ToolStripContainer.TopToolStripPanel
+            // PopupMenu
             // 
-            this.ToolStripContainer.TopToolStripPanel.Controls.Add(this.MainMenu);
+            this.PopupMenu.Name = "PopupMenu";
+            this.PopupMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // StatusBar
             // 
-            this.StatusBar.Dock = System.Windows.Forms.DockStyle.None;
             this.StatusBar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SpeedLabel,
             this.Tlabel,
             this.FPSlabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 0);
+            this.StatusBar.Location = new System.Drawing.Point(0, 707);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.ShowItemToolTips = true;
             this.StatusBar.Size = new System.Drawing.Size(1008, 22);
-            this.StatusBar.TabIndex = 0;
+            this.StatusBar.TabIndex = 2;
             // 
             // SpeedLabel
             // 
@@ -193,74 +184,9 @@
             this.FPSlabel.Size = new System.Drawing.Size(64, 17);
             this.FPSlabel.Text = "FPS=0.0";
             // 
-            // SplitContainer1
-            // 
-            this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.SplitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SplitContainer1.Name = "SplitContainer1";
-            // 
-            // SplitContainer1.Panel1
-            // 
-            this.SplitContainer1.Panel1.Controls.Add(this.PropertiesEdit);
-            this.SplitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SplitContainer1.Panel1MinSize = 380;
-            // 
-            // SplitContainer1.Panel2
-            // 
-            this.SplitContainer1.Panel2.Controls.Add(this.GLControl);
-            this.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SplitContainer1.Size = new System.Drawing.Size(975, 682);
-            this.SplitContainer1.SplitterDistance = 380;
-            this.SplitContainer1.SplitterWidth = 5;
-            this.SplitContainer1.TabIndex = 1;
-            // 
-            // PropertiesEdit
-            // 
-            this.PropertiesEdit.ContextMenuStrip = this.PopupPropertiesMenu;
-            this.PropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PropertiesEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PropertiesEdit.Location = new System.Drawing.Point(0, 0);
-            this.PropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.PropertiesEdit.Name = "PropertiesEdit";
-            this.PropertiesEdit.Size = new System.Drawing.Size(380, 682);
-            this.PropertiesEdit.TabIndex = 0;
-            // 
-            // PopupPropertiesMenu
-            // 
-            this.PopupPropertiesMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PopupPropertiesUndock,
-            this.PopupPropertiesHide});
-            this.PopupPropertiesMenu.Name = "PopupPropertiesMenu";
-            this.PopupPropertiesMenu.Size = new System.Drawing.Size(116, 48);
-            // 
-            // PopupPropertiesUndock
-            // 
-            this.PopupPropertiesUndock.Name = "PopupPropertiesUndock";
-            this.PopupPropertiesUndock.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesUndock.Text = "&Undock";
-            // 
-            // PopupPropertiesHide
-            // 
-            this.PopupPropertiesHide.Name = "PopupPropertiesHide";
-            this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesHide.Text = "&Hide";
-            // 
-            // GLControl
-            // 
-            this.GLControl.BackColor = System.Drawing.Color.Black;
-            this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GLControl.Location = new System.Drawing.Point(0, 0);
-            this.GLControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(590, 682);
-            this.GLControl.TabIndex = 0;
-            this.GLControl.VSync = false;
-            // 
             // Toolbar
             // 
-            this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.Toolbar.Dock = System.Windows.Forms.DockStyle.Left;
             this.Toolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbNew,
@@ -274,10 +200,11 @@
             this.tbCopy,
             this.tbPaste,
             this.tbDelete});
-            this.Toolbar.Location = new System.Drawing.Point(0, 3);
+            this.Toolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.Toolbar.Location = new System.Drawing.Point(0, 25);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(33, 238);
-            this.Toolbar.TabIndex = 0;
+            this.Toolbar.Size = new System.Drawing.Size(33, 682);
+            this.Toolbar.TabIndex = 3;
             // 
             // tbNew
             // 
@@ -288,7 +215,7 @@
             this.tbNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.tbNew.ImageTransparentColor = System.Drawing.Color.White;
             this.tbNew.Name = "tbNew";
-            this.tbNew.Size = new System.Drawing.Size(31, 20);
+            this.tbNew.Size = new System.Drawing.Size(30, 20);
             // 
             // tbNewEmptyScene
             // 
@@ -308,7 +235,7 @@
             this.tbOpen.Image = global::TabbyCat.Properties.Resources.OpenFileHS;
             this.tbOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.tbOpen.Name = "tbOpen";
-            this.tbOpen.Size = new System.Drawing.Size(31, 20);
+            this.tbOpen.Size = new System.Drawing.Size(30, 20);
             // 
             // tbSave
             // 
@@ -316,12 +243,12 @@
             this.tbSave.Image = global::TabbyCat.Properties.Resources.saveHS;
             this.tbSave.ImageTransparentColor = System.Drawing.Color.White;
             this.tbSave.Name = "tbSave";
-            this.tbSave.Size = new System.Drawing.Size(31, 20);
+            this.tbSave.Size = new System.Drawing.Size(30, 20);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(31, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(30, 6);
             // 
             // tbAdd
             // 
@@ -329,7 +256,7 @@
             this.tbAdd.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
             this.tbAdd.Name = "tbAdd";
-            this.tbAdd.Size = new System.Drawing.Size(31, 20);
+            this.tbAdd.Size = new System.Drawing.Size(30, 20);
             // 
             // tbUndo
             // 
@@ -338,7 +265,7 @@
             this.tbUndo.Image = global::TabbyCat.Properties.Resources.Edit_UndoHS;
             this.tbUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.tbUndo.Name = "tbUndo";
-            this.tbUndo.Size = new System.Drawing.Size(31, 20);
+            this.tbUndo.Size = new System.Drawing.Size(30, 20);
             // 
             // tbRedo
             // 
@@ -347,7 +274,7 @@
             this.tbRedo.Image = global::TabbyCat.Properties.Resources.Edit_RedoHS;
             this.tbRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.tbRedo.Name = "tbRedo";
-            this.tbRedo.Size = new System.Drawing.Size(31, 20);
+            this.tbRedo.Size = new System.Drawing.Size(30, 20);
             // 
             // tbCut
             // 
@@ -356,7 +283,7 @@
             this.tbCut.Image = global::TabbyCat.Properties.Resources.CutHS;
             this.tbCut.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCut.Name = "tbCut";
-            this.tbCut.Size = new System.Drawing.Size(31, 20);
+            this.tbCut.Size = new System.Drawing.Size(30, 20);
             // 
             // tbCopy
             // 
@@ -365,7 +292,7 @@
             this.tbCopy.Image = global::TabbyCat.Properties.Resources.CopyHS;
             this.tbCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.tbCopy.Name = "tbCopy";
-            this.tbCopy.Size = new System.Drawing.Size(31, 20);
+            this.tbCopy.Size = new System.Drawing.Size(30, 20);
             // 
             // tbPaste
             // 
@@ -373,7 +300,7 @@
             this.tbPaste.Image = global::TabbyCat.Properties.Resources.PasteHS;
             this.tbPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.tbPaste.Name = "tbPaste";
-            this.tbPaste.Size = new System.Drawing.Size(31, 20);
+            this.tbPaste.Size = new System.Drawing.Size(30, 20);
             // 
             // tbDelete
             // 
@@ -382,11 +309,10 @@
             this.tbDelete.Image = global::TabbyCat.Properties.Resources.Delete;
             this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tbDelete.Name = "tbDelete";
-            this.tbDelete.Size = new System.Drawing.Size(31, 20);
+            this.tbDelete.Size = new System.Drawing.Size(30, 20);
             // 
             // MainMenu
             // 
-            this.MainMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.MainMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TimeDecelerate,
@@ -404,7 +330,7 @@
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.Size = new System.Drawing.Size(1008, 25);
-            this.MainMenu.TabIndex = 0;
+            this.MainMenu.TabIndex = 4;
             // 
             // TimeDecelerate
             // 
@@ -727,7 +653,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(180, 22);
+            this.CameraMove.Size = new System.Drawing.Size(110, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -776,7 +702,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -818,12 +744,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Size = new System.Drawing.Size(110, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
@@ -853,17 +779,13 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
-            // ToolTip
+            // DockPanel
             // 
-            this.ToolTip.AutomaticDelay = 100;
-            this.ToolTip.AutoPopDelay = 10000;
-            this.ToolTip.InitialDelay = 100;
-            this.ToolTip.ReshowDelay = 20;
-            // 
-            // PopupMenu
-            // 
-            this.PopupMenu.Name = "PopupMenu";
-            this.PopupMenu.Size = new System.Drawing.Size(61, 4);
+            this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DockPanel.Location = new System.Drawing.Point(33, 25);
+            this.DockPanel.Name = "DockPanel";
+            this.DockPanel.Size = new System.Drawing.Size(975, 682);
+            this.DockPanel.TabIndex = 5;
             // 
             // WorldForm
             // 
@@ -871,48 +793,59 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.ContextMenuStrip = this.PopupMenu;
-            this.Controls.Add(this.ToolStripContainer);
+            this.Controls.Add(this.DockPanel);
+            this.Controls.Add(this.Toolbar);
+            this.Controls.Add(this.StatusBar);
+            this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.MainMenu;
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorldForm";
             this.Text = "WorldForm";
-            this.ToolStripContainer.BottomToolStripPanel.ResumeLayout(false);
-            this.ToolStripContainer.BottomToolStripPanel.PerformLayout();
-            this.ToolStripContainer.ContentPanel.ResumeLayout(false);
-            this.ToolStripContainer.LeftToolStripPanel.ResumeLayout(false);
-            this.ToolStripContainer.LeftToolStripPanel.PerformLayout();
-            this.ToolStripContainer.TopToolStripPanel.ResumeLayout(false);
-            this.ToolStripContainer.TopToolStripPanel.PerformLayout();
-            this.ToolStripContainer.ResumeLayout(false);
-            this.ToolStripContainer.PerformLayout();
+            this.PopupPropertiesMenu.ResumeLayout(false);
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
-            this.SplitContainer1.Panel1.ResumeLayout(false);
-            this.SplitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
-            this.SplitContainer1.ResumeLayout(false);
-            this.PopupPropertiesMenu.ResumeLayout(false);
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        internal System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        internal Jmk.Controls.JmkMenuStrip MainMenu;
-        internal System.Windows.Forms.ToolStripMenuItem FileMenu;
-        internal System.Windows.Forms.ToolStripMenuItem EditMenu;
-        internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
-        internal System.Windows.Forms.ToolStripMenuItem HelpMenu;
+        internal System.Windows.Forms.ContextMenuStrip PopupPropertiesMenu;
+        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
+        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
+        internal System.Windows.Forms.ToolTip ToolTip;
+        internal System.Windows.Forms.ContextMenuStrip PopupMenu;
         internal Jmk.Controls.JmkStatusStrip StatusBar;
-        internal OpenTK.GLControl GLControl;
+        internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
+        internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
+        internal System.Windows.Forms.ToolStripStatusLabel FPSlabel;
         internal Jmk.Controls.JmkToolStrip Toolbar;
-        internal System.Windows.Forms.ToolStripMenuItem ViewProperties;
+        internal System.Windows.Forms.ToolStripSplitButton tbNew;
+        internal System.Windows.Forms.ToolStripMenuItem tbNewEmptyScene;
+        internal System.Windows.Forms.ToolStripMenuItem tbNewFromTemplate;
+        internal System.Windows.Forms.ToolStripSplitButton tbOpen;
+        internal System.Windows.Forms.ToolStripButton tbSave;
+        internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        internal System.Windows.Forms.ToolStripButton tbAdd;
+        internal System.Windows.Forms.ToolStripSplitButton tbUndo;
+        internal System.Windows.Forms.ToolStripSplitButton tbRedo;
+        internal System.Windows.Forms.ToolStripButton tbCut;
+        internal System.Windows.Forms.ToolStripButton tbCopy;
+        internal System.Windows.Forms.ToolStripButton tbPaste;
+        internal System.Windows.Forms.ToolStripButton tbDelete;
+        internal Jmk.Controls.JmkMenuStrip MainMenu;
+        internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
+        internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
+        internal System.Windows.Forms.ToolStripMenuItem TimeStop;
+        internal System.Windows.Forms.ToolStripMenuItem TimePause;
+        internal System.Windows.Forms.ToolStripMenuItem TimeForward;
+        internal System.Windows.Forms.ToolStripMenuItem TimeAccelerate;
+        internal System.Windows.Forms.ToolStripMenuItem FileMenu;
         internal System.Windows.Forms.ToolStripMenuItem FileNew;
         internal System.Windows.Forms.ToolStripMenuItem FileNewEmptyScene;
         internal System.Windows.Forms.ToolStripMenuItem FileNewFromTemplate;
@@ -924,6 +857,9 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         internal System.Windows.Forms.ToolStripMenuItem FileClose;
         internal System.Windows.Forms.ToolStripMenuItem FileExit;
+        internal System.Windows.Forms.ToolStripMenuItem EditMenu;
+        internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         internal System.Windows.Forms.ToolStripMenuItem EditUndo;
         internal System.Windows.Forms.ToolStripMenuItem EditRedo;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
@@ -936,42 +872,16 @@
         internal System.Windows.Forms.ToolStripMenuItem EditInvertSelection;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         internal System.Windows.Forms.ToolStripMenuItem EditOptions;
-        internal System.Windows.Forms.ToolStripMenuItem HelpOpenGLShadingLanguage;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
-        internal System.Windows.Forms.ToolStripMenuItem HelpAbout;
-        internal System.Windows.Forms.ToolStripSplitButton tbNew;
-        internal System.Windows.Forms.ToolStripMenuItem tbNewEmptyScene;
-        internal System.Windows.Forms.ToolStripMenuItem tbNewFromTemplate;
-        internal System.Windows.Forms.ToolStripSplitButton tbOpen;
-        internal System.Windows.Forms.ToolStripButton tbSave;
-        internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        internal System.Windows.Forms.ToolStripSplitButton tbUndo;
-        internal System.Windows.Forms.ToolStripSplitButton tbRedo;
-        internal System.Windows.Forms.ToolStripButton tbCut;
-        internal System.Windows.Forms.ToolStripButton tbCopy;
-        internal System.Windows.Forms.ToolStripButton tbPaste;
-        internal System.Windows.Forms.ToolStripButton tbDelete;
-        internal System.Windows.Forms.ToolStripButton tbAdd;
+        internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
         internal System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
-        internal System.Windows.Forms.ToolStripStatusLabel Tlabel;
-        internal System.Windows.Forms.SplitContainer SplitContainer1;
-        internal Controls.PropertiesEdit PropertiesEdit;
-        internal System.Windows.Forms.ContextMenuStrip PopupPropertiesMenu;
-        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
-        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
-        internal System.Windows.Forms.ToolTip ToolTip;
-        internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        internal System.Windows.Forms.ToolStripStatusLabel FPSlabel;
+        internal System.Windows.Forms.ToolStripMenuItem ViewProperties;
         internal System.Windows.Forms.ToolStripMenuItem CameraMenu;
         internal System.Windows.Forms.ToolStripMenuItem CameraMove;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveLeft;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveRight;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveUp;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveDown;
-        internal System.Windows.Forms.ContextMenuStrip PopupMenu;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveForward;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveBack;
         internal System.Windows.Forms.ToolStripMenuItem CameraStrafe;
@@ -983,11 +893,10 @@
         internal System.Windows.Forms.ToolStripMenuItem CameraRollRight;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         internal System.Windows.Forms.ToolStripMenuItem CameraReset;
-        internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
-        internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
-        internal System.Windows.Forms.ToolStripMenuItem TimeStop;
-        internal System.Windows.Forms.ToolStripMenuItem TimePause;
-        internal System.Windows.Forms.ToolStripMenuItem TimeForward;
-        internal System.Windows.Forms.ToolStripMenuItem TimeAccelerate;
+        internal System.Windows.Forms.ToolStripMenuItem HelpMenu;
+        internal System.Windows.Forms.ToolStripMenuItem HelpOpenGLShadingLanguage;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
+        internal System.Windows.Forms.ToolStripMenuItem HelpAbout;
+        internal WeifenLuo.WinFormsUI.Docking.DockPanel DockPanel;
     }
 }

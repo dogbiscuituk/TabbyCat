@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using OpenTK;
     using System;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -8,45 +9,29 @@
     using TabbyCat.Models;
     using TabbyCat.Views;
 
-    internal class LocalizationController : IDisposable
+    internal partial class LocalizationController
     {
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
 
-        private bool Disposed;
-
+        protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
+        internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
+        protected virtual GLController GLController { get => WorldController.GLController; set { } }
+        protected virtual RenderController RenderController { get => WorldController.RenderController; set { } }
+        protected virtual SceneController SceneController { get => WorldController.SceneController; set { } }
+        protected virtual TraceController TraceController { get => WorldController.TraceController; set { } }
         protected WorldController WorldController;
 
         protected virtual string[] AllProperties => Array.Empty<string>();
 
-        protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
-
-        internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
-
-        protected virtual void DisposeManagedState() { }
-
-        protected virtual PropertiesController PropertiesController { get => WorldController.PropertiesController; set { } }
-
-        protected virtual RenderController RenderController { get => WorldController.RenderController; set { } }
-
-        protected virtual SceneController SceneController { get => WorldController.SceneController; set { } }
-
-        protected virtual ShaderController ShaderController { get => WorldController.ShaderController; set { } }
-
-        protected virtual TraceController TraceController { get => WorldController.TraceController; set { } }
-
         protected Camera Camera => Scene.Camera;
-
         protected virtual Clock Clock { get => ClockController.Clock; set { } }
 
-        internal PropertiesEdit PropertiesEdit => WorldForm.PropertiesEdit;
+        internal GLControl GLControl => GLControlForm.GLControl;
 
+        protected internal virtual GLControlForm GLControlForm => WorldController.GLControlForm;
         protected internal virtual Scene Scene { get => WorldController.Scene; set { WorldController.Scene = value; } }
-
-        protected TraceEdit TraceEdit => PropertiesEdit.TraceEdit;
-
-        protected internal virtual WorldForm WorldForm { get => WorldController.WorldForm; set { } }
-
         private ToolTip ToolTip => WorldController.WorldForm.ToolTip;
+        protected internal virtual WorldForm WorldForm { get => WorldController.WorldForm; set { } }
 
         protected internal virtual void Connect(bool connect)
         {
@@ -58,16 +43,6 @@
             {
 
             }
-        }
-
-        public void Dispose()
-        {
-            if (!Disposed)
-            {
-                DisposeManagedState();
-                Disposed = true;
-            }
-            GC.SuppressFinalize(this);
         }
 
         protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
@@ -129,5 +104,22 @@
             }
             return infos[0];
         }
+    }
+
+    partial class LocalizationController : IDisposable
+    {
+        private bool Disposed;
+
+        public void Dispose()
+        {
+            if (!Disposed)
+            {
+                DisposeManagedState();
+                Disposed = true;
+            }
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void DisposeManagedState() { }
     }
 }
