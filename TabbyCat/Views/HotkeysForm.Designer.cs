@@ -1,4 +1,4 @@
-﻿namespace Jmk.Controls
+﻿namespace TabbyCat.Views
 {
     partial class HotkeysForm
     {
@@ -638,7 +638,7 @@
             this.Name = "HotkeysForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "GLSL Editor Hotkeys";
+            this.Text = "Editor help";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

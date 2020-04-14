@@ -246,7 +246,7 @@
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
-        private void Help_Click(object sender, System.EventArgs e) => HotkeysController.Show(WorldForm);
+        private void Help_Click(object sender, System.EventArgs e) { }
 
         private void LineNumbers_Click(object sender, System.EventArgs e) =>
             ShowLineNumbers = !ShowLineNumbers;
