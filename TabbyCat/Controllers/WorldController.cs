@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
     using Jmk.Common;
@@ -538,8 +539,17 @@
 
         private void FilePathRequest(SdiController.FilePathEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(e.FilePath))
-                e.FilePath = Scene.Title.ToFilename();
+            var filePath = e.FilePath;
+            if (string.IsNullOrWhiteSpace(filePath))
+                filePath = Scene.Title.ToFilename();
+            if (string.IsNullOrWhiteSpace(filePath))
+                for (int n = 1; ; n++)
+                {
+                    filePath = string.Format(CultureInfo.CurrentCulture, Resources.Text_NewFile, n);
+                    if (!File.Exists(filePath))
+                        break;
+                }
+            e.FilePath = filePath;
         }
 
         private void FileSaved()

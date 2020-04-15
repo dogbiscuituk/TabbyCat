@@ -41,7 +41,7 @@
             this.gpuEdit1.Size = new System.Drawing.Size(354, 169);
             this.gpuEdit1.TabIndex = 0;
             // 
-            // GPUForm
+            // GpuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -49,8 +49,9 @@
             this.Controls.Add(this.gpuEdit1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "GPUForm";
-            this.Text = "GPU";
+            this.Name = "GpuForm";
+            this.TabText = "GPU";
+            this.Text = "GPU status";
             this.ResumeLayout(false);
 
         }

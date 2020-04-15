@@ -76,12 +76,6 @@
     <Compile Include="ShaderEdit.Designer.cs">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="PropertiesEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PropertiesEdit.Designer.cs">
-      <DependentUpon>PropertiesEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Types\GLPageController.cs" />
     <Compile Include="Types\Options.cs" />
     <Compile Include="Types\TextStyleInfo.cs" />
@@ -109,9 +103,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShaderEdit.resx">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PropertiesEdit.resx">
-      <DependentUpon>PropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraceEdit.resx">
       <DependentUpon>TraceEdit.cs</DependentUpon>

@@ -701,9 +701,6 @@ and reset the timer to zero</value>
   <data name="Menu_File_ClearThisList" xml:space="preserve">
     <value>Clear this list|Delete all recently used file names</value>
   </data>
-  <data name="Message_FileModified_Caption" xml:space="preserve">
-    <value />
-  </data>
   <data name="Message_FileModified_Text" xml:space="preserve">
     <value>The contents of this file have changed. Do you want to save the changes?</value>
   </data>
@@ -812,5 +809,44 @@ as it was after the last new/open/save operation|^Home</value>
   </data>
   <data name="Menu_View_Properties_Trace" xml:space="preserve">
     <value>Trace properties|Show or hide the trace properties editor</value>
+  </data>
+  <data name="GpuForm_TabText" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="GpuForm_Text" xml:space="preserve">
+    <value>GPU status</value>
+  </data>
+  <data name="SceneForm_TabText" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="SceneForm_Text" xml:space="preserve">
+    <value>Scene properties</value>
+  </data>
+  <data name="TraceForm_TabText" xml:space="preserve">
+    <value>Trace</value>
+  </data>
+  <data name="TraceForm_Text" xml:space="preserve">
+    <value>Trace properties</value>
+  </data>
+  <data name="Text_NewFile" xml:space="preserve">
+    <value>New File {0}</value>
+  </data>
+  <data name="ShaderForm_TabText" xml:space="preserve">
+    <value>({0})</value>
+  </data>
+  <data name="ShaderForm_Text" xml:space="preserve">
+    <value>{0} code</value>
+  </data>
+  <data name="ShaderForm_ToolTipText" xml:space="preserve">
+    <value>{0} shader code</value>
+  </data>
+  <data name="ShaderRegion_All" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="ShaderRegion_Scene" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="ShaderRegion_Trace" xml:space="preserve">
+    <value>Trace</value>
   </data>
 </root>

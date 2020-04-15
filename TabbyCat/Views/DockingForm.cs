@@ -7,7 +7,6 @@
         public DockingForm()
         {
             InitializeComponent();
-            HideOnClose = true;
         }
     }
 }

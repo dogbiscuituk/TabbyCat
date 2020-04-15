@@ -98,7 +98,7 @@
         }
 
         internal bool Save(FilterIndex filterIndex = FilterIndex.Default) =>
-            string.IsNullOrEmpty(FilePath)
+            string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath)
             ? SaveAs(filterIndex)
             : SaveToFile(FilePath);
 
@@ -140,9 +140,11 @@
         internal bool SaveIfModified()
         {
             if (Scene.IsModified)
+            {
+                OnFilePathRequest();
                 switch (MessageBox.Show(
                     Resources.Message_FileModified_Text,
-                    Resources.Message_FileModified_Caption,
+                    FilePath,
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Warning))
                 {
@@ -153,6 +155,7 @@
                     case DialogResult.Cancel:
                         return false;
                 }
+            }
             return true;
         }
 

@@ -1104,6 +1104,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GPU.
+        /// </summary>
+        public static string GpuForm_TabText {
+            get {
+                return ResourceManager.GetString("GpuForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU status.
+        /// </summary>
+        public static string GpuForm_Text {
+            get {
+                return ResourceManager.GetString("GpuForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap graphhs {
@@ -1685,15 +1703,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Message_FileModified_Caption {
-            get {
-                return ResourceManager.GetString("Message_FileModified_Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
         /// </summary>
         public static string Message_FileModified_Text {
@@ -2121,6 +2130,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scene.
+        /// </summary>
+        public static string SceneForm_TabText {
+            get {
+                return ResourceManager.GetString("SceneForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene properties.
+        /// </summary>
+        public static string SceneForm_Text {
+            get {
+                return ResourceManager.GetString("SceneForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap SearchWebHS {
@@ -2147,6 +2174,60 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("SendToBackHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ({0}).
+        /// </summary>
+        public static string ShaderForm_TabText {
+            get {
+                return ResourceManager.GetString("ShaderForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} code.
+        /// </summary>
+        public static string ShaderForm_Text {
+            get {
+                return ResourceManager.GetString("ShaderForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} shader code.
+        /// </summary>
+        public static string ShaderForm_ToolTipText {
+            get {
+                return ResourceManager.GetString("ShaderForm_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU.
+        /// </summary>
+        public static string ShaderRegion_All {
+            get {
+                return ResourceManager.GetString("ShaderRegion_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene.
+        /// </summary>
+        public static string ShaderRegion_Scene {
+            get {
+                return ResourceManager.GetString("ShaderRegion_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace.
+        /// </summary>
+        public static string ShaderRegion_Trace {
+            get {
+                return ResourceManager.GetString("ShaderRegion_Trace", resourceCulture);
             }
         }
         
@@ -2227,6 +2308,15 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New File {0}.
+        /// </summary>
+        public static string Text_NewFile {
+            get {
+                return ResourceManager.GetString("Text_NewFile", resourceCulture);
             }
         }
         
@@ -2349,6 +2439,24 @@ namespace TabbyCat.Properties {
         public static string Trace_VertexShader {
             get {
                 return ResourceManager.GetString("Trace_VertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace.
+        /// </summary>
+        public static string TraceForm_TabText {
+            get {
+                return ResourceManager.GetString("TraceForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace properties.
+        /// </summary>
+        public static string TraceForm_Text {
+            get {
+                return ResourceManager.GetString("TraceForm_Text", resourceCulture);
             }
         }
         

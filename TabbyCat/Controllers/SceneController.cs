@@ -18,13 +18,20 @@
     {
         internal SceneController(WorldController worldController) : base(worldController)
         {
-            SceneForm = new SceneForm();
-            InitCommonControls(SceneForm.SceneEdit.TableLayoutPanel);
+            InitCommonControls(SceneEdit.TableLayoutPanel);
             InitLocalControls();
         }
 
+        private SceneForm _SceneForm;
+
         protected internal override DockContent Form => SceneForm;
-        protected override SceneForm SceneForm { get; }
+
+        protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm
+        {
+            TabText = Resources.SceneForm_TabText,
+            Text = Resources.SceneForm_Text,
+            ToolTipText = Resources.SceneForm_Text
+        });
 
         protected override string[] AllProperties => new[]
         {

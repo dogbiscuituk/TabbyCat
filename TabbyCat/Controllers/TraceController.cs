@@ -17,17 +17,24 @@
     {
         internal TraceController(WorldController worldController) : base(worldController)
         {
-            TraceForm = new TraceForm();
             SelectionController = new SelectionController(worldController);
             InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();
         }
 
+        private TraceForm _TraceForm;
+
         private readonly SelectionController SelectionController;
         private bool SelectionUpdating;
 
         protected internal override DockContent Form => TraceForm;
-        protected override TraceForm TraceForm { get; }
+
+        protected override TraceForm TraceForm => _TraceForm ?? (_TraceForm = new TraceForm
+        {
+            TabText = Resources.TraceForm_TabText,
+            Text = Resources.TraceForm_Text,
+            ToolTipText = Resources.TraceForm_Text
+        });
 
         internal ToolStrip SelectionToolbar => TraceEdit.SelectionToolbar;
 

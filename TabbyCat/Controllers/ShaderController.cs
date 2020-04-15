@@ -7,6 +7,7 @@
     using System;
     using System.ComponentModel;
     using System.Drawing;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
@@ -23,12 +24,6 @@
 
     internal partial class ShaderController : DockingController
     {
-        private FastColoredTextBox ActiveTextBox;
-        private ShaderRegion _ShaderRegion;
-        private ShaderType _ShaderType = ShaderType.VertexShader;
-        private SplitType _SplitType;
-        private bool Updating;
-
         internal ShaderController(WorldController worldController, ShaderRegion shaderRegion) : base(worldController)
         {
             ShaderRegion = shaderRegion;
@@ -45,10 +40,24 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
+        private ShaderForm _ShaderForm;
+
+        internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm()
+        {
+            TabText = GetTabText(),
+            Text = GetText(),
+            ToolTipText = GetToolTipText()
+        });
+
+        private FastColoredTextBox ActiveTextBox;
+        private ShaderRegion _ShaderRegion;
+        private ShaderType _ShaderType = ShaderType.VertexShader;
+        private SplitType _SplitType;
+        private bool Updating;
+
         protected internal override DockContent Form => ShaderForm;
 
         private GLPageController _PrimaryController, _SecondaryController;
-        private ShaderForm _ShaderForm;
 
         private GLPageController PrimaryController => _PrimaryController ?? (_PrimaryController = new GLPageController(PrimaryTextBox));
         private GLPageController SecondaryController => _SecondaryController ?? (_SecondaryController= new GLPageController(SecondaryTextBox));
@@ -59,7 +68,6 @@
         private SplitContainer SecondarySplitter => ShaderEdit.TopSplit;
         private FastColoredTextBox SecondaryTextBox => ShaderEdit.SecondaryTextBox;
         private ShaderEdit ShaderEdit => ShaderForm.ShaderEdit;
-        internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm() { Text = GetCaption() });
         private SplitContainer Splitter => ShaderEdit.EditSplit;
 
         internal ShaderRegion ShaderRegion
@@ -257,22 +265,28 @@
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
-        private string GetCaption() => $"({GetRegion()})";
-
         private string GetRegion()
         {
             switch (ShaderRegion)
             {
                 case ShaderRegion.Scene:
-                    return "Scene";
+                    return Resources.ShaderRegion_Scene;
                 case ShaderRegion.Trace:
-                    return "Trace";
+                    return Resources.ShaderRegion_Trace;
                 case ShaderRegion.All:
-                    return "GPU";
+                    return Resources.ShaderRegion_All;
                 default:
                     return string.Empty;
             }
         }
+
+        private string GetTabText() => GetText(Resources.ShaderForm_TabText);
+
+        private string GetText() => GetText(Resources.ShaderForm_Text);
+
+        private string GetText(string format) => string.Format(CultureInfo.CurrentCulture, format, GetRegion());
+
+        private string GetToolTipText() => GetText(Resources.ShaderForm_ToolTipText);
 
         private void Help_Click(object sender, System.EventArgs e) { }
 

@@ -128,12 +128,6 @@
     <Compile Include="Views\GpuForm.Designer.cs">
       <DependentUpon>GpuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HostForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\HostForm.Designer.cs">
-      <DependentUpon>HostForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\HotkeysForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,14 +172,14 @@
     <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DockingForm.resx">
+      <DependentUpon>DockingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\GLControlForm.resx">
       <DependentUpon>GLControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GpuForm.resx">
       <DependentUpon>GpuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\HostForm.resx">
-      <DependentUpon>HostForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>

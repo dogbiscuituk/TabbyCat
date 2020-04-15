@@ -31,10 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.StatusBar = new Jmk.Controls.JmkStatusStrip();
-            this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +46,10 @@
             this.tbCopy = new System.Windows.Forms.ToolStripButton();
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
+            this.StatusBar = new Jmk.Controls.JmkStatusStrip();
+            this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu = new Jmk.Controls.JmkMenuStrip();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,9 +113,8 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.StatusBar.SuspendLayout();
             this.Toolbar.SuspendLayout();
+            this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,39 +130,14 @@
             this.PopupMenu.Name = "PopupMenu";
             this.PopupMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // StatusBar
+            // DockPanel
             // 
-            this.StatusBar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SpeedLabel,
-            this.Tlabel,
-            this.FPSlabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 707);
-            this.StatusBar.Name = "StatusBar";
-            this.StatusBar.ShowItemToolTips = true;
-            this.StatusBar.Size = new System.Drawing.Size(1008, 22);
-            this.StatusBar.TabIndex = 2;
-            // 
-            // SpeedLabel
-            // 
-            this.SpeedLabel.AutoSize = false;
-            this.SpeedLabel.Name = "SpeedLabel";
-            this.SpeedLabel.Size = new System.Drawing.Size(64, 17);
-            this.SpeedLabel.Text = "time × 1";
-            // 
-            // Tlabel
-            // 
-            this.Tlabel.AutoSize = false;
-            this.Tlabel.Name = "Tlabel";
-            this.Tlabel.Size = new System.Drawing.Size(64, 17);
-            this.Tlabel.Text = "t=0.0";
-            // 
-            // FPSlabel
-            // 
-            this.FPSlabel.AutoSize = false;
-            this.FPSlabel.Name = "FPSlabel";
-            this.FPSlabel.Size = new System.Drawing.Size(64, 17);
-            this.FPSlabel.Text = "FPS=0.0";
+            this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
+            this.DockPanel.Location = new System.Drawing.Point(33, 25);
+            this.DockPanel.Name = "DockPanel";
+            this.DockPanel.Size = new System.Drawing.Size(975, 682);
+            this.DockPanel.TabIndex = 5;
             // 
             // Toolbar
             // 
@@ -290,6 +265,40 @@
             this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tbDelete.Name = "tbDelete";
             this.tbDelete.Size = new System.Drawing.Size(30, 20);
+            // 
+            // StatusBar
+            // 
+            this.StatusBar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SpeedLabel,
+            this.Tlabel,
+            this.FPSlabel});
+            this.StatusBar.Location = new System.Drawing.Point(0, 707);
+            this.StatusBar.Name = "StatusBar";
+            this.StatusBar.ShowItemToolTips = true;
+            this.StatusBar.Size = new System.Drawing.Size(1008, 22);
+            this.StatusBar.TabIndex = 2;
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.AutoSize = false;
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(64, 17);
+            this.SpeedLabel.Text = "time × 1";
+            // 
+            // Tlabel
+            // 
+            this.Tlabel.AutoSize = false;
+            this.Tlabel.Name = "Tlabel";
+            this.Tlabel.Size = new System.Drawing.Size(64, 17);
+            this.Tlabel.Text = "t=0.0";
+            // 
+            // FPSlabel
+            // 
+            this.FPSlabel.AutoSize = false;
+            this.FPSlabel.Name = "FPSlabel";
+            this.FPSlabel.Size = new System.Drawing.Size(64, 17);
+            this.FPSlabel.Text = "FPS=0.0";
             // 
             // MainMenu
             // 
@@ -786,15 +795,6 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
-            // DockPanel
-            // 
-            this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
-            this.DockPanel.Location = new System.Drawing.Point(33, 25);
-            this.DockPanel.Name = "DockPanel";
-            this.DockPanel.Size = new System.Drawing.Size(975, 682);
-            this.DockPanel.TabIndex = 5;
-            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -810,10 +810,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorldForm";
             this.Text = "WorldForm";
-            this.StatusBar.ResumeLayout(false);
-            this.StatusBar.PerformLayout();
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
+            this.StatusBar.ResumeLayout(false);
+            this.StatusBar.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
