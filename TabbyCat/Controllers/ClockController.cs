@@ -6,13 +6,11 @@
 
     internal class ClockController : LocalizationController
     {
-        internal ClockController(WorldController worldController) : base(worldController)
-        {
-            Clock = new Clock();
-            UpdateTimeControls();
-        }
+        internal ClockController(WorldController worldController) : base(worldController) => UpdateTimeControls();
 
-        protected override Clock Clock { get; }
+        private Clock _Clock;
+
+        protected override Clock Clock => _Clock ?? (_Clock = new Clock());
         internal bool ClockRunning => Clock.Running;
         internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
 

@@ -8,35 +8,36 @@
     {
         internal AboutController(WorldController worldController) : base(worldController)
         {
-            View = new AboutDialog();
             var asm = Assembly.GetExecutingAssembly();
-            View.Text = $"About {Application.ProductName}";
-            View.lblProductName.Text = Application.ProductName;
-            View.lblDescription.Text = asm.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
-            View.lblVersion.Text = Application.ProductVersion;
-            View.lblAuthor.Text = Application.CompanyName;
-            View.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            AboutDialog.Text = $"About {Application.ProductName}";
+            AboutDialog.lblProductName.Text = Application.ProductName;
+            AboutDialog.lblDescription.Text = asm.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+            AboutDialog.lblVersion.Text = Application.ProductVersion;
+            AboutDialog.lblAuthor.Text = Application.CompanyName;
+            AboutDialog.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
             var info = AppController.WorldControllers[0].GLInfo;
-            View.lblOpenGLVersion.Text = info.Number;
-            View.lblGLSLVersion.Text = info.Shader;
-            View.lblVendorName.Text = info.Vendor;
-            View.lblRendererName.Text = info.Renderer;
+            AboutDialog.lblOpenGLVersion.Text = info.Number;
+            AboutDialog.lblGLSLVersion.Text = info.Shader;
+            AboutDialog.lblVendorName.Text = info.Vendor;
+            AboutDialog.lblRendererName.Text = info.Renderer;
         }
+
+        private AboutDialog _AboutDialog;
+
+        internal AboutDialog AboutDialog => _AboutDialog ?? (_AboutDialog = new AboutDialog());
 
         internal void Show(IWin32Window owner)
         {
             Init(false);
-            View.Show(owner);
+            AboutDialog.Show(owner);
         }
 
         internal void ShowDialog(IWin32Window owner)
         {
             Init(true);
-            View.ShowDialog(owner);
+            AboutDialog.ShowDialog(owner);
         }
 
-        internal AboutDialog View { get; set; }
-
-        private void Init(bool showOK) => View.btnOK.Visible = showOK;
+        private void Init(bool showOK) => AboutDialog.btnOK.Visible = showOK;
     }
 }

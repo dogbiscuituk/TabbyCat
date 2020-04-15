@@ -19,8 +19,9 @@
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
+    using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class ShaderController : LocalizationController
+    internal partial class ShaderController : DockingController
     {
         private FastColoredTextBox ActiveTextBox;
         private ShaderRegion _ShaderRegion;
@@ -44,6 +45,8 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
+        protected internal override DockContent Form => ShaderForm;
+
         private GLPageController _PrimaryController, _SecondaryController;
         private ShaderForm _ShaderForm;
 
@@ -56,7 +59,7 @@
         private SplitContainer SecondarySplitter => ShaderEdit.TopSplit;
         private FastColoredTextBox SecondaryTextBox => ShaderEdit.SecondaryTextBox;
         private ShaderEdit ShaderEdit => ShaderForm.ShaderEdit;
-        internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm());
+        internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm() { Text = GetCaption() });
         private SplitContainer Splitter => ShaderEdit.EditSplit;
 
         internal ShaderRegion ShaderRegion
@@ -253,6 +256,23 @@
         }
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
+
+        private string GetCaption() => $"({GetRegion()})";
+
+        private string GetRegion()
+        {
+            switch (ShaderRegion)
+            {
+                case ShaderRegion.Scene:
+                    return "Scene";
+                case ShaderRegion.Trace:
+                    return "Trace";
+                case ShaderRegion.All:
+                    return "GPU";
+                default:
+                    return string.Empty;
+            }
+        }
 
         private void Help_Click(object sender, System.EventArgs e) { }
 

@@ -26,7 +26,7 @@
         private readonly SelectionController SelectionController;
         private bool SelectionUpdating;
 
-        protected override DockContent Form => TraceForm;
+        protected internal override DockContent Form => TraceForm;
         protected override TraceForm TraceForm { get; }
 
         internal ToolStrip SelectionToolbar => TraceEdit.SelectionToolbar;

@@ -5,12 +5,11 @@
 
     internal class GpuController : DockingController
     {
-        internal GpuController(WorldController worldController) : base(worldController)
-        {
-            GpuForm = new GpuForm();
-        }
+        internal GpuController(WorldController worldController) : base(worldController) { }
 
-        protected override DockContent Form => GpuForm;
-        protected override GpuForm GpuForm { get; }
+        private GpuForm _GpuForm;
+
+        protected internal override DockContent Form => GpuForm;
+        protected override GpuForm GpuForm => _GpuForm ?? (_GpuForm = new GpuForm());
     }
 }

@@ -1,8 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    using WeifenLuo.WinFormsUI.Docking;
-
-    public partial class SceneForm : DockContent
+    public partial class SceneForm : DockingForm
     {
         public SceneForm()
         {

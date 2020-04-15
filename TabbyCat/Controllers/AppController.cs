@@ -39,7 +39,7 @@
             {
                 if (_AboutDialog == null)
                     using (AboutController aboutController = new AboutController(null))
-                        _AboutDialog = aboutController.View;
+                        _AboutDialog = aboutController.AboutDialog;
                 return _AboutDialog;
             }
         }

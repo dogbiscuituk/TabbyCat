@@ -1,14 +1,13 @@
-﻿using TabbyCat.Views;
-
-namespace TabbyCat.Controllers
+﻿namespace TabbyCat.Controllers
 {
+    using TabbyCat.Views;
+
     internal class GLController : LocalizationController
     {
-        internal GLController(WorldController worldController) : base(worldController)
-        {
-            GLControlForm = new GLControlForm();
-        }
+        internal GLController(WorldController worldController) : base(worldController) { }
 
-        protected override GLControlForm GLControlForm { get; }
+        private GLControlForm _GLControlForm;
+
+        protected override GLControlForm GLControlForm => _GLControlForm ?? (_GLControlForm = new GLControlForm());
     }
 }

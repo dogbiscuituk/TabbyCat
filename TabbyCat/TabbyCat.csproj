@@ -110,6 +110,12 @@
     <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DockingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DockingForm.Designer.cs">
+      <DependentUpon>DockingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GLControlForm.cs">
       <SubType>Form</SubType>
     </Compile>

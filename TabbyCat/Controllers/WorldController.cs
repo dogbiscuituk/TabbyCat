@@ -23,7 +23,7 @@
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
-            DockControls();
+            ShowControls();
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
         }
@@ -276,7 +276,12 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void ViewMenu_DropDownOpening(object sender, EventArgs e) => UpdateViewMenu();
+        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(SceneController);
+        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TraceController);
+        private void ViewGpuStatus_Click(object sender, EventArgs e) => ToggleVisibility(GpuController);
+        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderController);
+        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderController);
+        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(GpuShaderController);
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -412,7 +417,12 @@
                 WorldForm.EditSelectAll.Click += EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
                 WorldForm.EditOptions.Click += EditOptions_Click;
-                WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
+                WorldForm.ViewSceneProperties.Click += ViewSceneProperties_Click;
+                WorldForm.ViewTraceProperties.Click += ViewTraceProperties_Click;
+                WorldForm.ViewGpuStatus.Click += ViewGpuStatus_Click;
+                WorldForm.ViewSceneCode.Click += ViewSceneCode_Click;
+                WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
+                WorldForm.ViewGpuCode.Click += ViewGpuCode_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
                 WorldForm.PopupMenu.Opening += PopupMenu_Opening;
@@ -434,7 +444,12 @@
                 WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
                 WorldForm.EditOptions.Click -= EditOptions_Click;
-                WorldForm.ViewMenu.DropDownOpening -= ViewMenu_DropDownOpening;
+                WorldForm.ViewSceneProperties.Click -= ViewSceneProperties_Click;
+                WorldForm.ViewTraceProperties.Click -= ViewTraceProperties_Click;
+                WorldForm.ViewGpuStatus.Click -= ViewGpuStatus_Click;
+                WorldForm.ViewSceneCode.Click -= ViewSceneCode_Click;
+                WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
+                WorldForm.ViewGpuCode.Click -= ViewGpuCode_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
                 WorldForm.PopupMenu.Opening -= PopupMenu_Opening;
@@ -489,17 +504,6 @@
             foreach (var index in indices)
                 CommandProcessor.DeleteTrace(index);
             Selection.Clear();
-        }
-
-        private void DockControls()
-        {
-            SceneShaderForm.Show(WorldForm.DockPanel, DockState.DockLeft);
-            SceneForm.Show(WorldForm.DockPanel, DockState.DockLeft);
-            TraceShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            TraceForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            GpuShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            GpuForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
         }
 
         private void EditOptions()
@@ -658,7 +662,28 @@
 
         private void SetDefaultCamera() => CameraController.SetDefaultCamera();
 
+        private void SetVisibility(DockingController controller, bool visible)
+        {
+            if (visible)
+                controller.Form.Show(WorldForm.DockPanel, DockState.DockLeft);
+            else
+                controller.Form.Hide();
+        }
+
+        private void ShowControls()
+        {
+            SetVisibility(SceneShaderController, true);
+            SetVisibility(SceneController, true);
+            SetVisibility(TraceShaderController, true);
+            SetVisibility(TraceController, true);
+            SetVisibility(GpuShaderController, true);
+            SetVisibility(GpuController, true);
+            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
+        }
+
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
+
+        private void ToggleVisibility(DockingController controller) => SetVisibility(controller, !controller.Form.Visible);
 
         private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
 
@@ -706,14 +731,6 @@
 
         private void UpdateToolbar() =>
             WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppController.CanPaste;
-
-        private void UpdateViewMenu()
-        {
-            WorldForm.ViewSceneProperties.Checked = SceneForm.Visible;
-            WorldForm.ViewTraceProperties.Checked = TraceForm.Visible;
-            WorldForm.ViewSceneCode.Checked = SceneShaderForm.Visible;
-            WorldForm.ViewTraceCode.Checked = TraceShaderForm.Visible;
-        }
 
         private void UpdateVirtualTime()
         {

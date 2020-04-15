@@ -1,8 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    using WeifenLuo.WinFormsUI.Docking;
-
-    public partial class TraceForm : DockContent
+    public partial class TraceForm : DockingForm
     {
         public TraceForm()
         {

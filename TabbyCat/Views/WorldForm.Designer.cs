@@ -601,42 +601,42 @@
             // ViewSceneProperties
             // 
             this.ViewSceneProperties.Name = "ViewSceneProperties";
-            this.ViewSceneProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneProperties.Size = new System.Drawing.Size(175, 22);
             this.ViewSceneProperties.Text = "Scene properties";
             // 
             // ViewTraceProperties
             // 
             this.ViewTraceProperties.Name = "ViewTraceProperties";
-            this.ViewTraceProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceProperties.Size = new System.Drawing.Size(175, 22);
             this.ViewTraceProperties.Text = "Trace properties";
             // 
             // ViewGpuStatus
             // 
             this.ViewGpuStatus.Name = "ViewGpuStatus";
-            this.ViewGpuStatus.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuStatus.Size = new System.Drawing.Size(175, 22);
             this.ViewGpuStatus.Text = "GPU status";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
             // 
             // ViewSceneCode
             // 
             this.ViewSceneCode.Name = "ViewSceneCode";
-            this.ViewSceneCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneCode.Size = new System.Drawing.Size(175, 22);
             this.ViewSceneCode.Text = "Scene code";
             // 
             // ViewTraceCode
             // 
             this.ViewTraceCode.Name = "ViewTraceCode";
-            this.ViewTraceCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceCode.Size = new System.Drawing.Size(175, 22);
             this.ViewTraceCode.Text = "Trace code";
             // 
             // ViewGpuCode
             // 
             this.ViewGpuCode.Name = "ViewGpuCode";
-            this.ViewGpuCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuCode.Size = new System.Drawing.Size(175, 22);
             this.ViewGpuCode.Text = "GPU code";
             // 
             // CameraMenu
@@ -789,6 +789,7 @@
             // DockPanel
             // 
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(975, 682);

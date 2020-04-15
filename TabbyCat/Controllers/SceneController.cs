@@ -23,7 +23,7 @@
             InitLocalControls();
         }
 
-        protected override DockContent Form => SceneForm;
+        protected internal override DockContent Form => SceneForm;
         protected override SceneForm SceneForm { get; }
 
         protected override string[] AllProperties => new[]

@@ -1,8 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    using WeifenLuo.WinFormsUI.Docking;
-
-    public partial class GpuForm : DockContent
+    public partial class GpuForm : DockingForm
     {
         public GpuForm()
         {
