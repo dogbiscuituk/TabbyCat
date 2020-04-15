@@ -10,6 +10,5 @@ namespace TabbyCat.Controllers
         }
 
         protected internal override GLControlForm GLControlForm { get; }
-
     }
 }

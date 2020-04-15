@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.shaderEdit1 = new TabbyCat.Controls.ShaderEdit();
+            this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
             this.SuspendLayout();
             // 
-            // shaderEdit1
+            // ShaderEdit
             // 
-            this.shaderEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shaderEdit1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shaderEdit1.Location = new System.Drawing.Point(0, 0);
-            this.shaderEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.shaderEdit1.Name = "shaderEdit1";
-            this.shaderEdit1.Size = new System.Drawing.Size(383, 358);
-            this.shaderEdit1.TabIndex = 0;
+            this.ShaderEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ShaderEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShaderEdit.Location = new System.Drawing.Point(0, 0);
+            this.ShaderEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ShaderEdit.Name = "ShaderEdit";
+            this.ShaderEdit.Size = new System.Drawing.Size(383, 358);
+            this.ShaderEdit.TabIndex = 0;
             // 
             // ShaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 358);
-            this.Controls.Add(this.shaderEdit1);
+            this.Controls.Add(this.ShaderEdit);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ShaderForm";
@@ -57,6 +57,6 @@
 
         #endregion
 
-        private Controls.ShaderEdit shaderEdit1;
+        internal Controls.ShaderEdit ShaderEdit;
     }
 }

@@ -20,11 +20,22 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class ShaderController : LocalizationController
+    internal partial class ShaderController : LocalizationController
     {
+        internal readonly ShaderForm ShaderForm;
+        private FastColoredTextBox ActiveTextBox;
+        private ShaderRegion _ShaderRegion;
+        private ShaderType _ShaderType = ShaderType.VertexShader;
+        private SplitType _SplitType;
+        private bool Updating;
+        private readonly GLPageController
+            PrimaryController,
+            SecondaryController;
+
         internal ShaderController(WorldController worldController)
             : base(worldController)
         {
+            ShaderForm = new ShaderForm();
             PrimaryController = new GLPageController(PrimaryTextBox);
             SecondaryController = new GLPageController(SecondaryTextBox);
             ShowRuler = false;
@@ -40,35 +51,39 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
-        private FastColoredTextBox ActiveTextBox;
-        private ShaderType _ShaderType = ShaderType.VertexShader;
-        private SplitType _SplitType;
-        private bool Updating;
-
-        private readonly GLPageController
-            PrimaryController,
-            SecondaryController;
+        private ShaderEdit Editor => ShaderForm.ShaderEdit;
 
         private SplitContainer PrimarySplitter => Editor.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
-        private TabPage PropertiesTab => PropertiesTabControl.SelectedTab;
         private TraceSelection Selection => WorldController.Selection;
         private SplitContainer SecondarySplitter => Editor.TopSplit;
         private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
         private SplitContainer Splitter => Editor.EditSplit;
 
+        internal ShaderRegion ShaderRegion
+        {
+            get => _ShaderRegion;
+            set
+            {
+                if (ShaderRegion == value)
+                    return;
+                _ShaderRegion = value;
+                LoadShaderCode();
+            }
+        }
+
         private string ShaderName
         {
             get
             {
-                switch (PropertiesTab)
+                switch (ShaderRegion)
                 {
-                    case TabPage page when page == PropertiesEditor.tpTraces:
-                        return ShaderType.TraceShaderName();
-                    case TabPage page when page == PropertiesEditor.tpScene:
+                    case ShaderRegion.Scene:
                         return ShaderType.SceneShaderName();
-                    case TabPage page when page == PropertiesEditor.tpGPU:
-                        return string.Empty;
+                    case ShaderRegion.Trace:
+                        return ShaderType.TraceShaderName();
+                    case ShaderRegion.All:
+                        return ShaderType.ShaderName();
                 }
                 return string.Empty;
             }
@@ -78,13 +93,13 @@
         {
             get
             {
-                switch (PropertiesTab)
+                switch (ShaderRegion)
                 {
-                    case TabPage page when page == PropertiesEditor.tpTraces:
-                        return Selection;
-                    case TabPage page when page == PropertiesEditor.tpScene:
+                    case ShaderRegion.Scene:
                         return Scene;
-                    case TabPage page when page == PropertiesEditor.tpGPU:
+                    case ShaderRegion.Trace:
+                        return Selection;
+                    case ShaderRegion.All:
                         return RenderController;
                 }
                 return null;
@@ -175,7 +190,6 @@
             ConnectHelp(connect);
             if (connect)
             {
-                PropertiesTabControl.SelectedIndexChanged += PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged += WorldController_PropertyChanged;
                 WorldController.Pulse += WorldController_Pulse;
                 WorldController.SelectionChanged += WorldController_SelectionChanged;
@@ -183,7 +197,6 @@
             }
             else
             {
-                PropertiesTabControl.SelectedIndexChanged -= PropertyTab_SelectedIndexChanged;
                 WorldController.PropertyChanged -= WorldController_PropertyChanged;
                 WorldController.Pulse -= WorldController_Pulse;
                 WorldController.SelectionChanged -= WorldController_SelectionChanged;
@@ -504,13 +517,13 @@
                 return;
             Updating = true;
             var text = Editor.PrimaryTextBox.Text;
-            switch (PropertiesTab)
+            switch (ShaderRegion)
             {
-                case TabPage page when page == PropertiesEditor.tpTraces:
-                    Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
-                    break;
-                case TabPage page when page == PropertiesEditor.tpScene:
+                case ShaderRegion.Scene:
                     Run(new SceneShaderCommand(ShaderType, text));
+                    break;
+                case ShaderRegion.Trace:
+                    Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
                     break;
             }
             Updating = false;
@@ -547,7 +560,7 @@
         private void UpdateUI()
         {
             UIController.EnableControls(
-                PropertiesTab != PropertiesEditor.tpTraces || !Selection.IsEmpty,
+                ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
                 new Control[]
                 {
                     Editor.Toolbar,

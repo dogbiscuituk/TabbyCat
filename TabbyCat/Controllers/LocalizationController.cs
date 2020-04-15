@@ -14,17 +14,17 @@
 
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
 
-        protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
-
-        internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
-
-        protected virtual GLController GLController { get => WorldController.GLController; set { } }
-
-        protected virtual RenderController RenderController { get => WorldController.RenderController; set { } }
-
-        protected virtual SceneController SceneController { get => WorldController.SceneController; set { } }
-
-        protected virtual TraceController TraceController { get => WorldController.TraceController; set { } }
+        protected virtual CameraController CameraController => WorldController.CameraController;
+        protected virtual ClockController ClockController => WorldController.ClockController;
+        internal virtual CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        protected virtual GLController GLController => WorldController.GLController;
+        protected virtual JsonController JsonController => WorldController.JsonController;
+        protected virtual RenderController RenderController => WorldController.RenderController;
+        protected virtual SceneController SceneController => WorldController.SceneController;
+        protected virtual ShaderController SceneShaderController => WorldController.SceneShaderController;
+        protected virtual ShaderController ShaderController => WorldController.ShaderController;
+        protected virtual TraceController TraceController => WorldController.TraceController;
+        protected virtual ShaderController TraceShaderController => WorldController.TraceShaderController;
 
         protected virtual string[] AllProperties => Array.Empty<string>();
 

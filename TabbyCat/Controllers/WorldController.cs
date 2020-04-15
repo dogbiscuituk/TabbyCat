@@ -21,14 +21,17 @@
     {
         protected internal override GLControlForm GLControlForm => GLController.GLControlForm;
 
-        private readonly CameraController CameraController;
-        protected override ClockController ClockController { get; set; }
-        internal override CommandProcessor CommandProcessor { get; set; }
-        protected override GLController GLController { get; set; }
-        protected override RenderController RenderController { get; set; }
-        protected override SceneController SceneController { get; set; }
-        protected override TraceController TraceController { get; set; }
-
+        protected override CameraController CameraController { get; }
+        protected override ClockController ClockController { get; }
+        internal override CommandProcessor CommandProcessor { get; }
+        protected override GLController GLController { get; }
+        protected override JsonController JsonController { get; }
+        protected override RenderController RenderController { get; }
+        protected override SceneController SceneController { get; }
+        protected override ShaderController SceneShaderController { get; }
+        protected override ShaderController ShaderController { get; }
+        protected override TraceController TraceController { get; }
+        protected override ShaderController TraceShaderController { get; }
 
         protected internal override WorldForm WorldForm { get; set; }
 
@@ -37,16 +40,22 @@
             WorldForm = new WorldForm();
             Scene = new Scene(this);
 
+            RenderController = new RenderController(this);
+
             CameraController = new CameraController(this);
             ClockController = new ClockController(this);
             CommandProcessor = new CommandProcessor(this);
             GLController = new GLController(this);
             JsonController = new JsonController(this);
-            RenderController = new RenderController(this);
             SceneController = new SceneController(this);
+            SceneShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.Scene };
+            ShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.All };
             TraceController = new TraceController(this);
+            TraceShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.Trace };
 
+            SceneShaderController.ShaderForm.Show(WorldForm.DockPanel, DockState.DockLeft);
             SceneController.SceneForm.Show(WorldForm.DockPanel, DockState.DockLeft);
+            TraceShaderController.ShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
             TraceController.TraceForm.Show(WorldForm.DockPanel, DockState.DockRight);
             GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
 
@@ -58,7 +67,6 @@
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private static string GLSLUrl => Settings.Default.GLSLUrl;
-        private readonly JsonController JsonController;
         private string LastSpeed, LastTime, LastFPS;
         private int UpdateCount;
 
@@ -128,9 +136,6 @@
             Localize(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
             Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
             Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
-            Localize(Resources.Menu_View, WorldForm.ViewMenu);
-            Localize(Resources.Menu_View_FullScreen, WorldForm.ViewFullScreen);
-            Localize(Resources.Menu_View_Properties, WorldForm.ViewProperties);
             Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
             Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
             Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);

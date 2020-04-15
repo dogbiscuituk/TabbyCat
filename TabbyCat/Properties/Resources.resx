@@ -680,15 +680,6 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;Stop|Stop the passage of time
 and reset the timer to zero</value>
   </data>
-  <data name="Menu_View" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="Menu_View_FullScreen" xml:space="preserve">
-    <value>&amp;Full Screen|Use the entire display area for the scene|F11</value>
-  </data>
-  <data name="Menu_View_Properties" xml:space="preserve">
-    <value>&amp;Properties</value>
-  </data>
   <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
     <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4</value>
   </data>

@@ -77,6 +77,7 @@
     <Compile Include="Types\Pattern.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
+    <Compile Include="Types\ShaderRegion.cs" />
     <Compile Include="Types\SplitType.cs" />
     <Compile Include="Types\Vao.cs" />
     <Compile Include="Types\Vbo.cs" />

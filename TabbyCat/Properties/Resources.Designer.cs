@@ -1622,33 +1622,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;View.
-        /// </summary>
-        public static string Menu_View {
-            get {
-                return ResourceManager.GetString("Menu_View", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Full Screen|Use the entire display area for the scene|F11.
-        /// </summary>
-        public static string Menu_View_FullScreen {
-            get {
-                return ResourceManager.GetString("Menu_View_FullScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Properties.
-        /// </summary>
-        public static string Menu_View_Properties {
-            get {
-                return ResourceManager.GetString("Menu_View_Properties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Message_FileModified_Caption {

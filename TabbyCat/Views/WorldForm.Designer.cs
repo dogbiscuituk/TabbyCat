@@ -83,10 +83,6 @@
             this.EditInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ViewProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
@@ -299,7 +295,6 @@
             this.TimeAccelerate,
             this.FileMenu,
             this.EditMenu,
-            this.ViewMenu,
             this.CameraMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -580,34 +575,6 @@
             this.EditOptions.Size = new System.Drawing.Size(176, 22);
             this.EditOptions.Text = "Options...";
             // 
-            // ViewMenu
-            // 
-            this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ViewFullScreen,
-            this.toolStripMenuItem3,
-            this.ViewProperties});
-            this.ViewMenu.Name = "ViewMenu";
-            this.ViewMenu.Size = new System.Drawing.Size(47, 21);
-            this.ViewMenu.Text = "View";
-            // 
-            // ViewFullScreen
-            // 
-            this.ViewFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
-            this.ViewFullScreen.Name = "ViewFullScreen";
-            this.ViewFullScreen.Size = new System.Drawing.Size(138, 22);
-            this.ViewFullScreen.Text = "Full Screen";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(135, 6);
-            // 
-            // ViewProperties
-            // 
-            this.ViewProperties.Name = "ViewProperties";
-            this.ViewProperties.Size = new System.Drawing.Size(138, 22);
-            this.ViewProperties.Text = "Properties";
-            // 
             // CameraMenu
             // 
             this.CameraMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -629,7 +596,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(110, 22);
+            this.CameraMove.Size = new System.Drawing.Size(180, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -678,7 +645,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -720,12 +687,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(110, 22);
+            this.CameraReset.Size = new System.Drawing.Size(180, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
@@ -844,10 +811,6 @@
         internal System.Windows.Forms.ToolStripMenuItem EditInvertSelection;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         internal System.Windows.Forms.ToolStripMenuItem EditOptions;
-        internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
-        internal System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
-        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        internal System.Windows.Forms.ToolStripMenuItem ViewProperties;
         internal System.Windows.Forms.ToolStripMenuItem CameraMenu;
         internal System.Windows.Forms.ToolStripMenuItem CameraMove;
         internal System.Windows.Forms.ToolStripMenuItem CameraMoveLeft;
