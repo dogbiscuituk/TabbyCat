@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using OpenTK;
     using System;
     using System.Drawing;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using OpenTK;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
@@ -13,20 +13,16 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class SceneController : ShaderSetController
+    internal partial class SceneController : ShaderSetController
     {
         internal readonly SceneForm SceneForm;
 
-        internal SceneController(WorldController worldController)
-            : base(worldController)
+        internal SceneController(WorldController worldController) : base(worldController)
         {
             SceneForm = new SceneForm();
-
             InitCommonControls(SceneForm.SceneEdit.TableLayoutPanel);
             InitLocalControls();
         }
-
-        private SceneEdit SceneEdit => SceneForm.SceneEdit;
 
         protected override string[] AllProperties => new[]
         {
@@ -44,6 +40,8 @@
             PropertyNames.Stereo,
             PropertyNames.VSync
         };
+
+        private SceneEdit SceneEdit => SceneForm.SceneEdit;
 
         protected internal override void Connect(bool connect)
         {
@@ -195,57 +193,6 @@
             UpdateUI();
         }
 
-        private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
-            Run(new BackgroundColourCommand(Color.FromName(SceneEdit.cbBackground.Text)));
-
-        private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
-            Run(new CameraFocusCommand(new Vector3(
-                (float)SceneEdit.seCameraPitch.Value,
-                (float)SceneEdit.seCameraYaw.Value,
-                (float)SceneEdit.seCameraRoll.Value)));
-
-        private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
-            Run(new CameraPositionCommand(new Vector3(
-                (float)SceneEdit.seCameraPositionX.Value,
-                (float)SceneEdit.seCameraPositionY.Value,
-                (float)SceneEdit.seCameraPositionZ.Value)));
-
-        private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
-            Run(new FieldOfViewCommand((float)SceneEdit.seFieldOfView.Value));
-
-        private void FPS_ValueChanged(object sender, EventArgs e) =>
-            Run(new FpsCommand((float)SceneEdit.seFPS.Value));
-
-        private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
-            Run(new FrustumMaxCommand(new Vector3(
-                (float)SceneEdit.seFrustumMaxX.Value,
-                (float)SceneEdit.seFrustumMaxY.Value,
-                (float)SceneEdit.seFrustumMaxZ.Value)));
-
-        private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
-            Run(new FrustumMinCommand(new Vector3(
-                (float)SceneEdit.seFrustumMinX.Value,
-                (float)SceneEdit.seFrustumMinY.Value,
-                (float)SceneEdit.seFrustumMinZ.Value)));
-
-        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new GLTargetVersionCommand(SceneEdit.seGLSLVersion.Text));
-
-        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new ProjectionTypeCommand((ProjectionType)SceneEdit.seProjectionType.SelectedIndex));
-
-        private void Samples_ValueChanged(object sender, EventArgs e) =>
-            Run(new SamplesCommand(int.Parse(SceneEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
-
-        private void SceneTitle_TextChanged(object sender, EventArgs e) =>
-            Run(new TitleCommand(SceneEdit.edTitle.Text));
-
-        private void Stereo_CheckedChanged(object sender, EventArgs e) =>
-            Run(new StereoCommand(SceneEdit.cbStereo.Checked));
-
-        private void VSync_CheckedChanged(object sender, EventArgs e) =>
-            Run(new VSyncCommand(SceneEdit.cbVSync.Checked));
-
         private static void InitDomainUpDownItems(DomainUpDown control, string items)
         {
             control.Items.Clear();
@@ -297,5 +244,62 @@
             SceneEdit.seFrustumMaxX.Visible =
             SceneEdit.seFrustumMaxY.Visible = !perspective;
         }
+    }
+
+    /// <summary>
+    /// Command runners.
+    /// </summary>
+    partial class SceneController
+    {
+        private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
+            Run(new BackgroundColourCommand(Color.FromName(SceneEdit.cbBackground.Text)));
+
+        private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
+            Run(new CameraFocusCommand(new Vector3(
+                (float)SceneEdit.seCameraPitch.Value,
+                (float)SceneEdit.seCameraYaw.Value,
+                (float)SceneEdit.seCameraRoll.Value)));
+
+        private void CameraPosition_ValueChanged(object sender, EventArgs e) =>
+            Run(new CameraPositionCommand(new Vector3(
+                (float)SceneEdit.seCameraPositionX.Value,
+                (float)SceneEdit.seCameraPositionY.Value,
+                (float)SceneEdit.seCameraPositionZ.Value)));
+
+        private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
+            Run(new FieldOfViewCommand((float)SceneEdit.seFieldOfView.Value));
+
+        private void FPS_ValueChanged(object sender, EventArgs e) =>
+            Run(new FpsCommand((float)SceneEdit.seFPS.Value));
+
+        private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMaxCommand(new Vector3(
+                (float)SceneEdit.seFrustumMaxX.Value,
+                (float)SceneEdit.seFrustumMaxY.Value,
+                (float)SceneEdit.seFrustumMaxZ.Value)));
+
+        private void FrustumMin_ValueChanged(object sender, EventArgs e) =>
+            Run(new FrustumMinCommand(new Vector3(
+                (float)SceneEdit.seFrustumMinX.Value,
+                (float)SceneEdit.seFrustumMinY.Value,
+                (float)SceneEdit.seFrustumMinZ.Value)));
+
+        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
+            Run(new GLTargetVersionCommand(SceneEdit.seGLSLVersion.Text));
+
+        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) =>
+            Run(new ProjectionTypeCommand((ProjectionType)SceneEdit.seProjectionType.SelectedIndex));
+
+        private void Samples_ValueChanged(object sender, EventArgs e) =>
+            Run(new SamplesCommand(int.Parse(SceneEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
+
+        private void SceneTitle_TextChanged(object sender, EventArgs e) =>
+            Run(new TitleCommand(SceneEdit.edTitle.Text));
+
+        private void Stereo_CheckedChanged(object sender, EventArgs e) =>
+            Run(new StereoCommand(SceneEdit.cbStereo.Checked));
+
+        private void VSync_CheckedChanged(object sender, EventArgs e) =>
+            Run(new VSyncCommand(SceneEdit.cbVSync.Checked));
     }
 }

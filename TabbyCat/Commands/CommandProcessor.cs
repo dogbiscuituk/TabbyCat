@@ -10,10 +10,8 @@
 
     internal class CommandProcessor : LocalizationController
     {
-        internal CommandProcessor(WorldController worldController)
-            : base(worldController)
+        internal CommandProcessor(WorldController worldController) : base(worldController)
         {
-            WorldController = worldController;
             WorldForm.EditUndo.Click += EditUndo_Click;
             WorldForm.tbUndo.ButtonClick += EditUndo_Click;
             WorldForm.tbUndo.DropDownOpening += TbUndo_DropDownOpening;

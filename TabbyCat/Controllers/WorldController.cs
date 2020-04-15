@@ -52,7 +52,6 @@
 
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
-            WorldController = this;
         }
 
         internal TraceSelection Selection = new TraceSelection();

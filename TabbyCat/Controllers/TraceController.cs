@@ -12,24 +12,19 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class TraceController : ShaderSetController
+    internal partial class TraceController : ShaderSetController
     {
+        private readonly SelectionController SelectionController;
+        private bool SelectionUpdating;
         internal readonly TraceForm TraceForm;
 
         internal TraceController(WorldController worldController) : base(worldController)
         {
             TraceForm = new TraceForm();
-
             SelectionController = new SelectionController(worldController);
             InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();
         }
-
-        private TraceEdit TraceEdit => TraceForm.TraceEdit;
-
-        private readonly SelectionController SelectionController;
-
-        private bool SelectionUpdating;
 
         internal ToolStrip SelectionToolbar => TraceEdit.SelectionToolbar;
 
@@ -47,6 +42,8 @@
         };
 
         private TraceSelection Selection => WorldController.Selection;
+
+        private TraceEdit TraceEdit => TraceForm.TraceEdit;
 
         protected internal override void Connect(bool connect)
         {
@@ -218,6 +215,63 @@
             Updating = false;
         }
 
+        private void CopySelectionFromControl()
+        {
+            if (SelectionUpdating)
+                return;
+            SelectionUpdating = true;
+            Selection.Set(SelectionController.Selection.Select(p => Scene.Traces[p]));
+            SelectionUpdating = false;
+        }
+
+        private void CopySelectionToControl()
+        {
+            if (SelectionUpdating)
+                return;
+            SelectionUpdating = true;
+            SelectionController.TraceCount = Scene.Traces.Count;
+            SelectionController.Selection = Selection.GetTraceIndices().ToList();
+            SelectionUpdating = false;
+        }
+
+        private static CheckState GetCheckState(bool? input)
+        {
+            switch (input)
+            {
+                case true:
+                    return CheckState.Checked;
+                case false:
+                    return CheckState.Unchecked;
+                default:
+                    return CheckState.Indeterminate;
+            }
+        }
+
+        private void InitLocalControls()
+        {
+            TraceEdit.seStripCountX.Minimum =
+            TraceEdit.seStripCountY.Minimum =
+            TraceEdit.seStripCountZ.Minimum = 0;
+            TraceEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
+        }
+
+        private void Run(Func<Trace, ICommand> command)
+        {
+            if (Updating || Selection.IsEmpty)
+                return;
+            Updating = true;
+            Selection.ForEach(p => CommandProcessor.Run(command(p)));
+            Updating = false;
+        }
+
+        private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();
+    }
+
+    /// <summary>
+    /// Command runners.
+    /// </summary>
+    partial class TraceController
+    {
         private void Description_TextChanged(object sender, System.EventArgs e) =>
             Run(p => new DescriptionCommand(p.Index, TraceEdit.edDescription.Text));
 
@@ -314,8 +368,6 @@
                 p.Scale.Y,
                 (float)TraceEdit.seScaleZ.Value)));
 
-        private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();
-
         private void StripCountX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new StripCountCommand(p.Index, new Vector3(
                 (float)TraceEdit.seStripCountX.Value,
@@ -337,53 +389,5 @@
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, TraceEdit.cbVisible.Checked));
 
-        private void CopySelectionFromControl()
-        {
-            if (SelectionUpdating)
-                return;
-            SelectionUpdating = true;
-            Selection.Set(SelectionController.Selection.Select(p => Scene.Traces[p]));
-            SelectionUpdating = false;
-        }
-
-        private void CopySelectionToControl()
-        {
-            if (SelectionUpdating)
-                return;
-            SelectionUpdating = true;
-            SelectionController.TraceCount = Scene.Traces.Count;
-            SelectionController.Selection = Selection.GetTraceIndices().ToList();
-            SelectionUpdating = false;
-        }
-
-        private static CheckState GetCheckState(bool? input)
-        {
-            switch (input)
-            {
-                case true:
-                    return CheckState.Checked;
-                case false:
-                    return CheckState.Unchecked;
-                default:
-                    return CheckState.Indeterminate;
-            }
-        }
-
-        private void InitLocalControls()
-        {
-            TraceEdit.seStripCountX.Minimum =
-            TraceEdit.seStripCountY.Minimum =
-            TraceEdit.seStripCountZ.Minimum = 0;
-            TraceEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
-        }
-
-        private void Run(Func<Trace, ICommand> command)
-        {
-            if (Updating || Selection.IsEmpty)
-                return;
-            Updating = true;
-            Selection.ForEach(p => CommandProcessor.Run(command(p)));
-            Updating = false;
-        }
     }
 }

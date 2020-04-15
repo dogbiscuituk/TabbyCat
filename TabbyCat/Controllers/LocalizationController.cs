@@ -5,32 +5,41 @@
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Views;
 
     internal partial class LocalizationController
     {
+        protected readonly WorldController WorldController;
+
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
 
         protected virtual ClockController ClockController { get => WorldController.ClockController; set { } }
+
         internal virtual CommandProcessor CommandProcessor { get => WorldController.CommandProcessor; set { } }
+
         protected virtual GLController GLController { get => WorldController.GLController; set { } }
+
         protected virtual RenderController RenderController { get => WorldController.RenderController; set { } }
+
         protected virtual SceneController SceneController { get => WorldController.SceneController; set { } }
+
         protected virtual TraceController TraceController { get => WorldController.TraceController; set { } }
-        protected WorldController WorldController;
 
         protected virtual string[] AllProperties => Array.Empty<string>();
 
         protected Camera Camera => Scene.Camera;
+
         protected virtual Clock Clock { get => ClockController.Clock; set { } }
 
         internal GLControl GLControl => GLControlForm.GLControl;
 
         protected internal virtual GLControlForm GLControlForm => WorldController.GLControlForm;
+
         protected internal virtual Scene Scene { get => WorldController.Scene; set { WorldController.Scene = value; } }
+
         private ToolTip ToolTip => WorldController.WorldForm.ToolTip;
+
         protected internal virtual WorldForm WorldForm { get => WorldController.WorldForm; set { } }
 
         protected internal virtual void Connect(bool connect)

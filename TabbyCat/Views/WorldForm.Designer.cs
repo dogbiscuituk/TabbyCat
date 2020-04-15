@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.PopupPropertiesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.PopupPropertiesUndock = new System.Windows.Forms.ToolStripMenuItem();
-            this.PopupPropertiesHide = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.StatusBar = new Jmk.Controls.JmkStatusStrip();
@@ -112,31 +109,10 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.PopupPropertiesMenu.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PopupPropertiesMenu
-            // 
-            this.PopupPropertiesMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PopupPropertiesUndock,
-            this.PopupPropertiesHide});
-            this.PopupPropertiesMenu.Name = "PopupPropertiesMenu";
-            this.PopupPropertiesMenu.Size = new System.Drawing.Size(116, 48);
-            // 
-            // PopupPropertiesUndock
-            // 
-            this.PopupPropertiesUndock.Name = "PopupPropertiesUndock";
-            this.PopupPropertiesUndock.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesUndock.Text = "&Undock";
-            // 
-            // PopupPropertiesHide
-            // 
-            this.PopupPropertiesHide.Name = "PopupPropertiesHide";
-            this.PopupPropertiesHide.Size = new System.Drawing.Size(115, 22);
-            this.PopupPropertiesHide.Text = "&Hide";
             // 
             // ToolTip
             // 
@@ -802,7 +778,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorldForm";
             this.Text = "WorldForm";
-            this.PopupPropertiesMenu.ResumeLayout(false);
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
             this.Toolbar.ResumeLayout(false);
@@ -815,9 +790,6 @@
         }
 
         #endregion
-        internal System.Windows.Forms.ContextMenuStrip PopupPropertiesMenu;
-        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesUndock;
-        internal System.Windows.Forms.ToolStripMenuItem PopupPropertiesHide;
         internal System.Windows.Forms.ToolTip ToolTip;
         internal System.Windows.Forms.ContextMenuStrip PopupMenu;
         internal Jmk.Controls.JmkStatusStrip StatusBar;
