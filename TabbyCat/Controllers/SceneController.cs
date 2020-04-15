@@ -12,17 +12,19 @@
     using TabbyCat.Controls;
     using TabbyCat.Properties;
     using TabbyCat.Views;
+    using WeifenLuo.WinFormsUI.Docking;
 
     internal partial class SceneController : ShaderSetController
     {
-        internal readonly SceneForm SceneForm;
-
         internal SceneController(WorldController worldController) : base(worldController)
         {
             SceneForm = new SceneForm();
             InitCommonControls(SceneForm.SceneEdit.TableLayoutPanel);
             InitLocalControls();
         }
+
+        protected override DockContent Form => SceneForm;
+        protected override SceneForm SceneForm { get; }
 
         protected override string[] AllProperties => new[]
         {
@@ -40,8 +42,6 @@
             PropertyNames.Stereo,
             PropertyNames.VSync
         };
-
-        private SceneEdit SceneEdit => SceneForm.SceneEdit;
 
         protected internal override void Connect(bool connect)
         {

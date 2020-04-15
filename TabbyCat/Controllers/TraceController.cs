@@ -11,13 +11,10 @@
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
+    using WeifenLuo.WinFormsUI.Docking;
 
     internal partial class TraceController : ShaderSetController
     {
-        private readonly SelectionController SelectionController;
-        private bool SelectionUpdating;
-        internal readonly TraceForm TraceForm;
-
         internal TraceController(WorldController worldController) : base(worldController)
         {
             TraceForm = new TraceForm();
@@ -25,6 +22,12 @@
             InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();
         }
+
+        private readonly SelectionController SelectionController;
+        private bool SelectionUpdating;
+
+        protected override DockContent Form => TraceForm;
+        protected override TraceForm TraceForm { get; }
 
         internal ToolStrip SelectionToolbar => TraceEdit.SelectionToolbar;
 

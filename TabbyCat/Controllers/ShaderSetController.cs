@@ -4,15 +4,11 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal abstract class ShaderSetController : LocalizationController
+    internal abstract class ShaderSetController : DockingController
     {
-        internal ShaderSetController(WorldController worldController)
-            : base(worldController)
-        { }
+        internal ShaderSetController(WorldController worldController) : base(worldController) { }
 
         protected bool Updating;
-
-        internal ToolTip ToolTip => WorldController.ToolTip;
 
         protected internal override void Connect(bool connect)
         {

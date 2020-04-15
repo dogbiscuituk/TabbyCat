@@ -9,6 +9,6 @@ namespace TabbyCat.Controllers
             GLControlForm = new GLControlForm();
         }
 
-        protected internal override GLControlForm GLControlForm { get; }
+        protected override GLControlForm GLControlForm { get; }
     }
 }

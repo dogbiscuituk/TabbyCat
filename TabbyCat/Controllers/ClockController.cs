@@ -6,16 +6,14 @@
 
     internal class ClockController : LocalizationController
     {
-        internal ClockController(WorldController worldController)
-            : base(worldController)
+        internal ClockController(WorldController worldController) : base(worldController)
         {
+            Clock = new Clock();
             UpdateTimeControls();
         }
 
-        protected override Clock Clock { get; set; } = new Clock();
-
+        protected override Clock Clock { get; }
         internal bool ClockRunning => Clock.Running;
-
         internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
 
         internal float VirtualTimeFactor
@@ -29,21 +27,21 @@
             base.Connect(connect);
             if (connect)
             {
-                WorldForm.TimeDecelerate.Click += TimeDecelerate_Click;
-                WorldForm.TimeReverse.Click += TimeReverse_Click;
-                WorldForm.TimeStop.Click += TimeStop_Click;
-                WorldForm.TimePause.Click += TimePause_Click;
-                WorldForm.TimeForward.Click += TimeForward_Click;
-                WorldForm.TimeAccelerate.Click += TimeAccelerate_Click;
+                WorldForm.TimeDecelerate.Click += Decelerate_Click;
+                WorldForm.TimeReverse.Click += Reverse_Click;
+                WorldForm.TimeStop.Click += Stop_Click;
+                WorldForm.TimePause.Click += Pause_Click;
+                WorldForm.TimeForward.Click += Forward_Click;
+                WorldForm.TimeAccelerate.Click += Accelerate_Click;
             }
             else
             {
-                WorldForm.TimeDecelerate.Click -= TimeDecelerate_Click;
-                WorldForm.TimeReverse.Click -= TimeReverse_Click;
-                WorldForm.TimeStop.Click -= TimeStop_Click;
-                WorldForm.TimePause.Click -= TimePause_Click;
-                WorldForm.TimeForward.Click -= TimeForward_Click;
-                WorldForm.TimeAccelerate.Click -= TimeAccelerate_Click;
+                WorldForm.TimeDecelerate.Click -= Decelerate_Click;
+                WorldForm.TimeReverse.Click -= Reverse_Click;
+                WorldForm.TimeStop.Click -= Stop_Click;
+                WorldForm.TimePause.Click -= Pause_Click;
+                WorldForm.TimeForward.Click -= Forward_Click;
+                WorldForm.TimeAccelerate.Click -= Accelerate_Click;
             }
         }
 
@@ -70,48 +68,39 @@
         private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
         private bool CanStop => Clock.Running;
 
-        private void TimeDecelerate_Click(object sender, EventArgs e) => Decelerate();
-        private void TimeReverse_Click(object sender, EventArgs e) => Reverse();
-        private void TimeStop_Click(object sender, EventArgs e) => Stop();
-        private void TimePause_Click(object sender, EventArgs e) => Pause();
-        private void TimeForward_Click(object sender, EventArgs e) => Forward();
-        private void TimeAccelerate_Click(object sender, EventArgs e) => Accelerate();
-
-        private void Accelerate()
+        private void Accelerate_Click(object sender, EventArgs e)
         {
             Clock.Accelerate();
             UpdateTimeControls();
         }
 
-        private void Decelerate()
+        private void Decelerate_Click(object sender, EventArgs e)
         {
             Clock.Decelerate();
             UpdateTimeControls();
         }
 
-        private void Forward()
+        private void Forward_Click(object sender, EventArgs e)
         {
             VirtualTimeFactor = Math.Abs(VirtualTimeFactor);
-            Start();
+            Clock.Start();
             UpdateTimeControls();
         }
 
-        private void Pause()
+        private void Pause_Click(object sender, EventArgs e)
         {
             Clock.Stop();
             UpdateTimeControls();
         }
 
-        private void Reverse()
+        private void Reverse_Click(object sender, EventArgs e)
         {
             VirtualTimeFactor = -Math.Abs(VirtualTimeFactor);
-            Start();
+            Clock.Start();
             UpdateTimeControls();
         }
 
-        private void Start() => Clock.Start();
-
-        private void Stop()
+        private void Stop_Click(object sender, EventArgs e)
         {
             Clock.Reset();
             UpdateTimeControls();

@@ -5,42 +5,42 @@
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
+    using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Views;
 
     internal partial class LocalizationController
     {
-        protected readonly WorldController WorldController;
-
         internal LocalizationController(WorldController worldController) => WorldController = worldController;
 
+        protected virtual string[] AllProperties => Array.Empty<string>();
+        protected Camera Camera => Scene.Camera;
         protected virtual CameraController CameraController => WorldController.CameraController;
+        protected virtual Clock Clock => ClockController.Clock;
         protected virtual ClockController ClockController => WorldController.ClockController;
         internal virtual CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        protected internal GLControl GLControl => GLControlForm.GLControl;
+        protected virtual GLControlForm GLControlForm => GLController.GLControlForm;
         protected virtual GLController GLController => WorldController.GLController;
+        protected virtual GpuController GpuController => WorldController.GpuController;
+        protected virtual GpuForm GpuForm => GpuController.GpuForm;
+        protected virtual ShaderController GpuShaderController => WorldController.GpuShaderController;
+        protected ShaderForm GpuShaderForm => GpuShaderController.ShaderForm;
         protected virtual JsonController JsonController => WorldController.JsonController;
         protected virtual RenderController RenderController => WorldController.RenderController;
-        protected virtual SceneController SceneController => WorldController.SceneController;
-        protected virtual ShaderController SceneShaderController => WorldController.SceneShaderController;
-        protected virtual ShaderController ShaderController => WorldController.ShaderController;
-        protected virtual TraceController TraceController => WorldController.TraceController;
-        protected virtual ShaderController TraceShaderController => WorldController.TraceShaderController;
-
-        protected virtual string[] AllProperties => Array.Empty<string>();
-
-        protected Camera Camera => Scene.Camera;
-
-        protected virtual Clock Clock { get => ClockController.Clock; set { } }
-
-        internal GLControl GLControl => GLControlForm.GLControl;
-
-        protected internal virtual GLControlForm GLControlForm => WorldController.GLControlForm;
-
         protected internal virtual Scene Scene { get => WorldController.Scene; set { WorldController.Scene = value; } }
-
-        private ToolTip ToolTip => WorldController.WorldForm.ToolTip;
-
-        protected internal virtual WorldForm WorldForm { get => WorldController.WorldForm; set { } }
+        protected virtual SceneController SceneController => WorldController.SceneController;
+        protected SceneEdit SceneEdit => SceneForm.SceneEdit;
+        protected virtual SceneForm SceneForm => SceneController.SceneForm;
+        protected virtual ShaderController SceneShaderController => WorldController.SceneShaderController;
+        protected ShaderForm SceneShaderForm => SceneShaderController.ShaderForm;
+        protected ToolTip ToolTip => WorldForm.ToolTip;
+        protected virtual TraceController TraceController => WorldController.TraceController;
+        protected virtual TraceForm TraceForm => TraceController.TraceForm;
+        protected virtual ShaderController TraceShaderController => WorldController.TraceShaderController;
+        protected ShaderForm TraceShaderForm => TraceShaderController.ShaderForm;
+        protected virtual WorldController WorldController { get; }
+        protected internal virtual WorldForm WorldForm => WorldController.WorldForm;
 
         protected internal virtual void Connect(bool connect)
         {
@@ -53,8 +53,6 @@
 
             }
         }
-
-        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         protected virtual void Localize() { }
 
@@ -84,8 +82,6 @@
             }
         }
 
-        protected virtual void UpdateProperties(params string[] propertyNames) { }
-
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
             var infos = info.Split('|');
@@ -113,6 +109,10 @@
             }
             return infos[0];
         }
+
+        protected virtual void UpdateProperties(params string[] propertyNames) { }
+
+        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
     }
 
     partial class LocalizationController : IDisposable

@@ -22,27 +22,20 @@
 
     internal partial class ShaderController : LocalizationController
     {
-        internal readonly ShaderForm ShaderForm;
         private FastColoredTextBox ActiveTextBox;
         private ShaderRegion _ShaderRegion;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
         private bool Updating;
-        private readonly GLPageController
-            PrimaryController,
-            SecondaryController;
 
-        internal ShaderController(WorldController worldController)
-            : base(worldController)
+        internal ShaderController(WorldController worldController, ShaderRegion shaderRegion) : base(worldController)
         {
-            ShaderForm = new ShaderForm();
-            PrimaryController = new GLPageController(PrimaryTextBox);
-            SecondaryController = new GLPageController(SecondaryTextBox);
+            ShaderRegion = shaderRegion;
             ShowRuler = false;
             ShowLineNumbers = false;
             ShowDocumentMap = false;
             SplitType = SplitType.None;
-            var items = Editor.tbShader.DropDownItems;
+            var items = ShaderEdit.tbShader.DropDownItems;
             items[0].Tag = ShaderType.VertexShader;
             items[1].Tag = ShaderType.TessControlShader;
             items[2].Tag = ShaderType.TessEvaluationShader;
@@ -51,14 +44,20 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
-        private ShaderEdit Editor => ShaderForm.ShaderEdit;
+        private GLPageController _PrimaryController, _SecondaryController;
+        private ShaderForm _ShaderForm;
 
-        private SplitContainer PrimarySplitter => Editor.BottomSplit;
-        private FastColoredTextBox PrimaryTextBox => Editor.PrimaryTextBox;
+        private GLPageController PrimaryController => _PrimaryController ?? (_PrimaryController = new GLPageController(PrimaryTextBox));
+        private GLPageController SecondaryController => _SecondaryController ?? (_SecondaryController= new GLPageController(SecondaryTextBox));
+
+        private SplitContainer PrimarySplitter => ShaderEdit.BottomSplit;
+        private FastColoredTextBox PrimaryTextBox => ShaderEdit.PrimaryTextBox;
         private TraceSelection Selection => WorldController.Selection;
-        private SplitContainer SecondarySplitter => Editor.TopSplit;
-        private FastColoredTextBox SecondaryTextBox => Editor.SecondaryTextBox;
-        private SplitContainer Splitter => Editor.EditSplit;
+        private SplitContainer SecondarySplitter => ShaderEdit.TopSplit;
+        private FastColoredTextBox SecondaryTextBox => ShaderEdit.SecondaryTextBox;
+        private ShaderEdit ShaderEdit => ShaderForm.ShaderEdit;
+        internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm());
+        private SplitContainer Splitter => ShaderEdit.EditSplit;
 
         internal ShaderRegion ShaderRegion
         {
@@ -114,8 +113,8 @@
                 if (ShaderType != value)
                 {
                     _ShaderType = value;
-                    Editor.tbShader.Text =
-                        Editor.tbShader.DropDownItems
+                    ShaderEdit.tbShader.Text =
+                        ShaderEdit.tbShader.DropDownItems
                         .Cast<ToolStripMenuItem>()
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
@@ -141,18 +140,18 @@
             {
                 PrimaryTextBox.ShowLineNumbers = value;
                 SecondaryTextBox.ShowLineNumbers = value;
-                Editor.Refresh();
+                ShaderEdit.Refresh();
             }
         }
 
         private bool ShowRuler
         {
-            get => Editor.PrimaryRuler.Visible || Editor.SecondaryRuler.Visible;
+            get => ShaderEdit.PrimaryRuler.Visible || ShaderEdit.SecondaryRuler.Visible;
             set
             {
-                Editor.PrimaryRuler.Visible = value;
-                Editor.SecondaryRuler.Visible = value;
-                Editor.Refresh();
+                ShaderEdit.PrimaryRuler.Visible = value;
+                ShaderEdit.SecondaryRuler.Visible = value;
+                ShaderEdit.Refresh();
             }
         }
 
@@ -211,7 +210,7 @@
         }
 
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) =>
-            WorldForm.ToolTip.SetToolTip(Editor.lblBuiltInHelp, Editor.lblBuiltInHelp.ActiveLink?.Description);
+            WorldForm.ToolTip.SetToolTip(ShaderEdit.lblBuiltInHelp, ShaderEdit.lblBuiltInHelp.ActiveLink?.Description);
 
         private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
             e.Link.LinkData.ToString().Launch();
@@ -262,9 +261,9 @@
 
         private void Options_DropDownOpening(object sender, System.EventArgs e)
         {
-            Editor.tbRuler.Checked = ShowRuler;
-            Editor.tbLineNumbers.Checked = ShowLineNumbers;
-            Editor.tbDocumentMap.Checked = ShowDocumentMap;
+            ShaderEdit.tbRuler.Checked = ShowRuler;
+            ShaderEdit.tbLineNumbers.Checked = ShowLineNumbers;
+            ShaderEdit.tbDocumentMap.Checked = ShowDocumentMap;
         }
 
         private void Paste_Click(object sender, EventArgs e) => ActiveTextBox?.Paste();
@@ -285,7 +284,7 @@
 
         private void Shader_DropDownOpening(object sender, EventArgs e)
         {
-            foreach (ToolStripMenuItem item in Editor.tbShader.DropDownItems)
+            foreach (ToolStripMenuItem item in ShaderEdit.tbShader.DropDownItems)
             {
                 var shaderType = (ShaderType)item.Tag;
                 item.CheckState =
@@ -312,7 +311,7 @@
         private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
             UpdateProperties(e.PropertyName);
 
-        private void WorldController_Pulse(object sender, EventArgs e) => Editor.tbPaste.Enabled = CanPaste();
+        private void WorldController_Pulse(object sender, EventArgs e) => ShaderEdit.tbPaste.Enabled = CanPaste();
 
         private void WorldController_SelectionChanged(object sender, EventArgs e) =>
             OnSelectionChanged();
@@ -333,17 +332,17 @@
         {
             if (connect)
             {
-                Editor.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
-                Editor.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
-                Editor.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
-                Editor.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
+                ShaderEdit.lblBuiltInHelp.ActiveLinkChanged += BuiltInHelp_ActiveLinkChanged;
+                ShaderEdit.lblBuiltInHelp.LinkClicked += BuiltInHelp_LinkClicked;
+                ShaderEdit.lblBuiltInHelp.LookupParameterValue += BuiltInHelp_LookupParameterValue;
+                ShaderEdit.lblBuiltInHelp.Parent.Resize += BuiltInHelpParent_Resize;
             }
             else
             {
-                Editor.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
-                Editor.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
-                Editor.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
-                Editor.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
+                ShaderEdit.lblBuiltInHelp.ActiveLinkChanged -= BuiltInHelp_ActiveLinkChanged;
+                ShaderEdit.lblBuiltInHelp.LinkClicked -= BuiltInHelp_LinkClicked;
+                ShaderEdit.lblBuiltInHelp.LookupParameterValue -= BuiltInHelp_LookupParameterValue;
+                ShaderEdit.lblBuiltInHelp.Parent.Resize -= BuiltInHelpParent_Resize;
             }
         }
 
@@ -351,21 +350,21 @@
         {
             if (connect)
             {
-                Editor.miUndo.Click += Undo_Click;
-                Editor.miRedo.Click += Redo_Click;
-                Editor.miCut.Click += Cut_Click;
-                Editor.miCopy.Click += Copy_Click;
-                Editor.miPaste.Click += Paste_Click;
-                Editor.miDelete.Click += Delete_Click;
+                ShaderEdit.miUndo.Click += Undo_Click;
+                ShaderEdit.miRedo.Click += Redo_Click;
+                ShaderEdit.miCut.Click += Cut_Click;
+                ShaderEdit.miCopy.Click += Copy_Click;
+                ShaderEdit.miPaste.Click += Paste_Click;
+                ShaderEdit.miDelete.Click += Delete_Click;
             }
             else
             {
-                Editor.miUndo.Click -= Undo_Click;
-                Editor.miRedo.Click -= Redo_Click;
-                Editor.miCut.Click -= Cut_Click;
-                Editor.miCopy.Click -= Copy_Click;
-                Editor.miPaste.Click -= Paste_Click;
-                Editor.miDelete.Click -= Delete_Click;
+                ShaderEdit.miUndo.Click -= Undo_Click;
+                ShaderEdit.miRedo.Click -= Redo_Click;
+                ShaderEdit.miCut.Click -= Cut_Click;
+                ShaderEdit.miCopy.Click -= Copy_Click;
+                ShaderEdit.miPaste.Click -= Paste_Click;
+                ShaderEdit.miDelete.Click -= Delete_Click;
             }
         }
 
@@ -395,45 +394,45 @@
         {
             if (connect)
             {
-                Editor.tbDocumentMap.Click += DocumentMap_Click;
-                Editor.tbExportHTML.Click += ExportHTML_Click;
-                Editor.tbExportRTF.Click += ExportRTF_Click;
-                Editor.tbHelp.Click += Help_Click;
-                Editor.tbLineNumbers.Click += LineNumbers_Click;
-                Editor.tbOptions.DropDownOpening += Options_DropDownOpening;
-                Editor.tbPrint.Click += Print_Click;
-                Editor.tbUndo.Click += Undo_Click;
-                Editor.tbRedo.Click += Redo_Click;
-                Editor.tbCut.Click += Cut_Click;
-                Editor.tbCopy.Click += Copy_Click;
-                Editor.tbPaste.Click += Paste_Click;
-                Editor.tbDelete.Click += Delete_Click;
-                Editor.tbRuler.Click += Ruler_Click;
-                Editor.tbSplit.Click += Split_Click;
-                Editor.tbShader.ButtonClick += Shader_ButtonClick;
-                Editor.tbShader.DropDownOpening += Shader_DropDownOpening;
-                Editor.tbShader.DropDownItemClicked += Shader_DropDownItemClicked;
+                ShaderEdit.tbDocumentMap.Click += DocumentMap_Click;
+                ShaderEdit.tbExportHTML.Click += ExportHTML_Click;
+                ShaderEdit.tbExportRTF.Click += ExportRTF_Click;
+                ShaderEdit.tbHelp.Click += Help_Click;
+                ShaderEdit.tbLineNumbers.Click += LineNumbers_Click;
+                ShaderEdit.tbOptions.DropDownOpening += Options_DropDownOpening;
+                ShaderEdit.tbPrint.Click += Print_Click;
+                ShaderEdit.tbUndo.Click += Undo_Click;
+                ShaderEdit.tbRedo.Click += Redo_Click;
+                ShaderEdit.tbCut.Click += Cut_Click;
+                ShaderEdit.tbCopy.Click += Copy_Click;
+                ShaderEdit.tbPaste.Click += Paste_Click;
+                ShaderEdit.tbDelete.Click += Delete_Click;
+                ShaderEdit.tbRuler.Click += Ruler_Click;
+                ShaderEdit.tbSplit.Click += Split_Click;
+                ShaderEdit.tbShader.ButtonClick += Shader_ButtonClick;
+                ShaderEdit.tbShader.DropDownOpening += Shader_DropDownOpening;
+                ShaderEdit.tbShader.DropDownItemClicked += Shader_DropDownItemClicked;
             }
             else
             {
-                Editor.tbDocumentMap.Click -= DocumentMap_Click;
-                Editor.tbExportHTML.Click -= ExportHTML_Click;
-                Editor.tbExportRTF.Click -= ExportRTF_Click;
-                Editor.tbHelp.Click -= Help_Click;
-                Editor.tbLineNumbers.Click -= LineNumbers_Click;
-                Editor.tbOptions.DropDownOpening -= Options_DropDownOpening;
-                Editor.tbPrint.Click -= Print_Click;
-                Editor.tbUndo.Click -= Undo_Click;
-                Editor.tbRedo.Click -= Redo_Click;
-                Editor.tbCut.Click -= Cut_Click;
-                Editor.tbCopy.Click -= Copy_Click;
-                Editor.tbPaste.Click -= Paste_Click;
-                Editor.tbDelete.Click -= Delete_Click;
-                Editor.tbRuler.Click -= Ruler_Click;
-                Editor.tbSplit.Click -= Split_Click;
-                Editor.tbShader.ButtonClick -= Shader_ButtonClick;
-                Editor.tbShader.DropDownOpening -= Shader_DropDownOpening;
-                Editor.tbShader.DropDownItemClicked -= Shader_DropDownItemClicked;
+                ShaderEdit.tbDocumentMap.Click -= DocumentMap_Click;
+                ShaderEdit.tbExportHTML.Click -= ExportHTML_Click;
+                ShaderEdit.tbExportRTF.Click -= ExportRTF_Click;
+                ShaderEdit.tbHelp.Click -= Help_Click;
+                ShaderEdit.tbLineNumbers.Click -= LineNumbers_Click;
+                ShaderEdit.tbOptions.DropDownOpening -= Options_DropDownOpening;
+                ShaderEdit.tbPrint.Click -= Print_Click;
+                ShaderEdit.tbUndo.Click -= Undo_Click;
+                ShaderEdit.tbRedo.Click -= Redo_Click;
+                ShaderEdit.tbCut.Click -= Cut_Click;
+                ShaderEdit.tbCopy.Click -= Copy_Click;
+                ShaderEdit.tbPaste.Click -= Paste_Click;
+                ShaderEdit.tbDelete.Click -= Delete_Click;
+                ShaderEdit.tbRuler.Click -= Ruler_Click;
+                ShaderEdit.tbSplit.Click -= Split_Click;
+                ShaderEdit.tbShader.ButtonClick -= Shader_ButtonClick;
+                ShaderEdit.tbShader.DropDownOpening -= Shader_DropDownOpening;
+                ShaderEdit.tbShader.DropDownItemClicked -= Shader_DropDownItemClicked;
             }
         }
 
@@ -480,7 +479,7 @@
         private void LoadBuiltInHelp()
         {
             LoadShaderCode();
-            Editor.lblBuiltInHelp.Text = GetBuiltInHelp();
+            ShaderEdit.lblBuiltInHelp.Text = GetBuiltInHelp();
         }
 
         private void LoadShaderCode()
@@ -506,8 +505,8 @@
 
         private void OnSelectionChanged() => LoadShaderCode();
 
-        private void ResizeBuiltInHelp() => Editor.lblBuiltInHelp.MaximumSize = new Size(
-            Editor.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
+        private void ResizeBuiltInHelp() => ShaderEdit.lblBuiltInHelp.MaximumSize = new Size(
+            ShaderEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
         private void Run(ICommand command) => CommandProcessor.Run(command);
 
@@ -516,7 +515,7 @@
             if (Updating)
                 return;
             Updating = true;
-            var text = Editor.PrimaryTextBox.Text;
+            var text = ShaderEdit.PrimaryTextBox.Text;
             switch (ShaderRegion)
             {
                 case ShaderRegion.Scene:
@@ -553,7 +552,7 @@
             Updating = true;
             foreach (var propertyName in propertyNames)
                 if (propertyName == ShaderName)
-                    Editor.PrimaryTextBox.Text = GetScript();
+                    ShaderEdit.PrimaryTextBox.Text = GetScript();
             Updating = false;
         }
 
@@ -563,15 +562,15 @@
                 ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
                 new Control[]
                 {
-                    Editor.Toolbar,
-                    Editor.PrimaryTextBox,
-                    Editor.SecondaryTextBox
+                    ShaderEdit.Toolbar,
+                    ShaderEdit.PrimaryTextBox,
+                    ShaderEdit.SecondaryTextBox
                 });
-            Editor.tbExport.Enabled = Editor.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
-            Editor.tbUndo.Enabled = Editor.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
-            Editor.tbRedo.Enabled = Editor.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
-            Editor.tbCut.Enabled = Editor.tbCopy.Enabled = Editor.tbDelete.Enabled =
-            Editor.miCut.Enabled = Editor.miCopy.Enabled = Editor.miDelete.Enabled =
+            ShaderEdit.tbExport.Enabled = ShaderEdit.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
+            ShaderEdit.tbUndo.Enabled = ShaderEdit.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
+            ShaderEdit.tbRedo.Enabled = ShaderEdit.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
+            ShaderEdit.tbCut.Enabled = ShaderEdit.tbCopy.Enabled = ShaderEdit.tbDelete.Enabled =
+            ShaderEdit.miCut.Enabled = ShaderEdit.miCopy.Enabled = ShaderEdit.miDelete.Enabled =
                 ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
         }
     }

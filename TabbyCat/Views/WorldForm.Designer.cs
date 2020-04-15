@@ -83,6 +83,14 @@
             this.EditInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewGpuStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewGpuCode = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
@@ -295,6 +303,7 @@
             this.TimeAccelerate,
             this.FileMenu,
             this.EditMenu,
+            this.ViewMenu,
             this.CameraMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -575,6 +584,61 @@
             this.EditOptions.Size = new System.Drawing.Size(176, 22);
             this.EditOptions.Text = "Options...";
             // 
+            // ViewMenu
+            // 
+            this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewSceneProperties,
+            this.ViewTraceProperties,
+            this.ViewGpuStatus,
+            this.toolStripMenuItem3,
+            this.ViewSceneCode,
+            this.ViewTraceCode,
+            this.ViewGpuCode});
+            this.ViewMenu.Name = "ViewMenu";
+            this.ViewMenu.Size = new System.Drawing.Size(47, 21);
+            this.ViewMenu.Text = "View";
+            // 
+            // ViewSceneProperties
+            // 
+            this.ViewSceneProperties.Name = "ViewSceneProperties";
+            this.ViewSceneProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneProperties.Text = "Scene properties";
+            // 
+            // ViewTraceProperties
+            // 
+            this.ViewTraceProperties.Name = "ViewTraceProperties";
+            this.ViewTraceProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceProperties.Text = "Trace properties";
+            // 
+            // ViewGpuStatus
+            // 
+            this.ViewGpuStatus.Name = "ViewGpuStatus";
+            this.ViewGpuStatus.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuStatus.Text = "GPU status";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ViewSceneCode
+            // 
+            this.ViewSceneCode.Name = "ViewSceneCode";
+            this.ViewSceneCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneCode.Text = "Scene code";
+            // 
+            // ViewTraceCode
+            // 
+            this.ViewTraceCode.Name = "ViewTraceCode";
+            this.ViewTraceCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceCode.Text = "Trace code";
+            // 
+            // ViewGpuCode
+            // 
+            this.ViewGpuCode.Name = "ViewGpuCode";
+            this.ViewGpuCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuCode.Text = "GPU code";
+            // 
             // CameraMenu
             // 
             this.CameraMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -596,7 +660,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(180, 22);
+            this.CameraMove.Size = new System.Drawing.Size(110, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -645,7 +709,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -687,12 +751,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Size = new System.Drawing.Size(110, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
@@ -833,5 +897,13 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
         internal System.Windows.Forms.ToolStripMenuItem HelpAbout;
         internal WeifenLuo.WinFormsUI.Docking.DockPanel DockPanel;
+        internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
+        internal System.Windows.Forms.ToolStripMenuItem ViewSceneProperties;
+        internal System.Windows.Forms.ToolStripMenuItem ViewTraceProperties;
+        internal System.Windows.Forms.ToolStripMenuItem ViewGpuStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        internal System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewGpuCode;
     }
 }

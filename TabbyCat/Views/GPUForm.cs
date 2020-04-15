@@ -2,9 +2,9 @@
 {
     using WeifenLuo.WinFormsUI.Docking;
 
-    public partial class GPUForm : DockContent
+    public partial class GpuForm : DockContent
     {
-        public GPUForm()
+        public GpuForm()
         {
             InitializeComponent();
         }

@@ -1622,6 +1622,69 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;View|Display of edit controls.
+        /// </summary>
+        public static string Menu_View {
+            get {
+                return ResourceManager.GetString("Menu_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU code|Show or hide the GPU code editor.
+        /// </summary>
+        public static string Menu_View_Code_GPU {
+            get {
+                return ResourceManager.GetString("Menu_View_Code_GPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene code|Show or hide the scene code editor.
+        /// </summary>
+        public static string Menu_View_Code_Scene {
+            get {
+                return ResourceManager.GetString("Menu_View_Code_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
+        /// </summary>
+        public static string Menu_View_Code_Trace {
+            get {
+                return ResourceManager.GetString("Menu_View_Code_Trace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU status|Show or hide the GPU status.
+        /// </summary>
+        public static string Menu_View_Properties_GPU {
+            get {
+                return ResourceManager.GetString("Menu_View_Properties_GPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene properties|Show or hide the scene properties editor.
+        /// </summary>
+        public static string Menu_View_Properties_Scene {
+            get {
+                return ResourceManager.GetString("Menu_View_Properties_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
+        /// </summary>
+        public static string Menu_View_Properties_Trace {
+            get {
+                return ResourceManager.GetString("Menu_View_Properties_Trace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Message_FileModified_Caption {

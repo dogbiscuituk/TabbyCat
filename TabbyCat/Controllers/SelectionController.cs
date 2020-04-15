@@ -59,8 +59,6 @@
 
         private ToolStrip Toolbar => TraceController.SelectionToolbar;
 
-        private ToolTip ToolTip => TraceController.ToolTip;
-
         internal event EventHandler SelectionChanged;
 
         protected internal override void Connect(bool connect)

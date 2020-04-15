@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class GPUForm
+    partial class GpuForm
     {
         /// <summary>
         /// Required designer variable.

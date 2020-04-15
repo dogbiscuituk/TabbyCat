@@ -19,63 +19,49 @@
 
     internal class WorldController : LocalizationController
     {
-        protected internal override GLControlForm GLControlForm => GLController.GLControlForm;
-
-        protected override CameraController CameraController { get; }
-        protected override ClockController ClockController { get; }
-        internal override CommandProcessor CommandProcessor { get; }
-        protected override GLController GLController { get; }
-        protected override JsonController JsonController { get; }
-        protected override RenderController RenderController { get; }
-        protected override SceneController SceneController { get; }
-        protected override ShaderController SceneShaderController { get; }
-        protected override ShaderController ShaderController { get; }
-        protected override TraceController TraceController { get; }
-        protected override ShaderController TraceShaderController { get; }
-
-        protected internal override WorldForm WorldForm { get; set; }
-
         internal WorldController() : base(null)
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
-
-            RenderController = new RenderController(this);
-
-            CameraController = new CameraController(this);
-            ClockController = new ClockController(this);
-            CommandProcessor = new CommandProcessor(this);
-            GLController = new GLController(this);
-            JsonController = new JsonController(this);
-            SceneController = new SceneController(this);
-            SceneShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.Scene };
-            ShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.All };
-            TraceController = new TraceController(this);
-            TraceShaderController = new ShaderController(this) { ShaderRegion = ShaderRegion.Trace };
-
-            SceneShaderController.ShaderForm.Show(WorldForm.DockPanel, DockState.DockLeft);
-            SceneController.SceneForm.Show(WorldForm.DockPanel, DockState.DockLeft);
-            TraceShaderController.ShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            TraceController.TraceForm.Show(WorldForm.DockPanel, DockState.DockRight);
-            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
-
+            DockControls();
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
         }
 
+        private readonly List<string> ChangedPropertyNames = new List<string>();
+        private string LastSpeed, LastTime, LastFPS;
         internal TraceSelection Selection = new TraceSelection();
 
-        private readonly List<string> ChangedPropertyNames = new List<string>();
-        private static string GLSLUrl => Settings.Default.GLSLUrl;
-        private string LastSpeed, LastTime, LastFPS;
+        private CameraController _CameraController;
+        private ClockController _ClockController;
+        private CommandProcessor _CommandProcessor;
+        private GpuController _GpuController;
+        private GLController _GLController;
+        private JsonController _JsonController;
+        private ShaderController _GpuShaderController, _SceneShaderController, _TraceShaderController;
+        private RenderController _RenderController;
+        private SceneController _SceneController;
+        private TraceController _TraceController;
         private int UpdateCount;
 
+        protected override CameraController CameraController => _CameraController ?? (_CameraController = new CameraController(this));
+        protected override ClockController ClockController => _ClockController ?? (_ClockController = new ClockController(this));
+        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
+        protected override GLController GLController => _GLController ?? (_GLController = new GLController(this));
+        protected override GpuController GpuController => _GpuController ?? (_GpuController = new GpuController(this));
+        protected override ShaderController GpuShaderController => _GpuShaderController ?? (_GpuShaderController = new ShaderController(this, ShaderRegion.All));
+        protected override JsonController JsonController => _JsonController ?? (_JsonController = new JsonController(this));
+        protected override RenderController RenderController => _RenderController ?? (_RenderController = new RenderController(this));
         protected internal override Scene Scene { get; set; }
+        protected override SceneController SceneController => _SceneController ?? (_SceneController = new SceneController(this));
+        protected override ShaderController SceneShaderController => _SceneShaderController ?? (_SceneShaderController = new ShaderController(this, ShaderRegion.Scene));
+        protected override TraceController TraceController => _TraceController ?? (_TraceController= new TraceController(this));
+        protected override ShaderController TraceShaderController => _TraceShaderController ?? (_TraceShaderController = new ShaderController(this, ShaderRegion.Trace));
+        protected internal override WorldForm WorldForm { get; }
 
         internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
+        private static string GLSLUrl => Settings.Default.GLSLUrl;
         internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
-        internal ToolTip ToolTip => WorldForm.ToolTip;
-
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler Pulse;
@@ -136,6 +122,13 @@
             Localize(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
             Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
             Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
+            Localize(Resources.Menu_View, WorldForm.ViewMenu);
+            Localize(Resources.Menu_View_Properties_Scene, WorldForm.ViewSceneProperties);
+            Localize(Resources.Menu_View_Properties_Trace, WorldForm.ViewTraceProperties);
+            Localize(Resources.Menu_View_Properties_GPU, WorldForm.ViewGpuStatus);
+            Localize(Resources.Menu_View_Code_Scene, WorldForm.ViewSceneCode);
+            Localize(Resources.Menu_View_Code_Trace, WorldForm.ViewTraceCode);
+            Localize(Resources.Menu_View_Code_GPU, WorldForm.ViewGpuCode);
             Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
             Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
             Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
@@ -283,6 +276,7 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
+        private void ViewMenu_DropDownOpening(object sender, EventArgs e) => UpdateViewMenu();
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -418,6 +412,7 @@
                 WorldForm.EditSelectAll.Click += EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
                 WorldForm.EditOptions.Click += EditOptions_Click;
+                WorldForm.ViewMenu.DropDownOpening += ViewMenu_DropDownOpening;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
                 WorldForm.PopupMenu.Opening += PopupMenu_Opening;
@@ -439,6 +434,7 @@
                 WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
                 WorldForm.EditOptions.Click -= EditOptions_Click;
+                WorldForm.ViewMenu.DropDownOpening -= ViewMenu_DropDownOpening;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
                 WorldForm.PopupMenu.Opening -= PopupMenu_Opening;
@@ -477,13 +473,13 @@
             }
         }
 
+        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection.Traces);
+
         private void CutToClipboard()
         {
             CopyToClipboard();
             DeleteSelection();
         }
-
-        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection.Traces);
 
         private void DeleteSelection()
         {
@@ -493,6 +489,17 @@
             foreach (var index in indices)
                 CommandProcessor.DeleteTrace(index);
             Selection.Clear();
+        }
+
+        private void DockControls()
+        {
+            SceneShaderForm.Show(WorldForm.DockPanel, DockState.DockLeft);
+            SceneForm.Show(WorldForm.DockPanel, DockState.DockLeft);
+            TraceShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
+            TraceForm.Show(WorldForm.DockPanel, DockState.DockRight);
+            GpuShaderForm.Show(WorldForm.DockPanel, DockState.DockRight);
+            GpuForm.Show(WorldForm.DockPanel, DockState.DockRight);
+            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
         }
 
         private void EditOptions()
@@ -699,6 +706,14 @@
 
         private void UpdateToolbar() =>
             WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppController.CanPaste;
+
+        private void UpdateViewMenu()
+        {
+            WorldForm.ViewSceneProperties.Checked = SceneForm.Visible;
+            WorldForm.ViewTraceProperties.Checked = TraceForm.Visible;
+            WorldForm.ViewSceneCode.Checked = SceneShaderForm.Visible;
+            WorldForm.ViewTraceCode.Checked = TraceShaderForm.Visible;
+        }
 
         private void UpdateVirtualTime()
         {
