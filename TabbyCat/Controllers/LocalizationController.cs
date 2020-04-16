@@ -19,7 +19,7 @@
         protected virtual Clock Clock => ClockController.Clock;
         protected virtual ClockController ClockController => WorldController.ClockController;
         internal virtual CommandProcessor CommandProcessor => WorldController.CommandProcessor;
-        protected internal GLControl GLControl => GLControlForm.GLControl;
+        protected internal GLControl GLControl => (GLControl)GLControlForm.Controls[0];
         protected virtual GLControlForm GLControlForm => GLController.GLControlForm;
         protected virtual GLController GLController => WorldController.GLController;
         protected virtual GpuController GpuController => WorldController.GpuController;

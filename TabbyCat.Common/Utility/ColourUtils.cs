@@ -10,7 +10,7 @@
     using System.Reflection;
     using TabbyCat.Common.Types;
 
-    public static class Colours
+    public static class ColourUtils
     {
         private static readonly Dictionary<string, Func<Color, float>> ColourOrders =
             new Dictionary<string, Func<Color, float>>
@@ -25,6 +25,21 @@
             };
 
         public static Color Contrast(this Color colour) => colour.IsBright() ? Color.Black : Color.White;
+
+        public static Color GetColour(this GPUStatus status)
+        {
+            switch (status)
+            {
+                case GPUStatus.OK:
+                    return Color.Green;
+                case GPUStatus.Warning:
+                    return Color.Orange;
+                case GPUStatus.Error:
+                    return Color.Red;
+                default:
+                    return Color.Black;
+            }
+        }
 
         public static IEnumerable<Color> GetColours() =>
                     Enum.GetValues(typeof(KnownColor))

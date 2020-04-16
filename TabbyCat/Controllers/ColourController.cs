@@ -54,7 +54,7 @@
         }
 
         private static readonly string[] NonSystemColourNames =
-            Colours.GetNonSystemColourNames(Properties.Settings.Default.KnownColorSortOrder).ToArray();
+            ColourUtils.GetNonSystemColourNames(Properties.Settings.Default.KnownColorSortOrder).ToArray();
 
         private void Control_DrawItem(object sender, DrawItemEventArgs e)
         {

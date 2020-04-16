@@ -82,11 +82,11 @@
 
         internal void Clear() => Init();
 
-        internal Matrix4 GetCameraView() => Maths.CreateCameraView(Camera);
+        internal Matrix4 GetCameraView() => MathUtils.CreateCameraView(Camera);
 
         internal GraphicsMode GetGraphicsMode() => WorldController?.GraphicsMode;
 
-        internal Matrix4 GetProjection() => Maths.CreateProjection(Projection, GLControl.ClientSize);
+        internal Matrix4 GetProjection() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 

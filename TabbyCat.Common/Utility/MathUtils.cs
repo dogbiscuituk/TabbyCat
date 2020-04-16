@@ -4,7 +4,7 @@
     using System.Drawing;
     using TabbyCat.Common.Types;
 
-    public static class Maths
+    public static class MathUtils
     {
         public static Matrix4 CreateCameraView(Camera camera) =>
             camera != null ? CreateCameraView(camera.Position, camera.Focus) : Matrix4.Identity;

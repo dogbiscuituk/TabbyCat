@@ -50,7 +50,7 @@
             ? $"Trace #{Index + 1}"
             : "New trace";
 
-        internal Matrix4 GetTransform() => Maths.CreateTransformation(Location, Orientation, Scale);
+        internal Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
 
         internal void SetLocation(Vector3 location) => Location = location;
 

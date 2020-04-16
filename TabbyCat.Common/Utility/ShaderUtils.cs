@@ -3,7 +3,7 @@
     using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
 
-    public static class Shaders
+    public static class ShaderUtils
     {
         public static IEnumerable<ShaderType> All { get; } = new[]
         {

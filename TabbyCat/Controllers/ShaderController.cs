@@ -220,17 +220,13 @@
             SecondaryController?.Dispose();
         }
 
-        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) =>
-            WorldForm.ToolTip.SetToolTip(ShaderEdit.lblBuiltInHelp, ShaderEdit.lblBuiltInHelp.ActiveLink?.Description);
+        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(ShaderEdit.lblBuiltInHelp, ShaderEdit.lblBuiltInHelp.ActiveLink?.Description);
 
-        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) =>
-            e.Link.LinkData.ToString().Launch();
+        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => e.Link.LinkData.ToString().Launch();
 
-        private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) =>
-            e.Value = LookupParameterValue(e.Name);
+        private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) => e.Value = LookupParameterValue(e.Name);
 
-        private void BuiltInHelpParent_Resize(object sender, EventArgs e) =>
-            ResizeBuiltInHelp();
+        private void BuiltInHelpParent_Resize(object sender, EventArgs e) => ResizeBuiltInHelp();
 
         private void Copy_Click(object sender, EventArgs e) => ActiveTextBox?.Copy();
 
@@ -238,8 +234,7 @@
 
         private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.ClearSelected();
 
-        private void DocumentMap_Click(object sender, System.EventArgs e) =>
-            ShowDocumentMap = !ShowDocumentMap;
+        private void DocumentMap_Click(object sender, System.EventArgs e) => ShowDocumentMap = !ShowDocumentMap;
 
         private void ExportHTML_Click(object sender, System.EventArgs e)
         {
@@ -290,8 +285,7 @@
 
         private void Help_Click(object sender, System.EventArgs e) { }
 
-        private void LineNumbers_Click(object sender, System.EventArgs e) =>
-            ShowLineNumbers = !ShowLineNumbers;
+        private void LineNumbers_Click(object sender, System.EventArgs e) => ShowLineNumbers = !ShowLineNumbers;
 
         private void Options_DropDownOpening(object sender, System.EventArgs e)
         {
@@ -302,8 +296,7 @@
 
         private void Paste_Click(object sender, EventArgs e) => ActiveTextBox?.Paste();
 
-        private void Print_Click(object sender, System.EventArgs e) =>
-            PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
+        private void Print_Click(object sender, System.EventArgs e) => PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
         private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) => LoadShaderCode();
 
@@ -313,8 +306,7 @@
 
         private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
-        private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) =>
-            ShaderType = (ShaderType)e.ClickedItem.Tag;
+        private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) => ShaderType = (ShaderType)e.ClickedItem.Tag;
 
         private void Shader_DropDownOpening(object sender, EventArgs e)
         {
@@ -342,13 +334,11 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
 
         private void WorldController_Pulse(object sender, EventArgs e) => ShaderEdit.tbPaste.Enabled = CanPaste();
 
-        private void WorldController_SelectionChanged(object sender, EventArgs e) =>
-            OnSelectionChanged();
+        private void WorldController_SelectionChanged(object sender, EventArgs e) => OnSelectionChanged();
 
         private static bool CanPaste()
         {

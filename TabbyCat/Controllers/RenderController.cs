@@ -6,6 +6,7 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Text;
@@ -93,6 +94,57 @@
         internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldController.PropertyChanged += WorldController_PropertyChanged;
+            }
+            else
+            {
+                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+            }
+        }
+
+        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case PropertyNames.Camera:
+                case PropertyNames.CameraPosition:
+                case PropertyNames.CameraFocus:
+                    InvalidateCameraView();
+                    break;
+                case PropertyNames.GLTargetVersion:
+                case PropertyNames.SceneVertex:
+                case PropertyNames.SceneTessControl:
+                case PropertyNames.SceneTessEvaluation:
+                case PropertyNames.SceneGeometry:
+                case PropertyNames.SceneFragment:
+                case PropertyNames.SceneCompute:
+                case PropertyNames.Traces:
+                case PropertyNames.TraceVertex:
+                case PropertyNames.TraceTessControl:
+                case PropertyNames.TraceTessEvaluation:
+                case PropertyNames.TraceGeometry:
+                case PropertyNames.TraceFragment:
+                case PropertyNames.TraceCompute:
+                    InvalidateProgram();
+                    break;
+                case PropertyNames.ProjectionType:
+                case PropertyNames.FieldOfView:
+                case PropertyNames.NearPlane:
+                case PropertyNames.FarPlane:
+                    InvalidateProjection();
+                    break;
+                case PropertyNames.Pattern:
+                case PropertyNames.StripCount:
+                    RenderController.InvalidateAllTraces();
+                    break;
+            }
+        }
 
         public string GetScript(ShaderType shaderType)
         {
@@ -250,7 +302,7 @@
             var script = GetScript(shaderType);
             if (string.IsNullOrWhiteSpace(script))
                 return 0;
-            Log($"Compiling {shaderType.ShaderName()}...");
+            Log($"Compiling {shaderType.ShaderName()};");
             var shaderID = GL.CreateShader(shaderType);
             GL.ShaderSource(shaderID, script);
             GL.CompileShader(shaderID);
@@ -367,7 +419,7 @@
                 Log("No Trace Shaders found to compile.");
             if (Scene.GPUStatus == GPUStatus.OK)
             {
-                Log("Linking program...");
+                Log("Linking program;");
                 BindAttributes();
                 GL.LinkProgram(ProgramID);
                 GL.ValidateProgram(ProgramID);

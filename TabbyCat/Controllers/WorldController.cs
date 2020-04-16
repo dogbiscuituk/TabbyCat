@@ -3,9 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Jmk.Common;
     using OpenTK;
@@ -174,67 +176,23 @@
 
         internal void OnPropertyChanged(string propertyName)
         {
-            GraphicsMode gm;
             switch (propertyName)
             {
                 case PropertyNames.Traces:
                     UpdateSelection();
-                    RenderController.InvalidateProgram();
                     break;
                 case PropertyNames.FPS:
                     ClockInit();
                     break;
-                case PropertyNames.Camera:
-                case PropertyNames.CameraPosition:
-                case PropertyNames.CameraFocus:
-                    RenderController.InvalidateCameraView();
-                    break;
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.SceneVertex:
-                case PropertyNames.SceneTessControl:
-                case PropertyNames.SceneTessEvaluation:
-                case PropertyNames.SceneGeometry:
-                case PropertyNames.SceneFragment:
-                case PropertyNames.SceneCompute:
-                case PropertyNames.TraceVertex:
-                case PropertyNames.TraceTessControl:
-                case PropertyNames.TraceTessEvaluation:
-                case PropertyNames.TraceGeometry:
-                case PropertyNames.TraceFragment:
-                case PropertyNames.TraceCompute:
-                    RenderController.InvalidateProgram();
-                    break;
-                case PropertyNames.ProjectionType:
-                case PropertyNames.FieldOfView:
-                case PropertyNames.NearPlane:
-                case PropertyNames.FarPlane:
-                    RenderController.InvalidateProjection();
-                    break;
                 case PropertyNames.Samples:
-                    gm = GraphicsMode;
-                    RecreateGLControl(new GraphicsMode(
-                        accum: gm.AccumulatorFormat,
-                        buffers: gm.Buffers,
-                        color: gm.ColorFormat,
-                        depth: gm.Depth,
-                        samples: Scene.Samples,
-                        stencil: gm.Stencil,
-                        stereo: gm.Stereo));
+                    RecreateGLControl("Samples", Scene.Samples);
                     break;
                 case PropertyNames.Stereo:
-                    gm = GraphicsMode;
-                    RecreateGLControl(new GraphicsMode(
-                        accum: gm.AccumulatorFormat,
-                        buffers: gm.Buffers,
-                        color: gm.ColorFormat,
-                        depth: gm.Depth,
-                        samples: gm.Samples,
-                        stencil: gm.Stencil,
-                        stereo: Scene.Stereo));
+                    RecreateGLControl("Stereo", Scene.Stereo);
                     break;
-                case PropertyNames.Pattern:
-                case PropertyNames.StripCount:
-                    RenderController.InvalidateAllTraces();
+                case PropertyNames.GPULog:
+                case PropertyNames.GPUStatus:
+                    UpdateGpuStatusLabel();
                     break;
             }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -328,6 +286,7 @@
             CameraController.Connect(connect);
             ClockController.Connect(connect);
             ConnectJsonController(connect);
+            RenderController.Connect(connect);
             TraceController.Connect(connect);
             SceneController.Connect(connect);
             if (connect)
@@ -533,7 +492,7 @@
             CommandProcessor.Clear();
             EndUpdate();
             ConnectControllers(true);
-            RecreateGLControl(Scene.GraphicsMode);
+            RecreateGLControl();
             SetDefaultCamera();
             UpdateAllProperties();
         }
@@ -635,9 +594,14 @@
             Selection.Set(traces);
         }
 
-        private void RecreateGLControl(GraphicsMode mode = null)
+        private void RecreateGLControl() => RecreateGLControl(GraphicsMode);
+
+        private void RecreateGLControl(string propertyName, object value) => RecreateGLControl(GraphicsMode.Change(propertyName, value));
+
+        private void RecreateGLControl(GraphicsMode mode)
         {
-            /*GLControl
+            var parent = GLControl.Parent;
+            GLControl
                 oldControl = GLControl,
                 newControl = mode == null ? new GLControl() : new GLControl(mode);
             newControl.BackColor = Scene.BackgroundColour;
@@ -648,15 +612,15 @@
             newControl.TabIndex = 1;
             newControl.VSync = Scene.VSync;
             BackColorChanged();
-            GLControlParent.Owner.SuspendLayout();
+            parent.SuspendLayout();
             ConnectGLControl(false);
-            GLControlParent.Remove(oldControl);
-            GLControlParent.Add(newControl);
+            parent.Controls.Remove(oldControl);
+            parent.Controls.Add(newControl);
             ConnectGLControl(true);
             RenderController.Refresh();
-            GLControlParent.Owner.ResumeLayout();
+            parent.ResumeLayout();
             oldControl.Dispose();
-            RefreshGraphicsMode();*/
+            RefreshGraphicsMode();
         }
 
         internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
@@ -703,6 +667,15 @@
             var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderController.FramesPerSecond);
             if (LastFPS != fps)
                 LastFPS = WorldForm.FPSlabel.Text = fps;
+        }
+
+        private void UpdateGpuStatusLabel()
+        {
+            var label = WorldForm.GpuStatusLabel;
+            label.ForeColor = Scene.GPUStatus.GetColour();
+            var text = Scene.GPULog;
+            label.Text = Regex.Replace(text, @"\s+", " ");
+            label.ToolTipText = text;
         }
 
         private void UpdateSelection()

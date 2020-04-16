@@ -71,7 +71,7 @@
         }
 
         private void CopyFrom(IShaderSet source) => Array.ForEach(
-            Shaders.All.ToArray(),
+            ShaderUtils.All.ToArray(),
             p => SetScript(p, source.GetScript(p)));
     }
 }
