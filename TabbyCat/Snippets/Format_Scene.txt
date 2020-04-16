@@ -1,6 +1,10 @@
 ﻿#version {0}
 
+// Begin Scene
+
 {1}
+
+// End Scene
 
 {2}void main()
 {{

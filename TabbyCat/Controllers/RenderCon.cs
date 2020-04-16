@@ -16,8 +16,7 @@
 
     internal class RenderCon : LocalizationCon, IShaderSet
     {
-        internal RenderCon(WorldCon worldCon)
-            : base(worldCon) => Stopwatch.Start();
+        internal RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
 
         internal float FramesPerSecond;
 

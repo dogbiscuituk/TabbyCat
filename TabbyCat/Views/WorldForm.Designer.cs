@@ -50,6 +50,7 @@
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tlabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FPSlabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.GpuStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu = new Jmk.Controls.JmkMenuStrip();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,15 +85,14 @@
             this.EditInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPane = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPaneSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPaneTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPaneGpuStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewGpuStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.WindowPaneSceneCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPaneTraceCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.WindowPaneGpuCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewGpuCode = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +114,6 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.GpuStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -306,6 +305,13 @@
             this.FPSlabel.Size = new System.Drawing.Size(64, 17);
             this.FPSlabel.Text = "FPS=0.0";
             // 
+            // GpuStatusLabel
+            // 
+            this.GpuStatusLabel.Name = "GpuStatusLabel";
+            this.GpuStatusLabel.Size = new System.Drawing.Size(801, 17);
+            this.GpuStatusLabel.Spring = true;
+            this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainMenu
             // 
             this.MainMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,7 +324,7 @@
             this.TimeAccelerate,
             this.FileMenu,
             this.EditMenu,
-            this.WindowMenu,
+            this.ViewMenu,
             this.CameraMenu,
             this.HelpMenu});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -599,68 +605,60 @@
             this.EditOptions.Size = new System.Drawing.Size(176, 22);
             this.EditOptions.Text = "Options...";
             // 
-            // WindowMenu
+            // ViewMenu
             // 
-            this.WindowMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.WindowPane});
-            this.WindowMenu.Name = "WindowMenu";
-            this.WindowMenu.Size = new System.Drawing.Size(67, 21);
-            this.WindowMenu.Text = "Window";
-            // 
-            // WindowPane
-            // 
-            this.WindowPane.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.WindowPaneSceneProperties,
-            this.WindowPaneTraceProperties,
-            this.WindowPaneGpuStatus,
+            this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewSceneProperties,
+            this.ViewTraceProperties,
+            this.ViewGpuStatus,
             this.toolStripMenuItem3,
-            this.WindowPaneSceneCode,
-            this.WindowPaneTraceCode,
-            this.WindowPaneGpuCode});
-            this.WindowPane.Name = "WindowPane";
-            this.WindowPane.Size = new System.Drawing.Size(104, 22);
-            this.WindowPane.Text = "Pane";
+            this.ViewSceneCode,
+            this.ViewTraceCode,
+            this.ViewGpuCode});
+            this.ViewMenu.Name = "ViewMenu";
+            this.ViewMenu.Size = new System.Drawing.Size(47, 21);
+            this.ViewMenu.Text = "View";
             // 
-            // WindowPaneSceneProperties
+            // ViewSceneProperties
             // 
-            this.WindowPaneSceneProperties.Name = "WindowPaneSceneProperties";
-            this.WindowPaneSceneProperties.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneSceneProperties.Text = "Scene properties";
+            this.ViewSceneProperties.Name = "ViewSceneProperties";
+            this.ViewSceneProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneProperties.Text = "Scene properties";
             // 
-            // WindowPaneTraceProperties
+            // ViewTraceProperties
             // 
-            this.WindowPaneTraceProperties.Name = "WindowPaneTraceProperties";
-            this.WindowPaneTraceProperties.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneTraceProperties.Text = "Trace properties";
+            this.ViewTraceProperties.Name = "ViewTraceProperties";
+            this.ViewTraceProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceProperties.Text = "Trace properties";
             // 
-            // WindowPaneGpuStatus
+            // ViewGpuStatus
             // 
-            this.WindowPaneGpuStatus.Name = "WindowPaneGpuStatus";
-            this.WindowPaneGpuStatus.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneGpuStatus.Text = "GPU status";
+            this.ViewGpuStatus.Name = "ViewGpuStatus";
+            this.ViewGpuStatus.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuStatus.Text = "GPU status";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
-            // WindowPaneSceneCode
+            // ViewSceneCode
             // 
-            this.WindowPaneSceneCode.Name = "WindowPaneSceneCode";
-            this.WindowPaneSceneCode.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneSceneCode.Text = "Scene code";
+            this.ViewSceneCode.Name = "ViewSceneCode";
+            this.ViewSceneCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneCode.Text = "Scene code";
             // 
-            // WindowPaneTraceCode
+            // ViewTraceCode
             // 
-            this.WindowPaneTraceCode.Name = "WindowPaneTraceCode";
-            this.WindowPaneTraceCode.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneTraceCode.Text = "Trace code";
+            this.ViewTraceCode.Name = "ViewTraceCode";
+            this.ViewTraceCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceCode.Text = "Trace code";
             // 
-            // WindowPaneGpuCode
+            // ViewGpuCode
             // 
-            this.WindowPaneGpuCode.Name = "WindowPaneGpuCode";
-            this.WindowPaneGpuCode.Size = new System.Drawing.Size(175, 22);
-            this.WindowPaneGpuCode.Text = "GPU code";
+            this.ViewGpuCode.Name = "ViewGpuCode";
+            this.ViewGpuCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewGpuCode.Text = "GPU code";
             // 
             // CameraMenu
             // 
@@ -809,13 +807,6 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
-            // GpuStatusLabel
-            // 
-            this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(770, 17);
-            this.GpuStatusLabel.Spring = true;
-            this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -919,15 +910,14 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
         internal System.Windows.Forms.ToolStripMenuItem HelpAbout;
         internal WeifenLuo.WinFormsUI.Docking.DockPanel DockPanel;
-        internal System.Windows.Forms.ToolStripMenuItem WindowMenu;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPane;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneSceneProperties;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneTraceProperties;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneGpuStatus;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneSceneCode;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneTraceCode;
-        internal System.Windows.Forms.ToolStripMenuItem WindowPaneGpuCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewMenu;
         internal System.Windows.Forms.ToolStripStatusLabel GpuStatusLabel;
+        internal System.Windows.Forms.ToolStripMenuItem ViewSceneProperties;
+        internal System.Windows.Forms.ToolStripMenuItem ViewTraceProperties;
+        internal System.Windows.Forms.ToolStripMenuItem ViewGpuStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        internal System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewGpuCode;
     }
 }
