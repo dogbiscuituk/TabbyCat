@@ -5,6 +5,7 @@
     using Jmk.Controls;
     using OpenTK.Graphics.OpenGL;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
     using System.Globalization;
@@ -41,6 +42,8 @@
         }
 
         private ShaderForm _ShaderForm;
+
+        private readonly List<int> Breaks = new List<int>();
 
         internal ShaderForm ShaderForm => _ShaderForm ?? (_ShaderForm = new ShaderForm()
         {
@@ -189,6 +192,11 @@
                         break;
                 }
             }
+        }
+
+        internal void SetBreaks(List<int> breaks)
+        {
+
         }
 
         protected internal override void Connect(bool connect)
@@ -577,10 +585,41 @@
             foreach (var propertyName in propertyNames)
                 if (CodeChanged(propertyName))
                 {
-                    ShaderEdit.PrimaryTextBox.Text = GetScript();
+                    SetScript(GetScript());
                     break;
                 }
             Updating = false;
+        }
+
+        private void SetScript(string script)
+        {
+            ShaderEdit.PrimaryTextBox.Text = script;
+            ShaderEdit.SecondaryTextBox.Text = script;
+            if (ShaderRegion == ShaderRegion.All)
+                FindBreaks(script);
+        }
+
+        private void FindBreaks(string script)
+        {
+            Breaks.Clear();
+            Breaks.AddRange(new[]
+            {
+                1,
+                script.FindToken(BeginSceneToken) + 2,
+                script.FindToken(EndSceneToken) - 1
+            });
+            for (var index = 0; index < Scene.Traces.Count; index++)
+            {
+                Breaks.Add(script.FindToken(BeginTraceToken(index)) + 2);
+                Breaks.Add(script.FindToken(EndTraceToken(index)) - 1);
+            }
+            Breaks.Add(script.GetLineCount() + 1);
+            for (var index = 0; index < Breaks.Count; index += 2)
+            {
+                int a = Breaks[index] - 1, b = Breaks[index + 1] - 1;
+                var range = new Range(PrimaryTextBox, 0, a, 0, b);
+                PrimaryCon.AddSystemRange(range);
+            }
         }
 
         private bool CodeChanged(string propertyName)

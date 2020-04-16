@@ -155,7 +155,9 @@
                     Resources.Format_Trace,
                     p.Index + 1,
                     p,
-                    p.GetScript(shaderType).Indent("  "))));
+                    BeginTraceToken(p.Index),
+                    p.GetScript(shaderType).Indent("  "),
+                    EndTraceToken(p.Index))));
             var cases = !Scene.Traces.Any()
                 ? string.Empty
                 : Scene.Traces
@@ -167,7 +169,9 @@
                     CultureInfo.InvariantCulture,
                     Resources.Format_Scene,
                     version,
+                    BeginSceneToken,
                     sceneScript,
+                    EndSceneToken,
                     traceScripts,
                     cases);
         }
@@ -291,8 +295,7 @@
             return result;
         }
 
-        private void BindAttribute(int attributeIndex, string variableName) =>
-            GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
+        private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
         private void BindAttributes() => BindAttribute(0, "position");
 

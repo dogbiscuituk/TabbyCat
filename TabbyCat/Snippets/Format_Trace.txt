@@ -1,9 +1,9 @@
 ﻿void execTrace{0}() // {1}
 {{
-  // Begin Trace #{0}
+  {2}
 
-{2}
+{3}
 
-  // End Trace #{0}
+  {4}
 }}
 

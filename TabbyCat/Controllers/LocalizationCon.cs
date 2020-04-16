@@ -13,6 +13,11 @@
     {
         internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
+        protected const string BeginSceneToken = "// Begin Scene";
+        protected static string BeginTraceToken(int index) => $"// Begin Trace #{index + 1}";
+        protected const string EndSceneToken = "// End Scene";
+        protected static string EndTraceToken(int index) => $"// End Trace #{index + 1}";
+
         protected virtual string[] AllProperties => Array.Empty<string>();
         protected Camera Camera => Scene.Camera;
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;

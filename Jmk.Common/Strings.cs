@@ -25,8 +25,9 @@
         /// <returns>The input string with all escaped (doubled) ampersands unescaped.</returns>
         public static string AmpersandUnescape(this string s) => s?.Replace("&&", "&");
 
-        public static string Indent(this string s, string indent) =>
-            string.Concat(indent, s?.Replace(Environment.NewLine, $"{Environment.NewLine}{indent}"));
+        public static int FindToken(this string s, string t) => s == null ? 0 : s.Substring(0, s.IndexOf(t, StringComparison.InvariantCulture)).GetLineCount();
+
+        public static string Indent(this string s, string indent) => string.Concat(indent, s?.Replace(Environment.NewLine, $"{Environment.NewLine}{indent}"));
 
         /// <summary>
         /// Make a legal file name from a given string which may contain prohibited
@@ -59,5 +60,16 @@
             string.IsNullOrWhiteSpace(s)
             ? string.Empty
             : $"{char.ToUpper(s[0], CultureInfo.CurrentCulture)}{s.ToLower(CultureInfo.CurrentCulture).Substring(1)}";
+
+        public static int GetCharCount(this string s, char c)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            var n = 0;
+            for (int p = -1; (p = s.IndexOf(c, p + 1)) >= 0; n++) ;
+            return n;
+        }
+
+        public static int GetLineCount(this string s) => string.IsNullOrEmpty(s) ? 0 : s.GetCharCount('\n') + 1;
     }
 }

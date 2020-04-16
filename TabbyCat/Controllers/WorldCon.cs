@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
-    using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
@@ -475,17 +474,8 @@
 
         private void FilePathRequest(SdiCon.FilePathEventArgs e)
         {
-            var filePath = e.FilePath;
-            if (string.IsNullOrWhiteSpace(filePath))
-                filePath = Scene.Title.ToFilename();
-            if (string.IsNullOrWhiteSpace(filePath))
-                for (int n = 1; ; n++)
-                {
-                    filePath = string.Format(CultureInfo.CurrentCulture, Resources.Text_NewFile, n);
-                    if (!File.Exists(filePath))
-                        break;
-                }
-            e.FilePath = filePath;
+            if (string.IsNullOrWhiteSpace(e.FilePath))
+                e.FilePath = Scene.Title.ToFilename();
         }
 
         private void FileSaved()
@@ -622,11 +612,11 @@
 
         private void ShowControls()
         {
-            SetVisibility(SceneShaderCon, true);
-            SetVisibility(SceneCon, true);
-            SetVisibility(TraceShaderCon, true);
-            SetVisibility(TraceCon, true);
-            SetVisibility(GpuShaderCon, false);
+            SetVisibility(SceneShaderCon, false);
+            SetVisibility(SceneCon, false);
+            SetVisibility(TraceShaderCon, false);
+            SetVisibility(TraceCon, false);
+            SetVisibility(GpuShaderCon, true);
             SetVisibility(GpuCon, false);
             GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
         }
