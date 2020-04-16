@@ -259,6 +259,7 @@
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
             ConnectJsonCon(connect);
+            GpuCon.Connect(connect);
             RenderCon.Connect(connect);
             TraceCon.Connect(connect);
             SceneCon.Connect(connect);

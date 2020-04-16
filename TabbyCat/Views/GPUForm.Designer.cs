@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gpuEdit1 = new TabbyCat.Controls.GPUEdit();
+            this.GpuEdit = new TabbyCat.Controls.GPUEdit();
             this.SuspendLayout();
             // 
             // gpuEdit1
             // 
-            this.gpuEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpuEdit1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpuEdit1.Location = new System.Drawing.Point(0, 0);
-            this.gpuEdit1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.gpuEdit1.Name = "gpuEdit1";
-            this.gpuEdit1.Size = new System.Drawing.Size(354, 169);
-            this.gpuEdit1.TabIndex = 0;
+            this.GpuEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GpuEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GpuEdit.Location = new System.Drawing.Point(0, 0);
+            this.GpuEdit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.GpuEdit.Name = "gpuEdit1";
+            this.GpuEdit.Size = new System.Drawing.Size(354, 169);
+            this.GpuEdit.TabIndex = 0;
             // 
             // GpuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 169);
-            this.Controls.Add(this.gpuEdit1);
+            this.Controls.Add(this.GpuEdit);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "GpuForm";
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private Controls.GPUEdit gpuEdit1;
+        internal Controls.GPUEdit GpuEdit;
     }
 }
