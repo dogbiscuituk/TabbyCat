@@ -34,11 +34,9 @@
             }
         }
 
-        public static string SceneShaderName(this ShaderType shaderType) =>
-            $"Scene {shaderType.ShaderTag()} Shader";
+        public static string SceneShaderName(this ShaderType shaderType) => $"Scene {shaderType.ShaderTag()} Shader";
 
-        public static string ShaderName(this ShaderType shaderType) =>
-            $"{shaderType.ShaderTag()} Shader";
+        public static string ShaderName(this ShaderType shaderType) => $"{shaderType.ShaderTag()} Shader";
 
         public static string ShaderTag(this ShaderType shaderType)
         {
@@ -61,7 +59,6 @@
             }
         }
 
-        public static string TraceShaderName(this ShaderType shaderType) =>
-            $"Trace {shaderType.ShaderTag()} Shader";
+        public static string TraceShaderName(this ShaderType shaderType) => $"Trace {shaderType.ShaderTag()} Shader";
     }
 }

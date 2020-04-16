@@ -575,9 +575,36 @@
                 return;
             Updating = true;
             foreach (var propertyName in propertyNames)
-                if (propertyName == ShaderName)
+                if (CodeChanged(propertyName))
+                {
                     ShaderEdit.PrimaryTextBox.Text = GetScript();
+                    break;
+                }
             Updating = false;
+        }
+
+        private bool CodeChanged(string propertyName)
+        {
+            switch (ShaderRegion)
+            {
+                case ShaderRegion.Scene:
+                case ShaderRegion.Trace:
+                    return propertyName == ShaderName;
+                case ShaderRegion.All:
+                    switch (propertyName)
+                    {
+                        case PropertyNames.GLTargetVersion:
+                        case PropertyNames.Traces:
+                            return true;
+                        default:
+                            return
+                                propertyName == ShaderName ||
+                                propertyName == ShaderType.SceneShaderName() ||
+                                propertyName == ShaderType.TraceShaderName();
+                    }
+                default:
+                    return false;
+            }
         }
 
         private void UpdateUI()
