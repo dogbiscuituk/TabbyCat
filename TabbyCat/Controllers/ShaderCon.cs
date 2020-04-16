@@ -132,7 +132,7 @@
                         .Cast<ToolStripMenuItem>()
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
-                    LoadBuiltInHelp();
+                    LoadContent();
                 }
             }
         }
@@ -211,7 +211,7 @@
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldCon.Pulse += WorldCon_Pulse;
                 WorldCon.SelectionChanged += WorldCon_SelectionChanged;
-                LoadBuiltInHelp();
+                LoadContent();
             }
             else
             {
@@ -508,10 +508,19 @@
 
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
-        private void LoadBuiltInHelp()
+        private void LoadContent()
         {
             LoadShaderCode();
             ShaderEdit.lblBuiltInHelp.Text = GetBuiltInHelp();
+        }
+
+        private void LoadScript()
+        {
+            var script = GetScript();
+            PrimaryTextBox.Text = script;
+            SecondaryTextBox.Text = script;
+            if (ShaderRegion == ShaderRegion.All)
+                FindBreaks(script);
         }
 
         private void LoadShaderCode()
@@ -519,7 +528,7 @@
             if (Updating)
                 return;
             Updating = true;
-            PrimaryTextBox.Text = GetScript();
+            LoadScript();
             Updating = false;
             UpdateUI();
         }
@@ -585,23 +594,17 @@
             foreach (var propertyName in propertyNames)
                 if (CodeChanged(propertyName))
                 {
-                    SetScript(GetScript());
+                    LoadScript();
                     break;
                 }
             Updating = false;
         }
 
-        private void SetScript(string script)
-        {
-            ShaderEdit.PrimaryTextBox.Text = script;
-            ShaderEdit.SecondaryTextBox.Text = script;
-            if (ShaderRegion == ShaderRegion.All)
-                FindBreaks(script);
-        }
-
         private void FindBreaks(string script)
         {
             Breaks.Clear();
+            if (string.IsNullOrWhiteSpace(script))
+                return;
             Breaks.AddRange(new[]
             {
                 1,
