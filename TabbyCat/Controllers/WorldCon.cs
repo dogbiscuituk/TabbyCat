@@ -103,16 +103,6 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_File, WorldForm.FileMenu);
-            Localize(Resources.Menu_File_New, WorldForm.FileNew, WorldForm.tbNew);
-            Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
-            Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
-            Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
-            Localize(Resources.Menu_File_Reopen, WorldForm.FileReopen);
-            Localize(Resources.Menu_File_Save, WorldForm.FileSave, WorldForm.tbSave);
-            Localize(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
-            Localize(Resources.Menu_File_Close, WorldForm.FileClose);
-            Localize(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
             Localize(Resources.Menu_Edit, WorldForm.EditMenu);
             Localize(Resources.Menu_Edit_AddANewTrace, WorldForm.EditAddNewTrace, WorldForm.tbAdd);
             Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
@@ -527,8 +517,7 @@
                 aboutCon.ShowDialog(WorldForm);
         }
 
-        private void InvertSelection() =>
-            Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
+        private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
 
         private void NewEmptyScene() => GetNewWorldCon();
 
@@ -623,7 +612,7 @@
         private void SetVisibility(DockingCon dockingCon, bool visible)
         {
             if (visible)
-                dockingCon.Form.Show(WorldForm.DockPanel, DockState.DockLeft);
+                dockingCon.Form.Show(WorldForm.DockPanel, DockState.Float);
             else
                 dockingCon.Form.Hide();
         }
@@ -634,8 +623,8 @@
             SetVisibility(SceneCon, true);
             SetVisibility(TraceShaderCon, true);
             SetVisibility(TraceCon, true);
-            SetVisibility(GpuShaderCon, true);
-            SetVisibility(GpuCon, true);
+            SetVisibility(GpuShaderCon, false);
+            SetVisibility(GpuCon, false);
             GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
         }
 
@@ -693,11 +682,9 @@
             }
             if (LastSpeed != speed)
                 LastSpeed = WorldForm.SpeedLabel.Text = speed;
-
         }
 
-        private void UpdateToolbar() =>
-            WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
+        private void UpdateToolbar() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
 
         private void UpdateVirtualTime()
         {

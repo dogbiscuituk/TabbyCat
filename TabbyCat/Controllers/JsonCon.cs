@@ -7,6 +7,7 @@
     using System.IO;
     using System.Windows.Forms;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
 
     /// <summary>
     /// Extend SdiCon to provide concrete I/O methods using Json data format.
@@ -15,9 +16,7 @@
     /// </summary>
     internal class JsonCon : SdiCon
     {
-        internal JsonCon(WorldCon worldCon)
-            : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU")
-        { }
+        internal JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
 
         internal string WindowCaption
         {
@@ -86,8 +85,22 @@
                 return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
         }
 
-        protected override void OnFileReopen(string filePath) =>
-            FileReopen?.Invoke(this, new FilePathEventArgs(filePath));
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_File, WorldForm.FileMenu);
+            Localize(Resources.Menu_File_New, WorldForm.FileNew, WorldForm.tbNew);
+            Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
+            Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
+            Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
+            Localize(Resources.Menu_File_Reopen, WorldForm.FileReopen);
+            Localize(Resources.Menu_File_Save, WorldForm.FileSave, WorldForm.tbSave);
+            Localize(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
+            Localize(Resources.Menu_File_Close, WorldForm.FileClose);
+            Localize(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
+        }
+
+        protected override void OnFileReopen(string filePath) => FileReopen?.Invoke(this, new FilePathEventArgs(filePath));
 
         protected override bool SaveToStream(Stream stream)
         {
