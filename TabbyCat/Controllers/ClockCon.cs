@@ -4,9 +4,9 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Views;
 
-    internal class ClockController : LocalizationController
+    internal class ClockCon : LocalizationCon
     {
-        internal ClockController(WorldController worldController) : base(worldController) => UpdateTimeControls();
+        internal ClockCon(WorldCon worldCon) : base(worldCon) => UpdateTimeControls();
 
         private Clock _Clock;
 

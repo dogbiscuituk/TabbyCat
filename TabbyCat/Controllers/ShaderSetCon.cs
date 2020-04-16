@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal abstract class ShaderSetController : DockingController
+    internal abstract class ShaderSetCon : DockingCon
     {
-        internal ShaderSetController(WorldController worldController) : base(worldController) { }
+        internal ShaderSetCon(WorldCon worldCon) : base(worldCon) { }
 
         protected bool Updating;
 
@@ -16,13 +16,13 @@
             if (connect)
             {
                 UpdateAllProperties();
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
+                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.SelectionChanged += WorldCon_SelectionChanged;
             }
             else
             {
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.SelectionChanged -= WorldCon_SelectionChanged;
             }
         }
 
@@ -43,10 +43,8 @@
                 ToolTip.SetToolTip(control, toolTip);
         }
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) =>
-            UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
 
-        private void WorldController_SelectionChanged(object sender, System.EventArgs e) =>
-            OnSelectionChanged();
+        private void WorldCon_SelectionChanged(object sender, System.EventArgs e) => OnSelectionChanged();
     }
 }

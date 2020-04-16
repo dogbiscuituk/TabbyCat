@@ -8,9 +8,9 @@
     using TabbyCat.Models;
     using TabbyCat.Views;
 
-    internal class CommandProcessor : LocalizationController
+    internal class CommandProcessor : LocalizationCon
     {
-        internal CommandProcessor(WorldController worldController) : base(worldController)
+        internal CommandProcessor(WorldCon worldCon) : base(worldCon)
         {
             WorldForm.EditUndo.Click += EditUndo_Click;
             WorldForm.tbUndo.ButtonClick += EditUndo_Click;
@@ -195,7 +195,7 @@
             WorldForm.EditRedo.Text = $"&{redo}";
             WorldForm.tbUndo.ToolTipText = $"{undo} (^Z)";
             WorldForm.tbRedo.ToolTipText = $"{redo} (^Y)";
-            WorldController.ModifiedChanged();
+            WorldCon.ModifiedChanged();
         }
     }
 }

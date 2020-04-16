@@ -22,9 +22,9 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class ShaderController : DockingController
+    internal partial class ShaderCon : DockingCon
     {
-        internal ShaderController(WorldController worldController, ShaderRegion shaderRegion) : base(worldController)
+        internal ShaderCon(WorldCon worldCon, ShaderRegion shaderRegion) : base(worldCon)
         {
             ShaderRegion = shaderRegion;
             ShowRuler = false;
@@ -57,14 +57,14 @@
 
         protected internal override DockContent Form => ShaderForm;
 
-        private GLPageController _PrimaryController, _SecondaryController;
+        private GLPageCon _PrimaryCon, _SecondaryCon;
 
-        private GLPageController PrimaryController => _PrimaryController ?? (_PrimaryController = new GLPageController(PrimaryTextBox));
-        private GLPageController SecondaryController => _SecondaryController ?? (_SecondaryController= new GLPageController(SecondaryTextBox));
+        private GLPageCon PrimaryCon => _PrimaryCon ?? (_PrimaryCon = new GLPageCon(PrimaryTextBox));
+        private GLPageCon SecondaryCon => _SecondaryCon ?? (_SecondaryCon= new GLPageCon(SecondaryTextBox));
 
         private SplitContainer PrimarySplitter => ShaderEdit.BottomSplit;
         private FastColoredTextBox PrimaryTextBox => ShaderEdit.PrimaryTextBox;
-        private TraceSelection Selection => WorldController.Selection;
+        private TraceSelection Selection => WorldCon.Selection;
         private SplitContainer SecondarySplitter => ShaderEdit.TopSplit;
         private FastColoredTextBox SecondaryTextBox => ShaderEdit.SecondaryTextBox;
         private ShaderEdit ShaderEdit => ShaderForm.ShaderEdit;
@@ -110,7 +110,7 @@
                     case ShaderRegion.Trace:
                         return Selection;
                     case ShaderRegion.All:
-                        return RenderController;
+                        return RenderCon;
                 }
                 return null;
             }
@@ -200,24 +200,24 @@
             ConnectHelp(connect);
             if (connect)
             {
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
-                WorldController.Pulse += WorldController_Pulse;
-                WorldController.SelectionChanged += WorldController_SelectionChanged;
+                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.Pulse += WorldCon_Pulse;
+                WorldCon.SelectionChanged += WorldCon_SelectionChanged;
                 LoadBuiltInHelp();
             }
             else
             {
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
-                WorldController.Pulse -= WorldController_Pulse;
-                WorldController.SelectionChanged -= WorldController_SelectionChanged;
+                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.Pulse -= WorldCon_Pulse;
+                WorldCon.SelectionChanged -= WorldCon_SelectionChanged;
             }
         }
 
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
-            PrimaryController?.Dispose();
-            SecondaryController?.Dispose();
+            PrimaryCon?.Dispose();
+            SecondaryCon?.Dispose();
         }
 
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(ShaderEdit.lblBuiltInHelp, ShaderEdit.lblBuiltInHelp.ActiveLink?.Description);
@@ -334,11 +334,11 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
 
-        private void WorldController_Pulse(object sender, EventArgs e) => ShaderEdit.tbPaste.Enabled = CanPaste();
+        private void WorldCon_Pulse(object sender, EventArgs e) => ShaderEdit.tbPaste.Enabled = CanPaste();
 
-        private void WorldController_SelectionChanged(object sender, EventArgs e) => OnSelectionChanged();
+        private void WorldCon_SelectionChanged(object sender, EventArgs e) => OnSelectionChanged();
 
         private static bool CanPaste()
         {
@@ -521,7 +521,7 @@
             switch (parameterName)
             {
                 case "GLSLUrl":
-                    return AppController.Options.GLSLPath;
+                    return AppCon.Options.GLSLPath;
                 default:
                     return string.Empty;
             }
@@ -582,7 +582,7 @@
 
         private void UpdateUI()
         {
-            UIController.EnableControls(
+            UICon.EnableControls(
                 ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
                 new Control[]
                 {

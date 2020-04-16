@@ -2,9 +2,9 @@
 {
     using TabbyCat.Views;
 
-    internal class GLController : LocalizationController
+    internal class GLCon : LocalizationCon
     {
-        internal GLController(WorldController worldController) : base(worldController) { }
+        internal GLCon(WorldCon worldCon) : base(worldCon) { }
 
         private GLControlForm _GLControlForm;
 

@@ -76,7 +76,7 @@
     <Compile Include="ShaderEdit.Designer.cs">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Types\GLPageController.cs" />
+    <Compile Include="Types\GLPageCon.cs" />
     <Compile Include="Types\Options.cs" />
     <Compile Include="Types\TextStyleInfo.cs" />
     <Compile Include="Types\TextStyleInfos.cs" />

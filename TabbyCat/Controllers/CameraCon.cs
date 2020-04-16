@@ -4,11 +4,12 @@
     using System;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
+    using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal class CameraController : LocalizationController
+    internal class CameraCon : LocalizationCon
     {
-        internal CameraController(WorldController worldController) : base(worldController) => SetDefaultCamera();
+        internal CameraCon(WorldCon worldCon) : base(worldCon) => SetDefaultCamera();
 
         private const float CameraBump = 0.1f;
 
@@ -94,6 +95,27 @@
                 p = Camera.Position - f,
                 q = p + delta * CameraBump * basis;
             RunCameraCommand(new Camera(q * p.Length / q.Length + f, f));
+        }
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
+            Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
+            Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
+            Localize(Resources.Menu_Camera_Strafe_Left, WorldForm.CameraStrafeLeft);
+            Localize(Resources.Menu_Camera_Strafe_Right, WorldForm.CameraStrafeRight);
+            Localize(Resources.Menu_Camera_Strafe_Up, WorldForm.CameraStrafeUp);
+            Localize(Resources.Menu_Camera_Move, WorldForm.CameraMove);
+            Localize(Resources.Menu_Camera_Move_Down, WorldForm.CameraMoveDown);
+            Localize(Resources.Menu_Camera_Move_Left, WorldForm.CameraMoveLeft);
+            Localize(Resources.Menu_Camera_Move_Right, WorldForm.CameraMoveRight);
+            Localize(Resources.Menu_Camera_Move_Up, WorldForm.CameraMoveUp);
+            Localize(Resources.Menu_Camera_Move_Forward, WorldForm.CameraMoveForward);
+            Localize(Resources.Menu_Camera_Move_Back, WorldForm.CameraMoveBack);
+            Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
+            Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
+            Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
         }
 
         private void RunCameraCommand(Camera camera) => CommandProcessor.Run(new CameraCommand(camera));

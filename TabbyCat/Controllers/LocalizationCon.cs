@@ -9,38 +9,38 @@
     using TabbyCat.Models;
     using TabbyCat.Views;
 
-    internal partial class LocalizationController
+    internal partial class LocalizationCon
     {
-        internal LocalizationController(WorldController worldController) => WorldController = worldController;
+        internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
         protected virtual string[] AllProperties => Array.Empty<string>();
         protected Camera Camera => Scene.Camera;
-        protected virtual CameraController CameraController => WorldController.CameraController;
-        protected virtual Clock Clock => ClockController.Clock;
-        protected virtual ClockController ClockController => WorldController.ClockController;
-        internal virtual CommandProcessor CommandProcessor => WorldController.CommandProcessor;
+        protected virtual CameraCon CameraCon => WorldCon.CameraCon;
+        protected virtual Clock Clock => ClockCon.Clock;
+        protected virtual ClockCon ClockCon => WorldCon.ClockCon;
+        internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
         protected internal GLControl GLControl => (GLControl)GLControlForm.Controls[0];
-        protected virtual GLControlForm GLControlForm => GLController.GLControlForm;
-        protected virtual GLController GLController => WorldController.GLController;
-        protected virtual GpuController GpuController => WorldController.GpuController;
-        protected virtual GpuForm GpuForm => GpuController.GpuForm;
-        protected virtual ShaderController GpuShaderController => WorldController.GpuShaderController;
-        protected ShaderForm GpuShaderForm => GpuShaderController.ShaderForm;
-        protected virtual JsonController JsonController => WorldController.JsonController;
-        protected virtual RenderController RenderController => WorldController.RenderController;
-        protected internal virtual Scene Scene { get => WorldController.Scene; set { WorldController.Scene = value; } }
-        protected virtual SceneController SceneController => WorldController.SceneController;
+        protected virtual GLControlForm GLControlForm => GLCon.GLControlForm;
+        protected virtual GLCon GLCon => WorldCon.GLCon;
+        protected virtual GpuCon GpuCon => WorldCon.GpuCon;
+        protected virtual GpuForm GpuForm => GpuCon.GpuForm;
+        protected virtual ShaderCon GpuShaderCon => WorldCon.GpuShaderCon;
+        protected ShaderForm GpuShaderForm => GpuShaderCon.ShaderForm;
+        protected virtual JsonCon JsonCon => WorldCon.JsonCon;
+        protected virtual RenderCon RenderCon => WorldCon.RenderCon;
+        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected virtual SceneCon SceneCon => WorldCon.SceneCon;
         protected SceneEdit SceneEdit => SceneForm.SceneEdit;
-        protected virtual SceneForm SceneForm => SceneController.SceneForm;
-        protected virtual ShaderController SceneShaderController => WorldController.SceneShaderController;
-        protected ShaderForm SceneShaderForm => SceneShaderController.ShaderForm;
+        protected virtual SceneForm SceneForm => SceneCon.SceneForm;
+        protected virtual ShaderCon SceneShaderCon => WorldCon.SceneShaderCon;
+        protected ShaderForm SceneShaderForm => SceneShaderCon.ShaderForm;
         protected ToolTip ToolTip => WorldForm.ToolTip;
-        protected virtual TraceController TraceController => WorldController.TraceController;
-        protected virtual TraceForm TraceForm => TraceController.TraceForm;
-        protected virtual ShaderController TraceShaderController => WorldController.TraceShaderController;
-        protected ShaderForm TraceShaderForm => TraceShaderController.ShaderForm;
-        protected virtual WorldController WorldController { get; }
-        protected internal virtual WorldForm WorldForm => WorldController.WorldForm;
+        protected virtual TraceCon TraceCon => WorldCon.TraceCon;
+        protected virtual TraceForm TraceForm => TraceCon.TraceForm;
+        protected virtual ShaderCon TraceShaderCon => WorldCon.TraceShaderCon;
+        protected ShaderForm TraceShaderForm => TraceShaderCon.ShaderForm;
+        protected virtual WorldCon WorldCon { get; }
+        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         protected internal virtual void Connect(bool connect)
         {
@@ -115,7 +115,7 @@
         protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
     }
 
-    partial class LocalizationController : IDisposable
+    partial class LocalizationCon : IDisposable
     {
         private bool Disposed;
 

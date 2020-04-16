@@ -8,9 +8,9 @@
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
 
-    internal class ColourController
+    internal class ColourCon
     {
-        internal ColourController() { }
+        internal ColourCon() { }
 
         internal readonly List<ComboBox> Controls = new List<ComboBox>();
 

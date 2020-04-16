@@ -9,14 +9,14 @@
     using TabbyCat.Models;
 
     /// <summary>
-    /// Extend SdiController to provide concrete I/O methods using Json data format.
+    /// Extend SdiCon to provide concrete I/O methods using Json data format.
     /// Maintain a "WindowCaption" property for the app, including the product name,
     /// current filename if any - otherwise "(untitled)" - and the "Modified" flag.
     /// </summary>
-    internal class JsonController : SdiController
+    internal class JsonCon : SdiCon
     {
-        internal JsonController(WorldController worldController)
-            : base(worldController, Properties.Settings.Default.FileFilter, "LibraryMRU")
+        internal JsonCon(WorldCon worldCon)
+            : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU")
         { }
 
         internal string WindowCaption
@@ -49,7 +49,7 @@
                     text = streamReader.ReadToEnd();
             }
             var dataObject = new DataObject();
-            dataObject.SetData(AppController.DataFormat, text);
+            dataObject.SetData(AppCon.DataFormat, text);
             dataObject.SetData(DataFormats.Text, text);
             Clipboard.SetDataObject(dataObject, copy: true);
             return result;
@@ -58,11 +58,11 @@
         internal static IEnumerable<Trace> ClipboardPaste()
         {
             IEnumerable<Trace> traces = null;
-            if (AppController.CanPaste)
+            if (AppCon.CanPaste)
                 using (var stream = new MemoryStream())
                 using (var streamWriter = new StreamWriter(stream))
                 {
-                    streamWriter.Write(Clipboard.GetData(AppController.DataFormat));
+                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
                     streamWriter.Flush();
                     stream.Seek(0, SeekOrigin.Begin);
                     using (var streamReader = new StreamReader(stream))
@@ -76,7 +76,7 @@
         {
             CommandProcessor.Clear();
             Scene.Clear();
-            WorldController.UpdateAllProperties();
+            WorldCon.UpdateAllProperties();
         }
 
         protected override bool LoadFromStream(Stream stream)

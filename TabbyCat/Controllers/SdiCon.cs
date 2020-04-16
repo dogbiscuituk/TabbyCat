@@ -12,14 +12,14 @@
     /// <summary>
     /// "Single Document Interface" Controller.
     /// 
-    /// Extend MruController to provide file Open and Save dialogs.
+    /// Extend MruCon to provide file Open and Save dialogs.
     /// Keep track of the document/model's "Modified" state, prompting for "Save" as necessary
     /// (for example, prior to "File|New" or "File|Open", or application closing).
     /// </summary>
-    internal abstract class SdiController : MruController
+    internal abstract class SdiCon : MruCon
     {
-        protected SdiController(WorldController worldController, string filter, string subKeyName)
-            : base(worldController, subKeyName)
+        protected SdiCon(WorldCon worldCon, string filter, string subKeyName)
+            : base(worldCon, subKeyName)
         {
             OpenFileDialog = new OpenFileDialog { Filter = filter, Title = Resources.OpenFileDialog_Title };
             SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
@@ -134,7 +134,7 @@
             if (!string.IsNullOrWhiteSpace(dialog.FileName))
                 folderPath = Path.GetDirectoryName(dialog.FileName);
             if (string.IsNullOrWhiteSpace(folderPath))
-                dialog.InitialDirectory = AppController.GetDefaultFolder(filterIndex);
+                dialog.InitialDirectory = AppCon.GetDefaultFolder(filterIndex);
         }
 
         internal bool SaveIfModified()

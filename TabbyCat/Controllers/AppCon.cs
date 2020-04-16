@@ -9,20 +9,20 @@
     using TabbyCat.Properties;
     using TabbyCat.Views;
 
-    internal static class AppController
+    internal static class AppCon
     {
-        static AppController()
+        static AppCon()
         {
             Pulse.Tick += Pulse_Tick;
             ApplyOptions();
-            AddNewWorldController();
+            AddNewWorldCon();
         }
 
         internal static bool CanPaste;
 
         internal static string DataFormat = "TabbyCatDataFormat";
 
-        internal static List<WorldController> WorldControllers = new List<WorldController>();
+        internal static List<WorldCon> WorldCons = new List<WorldCon>();
 
         private static AboutDialog _AboutDialog;
 
@@ -38,8 +38,8 @@
             get
             {
                 if (_AboutDialog == null)
-                    using (AboutController aboutController = new AboutController(null))
-                        _AboutDialog = aboutController.AboutDialog;
+                    using (AboutCon aboutCon = new AboutCon(null))
+                        _AboutDialog = aboutCon.AboutDialog;
                 return _AboutDialog;
             }
         }
@@ -75,13 +75,13 @@
 
         private static Settings Settings => Settings.Default;
 
-        internal static WorldController AddNewWorldController()
+        internal static WorldCon AddNewWorldCon()
         {
-            var worldController = new WorldController();
-            WorldControllers.Add(worldController);
-            worldController.Show();
-            worldController.RefreshGraphicsMode();
-            return worldController;
+            var worldCon = new WorldCon();
+            WorldCons.Add(worldCon);
+            worldCon.Show();
+            worldCon.RefreshGraphicsMode();
+            return worldCon;
         }
 
         internal static void Close() => Application.Exit();
@@ -99,10 +99,10 @@
             }
         }
 
-        internal static void Remove(WorldController worldController)
+        internal static void Remove(WorldCon worldCon)
         {
-            WorldControllers.Remove(worldController);
-            if (WorldControllers.Count == 0)
+            WorldCons.Remove(worldCon);
+            if (WorldCons.Count == 0)
                 Close();
         }
 
@@ -112,14 +112,14 @@
                 Directory.CreateDirectory(Options.FilesFolderPath);
             if (!Directory.Exists(Options.TemplatesFolderPath))
                 Directory.CreateDirectory(Options.TemplatesFolderPath);
-            GLPageController.ApplyStyles(Options.SyntaxHighlightStyles);
+            GLPageCon.ApplyStyles(Options.SyntaxHighlightStyles);
         }
 
         private static void Pulse_Tick(object sender, EventArgs e)
         {
             CanPaste = Clipboard.ContainsData(DataFormat);
-            foreach (var worldController in WorldControllers)
-                worldController.OnPulse();
+            foreach (var worldCon in WorldCons)
+                worldCon.OnPulse();
             if (PulseCount < 10)
                 PulseCount++;
             else

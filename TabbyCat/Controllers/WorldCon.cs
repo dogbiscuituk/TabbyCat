@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -20,9 +19,9 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class WorldController : LocalizationController
+    internal class WorldCon : LocalizationCon
     {
-        internal WorldController() : base(null)
+        internal WorldCon() : base(null)
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
@@ -35,36 +34,36 @@
         private string LastSpeed, LastTime, LastFPS;
         internal TraceSelection Selection = new TraceSelection();
 
-        private CameraController _CameraController;
-        private ClockController _ClockController;
+        private CameraCon _CameraCon;
+        private ClockCon _ClockCon;
         private CommandProcessor _CommandProcessor;
-        private GpuController _GpuController;
-        private GLController _GLController;
-        private JsonController _JsonController;
-        private ShaderController _GpuShaderController, _SceneShaderController, _TraceShaderController;
-        private RenderController _RenderController;
-        private SceneController _SceneController;
-        private TraceController _TraceController;
+        private GpuCon _GpuCon;
+        private GLCon _GLCon;
+        private JsonCon _JsonCon;
+        private ShaderCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
+        private RenderCon _RenderCon;
+        private SceneCon _SceneCon;
+        private TraceCon _TraceCon;
         private int UpdateCount;
 
-        protected override CameraController CameraController => _CameraController ?? (_CameraController = new CameraController(this));
-        protected override ClockController ClockController => _ClockController ?? (_ClockController = new ClockController(this));
+        protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
+        protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
-        protected override GLController GLController => _GLController ?? (_GLController = new GLController(this));
-        protected override GpuController GpuController => _GpuController ?? (_GpuController = new GpuController(this));
-        protected override ShaderController GpuShaderController => _GpuShaderController ?? (_GpuShaderController = new ShaderController(this, ShaderRegion.All));
-        protected override JsonController JsonController => _JsonController ?? (_JsonController = new JsonController(this));
-        protected override RenderController RenderController => _RenderController ?? (_RenderController = new RenderController(this));
+        protected override GLCon GLCon => _GLCon ?? (_GLCon = new GLCon(this));
+        protected override GpuCon GpuCon => _GpuCon ?? (_GpuCon = new GpuCon(this));
+        protected override ShaderCon GpuShaderCon => _GpuShaderCon ?? (_GpuShaderCon = new ShaderCon(this, ShaderRegion.All));
+        protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+        protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected internal override Scene Scene { get; set; }
-        protected override SceneController SceneController => _SceneController ?? (_SceneController = new SceneController(this));
-        protected override ShaderController SceneShaderController => _SceneShaderController ?? (_SceneShaderController = new ShaderController(this, ShaderRegion.Scene));
-        protected override TraceController TraceController => _TraceController ?? (_TraceController= new TraceController(this));
-        protected override ShaderController TraceShaderController => _TraceShaderController ?? (_TraceShaderController = new ShaderController(this, ShaderRegion.Trace));
+        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
+        protected override ShaderCon SceneShaderCon => _SceneShaderCon ?? (_SceneShaderCon = new ShaderCon(this, ShaderRegion.Scene));
+        protected override TraceCon TraceCon => _TraceCon ?? (_TraceCon= new TraceCon(this));
+        protected override ShaderCon TraceShaderCon => _TraceShaderCon ?? (_TraceShaderCon = new ShaderCon(this, ShaderRegion.Trace));
         protected internal override WorldForm WorldForm { get; }
 
-        internal GLInfo GLInfo => RenderController._GLInfo ?? RenderController?.GLInfo;
+        internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
         private static string GLSLUrl => Settings.Default.GLSLUrl;
-        internal GraphicsMode GraphicsMode => RenderController._GraphicsMode ?? RenderController?.GraphicsMode;
+        internal GraphicsMode GraphicsMode => RenderCon._GraphicsMode ?? RenderCon?.GraphicsMode;
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler Pulse;
@@ -76,7 +75,7 @@
             if (connect)
             {
                 ConnectEventHandlers(true);
-                ConnectControllers(true);
+                ConnectCons(true);
                 CommandProcessor.Clear();
                 Clock.Tick += Clock_Tick;
                 ClockStartup();
@@ -85,19 +84,19 @@
             {
                 ClockShutdown();
                 Clock.Tick -= Clock_Tick;
-                RenderController.InvalidateProgram();
+                RenderCon.InvalidateProgram();
                 CommandProcessor.Clear();
-                ConnectControllers(false);
+                ConnectCons(false);
                 ConnectEventHandlers(false);
-                AppController.Remove(this);
+                AppCon.Remove(this);
             }
         }
 
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
-            ClockController?.Dispose();
-            JsonController?.Dispose();
+            ClockCon?.Dispose();
+            JsonCon?.Dispose();
             WorldForm?.Dispose();
         }
 
@@ -133,22 +132,6 @@
             Localize(Resources.Menu_WindowPane_Code_Scene, WorldForm.WindowPaneSceneCode);
             Localize(Resources.Menu_WindowPane_Code_Trace, WorldForm.WindowPaneTraceCode);
             Localize(Resources.Menu_WindowPane_Code_GPU, WorldForm.WindowPaneGpuCode);
-            Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
-            Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
-            Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
-            Localize(Resources.Menu_Camera_Strafe_Left, WorldForm.CameraStrafeLeft);
-            Localize(Resources.Menu_Camera_Strafe_Right, WorldForm.CameraStrafeRight);
-            Localize(Resources.Menu_Camera_Strafe_Up, WorldForm.CameraStrafeUp);
-            Localize(Resources.Menu_Camera_Move, WorldForm.CameraMove);
-            Localize(Resources.Menu_Camera_Move_Down, WorldForm.CameraMoveDown);
-            Localize(Resources.Menu_Camera_Move_Left, WorldForm.CameraMoveLeft);
-            Localize(Resources.Menu_Camera_Move_Right, WorldForm.CameraMoveRight);
-            Localize(Resources.Menu_Camera_Move_Up, WorldForm.CameraMoveUp);
-            Localize(Resources.Menu_Camera_Move_Forward, WorldForm.CameraMoveForward);
-            Localize(Resources.Menu_Camera_Move_Back, WorldForm.CameraMoveBack);
-            Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
-            Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
-            Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
             Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
             Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
             Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
@@ -162,13 +145,13 @@
 
         protected internal override void UpdateAllProperties()
         {
-            TraceController.UpdateAllProperties();
-            SceneController.UpdateAllProperties();
+            TraceCon.UpdateAllProperties();
+            SceneCon.UpdateAllProperties();
         }
 
-        internal void LoadFromFile(string filePath) => JsonController.LoadFromFile(filePath);
+        internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
 
-        internal void ModifiedChanged() => WorldForm.Text = JsonController.WindowCaption;
+        internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
 
         internal void Show() => WorldForm.Show();
 
@@ -206,20 +189,20 @@
             Pulse?.Invoke(this, EventArgs.Empty);
         }
 
-        private void Clock_Tick(object sender, EventArgs e) { RenderController.Render(); }
+        private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
 
         private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
         private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
         private void GLControl_Load(object sender, EventArgs e) { }
-        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderController.Render();
+        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderCon.Render();
         private void GLControl_Resize(object sender, EventArgs e) { }
 
-        private void JsonController_FileLoaded(object sender, EventArgs e) => FileLoaded();
-        private void JsonController_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
-        private void JsonController_FilePathRequest(object sender, SdiController.FilePathEventArgs e) => FilePathRequest(e);
-        private void JsonController_FileReopen(object sender, SdiController.FilePathEventArgs e) => OpenFile(e.FilePath);
-        private void JsonController_FileSaved(object sender, EventArgs e) => FileSaved();
-        private void JsonController_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
+        private void JsonCon_FileLoaded(object sender, EventArgs e) => FileLoaded();
+        private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
+        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => FilePathRequest(e);
+        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
+        private void JsonCon_FileSaved(object sender, EventArgs e) => FileSaved();
+        private void JsonCon_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
 
         private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
         private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
@@ -227,7 +210,7 @@
         private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
-        private void FileExit_Click(object sender, System.EventArgs e) => AppController.Close();
+        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
         private void EditAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
         private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
@@ -236,12 +219,12 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(SceneController);
-        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TraceController);
-        private void ViewGpuStatus_Click(object sender, EventArgs e) => ToggleVisibility(GpuController);
-        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderController);
-        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderController);
-        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(GpuShaderController);
+        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(SceneCon);
+        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TraceCon);
+        private void ViewGpuStatus_Click(object sender, EventArgs e) => ToggleVisibility(GpuCon);
+        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderCon);
+        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderCon);
+        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(GpuShaderCon);
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -272,7 +255,7 @@
         {
             ClockInit();
             Clock.Start();
-            ClockController.UpdateTimeControls();
+            ClockCon.UpdateTimeControls();
         }
 
         private void CreateMainMenuClone()
@@ -281,20 +264,20 @@
             WorldForm.PopupMenu.Items.Insert(6, new ToolStripSeparator());
         }
 
-        private void ConnectControllers(bool connect)
+        private void ConnectCons(bool connect)
         {
-            CameraController.Connect(connect);
-            ClockController.Connect(connect);
-            ConnectJsonController(connect);
-            RenderController.Connect(connect);
-            TraceController.Connect(connect);
-            SceneController.Connect(connect);
+            CameraCon.Connect(connect);
+            ClockCon.Connect(connect);
+            ConnectJsonCon(connect);
+            RenderCon.Connect(connect);
+            TraceCon.Connect(connect);
+            SceneCon.Connect(connect);
             if (connect)
             {
             }
             else
             {
-                RenderController.Unload();
+                RenderCon.Unload();
             }
         }
 
@@ -337,25 +320,25 @@
             }
         }
 
-        private void ConnectJsonController(bool connect)
+        private void ConnectJsonCon(bool connect)
         {
             if (connect)
             {
-                JsonController.FileLoaded += JsonController_FileLoaded;
-                JsonController.FilePathChanged += JsonController_FilePathChanged;
-                JsonController.FilePathRequest += JsonController_FilePathRequest;
-                JsonController.FileReopen += JsonController_FileReopen;
-                JsonController.FileSaving += JsonController_FileSaving;
-                JsonController.FileSaved += JsonController_FileSaved;
+                JsonCon.FileLoaded += JsonCon_FileLoaded;
+                JsonCon.FilePathChanged += JsonCon_FilePathChanged;
+                JsonCon.FilePathRequest += JsonCon_FilePathRequest;
+                JsonCon.FileReopen += JsonCon_FileReopen;
+                JsonCon.FileSaving += JsonCon_FileSaving;
+                JsonCon.FileSaved += JsonCon_FileSaved;
             }
             else
             {
-                JsonController.FileLoaded -= JsonController_FileLoaded;
-                JsonController.FilePathChanged -= JsonController_FilePathChanged;
-                JsonController.FilePathRequest -= JsonController_FilePathRequest;
-                JsonController.FileReopen -= JsonController_FileReopen;
-                JsonController.FileSaving -= JsonController_FileSaving;
-                JsonController.FileSaved -= JsonController_FileSaved;
+                JsonCon.FileLoaded -= JsonCon_FileLoaded;
+                JsonCon.FilePathChanged -= JsonCon_FilePathChanged;
+                JsonCon.FilePathRequest -= JsonCon_FilePathRequest;
+                JsonCon.FileReopen -= JsonCon_FileReopen;
+                JsonCon.FileSaving -= JsonCon_FileSaving;
+                JsonCon.FileSaved -= JsonCon_FileSaved;
             }
         }
 
@@ -449,7 +432,7 @@
             }
         }
 
-        private void CopyToClipboard() => JsonController.ClipboardCopy(Selection.Traces);
+        private void CopyToClipboard() => JsonCon.ClipboardCopy(Selection.Traces);
 
         private void CutToClipboard()
         {
@@ -469,8 +452,8 @@
 
         private void EditOptions()
         {
-            using (var optionsController = new OptionsController(this))
-                optionsController.ShowModal();
+            using (var optionsCon = new OptionsCon(this))
+                optionsCon.ShowModal();
         }
 
         private void EndUpdate()
@@ -485,19 +468,19 @@
 
         private void FileLoaded()
         {
-            ConnectControllers(false);
-            Scene.WorldController = this;
+            ConnectCons(false);
+            Scene.WorldCon = this;
             BeginUpdate();
             Scene.AttachTraces();
             CommandProcessor.Clear();
             EndUpdate();
-            ConnectControllers(true);
+            ConnectCons(true);
             RecreateGLControl();
             SetDefaultCamera();
             UpdateAllProperties();
         }
 
-        private void FilePathRequest(SdiController.FilePathEventArgs e)
+        private void FilePathRequest(SdiCon.FilePathEventArgs e)
         {
             var filePath = e.FilePath;
             if (string.IsNullOrWhiteSpace(filePath))
@@ -523,42 +506,42 @@
 
         private void FormClosed() => Connect(false);
 
-        private bool FormClosing(CloseReason _) => JsonController.SaveIfModified();
+        private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
 
         private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
 
-        private WorldController GetNewWorldController()
+        private WorldCon GetNewWorldCon()
         {
-            if (AppController.Options.OpenInNewWindow)
-                return AppController.AddNewWorldController();
-            if (!JsonController.SaveIfModified())
+            if (AppCon.Options.OpenInNewWindow)
+                return AppCon.AddNewWorldCon();
+            if (!JsonCon.SaveIfModified())
                 return null;
-            JsonController.Clear();
+            JsonCon.Clear();
             SetDefaultCamera();
             return this;
         }
 
         private void HelpAbout()
         {
-            using (AboutController aboutController = new AboutController(this))
-                aboutController.ShowDialog(WorldForm);
+            using (AboutCon aboutCon = new AboutCon(this))
+                aboutCon.ShowDialog(WorldForm);
         }
 
         private void InvertSelection() =>
             Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
 
-        private void NewEmptyScene() => GetNewWorldController();
+        private void NewEmptyScene() => GetNewWorldCon();
 
         private void NewFromTemplate()
         {
-            var worldController = OpenFile(FilterIndex.Template);
-            if (worldController != null)
-                worldController.JsonController.FilePath = string.Empty;
+            var worldCon = OpenFile(FilterIndex.Template);
+            if (worldCon != null)
+                worldCon.JsonCon.FilePath = string.Empty;
         }
 
         private void OnSelectionChanged()
         {
-            UIController.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
+            UICon.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
@@ -568,21 +551,21 @@
             SelectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private WorldController OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
-            OpenFile(JsonController.SelectFilePath(filterIndex));
+        private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
+            OpenFile(JsonCon.SelectFilePath(filterIndex));
 
-        private WorldController OpenFile(string filePath)
+        private WorldCon OpenFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
                 return null;
-            var worldController = GetNewWorldController();
-            worldController?.LoadFromFile(filePath);
-            return worldController;
+            var worldCon = GetNewWorldCon();
+            worldCon?.LoadFromFile(filePath);
+            return worldCon;
         }
 
         private void PasteFromClipboard()
         {
-            var traces = JsonController.ClipboardPaste();
+            var traces = JsonCon.ClipboardPaste();
             if (traces == null || !traces.Any())
                 return;
             var index = Scene.Traces.Count;
@@ -617,7 +600,7 @@
             parent.Controls.Remove(oldControl);
             parent.Controls.Add(newControl);
             ConnectGLControl(true);
-            RenderController.Refresh();
+            RenderCon.Refresh();
             parent.ResumeLayout();
             oldControl.Dispose();
             RefreshGraphicsMode();
@@ -625,46 +608,46 @@
 
         internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
 
-        private void Resize() => RenderController.InvalidateProjection();
+        private void Resize() => RenderCon.InvalidateProjection();
 
-        private bool SaveFile() => JsonController.Save();
+        private bool SaveFile() => JsonCon.Save();
 
-        private bool SaveFileAs() => JsonController.SaveAs();
+        private bool SaveFileAs() => JsonCon.SaveAs();
 
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
         private void SelectAll() => Selection.AddRange(Scene.Traces);
 
-        private void SetDefaultCamera() => CameraController.SetDefaultCamera();
+        private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
 
-        private void SetVisibility(DockingController controller, bool visible)
+        private void SetVisibility(DockingCon dockingCon, bool visible)
         {
             if (visible)
-                controller.Form.Show(WorldForm.DockPanel, DockState.DockLeft);
+                dockingCon.Form.Show(WorldForm.DockPanel, DockState.DockLeft);
             else
-                controller.Form.Hide();
+                dockingCon.Form.Hide();
         }
 
         private void ShowControls()
         {
-            SetVisibility(SceneShaderController, true);
-            SetVisibility(SceneController, true);
-            SetVisibility(TraceShaderController, true);
-            SetVisibility(TraceController, true);
-            SetVisibility(GpuShaderController, true);
-            SetVisibility(GpuController, true);
+            SetVisibility(SceneShaderCon, true);
+            SetVisibility(SceneCon, true);
+            SetVisibility(TraceShaderCon, true);
+            SetVisibility(TraceCon, true);
+            SetVisibility(GpuShaderCon, true);
+            SetVisibility(GpuCon, true);
             GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
         }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
-        private void ToggleVisibility(DockingController controller) => SetVisibility(controller, !controller.Form.Visible);
+        private void ToggleVisibility(DockingCon dockingCon) => SetVisibility(dockingCon, !dockingCon.Form.Visible);
 
-        private void UpdateCaption() { WorldForm.Text = JsonController.WindowCaption; }
+        private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
 
         private void UpdateFramesPerSecond()
         {
-            var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderController.FramesPerSecond);
+            var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
             if (LastFPS != fps)
                 LastFPS = WorldForm.FPSlabel.Text = fps;
         }
@@ -714,7 +697,7 @@
         }
 
         private void UpdateToolbar() =>
-            WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppController.CanPaste;
+            WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
 
         private void UpdateVirtualTime()
         {

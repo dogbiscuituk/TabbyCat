@@ -89,7 +89,7 @@
     <Compile Include="Utility\PropertyNames.cs" />
     <Compile Include="Utility\ShaderUtils.cs" />
     <Compile Include="Types\GPUStatus.cs" />
-    <Compile Include="Utility\UIController.cs" />
+    <Compile Include="Utility\UICon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

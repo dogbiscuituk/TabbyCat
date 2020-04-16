@@ -14,9 +14,9 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class SceneController : ShaderSetController
+    internal partial class SceneCon : ShaderSetCon
     {
-        internal SceneController(WorldController worldController) : base(worldController)
+        internal SceneCon(WorldCon worldCon) : base(worldCon)
         {
             InitCommonControls(SceneEdit.TableLayoutPanel);
             InitLocalControls();
@@ -215,7 +215,7 @@
             SceneEdit.seFPS.Maximum = 300;
             InitDomainUpDownItems(SceneEdit.seGLSLVersion, Settings.Default.GLSLVersions);
             InitDomainUpDownItems(SceneEdit.seSampleCount, Settings.Default.SampleCounts);
-            new ColourController().AddControls(SceneEdit.cbBackground);
+            new ColourCon().AddControls(SceneEdit.cbBackground);
         }
 
         private void Run(ICommand command)
@@ -256,7 +256,7 @@
     /// <summary>
     /// Command runners.
     /// </summary>
-    partial class SceneController
+    partial class SceneCon
     {
         private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
             Run(new BackgroundColourCommand(Color.FromName(SceneEdit.cbBackground.Text)));

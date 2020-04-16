@@ -3,9 +3,9 @@
     using System.Windows.Forms;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal abstract class DockingController : LocalizationController
+    internal abstract class DockingCon : LocalizationCon
     {
-        internal DockingController(WorldController worldController) : base(worldController) { }
+        internal DockingCon(WorldCon worldCon) : base(worldCon) { }
 
         protected internal abstract DockContent Form { get; }
 

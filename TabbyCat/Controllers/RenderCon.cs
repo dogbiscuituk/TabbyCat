@@ -14,10 +14,10 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
-    internal class RenderController : LocalizationController, IShaderSet
+    internal class RenderCon : LocalizationCon, IShaderSet
     {
-        internal RenderController(WorldController worldController)
-            : base(worldController) => Stopwatch.Start();
+        internal RenderCon(WorldCon worldCon)
+            : base(worldCon) => Stopwatch.Start();
 
         internal float FramesPerSecond;
 
@@ -100,15 +100,15 @@
             base.Connect(connect);
             if (connect)
             {
-                WorldController.PropertyChanged += WorldController_PropertyChanged;
+                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
             }
             else
             {
-                WorldController.PropertyChanged -= WorldController_PropertyChanged;
+                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
             }
         }
 
-        private void WorldController_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
@@ -141,7 +141,7 @@
                     break;
                 case PropertyNames.Pattern:
                 case PropertyNames.StripCount:
-                    RenderController.InvalidateAllTraces();
+                    RenderCon.InvalidateAllTraces();
                     break;
             }
         }

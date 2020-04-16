@@ -4,9 +4,9 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class GpuController : DockingController
+    internal class GpuCon : DockingCon
     {
-        internal GpuController(WorldController worldController) : base(worldController) { }
+        internal GpuCon(WorldCon worldCon) : base(worldCon) { }
 
         private GpuForm _GpuForm;
 

@@ -13,18 +13,18 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class TraceController : ShaderSetController
+    internal partial class TraceCon : ShaderSetCon
     {
-        internal TraceController(WorldController worldController) : base(worldController)
+        internal TraceCon(WorldCon worldCon) : base(worldCon)
         {
-            SelectionController = new SelectionController(worldController);
+            SelectionCon = new SelectionCon(worldCon);
             InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();
         }
 
         private TraceForm _TraceForm;
 
-        private readonly SelectionController SelectionController;
+        private readonly SelectionCon SelectionCon;
         private bool SelectionUpdating;
 
         protected internal override DockContent Form => TraceForm;
@@ -51,7 +51,7 @@
             PropertyNames.Visible
         };
 
-        private TraceSelection Selection => WorldController.Selection;
+        private TraceSelection Selection => WorldCon.Selection;
 
         private TraceEdit TraceEdit => TraceForm.TraceEdit;
 
@@ -82,7 +82,7 @@
                 TraceEdit.seStripCountY.ValueChanged += StripCountY_ValueChanged;
                 TraceEdit.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
                 TraceEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                SelectionController.SelectionChanged += Selection_Changed;
+                SelectionCon.SelectionChanged += Selection_Changed;
             }
             else
             {
@@ -107,15 +107,15 @@
                 TraceEdit.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
                 TraceEdit.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
                 TraceEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                SelectionController.SelectionChanged -= Selection_Changed;
+                SelectionCon.SelectionChanged -= Selection_Changed;
             }
-            SelectionController.Connect(connect);
+            SelectionCon.Connect(connect);
         }
 
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
-            SelectionController?.Dispose();
+            SelectionCon?.Dispose();
         }
 
         protected override void Localize()
@@ -162,7 +162,7 @@
         {
             base.UpdateAllProperties();
             CopySelectionToControl();
-            UIController.EnableControls(!Selection.IsEmpty,
+            UICon.EnableControls(!Selection.IsEmpty,
                 TraceEdit.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]
                 {
@@ -230,7 +230,7 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            Selection.Set(SelectionController.Selection.Select(p => Scene.Traces[p]));
+            Selection.Set(SelectionCon.Selection.Select(p => Scene.Traces[p]));
             SelectionUpdating = false;
         }
 
@@ -239,8 +239,8 @@
             if (SelectionUpdating)
                 return;
             SelectionUpdating = true;
-            SelectionController.TraceCount = Scene.Traces.Count;
-            SelectionController.Selection = Selection.GetTraceIndices().ToList();
+            SelectionCon.TraceCount = Scene.Traces.Count;
+            SelectionCon.Selection = Selection.GetTraceIndices().ToList();
             SelectionUpdating = false;
         }
 
@@ -280,7 +280,7 @@
     /// <summary>
     /// Command runners.
     /// </summary>
-    partial class TraceController
+    partial class TraceCon
     {
         private void Description_TextChanged(object sender, System.EventArgs e) =>
             Run(p => new DescriptionCommand(p.Index, TraceEdit.edDescription.Text));

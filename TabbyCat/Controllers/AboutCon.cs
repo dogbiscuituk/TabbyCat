@@ -4,9 +4,9 @@
     using System.Windows.Forms;
     using TabbyCat.Views;
 
-    internal class AboutController : LocalizationController
+    internal class AboutCon : LocalizationCon
     {
-        internal AboutController(WorldController worldController) : base(worldController)
+        internal AboutCon(WorldCon worldCon) : base(worldCon)
         {
             var asm = Assembly.GetExecutingAssembly();
             AboutDialog.Text = $"About {Application.ProductName}";
@@ -15,7 +15,7 @@
             AboutDialog.lblVersion.Text = Application.ProductVersion;
             AboutDialog.lblAuthor.Text = Application.CompanyName;
             AboutDialog.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            var info = AppController.WorldControllers[0].GLInfo;
+            var info = AppCon.WorldCons[0].GLInfo;
             AboutDialog.lblOpenGLVersion.Text = info.Number;
             AboutDialog.lblGLSLVersion.Text = info.Shader;
             AboutDialog.lblVendorName.Text = info.Vendor;

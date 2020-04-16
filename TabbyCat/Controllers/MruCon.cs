@@ -17,10 +17,10 @@
     /// Provide a "Clear" subitem to reset the content of this submenu to (empty).
     /// Note: unsafe code is used to abbreviate long paths (see CompactMenuText method).
     /// </summary>
-    internal class MruController : LocalizationController
+    internal class MruCon : LocalizationCon
     {
-        protected MruController(WorldController worldController, string subKeyName)
-            : base(worldController)
+        protected MruCon(WorldCon worldCon, string subKeyName)
+            : base(worldCon)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
                 throw new ArgumentNullException(nameof(subKeyName));
@@ -35,7 +35,7 @@
 
         private readonly string SubKeyName;
 
-        protected ToolStripDropDownItem RecentMenu => WorldController.WorldForm.FileReopen;
+        protected ToolStripDropDownItem RecentMenu => WorldCon.WorldForm.FileReopen;
 
         internal virtual void Reopen(ToolStripItem menuItem) { }
 

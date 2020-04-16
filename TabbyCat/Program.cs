@@ -15,7 +15,7 @@
             ParseCommandLine(args);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(AppController.AboutDialog);
+            Application.Run(AppCon.AboutDialog);
         }
 
         private static void ParseCommandLine(string[] args)

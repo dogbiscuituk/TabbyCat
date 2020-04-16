@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Windows.Forms;
 
-    public static class UIController
+    public static class UICon
     {
         /// <summary>
         /// Copy the Items from one ToolStrip to another.

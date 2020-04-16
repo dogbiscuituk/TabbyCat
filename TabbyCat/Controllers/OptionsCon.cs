@@ -5,10 +5,10 @@
     using TabbyCat.Controls.Types;
     using TabbyCat.Views;
 
-    internal class OptionsController : LocalizationController
+    internal class OptionsCon : LocalizationCon
     {
-        internal OptionsController(WorldController worldController)
-            :base(worldController)
+        internal OptionsCon(WorldCon worldCon)
+            :base(worldCon)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
@@ -33,10 +33,10 @@
 
         internal DialogResult ShowModal()
         {
-            Options = AppController.Options;
+            Options = AppCon.Options;
             var result = OptionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
-                AppController.Options = Options;
+                AppCon.Options = Options;
             return result;
         }
 

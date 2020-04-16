@@ -16,9 +16,9 @@
     {
         public Scene() : base() => Init();
 
-        internal Scene(WorldController worldController) : this() => WorldController = worldController;
+        internal Scene(WorldCon worldCon) : this() => WorldCon = worldCon;
 
-        internal WorldController WorldController;
+        internal WorldCon WorldCon;
 
         private string _GPULog = string.Empty;
         private GPUStatus _GPUStatus;
@@ -64,13 +64,13 @@
             }
         }
 
-        internal CommandProcessor CommandProcessor => WorldController?.CommandProcessor;
+        internal CommandProcessor CommandProcessor => WorldCon?.CommandProcessor;
 
-        internal GraphicsMode GraphicsMode => WorldController?.GraphicsMode;
+        internal GraphicsMode GraphicsMode => WorldCon?.GraphicsMode;
 
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
 
-        private GLControl GLControl => WorldController?.GLControl;
+        private GLControl GLControl => WorldCon?.GLControl;
 
         internal void AddTrace(Trace trace) => Traces.Add(trace);
 
@@ -84,7 +84,7 @@
 
         internal Matrix4 GetCameraView() => MathUtils.CreateCameraView(Camera);
 
-        internal GraphicsMode GetGraphicsMode() => WorldController?.GraphicsMode;
+        internal GraphicsMode GetGraphicsMode() => WorldCon?.GraphicsMode;
 
         internal Matrix4 GetProjection() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
@@ -92,7 +92,7 @@
 
         internal Trace NewTrace() => new Trace(this);
 
-        internal void OnPropertyChanged(string propertyName) => WorldController?.OnPropertyChanged(propertyName);
+        internal void OnPropertyChanged(string propertyName) => WorldCon?.OnPropertyChanged(propertyName);
 
         internal void RemoveTrace(int index)
         {
