@@ -260,9 +260,12 @@
             ClockCon.Connect(connect);
             ConnectJsonCon(connect);
             GpuCon.Connect(connect);
+            GpuShaderCon.Connect(connect);
             RenderCon.Connect(connect);
             TraceCon.Connect(connect);
+            TraceShaderCon.Connect(connect);
             SceneCon.Connect(connect);
+            SceneShaderCon.Connect(connect);
             if (connect)
             {
             }

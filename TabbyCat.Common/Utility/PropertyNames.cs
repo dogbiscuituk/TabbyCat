@@ -23,17 +23,6 @@
             VSync = "VSync";
 
         /// <summary>
-        /// Scene shader names.
-        /// </summary>
-        public const string
-            SceneVertex = "Scene Vertex Shader",
-            SceneTessControl = "Scene Tessellation Control Shader",
-            SceneTessEvaluation = "Scene Tessellation Evaluation Shader",
-            SceneGeometry = "Scene Geometry Shader",
-            SceneFragment = "Scene Fragment Shader",
-            SceneCompute = "Scene Compute Shader";
-
-        /// <summary>
         /// Trace property names.
         /// </summary>
         public const string
@@ -48,6 +37,25 @@
             Visible = "Visible";
 
         /// <summary>
+        /// GPU property names.
+        /// </summary>
+        public const string
+            GPULog = "GPU Log",
+            GPUStatus = "GPU Status",
+            GraphicsMode = "Graphics Mode";
+
+        /// <summary>
+        /// Scene shader names.
+        /// </summary>
+        public const string
+            SceneVertex = "Scene Vertex Shader",
+            SceneTessControl = "Scene Tessellation Control Shader",
+            SceneTessEvaluation = "Scene Tessellation Evaluation Shader",
+            SceneGeometry = "Scene Geometry Shader",
+            SceneFragment = "Scene Fragment Shader",
+            SceneCompute = "Scene Compute Shader";
+
+        /// <summary>
         /// Trace shader names.
         /// </summary>
         public const string
@@ -59,11 +67,14 @@
             TraceCompute = "Trace Compute Shader";
 
         /// <summary>
-        /// GPU Properties.
+        /// GPU shader names.
         /// </summary>
         public const string
-            GPULog = "GPU Log",
-            GPUStatus = "GPU Status",
-            GraphicsMode = "Graphics Mode";
+            VertexShader = "Vertex Shader",
+            TessControlShader = "Tessellation Control Shader",
+            TessEvaluationShader = "Tessellation Evaluation Shader",
+            GeometryShader = "Geometry Shader",
+            FragmentShader = "Fragment Shader",
+            ComputeShader = "Compute Shader";
     }
 }
