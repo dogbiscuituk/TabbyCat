@@ -566,14 +566,13 @@
                     Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
                     break;
                 case ShaderRegion.All:
+                    FindBreaks(text);
                     if (Breaks.Any())
                         for (var traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
                         {
                             string
-                                oldScript = traceNumber == 0
-                                ? ""
-                                : "",
-                                newScript = ExtractScript(text, traceNumber);
+                                oldScript = traceNumber == 0 ? Scene.GetScript(ShaderType) : Scene.Traces[traceNumber - 1].GetScript(ShaderType),
+                                newScript = ExtractScript(text, traceNumber).Outdent("  ");
                             if (newScript != oldScript)
                                 if (traceNumber == 0)
                                     Run(new SceneShaderCommand(ShaderType, newScript));
