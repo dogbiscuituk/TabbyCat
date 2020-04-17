@@ -565,8 +565,31 @@
                 case ShaderRegion.Trace:
                     Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
                     break;
+                case ShaderRegion.All:
+                    if (Breaks.Any())
+                        for (var traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
+                        {
+                            string
+                                oldScript = traceNumber == 0
+                                ? ""
+                                : "",
+                                newScript = ExtractScript(text, traceNumber);
+                            if (newScript != oldScript)
+                                if (traceNumber == 0)
+                                    Run(new SceneShaderCommand(ShaderType, newScript));
+                                else
+                                    Run(new TraceShaderCommand(traceNumber - 1, ShaderType, newScript));
+                        }
+                    break;
             }
             Updating = false;
+        }
+
+        private string ExtractScript(string text, int traceNumber)
+        {
+            var breakIndex = 2 * traceNumber + 1;
+            int start = Breaks[breakIndex], end = Breaks[breakIndex + 1];
+            return text.GetLines(start, end - start);
         }
 
         private void SelectNextShader()
@@ -613,18 +636,14 @@
             Breaks.Clear();
             if (string.IsNullOrWhiteSpace(script))
                 return;
-            var ok = AddBreak(1) && AddBreak(script.FindToken(BeginSceneToken) + 2) && AddBreak(script.FindToken(EndSceneToken) - 1);
+            var ok = AddBreak(0) && AddBreak(script.FindFirstTokenLine(BeginSceneToken) + 2) && AddBreak(script.FindFirstTokenLine(EndSceneToken) - 1);
             for (var index = 0; index < Scene.Traces.Count; index++)
-                ok &= AddBreak(script.FindToken(BeginTraceToken(index)) + 2) & AddBreak(script.FindToken(EndTraceToken(index)) - 1);
-            ok &= AddBreak(script.GetLineCount() + 1);
+                ok &= AddBreak(script.FindFirstTokenLine(BeginTraceToken(index)) + 2) & AddBreak(script.FindFirstTokenLine(EndTraceToken(index)) - 1);
+            ok &= AddBreak(script.GetLineCount());
             if (!ok)
                 Breaks.Clear();
             for (var index = 0; index < Breaks.Count; index += 2)
-            {
-                int a = Breaks[index] - 1, b = Breaks[index + 1] - 1;
-                var range = new Range(PrimaryTextBox, 0, a, 0, b);
-                PrimaryCon.AddSystemRange(range);
-            }
+                PrimaryCon.AddSystemRange(new Range(PrimaryTextBox, 0, Breaks[index], 0, Breaks[index + 1]));
         }
 
         private bool CodeChanged(string propertyName)

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jmk.Controls", "Jmk.Control
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jmk.Common", "Jmk.Common\Jmk.Common.csproj", "{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jmk.Common.Tests", "Jmk.Common.Tests\Jmk.Common.Tests.csproj", "{068A445A-A208-4511-82BF-575223E41961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FCC8674-5E51-4FA1-976E-C0C3966FE77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{068A445A-A208-4511-82BF-575223E41961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{068A445A-A208-4511-82BF-575223E41961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{068A445A-A208-4511-82BF-575223E41961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{068A445A-A208-4511-82BF-575223E41961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
