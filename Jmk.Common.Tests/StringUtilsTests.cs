@@ -3,7 +3,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class StringsTests
+    public class StringUtilsTests
     {
         [Test]
         public void TestAmpersandEscapeUnescape()

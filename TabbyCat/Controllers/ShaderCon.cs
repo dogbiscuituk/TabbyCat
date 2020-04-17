@@ -194,11 +194,6 @@
             }
         }
 
-        internal void SetBreaks(List<int> breaks)
-        {
-
-        }
-
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
