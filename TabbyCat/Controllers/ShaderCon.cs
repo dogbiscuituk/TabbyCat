@@ -600,23 +600,25 @@
             Updating = false;
         }
 
+        private bool AddBreak(int b)
+        {
+            var ok = !Breaks.Any() || b > Breaks.Last();
+            if (ok)
+                Breaks.Add(b);
+            return ok;
+        }
+
         private void FindBreaks(string script)
         {
             Breaks.Clear();
             if (string.IsNullOrWhiteSpace(script))
                 return;
-            Breaks.AddRange(new[]
-            {
-                1,
-                script.FindToken(BeginSceneToken) + 2,
-                script.FindToken(EndSceneToken) - 1
-            });
+            var ok = AddBreak(1) && AddBreak(script.FindToken(BeginSceneToken) + 2) && AddBreak(script.FindToken(EndSceneToken) - 1);
             for (var index = 0; index < Scene.Traces.Count; index++)
-            {
-                Breaks.Add(script.FindToken(BeginTraceToken(index)) + 2);
-                Breaks.Add(script.FindToken(EndTraceToken(index)) - 1);
-            }
-            Breaks.Add(script.GetLineCount() + 1);
+                ok &= AddBreak(script.FindToken(BeginTraceToken(index)) + 2) & AddBreak(script.FindToken(EndTraceToken(index)) - 1);
+            ok &= AddBreak(script.GetLineCount() + 1);
+            if (!ok)
+                Breaks.Clear();
             for (var index = 0; index < Breaks.Count; index += 2)
             {
                 int a = Breaks[index] - 1, b = Breaks[index + 1] - 1;

@@ -817,13 +817,13 @@ as it was after the last new/open/save operation|^Home</value>
     <value>GPU status</value>
   </data>
   <data name="SceneForm_TabText" xml:space="preserve">
-    <value>Scene</value>
+    <value>Scene properties</value>
   </data>
   <data name="SceneForm_Text" xml:space="preserve">
     <value>Scene properties</value>
   </data>
   <data name="TraceForm_TabText" xml:space="preserve">
-    <value>Trace</value>
+    <value>Trace properties</value>
   </data>
   <data name="TraceForm_Text" xml:space="preserve">
     <value>Trace properties</value>
@@ -832,7 +832,7 @@ as it was after the last new/open/save operation|^Home</value>
     <value>New File {0}</value>
   </data>
   <data name="ShaderForm_TabText" xml:space="preserve">
-    <value>({0})</value>
+    <value>{0} code</value>
   </data>
   <data name="ShaderForm_Text" xml:space="preserve">
     <value>{0} code</value>

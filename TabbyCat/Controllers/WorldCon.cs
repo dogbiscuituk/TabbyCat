@@ -29,6 +29,15 @@
             PopupMenu_Opening(this, new CancelEventArgs());
         }
 
+        protected DockPanel WorldPanel => WorldForm.DockPanel;
+        protected DockPane ScenePane => SceneForm.Pane;
+        protected DockPane TracePane => TraceForm.Pane;
+        protected DockPane GpuPane => GpuForm.Pane;
+        protected DockPane SceneShaderPane => SceneShaderForm.Pane;
+        protected DockPane TraceShaderPane => TraceShaderForm.Pane;
+        protected DockPane GpuShaderPane => GpuShaderForm.Pane;
+        protected DockPane GLControlPane => GLControlForm.Pane;
+
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
         internal TraceSelection Selection = new TraceSelection();
@@ -612,13 +621,11 @@
 
         private void ShowControls()
         {
-            SetVisibility(SceneShaderCon, false);
-            SetVisibility(SceneCon, false);
-            SetVisibility(TraceShaderCon, false);
-            SetVisibility(TraceCon, false);
-            SetVisibility(GpuShaderCon, true);
-            SetVisibility(GpuCon, false);
-            GLControlForm.Show(WorldForm.DockPanel, DockState.Document);
+            SceneForm.Show(WorldPanel, DockState.DockLeft);
+            TraceForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
+            TraceShaderForm.Show(TracePane, DockAlignment.Bottom, 0.5);
+            GpuShaderForm.Show(WorldPanel, DockState.DockRight);
+            GLControlForm.Show(WorldPanel, DockState.Document);
         }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();

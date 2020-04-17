@@ -998,9 +998,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     case {0}:
-        ///      execTrace{0}();
-        ///      break;
+        ///   Looks up a localized string similar to     case {0}: execTrace{0}(); break;
         ///.
         /// </summary>
         public static string Format_Case {
@@ -1011,15 +1009,18 @@ namespace TabbyCat.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to #version {0}
-        ///
+        /// 
         ///{1}
-        ///
-        ///{2}void main()
+        /// 
+        ///{2}
+        /// 
+        ///{3}
+        /// 
+        ///{4}void main()
         ///{{
         ///  switch (traceNumber)
         ///  {{
-        ///{3}    default:
-        ///      break;
+        ///{5}    default: break;
         ///  }}
         ///}}.
         /// </summary>
@@ -1032,9 +1033,13 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to void execTrace{0}() // {1}
         ///{{
-        ///{2}
+        ///  {2}
+        ///  
+        ///{3}
+        ///  
+        ///  {4}
         ///}}
-        ///
+        /// 
         ///.
         /// </summary>
         public static string Format_Trace {
@@ -2077,7 +2082,7 @@ namespace TabbyCat.Properties {
         ///out vec4 FragColor;
         ///
         ///uniform float timeValue;
-        ///uniform int traceNumber;.
+        ///uniform int traceNumber; // Starts at 1.
         /// </summary>
         public static string Scene_FragmentShader {
             get {
@@ -2117,7 +2122,7 @@ namespace TabbyCat.Properties {
         ///out vec3 colour;
         ///
         ///uniform float timeValue;
-        ///uniform int traceNumber;
+        ///uniform int traceNumber; // Starts at 1
         ///uniform mat4
         ///  transform,
         ///  cameraView,
@@ -2130,7 +2135,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scene.
+        ///   Looks up a localized string similar to Scene properties.
         /// </summary>
         public static string SceneForm_TabText {
             get {
@@ -2178,7 +2183,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ({0}).
+        ///   Looks up a localized string similar to {0} code.
         /// </summary>
         public static string ShaderForm_TabText {
             get {
@@ -2423,7 +2428,7 @@ namespace TabbyCat.Properties {
         ///  g = 0,
         ///  b = 0;
         ///
-        ////* Begin formula */
+        ///// Begin Formula
         ///
         ///z = sqrt(x * x + y * y);
         ///z = cos(20 * z - 10 * t) * exp(-3 * z);
@@ -2431,7 +2436,7 @@ namespace TabbyCat.Properties {
         ///g = (y + 1) / 2;
         ///b = clamp(abs(5 * z), 0, 1);
         ///
-        ////* End formula */
+        ///// End Formula
         ///
         ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
         ///colour = vec3(r, g, b);.
@@ -2443,7 +2448,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trace.
+        ///   Looks up a localized string similar to Trace properties.
         /// </summary>
         public static string TraceForm_TabText {
             get {
