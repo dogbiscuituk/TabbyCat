@@ -849,4 +849,7 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="ShaderRegion_Trace" xml:space="preserve">
     <value>Trace</value>
   </data>
+  <data name="Menu_View_Scene" xml:space="preserve">
+    <value>Scene|Show or hide the main graphics display window</value>
+  </data>
 </root>

@@ -129,6 +129,7 @@
             Localize(Resources.Menu_View_Code_Scene, WorldForm.ViewSceneCode);
             Localize(Resources.Menu_View_Code_Trace, WorldForm.ViewTraceCode);
             Localize(Resources.Menu_View_Code_GPU, WorldForm.ViewGpuCode);
+            Localize(Resources.Menu_View_Scene, WorldForm.ViewScene);
             Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
             Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
             Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
@@ -222,6 +223,7 @@
         private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderCon);
         private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderCon);
         private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(GpuShaderCon);
+        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility(GLCon);
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -368,6 +370,7 @@
                 WorldForm.ViewSceneCode.Click += ViewSceneCode_Click;
                 WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
                 WorldForm.ViewGpuCode.Click += ViewGpuCode_Click;
+                WorldForm.ViewScene.Click += ViewScene_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
                 WorldForm.PopupMenu.Opening += PopupMenu_Opening;
@@ -395,6 +398,7 @@
                 WorldForm.ViewSceneCode.Click -= ViewSceneCode_Click;
                 WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
                 WorldForm.ViewGpuCode.Click -= ViewGpuCode_Click;
+                WorldForm.ViewScene.Click -= ViewScene_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
                 WorldForm.PopupMenu.Opening -= PopupMenu_Opening;

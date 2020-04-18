@@ -93,6 +93,8 @@
             this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewGpuCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
@@ -614,7 +616,9 @@
             this.toolStripMenuItem3,
             this.ViewSceneCode,
             this.ViewTraceCode,
-            this.ViewGpuCode});
+            this.ViewGpuCode,
+            this.toolStripMenuItem6,
+            this.ViewScene});
             this.ViewMenu.Name = "ViewMenu";
             this.ViewMenu.Size = new System.Drawing.Size(47, 21);
             this.ViewMenu.Text = "View";
@@ -659,6 +663,17 @@
             this.ViewGpuCode.Name = "ViewGpuCode";
             this.ViewGpuCode.Size = new System.Drawing.Size(180, 22);
             this.ViewGpuCode.Text = "GPU code";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ViewScene
+            // 
+            this.ViewScene.Name = "ViewScene";
+            this.ViewScene.Size = new System.Drawing.Size(180, 22);
+            this.ViewScene.Text = "Scene";
             // 
             // CameraMenu
             // 
@@ -915,9 +930,11 @@
         internal System.Windows.Forms.ToolStripMenuItem ViewSceneProperties;
         internal System.Windows.Forms.ToolStripMenuItem ViewTraceProperties;
         internal System.Windows.Forms.ToolStripMenuItem ViewGpuStatus;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         internal System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
         internal System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
         internal System.Windows.Forms.ToolStripMenuItem ViewGpuCode;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        internal System.Windows.Forms.ToolStripMenuItem ViewScene;
     }
 }

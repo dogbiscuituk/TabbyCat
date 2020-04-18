@@ -1708,6 +1708,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scene|Show or hide the main graphics display window.
+        /// </summary>
+        public static string Menu_View_Scene {
+            get {
+                return ResourceManager.GetString("Menu_View_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
         /// </summary>
         public static string Message_FileModified_Text {

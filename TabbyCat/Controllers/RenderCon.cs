@@ -235,6 +235,7 @@
 
         internal void Render()
         {
+            return;
             if (!MakeCurrent(true))
                 return;
             GL.Enable(EnableCap.DepthTest);
@@ -386,7 +387,7 @@
 
         private bool MakeCurrent(bool current)
         {
-            if (!GLControl.HasValidContext)
+            if (GLControl?.HasValidContext != true)
                 return false;
             if (current)
             {

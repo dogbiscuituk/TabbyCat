@@ -2,6 +2,7 @@
 {
     using OpenTK;
     using System;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
@@ -24,7 +25,7 @@
         protected virtual Clock Clock => ClockCon.Clock;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
-        protected internal GLControl GLControl => (GLControl)GLControlForm?.Controls?[0];
+        protected internal GLControl GLControl => (GLControl)GLControlForm?.Controls?.OfType<Control>().FirstOrDefault();
         protected virtual GLControlForm GLControlForm => GLCon.GLControlForm;
         protected virtual GLCon GLCon => WorldCon.GLCon;
         protected virtual GpuCon GpuCon => WorldCon.GpuCon;
