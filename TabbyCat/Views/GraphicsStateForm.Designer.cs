@@ -51,7 +51,6 @@
             this.TabText = "Graphics state";
             this.Text = "Graphics state";
             this.ResumeLayout(false);
-
         }
 
         #endregion
