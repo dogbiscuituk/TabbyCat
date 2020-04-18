@@ -271,19 +271,6 @@
             MakeCurrent(false);
         }
 
-        private void UpdateFPS()
-        {
-            Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
-            if (TickCount < Ticks.Length) TickCount++;
-            var fps = 0f;
-            if (TickCount > 1)
-            {
-                var ticks = Ticks.Take(TickCount);
-                fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
-            }
-            FramesPerSecond = fps;
-        }
-
         internal bool Unload()
         {
             var result = MakeCurrent(true);
@@ -293,6 +280,12 @@
                 MakeCurrent(false);
             }
             return result;
+        }
+
+        private void BeginRender()
+        {
+            if (++CurrencyCount == 1)
+                GLControl.MakeCurrent();
         }
 
         private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
@@ -345,6 +338,12 @@
             DeleteShader(ref ComputeShaderID);
         }
 
+        private void EndRender()
+        {
+            if (--CurrencyCount == 0)
+                GLControl.Context.MakeCurrent(null);
+        }
+
         private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
 
         private void GetUniformLocations()
@@ -386,19 +385,26 @@
 
         private bool MakeCurrent(bool current)
         {
-            if (GLControl?.HasValidContext != true)
-                return false;
-            if (current)
+            var ok = GLControl?.HasValidContext == true && GLControl?.Visible == true;
+            if (ok)
+                if (current)
+                    BeginRender();
+                else
+                    EndRender();
+            return ok;
+        }
+
+        private void UpdateFPS()
+        {
+            Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
+            if (TickCount < Ticks.Length) TickCount++;
+            var fps = 0f;
+            if (TickCount > 1)
             {
-                if (++CurrencyCount == 1)
-                    GLControl.MakeCurrent();
+                var ticks = Ticks.Take(TickCount);
+                fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
             }
-            else
-            {
-                if (--CurrencyCount == 0)
-                    GLControl.Context.MakeCurrent(null);
-            }
-            return true;
+            FramesPerSecond = fps;
         }
 
         private void ValidateCameraView()

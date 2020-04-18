@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Views
 {
-    public partial class GpuForm : DockingForm
+    public partial class GraphicsStateForm : DockingForm
     {
-        public GpuForm()
+        public GraphicsStateForm()
         {
             InitializeComponent();
         }

@@ -1109,7 +1109,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPU.
+        ///   Looks up a localized string similar to Graphics state.
         /// </summary>
         public static string GpuForm_TabText {
             get {
@@ -1118,7 +1118,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPU status.
+        ///   Looks up a localized string similar to Graphics state.
         /// </summary>
         public static string GpuForm_Text {
             get {
@@ -1654,56 +1654,20 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPU code|Show or hide the GPU code editor.
+        ///   Looks up a localized string similar to All code|Show or hide the main code editor.
         /// </summary>
-        public static string Menu_View_Code_GPU {
+        public static string Menu_View_AllCode {
             get {
-                return ResourceManager.GetString("Menu_View_Code_GPU", resourceCulture);
+                return ResourceManager.GetString("Menu_View_AllCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scene code|Show or hide the scene code editor.
+        ///   Looks up a localized string similar to Graphics state|Show or hide the graphics mode and status.
         /// </summary>
-        public static string Menu_View_Code_Scene {
+        public static string Menu_View_GraphicsState {
             get {
-                return ResourceManager.GetString("Menu_View_Code_Scene", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
-        /// </summary>
-        public static string Menu_View_Code_Trace {
-            get {
-                return ResourceManager.GetString("Menu_View_Code_Trace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to GPU status|Show or hide the GPU status.
-        /// </summary>
-        public static string Menu_View_Properties_GPU {
-            get {
-                return ResourceManager.GetString("Menu_View_Properties_GPU", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene properties|Show or hide the scene properties editor.
-        /// </summary>
-        public static string Menu_View_Properties_Scene {
-            get {
-                return ResourceManager.GetString("Menu_View_Properties_Scene", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
-        /// </summary>
-        public static string Menu_View_Properties_Trace {
-            get {
-                return ResourceManager.GetString("Menu_View_Properties_Trace", resourceCulture);
+                return ResourceManager.GetString("Menu_View_GraphicsState", resourceCulture);
             }
         }
         
@@ -1713,6 +1677,42 @@ namespace TabbyCat.Properties {
         public static string Menu_View_Scene {
             get {
                 return ResourceManager.GetString("Menu_View_Scene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene code|Show or hide the scene code editor.
+        /// </summary>
+        public static string Menu_View_SceneCode {
+            get {
+                return ResourceManager.GetString("Menu_View_SceneCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene properties|Show or hide the scene properties editor.
+        /// </summary>
+        public static string Menu_View_SceneProperties {
+            get {
+                return ResourceManager.GetString("Menu_View_SceneProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
+        /// </summary>
+        public static string Menu_View_TraceCode {
+            get {
+                return ResourceManager.GetString("Menu_View_TraceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
+        /// </summary>
+        public static string Menu_View_TraceProperties {
+            get {
+                return ResourceManager.GetString("Menu_View_TraceProperties", resourceCulture);
             }
         }
         
@@ -2210,7 +2210,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} shader code.
+        ///   Looks up a localized string similar to {0} code.
         /// </summary>
         public static string ShaderForm_ToolTipText {
             get {
@@ -2219,7 +2219,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPU.
+        ///   Looks up a localized string similar to Shader.
         /// </summary>
         public static string ShaderRegion_All {
             get {

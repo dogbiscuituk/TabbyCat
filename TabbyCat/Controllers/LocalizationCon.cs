@@ -29,8 +29,8 @@
         protected virtual GLControlForm GLControlForm => GLCon.GLControlForm;
         protected virtual GLCon GLCon => WorldCon.GLCon;
         protected virtual GpuCon GpuCon => WorldCon.GpuCon;
-        protected GPUEdit GpuEdit => GpuForm.GpuEdit;
-        protected virtual GpuForm GpuForm => GpuCon.GpuForm;
+        protected GraphicsStateEdit GpuEdit => GpuForm.GpuEdit;
+        protected virtual GraphicsStateForm GpuForm => GpuCon.GpuForm;
         protected virtual ShaderCon GpuShaderCon => WorldCon.GpuShaderCon;
         protected ShaderForm GpuShaderForm => GpuShaderCon.ShaderForm;
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;

@@ -10,11 +10,11 @@
     {
         internal GpuCon(WorldCon worldCon) : base(worldCon) { }
 
-        private GpuForm _GpuForm;
+        private GraphicsStateForm _GpuForm;
 
         protected internal override DockContent Form => GpuForm;
 
-        protected override GpuForm GpuForm => _GpuForm ?? (_GpuForm = new GpuForm
+        protected override GraphicsStateForm GpuForm => _GpuForm ?? (_GpuForm = new GraphicsStateForm
         {
             TabText = Resources.GpuForm_TabText,
             Text = Resources.GpuForm_Text,

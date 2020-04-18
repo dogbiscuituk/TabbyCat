@@ -88,11 +88,11 @@
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewGpuStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewGraphicsState = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewGpuCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewAllCode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +116,7 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -610,15 +611,16 @@
             // ViewMenu
             // 
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewScene,
+            this.toolStripMenuItem6,
             this.ViewSceneProperties,
             this.ViewTraceProperties,
-            this.ViewGpuStatus,
             this.toolStripMenuItem3,
+            this.ViewAllCode,
             this.ViewSceneCode,
             this.ViewTraceCode,
-            this.ViewGpuCode,
-            this.toolStripMenuItem6,
-            this.ViewScene});
+            this.toolStripMenuItem7,
+            this.ViewGraphicsState});
             this.ViewMenu.Name = "ViewMenu";
             this.ViewMenu.Size = new System.Drawing.Size(47, 21);
             this.ViewMenu.Text = "View";
@@ -635,11 +637,11 @@
             this.ViewTraceProperties.Size = new System.Drawing.Size(180, 22);
             this.ViewTraceProperties.Text = "Trace properties";
             // 
-            // ViewGpuStatus
+            // ViewGraphicsState
             // 
-            this.ViewGpuStatus.Name = "ViewGpuStatus";
-            this.ViewGpuStatus.Size = new System.Drawing.Size(180, 22);
-            this.ViewGpuStatus.Text = "GPU status";
+            this.ViewGraphicsState.Name = "ViewGraphicsState";
+            this.ViewGraphicsState.Size = new System.Drawing.Size(180, 22);
+            this.ViewGraphicsState.Text = "Graphics state";
             // 
             // toolStripMenuItem3
             // 
@@ -658,11 +660,11 @@
             this.ViewTraceCode.Size = new System.Drawing.Size(180, 22);
             this.ViewTraceCode.Text = "Trace code";
             // 
-            // ViewGpuCode
+            // ViewAllCode
             // 
-            this.ViewGpuCode.Name = "ViewGpuCode";
-            this.ViewGpuCode.Size = new System.Drawing.Size(180, 22);
-            this.ViewGpuCode.Text = "GPU code";
+            this.ViewAllCode.Name = "ViewAllCode";
+            this.ViewAllCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewAllCode.Text = "All code";
             // 
             // toolStripMenuItem6
             // 
@@ -822,6 +824,11 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -929,12 +936,13 @@
         internal System.Windows.Forms.ToolStripStatusLabel GpuStatusLabel;
         internal System.Windows.Forms.ToolStripMenuItem ViewSceneProperties;
         internal System.Windows.Forms.ToolStripMenuItem ViewTraceProperties;
-        internal System.Windows.Forms.ToolStripMenuItem ViewGpuStatus;
+        internal System.Windows.Forms.ToolStripMenuItem ViewGraphicsState;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         internal System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
         internal System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
-        internal System.Windows.Forms.ToolStripMenuItem ViewGpuCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewAllCode;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         internal System.Windows.Forms.ToolStripMenuItem ViewScene;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
     }
 }

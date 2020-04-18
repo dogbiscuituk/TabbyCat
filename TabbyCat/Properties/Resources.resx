@@ -792,29 +792,29 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="Menu_View" xml:space="preserve">
     <value>&amp;View|Display of edit controls</value>
   </data>
-  <data name="Menu_View_Code_GPU" xml:space="preserve">
-    <value>GPU code|Show or hide the GPU code editor</value>
+  <data name="Menu_View_AllCode" xml:space="preserve">
+    <value>All code|Show or hide the main code editor</value>
   </data>
-  <data name="Menu_View_Code_Scene" xml:space="preserve">
+  <data name="Menu_View_SceneCode" xml:space="preserve">
     <value>Scene code|Show or hide the scene code editor</value>
   </data>
-  <data name="Menu_View_Code_Trace" xml:space="preserve">
+  <data name="Menu_View_TraceCode" xml:space="preserve">
     <value>Trace code|Show or hide the trace code editor</value>
   </data>
-  <data name="Menu_View_Properties_GPU" xml:space="preserve">
-    <value>GPU status|Show or hide the GPU status</value>
+  <data name="Menu_View_GraphicsState" xml:space="preserve">
+    <value>Graphics state|Show or hide the graphics mode and status</value>
   </data>
-  <data name="Menu_View_Properties_Scene" xml:space="preserve">
+  <data name="Menu_View_SceneProperties" xml:space="preserve">
     <value>Scene properties|Show or hide the scene properties editor</value>
   </data>
-  <data name="Menu_View_Properties_Trace" xml:space="preserve">
+  <data name="Menu_View_TraceProperties" xml:space="preserve">
     <value>Trace properties|Show or hide the trace properties editor</value>
   </data>
   <data name="GpuForm_TabText" xml:space="preserve">
-    <value>GPU</value>
+    <value>Graphics state</value>
   </data>
   <data name="GpuForm_Text" xml:space="preserve">
-    <value>GPU status</value>
+    <value>Graphics state</value>
   </data>
   <data name="SceneForm_TabText" xml:space="preserve">
     <value>Scene properties</value>
@@ -838,10 +838,10 @@ as it was after the last new/open/save operation|^Home</value>
     <value>{0} code</value>
   </data>
   <data name="ShaderForm_ToolTipText" xml:space="preserve">
-    <value>{0} shader code</value>
+    <value>{0} code</value>
   </data>
   <data name="ShaderRegion_All" xml:space="preserve">
-    <value>GPU</value>
+    <value>Shader</value>
   </data>
   <data name="ShaderRegion_Scene" xml:space="preserve">
     <value>Scene</value>
