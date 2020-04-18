@@ -618,18 +618,22 @@
         private void SetVisibility(DockingCon dockingCon, bool visible)
         {
             if (visible)
-                dockingCon.Form.Show(WorldForm.DockPanel, DockState.Float);
+                dockingCon.Form.Activate();
+                //dockingCon.Form.Show(WorldForm.DockPanel, DockState.Float);
             else
                 dockingCon.Form.Hide();
         }
 
         private void ShowControls()
         {
+            GLControlForm.Show(WorldPanel, DockState.Document);
+            GpuShaderForm.Show(WorldPanel, DockState.DockRight);
             SceneForm.Show(WorldPanel, DockState.DockLeft);
             TraceForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
-            TraceShaderForm.Show(TracePane, DockAlignment.Bottom, 0.5);
-            GpuShaderForm.Show(WorldPanel, DockState.DockRight);
-            GLControlForm.Show(WorldPanel, DockState.Document);
+            SceneShaderForm.Show(TracePane, DockAlignment.Bottom, 0.5);
+            TraceShaderForm.Show(SceneShaderPane, null);
+            GpuForm.Show(SceneShaderPane, null);
+            TraceShaderForm.Activate();
         }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
