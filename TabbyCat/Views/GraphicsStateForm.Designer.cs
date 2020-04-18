@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(354, 169);
             this.Controls.Add(this.GpuEdit);
             this.Name = "GraphicsStateForm";
-            this.TabText = "GPU";
+            this.TabText = "Graphics state";
             this.Text = "Graphics state";
             this.ResumeLayout(false);
 
