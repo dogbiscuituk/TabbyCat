@@ -13,6 +13,7 @@
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using TabbyCat.Common.Utility;
+    using TabbyCat.Controls.Types;
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
@@ -22,7 +23,10 @@
     {
         internal WorldCon() : base(null)
         {
+            var theme = GetTheme();
+            theme.Extender.FloatWindowFactory = new FloatingFormFactory();
             WorldForm = new WorldForm();
+            WorldPanel.Theme = theme;
             Scene = new Scene(this);
             ShowControls();
             Connect(true);
@@ -517,6 +521,37 @@
             return this;
         }
 
+        private static ThemeBase GetTheme()
+        {
+            switch (AppCon.Options.Theme)
+            {
+                case Theme.VS2003:
+                    return new VS2003Theme();
+                case Theme.VS2005:
+                    return new VS2005Theme();
+                case Theme.VS2012Blue:
+                    return new VS2012BlueTheme();
+                case Theme.VS2012Dark:
+                    return new VS2012DarkTheme();
+                case Theme.VS2012Light:
+                    return new VS2012LightTheme();
+                case Theme.VS2013Blue:
+                    return new VS2013BlueTheme();
+                case Theme.VS2013Dark:
+                    return new VS2013DarkTheme();
+                case Theme.VS2013Light:
+                    return new VS2013LightTheme();
+                case Theme.VS2015Blue:
+                    return new VS2015BlueTheme();
+                case Theme.VS2015Dark:
+                    return new VS2015DarkTheme();
+                case Theme.VS2015Light:
+                    return new VS2015LightTheme();
+                default:
+                    return new VS2015BlueTheme();
+            }
+        }
+
         private void HelpAbout()
         {
             using (AboutCon aboutCon = new AboutCon(this))
@@ -615,11 +650,10 @@
 
         private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
 
-        private void SetVisibility(DockingCon dockingCon, bool visible)
+        private static void SetVisibility(DockingCon dockingCon, bool visible)
         {
             if (visible)
                 dockingCon.Form.Activate();
-                //dockingCon.Form.Show(WorldForm.DockPanel, DockState.Float);
             else
                 dockingCon.Form.Hide();
         }

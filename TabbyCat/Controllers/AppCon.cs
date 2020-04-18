@@ -22,12 +22,13 @@
 
         internal static string DataFormat = "TabbyCatDataFormat";
 
+        internal static Theme Theme { get; private set; }
+
         internal static List<WorldCon> WorldCons = new List<WorldCon>();
 
         private static AboutDialog _AboutDialog;
 
-        private static readonly string DefaultFilesFolderPath =
-            $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
+        private static readonly string DefaultFilesFolderPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
 
         private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
@@ -50,6 +51,7 @@
             {
                 var options = new Options
                 {
+                    Theme = Settings.Options_Theme,
                     OpenInNewWindow = Settings.Options_OpenInNewWindow,
                     FilesFolderPath = Settings.FilesFolderPath,
                     TemplatesFolderPath = Settings.TemplatesFolderPath,
@@ -64,6 +66,7 @@
             }
             set
             {
+                Settings.Options_Theme = value.Theme;
                 Settings.Options_OpenInNewWindow = value.OpenInNewWindow;
                 Settings.FilesFolderPath = value.FilesFolderPath;
                 Settings.TemplatesFolderPath = value.TemplatesFolderPath;

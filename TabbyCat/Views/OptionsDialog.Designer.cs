@@ -41,17 +41,21 @@
             this.edFilesFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.edGLSLUrl = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbTheme = new System.Windows.Forms.ComboBox();
             this.tpGLSLStyles = new System.Windows.Forms.TabPage();
             this.GLSLStylesPropertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.label3 = new System.Windows.Forms.Label();
-            this.edGLSLUrl = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tpGeneral.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tpGLSLStyles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,19 +63,19 @@
             // 
             this.groupBox1.Controls.Add(this.rbWindowReuse);
             this.groupBox1.Controls.Add(this.rbWindowNew);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 69);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(441, 76);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "When creating a new scene, or reopening an existing one:";
             // 
             // rbWindowReuse
             // 
             this.rbWindowReuse.AutoSize = true;
-            this.rbWindowReuse.Location = new System.Drawing.Point(8, 48);
+            this.rbWindowReuse.Location = new System.Drawing.Point(10, 49);
             this.rbWindowReuse.Name = "rbWindowReuse";
-            this.rbWindowReuse.Size = new System.Drawing.Size(279, 19);
+            this.rbWindowReuse.Size = new System.Drawing.Size(304, 21);
             this.rbWindowReuse.TabIndex = 1;
             this.rbWindowReuse.Text = "&Reuse the current window (saving any changes).";
             this.rbWindowReuse.UseVisualStyleBackColor = true;
@@ -79,9 +83,9 @@
             // rbWindowNew
             // 
             this.rbWindowNew.AutoSize = true;
-            this.rbWindowNew.Location = new System.Drawing.Point(8, 22);
+            this.rbWindowNew.Location = new System.Drawing.Point(10, 24);
             this.rbWindowNew.Name = "rbWindowNew";
-            this.rbWindowNew.Size = new System.Drawing.Size(237, 19);
+            this.rbWindowNew.Size = new System.Drawing.Size(260, 21);
             this.rbWindowNew.TabIndex = 0;
             this.rbWindowNew.Text = "&Create a new window for the new scene.";
             this.rbWindowNew.UseVisualStyleBackColor = true;
@@ -90,10 +94,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(289, 284);
+            this.btnOK.Location = new System.Drawing.Point(289, 351);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(87, 27);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 1;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -101,10 +105,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(382, 284);
+            this.btnCancel.Location = new System.Drawing.Point(382, 351);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 27);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -116,10 +120,10 @@
             this.groupBox3.Controls.Add(this.edTemplatesFolder);
             this.groupBox3.Controls.Add(this.edFilesFolder);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(6, 88);
+            this.groupBox3.Location = new System.Drawing.Point(6, 151);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(441, 87);
-            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Default folders";
             // 
@@ -142,7 +146,7 @@
             this.btnFilesFolder.Location = new System.Drawing.Point(406, 22);
             this.btnFilesFolder.Name = "btnFilesFolder";
             this.btnFilesFolder.Size = new System.Drawing.Size(23, 23);
-            this.btnFilesFolder.TabIndex = 4;
+            this.btnFilesFolder.TabIndex = 2;
             this.btnFilesFolder.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -150,7 +154,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "&Templates:";
             // 
@@ -160,8 +164,8 @@
             this.edTemplatesFolder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edTemplatesFolder.Location = new System.Drawing.Point(84, 55);
             this.edTemplatesFolder.Name = "edTemplatesFolder";
-            this.edTemplatesFolder.Size = new System.Drawing.Size(322, 16);
-            this.edTemplatesFolder.TabIndex = 2;
+            this.edTemplatesFolder.Size = new System.Drawing.Size(322, 18);
+            this.edTemplatesFolder.TabIndex = 4;
             // 
             // edFilesFolder
             // 
@@ -169,7 +173,7 @@
             this.edFilesFolder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edFilesFolder.Location = new System.Drawing.Point(84, 27);
             this.edFilesFolder.Name = "edFilesFolder";
-            this.edFilesFolder.Size = new System.Drawing.Size(322, 16);
+            this.edFilesFolder.Size = new System.Drawing.Size(322, 18);
             this.edFilesFolder.TabIndex = 1;
             // 
             // label1
@@ -177,7 +181,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Scene &Files:";
             // 
@@ -185,12 +189,30 @@
             // 
             this.groupBox2.Controls.Add(this.edGLSLUrl);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(6, 181);
+            this.groupBox2.Location = new System.Drawing.Point(6, 244);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(441, 51);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OpenGL Shading Language";
+            // 
+            // edGLSLUrl
+            // 
+            this.edGLSLUrl.BackColor = System.Drawing.SystemColors.Control;
+            this.edGLSLUrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.edGLSLUrl.Location = new System.Drawing.Point(115, 24);
+            this.edGLSLUrl.Name = "edGLSLUrl";
+            this.edGLSLUrl.Size = new System.Drawing.Size(314, 18);
+            this.edGLSLUrl.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Specification URL:";
             // 
             // TabControl
             // 
@@ -199,29 +221,60 @@
             this.TabControl.Location = new System.Drawing.Point(12, 12);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(461, 266);
-            this.TabControl.TabIndex = 6;
+            this.TabControl.Size = new System.Drawing.Size(461, 330);
+            this.TabControl.TabIndex = 0;
             // 
             // tpGeneral
             // 
+            this.tpGeneral.Controls.Add(this.groupBox4);
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Controls.Add(this.groupBox2);
             this.tpGeneral.Controls.Add(this.groupBox3);
-            this.tpGeneral.Location = new System.Drawing.Point(4, 24);
+            this.tpGeneral.Location = new System.Drawing.Point(4, 26);
             this.tpGeneral.Name = "tpGeneral";
             this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpGeneral.Size = new System.Drawing.Size(453, 238);
+            this.tpGeneral.Size = new System.Drawing.Size(453, 300);
             this.tpGeneral.TabIndex = 0;
             this.tpGeneral.Text = "General";
             this.tpGeneral.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.cbTheme);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(441, 57);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Theme";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Select the theme used by docking windows:";
+            // 
+            // cbTheme
+            // 
+            this.cbTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTheme.FormattingEnabled = true;
+            this.cbTheme.Location = new System.Drawing.Point(274, 24);
+            this.cbTheme.Name = "cbTheme";
+            this.cbTheme.Size = new System.Drawing.Size(161, 25);
+            this.cbTheme.TabIndex = 1;
+            // 
             // tpGLSLStyles
             // 
             this.tpGLSLStyles.Controls.Add(this.GLSLStylesPropertyGrid);
-            this.tpGLSLStyles.Location = new System.Drawing.Point(4, 24);
+            this.tpGLSLStyles.Location = new System.Drawing.Point(4, 26);
             this.tpGLSLStyles.Name = "tpGLSLStyles";
             this.tpGLSLStyles.Padding = new System.Windows.Forms.Padding(3);
-            this.tpGLSLStyles.Size = new System.Drawing.Size(453, 238);
+            this.tpGLSLStyles.Size = new System.Drawing.Size(453, 300);
             this.tpGLSLStyles.TabIndex = 1;
             this.tpGLSLStyles.Text = "Editor";
             this.tpGLSLStyles.UseVisualStyleBackColor = true;
@@ -232,35 +285,17 @@
             this.GLSLStylesPropertyGrid.Location = new System.Drawing.Point(3, 3);
             this.GLSLStylesPropertyGrid.Name = "GLSLStylesPropertyGrid";
             this.GLSLStylesPropertyGrid.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
-            this.GLSLStylesPropertyGrid.Size = new System.Drawing.Size(447, 232);
+            this.GLSLStylesPropertyGrid.Size = new System.Drawing.Size(447, 294);
             this.GLSLStylesPropertyGrid.TabIndex = 0;
             this.GLSLStylesPropertyGrid.ToolbarVisible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Specification URL:";
-            // 
-            // edGLSLUrl
-            // 
-            this.edGLSLUrl.BackColor = System.Drawing.SystemColors.Control;
-            this.edGLSLUrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.edGLSLUrl.Location = new System.Drawing.Point(115, 24);
-            this.edGLSLUrl.Name = "edGLSLUrl";
-            this.edGLSLUrl.Size = new System.Drawing.Size(314, 16);
-            this.edGLSLUrl.TabIndex = 3;
             // 
             // OptionsDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(482, 320);
+            this.ClientSize = new System.Drawing.Size(482, 387);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -279,6 +314,8 @@
             this.groupBox2.PerformLayout();
             this.TabControl.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tpGLSLStyles.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -305,5 +342,8 @@
         internal System.Windows.Forms.PropertyGrid GLSLStylesPropertyGrid;
         internal System.Windows.Forms.TextBox edGLSLUrl;
         internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.GroupBox groupBox4;
+        internal System.Windows.Forms.ComboBox cbTheme;
+        internal System.Windows.Forms.Label label4;
     }
 }

@@ -25,6 +25,18 @@ namespace TabbyCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public global::TabbyCat.Controls.Types.Theme Options_Theme {
+            get {
+                return ((global::TabbyCat.Controls.Types.Theme)(this["Options_Theme"]));
+            }
+            set {
+                this["Options_Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("TabbyCat Files (*.tcxf)|*.tcxf|TabbyCat Templates (*.tcxt)|*.tcxt|All Files (*.*)" +
             "|*.*")]
         public string FileFilter {

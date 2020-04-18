@@ -1,16 +1,18 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Jmk.Common;
     using System;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Controls.Types;
     using TabbyCat.Views;
 
     internal class OptionsCon : LocalizationCon
     {
-        internal OptionsCon(WorldCon worldCon)
-            :base(worldCon)
+        internal OptionsCon(WorldCon worldCon) : base(worldCon)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
+            OptionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().ToArray());
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
             OptionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
         }
@@ -60,6 +62,7 @@
 
         private Options GetOptions() => new Options
         {
+            Theme = (Theme)OptionsDialog.cbTheme.SelectedIndex,
             OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
             FilesFolderPath = OptionsDialog.edFilesFolder.Text,
             TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
@@ -69,6 +72,7 @@
 
         private void SetOptions(Options options)
         {
+            OptionsDialog.cbTheme.SelectedIndex = (int)options.Theme;
             OptionsDialog.rbWindowNew.Checked = options.OpenInNewWindow;
             OptionsDialog.rbWindowReuse.Checked = !options.OpenInNewWindow;
             OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;

@@ -2,6 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TabbyCat.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="Options_Theme" Type="TabbyCat.Controls.Types.Theme" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
     <Setting Name="FileFilter" Type="System.String" Scope="User">
       <Value Profile="(Default)">TabbyCat Files (*.tcxf)|*.tcxf|TabbyCat Templates (*.tcxt)|*.tcxt|All Files (*.*)|*.*</Value>
     </Setting>
