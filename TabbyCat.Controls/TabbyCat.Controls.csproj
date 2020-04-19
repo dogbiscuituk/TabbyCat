@@ -63,11 +63,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SceneEdit.cs">
+    <Compile Include="ScenePropertiesEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SceneEdit.Designer.cs">
-      <DependentUpon>SceneEdit.cs</DependentUpon>
+    <Compile Include="ScenePropertiesEdit.Designer.cs">
+      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShaderEdit.cs">
@@ -82,11 +82,11 @@
     <Compile Include="Types\TextStyleInfos.cs" />
     <Compile Include="Types\TextStyleInfosTypeConverter.cs" />
     <Compile Include="Types\TextStyleInfoTypeConverter.cs" />
-    <Compile Include="TraceEdit.cs">
+    <Compile Include="TracePropertiesEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TraceEdit.Designer.cs">
-      <DependentUpon>TraceEdit.cs</DependentUpon>
+    <Compile Include="TracePropertiesEdit.Designer.cs">
+      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Types\Theme.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
@@ -99,14 +99,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SceneEdit.resx">
-      <DependentUpon>SceneEdit.cs</DependentUpon>
+    <EmbeddedResource Include="ScenePropertiesEdit.resx">
+      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShaderEdit.resx">
       <DependentUpon>ShaderEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TraceEdit.resx">
-      <DependentUpon>TraceEdit.cs</DependentUpon>
+    <EmbeddedResource Include="TracePropertiesEdit.resx">
+      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

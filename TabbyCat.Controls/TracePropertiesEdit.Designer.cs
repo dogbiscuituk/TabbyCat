@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class TraceEdit
+    partial class TracePropertiesEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -697,14 +697,14 @@
             this.lblAll.Text = "All";
             this.lblAll.ToolTipText = "Select or deselect all traces";
             // 
-            // TraceEdit
+            // TracePropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "TraceEdit";
+            this.Name = "TracePropertiesEdit";
             this.Size = new System.Drawing.Size(352, 250);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();

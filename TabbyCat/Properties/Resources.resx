@@ -816,16 +816,16 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="GpuForm_Text" xml:space="preserve">
     <value>Graphics state</value>
   </data>
-  <data name="SceneForm_TabText" xml:space="preserve">
+  <data name="ScenePropertiesForm_TabText" xml:space="preserve">
     <value>Scene properties</value>
   </data>
-  <data name="SceneForm_Text" xml:space="preserve">
+  <data name="ScenePropertiesForm_Text" xml:space="preserve">
     <value>Scene properties</value>
   </data>
-  <data name="TraceForm_TabText" xml:space="preserve">
+  <data name="TracePropertiesForm_TabText" xml:space="preserve">
     <value>Trace properties</value>
   </data>
-  <data name="TraceForm_Text" xml:space="preserve">
+  <data name="TracePropertiesForm_Text" xml:space="preserve">
     <value>Trace properties</value>
   </data>
   <data name="Text_NewFile" xml:space="preserve">

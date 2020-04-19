@@ -36,14 +36,14 @@
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
-        protected virtual SceneCon SceneCon => WorldCon.SceneCon;
-        protected SceneEdit SceneEdit => SceneForm.SceneEdit;
-        protected virtual SceneForm SceneForm => SceneCon.SceneForm;
+        protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
+        protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
+        protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
         protected virtual ShaderCon SceneShaderCon => WorldCon.SceneShaderCon;
         protected ShaderForm SceneShaderForm => SceneShaderCon.ShaderForm;
         protected ToolTip ToolTip => WorldForm.ToolTip;
-        protected virtual TraceCon TraceCon => WorldCon.TraceCon;
-        protected virtual TraceForm TraceForm => TraceCon.TraceForm;
+        protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
+        protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
         protected virtual ShaderCon TraceShaderCon => WorldCon.TraceShaderCon;
         protected ShaderForm TraceShaderForm => TraceShaderCon.ShaderForm;
         protected virtual WorldCon WorldCon { get; }

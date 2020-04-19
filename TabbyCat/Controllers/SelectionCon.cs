@@ -57,7 +57,7 @@
         private Font HighlightFont => _HighlightFont ??
             (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
 
-        private ToolStrip Toolbar => TraceCon.SelectionToolbar;
+        private ToolStrip Toolbar => TracePropertiesCon.SelectionToolbar;
 
         internal event EventHandler SelectionChanged;
 
@@ -184,7 +184,7 @@
                 ? string.Empty
                 : index == 0
                 ? Resources.Text_SelectDeselectAllTraces
-                : TraceCon.Scene.Traces[index - 1].ToString();
+                : TracePropertiesCon.Scene.Traces[index - 1].ToString();
             ToolTip.SetToolTip(Toolbar, tooltip);
         }
 

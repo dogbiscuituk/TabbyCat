@@ -36,8 +36,8 @@
         }
 
         protected DockPanel WorldPanel => WorldForm.DockPanel;
-        protected DockPane ScenePane => SceneForm.Pane;
-        protected DockPane TracePane => TraceForm.Pane;
+        protected DockPane ScenePane => ScenePropertiesForm.Pane;
+        protected DockPane TracePane => TracePropertiesForm.Pane;
         protected DockPane GpuPane => GpuForm.Pane;
         protected DockPane SceneShaderPane => SceneShaderForm.Pane;
         protected DockPane TraceShaderPane => TraceShaderForm.Pane;
@@ -56,8 +56,8 @@
         private JsonCon _JsonCon;
         private ShaderCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
         private RenderCon _RenderCon;
-        private SceneCon _SceneCon;
-        private TraceCon _TraceCon;
+        private ScenePropertiesCon _ScenePropertiesCon;
+        private TracePropertiesCon _TracePropertiesCon;
         private int UpdateCount;
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
@@ -69,9 +69,9 @@
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected internal override Scene Scene { get; set; }
-        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
+        protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
         protected override ShaderCon SceneShaderCon => _SceneShaderCon ?? (_SceneShaderCon = new ShaderCon(this, ShaderRegion.Scene));
-        protected override TraceCon TraceCon => _TraceCon ?? (_TraceCon= new TraceCon(this));
+        protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon= new TracePropertiesCon(this));
         protected override ShaderCon TraceShaderCon => _TraceShaderCon ?? (_TraceShaderCon = new ShaderCon(this, ShaderRegion.Trace));
         protected internal override WorldForm WorldForm { get; }
 
@@ -149,8 +149,8 @@
 
         protected internal override void UpdateAllProperties()
         {
-            TraceCon.UpdateAllProperties();
-            SceneCon.UpdateAllProperties();
+            TracePropertiesCon.UpdateAllProperties();
+            ScenePropertiesCon.UpdateAllProperties();
         }
 
         internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
@@ -223,8 +223,8 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(SceneCon);
-        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TraceCon);
+        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(ScenePropertiesCon);
+        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TracePropertiesCon);
         private void ViewViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility(GpuCon);
         private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderCon);
         private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderCon);
@@ -277,9 +277,9 @@
             GpuCon.Connect(connect);
             GpuShaderCon.Connect(connect);
             RenderCon.Connect(connect);
-            TraceCon.Connect(connect);
+            TracePropertiesCon.Connect(connect);
             TraceShaderCon.Connect(connect);
-            SceneCon.Connect(connect);
+            ScenePropertiesCon.Connect(connect);
             SceneShaderCon.Connect(connect);
             if (connect)
             {
@@ -633,8 +633,8 @@
         {
             GLControlForm.Show(WorldPanel, DockState.Document);
             GpuShaderForm.Show(WorldPanel, DockState.DockRight);
-            SceneForm.Show(WorldPanel, DockState.DockLeft);
-            TraceForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
+            ScenePropertiesForm.Show(WorldPanel, DockState.DockLeft);
+            TracePropertiesForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
             SceneShaderForm.Show(TracePane, DockAlignment.Bottom, 0.5);
             TraceShaderForm.Show(SceneShaderPane, null);
             GpuForm.Show(SceneShaderPane, null);

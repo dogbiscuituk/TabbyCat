@@ -102,9 +102,9 @@
     <Compile Include="Controllers\OptionsCon.cs" />
     <Compile Include="Controllers\RenderCon.cs" />
     <Compile Include="Controllers\WorldCon.cs" />
-    <Compile Include="Controllers\SceneCon.cs" />
+    <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
-    <Compile Include="Controllers\TraceCon.cs" />
+    <Compile Include="Controllers\TracePropertiesCon.cs" />
     <Compile Include="Models\Code.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
@@ -159,11 +159,11 @@
     <Compile Include="Views\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SceneForm.cs">
+    <Compile Include="Views\ScenePropertiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SceneForm.Designer.cs">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <Compile Include="Views\ScenePropertiesForm.Designer.cs">
+      <DependentUpon>ScenePropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ShaderForm.cs">
       <SubType>Form</SubType>
@@ -171,11 +171,11 @@
     <Compile Include="Views\ShaderForm.Designer.cs">
       <DependentUpon>ShaderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TraceForm.cs">
+    <Compile Include="Views\TracePropertiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TraceForm.Designer.cs">
-      <DependentUpon>TraceForm.cs</DependentUpon>
+    <Compile Include="Views\TracePropertiesForm.Designer.cs">
+      <DependentUpon>TracePropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WorldForm.cs">
       <SubType>Form</SubType>
@@ -209,14 +209,14 @@
     <EmbeddedResource Include="Views\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SceneForm.resx">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ScenePropertiesForm.resx">
+      <DependentUpon>ScenePropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ShaderForm.resx">
       <DependentUpon>ShaderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TraceForm.resx">
-      <DependentUpon>TraceForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\TracePropertiesForm.resx">
+      <DependentUpon>TracePropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>

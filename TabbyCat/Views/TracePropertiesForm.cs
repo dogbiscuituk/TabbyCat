@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Views
 {
-    public partial class SceneForm : DockingForm
+    public partial class TracePropertiesForm : DockingForm
     {
-        public SceneForm()
+        public TracePropertiesForm()
         {
             InitializeComponent();
         }

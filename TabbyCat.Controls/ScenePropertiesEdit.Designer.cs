@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class SceneEdit
+    partial class ScenePropertiesEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -673,14 +673,14 @@
             this.seSampleCount.TabIndex = 26;
             this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SceneEdit
+            // ScenePropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "SceneEdit";
+            this.Name = "ScenePropertiesEdit";
             this.Size = new System.Drawing.Size(352, 250);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();

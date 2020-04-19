@@ -2146,18 +2146,18 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Scene properties.
         /// </summary>
-        public static string SceneForm_TabText {
+        public static string ScenePropertiesForm_TabText {
             get {
-                return ResourceManager.GetString("SceneForm_TabText", resourceCulture);
+                return ResourceManager.GetString("ScenePropertiesForm_TabText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Scene properties.
         /// </summary>
-        public static string SceneForm_Text {
+        public static string ScenePropertiesForm_Text {
             get {
-                return ResourceManager.GetString("SceneForm_Text", resourceCulture);
+                return ResourceManager.GetString("ScenePropertiesForm_Text", resourceCulture);
             }
         }
         
@@ -2459,18 +2459,18 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Trace properties.
         /// </summary>
-        public static string TraceForm_TabText {
+        public static string TracePropertiesForm_TabText {
             get {
-                return ResourceManager.GetString("TraceForm_TabText", resourceCulture);
+                return ResourceManager.GetString("TracePropertiesForm_TabText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Trace properties.
         /// </summary>
-        public static string TraceForm_Text {
+        public static string TracePropertiesForm_Text {
             get {
-                return ResourceManager.GetString("TraceForm_Text", resourceCulture);
+                return ResourceManager.GetString("TracePropertiesForm_Text", resourceCulture);
             }
         }
         

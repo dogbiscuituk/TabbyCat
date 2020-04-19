@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class TraceForm
+    partial class ScenePropertiesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TraceEdit = new TabbyCat.Controls.TraceEdit();
+            this.ScenePropertiesEdit = new TabbyCat.Controls.ScenePropertiesEdit();
             this.SuspendLayout();
             // 
-            // TraceEdit
+            // ScenePropertiesEdit
             // 
-            this.TraceEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.TraceEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TraceEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TraceEdit.Location = new System.Drawing.Point(0, 0);
-            this.TraceEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TraceEdit.Name = "TraceEdit";
-            this.TraceEdit.Size = new System.Drawing.Size(352, 250);
-            this.TraceEdit.TabIndex = 0;
+            this.ScenePropertiesEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.ScenePropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScenePropertiesEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScenePropertiesEdit.Location = new System.Drawing.Point(0, 0);
+            this.ScenePropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ScenePropertiesEdit.Name = "ScenePropertiesEdit";
+            this.ScenePropertiesEdit.Size = new System.Drawing.Size(352, 250);
+            this.ScenePropertiesEdit.TabIndex = 0;
             // 
-            // TraceForm
+            // ScenePropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 250);
-            this.Controls.Add(this.TraceEdit);
-            this.Name = "TraceForm";
-            this.TabText = "Trace";
-            this.Text = "Trace properties";
+            this.Controls.Add(this.ScenePropertiesEdit);
+            this.Name = "ScenePropertiesForm";
+            this.TabText = "Scene";
+            this.Text = "Scene properties";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        internal Controls.TraceEdit TraceEdit;
+        internal Controls.ScenePropertiesEdit ScenePropertiesEdit;
     }
 }
