@@ -136,7 +136,7 @@
             // 
             // DockPanel
             // 
-            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(400, 300);
+            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(370, 289);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DockPanel.DockLeftPortion = 0.3D;
             this.DockPanel.DockRightPortion = 0.3D;
@@ -843,7 +843,6 @@
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorldForm";
-            this.Text = "WorldForm";
             this.Toolbar.ResumeLayout(false);
             this.Toolbar.PerformLayout();
             this.StatusBar.ResumeLayout(false);
