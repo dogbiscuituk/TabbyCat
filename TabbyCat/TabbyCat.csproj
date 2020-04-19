@@ -105,7 +105,7 @@
     <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\TracePropertiesCon.cs" />
-    <Compile Include="Models\Code.cs" />
+    <Compile Include="Models\CodeBase.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Models\TraceSelection.cs" />

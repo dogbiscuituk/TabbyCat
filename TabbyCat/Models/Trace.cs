@@ -8,7 +8,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Properties;
 
-    public class Trace : Code, ITrace
+    public class Trace : CodeBase, ITrace
     {
         public Trace() : base() => Init();
 

@@ -12,7 +12,7 @@
     using TabbyCat.Controllers;
     using TabbyCat.Properties;
 
-    public class Scene : Code, IScene
+    public class Scene : CodeBase, IScene
     {
         public Scene() : base() => Init();
 
