@@ -286,8 +286,6 @@
 
         private string GetToolTipText() => GetText(Resources.ShaderForm_ToolTipText);
 
-        private void Help_Click(object sender, System.EventArgs e) { }
-
         private void LineNumbers_Click(object sender, System.EventArgs e) => ShowLineNumbers = !ShowLineNumbers;
 
         private void Options_DropDownOpening(object sender, System.EventArgs e)
@@ -325,7 +323,18 @@
             }
         }
 
-        private void Split_Click(object sender, System.EventArgs e) => CycleSplit();
+        private void Split_DropDownOpening(object sender, EventArgs e)
+        {
+            CodeEdit.tbSplitHorizontal.Checked = SplitType == SplitType.Horizontal;
+            CodeEdit.tbSplitVertical.Checked = SplitType == SplitType.Vertical;
+            CodeEdit.tbSplitNone.Checked = SplitType == SplitType.None;
+        }
+
+        private void SplitHorizontal_Click(object sender, EventArgs e) => SplitType = SplitType.Horizontal;
+
+        private void SplitNone_Click(object sender, EventArgs e) => SplitType = SplitType.None;
+
+        private void SplitVertical_Click(object sender, EventArgs e) => SplitType = SplitType.Vertical;
 
         private void TextBox_SelectionChanged(object sender, EventArgs e) => UpdateUI();
 
@@ -424,7 +433,6 @@
                 CodeEdit.tbDocumentMap.Click += DocumentMap_Click;
                 CodeEdit.tbExportHTML.Click += ExportHTML_Click;
                 CodeEdit.tbExportRTF.Click += ExportRTF_Click;
-                CodeEdit.tbHelp.Click += Help_Click;
                 CodeEdit.tbLineNumbers.Click += LineNumbers_Click;
                 CodeEdit.tbOptions.DropDownOpening += Options_DropDownOpening;
                 CodeEdit.tbPrint.Click += Print_Click;
@@ -435,7 +443,10 @@
                 CodeEdit.tbPaste.Click += Paste_Click;
                 CodeEdit.tbDelete.Click += Delete_Click;
                 CodeEdit.tbRuler.Click += Ruler_Click;
-                CodeEdit.tbSplit.Click += Split_Click;
+                CodeEdit.tbSplit.DropDownOpening += Split_DropDownOpening;
+                CodeEdit.tbSplitHorizontal.Click += SplitHorizontal_Click;
+                CodeEdit.tbSplitVertical.Click += SplitVertical_Click;
+                CodeEdit.tbSplitNone.Click += SplitNone_Click;
                 CodeEdit.tbShader.ButtonClick += Shader_ButtonClick;
                 CodeEdit.tbShader.DropDownOpening += Shader_DropDownOpening;
                 CodeEdit.tbShader.DropDownItemClicked += Shader_DropDownItemClicked;
@@ -445,7 +456,6 @@
                 CodeEdit.tbDocumentMap.Click -= DocumentMap_Click;
                 CodeEdit.tbExportHTML.Click -= ExportHTML_Click;
                 CodeEdit.tbExportRTF.Click -= ExportRTF_Click;
-                CodeEdit.tbHelp.Click -= Help_Click;
                 CodeEdit.tbLineNumbers.Click -= LineNumbers_Click;
                 CodeEdit.tbOptions.DropDownOpening -= Options_DropDownOpening;
                 CodeEdit.tbPrint.Click -= Print_Click;
@@ -456,14 +466,15 @@
                 CodeEdit.tbPaste.Click -= Paste_Click;
                 CodeEdit.tbDelete.Click -= Delete_Click;
                 CodeEdit.tbRuler.Click -= Ruler_Click;
-                CodeEdit.tbSplit.Click -= Split_Click;
+                CodeEdit.tbSplit.DropDownOpening -= Split_DropDownOpening;
+                CodeEdit.tbSplitHorizontal.Click -= SplitHorizontal_Click;
+                CodeEdit.tbSplitVertical.Click -= SplitVertical_Click;
+                CodeEdit.tbSplitNone.Click -= SplitNone_Click;
                 CodeEdit.tbShader.ButtonClick -= Shader_ButtonClick;
                 CodeEdit.tbShader.DropDownOpening -= Shader_DropDownOpening;
                 CodeEdit.tbShader.DropDownItemClicked -= Shader_DropDownItemClicked;
             }
         }
-
-        private void CycleSplit() => SplitType = (SplitType)((int)(SplitType + 1) % 3);
 
         private string GetBuiltInHelp()
         {

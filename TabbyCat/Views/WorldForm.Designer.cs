@@ -139,11 +139,11 @@
             this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(370, 289);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DockPanel.DockLeftPortion = 360D;
-            this.DockPanel.DockRightPortion = 330D;
+            this.DockPanel.DockRightPortion = 360D;
             this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
-            this.DockPanel.Size = new System.Drawing.Size(975, 682);
+            this.DockPanel.Size = new System.Drawing.Size(1551, 814);
             this.DockPanel.TabIndex = 5;
             // 
             // Toolbar
@@ -165,7 +165,7 @@
             this.Toolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.Toolbar.Location = new System.Drawing.Point(0, 25);
             this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(33, 682);
+            this.Toolbar.Size = new System.Drawing.Size(33, 814);
             this.Toolbar.TabIndex = 3;
             // 
             // tbNew
@@ -281,10 +281,10 @@
             this.Tlabel,
             this.FPSlabel,
             this.GpuStatusLabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 707);
+            this.StatusBar.Location = new System.Drawing.Point(0, 839);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.ShowItemToolTips = true;
-            this.StatusBar.Size = new System.Drawing.Size(1008, 22);
+            this.StatusBar.Size = new System.Drawing.Size(1584, 22);
             this.StatusBar.TabIndex = 2;
             // 
             // SpeedLabel
@@ -311,7 +311,7 @@
             // GpuStatusLabel
             // 
             this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(801, 17);
+            this.GpuStatusLabel.Size = new System.Drawing.Size(1377, 17);
             this.GpuStatusLabel.Spring = true;
             this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -333,7 +333,7 @@
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
-            this.MainMenu.Size = new System.Drawing.Size(1008, 25);
+            this.MainMenu.Size = new System.Drawing.Size(1584, 25);
             this.MainMenu.TabIndex = 4;
             // 
             // TimeDecelerate
@@ -833,7 +833,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.ContextMenuStrip = this.PopupMenu;
             this.Controls.Add(this.DockPanel);
             this.Controls.Add(this.Toolbar);
