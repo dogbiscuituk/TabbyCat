@@ -68,6 +68,12 @@
             this.tbRuler = new System.Windows.Forms.ToolStripMenuItem();
             this.tbLineNumbers = new System.Windows.Forms.ToolStripMenuItem();
             this.tbDocumentMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbSplit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSplitHorizontal = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSplitVertical = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbSplitNone = new System.Windows.Forms.ToolStripMenuItem();
             this.tbShader = new System.Windows.Forms.ToolStripSplitButton();
             this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
             this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,12 +81,6 @@
             this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
             this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
             this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplitHorizontal = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplitVertical = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplitNone = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
             this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.ToolStripContainer.SuspendLayout();
@@ -183,7 +183,7 @@
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
             this.TopSplit.Size = new System.Drawing.Size(360, 197);
-            this.TopSplit.SplitterDistance = 228;
+            this.TopSplit.SplitterDistance = 227;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -227,7 +227,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(228, 169);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(227, 169);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -245,55 +245,55 @@
             this.miPaste,
             this.miDelete});
             this.PopupEditMenu.Name = "PopupEditMenu";
-            this.PopupEditMenu.Size = new System.Drawing.Size(108, 142);
+            this.PopupEditMenu.Size = new System.Drawing.Size(181, 164);
             // 
             // miUndo
             // 
             this.miUndo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
             this.miUndo.Name = "miUndo";
-            this.miUndo.Size = new System.Drawing.Size(107, 22);
-            this.miUndo.Text = "&Undo";
+            this.miUndo.Size = new System.Drawing.Size(180, 22);
+            this.miUndo.Text = "Undo";
             // 
             // miRedo
             // 
             this.miRedo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
             this.miRedo.Name = "miRedo";
-            this.miRedo.Size = new System.Drawing.Size(107, 22);
-            this.miRedo.Text = "&Redo";
+            this.miRedo.Size = new System.Drawing.Size(180, 22);
+            this.miRedo.Text = "Redo";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // miCut
             // 
             this.miCut.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
             this.miCut.Name = "miCut";
-            this.miCut.Size = new System.Drawing.Size(107, 22);
-            this.miCut.Text = "Cu&t";
+            this.miCut.Size = new System.Drawing.Size(180, 22);
+            this.miCut.Text = "Cut";
             // 
             // miCopy
             // 
             this.miCopy.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
             this.miCopy.Name = "miCopy";
-            this.miCopy.Size = new System.Drawing.Size(107, 22);
-            this.miCopy.Text = "&Copy";
+            this.miCopy.Size = new System.Drawing.Size(180, 22);
+            this.miCopy.Text = "Copy";
             // 
             // miPaste
             // 
             this.miPaste.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
             this.miPaste.Name = "miPaste";
-            this.miPaste.Size = new System.Drawing.Size(107, 22);
-            this.miPaste.Text = "&Paste";
+            this.miPaste.Size = new System.Drawing.Size(180, 22);
+            this.miPaste.Text = "Paste";
             // 
             // miDelete
             // 
             this.miDelete.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
             this.miDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.miDelete.Name = "miDelete";
-            this.miDelete.Size = new System.Drawing.Size(107, 22);
-            this.miDelete.Text = "&Delete";
+            this.miDelete.Size = new System.Drawing.Size(180, 22);
+            this.miDelete.Text = "Delete";
             // 
             // PrimaryTextBox
             // 
@@ -335,7 +335,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(228, 171);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(227, 171);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -350,7 +350,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(228, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(227, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -362,7 +362,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(127, 197);
+            this.SecondaryMap.Size = new System.Drawing.Size(128, 197);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             // 
@@ -382,7 +382,7 @@
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
             this.BottomSplit.Size = new System.Drawing.Size(360, 199);
-            this.BottomSplit.SplitterDistance = 228;
+            this.BottomSplit.SplitterDistance = 227;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -395,7 +395,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(228, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(227, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -407,7 +407,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(127, 199);
+            this.PrimaryMap.Size = new System.Drawing.Size(128, 199);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             // 
@@ -471,13 +471,13 @@
             // tbExportHTML
             // 
             this.tbExportHTML.Name = "tbExportHTML";
-            this.tbExportHTML.Size = new System.Drawing.Size(180, 22);
+            this.tbExportHTML.Size = new System.Drawing.Size(167, 22);
             this.tbExportHTML.Text = "Save as HTML...";
             // 
             // tbExportRTF
             // 
             this.tbExportRTF.Name = "tbExportRTF";
-            this.tbExportRTF.Size = new System.Drawing.Size(180, 22);
+            this.tbExportRTF.Size = new System.Drawing.Size(167, 22);
             this.tbExportRTF.Text = "Save as RTF...";
             // 
             // tbPrint
@@ -571,20 +571,60 @@
             // tbRuler
             // 
             this.tbRuler.Name = "tbRuler";
-            this.tbRuler.Size = new System.Drawing.Size(180, 22);
+            this.tbRuler.Size = new System.Drawing.Size(166, 22);
             this.tbRuler.Text = "Ruler";
             // 
             // tbLineNumbers
             // 
             this.tbLineNumbers.Name = "tbLineNumbers";
-            this.tbLineNumbers.Size = new System.Drawing.Size(180, 22);
+            this.tbLineNumbers.Size = new System.Drawing.Size(166, 22);
             this.tbLineNumbers.Text = "Line Numbers";
             // 
             // tbDocumentMap
             // 
             this.tbDocumentMap.Name = "tbDocumentMap";
-            this.tbDocumentMap.Size = new System.Drawing.Size(180, 22);
+            this.tbDocumentMap.Size = new System.Drawing.Size(166, 22);
             this.tbDocumentMap.Text = "Document Map";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(163, 6);
+            // 
+            // tbSplit
+            // 
+            this.tbSplit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbSplitHorizontal,
+            this.tbSplitVertical,
+            this.toolStripMenuItem3,
+            this.tbSplitNone});
+            this.tbSplit.Image = global::TabbyCat.Controls.Properties.Resources.TileWindowsHorizontallyHS;
+            this.tbSplit.Name = "tbSplit";
+            this.tbSplit.Size = new System.Drawing.Size(166, 22);
+            this.tbSplit.Text = "Split";
+            // 
+            // tbSplitHorizontal
+            // 
+            this.tbSplitHorizontal.Name = "tbSplitHorizontal";
+            this.tbSplitHorizontal.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitHorizontal.Text = "Horizontal";
+            // 
+            // tbSplitVertical
+            // 
+            this.tbSplitVertical.Name = "tbSplitVertical";
+            this.tbSplitVertical.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitVertical.Text = "Vertical";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(133, 6);
+            // 
+            // tbSplitNone
+            // 
+            this.tbSplitNone.Name = "tbSplitNone";
+            this.tbSplitNone.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitNone.Text = "None";
             // 
             // tbShader
             // 
@@ -647,46 +687,6 @@
             this.miCompute.Size = new System.Drawing.Size(133, 22);
             this.miCompute.Text = "Compute";
             this.miCompute.ToolTipText = "Compute Shader";
-            // 
-            // tbSplit
-            // 
-            this.tbSplit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbSplitHorizontal,
-            this.tbSplitVertical,
-            this.toolStripMenuItem3,
-            this.tbSplitNone});
-            this.tbSplit.Image = global::TabbyCat.Controls.Properties.Resources.TileWindowsHorizontallyHS;
-            this.tbSplit.Name = "tbSplit";
-            this.tbSplit.Size = new System.Drawing.Size(180, 22);
-            this.tbSplit.Text = "Split";
-            // 
-            // tbSplitHorizontal
-            // 
-            this.tbSplitHorizontal.Name = "tbSplitHorizontal";
-            this.tbSplitHorizontal.Size = new System.Drawing.Size(180, 22);
-            this.tbSplitHorizontal.Text = "Horizontal";
-            // 
-            // tbSplitVertical
-            // 
-            this.tbSplitVertical.Name = "tbSplitVertical";
-            this.tbSplitVertical.Size = new System.Drawing.Size(180, 22);
-            this.tbSplitVertical.Text = "Vertical";
-            // 
-            // tbSplitNone
-            // 
-            this.tbSplitNone.Name = "tbSplitNone";
-            this.tbSplitNone.Size = new System.Drawing.Size(180, 22);
-            this.tbSplitNone.Text = "None";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // CodeEdit
             // 

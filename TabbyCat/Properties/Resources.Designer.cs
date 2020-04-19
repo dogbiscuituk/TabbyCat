@@ -269,6 +269,168 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        public static string CodeForm_Copy {
+            get {
+                return ResourceManager.GetString("CodeForm_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut.
+        /// </summary>
+        public static string CodeForm_Cut {
+            get {
+                return ResourceManager.GetString("CodeForm_Cut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string CodeForm_Delete {
+            get {
+                return ResourceManager.GetString("CodeForm_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string CodeForm_Options {
+            get {
+                return ResourceManager.GetString("CodeForm_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document map|Show/hide document map.
+        /// </summary>
+        public static string CodeForm_OptionsDocumentMap {
+            get {
+                return ResourceManager.GetString("CodeForm_OptionsDocumentMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line numbers|Show/hide line numbers.
+        /// </summary>
+        public static string CodeForm_OptionsLineNumbers {
+            get {
+                return ResourceManager.GetString("CodeForm_OptionsLineNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ruler|Show/hide ruler.
+        /// </summary>
+        public static string CodeForm_OptionsRuler {
+            get {
+                return ResourceManager.GetString("CodeForm_OptionsRuler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste.
+        /// </summary>
+        public static string CodeForm_Paste {
+            get {
+                return ResourceManager.GetString("CodeForm_Paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print....
+        /// </summary>
+        public static string CodeForm_Print {
+            get {
+                return ResourceManager.GetString("CodeForm_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redo.
+        /// </summary>
+        public static string CodeForm_Redo {
+            get {
+                return ResourceManager.GetString("CodeForm_Redo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string CodeForm_Save {
+            get {
+                return ResourceManager.GetString("CodeForm_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as HTML....
+        /// </summary>
+        public static string CodeForm_SaveAsHTML {
+            get {
+                return ResourceManager.GetString("CodeForm_SaveAsHTML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as RTF....
+        /// </summary>
+        public static string CodeForm_SaveAsRTF {
+            get {
+                return ResourceManager.GetString("CodeForm_SaveAsRTF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Split.
+        /// </summary>
+        public static string CodeForm_Split {
+            get {
+                return ResourceManager.GetString("CodeForm_Split", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Split Horizontal.
+        /// </summary>
+        public static string CodeForm_SplitHorizontal {
+            get {
+                return ResourceManager.GetString("CodeForm_SplitHorizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None|Remove split.
+        /// </summary>
+        public static string CodeForm_SplitNone {
+            get {
+                return ResourceManager.GetString("CodeForm_SplitNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Split vertical.
+        /// </summary>
+        public static string CodeForm_SplitVertical {
+            get {
+                return ResourceManager.GetString("CodeForm_SplitVertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo.
+        /// </summary>
+        public static string CodeForm_Undo {
+            get {
+                return ResourceManager.GetString("CodeForm_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Color_fontHS {

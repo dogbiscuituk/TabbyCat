@@ -852,4 +852,58 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="Menu_View_Scene" xml:space="preserve">
     <value>Scene|Show or hide the main graphics display window</value>
   </data>
+  <data name="CodeForm_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CodeForm_Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CodeForm_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CodeForm_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="CodeForm_OptionsDocumentMap" xml:space="preserve">
+    <value>Document map|Show/hide document map</value>
+  </data>
+  <data name="CodeForm_OptionsLineNumbers" xml:space="preserve">
+    <value>Line numbers|Show/hide line numbers</value>
+  </data>
+  <data name="CodeForm_OptionsRuler" xml:space="preserve">
+    <value>Ruler|Show/hide ruler</value>
+  </data>
+  <data name="CodeForm_Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="CodeForm_Print" xml:space="preserve">
+    <value>Print...</value>
+  </data>
+  <data name="CodeForm_Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="CodeForm_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CodeForm_SaveAsHTML" xml:space="preserve">
+    <value>Save as HTML...</value>
+  </data>
+  <data name="CodeForm_SaveAsRTF" xml:space="preserve">
+    <value>Save as RTF...</value>
+  </data>
+  <data name="CodeForm_Split" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="CodeForm_SplitHorizontal" xml:space="preserve">
+    <value>Split Horizontal</value>
+  </data>
+  <data name="CodeForm_SplitNone" xml:space="preserve">
+    <value>None|Remove split</value>
+  </data>
+  <data name="CodeForm_SplitVertical" xml:space="preserve">
+    <value>Split vertical</value>
+  </data>
+  <data name="CodeForm_Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
 </root>

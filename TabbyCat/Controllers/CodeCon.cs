@@ -223,6 +223,29 @@
             SecondaryCon?.Dispose();
         }
 
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.CodeForm_Save, CodeEdit.tbExport);
+            Localize(Resources.CodeForm_SaveAsHTML, CodeEdit.tbExportHTML);
+            Localize(Resources.CodeForm_SaveAsRTF, CodeEdit.tbExportRTF);
+            Localize(Resources.CodeForm_Print, CodeEdit.tbPrint);
+            Localize(Resources.CodeForm_Undo, CodeEdit.tbUndo, CodeEdit.miUndo);
+            Localize(Resources.CodeForm_Redo, CodeEdit.tbRedo, CodeEdit.miRedo);
+            Localize(Resources.CodeForm_Cut, CodeEdit.tbCut, CodeEdit.miCut);
+            Localize(Resources.CodeForm_Copy, CodeEdit.tbCopy, CodeEdit.miCopy);
+            Localize(Resources.CodeForm_Paste, CodeEdit.tbPaste, CodeEdit.miPaste);
+            Localize(Resources.CodeForm_Delete, CodeEdit.tbDelete, CodeEdit.miDelete);
+            Localize(Resources.CodeForm_Options, CodeEdit.tbOptions);
+            Localize(Resources.CodeForm_OptionsRuler, CodeEdit.tbRuler);
+            Localize(Resources.CodeForm_OptionsLineNumbers, CodeEdit.tbLineNumbers);
+            Localize(Resources.CodeForm_OptionsDocumentMap, CodeEdit.tbDocumentMap);
+            Localize(Resources.CodeForm_Split, CodeEdit.tbSplit);
+            Localize(Resources.CodeForm_SplitHorizontal, CodeEdit.tbSplitHorizontal);
+            Localize(Resources.CodeForm_SplitVertical, CodeEdit.tbSplitVertical);
+            Localize(Resources.CodeForm_SplitNone, CodeEdit.tbSplitNone);
+        }
+
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
 
         private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => e.Link.LinkData.ToString().Launch();
