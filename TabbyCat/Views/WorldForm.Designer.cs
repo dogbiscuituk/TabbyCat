@@ -138,8 +138,8 @@
             // 
             this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(370, 289);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DockLeftPortion = 0.3D;
-            this.DockPanel.DockRightPortion = 0.3D;
+            this.DockPanel.DockLeftPortion = 360D;
+            this.DockPanel.DockRightPortion = 330D;
             this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
