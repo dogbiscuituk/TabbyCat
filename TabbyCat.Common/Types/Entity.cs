@@ -6,16 +6,16 @@
     public static class Entity
     {
         public static IEnumerable<float> GetCoords(this ITrace trace) =>
-            trace != null ? GetCoords(trace.StripCount) : null;
+            trace != null ? GetCoords(trace.StripeCount) : null;
 
         public static int GetCoordsCount(this ITrace trace) =>
-            trace != null ? GetCoordsCount(trace.StripCount) : 0;
+            trace != null ? GetCoordsCount(trace.StripeCount) : 0;
 
         public static IEnumerable<int> GetIndices(this ITrace trace) =>
-            trace != null ? GetIndices(trace.Pattern, trace.StripCount) : null;
+            trace != null ? GetIndices(trace.Pattern, trace.StripeCount) : null;
 
         public static int GetIndicesCount(this ITrace trace) =>
-            trace != null ? GetIndicesCount(trace.Pattern, trace.StripCount) : 0;
+            trace != null ? GetIndicesCount(trace.Pattern, trace.StripeCount) : 0;
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -24,12 +24,12 @@
         /// To get the points on a regular 2D grid, set the missing axis strip count to 0.
         /// To get the points along a single axis, set both missing axes' strip counts to 0.
         /// </summary>
-        /// <param name="stripCount">The number of steps along each axis.</param>
+        /// <param name="stripeCount">The number of steps along each axis.</param>
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        private static IEnumerable<float> GetCoords(Vector3 stripCount) =>
-            GetCoords((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static IEnumerable<float> GetCoords(Vector3 stripeCount) =>
+            GetCoords((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -120,8 +120,8 @@
             }
         }
 
-        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripCount) =>
-            GetIndices(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripeCount) =>
+            GetIndices(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
@@ -228,9 +228,9 @@
                 }
         }
 
-        private static int GetCoordsCount(Vector3 stripCount) => GetCoordsCount((int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static int GetCoordsCount(Vector3 stripeCount) => GetCoordsCount((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
-        private static int GetIndicesCount(Pattern pattern, Vector3 stripCount) => GetIndicesCount(pattern, (int)stripCount.X, (int)stripCount.Y, (int)stripCount.Z);
+        private static int GetIndicesCount(Pattern pattern, Vector3 stripeCount) => GetIndicesCount(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {

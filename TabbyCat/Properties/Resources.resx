@@ -445,7 +445,7 @@ targeted by this code</value>
     <value>#Samples|The number of samples interpolated over</value>
   </data>
   <data name="Control_Scene_Stereo" xml:space="preserve">
-    <value>Stereo|Whether or not the current display mode
+    <value>Stereo?|Whether or not the current display mode
 is stereoscopic</value>
   </data>
   <data name="Control_Scene_TargetFPS" xml:space="preserve">
@@ -455,7 +455,7 @@ is stereoscopic</value>
     <value>Scene Title|The title of this scene</value>
   </data>
   <data name="Control_Scene_VSync" xml:space="preserve">
-    <value>VSync|Whether or not to use vertical sync</value>
+    <value>VSync?|Whether or not to use vertical sync</value>
   </data>
   <data name="Control_Trace_Description" xml:space="preserve">
     <value>Description|Trace description</value>
@@ -523,20 +523,20 @@ is stereoscopic</value>
   <data name="Control_Trace_Selection" xml:space="preserve">
     <value>Selected trace(s)|The set of selected traces</value>
   </data>
-  <data name="Control_Trace_Strips" xml:space="preserve">
-    <value>Strip count|The number of strips in each dimension of the trace</value>
+  <data name="Control_Trace_Stripes" xml:space="preserve">
+    <value>#Stripes|The number of stripes in each dimension of the trace</value>
   </data>
-  <data name="Control_Trace_StripsX" xml:space="preserve">
-    <value>|The number of strips in the x-direction</value>
+  <data name="Control_Trace_StripesX" xml:space="preserve">
+    <value>|The number of stripes in the x-direction</value>
   </data>
-  <data name="Control_Trace_StripsY" xml:space="preserve">
-    <value>|The number of strips in the y-direction</value>
+  <data name="Control_Trace_StripesY" xml:space="preserve">
+    <value>|The number of stripes in the y-direction</value>
   </data>
-  <data name="Control_Trace_StripsZ" xml:space="preserve">
-    <value>|The number of strips in the z-direction</value>
+  <data name="Control_Trace_StripesZ" xml:space="preserve">
+    <value>|The number of stripes in the z-direction</value>
   </data>
   <data name="Control_Trace_Visible" xml:space="preserve">
-    <value>Visible|Whether or not a trace is visible</value>
+    <value>Visible?|Whether or not a trace is visible</value>
   </data>
   <data name="Control_Trace_Yaw" xml:space="preserve">
     <value>|Trace yaw (degrees)</value>

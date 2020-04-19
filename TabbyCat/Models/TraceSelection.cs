@@ -55,10 +55,10 @@
             set => SetProperty(p => p.Scale = value);
         }
 
-        public Vector3 StripCount
+        public Vector3 StripeCount
         {
-            get => GetVector3(p => p.StripCount);
-            set => SetProperty(p => p.StripCount = value);
+            get => GetVector3(p => p.StripeCount);
+            set => SetProperty(p => p.StripeCount = value);
         }
 
         public bool? Visible

@@ -13,6 +13,6 @@
         Vector3 Minimum { get; set; }
         Vector3 Orientation { get; set; }
         Vector3 Scale { get; set; }
-        Vector3 StripCount { get; set; }
+        Vector3 StripeCount { get; set; }
     }
 }

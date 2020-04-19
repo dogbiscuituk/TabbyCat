@@ -479,7 +479,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stereo|Whether or not the current display mode
+        ///   Looks up a localized string similar to Stereo?|Whether or not the current display mode
         ///is stereoscopic.
         /// </summary>
         public static string Control_Scene_Stereo {
@@ -507,7 +507,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VSync|Whether or not to use vertical sync.
+        ///   Looks up a localized string similar to VSync?|Whether or not to use vertical sync.
         /// </summary>
         public static string Control_Scene_VSync {
             get {
@@ -714,43 +714,43 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Strip count|The number of strips in each dimension of the trace.
+        ///   Looks up a localized string similar to #Stripes|The number of stripes in each dimension of the trace.
         /// </summary>
-        public static string Control_Trace_Strips {
+        public static string Control_Trace_Stripes {
             get {
-                return ResourceManager.GetString("Control_Trace_Strips", resourceCulture);
+                return ResourceManager.GetString("Control_Trace_Stripes", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |The number of strips in the x-direction.
+        ///   Looks up a localized string similar to |The number of stripes in the x-direction.
         /// </summary>
-        public static string Control_Trace_StripsX {
+        public static string Control_Trace_StripesX {
             get {
-                return ResourceManager.GetString("Control_Trace_StripsX", resourceCulture);
+                return ResourceManager.GetString("Control_Trace_StripesX", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |The number of strips in the y-direction.
+        ///   Looks up a localized string similar to |The number of stripes in the y-direction.
         /// </summary>
-        public static string Control_Trace_StripsY {
+        public static string Control_Trace_StripesY {
             get {
-                return ResourceManager.GetString("Control_Trace_StripsY", resourceCulture);
+                return ResourceManager.GetString("Control_Trace_StripesY", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |The number of strips in the z-direction.
+        ///   Looks up a localized string similar to |The number of stripes in the z-direction.
         /// </summary>
-        public static string Control_Trace_StripsZ {
+        public static string Control_Trace_StripesZ {
             get {
-                return ResourceManager.GetString("Control_Trace_StripsZ", resourceCulture);
+                return ResourceManager.GetString("Control_Trace_StripesZ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visible|Whether or not a trace is visible.
+        ///   Looks up a localized string similar to Visible?|Whether or not a trace is visible.
         /// </summary>
         public static string Control_Trace_Visible {
             get {

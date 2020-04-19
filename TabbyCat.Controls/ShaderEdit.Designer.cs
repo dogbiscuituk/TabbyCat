@@ -110,13 +110,13 @@
             // ToolStripContainer.ContentPanel
             // 
             this.ToolStripContainer.ContentPanel.Controls.Add(this.MainSplit);
-            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(360, 455);
+            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(360, 430);
             this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolStripContainer.LeftToolStripPanelVisible = false;
             this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.ToolStripContainer.Name = "ToolStripContainer";
             this.ToolStripContainer.RightToolStripPanelVisible = false;
-            this.ToolStripContainer.Size = new System.Drawing.Size(360, 480);
+            this.ToolStripContainer.Size = new System.Drawing.Size(360, 455);
             this.ToolStripContainer.TabIndex = 0;
             this.ToolStripContainer.Text = "toolStripContainer1";
             // 
@@ -139,8 +139,8 @@
             // MainSplit.Panel2
             // 
             this.MainSplit.Panel2.Controls.Add(this.jmkScrollPanel1);
-            this.MainSplit.Size = new System.Drawing.Size(360, 455);
-            this.MainSplit.SplitterDistance = 359;
+            this.MainSplit.Size = new System.Drawing.Size(360, 430);
+            this.MainSplit.SplitterDistance = 401;
             this.MainSplit.TabIndex = 4;
             // 
             // EditSplit
@@ -159,8 +159,8 @@
             // 
             this.EditSplit.Panel2.Controls.Add(this.BottomSplit);
             this.EditSplit.Panel2MinSize = 0;
-            this.EditSplit.Size = new System.Drawing.Size(360, 359);
-            this.EditSplit.SplitterDistance = 177;
+            this.EditSplit.Size = new System.Drawing.Size(360, 401);
+            this.EditSplit.SplitterDistance = 197;
             this.EditSplit.SplitterWidth = 5;
             this.EditSplit.TabIndex = 3;
             // 
@@ -179,8 +179,8 @@
             // TopSplit.Panel2
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
-            this.TopSplit.Size = new System.Drawing.Size(360, 177);
-            this.TopSplit.SplitterDistance = 230;
+            this.TopSplit.Size = new System.Drawing.Size(360, 197);
+            this.TopSplit.SplitterDistance = 229;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -224,7 +224,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(230, 149);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(229, 169);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -242,46 +242,46 @@
             this.miPaste,
             this.miDelete});
             this.PopupEditMenu.Name = "PopupEditMenu";
-            this.PopupEditMenu.Size = new System.Drawing.Size(181, 164);
+            this.PopupEditMenu.Size = new System.Drawing.Size(108, 142);
             // 
             // miUndo
             // 
             this.miUndo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
             this.miUndo.Name = "miUndo";
-            this.miUndo.Size = new System.Drawing.Size(180, 22);
+            this.miUndo.Size = new System.Drawing.Size(107, 22);
             this.miUndo.Text = "&Undo";
             // 
             // miRedo
             // 
             this.miRedo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
             this.miRedo.Name = "miRedo";
-            this.miRedo.Size = new System.Drawing.Size(180, 22);
+            this.miRedo.Size = new System.Drawing.Size(107, 22);
             this.miRedo.Text = "&Redo";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
             // 
             // miCut
             // 
             this.miCut.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
             this.miCut.Name = "miCut";
-            this.miCut.Size = new System.Drawing.Size(180, 22);
+            this.miCut.Size = new System.Drawing.Size(107, 22);
             this.miCut.Text = "Cu&t";
             // 
             // miCopy
             // 
             this.miCopy.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
             this.miCopy.Name = "miCopy";
-            this.miCopy.Size = new System.Drawing.Size(180, 22);
+            this.miCopy.Size = new System.Drawing.Size(107, 22);
             this.miCopy.Text = "&Copy";
             // 
             // miPaste
             // 
             this.miPaste.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
             this.miPaste.Name = "miPaste";
-            this.miPaste.Size = new System.Drawing.Size(180, 22);
+            this.miPaste.Size = new System.Drawing.Size(107, 22);
             this.miPaste.Text = "&Paste";
             // 
             // miDelete
@@ -289,7 +289,7 @@
             this.miDelete.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
             this.miDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.miDelete.Name = "miDelete";
-            this.miDelete.Size = new System.Drawing.Size(180, 22);
+            this.miDelete.Size = new System.Drawing.Size(107, 22);
             this.miDelete.Text = "&Delete";
             // 
             // PrimaryTextBox
@@ -332,7 +332,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(230, 149);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(229, 171);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -347,7 +347,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(230, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(229, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -359,7 +359,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(125, 177);
+            this.SecondaryMap.Size = new System.Drawing.Size(126, 197);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             // 
@@ -378,8 +378,8 @@
             // BottomSplit.Panel2
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
-            this.BottomSplit.Size = new System.Drawing.Size(360, 177);
-            this.BottomSplit.SplitterDistance = 230;
+            this.BottomSplit.Size = new System.Drawing.Size(360, 199);
+            this.BottomSplit.SplitterDistance = 229;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -392,7 +392,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(230, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(229, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -404,7 +404,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(125, 177);
+            this.PrimaryMap.Size = new System.Drawing.Size(126, 199);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             // 
@@ -415,7 +415,7 @@
             this.jmkScrollPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.jmkScrollPanel1.Location = new System.Drawing.Point(0, 0);
             this.jmkScrollPanel1.Name = "jmkScrollPanel1";
-            this.jmkScrollPanel1.Size = new System.Drawing.Size(360, 92);
+            this.jmkScrollPanel1.Size = new System.Drawing.Size(360, 25);
             this.jmkScrollPanel1.TabIndex = 2;
             // 
             // lblBuiltInHelp
@@ -676,7 +676,7 @@
             this.Controls.Add(this.ToolStripContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ShaderEdit";
-            this.Size = new System.Drawing.Size(360, 480);
+            this.Size = new System.Drawing.Size(360, 455);
             this.ToolStripContainer.ContentPanel.ResumeLayout(false);
             this.ToolStripContainer.TopToolStripPanel.ResumeLayout(false);
             this.ToolStripContainer.TopToolStripPanel.PerformLayout();

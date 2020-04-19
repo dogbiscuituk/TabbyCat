@@ -48,7 +48,7 @@
             PropertyNames.Orientation,
             PropertyNames.Pattern,
             PropertyNames.Scale,
-            PropertyNames.StripCount,
+            PropertyNames.StripeCount,
             PropertyNames.Visible
         };
 
@@ -79,9 +79,9 @@
                 TraceEdit.seMaximumX.ValueChanged += MaximumX_ValueChanged;
                 TraceEdit.seMaximumY.ValueChanged += MaximumY_ValueChanged;
                 TraceEdit.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
-                TraceEdit.seStripCountX.ValueChanged += StripCountX_ValueChanged;
-                TraceEdit.seStripCountY.ValueChanged += StripCountY_ValueChanged;
-                TraceEdit.seStripCountZ.ValueChanged += StripCountZ_ValueChanged;
+                TraceEdit.seStripeCountX.ValueChanged += StripeCountX_ValueChanged;
+                TraceEdit.seStripeCountY.ValueChanged += StripeCountY_ValueChanged;
+                TraceEdit.seStripeCountZ.ValueChanged += StripeCountZ_ValueChanged;
                 TraceEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
                 SelectionCon.SelectionChanged += Selection_Changed;
             }
@@ -104,9 +104,9 @@
                 TraceEdit.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
                 TraceEdit.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
                 TraceEdit.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
-                TraceEdit.seStripCountX.ValueChanged -= StripCountX_ValueChanged;
-                TraceEdit.seStripCountY.ValueChanged -= StripCountY_ValueChanged;
-                TraceEdit.seStripCountZ.ValueChanged -= StripCountZ_ValueChanged;
+                TraceEdit.seStripeCountX.ValueChanged -= StripeCountX_ValueChanged;
+                TraceEdit.seStripeCountY.ValueChanged -= StripeCountY_ValueChanged;
+                TraceEdit.seStripeCountZ.ValueChanged -= StripeCountZ_ValueChanged;
                 TraceEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
                 SelectionCon.SelectionChanged -= Selection_Changed;
             }
@@ -143,10 +143,10 @@
             Localize(Resources.Control_Trace_MaximumX, TraceEdit.seMaximumX);
             Localize(Resources.Control_Trace_MaximumY, TraceEdit.seMaximumY);
             Localize(Resources.Control_Trace_MaximumZ, TraceEdit.seMaximumZ);
-            Localize(Resources.Control_Trace_Strips, TraceEdit.lblStrips);
-            Localize(Resources.Control_Trace_StripsX, TraceEdit.seStripCountX);
-            Localize(Resources.Control_Trace_StripsY, TraceEdit.seStripCountY);
-            Localize(Resources.Control_Trace_StripsZ, TraceEdit.seStripCountZ);
+            Localize(Resources.Control_Trace_Stripes, TraceEdit.lblStripes);
+            Localize(Resources.Control_Trace_StripesX, TraceEdit.seStripeCountX);
+            Localize(Resources.Control_Trace_StripesY, TraceEdit.seStripeCountY);
+            Localize(Resources.Control_Trace_StripesZ, TraceEdit.seStripeCountZ);
             Localize(Resources.Control_Trace_Pattern, TraceEdit.lblPattern, TraceEdit.cbPattern);
             Localize(Resources.Control_Trace_Visible, TraceEdit.cbVisible);
             Localize(Resources.Control_Trace_Selection, TraceEdit.lblSelectedTraces);
@@ -211,10 +211,10 @@
                         TraceEdit.seScaleY.Value = (decimal)Selection.Scale.Y;
                         TraceEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
                         break;
-                    case PropertyNames.StripCount:
-                        TraceEdit.seStripCountX.Value = (decimal)Selection.StripCount.X;
-                        TraceEdit.seStripCountY.Value = (decimal)Selection.StripCount.Y;
-                        TraceEdit.seStripCountZ.Value = (decimal)Selection.StripCount.Z;
+                    case PropertyNames.StripeCount:
+                        TraceEdit.seStripeCountX.Value = (decimal)Selection.StripeCount.X;
+                        TraceEdit.seStripeCountY.Value = (decimal)Selection.StripeCount.Y;
+                        TraceEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
                         break;
                     case PropertyNames.Traces:
                         OnSelectionChanged();
@@ -260,9 +260,9 @@
 
         private void InitLocalControls()
         {
-            TraceEdit.seStripCountX.Minimum =
-            TraceEdit.seStripCountY.Minimum =
-            TraceEdit.seStripCountZ.Minimum = 0;
+            TraceEdit.seStripeCountX.Minimum =
+            TraceEdit.seStripeCountY.Minimum =
+            TraceEdit.seStripeCountZ.Minimum = 0;
             TraceEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
         }
 
@@ -379,23 +379,23 @@
                 p.Scale.Y,
                 (float)TraceEdit.seScaleZ.Value)));
 
-        private void StripCountX_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new StripCountCommand(p.Index, new Vector3(
-                (float)TraceEdit.seStripCountX.Value,
-                p.StripCount.Y,
-                p.StripCount.Z)));
+        private void StripeCountX_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripeCountCommand(p.Index, new Vector3(
+                (float)TraceEdit.seStripeCountX.Value,
+                p.StripeCount.Y,
+                p.StripeCount.Z)));
 
-        private void StripCountY_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new StripCountCommand(p.Index, new Vector3(
-                p.StripCount.X,
-                (float)TraceEdit.seStripCountY.Value,
-                p.StripCount.Z)));
+        private void StripeCountY_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripeCountCommand(p.Index, new Vector3(
+                p.StripeCount.X,
+                (float)TraceEdit.seStripeCountY.Value,
+                p.StripeCount.Z)));
 
-        private void StripCountZ_ValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new StripCountCommand(p.Index, new Vector3(
-                p.StripCount.X,
-                p.StripCount.Y,
-                (float)TraceEdit.seStripCountZ.Value)));
+        private void StripeCountZ_ValueChanged(object sender, System.EventArgs e) =>
+            Run(p => new StripeCountCommand(p.Index, new Vector3(
+                p.StripeCount.X,
+                p.StripeCount.Y,
+                (float)TraceEdit.seStripeCountZ.Value)));
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, TraceEdit.cbVisible.Checked));

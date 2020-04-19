@@ -13,7 +13,7 @@
         internal Vbo(ITrace trace, VboType vboType)
         {
             Pattern = trace.Pattern;
-            StripCount = trace.StripCount;
+            StripeCount = trace.StripeCount;
             VboType = vboType;
             GL.GenBuffers(1, out BufferID);
             GL.BindBuffer(BufferTarget, BufferID);
@@ -34,7 +34,7 @@
             ElementsCount;
 
         private readonly Pattern Pattern;
-        private readonly Vector3 StripCount;
+        private readonly Vector3 StripeCount;
         private readonly VboType VboType;
 
         private int RefCount;
@@ -47,7 +47,7 @@
 
         internal bool Matches(ITrace trace, VboType vboType) =>
             VboType == vboType &&
-            StripCount == trace.StripCount &&
+            StripeCount == trace.StripeCount &&
             (VboType != VboType.Index || Pattern == trace.Pattern);
 
         internal bool Release()

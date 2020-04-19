@@ -39,17 +39,15 @@
             this.SceneEdit.Location = new System.Drawing.Point(0, 0);
             this.SceneEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SceneEdit.Name = "SceneEdit";
-            this.SceneEdit.Size = new System.Drawing.Size(374, 262);
+            this.SceneEdit.Size = new System.Drawing.Size(352, 250);
             this.SceneEdit.TabIndex = 0;
             // 
             // SceneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 262);
+            this.ClientSize = new System.Drawing.Size(352, 250);
             this.Controls.Add(this.SceneEdit);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SceneForm";
             this.TabText = "Scene";
             this.Text = "Scene properties";

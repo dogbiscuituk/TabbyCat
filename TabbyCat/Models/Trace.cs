@@ -31,7 +31,7 @@
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Minimum { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Orientation { get; set; }
         [JsonConverter(typeof(Vector3Converter))] public Vector3 Scale { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 StripCount { get; set; }
+        [JsonConverter(typeof(Vector3Converter))] public Vector3 StripeCount { get; set; }
 
         internal int Index
         {
@@ -75,7 +75,7 @@
             Orientation = new Vector3(trace.Orientation);
             Pattern = trace.Pattern;
             Scale = new Vector3(trace.Scale);
-            StripCount = new Vector3(trace.StripCount);
+            StripeCount = new Vector3(trace.StripeCount);
             Visible = trace.Visible;
         }
 
@@ -90,7 +90,7 @@
             Orientation = Vector3.Zero;
             Pattern = Pattern.Fill;
             Scale = Vector3.One;
-            StripCount = new Vector3(100, 100, 0);
+            StripeCount = new Vector3(100, 100, 0);
             Visible = true;
         }
 

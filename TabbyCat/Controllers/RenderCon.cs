@@ -139,7 +139,7 @@
                     InvalidateProjection();
                     break;
                 case PropertyNames.Pattern:
-                case PropertyNames.StripCount:
+                case PropertyNames.StripeCount:
                     RenderCon.InvalidateAllTraces();
                     break;
             }

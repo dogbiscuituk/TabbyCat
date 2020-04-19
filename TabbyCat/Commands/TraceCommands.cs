@@ -82,14 +82,14 @@
         { }
     }
 
-    internal class StripCountCommand : TracePropertyCommand<Vector3>
+    internal class StripeCountCommand : TracePropertyCommand<Vector3>
     {
-        internal StripCountCommand(int index, Vector3 value) : base(
+        internal StripeCountCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.StripCount,
+            PropertyNames.StripeCount,
             value,
-            t => t.StripCount,
-            (t, v) => t.StripCount = v)
+            t => t.StripeCount,
+            (t, v) => t.StripeCount = v)
         { }
     }
 

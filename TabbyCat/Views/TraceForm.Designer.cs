@@ -39,17 +39,15 @@
             this.TraceEdit.Location = new System.Drawing.Point(0, 0);
             this.TraceEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TraceEdit.Name = "TraceEdit";
-            this.TraceEdit.Size = new System.Drawing.Size(383, 254);
+            this.TraceEdit.Size = new System.Drawing.Size(352, 250);
             this.TraceEdit.TabIndex = 0;
             // 
             // TraceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 254);
+            this.ClientSize = new System.Drawing.Size(352, 250);
             this.Controls.Add(this.TraceEdit);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TraceForm";
             this.TabText = "Trace";
             this.Text = "Trace properties";

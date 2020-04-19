@@ -16,7 +16,7 @@
             GLTargetVersion = "GL Target Version",
             NearPlane = "Near Plane",
             ProjectionType = "Projection Type",
-            Samples = "Samples",
+            Samples = "#Samples",
             SceneTitle = "Scene Title",
             Stereo = "Stereo",
             Traces = "Traces",
@@ -33,7 +33,7 @@
             Orientation = "Orientation",
             Pattern = "Pattern",
             Scale = "Scale",
-            StripCount = "Strip Count",
+            StripeCount = "#Stripes",
             Visible = "Visible";
 
         /// <summary>
