@@ -7,7 +7,7 @@
     using System.Linq;
     using TabbyCat.Common.Types;
 
-    public class TraceSelection : IShaderSet
+    public class TraceSelection : IScript
     {
         private readonly List<Trace> _Traces = new List<Trace>();
         private bool Updated;

@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class ShaderEdit
+    partial class CodeEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShaderEdit));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodeEdit));
             this.ToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.MainSplit = new System.Windows.Forms.SplitContainer();
             this.EditSplit = new System.Windows.Forms.SplitContainer();

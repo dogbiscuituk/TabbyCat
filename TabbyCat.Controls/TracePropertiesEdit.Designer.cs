@@ -144,7 +144,7 @@
             // 
             this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Control;
             this.lblSelectedTraces.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblSelectedTraces.Location = new System.Drawing.Point(3, 208);
+            this.lblSelectedTraces.Location = new System.Drawing.Point(3, 201);
             this.lblSelectedTraces.Name = "lblSelectedTraces";
             this.lblSelectedTraces.Size = new System.Drawing.Size(82, 34);
             this.lblSelectedTraces.TabIndex = 29;
@@ -156,7 +156,7 @@
             this.lblStripes.AutoSize = true;
             this.lblStripes.BackColor = System.Drawing.SystemColors.Control;
             this.lblStripes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStripes.Location = new System.Drawing.Point(3, 154);
+            this.lblStripes.Location = new System.Drawing.Point(3, 147);
             this.lblStripes.Name = "lblStripes";
             this.lblStripes.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblStripes.Size = new System.Drawing.Size(82, 25);
@@ -169,7 +169,7 @@
             this.lblLocation.AutoSize = true;
             this.lblLocation.BackColor = System.Drawing.SystemColors.Control;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLocation.Location = new System.Drawing.Point(3, 29);
+            this.lblLocation.Location = new System.Drawing.Point(3, 22);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblLocation.Size = new System.Drawing.Size(82, 25);
@@ -185,7 +185,7 @@
             this.lblDescription.Location = new System.Drawing.Point(3, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblDescription.Size = new System.Drawing.Size(82, 29);
+            this.lblDescription.Size = new System.Drawing.Size(82, 22);
             this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "Description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -193,13 +193,13 @@
             // edDescription
             // 
             this.edDescription.BackColor = System.Drawing.SystemColors.Window;
-            this.edDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.edDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TableLayoutPanel.SetColumnSpan(this.edDescription, 3);
             this.edDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edDescription.Location = new System.Drawing.Point(90, 2);
             this.edDescription.Margin = new System.Windows.Forms.Padding(2);
             this.edDescription.Name = "edDescription";
-            this.edDescription.Size = new System.Drawing.Size(260, 25);
+            this.edDescription.Size = new System.Drawing.Size(260, 18);
             this.edDescription.TabIndex = 1;
             // 
             // lblOrientation
@@ -207,7 +207,7 @@
             this.lblOrientation.AutoSize = true;
             this.lblOrientation.BackColor = System.Drawing.SystemColors.Control;
             this.lblOrientation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblOrientation.Location = new System.Drawing.Point(3, 54);
+            this.lblOrientation.Location = new System.Drawing.Point(3, 47);
             this.lblOrientation.Name = "lblOrientation";
             this.lblOrientation.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblOrientation.Size = new System.Drawing.Size(82, 25);
@@ -220,7 +220,7 @@
             this.lblScale.AutoSize = true;
             this.lblScale.BackColor = System.Drawing.SystemColors.Control;
             this.lblScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblScale.Location = new System.Drawing.Point(3, 79);
+            this.lblScale.Location = new System.Drawing.Point(3, 72);
             this.lblScale.Name = "lblScale";
             this.lblScale.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblScale.Size = new System.Drawing.Size(82, 25);
@@ -233,7 +233,7 @@
             this.lblPattern.AutoSize = true;
             this.lblPattern.BackColor = System.Drawing.SystemColors.Control;
             this.lblPattern.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPattern.Location = new System.Drawing.Point(3, 179);
+            this.lblPattern.Location = new System.Drawing.Point(3, 172);
             this.lblPattern.Name = "lblPattern";
             this.lblPattern.Size = new System.Drawing.Size(82, 29);
             this.lblPattern.TabIndex = 26;
@@ -245,7 +245,7 @@
             this.lblMinimum.AutoSize = true;
             this.lblMinimum.BackColor = System.Drawing.SystemColors.Control;
             this.lblMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMinimum.Location = new System.Drawing.Point(3, 104);
+            this.lblMinimum.Location = new System.Drawing.Point(3, 97);
             this.lblMinimum.Name = "lblMinimum";
             this.lblMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblMinimum.Size = new System.Drawing.Size(82, 25);
@@ -258,7 +258,7 @@
             this.lblMaximum.AutoSize = true;
             this.lblMaximum.BackColor = System.Drawing.SystemColors.Control;
             this.lblMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMaximum.Location = new System.Drawing.Point(3, 129);
+            this.lblMaximum.Location = new System.Drawing.Point(3, 122);
             this.lblMaximum.Name = "lblMaximum";
             this.lblMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblMaximum.Size = new System.Drawing.Size(82, 25);
@@ -277,7 +277,7 @@
             0,
             0,
             65536});
-            this.seLocationY.Location = new System.Drawing.Point(178, 31);
+            this.seLocationY.Location = new System.Drawing.Point(178, 24);
             this.seLocationY.Margin = new System.Windows.Forms.Padding(2);
             this.seLocationY.Maximum = new decimal(new int[] {
             0,
@@ -300,7 +300,7 @@
             0,
             0,
             65536});
-            this.seLocationZ.Location = new System.Drawing.Point(266, 31);
+            this.seLocationZ.Location = new System.Drawing.Point(266, 24);
             this.seLocationZ.Margin = new System.Windows.Forms.Padding(2);
             this.seLocationZ.Maximum = new decimal(new int[] {
             0,
@@ -317,7 +317,7 @@
             this.sePitch.BackColor = System.Drawing.SystemColors.Window;
             this.sePitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.sePitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sePitch.Location = new System.Drawing.Point(90, 56);
+            this.sePitch.Location = new System.Drawing.Point(90, 49);
             this.sePitch.Margin = new System.Windows.Forms.Padding(2);
             this.sePitch.Maximum = new decimal(new int[] {
             0,
@@ -334,7 +334,7 @@
             this.seYaw.BackColor = System.Drawing.SystemColors.Window;
             this.seYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seYaw.Location = new System.Drawing.Point(178, 56);
+            this.seYaw.Location = new System.Drawing.Point(178, 49);
             this.seYaw.Margin = new System.Windows.Forms.Padding(2);
             this.seYaw.Maximum = new decimal(new int[] {
             0,
@@ -351,7 +351,7 @@
             this.seRoll.BackColor = System.Drawing.SystemColors.Window;
             this.seRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seRoll.Location = new System.Drawing.Point(266, 56);
+            this.seRoll.Location = new System.Drawing.Point(266, 49);
             this.seRoll.Margin = new System.Windows.Forms.Padding(2);
             this.seRoll.Maximum = new decimal(new int[] {
             0,
@@ -374,7 +374,7 @@
             0,
             0,
             65536});
-            this.seScaleX.Location = new System.Drawing.Point(90, 81);
+            this.seScaleX.Location = new System.Drawing.Point(90, 74);
             this.seScaleX.Margin = new System.Windows.Forms.Padding(2);
             this.seScaleX.Maximum = new decimal(new int[] {
             0,
@@ -397,7 +397,7 @@
             0,
             0,
             65536});
-            this.seScaleY.Location = new System.Drawing.Point(178, 81);
+            this.seScaleY.Location = new System.Drawing.Point(178, 74);
             this.seScaleY.Margin = new System.Windows.Forms.Padding(2);
             this.seScaleY.Maximum = new decimal(new int[] {
             0,
@@ -420,7 +420,7 @@
             0,
             0,
             65536});
-            this.seScaleZ.Location = new System.Drawing.Point(266, 81);
+            this.seScaleZ.Location = new System.Drawing.Point(266, 74);
             this.seScaleZ.Margin = new System.Windows.Forms.Padding(2);
             this.seScaleZ.Maximum = new decimal(new int[] {
             0,
@@ -443,7 +443,7 @@
             0,
             0,
             65536});
-            this.seMinimumX.Location = new System.Drawing.Point(90, 106);
+            this.seMinimumX.Location = new System.Drawing.Point(90, 99);
             this.seMinimumX.Margin = new System.Windows.Forms.Padding(2);
             this.seMinimumX.Maximum = new decimal(new int[] {
             0,
@@ -466,7 +466,7 @@
             0,
             0,
             65536});
-            this.seMinimumY.Location = new System.Drawing.Point(178, 106);
+            this.seMinimumY.Location = new System.Drawing.Point(178, 99);
             this.seMinimumY.Margin = new System.Windows.Forms.Padding(2);
             this.seMinimumY.Maximum = new decimal(new int[] {
             0,
@@ -489,7 +489,7 @@
             0,
             0,
             65536});
-            this.seMinimumZ.Location = new System.Drawing.Point(266, 106);
+            this.seMinimumZ.Location = new System.Drawing.Point(266, 99);
             this.seMinimumZ.Margin = new System.Windows.Forms.Padding(2);
             this.seMinimumZ.Maximum = new decimal(new int[] {
             0,
@@ -512,7 +512,7 @@
             0,
             0,
             65536});
-            this.seMaximumX.Location = new System.Drawing.Point(90, 131);
+            this.seMaximumX.Location = new System.Drawing.Point(90, 124);
             this.seMaximumX.Margin = new System.Windows.Forms.Padding(2);
             this.seMaximumX.Maximum = new decimal(new int[] {
             0,
@@ -535,7 +535,7 @@
             0,
             0,
             65536});
-            this.seMaximumY.Location = new System.Drawing.Point(178, 131);
+            this.seMaximumY.Location = new System.Drawing.Point(178, 124);
             this.seMaximumY.Margin = new System.Windows.Forms.Padding(2);
             this.seMaximumY.Maximum = new decimal(new int[] {
             0,
@@ -558,7 +558,7 @@
             0,
             0,
             65536});
-            this.seMaximumZ.Location = new System.Drawing.Point(266, 131);
+            this.seMaximumZ.Location = new System.Drawing.Point(266, 124);
             this.seMaximumZ.Margin = new System.Windows.Forms.Padding(2);
             this.seMaximumZ.Maximum = new decimal(new int[] {
             0,
@@ -575,7 +575,7 @@
             this.seStripeCountX.BackColor = System.Drawing.SystemColors.Window;
             this.seStripeCountX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seStripeCountX.Location = new System.Drawing.Point(90, 156);
+            this.seStripeCountX.Location = new System.Drawing.Point(90, 149);
             this.seStripeCountX.Margin = new System.Windows.Forms.Padding(2);
             this.seStripeCountX.Maximum = new decimal(new int[] {
             0,
@@ -592,7 +592,7 @@
             this.seStripeCountY.BackColor = System.Drawing.SystemColors.Window;
             this.seStripeCountY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seStripeCountY.Location = new System.Drawing.Point(178, 156);
+            this.seStripeCountY.Location = new System.Drawing.Point(178, 149);
             this.seStripeCountY.Margin = new System.Windows.Forms.Padding(2);
             this.seStripeCountY.Maximum = new decimal(new int[] {
             0,
@@ -609,7 +609,7 @@
             this.seStripeCountZ.BackColor = System.Drawing.SystemColors.Window;
             this.seStripeCountZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seStripeCountZ.Location = new System.Drawing.Point(266, 156);
+            this.seStripeCountZ.Location = new System.Drawing.Point(266, 149);
             this.seStripeCountZ.Margin = new System.Windows.Forms.Padding(2);
             this.seStripeCountZ.Maximum = new decimal(new int[] {
             0,
@@ -629,7 +629,7 @@
             this.cbPattern.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbPattern.FormattingEnabled = true;
-            this.cbPattern.Location = new System.Drawing.Point(90, 181);
+            this.cbPattern.Location = new System.Drawing.Point(90, 174);
             this.cbPattern.Margin = new System.Windows.Forms.Padding(2);
             this.cbPattern.Name = "cbPattern";
             this.cbPattern.Size = new System.Drawing.Size(172, 25);
@@ -643,7 +643,7 @@
             this.cbVisible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVisible.FlatAppearance.BorderSize = 0;
             this.cbVisible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbVisible.Location = new System.Drawing.Point(266, 181);
+            this.cbVisible.Location = new System.Drawing.Point(266, 174);
             this.cbVisible.Margin = new System.Windows.Forms.Padding(2);
             this.cbVisible.Name = "cbVisible";
             this.cbVisible.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
@@ -664,7 +664,7 @@
             0,
             0,
             65536});
-            this.seLocationX.Location = new System.Drawing.Point(90, 31);
+            this.seLocationX.Location = new System.Drawing.Point(90, 24);
             this.seLocationX.Margin = new System.Windows.Forms.Padding(2);
             this.seLocationX.Maximum = new decimal(new int[] {
             0,
@@ -683,7 +683,7 @@
             this.SelectionToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblAll});
             this.SelectionToolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.SelectionToolbar.Location = new System.Drawing.Point(88, 208);
+            this.SelectionToolbar.Location = new System.Drawing.Point(88, 201);
             this.SelectionToolbar.Name = "SelectionToolbar";
             this.SelectionToolbar.Padding = new System.Windows.Forms.Padding(3, 3, 1, 0);
             this.SelectionToolbar.Size = new System.Drawing.Size(264, 23);

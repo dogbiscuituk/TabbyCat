@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class GLControlForm
+    partial class SceneForm
     {
         /// <summary>
         /// Required designer variable.

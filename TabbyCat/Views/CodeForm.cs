@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Views
 {
-    public partial class ShaderForm : DockingForm
+    public partial class CodeForm : DockingForm
     {
-        public ShaderForm()
+        public CodeForm()
         {
             InitializeComponent();
         }

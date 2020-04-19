@@ -90,12 +90,12 @@
     <Compile Include="Controllers\CameraCon.cs" />
     <Compile Include="Controllers\ClockCon.cs" />
     <Compile Include="Controllers\DockingCon.cs" />
-    <Compile Include="Controllers\GLCon.cs" />
+    <Compile Include="Controllers\SceneCon.cs" />
     <Compile Include="Controllers\GpuCon.cs" />
     <Compile Include="Controllers\LocalizationCon.cs" />
     <Compile Include="Controllers\SelectionCon.cs" />
-    <Compile Include="Controllers\ShaderCon.cs" />
-    <Compile Include="Controllers\ShaderSetCon.cs" />
+    <Compile Include="Controllers\CodeCon.cs" />
+    <Compile Include="Controllers\CodeBaseCon.cs" />
     <Compile Include="Controllers\ColourCon.cs" />
     <Compile Include="Controllers\JsonCon.cs" />
     <Compile Include="Controllers\MruCon.cs" />
@@ -135,11 +135,11 @@
       <DependentUpon>FloatingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FloatingFormFactory.cs" />
-    <Compile Include="Views\GLControlForm.cs">
+    <Compile Include="Views\SceneForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\GLControlForm.Designer.cs">
-      <DependentUpon>GLControlForm.cs</DependentUpon>
+    <Compile Include="Views\SceneForm.Designer.cs">
+      <DependentUpon>SceneForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\GraphicsStateForm.cs">
       <SubType>Form</SubType>
@@ -165,11 +165,11 @@
     <Compile Include="Views\ScenePropertiesForm.Designer.cs">
       <DependentUpon>ScenePropertiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShaderForm.cs">
+    <Compile Include="Views\CodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ShaderForm.Designer.cs">
-      <DependentUpon>ShaderForm.cs</DependentUpon>
+    <Compile Include="Views\CodeForm.Designer.cs">
+      <DependentUpon>CodeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TracePropertiesForm.cs">
       <SubType>Form</SubType>
@@ -197,8 +197,8 @@
     <EmbeddedResource Include="Views\FloatingForm.resx">
       <DependentUpon>FloatingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\GLControlForm.resx">
-      <DependentUpon>GLControlForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\SceneForm.resx">
+      <DependentUpon>SceneForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GraphicsStateForm.resx">
       <DependentUpon>GraphicsStateForm.cs</DependentUpon>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Views\ScenePropertiesForm.resx">
       <DependentUpon>ScenePropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ShaderForm.resx">
-      <DependentUpon>ShaderForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CodeForm.resx">
+      <DependentUpon>CodeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TracePropertiesForm.resx">
       <DependentUpon>TracePropertiesForm.cs</DependentUpon>

@@ -2,7 +2,7 @@
 {
     using OpenTK.Graphics.OpenGL;
 
-    public interface IShaderSet
+    public interface IScript
     {
         string GetScript(ShaderType shaderType);
         void SetScript(ShaderType shaderType, string value);

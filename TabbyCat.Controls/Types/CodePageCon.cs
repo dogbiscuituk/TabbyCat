@@ -16,9 +16,9 @@
     /// FastColoredTextBox controller class.
     /// Adds GLSL to list of supported languages.
     /// </summary>
-    public partial class GLPageCon
+    public partial class CodePageCon
     {
-        public GLPageCon(FastColoredTextBox textBox)
+        public CodePageCon(FastColoredTextBox textBox)
         {
             TextBox = textBox ?? throw new NullReferenceException(
                 string.Format(CultureInfo.CurrentCulture, Resources.Text_ParameterCannotBeNull, nameof(textBox)));
@@ -258,7 +258,7 @@
         private static TextStyle NewTextStyle() => new TextStyle(Brushes.Black, Brushes.Transparent, 0);
     }
 
-    partial class GLPageCon : IDisposable
+    partial class CodePageCon : IDisposable
     {
         private bool Disposed;
 

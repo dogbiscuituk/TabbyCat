@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Views
 {
-    public partial class GLControlForm : DockingForm
+    public partial class SceneForm : DockingForm
     {
-        public GLControlForm()
+        public SceneForm()
         {
             InitializeComponent();
         }

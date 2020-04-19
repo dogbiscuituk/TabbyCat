@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class ShaderForm
+    partial class CodeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ShaderEdit = new TabbyCat.Controls.ShaderEdit();
+            this.CodeEdit = new TabbyCat.Controls.CodeEdit();
             this.SuspendLayout();
             // 
-            // ShaderEdit
+            // CodeEdit
             // 
-            this.ShaderEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ShaderEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShaderEdit.Location = new System.Drawing.Point(0, 0);
-            this.ShaderEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ShaderEdit.Name = "ShaderEdit";
-            this.ShaderEdit.Size = new System.Drawing.Size(383, 358);
-            this.ShaderEdit.TabIndex = 0;
+            this.CodeEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CodeEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodeEdit.Location = new System.Drawing.Point(0, 0);
+            this.CodeEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CodeEdit.Name = "CodeEdit";
+            this.CodeEdit.Size = new System.Drawing.Size(383, 358);
+            this.CodeEdit.TabIndex = 0;
             // 
-            // ShaderForm
+            // CodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 358);
-            this.Controls.Add(this.ShaderEdit);
+            this.Controls.Add(this.CodeEdit);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "ShaderForm";
+            this.Name = "CodeForm";
             this.Text = "";
             this.ResumeLayout(false);
 
@@ -57,6 +57,6 @@
 
         #endregion
 
-        internal Controls.ShaderEdit ShaderEdit;
+        internal Controls.CodeEdit CodeEdit;
     }
 }

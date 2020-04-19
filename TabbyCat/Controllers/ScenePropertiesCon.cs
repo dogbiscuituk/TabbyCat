@@ -14,7 +14,7 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class ScenePropertiesCon : ShaderSetCon
+    internal partial class ScenePropertiesCon : CodeBaseCon
     {
         internal ScenePropertiesCon(WorldCon worldCon) : base(worldCon)
         {

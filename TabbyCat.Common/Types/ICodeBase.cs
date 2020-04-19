@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Common.Types
 {
-    public interface ICode : IShaderSet
+    public interface ICodeBase : IScript
     {
         string VertexShader { get; set; }
         string TessControlShader { get; set; }

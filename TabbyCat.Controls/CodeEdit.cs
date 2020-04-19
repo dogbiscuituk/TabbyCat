@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class ShaderEdit : UserControl
+    public partial class CodeEdit : UserControl
     {
-        public ShaderEdit()
+        public CodeEdit()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class TracePropertiesCon : ShaderSetCon
+    internal partial class TracePropertiesCon : CodeBaseCon
     {
         internal TracePropertiesCon(WorldCon worldCon) : base(worldCon)
         {

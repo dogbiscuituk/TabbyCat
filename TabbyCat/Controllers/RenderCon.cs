@@ -14,7 +14,7 @@
     using TabbyCat.Common.Utility;
     using TabbyCat.Models;
 
-    internal class RenderCon : LocalizationCon, IShaderSet
+    internal class RenderCon : LocalizationCon, IScript
     {
         internal RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
 
@@ -81,7 +81,7 @@
             {
                 if (_GraphicsMode == null && MakeCurrent(true))
                 {
-                    var mode = GLControl.GraphicsMode;
+                    var mode = SceneControl.GraphicsMode;
                     MakeCurrent(false);
                     lock (GLModeSyncRoot)
                         _GraphicsMode = mode;
@@ -267,7 +267,7 @@
                 GL.UseProgram(0); // Stop Shader
                 UpdateFPS();
             }
-            GLControl.SwapBuffers();
+            SceneControl.SwapBuffers();
             MakeCurrent(false);
         }
 
@@ -285,7 +285,7 @@
         private void BeginRender()
         {
             if (++CurrencyCount == 1)
-                GLControl.MakeCurrent();
+                SceneControl.MakeCurrent();
         }
 
         private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
@@ -341,7 +341,7 @@
         private void EndRender()
         {
             if (--CurrencyCount == 0)
-                GLControl.Context.MakeCurrent(null);
+                SceneControl.Context.MakeCurrent(null);
         }
 
         private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
@@ -385,7 +385,7 @@
 
         private bool MakeCurrent(bool current)
         {
-            var ok = GLControl?.HasValidContext == true && GLControl?.Visible == true;
+            var ok = SceneControl?.HasValidContext == true && SceneControl?.Visible == true;
             if (ok)
                 if (current)
                     BeginRender();
@@ -445,7 +445,7 @@
         {
             if (ProjectionValid)
                 return;
-            GL.Viewport(GLControl.Size);
+            GL.Viewport(SceneControl.Size);
             LoadProjection();
             ProjectionValid = true;
         }

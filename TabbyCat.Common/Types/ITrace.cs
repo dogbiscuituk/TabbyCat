@@ -2,7 +2,7 @@
 {
     using OpenTK;
 
-    public interface ITrace : ICode
+    public interface ITrace : ICodeBase
     {
         string Description { get; set; }
         Pattern Pattern { get; set; }

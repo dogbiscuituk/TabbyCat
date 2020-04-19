@@ -11,7 +11,7 @@
     /// Base class for Scene and Trace (but not TraceSelection).
     /// Provides concrete string properties for shader code.
     /// </summary>
-    public abstract class CodeBase : ICode
+    public abstract class CodeBase : ICodeBase
     {
         protected CodeBase() { }
 
@@ -70,6 +70,6 @@
             }
         }
 
-        private void CopyFrom(IShaderSet source) => Array.ForEach(ShaderUtils.All.ToArray(), p => SetScript(p, source.GetScript(p)));
+        private void CopyFrom(IScript source) => Array.ForEach(ShaderUtils.All.ToArray(), p => SetScript(p, source.GetScript(p)));
     }
 }

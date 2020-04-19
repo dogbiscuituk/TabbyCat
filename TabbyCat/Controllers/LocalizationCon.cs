@@ -25,27 +25,27 @@
         protected virtual Clock Clock => ClockCon.Clock;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
-        protected internal GLControl GLControl => (GLControl)GLControlForm?.Controls?.OfType<Control>().FirstOrDefault();
-        protected virtual GLControlForm GLControlForm => GLCon.GLControlForm;
-        protected virtual GLCon GLCon => WorldCon.GLCon;
         protected virtual GpuCon GpuCon => WorldCon.GpuCon;
         protected GraphicsStateEdit GpuEdit => GpuForm.GpuEdit;
         protected virtual GraphicsStateForm GpuForm => GpuCon.GpuForm;
-        protected virtual ShaderCon GpuShaderCon => WorldCon.GpuShaderCon;
-        protected ShaderForm GpuShaderForm => GpuShaderCon.ShaderForm;
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected virtual CodeCon SceneCodeCon => WorldCon.SceneCodeCon;
+        protected CodeForm SceneCodeForm => SceneCodeCon.CodeForm;
+        protected virtual SceneCon SceneCon => WorldCon.SceneCon;
+        protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
+        protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
         protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
-        protected virtual ShaderCon SceneShaderCon => WorldCon.SceneShaderCon;
-        protected ShaderForm SceneShaderForm => SceneShaderCon.ShaderForm;
+        protected virtual CodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
+        protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
         protected ToolTip ToolTip => WorldForm.ToolTip;
+        protected virtual CodeCon TraceCodeCon => WorldCon.TraceCodeCon;
+        protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
         protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
         protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
-        protected virtual ShaderCon TraceShaderCon => WorldCon.TraceShaderCon;
-        protected ShaderForm TraceShaderForm => TraceShaderCon.ShaderForm;
         protected virtual WorldCon WorldCon { get; }
         protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 

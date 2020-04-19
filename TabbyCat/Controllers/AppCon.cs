@@ -117,7 +117,7 @@
                 Directory.CreateDirectory(Options.FilesFolderPath);
             if (!Directory.Exists(Options.TemplatesFolderPath))
                 Directory.CreateDirectory(Options.TemplatesFolderPath);
-            GLPageCon.ApplyStyles(Options.SyntaxHighlightStyles);
+            CodePageCon.ApplyStyles(Options.SyntaxHighlightStyles);
         }
 
         private static void Pulse_Tick(object sender, EventArgs e)

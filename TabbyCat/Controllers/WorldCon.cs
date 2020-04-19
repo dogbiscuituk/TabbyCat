@@ -39,10 +39,10 @@
         protected DockPane ScenePane => ScenePropertiesForm.Pane;
         protected DockPane TracePane => TracePropertiesForm.Pane;
         protected DockPane GpuPane => GpuForm.Pane;
-        protected DockPane SceneShaderPane => SceneShaderForm.Pane;
-        protected DockPane TraceShaderPane => TraceShaderForm.Pane;
-        protected DockPane GpuShaderPane => GpuShaderForm.Pane;
-        protected DockPane GLControlPane => GLControlForm.Pane;
+        protected DockPane SceneShaderPane => SceneCodeForm.Pane;
+        protected DockPane TraceShaderPane => TraceCodeForm.Pane;
+        protected DockPane GpuShaderPane => ShaderCodeForm.Pane;
+        protected DockPane GLControlPane => SceneForm.Pane;
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
@@ -52,9 +52,9 @@
         private ClockCon _ClockCon;
         private CommandProcessor _CommandProcessor;
         private GpuCon _GpuCon;
-        private GLCon _GLCon;
+        private SceneCon _GLCon;
         private JsonCon _JsonCon;
-        private ShaderCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
+        private CodeCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
         private RenderCon _RenderCon;
         private ScenePropertiesCon _ScenePropertiesCon;
         private TracePropertiesCon _TracePropertiesCon;
@@ -63,16 +63,16 @@
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
-        protected override GLCon GLCon => _GLCon ?? (_GLCon = new GLCon(this));
+        protected override SceneCon SceneCon => _GLCon ?? (_GLCon = new SceneCon(this));
         protected override GpuCon GpuCon => _GpuCon ?? (_GpuCon = new GpuCon(this));
-        protected override ShaderCon GpuShaderCon => _GpuShaderCon ?? (_GpuShaderCon = new ShaderCon(this, ShaderRegion.All));
+        protected override CodeCon ShaderCodeCon => _GpuShaderCon ?? (_GpuShaderCon = new CodeCon(this, ShaderRegion.All));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected internal override Scene Scene { get; set; }
         protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
-        protected override ShaderCon SceneShaderCon => _SceneShaderCon ?? (_SceneShaderCon = new ShaderCon(this, ShaderRegion.Scene));
+        protected override CodeCon SceneCodeCon => _SceneShaderCon ?? (_SceneShaderCon = new CodeCon(this, ShaderRegion.Scene));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon= new TracePropertiesCon(this));
-        protected override ShaderCon TraceShaderCon => _TraceShaderCon ?? (_TraceShaderCon = new ShaderCon(this, ShaderRegion.Trace));
+        protected override CodeCon TraceCodeCon => _TraceShaderCon ?? (_TraceShaderCon = new CodeCon(this, ShaderRegion.Trace));
         protected internal override WorldForm WorldForm { get; }
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
@@ -183,7 +183,7 @@
                     break;
             }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            GLControl.Invalidate();
+            SceneControl.Invalidate();
         }
 
         internal void OnPulse()
@@ -226,10 +226,10 @@
         private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(ScenePropertiesCon);
         private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TracePropertiesCon);
         private void ViewViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility(GpuCon);
-        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneShaderCon);
-        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceShaderCon);
-        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(GpuShaderCon);
-        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility(GLCon);
+        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneCodeCon);
+        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceCodeCon);
+        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(ShaderCodeCon);
+        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility(SceneCon);
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -248,7 +248,7 @@
             Selection.Set(new[] { Scene.Traces.Last() });
         }
 
-        private void BackColorChanged() => GLControl.Parent.BackColor = Scene.BackgroundColour;
+        private void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
         private void BeginUpdate() => ++UpdateCount;
 
@@ -275,12 +275,12 @@
             ClockCon.Connect(connect);
             ConnectJsonCon(connect);
             GpuCon.Connect(connect);
-            GpuShaderCon.Connect(connect);
+            ShaderCodeCon.Connect(connect);
             RenderCon.Connect(connect);
             TracePropertiesCon.Connect(connect);
-            TraceShaderCon.Connect(connect);
+            TraceCodeCon.Connect(connect);
             ScenePropertiesCon.Connect(connect);
-            SceneShaderCon.Connect(connect);
+            SceneCodeCon.Connect(connect);
             if (connect)
             {
             }
@@ -313,19 +313,19 @@
         {
             if (connect)
             {
-                GLControl.BackColorChanged += GLControl_BackColorChanged;
-                GLControl.ClientSizeChanged += GLControl_ClientSizeChanged;
-                GLControl.Load += GLControl_Load;
-                GLControl.Paint += GLControl_Paint;
-                GLControl.Resize += GLControl_Resize;
+                SceneControl.BackColorChanged += GLControl_BackColorChanged;
+                SceneControl.ClientSizeChanged += GLControl_ClientSizeChanged;
+                SceneControl.Load += GLControl_Load;
+                SceneControl.Paint += GLControl_Paint;
+                SceneControl.Resize += GLControl_Resize;
             }
             else
             {
-                GLControl.BackColorChanged -= GLControl_BackColorChanged;
-                GLControl.ClientSizeChanged -= GLControl_ClientSizeChanged;
-                GLControl.Load -= GLControl_Load;
-                GLControl.Paint -= GLControl_Paint;
-                GLControl.Resize -= GLControl_Resize;
+                SceneControl.BackColorChanged -= GLControl_BackColorChanged;
+                SceneControl.ClientSizeChanged -= GLControl_ClientSizeChanged;
+                SceneControl.Load -= GLControl_Load;
+                SceneControl.Paint -= GLControl_Paint;
+                SceneControl.Resize -= GLControl_Resize;
             }
         }
 
@@ -584,9 +584,9 @@
 
         private void RecreateGLControl(GraphicsMode mode)
         {
-            var parent = GLControl.Parent;
+            var parent = SceneControl.Parent;
             GLControl
-                oldControl = GLControl,
+                oldControl = SceneControl,
                 newControl = mode == null ? new GLControl() : new GLControl(mode);
             newControl.BackColor = Scene.BackgroundColour;
             newControl.Dock = DockStyle.Fill;
@@ -631,14 +631,14 @@
 
         private void ShowControls()
         {
-            GLControlForm.Show(WorldPanel, DockState.Document);
-            GpuShaderForm.Show(WorldPanel, DockState.DockRight);
+            SceneForm.Show(WorldPanel, DockState.Document);
+            ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             ScenePropertiesForm.Show(WorldPanel, DockState.DockLeft);
             TracePropertiesForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
-            SceneShaderForm.Show(TracePane, DockAlignment.Bottom, 0.5);
-            TraceShaderForm.Show(SceneShaderPane, null);
+            SceneCodeForm.Show(TracePane, DockAlignment.Bottom, 0.5);
+            TraceCodeForm.Show(SceneShaderPane, null);
             GpuForm.Show(SceneShaderPane, null);
-            TraceShaderForm.Activate();
+            TraceCodeForm.Activate();
         }
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();

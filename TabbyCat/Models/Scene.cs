@@ -70,7 +70,7 @@
 
         internal bool IsModified => CommandProcessor?.IsModified ?? false;
 
-        private GLControl GLControl => WorldCon?.GLControl;
+        private GLControl GLControl => WorldCon?.SceneControl;
 
         internal void AddTrace(Trace trace) => Traces.Add(trace);
 

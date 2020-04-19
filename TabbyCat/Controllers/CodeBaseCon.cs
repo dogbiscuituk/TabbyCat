@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal abstract class ShaderSetCon : DockingCon
+    internal abstract class CodeBaseCon : DockingCon
     {
-        internal ShaderSetCon(WorldCon worldCon) : base(worldCon) { }
+        internal CodeBaseCon(WorldCon worldCon) : base(worldCon) { }
 
         protected bool Updating;
 
