@@ -86,15 +86,16 @@
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewGraphicsState = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewAllCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewAllCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewGraphicsState = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +117,6 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -625,57 +625,62 @@
             this.ViewMenu.Size = new System.Drawing.Size(47, 21);
             this.ViewMenu.Text = "View";
             // 
+            // ViewScene
+            // 
+            this.ViewScene.Name = "ViewScene";
+            this.ViewScene.Size = new System.Drawing.Size(175, 22);
+            this.ViewScene.Text = "Scene";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(172, 6);
+            // 
             // ViewSceneProperties
             // 
             this.ViewSceneProperties.Name = "ViewSceneProperties";
-            this.ViewSceneProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneProperties.Size = new System.Drawing.Size(175, 22);
             this.ViewSceneProperties.Text = "Scene properties";
             // 
             // ViewTraceProperties
             // 
             this.ViewTraceProperties.Name = "ViewTraceProperties";
-            this.ViewTraceProperties.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceProperties.Size = new System.Drawing.Size(175, 22);
             this.ViewTraceProperties.Text = "Trace properties";
-            // 
-            // ViewGraphicsState
-            // 
-            this.ViewGraphicsState.Name = "ViewGraphicsState";
-            this.ViewGraphicsState.Size = new System.Drawing.Size(180, 22);
-            this.ViewGraphicsState.Text = "Graphics state";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
+            // 
+            // ViewAllCode
+            // 
+            this.ViewAllCode.Name = "ViewAllCode";
+            this.ViewAllCode.Size = new System.Drawing.Size(175, 22);
+            this.ViewAllCode.Text = "All code";
             // 
             // ViewSceneCode
             // 
             this.ViewSceneCode.Name = "ViewSceneCode";
-            this.ViewSceneCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewSceneCode.Size = new System.Drawing.Size(175, 22);
             this.ViewSceneCode.Text = "Scene code";
             // 
             // ViewTraceCode
             // 
             this.ViewTraceCode.Name = "ViewTraceCode";
-            this.ViewTraceCode.Size = new System.Drawing.Size(180, 22);
+            this.ViewTraceCode.Size = new System.Drawing.Size(175, 22);
             this.ViewTraceCode.Text = "Trace code";
             // 
-            // ViewAllCode
+            // toolStripMenuItem7
             // 
-            this.ViewAllCode.Name = "ViewAllCode";
-            this.ViewAllCode.Size = new System.Drawing.Size(180, 22);
-            this.ViewAllCode.Text = "All code";
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(172, 6);
             // 
-            // toolStripMenuItem6
+            // ViewGraphicsState
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
-            // 
-            // ViewScene
-            // 
-            this.ViewScene.Name = "ViewScene";
-            this.ViewScene.Size = new System.Drawing.Size(180, 22);
-            this.ViewScene.Text = "Scene";
+            this.ViewGraphicsState.Name = "ViewGraphicsState";
+            this.ViewGraphicsState.Size = new System.Drawing.Size(175, 22);
+            this.ViewGraphicsState.Text = "Graphics state";
             // 
             // CameraMenu
             // 
@@ -823,11 +828,6 @@
             this.HelpAbout.Name = "HelpAbout";
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
             // 
             // WorldForm
             // 

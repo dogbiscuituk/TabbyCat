@@ -28,6 +28,7 @@
         internal ShaderCon(WorldCon worldCon, ShaderRegion shaderRegion) : base(worldCon)
         {
             ShaderRegion = shaderRegion;
+            AppCon.InitControlTheme(ShaderEdit.Toolbar, ShaderEdit.PopupEditMenu);
             ShowRuler = false;
             ShowLineNumbers = false;
             ShowDocumentMap = false;

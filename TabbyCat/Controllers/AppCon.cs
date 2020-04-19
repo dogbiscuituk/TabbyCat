@@ -8,8 +8,11 @@
     using TabbyCat.Controls.Types;
     using TabbyCat.Properties;
     using TabbyCat.Views;
+    using WeifenLuo.WinFormsUI.Docking;
+    using static WeifenLuo.WinFormsUI.Docking.DockPanelExtender;
+    using static WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender;
 
-    internal static class AppCon
+    internal static partial class AppCon
     {
         static AppCon()
         {
@@ -21,8 +24,6 @@
         internal static bool CanPaste;
 
         internal static string DataFormat = "TabbyCatDataFormat";
-
-        internal static Theme Theme { get; private set; }
 
         internal static List<WorldCon> WorldCons = new List<WorldCon>();
 
@@ -111,6 +112,7 @@
 
         private static void ApplyOptions()
         {
+            InitTheme();
             if (!Directory.Exists(Options.FilesFolderPath))
                 Directory.CreateDirectory(Options.FilesFolderPath);
             if (!Directory.Exists(Options.TemplatesFolderPath))
@@ -127,6 +129,97 @@
                 PulseCount++;
             else
                 AboutDialog.Hide();
+        }
+    }
+
+    /// <summary>
+    /// Visual Studio Themes.
+    /// </summary>
+    partial class AppCon
+    {
+        internal static void InitControlTheme(params Control[] controls)
+        {
+            foreach (var control in controls)
+            {
+                if (control is DockPanel dockPanel)
+                    dockPanel.Theme = VsTheme;
+                else if (control is ToolStrip toolStrip)
+                    ToolStripExtender.SetStyle(toolStrip, VsVersion, VsTheme);
+            }
+        }
+
+        private static readonly IFloatWindowFactory FloatingFormFactory = new FloatingFormFactory();
+
+        private static readonly VisualStudioToolStripExtender ToolStripExtender = new VisualStudioToolStripExtender()
+        {
+            DefaultRenderer = new ToolStripProfessionalRenderer()
+        };
+
+        private static ThemeBase VsTheme;
+
+        private static VsVersion VsVersion;
+
+        private static ThemeBase GetVsTheme()
+        {
+            switch (Options.Theme)
+            {
+                case Theme.VS2003:
+                    return new VS2003Theme();
+                case Theme.VS2005:
+                    return new VS2005Theme();
+                case Theme.VS2012Blue:
+                    return new VS2012BlueTheme();
+                case Theme.VS2012Dark:
+                    return new VS2012DarkTheme();
+                case Theme.VS2012Light:
+                    return new VS2012LightTheme();
+                case Theme.VS2013Blue:
+                    return new VS2013BlueTheme();
+                case Theme.VS2013Dark:
+                    return new VS2013DarkTheme();
+                case Theme.VS2013Light:
+                    return new VS2013LightTheme();
+                case Theme.VS2015Blue:
+                    return new VS2015BlueTheme();
+                case Theme.VS2015Dark:
+                    return new VS2015DarkTheme();
+                case Theme.VS2015Light:
+                    return new VS2015LightTheme();
+                default:
+                    return new VS2015BlueTheme();
+            }
+        }
+
+        private static VsVersion GetVsVersion()
+        {
+            switch (Options.Theme)
+            {
+                case Theme.VS2003:
+                    return VsVersion.Vs2003;
+                case Theme.VS2005:
+                    return VsVersion.Vs2005;
+                case Theme.VS2012Blue:
+                case Theme.VS2012Dark:
+                case Theme.VS2012Light:
+                    return VsVersion.Vs2012;
+                case Theme.VS2013Blue:
+                case Theme.VS2013Dark:
+                case Theme.VS2013Light:
+                    return VsVersion.Vs2013;
+                case Theme.VS2015Blue:
+                case Theme.VS2015Dark:
+                case Theme.VS2015Light:
+                    return VsVersion.Vs2015;
+                default:
+                    return VsVersion.Vs2015;
+            }
+        }
+
+        private static void InitTheme()
+        {
+            VsTheme = GetVsTheme();
+            VsVersion = GetVsVersion();
+            VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
         }
     }
 }

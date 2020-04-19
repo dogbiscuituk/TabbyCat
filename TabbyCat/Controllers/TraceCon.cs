@@ -17,6 +17,7 @@
     {
         internal TraceCon(WorldCon worldCon) : base(worldCon)
         {
+            AppCon.InitControlTheme(TraceEdit.SelectionToolbar);
             SelectionCon = new SelectionCon(worldCon);
             InitCommonControls(TraceEdit.TableLayoutPanel);
             InitLocalControls();

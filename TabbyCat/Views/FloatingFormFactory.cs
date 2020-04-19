@@ -2,8 +2,9 @@
 {
     using System.Drawing;
     using WeifenLuo.WinFormsUI.Docking;
+    using static WeifenLuo.WinFormsUI.Docking.DockPanelExtender;
 
-    public class FloatingFormFactory : DockPanelExtender.IFloatWindowFactory
+    public class FloatingFormFactory : IFloatWindowFactory
     {
         public FloatWindow CreateFloatWindow(DockPanel panel, DockPane pane) => new FloatingForm(panel, pane);
 
