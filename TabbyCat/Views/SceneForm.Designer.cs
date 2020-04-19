@@ -28,27 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GLControl = new OpenTK.GLControl();
+            this.SceneControl = new OpenTK.GLControl();
             this.SuspendLayout();
             // 
-            // GLControl
+            // SceneControl
             // 
-            this.GLControl.BackColor = System.Drawing.Color.Black;
-            this.GLControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GLControl.Location = new System.Drawing.Point(0, 0);
-            this.GLControl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.GLControl.Name = "GLControl";
-            this.GLControl.Size = new System.Drawing.Size(564, 357);
-            this.GLControl.TabIndex = 1;
-            this.GLControl.VSync = false;
+            this.SceneControl.BackColor = System.Drawing.Color.White;
+            this.SceneControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SceneControl.Location = new System.Drawing.Point(0, 0);
+            this.SceneControl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SceneControl.Name = "SceneControl";
+            this.SceneControl.Size = new System.Drawing.Size(564, 357);
+            this.SceneControl.TabIndex = 1;
+            this.SceneControl.VSync = false;
             // 
-            // GLControlForm
+            // SceneForm
             // 
+            this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 357);
-            this.Controls.Add(this.GLControl);
-            this.Name = "GLControlForm";
+            this.Controls.Add(this.SceneControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "SceneForm";
             this.Text = "Scene";
             this.ResumeLayout(false);
 
@@ -56,6 +60,6 @@
 
         #endregion
 
-        internal OpenTK.GLControl GLControl;
+        internal OpenTK.GLControl SceneControl;
     }
 }

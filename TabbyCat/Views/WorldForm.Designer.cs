@@ -311,7 +311,7 @@
             // GpuStatusLabel
             // 
             this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(1377, 17);
+            this.GpuStatusLabel.Size = new System.Drawing.Size(1346, 17);
             this.GpuStatusLabel.Spring = true;
             this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
