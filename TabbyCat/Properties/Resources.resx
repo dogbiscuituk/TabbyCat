@@ -564,10 +564,10 @@ keeping it pointed at an object|^Right</value>
 keeping it pointed at an object|^Up</value>
   </data>
   <data name="Menu_Camera_RollLeft" xml:space="preserve">
-    <value>Roll &amp;Left|Roll the camera to the left|Shift+^PgUp</value>
+    <value>Roll &amp;left|Roll the camera to the left|Shift+^PgUp</value>
   </data>
   <data name="Menu_Camera_RollRight" xml:space="preserve">
-    <value>Roll &amp;Right|Roll the camera to the right|Shift+^PgDn</value>
+    <value>Roll &amp;right|Roll the camera to the right|Shift+^PgDn</value>
   </data>
   <data name="Menu_Camera_Strafe" xml:space="preserve">
     <value>&amp;Strafe</value>
@@ -593,8 +593,8 @@ keeping it pointed at an object|^Up</value>
   <data name="Menu_Edit" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
-  <data name="Menu_Edit_AddANewTrace" xml:space="preserve">
-    <value>&amp;Add a New Trace|Add a new trace to this scene|F2</value>
+  <data name="Menu_Edit_AddNew" xml:space="preserve">
+    <value>&amp;Add new|Add a new trace to this scene</value>
   </data>
   <data name="Menu_Edit_Copy" xml:space="preserve">
     <value>&amp;Copy|Copy selected trace(s)</value>
@@ -606,7 +606,7 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;Delete|Delete selected trace(s)</value>
   </data>
   <data name="Menu_Edit_InvertSelection" xml:space="preserve">
-    <value>&amp;Invert Selection|Toggle the selected status of each trace</value>
+    <value>&amp;Invert selection|Toggle the selected status of each trace</value>
   </data>
   <data name="Menu_Edit_Options" xml:space="preserve">
     <value>&amp;Options...</value>
@@ -618,7 +618,7 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;Redo</value>
   </data>
   <data name="Menu_Edit_SelectAll" xml:space="preserve">
-    <value>Select &amp;All|Select all traces</value>
+    <value>Select &amp;all|Select all traces</value>
   </data>
   <data name="Menu_Edit_Undo" xml:space="preserve">
     <value>&amp;Undo</value>
@@ -633,10 +633,10 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;New|Create a new scene</value>
   </data>
   <data name="Menu_File_New_EmptyScene" xml:space="preserve">
-    <value>&amp;Empty Scene|Create a new empty scene|^N</value>
+    <value>&amp;Empty scene|Create a new empty scene|^N</value>
   </data>
   <data name="Menu_File_New_FromTemplate" xml:space="preserve">
-    <value>&amp;From Template...|Create a new scene based on an existing template</value>
+    <value>&amp;From template...|Create a new scene based on an existing template</value>
   </data>
   <data name="Menu_File_Open" xml:space="preserve">
     <value>&amp;Open...|Open an existing scene|^O</value>
@@ -648,7 +648,7 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;Save|Save this scene|^S</value>
   </data>
   <data name="Menu_File_SaveAs" xml:space="preserve">
-    <value>Save &amp;As...|Save this scene under a different filename</value>
+    <value>Save &amp;as...|Save this scene under a different filename</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Help</value>
@@ -657,7 +657,7 @@ keeping it pointed at an object|^Up</value>
     <value>&amp;About {0}</value>
   </data>
   <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
-    <value>OpenGL® Shading Language</value>
+    <value>OpenGL® shading language</value>
   </data>
   <data name="Menu_Time_Accelerate" xml:space="preserve">
     <value>&amp;Accelerate|Speed up the passage of time
@@ -681,7 +681,7 @@ keeping it pointed at an object|^Up</value>
 and reset the timer to zero</value>
   </data>
   <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
-    <value>Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4</value>
+    <value>Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4</value>
   </data>
   <data name="A_Sample_Entry_1" xml:space="preserve">
     <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
@@ -720,13 +720,13 @@ and reset the timer to zero</value>
     <value>HTML with &lt;PRE&gt;|*.html|HTML without &lt;PRE&gt;|*.html</value>
   </data>
   <data name="SaveHtmlDialog_Title" xml:space="preserve">
-    <value>Export as HTML</value>
+    <value>Save as HTML</value>
   </data>
   <data name="SaveRtfDialog_Filter" xml:space="preserve">
     <value>Rich Text Format|*.rtf</value>
   </data>
   <data name="SaveRtfDialog_Title" xml:space="preserve">
-    <value>Export As RTF</value>
+    <value>Save As RTF</value>
   </data>
   <data name="Built_in_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -793,7 +793,7 @@ as it was after the last new/open/save operation|^Home</value>
     <value>&amp;View|Display of edit controls</value>
   </data>
   <data name="Menu_View_AllCode" xml:space="preserve">
-    <value>All code|Show or hide the main code editor</value>
+    <value>Shader code|Show or hide the main shader code editor</value>
   </data>
   <data name="Menu_View_SceneCode" xml:space="preserve">
     <value>Scene code|Show or hide the scene code editor</value>
@@ -827,9 +827,6 @@ as it was after the last new/open/save operation|^Home</value>
   </data>
   <data name="TracePropertiesForm_Text" xml:space="preserve">
     <value>Trace properties</value>
-  </data>
-  <data name="Text_NewFile" xml:space="preserve">
-    <value>New File {0}</value>
   </data>
   <data name="ShaderForm_TabText" xml:space="preserve">
     <value>{0} code</value>
@@ -895,15 +892,24 @@ as it was after the last new/open/save operation|^Home</value>
     <value>Split</value>
   </data>
   <data name="CodeForm_SplitHorizontal" xml:space="preserve">
-    <value>Horizontal|Show two editors stacked</value>
+    <value>Horizontal|Show two ganged editors stacked</value>
   </data>
   <data name="CodeForm_SplitNone" xml:space="preserve">
-    <value>None|Remove split</value>
+    <value>None|Revert to single editor</value>
   </data>
   <data name="CodeForm_SplitVertical" xml:space="preserve">
-    <value>Vertical|Show two editors side by side</value>
+    <value>Vertical|Show two ganged editors side by side</value>
   </data>
   <data name="CodeForm_Undo" xml:space="preserve">
     <value>Undo</value>
+  </data>
+  <data name="Text_NewScene" xml:space="preserve">
+    <value>&lt;new scene&gt;</value>
+  </data>
+  <data name="Menu_Edit_AddNew2dGraph" xml:space="preserve">
+    <value>&amp;2D graph|Add a new 2D graph to this scene|F2</value>
+  </data>
+  <data name="Menu_Edit_AddNew3dGraph" xml:space="preserve">
+    <value>&amp;3D graph|Add a new 3D graph to this scene|F3</value>
   </data>
 </root>

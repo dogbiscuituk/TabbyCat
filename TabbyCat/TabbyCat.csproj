@@ -106,6 +106,8 @@
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\TracePropertiesCon.cs" />
     <Compile Include="Models\CodeBase.cs" />
+    <Compile Include="Models\Graph2D.cs" />
+    <Compile Include="Models\Graph3D.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Models\TraceSelection.cs" />

@@ -18,17 +18,10 @@
     {
         internal JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
 
-        internal string WindowCaption
-        {
-            get
-            {
-                var text = Path.GetFileNameWithoutExtension(FilePath).ToFilename();
-                if (Scene.IsModified)
-                    text = string.Concat("* ", text);
-                text = string.Concat(text, " - ", Application.ProductName);
-                return text;
-            }
-        }
+        internal string WindowCaption => $@"{(
+            Scene.IsModified ? "* " : string.Empty)}{(
+            string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : Path.GetFileNameWithoutExtension(FilePath).ToFilename())} - {
+            Application.ProductName}";
 
         internal event EventHandler<FilePathEventArgs> FileReopen;
 

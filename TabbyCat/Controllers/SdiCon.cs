@@ -53,9 +53,12 @@
             get => _filePath;
             set
             {
-                if (FilePath != value)
+                if (value == null)
+                    return;
+                var filePath = value.Trim();
+                if (FilePath != filePath)
                 {
-                    _filePath = value;
+                    _filePath = filePath;
                     OnFilePathChanged();
                 }
             }

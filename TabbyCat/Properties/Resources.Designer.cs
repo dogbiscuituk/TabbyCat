@@ -395,7 +395,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal|Show two editors stacked.
+        ///   Looks up a localized string similar to Horizontal|Show two ganged editors stacked.
         /// </summary>
         public static string CodeForm_SplitHorizontal {
             get {
@@ -404,7 +404,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to None|Remove split.
+        ///   Looks up a localized string similar to None|Revert to single editor.
         /// </summary>
         public static string CodeForm_SplitNone {
             get {
@@ -413,7 +413,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vertical|Show two editors side by side.
+        ///   Looks up a localized string similar to Vertical|Show two ganged editors side by side.
         /// </summary>
         public static string CodeForm_SplitVertical {
             get {
@@ -1435,7 +1435,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;Left|Roll the camera to the left|Shift+^PgUp.
+        ///   Looks up a localized string similar to Roll &amp;left|Roll the camera to the left|Shift+^PgUp.
         /// </summary>
         public static string Menu_Camera_RollLeft {
             get {
@@ -1444,7 +1444,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;Right|Roll the camera to the right|Shift+^PgDn.
+        ///   Looks up a localized string similar to Roll &amp;right|Roll the camera to the right|Shift+^PgDn.
         /// </summary>
         public static string Menu_Camera_RollRight {
             get {
@@ -1507,11 +1507,29 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add a New Trace|Add a new trace to this scene|F2.
+        ///   Looks up a localized string similar to &amp;Add new|Add a new trace to this scene.
         /// </summary>
-        public static string Menu_Edit_AddANewTrace {
+        public static string Menu_Edit_AddNew {
             get {
-                return ResourceManager.GetString("Menu_Edit_AddANewTrace", resourceCulture);
+                return ResourceManager.GetString("Menu_Edit_AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;2D graph|Add a new 2D graph to this scene|F2.
+        /// </summary>
+        public static string Menu_Edit_AddNew2dGraph {
+            get {
+                return ResourceManager.GetString("Menu_Edit_AddNew2dGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;3D graph|Add a new 3D graph to this scene|F3.
+        /// </summary>
+        public static string Menu_Edit_AddNew3dGraph {
+            get {
+                return ResourceManager.GetString("Menu_Edit_AddNew3dGraph", resourceCulture);
             }
         }
         
@@ -1543,7 +1561,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Invert Selection|Toggle the selected status of each trace.
+        ///   Looks up a localized string similar to &amp;Invert selection|Toggle the selected status of each trace.
         /// </summary>
         public static string Menu_Edit_InvertSelection {
             get {
@@ -1579,7 +1597,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select &amp;All|Select all traces.
+        ///   Looks up a localized string similar to Select &amp;all|Select all traces.
         /// </summary>
         public static string Menu_Edit_SelectAll {
             get {
@@ -1624,7 +1642,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close All &amp;&amp; E&amp;xit|Close all open scenes and quit|Alt+F4.
+        ///   Looks up a localized string similar to Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4.
         /// </summary>
         public static string Menu_File_CloseAllAndExit {
             get {
@@ -1642,7 +1660,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Empty Scene|Create a new empty scene|^N.
+        ///   Looks up a localized string similar to &amp;Empty scene|Create a new empty scene|^N.
         /// </summary>
         public static string Menu_File_New_EmptyScene {
             get {
@@ -1651,7 +1669,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;From Template...|Create a new scene based on an existing template.
+        ///   Looks up a localized string similar to &amp;From template...|Create a new scene based on an existing template.
         /// </summary>
         public static string Menu_File_New_FromTemplate {
             get {
@@ -1687,7 +1705,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save &amp;As...|Save this scene under a different filename.
+        ///   Looks up a localized string similar to Save &amp;as...|Save this scene under a different filename.
         /// </summary>
         public static string Menu_File_SaveAs {
             get {
@@ -1714,7 +1732,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OpenGL® Shading Language.
+        ///   Looks up a localized string similar to OpenGL® shading language.
         /// </summary>
         public static string Menu_Help_OpenGLShadingLanguage {
             get {
@@ -1816,7 +1834,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All code|Show or hide the main code editor.
+        ///   Looks up a localized string similar to Shader code|Show or hide the main shader code editor.
         /// </summary>
         public static string Menu_View_AllCode {
             get {
@@ -2213,7 +2231,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export as HTML.
+        ///   Looks up a localized string similar to Save as HTML.
         /// </summary>
         public static string SaveHtmlDialog_Title {
             get {
@@ -2231,7 +2249,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export As RTF.
+        ///   Looks up a localized string similar to Save As RTF.
         /// </summary>
         public static string SaveRtfDialog_Title {
             get {
@@ -2488,11 +2506,11 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New File {0}.
+        ///   Looks up a localized string similar to &lt;new scene&gt;.
         /// </summary>
-        public static string Text_NewFile {
+        public static string Text_NewScene {
             get {
-                return ResourceManager.GetString("Text_NewFile", resourceCulture);
+                return ResourceManager.GetString("Text_NewScene", resourceCulture);
             }
         }
         

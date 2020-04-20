@@ -122,7 +122,9 @@
         {
             base.Localize();
             Localize(Resources.Menu_Edit, WorldForm.EditMenu);
-            Localize(Resources.Menu_Edit_AddANewTrace, WorldForm.EditAddNewTrace, WorldForm.tbAdd);
+            Localize(Resources.Menu_Edit_AddNew, WorldForm.EditAddNew, WorldForm.tbAddNew);
+            Localize(Resources.Menu_Edit_AddNew2dGraph, WorldForm.EditAddNew2dGraph, WorldForm.tbAddNew2dGraph);
+            Localize(Resources.Menu_Edit_AddNew3dGraph, WorldForm.EditAddNew3dGraph, WorldForm.tbAddNew3dGraph);
             Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
             Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
             Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
@@ -219,7 +221,8 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
-        private void EditAddNewTrace_Click(object sender, EventArgs e) => AddNewTrace();
+        private void EditAddNew2dGraph_Click(object sender, EventArgs e) => AddNew2dGraph();
+        private void EditAddNew3dGraph_Click(object sender, EventArgs e) => AddNew3dGraph();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
         private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
         private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
@@ -246,7 +249,13 @@
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
-        private void AddNewTrace()
+        private void AddNew2dGraph()
+        {
+            CommandProcessor.AppendTrace();
+            Selection.Set(new[] { Scene.Traces.Last() });
+        }
+
+        private void AddNew3dGraph()
         {
             CommandProcessor.AppendTrace();
             Selection.Set(new[] { Scene.Traces.Last() });
@@ -362,7 +371,8 @@
                 WorldForm.FileSaveAs.Click += FileSaveAs_Click;
                 WorldForm.FileClose.Click += FileClose_Click;
                 WorldForm.FileExit.Click += FileExit_Click;
-                WorldForm.EditAddNewTrace.Click += EditAddNewTrace_Click;
+                WorldForm.EditAddNew2dGraph.Click += EditAddNew2dGraph_Click;
+                WorldForm.EditAddNew3dGraph.Click += EditAddNew3dGraph_Click;
                 WorldForm.EditCut.Click += EditCut_Click;
                 WorldForm.EditCopy.Click += EditCopy_Click;
                 WorldForm.EditPaste.Click += EditPaste_Click;
@@ -390,7 +400,8 @@
                 WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
                 WorldForm.FileClose.Click -= FileClose_Click;
                 WorldForm.FileExit.Click -= FileExit_Click;
-                WorldForm.EditAddNewTrace.Click -= EditAddNewTrace_Click;
+                WorldForm.EditAddNew2dGraph.Click -= EditAddNew2dGraph_Click;
+                WorldForm.EditAddNew3dGraph.Click -= EditAddNew3dGraph_Click;
                 WorldForm.EditCut.Click -= EditCut_Click;
                 WorldForm.EditCopy.Click -= EditCopy_Click;
                 WorldForm.EditPaste.Click -= EditPaste_Click;
@@ -415,7 +426,8 @@
         {
             if (connect)
             {
-                WorldForm.tbAdd.Click += EditAddNewTrace_Click;
+                WorldForm.tbAddNew2dGraph.Click += EditAddNew2dGraph_Click;
+                WorldForm.tbAddNew3dGraph.Click += EditAddNew3dGraph_Click;
                 WorldForm.tbCut.Click += EditCut_Click;
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
@@ -429,7 +441,8 @@
             }
             else
             {
-                WorldForm.tbAdd.Click -= EditAddNewTrace_Click;
+                WorldForm.tbAddNew2dGraph.Click -= EditAddNew2dGraph_Click;
+                WorldForm.tbAddNew3dGraph.Click -= EditAddNew3dGraph_Click;
                 WorldForm.tbCut.Click -= EditCut_Click;
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;

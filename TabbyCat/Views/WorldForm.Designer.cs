@@ -39,7 +39,7 @@
             this.tbOpen = new System.Windows.Forms.ToolStripSplitButton();
             this.tbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbAdd = new System.Windows.Forms.ToolStripButton();
+            this.tbAddNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbUndo = new System.Windows.Forms.ToolStripSplitButton();
             this.tbRedo = new System.Windows.Forms.ToolStripSplitButton();
             this.tbCut = new System.Windows.Forms.ToolStripButton();
@@ -58,6 +58,7 @@
             this.TimePause = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeForward = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeAccelerate = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,9 @@
             this.FileClose = new System.Windows.Forms.ToolStripMenuItem();
             this.FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditAddNewTrace = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditAddNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditAddNew2dGraph = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditAddNew3dGraph = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.EditUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.EditRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +120,8 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbAddNew2dGraph = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbAddNew3dGraph = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -155,7 +159,7 @@
             this.tbOpen,
             this.tbSave,
             this.toolStripSeparator1,
-            this.tbAdd,
+            this.tbAddNew,
             this.tbUndo,
             this.tbRedo,
             this.tbCut,
@@ -212,13 +216,16 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(30, 6);
             // 
-            // tbAdd
+            // tbAddNew
             // 
-            this.tbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbAdd.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
-            this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbAdd.Name = "tbAdd";
-            this.tbAdd.Size = new System.Drawing.Size(30, 20);
+            this.tbAddNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbAddNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbAddNew2dGraph,
+            this.tbAddNew3dGraph});
+            this.tbAddNew.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
+            this.tbAddNew.ImageTransparentColor = System.Drawing.Color.White;
+            this.tbAddNew.Name = "tbAddNew";
+            this.tbAddNew.Size = new System.Drawing.Size(30, 20);
             // 
             // tbUndo
             // 
@@ -402,6 +409,13 @@
             this.TimeAccelerate.Size = new System.Drawing.Size(20, 21);
             this.TimeAccelerate.Text = "Accelerate";
             // 
+            // aToolStripMenuItem
+            // 
+            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 21);
+            this.aToolStripMenuItem.Text = "-";
+            this.aToolStripMenuItem.Visible = false;
+            // 
             // FileMenu
             // 
             this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -425,7 +439,7 @@
             this.FileNewFromTemplate});
             this.FileNew.Image = global::TabbyCat.Properties.Resources.NewDocumentHS;
             this.FileNew.Name = "FileNew";
-            this.FileNew.Size = new System.Drawing.Size(164, 22);
+            this.FileNew.Size = new System.Drawing.Size(180, 22);
             this.FileNew.Text = "New";
             // 
             // FileNewEmptyScene
@@ -445,54 +459,54 @@
             this.FileOpen.Image = global::TabbyCat.Properties.Resources.OpenFileHS;
             this.FileOpen.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileOpen.Name = "FileOpen";
-            this.FileOpen.Size = new System.Drawing.Size(164, 22);
+            this.FileOpen.Size = new System.Drawing.Size(180, 22);
             this.FileOpen.Text = "Open...";
             // 
             // FileReopen
             // 
             this.FileReopen.Name = "FileReopen";
-            this.FileReopen.Size = new System.Drawing.Size(164, 22);
+            this.FileReopen.Size = new System.Drawing.Size(180, 22);
             this.FileReopen.Text = "Reopen";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // FileSave
             // 
             this.FileSave.Image = global::TabbyCat.Properties.Resources.saveHS;
             this.FileSave.Name = "FileSave";
-            this.FileSave.Size = new System.Drawing.Size(164, 22);
+            this.FileSave.Size = new System.Drawing.Size(180, 22);
             this.FileSave.Text = "Save";
             // 
             // FileSaveAs
             // 
             this.FileSaveAs.Name = "FileSaveAs";
-            this.FileSaveAs.Size = new System.Drawing.Size(164, 22);
+            this.FileSaveAs.Size = new System.Drawing.Size(180, 22);
             this.FileSaveAs.Text = "Save As...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(161, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // FileClose
             // 
             this.FileClose.Name = "FileClose";
-            this.FileClose.Size = new System.Drawing.Size(164, 22);
+            this.FileClose.Size = new System.Drawing.Size(180, 22);
             this.FileClose.Text = "Close";
             // 
             // FileExit
             // 
             this.FileExit.Name = "FileExit";
-            this.FileExit.Size = new System.Drawing.Size(164, 22);
+            this.FileExit.Size = new System.Drawing.Size(180, 22);
             this.FileExit.Text = "Close All && Exit";
             // 
             // EditMenu
             // 
             this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditAddNewTrace,
+            this.EditAddNew,
             this.toolStripMenuItem4,
             this.EditUndo,
             this.EditRedo,
@@ -510,18 +524,33 @@
             this.EditMenu.Size = new System.Drawing.Size(42, 21);
             this.EditMenu.Text = "Edit";
             // 
-            // EditAddNewTrace
+            // EditAddNew
             // 
-            this.EditAddNewTrace.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
-            this.EditAddNewTrace.ImageTransparentColor = System.Drawing.Color.White;
-            this.EditAddNewTrace.Name = "EditAddNewTrace";
-            this.EditAddNewTrace.Size = new System.Drawing.Size(176, 22);
-            this.EditAddNewTrace.Text = "Add a New Trace";
+            this.EditAddNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditAddNew2dGraph,
+            this.EditAddNew3dGraph});
+            this.EditAddNew.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
+            this.EditAddNew.ImageTransparentColor = System.Drawing.Color.White;
+            this.EditAddNew.Name = "EditAddNew";
+            this.EditAddNew.Size = new System.Drawing.Size(180, 22);
+            this.EditAddNew.Text = "Add new";
+            // 
+            // EditAddNew2dGraph
+            // 
+            this.EditAddNew2dGraph.Name = "EditAddNew2dGraph";
+            this.EditAddNew2dGraph.Size = new System.Drawing.Size(180, 22);
+            this.EditAddNew2dGraph.Text = "2D graph";
+            // 
+            // EditAddNew3dGraph
+            // 
+            this.EditAddNew3dGraph.Name = "EditAddNew3dGraph";
+            this.EditAddNew3dGraph.Size = new System.Drawing.Size(180, 22);
+            this.EditAddNew3dGraph.Text = "3D graph";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
             // 
             // EditUndo
             // 
@@ -529,7 +558,7 @@
             this.EditUndo.Image = global::TabbyCat.Properties.Resources.Edit_UndoHS;
             this.EditUndo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditUndo.Name = "EditUndo";
-            this.EditUndo.Size = new System.Drawing.Size(176, 22);
+            this.EditUndo.Size = new System.Drawing.Size(180, 22);
             this.EditUndo.Text = "Undo";
             // 
             // EditRedo
@@ -538,13 +567,13 @@
             this.EditRedo.Image = global::TabbyCat.Properties.Resources.Edit_RedoHS;
             this.EditRedo.ImageTransparentColor = System.Drawing.Color.White;
             this.EditRedo.Name = "EditRedo";
-            this.EditRedo.Size = new System.Drawing.Size(176, 22);
+            this.EditRedo.Size = new System.Drawing.Size(180, 22);
             this.EditRedo.Text = "Redo";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(173, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
             // 
             // EditCut
             // 
@@ -552,7 +581,7 @@
             this.EditCut.Image = global::TabbyCat.Properties.Resources.CutHS;
             this.EditCut.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCut.Name = "EditCut";
-            this.EditCut.Size = new System.Drawing.Size(176, 22);
+            this.EditCut.Size = new System.Drawing.Size(180, 22);
             this.EditCut.Text = "Cut";
             // 
             // EditCopy
@@ -561,7 +590,7 @@
             this.EditCopy.Image = global::TabbyCat.Properties.Resources.CopyHS;
             this.EditCopy.ImageTransparentColor = System.Drawing.Color.White;
             this.EditCopy.Name = "EditCopy";
-            this.EditCopy.Size = new System.Drawing.Size(176, 22);
+            this.EditCopy.Size = new System.Drawing.Size(180, 22);
             this.EditCopy.Text = "Copy";
             // 
             // EditPaste
@@ -569,7 +598,7 @@
             this.EditPaste.Image = global::TabbyCat.Properties.Resources.PasteHS;
             this.EditPaste.ImageTransparentColor = System.Drawing.Color.White;
             this.EditPaste.Name = "EditPaste";
-            this.EditPaste.Size = new System.Drawing.Size(176, 22);
+            this.EditPaste.Size = new System.Drawing.Size(180, 22);
             this.EditPaste.Text = "Paste";
             // 
             // EditDelete
@@ -578,35 +607,35 @@
             this.EditDelete.Image = global::TabbyCat.Properties.Resources.Delete;
             this.EditDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.EditDelete.Name = "EditDelete";
-            this.EditDelete.Size = new System.Drawing.Size(176, 22);
+            this.EditDelete.Size = new System.Drawing.Size(180, 22);
             this.EditDelete.Text = "Delete";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(173, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(177, 6);
             // 
             // EditSelectAll
             // 
             this.EditSelectAll.Name = "EditSelectAll";
-            this.EditSelectAll.Size = new System.Drawing.Size(176, 22);
+            this.EditSelectAll.Size = new System.Drawing.Size(180, 22);
             this.EditSelectAll.Text = "Select All";
             // 
             // EditInvertSelection
             // 
             this.EditInvertSelection.Name = "EditInvertSelection";
-            this.EditInvertSelection.Size = new System.Drawing.Size(176, 22);
+            this.EditInvertSelection.Size = new System.Drawing.Size(180, 22);
             this.EditInvertSelection.Text = "Invert Selection";
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(173, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(177, 6);
             // 
             // EditOptions
             // 
             this.EditOptions.Name = "EditOptions";
-            this.EditOptions.Size = new System.Drawing.Size(176, 22);
+            this.EditOptions.Size = new System.Drawing.Size(180, 22);
             this.EditOptions.Text = "Options...";
             // 
             // ViewMenu
@@ -704,7 +733,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(180, 22);
+            this.CameraMove.Size = new System.Drawing.Size(110, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -753,7 +782,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -795,12 +824,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Size = new System.Drawing.Size(110, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
@@ -830,12 +859,17 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
-            // aToolStripMenuItem
+            // tbAddNew2dGraph
             // 
-            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 21);
-            this.aToolStripMenuItem.Text = "-";
-            this.aToolStripMenuItem.Visible = false;
+            this.tbAddNew2dGraph.Name = "tbAddNew2dGraph";
+            this.tbAddNew2dGraph.Size = new System.Drawing.Size(180, 22);
+            this.tbAddNew2dGraph.Text = "New 2D graph";
+            // 
+            // tbAddNew3dGraph
+            // 
+            this.tbAddNew3dGraph.Name = "tbAddNew3dGraph";
+            this.tbAddNew3dGraph.Size = new System.Drawing.Size(180, 22);
+            this.tbAddNew3dGraph.Text = "New 3D graph";
             // 
             // WorldForm
             // 
@@ -863,6 +897,7 @@
         }
 
         #endregion
+
         internal System.Windows.Forms.ToolTip ToolTip;
         internal System.Windows.Forms.ContextMenuStrip PopupMenu;
         internal Jmk.Controls.JmkStatusStrip StatusBar;
@@ -876,7 +911,7 @@
         internal System.Windows.Forms.ToolStripSplitButton tbOpen;
         internal System.Windows.Forms.ToolStripButton tbSave;
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        internal System.Windows.Forms.ToolStripButton tbAdd;
+        internal System.Windows.Forms.ToolStripSplitButton tbAddNew;
         internal System.Windows.Forms.ToolStripSplitButton tbUndo;
         internal System.Windows.Forms.ToolStripSplitButton tbRedo;
         internal System.Windows.Forms.ToolStripButton tbCut;
@@ -903,7 +938,7 @@
         internal System.Windows.Forms.ToolStripMenuItem FileClose;
         internal System.Windows.Forms.ToolStripMenuItem FileExit;
         internal System.Windows.Forms.ToolStripMenuItem EditMenu;
-        internal System.Windows.Forms.ToolStripMenuItem EditAddNewTrace;
+        internal System.Windows.Forms.ToolStripMenuItem EditAddNew;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         internal System.Windows.Forms.ToolStripMenuItem EditUndo;
         internal System.Windows.Forms.ToolStripMenuItem EditRedo;
@@ -950,7 +985,11 @@
         internal System.Windows.Forms.ToolStripMenuItem ViewAllCode;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         internal System.Windows.Forms.ToolStripMenuItem ViewScene;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        internal System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem EditAddNew2dGraph;
+        internal System.Windows.Forms.ToolStripMenuItem EditAddNew3dGraph;
+        internal System.Windows.Forms.ToolStripMenuItem tbAddNew2dGraph;
+        internal System.Windows.Forms.ToolStripMenuItem tbAddNew3dGraph;
     }
 }
