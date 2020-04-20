@@ -5,6 +5,7 @@
     using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
@@ -64,10 +65,10 @@
         {
             get
             {
-                if (_GLInfo == null && MakeCurrent(true))
+                if (_GLInfo == null)
                 {
-                    var info = new GLInfo();
-                    MakeCurrent(false);
+                    GLInfo info = null;
+                    SceneControlDo(() => { info = new GLInfo(); });
                     lock (GLInfoSyncRoot)
                         _GLInfo = info;
                 }
@@ -79,10 +80,10 @@
         {
             get
             {
-                if (_GraphicsMode == null && MakeCurrent(true))
+                if (_GraphicsMode == null)
                 {
-                    var mode = SceneControl.GraphicsMode;
-                    MakeCurrent(false);
+                    GraphicsMode mode = null;
+                    SceneControlDo(() => { mode = SceneControl.GraphicsMode; });
                     lock (GLModeSyncRoot)
                         _GraphicsMode = mode;
                 }
@@ -176,21 +177,13 @@
                     cases);
         }
 
-        public void SetScript(ShaderType shaderType, string value) =>
-            throw new System.NotImplementedException();
+        public void SetScript(ShaderType shaderType, string value) => throw new System.NotImplementedException();
 
         internal GLInfo GetGLInfo()
         {
-            if (MakeCurrent(true))
-                try
-                {
-                    return new GLInfo();
-                }
-                finally
-                {
-                    MakeCurrent(false);
-                }
-            return null;
+            GLInfo info = null;
+            SceneControlDo(() => { info = new GLInfo(); });
+            return info;
         }
 
         internal void InvalidateAllTraces() => Scene.Traces.ForEach(p => InvalidateTrace(p));
@@ -202,27 +195,27 @@
             ProgramCompiled = false;
             InvalidateCameraView();
             InvalidateProjection();
-            if (!MakeCurrent(true))
-                return;
-            DeleteShaders();
-            if (ProgramID != 0)
+            SceneControlDo(() =>
             {
-                GL.DeleteProgram(ProgramID);
-                ProgramID = 0;
-            }
-            MakeCurrent(false);
+                DeleteShaders();
+                if (ProgramID != 0)
+                {
+                    GL.DeleteProgram(ProgramID);
+                    ProgramID = 0;
+                }
+            });
         }
 
         internal void InvalidateProjection() => ProjectionValid = false;
 
         internal void InvalidateTrace(Trace trace)
         {
-            if (trace.Vao != null && MakeCurrent(true))
-            {
-                trace.Vao.ReleaseBuffers();
-                trace.Vao = null;
-                MakeCurrent(false);
-            }
+            if (trace.Vao != null)
+                SceneControlDo(() =>
+                {
+                    trace.Vao.ReleaseBuffers();
+                    trace.Vao = null;
+                });
         }
 
         internal void Refresh()
@@ -233,10 +226,8 @@
             InvalidateAllTraces();
         }
 
-        internal void Render()
+        internal void Render() => SceneControlDo(() =>
         {
-            if (!MakeCurrent(true))
-                return;
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Texture2D);
             GL.ClearColor(Scene.BackgroundColour);
@@ -268,25 +259,9 @@
                 UpdateFPS();
             }
             SceneControl.SwapBuffers();
-            MakeCurrent(false);
-        }
+        });
 
-        internal bool Unload()
-        {
-            var result = MakeCurrent(true);
-            if (result)
-            {
-                InvalidateAllTraces();
-                MakeCurrent(false);
-            }
-            return result;
-        }
-
-        private void BeginRender()
-        {
-            if (++CurrencyCount == 1)
-                SceneControl.MakeCurrent();
-        }
+        internal void Unload() => SceneControlDo(InvalidateAllTraces);
 
         private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
@@ -338,12 +313,6 @@
             DeleteShader(ref ComputeShaderID);
         }
 
-        private void EndRender()
-        {
-            if (--CurrencyCount == 0)
-                SceneControl.Context.MakeCurrent(null);
-        }
-
         private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
 
         private void GetUniformLocations()
@@ -383,15 +352,24 @@
                 Scene.GPUStatus = GPUStatus.Warning;
         }
 
-        private bool MakeCurrent(bool current)
+        private void SceneControlDo(Action sceneControlAction)
         {
-            var ok = SceneControl?.HasValidContext == true && SceneControl?.Visible == true;
-            if (ok)
-                if (current)
-                    BeginRender();
-                else
-                    EndRender();
-            return ok;
+            if (SceneControl?.IsHandleCreated == true &&
+                SceneControl?.HasValidContext == true &&
+                SceneControl?.Visible == true)
+            {
+                if (++CurrencyCount == 1)
+                    SceneControl.MakeCurrent();
+                try
+                {
+                    sceneControlAction();
+                }
+                finally
+                {
+                    if (--CurrencyCount == 0)
+                        SceneControl.Context.MakeCurrent(null);
+                }
+            }
         }
 
         private void UpdateFPS()
@@ -452,11 +430,8 @@
 
         private void ValidateTrace(Trace trace)
         {
-            if (trace.Vao == null && MakeCurrent(true))
-            {
-                trace.Vao = new Vao(trace);
-                MakeCurrent(false);
-            }
+            if (trace.Vao == null)
+                SceneControlDo(() => trace.Vao = new Vao(trace));
         }
     }
 }
