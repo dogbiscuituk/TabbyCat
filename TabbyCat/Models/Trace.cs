@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Models
 {
+    using Common.Converters;
+    using Common.Types;
+    using Common.Utils;
     using Newtonsoft.Json;
     using OpenTK;
+    using Properties;
     using System.ComponentModel;
-    using TabbyCat.Common.Converters;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Properties;
 
     public class Trace : CodeBase, ITrace
     {

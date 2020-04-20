@@ -1,9 +1,16 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
+    using Common.Utils;
+    using Controls;
+    using Controls.Types;
     using FastColoredTextBoxNS;
     using Jmk.Common;
     using Jmk.Controls;
+    using Models;
     using OpenTK.Graphics.OpenGL;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -13,14 +20,7 @@
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Controls;
-    using TabbyCat.Controls.Types;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal partial class CodeCon : DockingCon

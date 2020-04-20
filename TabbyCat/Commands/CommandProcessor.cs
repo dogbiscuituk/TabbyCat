@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Commands
 {
+    using Controllers;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
-    using TabbyCat.Controllers;
-    using TabbyCat.Models;
-    using TabbyCat.Views;
+    using Views;
 
     internal class CommandProcessor : LocalizationCon
     {

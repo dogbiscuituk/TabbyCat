@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Controls.Types;
     using Jmk.Common;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Controls.Types;
-    using TabbyCat.Views;
+    using Views;
 
     internal class OptionsCon : LocalizationCon
     {

@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat
 {
+    using Controllers;
     using System;
     using System.Windows.Forms;
-    using TabbyCat.Controllers;
 
     static class Program
     {

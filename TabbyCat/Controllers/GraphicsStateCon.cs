@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Common.Utils;
+    using Properties;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal class GraphicsStateCon : DockingCon

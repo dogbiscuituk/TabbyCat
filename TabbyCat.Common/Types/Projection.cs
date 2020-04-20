@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Common.Types
 {
+    using Common.Converters;
     using Newtonsoft.Json;
     using OpenTK;
-    using TabbyCat.Common.Converters;
 
     public class Projection
     {

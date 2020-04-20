@@ -1,13 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Common.Types;
+    using Controls.Types;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Controls.Types;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
     using static WeifenLuo.WinFormsUI.Docking.DockPanelExtender;
     using static WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender;

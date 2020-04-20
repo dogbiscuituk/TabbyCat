@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Jmk.Common;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Properties;
 
     internal class SelectionCon : LocalizationCon
     {

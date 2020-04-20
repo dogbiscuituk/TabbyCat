@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using System;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal class SceneCon : DockingCon

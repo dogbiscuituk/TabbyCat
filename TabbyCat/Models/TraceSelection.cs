@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Models
 {
+    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using TabbyCat.Common.Types;
 
     public class TraceSelection : IScript
     {

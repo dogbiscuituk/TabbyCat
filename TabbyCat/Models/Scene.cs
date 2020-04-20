@@ -1,16 +1,16 @@
 ﻿namespace TabbyCat.Models
 {
+    using Commands;
+    using Common.Types;
+    using Common.Utils;
+    using Controllers;
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics;
+    using Properties;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Controllers;
-    using TabbyCat.Properties;
 
     public class Scene : CodeBase, IScene
     {

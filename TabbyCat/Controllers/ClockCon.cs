@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Common.Types;
     using System;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Views;
+    using Views;
 
     internal class ClockCon : LocalizationCon
     {

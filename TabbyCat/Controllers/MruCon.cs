@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Jmk.Controls;
+    using Properties;
     using System;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Properties;
     using Win32 = Microsoft.Win32;
 
     /// <summary>

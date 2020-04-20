@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Common.Utils
 {
+    using Common.Types;
     using Jmk.Common;
     using System;
     using System.Collections.Generic;
@@ -8,7 +9,6 @@
     using System.Drawing.Text;
     using System.Linq;
     using System.Reflection;
-    using TabbyCat.Common.Types;
 
     public static class ColourUtils
     {

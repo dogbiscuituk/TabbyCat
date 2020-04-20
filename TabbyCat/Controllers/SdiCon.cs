@@ -1,13 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Common.Types;
+    using Models;
+    using Properties;
     using System;
     using System.ComponentModel;
     using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
 
     /// <summary>
     /// "Single Document Interface" Controller.

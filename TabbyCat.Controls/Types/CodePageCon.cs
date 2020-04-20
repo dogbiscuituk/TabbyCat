@@ -1,5 +1,8 @@
 ﻿namespace TabbyCat.Controls.Types
 {
+    using Common.Types;
+    using Common.Utils;
+    using Controls.Properties;
     using FastColoredTextBoxNS;
     using System;
     using System.Collections.Generic;
@@ -7,9 +10,6 @@
     using System.Globalization;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Controls.Properties;
     using Languages = FastColoredTextBoxNS.Language;
 
     /// <summary>

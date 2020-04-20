@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
     using OpenTK;
+    using Properties;
     using System;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Views;
 
     internal class CameraCon : LocalizationCon
     {

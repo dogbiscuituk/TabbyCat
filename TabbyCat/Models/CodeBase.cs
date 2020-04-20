@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Models
 {
+    using Common.Types;
+    using Common.Utils;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.ComponentModel;
     using System.Linq;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
 
     /// <summary>
     /// Base class for Scene and Trace (but not TraceSelection).

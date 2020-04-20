@@ -1,14 +1,14 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
+    using Controls;
+    using Models;
     using OpenTK;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Controls;
-    using TabbyCat.Models;
-    using TabbyCat.Views;
+    using Views;
 
     internal partial class LocalizationCon
     {

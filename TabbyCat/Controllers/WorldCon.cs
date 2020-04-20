@@ -1,5 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
+    using Common.Utils;
+    using Jmk.Common;
+    using Models;
+    using OpenTK;
+    using OpenTK.Graphics;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -7,15 +15,7 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
-    using Jmk.Common;
-    using OpenTK;
-    using OpenTK.Graphics;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal class WorldCon : LocalizationCon

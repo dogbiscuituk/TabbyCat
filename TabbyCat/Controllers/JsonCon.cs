@@ -1,13 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Jmk.Common;
+    using Models;
     using Newtonsoft.Json;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
 
     /// <summary>
     /// Extend SdiCon to provide concrete I/O methods using Json data format.

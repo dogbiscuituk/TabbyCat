@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Common.Utils
 {
+    using Common.Types;
     using OpenTK;
     using System.Drawing;
-    using TabbyCat.Common.Types;
 
     public static class MathUtils
     {

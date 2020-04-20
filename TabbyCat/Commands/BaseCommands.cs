@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Commands
 {
+    using Models;
     using System;
     using System.Text.RegularExpressions;
-    using TabbyCat.Models;
 
     /// <summary>
     /// Common ancestor for collection management (item insert and delete) commands.

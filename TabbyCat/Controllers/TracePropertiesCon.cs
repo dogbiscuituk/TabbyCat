@@ -1,16 +1,16 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
+    using Common.Utils;
+    using Controls;
+    using Models;
     using OpenTK;
+    using Properties;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Controls;
-    using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal partial class TracePropertiesCon : CodeBaseCon
