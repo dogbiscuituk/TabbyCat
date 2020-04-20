@@ -37,14 +37,14 @@
 
         internal TraceSelection Selection = new TraceSelection();
 
+        protected DockPane GraphicsStatePane => GraphicsStateForm.Pane;
+        protected DockPane SceneCodePane => SceneCodeForm.Pane;
+        protected DockPane ScenePane => SceneForm.Pane;
+        protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
+        protected DockPane ShaderCodePane => ShaderCodeForm.Pane;
+        protected DockPane TraceCodePane => TraceCodeForm.Pane;
+        protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
         protected DockPanel WorldPanel => WorldForm.DockPanel;
-        protected DockPane ScenePane => ScenePropertiesForm.Pane;
-        protected DockPane TracePane => TracePropertiesForm.Pane;
-        protected DockPane GpuPane => GraphicsStateForm.Pane;
-        protected DockPane SceneShaderPane => SceneCodeForm.Pane;
-        protected DockPane TraceShaderPane => TraceCodeForm.Pane;
-        protected DockPane GpuShaderPane => ShaderCodeForm.Pane;
-        protected DockPane GLControlPane => SceneForm.Pane;
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
@@ -55,34 +55,37 @@
         private CommandProcessor _CommandProcessor;
         private GraphicsStateCon _GraphicsStateCon;
         private JsonCon _JsonCon;
-        private CodeCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
+        private CodeCon _SceneCodeCon, _ShaderCodeCon, _TraceCodeCon;
         private RenderCon _RenderCon;
         private SceneCon _SceneCon;
         private ScenePropertiesCon _ScenePropertiesCon;
         private TracePropertiesCon _TracePropertiesCon;
 
+        protected internal override Scene Scene { get; set; }
+        protected internal override WorldForm WorldForm { get; }
+
+        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
+
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
-        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
-        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
         protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
-        protected override CodeCon ShaderCodeCon => _GpuShaderCon ?? (_GpuShaderCon = new CodeCon(this, ShaderRegion.All));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
-        protected internal override Scene Scene { get; set; }
+        protected override CodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new CodeCon(this, ShaderRegion.Scene));
+        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
         protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
-        protected override CodeCon SceneCodeCon => _SceneShaderCon ?? (_SceneShaderCon = new CodeCon(this, ShaderRegion.Scene));
+        protected override CodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new CodeCon(this, ShaderRegion.All));
+        protected override CodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new CodeCon(this, ShaderRegion.Trace));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon= new TracePropertiesCon(this));
-        protected override CodeCon TraceCodeCon => _TraceShaderCon ?? (_TraceShaderCon = new CodeCon(this, ShaderRegion.Trace));
-        protected internal override WorldForm WorldForm { get; }
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
         private static string GLSLUrl => Settings.Default.GLSLUrl;
         internal GraphicsMode GraphicsMode => RenderCon._GraphicsMode ?? RenderCon?.GraphicsMode;
 
         internal event PropertyChangedEventHandler PropertyChanged;
-        internal event EventHandler Pulse;
-        internal event EventHandler SelectionChanged;
+        internal event EventHandler
+            Pulse,
+            SelectionChanged;
 
         protected internal override void Connect(bool connect)
         {
@@ -635,10 +638,10 @@
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             ScenePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TracePropertiesForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
-            SceneCodeForm.Show(TracePane, DockAlignment.Bottom, 0.5);
-            TraceCodeForm.Show(SceneShaderPane, null);
-            GraphicsStateForm.Show(SceneShaderPane, null);
+            TracePropertiesForm.Show(ScenePropertiesPane, DockAlignment.Bottom, 2.0 / 3);
+            SceneCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 0.5);
+            TraceCodeForm.Show(SceneCodePane, null);
+            GraphicsStateForm.Show(SceneCodePane, null);
             TraceCodeForm.Activate();
         }
 
