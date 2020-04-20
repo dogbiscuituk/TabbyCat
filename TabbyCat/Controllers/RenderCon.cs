@@ -1,19 +1,18 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Common.Types;
+    using Common.Utils;
     using Jmk.Common;
+    using Models;
     using OpenTK;
     using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
     using Properties;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Text;
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utils;
-    using TabbyCat.Models;
 
     internal class RenderCon : LocalizationCon, IScript
     {
@@ -31,7 +30,6 @@
             ProjectionValid;
 
         private int
-            CurrencyCount,
             TickCount,
             TickIndex;
 
@@ -68,7 +66,7 @@
                 if (_GLInfo == null)
                 {
                     GLInfo info = null;
-                    SceneControlDo(() => { info = new GLInfo(); });
+                    SceneCon.Do(() => { info = new GLInfo(); });
                     lock (GLInfoSyncRoot)
                         _GLInfo = info;
                 }
@@ -83,7 +81,7 @@
                 if (_GraphicsMode == null)
                 {
                     GraphicsMode mode = null;
-                    SceneControlDo(() => { mode = SceneControl.GraphicsMode; });
+                    SceneCon.Do(() => { mode = SceneControl.GraphicsMode; });
                     lock (GLModeSyncRoot)
                         _GraphicsMode = mode;
                 }
@@ -182,7 +180,7 @@
         internal GLInfo GetGLInfo()
         {
             GLInfo info = null;
-            SceneControlDo(() => { info = new GLInfo(); });
+            SceneCon.Do(() => { info = new GLInfo(); });
             return info;
         }
 
@@ -195,7 +193,7 @@
             ProgramCompiled = false;
             InvalidateCameraView();
             InvalidateProjection();
-            SceneControlDo(() =>
+            SceneCon.Do(() =>
             {
                 DeleteShaders();
                 if (ProgramID != 0)
@@ -211,7 +209,7 @@
         internal void InvalidateTrace(Trace trace)
         {
             if (trace.Vao != null)
-                SceneControlDo(() =>
+                SceneCon.Do(() =>
                 {
                     trace.Vao.ReleaseBuffers();
                     trace.Vao = null;
@@ -226,7 +224,7 @@
             InvalidateAllTraces();
         }
 
-        internal void Render() => SceneControlDo(() =>
+        internal void Render() => SceneCon.Do(() =>
         {
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Texture2D);
@@ -261,7 +259,7 @@
             SceneControl.SwapBuffers();
         });
 
-        internal void Unload() => SceneControlDo(InvalidateAllTraces);
+        internal void Unload() => SceneCon.Do(InvalidateAllTraces);
 
         private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
@@ -352,26 +350,6 @@
                 Scene.GPUStatus = GPUStatus.Warning;
         }
 
-        private void SceneControlDo(Action sceneControlAction)
-        {
-            if (SceneControl?.IsHandleCreated == true &&
-                SceneControl?.HasValidContext == true &&
-                SceneControl?.Visible == true)
-            {
-                if (++CurrencyCount == 1)
-                    SceneControl.MakeCurrent();
-                try
-                {
-                    sceneControlAction();
-                }
-                finally
-                {
-                    if (--CurrencyCount == 0)
-                        SceneControl.Context.MakeCurrent(null);
-                }
-            }
-        }
-
         private void UpdateFPS()
         {
             Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
@@ -431,7 +409,7 @@
         private void ValidateTrace(Trace trace)
         {
             if (trace.Vao == null)
-                SceneControlDo(() => trace.Vao = new Vao(trace));
+                SceneCon.Do(() => trace.Vao = new Vao(trace));
         }
     }
 }

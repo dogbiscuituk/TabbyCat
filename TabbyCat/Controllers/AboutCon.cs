@@ -2,7 +2,7 @@
 {
     using System.Reflection;
     using System.Windows.Forms;
-    using TabbyCat.Views;
+    using Views;
 
     internal class AboutCon : LocalizationCon
     {
