@@ -75,6 +75,7 @@
     <Compile Include="Types\ITrace.cs" />
     <Compile Include="Types\Optimization.cs" />
     <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\PlotType.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
     <Compile Include="Types\ShaderRegion.cs" />

@@ -1349,6 +1349,45 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Add|Add a new trace to this scene.
+        /// </summary>
+        public static string Menu_Add {
+            get {
+                return ResourceManager.GetString("Menu_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Curve|y = f(x) 
+        ///Add a new curve to this scene|F2.
+        /// </summary>
+        public static string Menu_Add_Curve {
+            get {
+                return ResourceManager.GetString("Menu_Add_Curve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Surface|z = f(x, y) 
+        ///Add a new surface to this scene|F3.
+        /// </summary>
+        public static string Menu_Add_Surface {
+            get {
+                return ResourceManager.GetString("Menu_Add_Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Volume|w = f(x, y, z) 
+        ///Add a new volumetric fill to this scene|F4.
+        /// </summary>
+        public static string Menu_Add_Volume {
+            get {
+                return ResourceManager.GetString("Menu_Add_Volume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Camera.
         /// </summary>
         public static string Menu_Camera {
@@ -1503,33 +1542,6 @@ namespace TabbyCat.Properties {
         public static string Menu_Edit {
             get {
                 return ResourceManager.GetString("Menu_Edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Add new|Add a new trace to this scene.
-        /// </summary>
-        public static string Menu_Edit_AddNew {
-            get {
-                return ResourceManager.GetString("Menu_Edit_AddNew", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;2D graph|Add a new 2D graph to this scene|F2.
-        /// </summary>
-        public static string Menu_Edit_AddNew2dGraph {
-            get {
-                return ResourceManager.GetString("Menu_Edit_AddNew2dGraph", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;3D graph|Add a new 3D graph to this scene|F3.
-        /// </summary>
-        public static string Menu_Edit_AddNew3dGraph {
-            get {
-                return ResourceManager.GetString("Menu_Edit_AddNew3dGraph", resourceCulture);
             }
         }
         

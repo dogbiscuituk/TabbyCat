@@ -122,9 +122,10 @@
         {
             base.Localize();
             Localize(Resources.Menu_Edit, WorldForm.EditMenu);
-            Localize(Resources.Menu_Edit_AddNew, WorldForm.EditAddNew, WorldForm.tbAddNew);
-            Localize(Resources.Menu_Edit_AddNew2dGraph, WorldForm.EditAddNew2dGraph, WorldForm.tbAddNew2dGraph);
-            Localize(Resources.Menu_Edit_AddNew3dGraph, WorldForm.EditAddNew3dGraph, WorldForm.tbAddNew3dGraph);
+            Localize(Resources.Menu_Add, WorldForm.AddMenu, WorldForm.tbAdd);
+            Localize(Resources.Menu_Add_Curve, WorldForm.AddCurve, WorldForm.tbAddCurve);
+            Localize(Resources.Menu_Add_Surface, WorldForm.AddSurface, WorldForm.tbAddSurface);
+            Localize(Resources.Menu_Add_Volume, WorldForm.AddVolume, WorldForm.tbAddVolume);
             Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
             Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
             Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
@@ -221,8 +222,9 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
-        private void EditAddNew2dGraph_Click(object sender, EventArgs e) => AddNew2dGraph();
-        private void EditAddNew3dGraph_Click(object sender, EventArgs e) => AddNew3dGraph();
+        private void AddLinePlot_Click(object sender, EventArgs e) => AddCurvePlot();
+        private void AddSurfacePlot_Click(object sender, EventArgs e) => AddSurfacePlot();
+        private void AddVolumePlot_Click(object sender, EventArgs e) => AddVolumePlot();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
         private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
         private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
@@ -249,17 +251,18 @@
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
-        private void AddNew2dGraph()
+        private void AddPlot(PlotType plotType)
         {
             CommandProcessor.AppendTrace();
+
             Selection.Set(new[] { Scene.Traces.Last() });
         }
 
-        private void AddNew3dGraph()
-        {
-            CommandProcessor.AppendTrace();
-            Selection.Set(new[] { Scene.Traces.Last() });
-        }
+        private void AddCurvePlot() => AddPlot(PlotType.Curve);
+
+        private void AddSurfacePlot() => AddPlot(PlotType.Surface);
+
+        private void AddVolumePlot() => AddPlot(PlotType.Volume);
 
         private void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
@@ -371,8 +374,9 @@
                 WorldForm.FileSaveAs.Click += FileSaveAs_Click;
                 WorldForm.FileClose.Click += FileClose_Click;
                 WorldForm.FileExit.Click += FileExit_Click;
-                WorldForm.EditAddNew2dGraph.Click += EditAddNew2dGraph_Click;
-                WorldForm.EditAddNew3dGraph.Click += EditAddNew3dGraph_Click;
+                WorldForm.AddCurve.Click += AddLinePlot_Click;
+                WorldForm.AddSurface.Click += AddSurfacePlot_Click;
+                WorldForm.AddVolume.Click += AddVolumePlot_Click;
                 WorldForm.EditCut.Click += EditCut_Click;
                 WorldForm.EditCopy.Click += EditCopy_Click;
                 WorldForm.EditPaste.Click += EditPaste_Click;
@@ -400,8 +404,9 @@
                 WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
                 WorldForm.FileClose.Click -= FileClose_Click;
                 WorldForm.FileExit.Click -= FileExit_Click;
-                WorldForm.EditAddNew2dGraph.Click -= EditAddNew2dGraph_Click;
-                WorldForm.EditAddNew3dGraph.Click -= EditAddNew3dGraph_Click;
+                WorldForm.AddCurve.Click -= AddLinePlot_Click;
+                WorldForm.AddSurface.Click -= AddSurfacePlot_Click;
+                WorldForm.AddVolume.Click -= AddVolumePlot_Click;
                 WorldForm.EditCut.Click -= EditCut_Click;
                 WorldForm.EditCopy.Click -= EditCopy_Click;
                 WorldForm.EditPaste.Click -= EditPaste_Click;
@@ -426,8 +431,9 @@
         {
             if (connect)
             {
-                WorldForm.tbAddNew2dGraph.Click += EditAddNew2dGraph_Click;
-                WorldForm.tbAddNew3dGraph.Click += EditAddNew3dGraph_Click;
+                WorldForm.tbAddCurve.Click += AddLinePlot_Click;
+                WorldForm.tbAddSurface.Click += AddSurfacePlot_Click;
+                WorldForm.tbAddVolume.Click += AddVolumePlot_Click;
                 WorldForm.tbCut.Click += EditCut_Click;
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
@@ -441,8 +447,9 @@
             }
             else
             {
-                WorldForm.tbAddNew2dGraph.Click -= EditAddNew2dGraph_Click;
-                WorldForm.tbAddNew3dGraph.Click -= EditAddNew3dGraph_Click;
+                WorldForm.tbAddCurve.Click -= AddLinePlot_Click;
+                WorldForm.tbAddSurface.Click -= AddSurfacePlot_Click;
+                WorldForm.tbAddVolume.Click -= AddVolumePlot_Click;
                 WorldForm.tbCut.Click -= EditCut_Click;
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;
@@ -646,11 +653,11 @@
         {
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
-            ScenePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TracePropertiesForm.Show(ScenePropertiesPane, DockAlignment.Bottom, 2.0 / 3);
-            SceneCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 0.5);
-            TraceCodeForm.Show(SceneCodePane, null);
-            GraphicsStateForm.Show(SceneCodePane, null);
+            TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
+            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 2.0 / 3);
+            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, 0.5);
+            SceneCodeForm.Show(TraceCodePane, null);
+            GraphicsStateForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
         }
 
