@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GpuEdit = new TabbyCat.Controls.GraphicsStateEdit();
+            this.GpuEdit = new TabbyCat.Controls.GraphicsStateView();
             this.SuspendLayout();
             // 
             // GpuEdit
@@ -55,6 +55,6 @@
 
         #endregion
 
-        internal Controls.GraphicsStateEdit GpuEdit;
+        internal Controls.GraphicsStateView GpuEdit;
     }
 }

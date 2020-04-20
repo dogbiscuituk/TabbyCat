@@ -25,9 +25,9 @@
         protected virtual Clock Clock => ClockCon.Clock;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
-        protected virtual GpuCon GpuCon => WorldCon.GpuCon;
-        protected GraphicsStateEdit GpuEdit => GpuForm.GpuEdit;
-        protected virtual GraphicsStateForm GpuForm => GpuCon.GpuForm;
+        protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
+        protected GraphicsStateView GpuEdit => GraphicsStateForm.GpuEdit;
+        protected virtual GraphicsStateForm GraphicsStateForm => GraphicsStateCon.GraphicsStateForm;
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }

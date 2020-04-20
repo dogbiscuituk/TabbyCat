@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using TabbyCat.Common.Converters;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Properties;
 
     public class Trace : CodeBase, ITrace

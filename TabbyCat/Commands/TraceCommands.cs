@@ -3,7 +3,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
 
     internal class DescriptionCommand : TracePropertyCommand<string>
     {

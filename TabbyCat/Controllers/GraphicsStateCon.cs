@@ -1,37 +1,32 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Properties;
     using TabbyCat.Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class GpuCon : DockingCon
+    internal class GraphicsStateCon : DockingCon
     {
-        internal GpuCon(WorldCon worldCon) : base(worldCon) { }
+        internal GraphicsStateCon(WorldCon worldCon) : base(worldCon) { }
 
-        private GraphicsStateForm _GpuForm;
+        private GraphicsStateForm _GraphicsStateForm;
 
-        protected internal override DockContent Form => GpuForm;
+        protected internal override DockContent Form => GraphicsStateForm;
 
-        protected override GraphicsStateForm GpuForm => _GpuForm ?? (_GpuForm = new GraphicsStateForm
+        protected override GraphicsStateForm GraphicsStateForm => _GraphicsStateForm ?? (_GraphicsStateForm = new GraphicsStateForm
         {
-            TabText = Resources.GpuForm_TabText,
-            Text = Resources.GpuForm_Text,
-            ToolTipText = Resources.GpuForm_Text
+            TabText = Resources.GraphicsStateForm_TabText,
+            Text = Resources.GraphicsStateForm_Text,
+            ToolTipText = Resources.GraphicsStateForm_Text
         });
 
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
-            {
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
-            }
             else
-            {
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
-            }
         }
 
         private void WorldCon_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

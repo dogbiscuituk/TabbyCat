@@ -8,7 +8,7 @@
     using OpenTK;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Controls;
     using TabbyCat.Properties;
     using TabbyCat.Views;

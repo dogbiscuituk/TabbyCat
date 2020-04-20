@@ -15,7 +15,7 @@
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Controls;
     using TabbyCat.Controls.Types;
     using TabbyCat.Models;
@@ -700,7 +700,7 @@
 
         private void UpdateUI()
         {
-            UICon.EnableControls(
+            ToolStripUtils.EnableControls(
                 ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
                 new Control[]
                 {

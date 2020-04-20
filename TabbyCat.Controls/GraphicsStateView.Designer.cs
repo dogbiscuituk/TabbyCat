@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controls
 {
-    partial class GraphicsStateEdit
+    partial class GraphicsStateView
     {
         /// <summary> 
         /// Required designer variable.

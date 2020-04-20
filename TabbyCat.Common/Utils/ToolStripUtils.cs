@@ -1,10 +1,10 @@
-﻿namespace TabbyCat.Common.Utility
+﻿namespace TabbyCat.Common.Utils
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
 
-    public static class UICon
+    public static class ToolStripUtils
     {
         /// <summary>
         /// Copy the Items from one ToolStrip to another.

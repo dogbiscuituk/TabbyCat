@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.Utility
+﻿namespace TabbyCat.Common.Utils
 {
     using OpenTK;
     using System.Drawing;

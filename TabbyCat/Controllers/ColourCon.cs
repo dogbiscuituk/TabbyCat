@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
 
     internal class ColourCon
     {

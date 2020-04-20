@@ -140,7 +140,6 @@
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DockPanel.DockLeftPortion = 360D;
             this.DockPanel.DockRightPortion = 360D;
-            this.DockPanel.DocumentTabStripLocation = WeifenLuo.WinFormsUI.Docking.DocumentTabStripLocation.Bottom;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(1551, 814);
@@ -311,7 +310,7 @@
             // GpuStatusLabel
             // 
             this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(1346, 17);
+            this.GpuStatusLabel.Size = new System.Drawing.Size(1377, 17);
             this.GpuStatusLabel.Spring = true;
             this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

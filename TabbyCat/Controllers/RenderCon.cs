@@ -11,7 +11,7 @@
     using System.Linq;
     using System.Text;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Models;
 
     internal class RenderCon : LocalizationCon, IScript

@@ -6,7 +6,7 @@
     using System.Windows.Forms;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Controls;
     using TabbyCat.Models;
     using TabbyCat.Properties;
@@ -163,7 +163,7 @@
         {
             base.UpdateAllProperties();
             CopySelectionToControl();
-            UICon.EnableControls(!Selection.IsEmpty,
+            ToolStripUtils.EnableControls(!Selection.IsEmpty,
                 TracePropertiesEdit.TableLayoutPanel.Controls.Cast<Control>()
                 .Except(new Control[]
                 {

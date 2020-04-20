@@ -395,7 +395,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Split Horizontal.
+        ///   Looks up a localized string similar to Horizontal|Show two editors stacked.
         /// </summary>
         public static string CodeForm_SplitHorizontal {
             get {
@@ -413,7 +413,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Split vertical.
+        ///   Looks up a localized string similar to Vertical|Show two editors side by side.
         /// </summary>
         public static string CodeForm_SplitVertical {
             get {
@@ -1271,30 +1271,30 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Graphics state.
-        /// </summary>
-        public static string GpuForm_TabText {
-            get {
-                return ResourceManager.GetString("GpuForm_TabText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Graphics state.
-        /// </summary>
-        public static string GpuForm_Text {
-            get {
-                return ResourceManager.GetString("GpuForm_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap graphhs {
             get {
                 object obj = ResourceManager.GetObject("graphhs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graphics state.
+        /// </summary>
+        public static string GraphicsStateForm_TabText {
+            get {
+                return ResourceManager.GetString("GraphicsStateForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graphics state.
+        /// </summary>
+        public static string GraphicsStateForm_Text {
+            get {
+                return ResourceManager.GetString("GraphicsStateForm_Text", resourceCulture);
             }
         }
         

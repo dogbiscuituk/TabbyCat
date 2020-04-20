@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.Utility
+﻿namespace TabbyCat.Common.Utils
 {
     using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;

@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using System.Linq;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
 
     /// <summary>
     /// Base class for Scene and Trace (but not TraceSelection).

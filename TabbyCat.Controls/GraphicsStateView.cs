@@ -2,9 +2,9 @@
 {
     using System.Windows.Forms;
 
-    public partial class GraphicsStateEdit : UserControl
+    public partial class GraphicsStateView : UserControl
     {
-        public GraphicsStateEdit()
+        public GraphicsStateView()
         {
             InitializeComponent();
         }

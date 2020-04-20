@@ -4,7 +4,7 @@
     using OpenTK.Graphics.OpenGL;
     using System.Drawing;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {

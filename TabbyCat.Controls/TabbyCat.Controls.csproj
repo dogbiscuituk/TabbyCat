@@ -52,11 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicsStateEdit.cs">
+    <Compile Include="GraphicsStateView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GraphicsStateEdit.Designer.cs">
-      <DependentUpon>GraphicsStateEdit.cs</DependentUpon>
+    <Compile Include="GraphicsStateView.Designer.cs">
+      <DependentUpon>GraphicsStateView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,8 +92,8 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GraphicsStateEdit.resx">
-      <DependentUpon>GraphicsStateEdit.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicsStateView.resx">
+      <DependentUpon>GraphicsStateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@
     using System.Drawing;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Controllers;
     using TabbyCat.Properties;
 

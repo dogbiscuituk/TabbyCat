@@ -8,7 +8,7 @@
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Controls.Properties;
     using Languages = FastColoredTextBoxNS.Language;
 

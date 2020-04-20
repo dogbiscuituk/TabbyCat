@@ -810,10 +810,10 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="Menu_View_TraceProperties" xml:space="preserve">
     <value>Trace properties|Show or hide the trace properties editor</value>
   </data>
-  <data name="GpuForm_TabText" xml:space="preserve">
+  <data name="GraphicsStateForm_TabText" xml:space="preserve">
     <value>Graphics state</value>
   </data>
-  <data name="GpuForm_Text" xml:space="preserve">
+  <data name="GraphicsStateForm_Text" xml:space="preserve">
     <value>Graphics state</value>
   </data>
   <data name="ScenePropertiesForm_TabText" xml:space="preserve">
@@ -895,13 +895,13 @@ as it was after the last new/open/save operation|^Home</value>
     <value>Split</value>
   </data>
   <data name="CodeForm_SplitHorizontal" xml:space="preserve">
-    <value>Split Horizontal</value>
+    <value>Horizontal|Show two editors stacked</value>
   </data>
   <data name="CodeForm_SplitNone" xml:space="preserve">
     <value>None|Remove split</value>
   </data>
   <data name="CodeForm_SplitVertical" xml:space="preserve">
-    <value>Split vertical</value>
+    <value>Vertical|Show two editors side by side</value>
   </data>
   <data name="CodeForm_Undo" xml:space="preserve">
     <value>Undo</value>

@@ -12,7 +12,7 @@
     using OpenTK.Graphics;
     using TabbyCat.Commands;
     using TabbyCat.Common.Types;
-    using TabbyCat.Common.Utility;
+    using TabbyCat.Common.Utils;
     using TabbyCat.Models;
     using TabbyCat.Properties;
     using TabbyCat.Views;
@@ -35,10 +35,12 @@
             PopupMenu_Opening(this, new CancelEventArgs());
         }
 
+        internal TraceSelection Selection = new TraceSelection();
+
         protected DockPanel WorldPanel => WorldForm.DockPanel;
         protected DockPane ScenePane => ScenePropertiesForm.Pane;
         protected DockPane TracePane => TracePropertiesForm.Pane;
-        protected DockPane GpuPane => GpuForm.Pane;
+        protected DockPane GpuPane => GraphicsStateForm.Pane;
         protected DockPane SceneShaderPane => SceneCodeForm.Pane;
         protected DockPane TraceShaderPane => TraceCodeForm.Pane;
         protected DockPane GpuShaderPane => ShaderCodeForm.Pane;
@@ -46,25 +48,24 @@
 
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
-        internal TraceSelection Selection = new TraceSelection();
+        private int UpdateCount;
 
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
         private CommandProcessor _CommandProcessor;
-        private GpuCon _GpuCon;
-        private SceneCon _GLCon;
+        private GraphicsStateCon _GraphicsStateCon;
         private JsonCon _JsonCon;
         private CodeCon _GpuShaderCon, _SceneShaderCon, _TraceShaderCon;
         private RenderCon _RenderCon;
+        private SceneCon _SceneCon;
         private ScenePropertiesCon _ScenePropertiesCon;
         private TracePropertiesCon _TracePropertiesCon;
-        private int UpdateCount;
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
-        protected override SceneCon SceneCon => _GLCon ?? (_GLCon = new SceneCon(this));
-        protected override GpuCon GpuCon => _GpuCon ?? (_GpuCon = new GpuCon(this));
+        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
+        protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
         protected override CodeCon ShaderCodeCon => _GpuShaderCon ?? (_GpuShaderCon = new CodeCon(this, ShaderRegion.All));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
@@ -225,7 +226,7 @@
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
         private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(ScenePropertiesCon);
         private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TracePropertiesCon);
-        private void ViewViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility(GpuCon);
+        private void ViewViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility(GraphicsStateCon);
         private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneCodeCon);
         private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceCodeCon);
         private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(ShaderCodeCon);
@@ -274,7 +275,7 @@
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
             ConnectJsonCon(connect);
-            GpuCon.Connect(connect);
+            GraphicsStateCon.Connect(connect);
             ShaderCodeCon.Connect(connect);
             RenderCon.Connect(connect);
             TracePropertiesCon.Connect(connect);
@@ -542,7 +543,7 @@
 
         private void OnSelectionChanged()
         {
-            UICon.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
+            ToolStripUtils.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
@@ -637,7 +638,7 @@
             TracePropertiesForm.Show(ScenePane, DockAlignment.Bottom, 2.0 / 3);
             SceneCodeForm.Show(TracePane, DockAlignment.Bottom, 0.5);
             TraceCodeForm.Show(SceneShaderPane, null);
-            GpuForm.Show(SceneShaderPane, null);
+            GraphicsStateForm.Show(SceneShaderPane, null);
             TraceCodeForm.Activate();
         }
 
