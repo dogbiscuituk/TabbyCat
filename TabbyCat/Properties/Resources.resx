@@ -473,7 +473,8 @@ is stereoscopic</value>
     <value>|Location z</value>
   </data>
   <data name="Control_Trace_Maximum" xml:space="preserve">
-    <value>Maximum|Upper limit of range</value>
+    <value>Maximum|Upper limit of range 
+Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_MaximumX" xml:space="preserve">
     <value>|The maximum value of x</value>
@@ -485,7 +486,8 @@ is stereoscopic</value>
     <value>|The maximum value of z</value>
   </data>
   <data name="Control_Trace_Minimum" xml:space="preserve">
-    <value>Minimum|Lower limit of range</value>
+    <value>Minimum|Lower limit of range 
+Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_MinimumX" xml:space="preserve">
     <value>|The minimum value of x</value>
@@ -509,7 +511,8 @@ is stereoscopic</value>
     <value>|Trace roll (degrees)</value>
   </data>
   <data name="Control_Trace_Scale" xml:space="preserve">
-    <value>Scale|Trace magnification factor</value>
+    <value>Scale|Trace magnification factor 
+Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_ScaleX" xml:space="preserve">
     <value>|The x-component of scale</value>
@@ -524,7 +527,8 @@ is stereoscopic</value>
     <value>Selected trace(s)|The set of selected traces</value>
   </data>
   <data name="Control_Trace_Stripes" xml:space="preserve">
-    <value>#Stripes|The number of stripes in each dimension of the trace</value>
+    <value>#Stripes|The number of stripes in each dimension of the trace 
+Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_StripesX" xml:space="preserve">
     <value>|The number of stripes in the x-direction</value>

@@ -30,15 +30,11 @@
         {
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lblSelectedTraces = new System.Windows.Forms.Label();
-            this.lblStripes = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.edDescription = new System.Windows.Forms.TextBox();
             this.lblOrientation = new System.Windows.Forms.Label();
-            this.lblScale = new System.Windows.Forms.Label();
             this.lblPattern = new System.Windows.Forms.Label();
-            this.lblMinimum = new System.Windows.Forms.Label();
-            this.lblMaximum = new System.Windows.Forms.Label();
             this.seLocationY = new System.Windows.Forms.NumericUpDown();
             this.seLocationZ = new System.Windows.Forms.NumericUpDown();
             this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
@@ -61,6 +57,10 @@
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
             this.lblAll = new System.Windows.Forms.ToolStripLabel();
+            this.lblScale = new System.Windows.Forms.CheckBox();
+            this.lblMinimum = new System.Windows.Forms.CheckBox();
+            this.lblMaximum = new System.Windows.Forms.CheckBox();
+            this.lblStripes = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
@@ -91,16 +91,16 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TableLayoutPanel.Controls.Add(this.lblSelectedTraces, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.lblStripes, 0, 6);
+            this.TableLayoutPanel.Controls.Add(this.lblMaximum, 0, 5);
+            this.TableLayoutPanel.Controls.Add(this.lblMinimum, 0, 4);
+            this.TableLayoutPanel.Controls.Add(this.lblScale, 0, 3);
+            this.TableLayoutPanel.Controls.Add(this.lblSelectedTraces, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.lblLocation, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.lblDescription, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.edDescription, 1, 0);
             this.TableLayoutPanel.Controls.Add(this.lblOrientation, 0, 2);
-            this.TableLayoutPanel.Controls.Add(this.lblScale, 0, 3);
             this.TableLayoutPanel.Controls.Add(this.lblPattern, 0, 7);
-            this.TableLayoutPanel.Controls.Add(this.lblMinimum, 0, 4);
-            this.TableLayoutPanel.Controls.Add(this.lblMaximum, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.seLocationY, 2, 1);
             this.TableLayoutPanel.Controls.Add(this.seLocationZ, 3, 1);
             this.TableLayoutPanel.Controls.Add(this.sePitch, 1, 2);
@@ -150,19 +150,6 @@
             this.lblSelectedTraces.TabIndex = 29;
             this.lblSelectedTraces.Text = "Selected\r\ntrace(s)";
             this.lblSelectedTraces.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblStripes
-            // 
-            this.lblStripes.AutoSize = true;
-            this.lblStripes.BackColor = System.Drawing.SystemColors.Control;
-            this.lblStripes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStripes.Location = new System.Drawing.Point(3, 147);
-            this.lblStripes.Name = "lblStripes";
-            this.lblStripes.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblStripes.Size = new System.Drawing.Size(82, 25);
-            this.lblStripes.TabIndex = 22;
-            this.lblStripes.Text = "#Stripes";
-            this.lblStripes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblLocation
             // 
@@ -215,19 +202,6 @@
             this.lblOrientation.Text = "Orientation";
             this.lblOrientation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblScale
-            // 
-            this.lblScale.AutoSize = true;
-            this.lblScale.BackColor = System.Drawing.SystemColors.Control;
-            this.lblScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblScale.Location = new System.Drawing.Point(3, 72);
-            this.lblScale.Name = "lblScale";
-            this.lblScale.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblScale.Size = new System.Drawing.Size(82, 25);
-            this.lblScale.TabIndex = 10;
-            this.lblScale.Text = "Scale";
-            this.lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lblPattern
             // 
             this.lblPattern.AutoSize = true;
@@ -239,32 +213,6 @@
             this.lblPattern.TabIndex = 26;
             this.lblPattern.Text = "Pattern";
             this.lblPattern.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblMinimum
-            // 
-            this.lblMinimum.AutoSize = true;
-            this.lblMinimum.BackColor = System.Drawing.SystemColors.Control;
-            this.lblMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMinimum.Location = new System.Drawing.Point(3, 97);
-            this.lblMinimum.Name = "lblMinimum";
-            this.lblMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblMinimum.Size = new System.Drawing.Size(82, 25);
-            this.lblMinimum.TabIndex = 14;
-            this.lblMinimum.Text = "Minimum";
-            this.lblMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblMaximum
-            // 
-            this.lblMaximum.AutoSize = true;
-            this.lblMaximum.BackColor = System.Drawing.SystemColors.Control;
-            this.lblMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMaximum.Location = new System.Drawing.Point(3, 122);
-            this.lblMaximum.Name = "lblMaximum";
-            this.lblMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblMaximum.Size = new System.Drawing.Size(82, 25);
-            this.lblMaximum.TabIndex = 18;
-            this.lblMaximum.Text = "Maximum";
-            this.lblMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // seLocationY
             // 
@@ -697,6 +645,78 @@
             this.lblAll.Text = "All";
             this.lblAll.ToolTipText = "Select or deselect all traces";
             // 
+            // lblScale
+            // 
+            this.lblScale.AutoSize = true;
+            this.lblScale.BackColor = System.Drawing.SystemColors.Control;
+            this.lblScale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblScale.FlatAppearance.BorderSize = 0;
+            this.lblScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblScale.Location = new System.Drawing.Point(2, 74);
+            this.lblScale.Margin = new System.Windows.Forms.Padding(2);
+            this.lblScale.Name = "lblScale";
+            this.lblScale.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblScale.Size = new System.Drawing.Size(84, 21);
+            this.lblScale.TabIndex = 31;
+            this.lblScale.Text = "Scale";
+            this.lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblScale.UseVisualStyleBackColor = false;
+            // 
+            // lblMinimum
+            // 
+            this.lblMinimum.AutoSize = true;
+            this.lblMinimum.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMinimum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMinimum.FlatAppearance.BorderSize = 0;
+            this.lblMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblMinimum.Location = new System.Drawing.Point(2, 99);
+            this.lblMinimum.Margin = new System.Windows.Forms.Padding(2);
+            this.lblMinimum.Name = "lblMinimum";
+            this.lblMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblMinimum.Size = new System.Drawing.Size(84, 21);
+            this.lblMinimum.TabIndex = 32;
+            this.lblMinimum.Text = "Minimum";
+            this.lblMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMinimum.UseVisualStyleBackColor = false;
+            // 
+            // lblMaximum
+            // 
+            this.lblMaximum.AutoSize = true;
+            this.lblMaximum.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMaximum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMaximum.FlatAppearance.BorderSize = 0;
+            this.lblMaximum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblMaximum.Location = new System.Drawing.Point(2, 124);
+            this.lblMaximum.Margin = new System.Windows.Forms.Padding(2);
+            this.lblMaximum.Name = "lblMaximum";
+            this.lblMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblMaximum.Size = new System.Drawing.Size(84, 21);
+            this.lblMaximum.TabIndex = 33;
+            this.lblMaximum.Text = "Maximum";
+            this.lblMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMaximum.UseVisualStyleBackColor = false;
+            // 
+            // lblStripes
+            // 
+            this.lblStripes.AutoSize = true;
+            this.lblStripes.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStripes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStripes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStripes.FlatAppearance.BorderSize = 0;
+            this.lblStripes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStripes.Location = new System.Drawing.Point(2, 149);
+            this.lblStripes.Margin = new System.Windows.Forms.Padding(2);
+            this.lblStripes.Name = "lblStripes";
+            this.lblStripes.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblStripes.Size = new System.Drawing.Size(84, 21);
+            this.lblStripes.TabIndex = 34;
+            this.lblStripes.Text = "#Stripes";
+            this.lblStripes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStripes.UseVisualStyleBackColor = false;
+            // 
             // TracePropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -737,13 +757,9 @@
         public System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
         public System.Windows.Forms.Label lblDescription;
         public System.Windows.Forms.TextBox edDescription;
-        public System.Windows.Forms.Label lblStripes;
         public System.Windows.Forms.Label lblLocation;
         public System.Windows.Forms.Label lblOrientation;
-        public System.Windows.Forms.Label lblScale;
         public System.Windows.Forms.Label lblPattern;
-        public System.Windows.Forms.Label lblMinimum;
-        public System.Windows.Forms.Label lblMaximum;
         public System.Windows.Forms.NumericUpDown seLocationX;
         public System.Windows.Forms.NumericUpDown seLocationY;
         public System.Windows.Forms.NumericUpDown seLocationZ;
@@ -767,5 +783,9 @@
         public System.Windows.Forms.Label lblSelectedTraces;
         public System.Windows.Forms.ToolStrip SelectionToolbar;
         public System.Windows.Forms.ToolStripLabel lblAll;
+        public System.Windows.Forms.CheckBox lblScale;
+        public System.Windows.Forms.CheckBox lblMinimum;
+        public System.Windows.Forms.CheckBox lblMaximum;
+        public System.Windows.Forms.CheckBox lblStripes;
     }
 }

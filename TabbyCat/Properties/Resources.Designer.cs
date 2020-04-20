@@ -717,7 +717,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum|Upper limit of range.
+        ///   Looks up a localized string similar to Maximum|Upper limit of range 
+        ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Maximum {
             get {
@@ -753,7 +754,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum|Lower limit of range.
+        ///   Looks up a localized string similar to Minimum|Lower limit of range 
+        ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Minimum {
             get {
@@ -825,7 +827,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale|Trace magnification factor.
+        ///   Looks up a localized string similar to Scale|Trace magnification factor 
+        ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Scale {
             get {
@@ -870,7 +873,8 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #Stripes|The number of stripes in each dimension of the trace.
+        ///   Looks up a localized string similar to #Stripes|The number of stripes in each dimension of the trace 
+        ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Stripes {
             get {
@@ -934,7 +938,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to y = sin(x + t);.
+        ///   Looks up a localized string similar to y = sin(10 * x + 5 * t);.
         /// </summary>
         public static string Curve_VertexFormula {
             get {
