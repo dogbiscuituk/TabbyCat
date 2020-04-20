@@ -107,8 +107,8 @@
     <Compile Include="Controllers\TracePropertiesCon.cs" />
     <Compile Include="Models\CodeBase.cs" />
     <Compile Include="Models\Curve.cs" />
-    <Compile Include="Models\Surface.cs" />
     <Compile Include="Models\Scene.cs" />
+    <Compile Include="Models\Surface.cs" />
     <Compile Include="Models\Trace.cs" />
     <Compile Include="Models\TraceSelection.cs" />
     <Compile Include="Models\Volume.cs" />

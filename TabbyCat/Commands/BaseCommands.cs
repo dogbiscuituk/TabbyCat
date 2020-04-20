@@ -214,7 +214,7 @@
 
         protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
 
-        protected override Trace GetNewItem(Scene scene) => scene.NewTrace();
+        protected override Trace GetNewItem(Scene scene) => new Trace(scene);
 
         protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
 

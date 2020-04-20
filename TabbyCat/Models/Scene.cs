@@ -90,8 +90,6 @@
 
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
-        internal Trace NewTrace() => new Trace(this);
-
         internal void OnPropertyChanged(string propertyName) => WorldCon?.OnPropertyChanged(propertyName);
 
         internal void RemoveTrace(int index)

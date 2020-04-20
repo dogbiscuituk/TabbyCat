@@ -50,7 +50,7 @@
 
         private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
-        internal void AppendTrace() => Run(new TraceInsertCommand(Traces.Count));
+        internal void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
 
         internal void Clear()
         {
@@ -62,7 +62,7 @@
 
         internal void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
 
-        internal void InsertTrace(int index) => Run(new TraceInsertCommand(index));
+        internal void InsertTrace(int index, Trace trace = null) => Run(new TraceInsertCommand(index, trace));
 
         /// <summary>
         /// Run a command, pushing its memento on to the Undo stack.

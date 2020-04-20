@@ -251,10 +251,26 @@
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
+        private static Trace GetNewTrace(PlotType plotType)
+        {
+            switch (plotType)
+            {
+                case PlotType.Curve:
+                    return new Curve();
+                case PlotType.Surface:
+                    return new Surface();
+                case PlotType.Volume:
+                    return new Volume();
+                default:
+                    return null;
+            }
+        }
+
         private void AddPlot(PlotType plotType)
         {
-            CommandProcessor.AppendTrace();
-
+            var trace = GetNewTrace(plotType);
+            trace.Scene = Scene;
+            CommandProcessor.AppendTrace(trace);
             Selection.Set(new[] { Scene.Traces.Last() });
         }
 
@@ -593,7 +609,7 @@
             foreach (var trace in traces)
             {
                 trace.Scene = Scene;
-                CommandProcessor.Run(new TraceInsertCommand(index++) { Value = trace });
+                CommandProcessor.Run(new TraceInsertCommand(index++, trace));
             }
             Selection.Set(traces);
         }

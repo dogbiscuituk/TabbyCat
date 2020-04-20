@@ -5,6 +5,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System.Drawing;
+    using Models;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
@@ -153,7 +154,7 @@
 
     internal class TraceInsertCommand : TracesCommand
     {
-        internal TraceInsertCommand(int index) : base(index, true) { }
+        internal TraceInsertCommand(int index, Trace trace) : base(index, true) { Value = trace; }
     }
 
     internal class VSyncCommand : ScenePropertyCommand<bool>
