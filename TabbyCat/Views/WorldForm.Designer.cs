@@ -117,6 +117,7 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -324,6 +325,7 @@
             this.TimePause,
             this.TimeForward,
             this.TimeAccelerate,
+            this.aToolStripMenuItem,
             this.FileMenu,
             this.EditMenu,
             this.ViewMenu,
@@ -702,7 +704,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(110, 22);
+            this.CameraMove.Size = new System.Drawing.Size(180, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -751,7 +753,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -793,12 +795,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(110, 22);
+            this.CameraReset.Size = new System.Drawing.Size(180, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu
@@ -827,6 +829,13 @@
             this.HelpAbout.Name = "HelpAbout";
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
+            // 
+            // aToolStripMenuItem
+            // 
+            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 21);
+            this.aToolStripMenuItem.Text = "-";
+            this.aToolStripMenuItem.Visible = false;
             // 
             // WorldForm
             // 
@@ -942,5 +951,6 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         internal System.Windows.Forms.ToolStripMenuItem ViewScene;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
     }
 }
