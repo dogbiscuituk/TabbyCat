@@ -1,4 +1,4 @@
-[Built-in Tessellation Control Shader Variables](%GLSLUrl%)
+[Built-in Tessellation Control Shader Variables](%GLSLUrl%#tessellation-control-shader-special-variables)
 
 in gl_PerVertex {
     vec4 gl_Position;

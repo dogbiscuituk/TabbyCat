@@ -1,4 +1,4 @@
-[Built-in Vertex Shader Variables](%GLSLUrl%)
+[Built-in Vertex Shader Variables](%GLSLUrl%#vertex-shader-special-variables)
 
 in int gl_VertexID; // when not targeting Vulkan
 in int gl_InstanceID; // when not targeting Vulkan

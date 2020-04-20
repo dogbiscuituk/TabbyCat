@@ -1,4 +1,4 @@
-[Built-in Geometry Shader Variables](%GLSLUrl%)
+[Built-in Geometry Shader Variables](%GLSLUrl%#geometry-shader-special-variables)
 
 in gl_PerVertex {
     vec4 gl_Position;

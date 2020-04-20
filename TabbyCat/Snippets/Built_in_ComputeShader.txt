@@ -1,4 +1,4 @@
-[Built-in Compute Shader Variables](%GLSLUrl%)
+[Built-in Compute Shader Variables](%GLSLUrl%#compute-shader-special-variables)
 
 // workgroup dimensions
 in uvec3 gl_NumWorkGroups;
