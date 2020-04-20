@@ -17,8 +17,8 @@
         [Description("Lines")]
         Lines = FillType.Lines | PrimitiveType.LineStrip,
 
-        [Description("Rectangles")]
-        Rectangles = FillType.Rectangles | PrimitiveType.Lines,
+        [Description("Quads")]
+        Rectangles = FillType.Quads | PrimitiveType.Lines,
 
         [Description("Saltires")]
         Saltires = FillType.Saltires | PrimitiveType.Lines,

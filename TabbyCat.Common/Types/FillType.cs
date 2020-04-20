@@ -7,7 +7,7 @@
             Fill = 0x10,
             Points = 0x20,
             Lines = 0x30,
-            Rectangles = 0x40,
+            Quads = 0x40,
             Saltires = 0x50,
             Triangles = 0x60;
     }

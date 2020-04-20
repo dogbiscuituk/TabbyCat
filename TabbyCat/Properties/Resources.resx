@@ -918,4 +918,13 @@ Add a new surface to this scene|F3</value>
     <value>&amp;Volume|w = f(x, y, z) 
 Add a new volumetric fill to this scene|F4</value>
   </data>
+  <data name="Curve_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\curve_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Surface_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\surface_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

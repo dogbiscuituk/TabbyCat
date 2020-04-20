@@ -503,12 +503,15 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Snippets\Curve_VertexFormula.txt" />
     <Content Include="Snippets\Scene_ComputeShader.txt" />
     <Content Include="Snippets\Scene_FragmentShader.txt" />
     <Content Include="Snippets\Scene_GeometryShader.txt" />
     <Content Include="Snippets\Scene_TessControlShader.txt" />
     <Content Include="Snippets\Scene_TessEvaluationShader.txt" />
     <Content Include="Snippets\Scene_VertexShader.txt" />
+    <Content Include="Snippets\Surface_VertexFormula.txt" />
+    <Content Include="Snippets\Volume_VertexFormula.txt" />
     <Content Include="Snippets\Trace_ComputeShader.txt" />
     <Content Include="Snippets\Trace_FragmentShader.txt" />
     <Content Include="Snippets\Trace_GeometryShader.txt" />

@@ -99,7 +99,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%#compute-shader-special-variables)
         ///
         ///// workgroup dimensions
         ///in uvec3 gl_NumWorkGroups;
@@ -113,7 +113,7 @@ namespace TabbyCat.Properties {
         ///in uvec3 gl_GlobalInvocationID;
         ///in uint gl_LocalInvocationIndex;
         ///
-        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execute the compute shader. Its conten [rest of string was truncated]&quot;;.
+        ///The built-in variable gl_NumWorkGroups is a compute-shader input variable containing the number of workgroups in each dimension of the dispatch that will execu [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_ComputeShader {
             get {
@@ -122,7 +122,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Fragment Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Fragment Shader Variables](%GLSLUrl%#fragment-shader-special-variables)
         ///
         ///in vec4 gl_FragCoord;
         ///in bool gl_FrontFacing;
@@ -140,7 +140,7 @@ namespace TabbyCat.Properties {
         ///out float gl_FragDepth;
         ///out int gl_SampleMask[];
         ///
-        ///The output of the fragment shader executable is processed by the fixed function operations at the back [rest of string was truncated]&quot;;.
+        ///The output of the fragment shader executable is processed by the fix [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_FragmentShader {
             get {
@@ -149,7 +149,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Geometry Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Geometry Shader Variables](%GLSLUrl%#geometry-shader-special-variables)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -172,9 +172,7 @@ namespace TabbyCat.Properties {
         ///out int gl_Layer;
         ///out int gl_ViewportIndex;
         ///
-        ///[Geometry Shader Input Variables](%GLSLUrl%)
-        ///
-        ///gl_Position, [rest of string was truncated]&quot;;.
+        ///[Geometry Shader Input Var [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_GeometryShader {
             get {
@@ -183,7 +181,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Tessellation Control Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Tessellation Control Shader Variables](%GLSLUrl%#tessellation-control-shader-special-variables)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -203,8 +201,7 @@ namespace TabbyCat.Properties {
         ///    float gl_CullDistance[];
         ///} gl_out[];
         ///
-        ///patch out float gl_TessLevelOuter[4];
-        ///patch out float gl_TessLevel [rest of string was truncated]&quot;;.
+        ///patch out float gl_Te [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_TessControlShader {
             get {
@@ -213,7 +210,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Tessellation Evaluation Shader Variables](%GLSLUrl%#tessellation-evaluation-shader-special-variables)
         ///
         ///in gl_PerVertex {
         ///    vec4 gl_Position;
@@ -231,10 +228,7 @@ namespace TabbyCat.Properties {
         ///out gl_PerVertex {
         ///    vec4 gl_Position;
         ///    float gl_PointSize;
-        ///    float gl_ClipDistance[];
-        ///    float gl_CullDistance[];
-        ///};
-        ///        /// [rest of string was truncated]&quot;;.
+        ///    float gl_Cli [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_TessEvaluationShader {
             get {
@@ -243,7 +237,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Built-in Vertex Shader Variables](%GLSLUrl%)
+        ///   Looks up a localized string similar to [Built-in Vertex Shader Variables](%GLSLUrl%#vertex-shader-special-variables)
         ///
         ///in int gl_VertexID; // when not targeting Vulkan
         ///in int gl_InstanceID; // when not targeting Vulkan
@@ -260,7 +254,7 @@ namespace TabbyCat.Properties {
         ///  float gl_CullDistance[];
         ///};
         ///
-        ///The variable gl_Position is intended for writing the homogeneous v [rest of string was truncated]&quot;;.
+        ///The variable gl_Position is intend [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Built_in_VertexShader {
             get {
@@ -936,6 +930,15 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("CopyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y = sin(x + t);.
+        /// </summary>
+        public static string Curve_VertexFormula {
+            get {
+                return ResourceManager.GetString("Curve_VertexFormula", resourceCulture);
             }
         }
         
@@ -2488,6 +2491,19 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to z = sqrt(x * x + y * y);
+        ///z = cos(20 * z - 10 * t) * exp(-3 * z);
+        ///r = (x + 1) / 2;
+        ///g = (y + 1) / 2;
+        ///b = clamp(abs(5 * z), 0, 1);.
+        /// </summary>
+        public static string Surface_VertexFormula {
+            get {
+                return ResourceManager.GetString("Surface_VertexFormula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap SychronizeListHS {
@@ -2631,11 +2647,6 @@ namespace TabbyCat.Properties {
         ///
         ///// Begin Formula
         ///
-        ///z = sqrt(x * x + y * y);
-        ///z = cos(20 * z - 10 * t) * exp(-3 * z);
-        ///r = (x + 1) / 2;
-        ///g = (y + 1) / 2;
-        ///b = clamp(abs(5 * z), 0, 1);
         ///
         ///// End Formula
         ///
@@ -2663,6 +2674,17 @@ namespace TabbyCat.Properties {
         public static string TracePropertiesForm_Text {
             get {
                 return ResourceManager.GetString("TracePropertiesForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r = (x + 1) / 2;
+        ///g = (y + 1) / 2;
+        ///b = (z + 1) / 2;.
+        /// </summary>
+        public static string Volume_VertexFormula {
+            get {
+                return ResourceManager.GetString("Volume_VertexFormula", resourceCulture);
             }
         }
         
