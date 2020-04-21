@@ -671,7 +671,7 @@
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
             TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 2.0 / 3);
-            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, 0.5);
+            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, 0.475);
             SceneCodeForm.Show(TraceCodePane, null);
             GraphicsStateForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();

@@ -33,25 +33,28 @@
             // 
             // ScenePropertiesEdit
             // 
+            this.ScenePropertiesEdit.AutoSize = true;
             this.ScenePropertiesEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.ScenePropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScenePropertiesEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.ScenePropertiesEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScenePropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.ScenePropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ScenePropertiesEdit.Name = "ScenePropertiesEdit";
-            this.ScenePropertiesEdit.Size = new System.Drawing.Size(352, 250);
+            this.ScenePropertiesEdit.Size = new System.Drawing.Size(352, 227);
             this.ScenePropertiesEdit.TabIndex = 0;
             // 
             // ScenePropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 250);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(352, 229);
             this.Controls.Add(this.ScenePropertiesEdit);
             this.Name = "ScenePropertiesForm";
             this.TabText = "Scene";
             this.Text = "Scene properties";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

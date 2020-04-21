@@ -864,7 +864,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected trace(s)|The set of selected traces.
+        ///   Looks up a localized string similar to Selection|The set of selected traces.
         /// </summary>
         public static string Control_Trace_Selection {
             get {

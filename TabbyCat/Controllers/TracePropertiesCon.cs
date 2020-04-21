@@ -8,6 +8,8 @@
     using OpenTK;
     using Properties;
     using System;
+    using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Linq;
     using System.Windows.Forms;
     using Views;
@@ -72,6 +74,7 @@
                 TracePropertiesEdit.seScaleX.ValueChanged += ScaleX_ValueChanged;
                 TracePropertiesEdit.seScaleY.ValueChanged += ScaleY_ValueChanged;
                 TracePropertiesEdit.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
+                TracePropertiesEdit.cbPattern.DrawItem += Pattern_DrawItem;
                 TracePropertiesEdit.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
                 TracePropertiesEdit.seMinimumX.ValueChanged += MinimumX_ValueChanged;
                 TracePropertiesEdit.seMinimumY.ValueChanged += MinimumY_ValueChanged;
@@ -97,6 +100,7 @@
                 TracePropertiesEdit.seScaleX.ValueChanged -= ScaleX_ValueChanged;
                 TracePropertiesEdit.seScaleY.ValueChanged -= ScaleY_ValueChanged;
                 TracePropertiesEdit.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
+                TracePropertiesEdit.cbPattern.DrawItem -= Pattern_DrawItem;
                 TracePropertiesEdit.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
                 TracePropertiesEdit.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
                 TracePropertiesEdit.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
@@ -357,6 +361,24 @@
                 p.Orientation.X,
                 p.Orientation.Y,
                 (float)TracePropertiesEdit.seRoll.Value)));
+
+        private void Pattern_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // Hey Imma draw a thing!
+            var comboBox = (ComboBox)sender;
+            var g = e.Graphics;
+            var r = e.Bounds;
+            var selected = (e.State & DrawItemState.Selected) != 0;
+            var thing = comboBox.Items[e.Index].ToString();
+            // Get my colours ready!
+            Color
+                foreground = selected ? Color.FromKnownColor(KnownColor.HighlightText) : comboBox.ForeColor,
+                background = selected ? Color.FromKnownColor(KnownColor.Highlight) : comboBox.BackColor;
+            // Draw the thing!
+            g.SetOptimization(Optimization.HighQuality);
+            e.Graphics.FillRectangle(background.ToBrush(), r);
+            e.Graphics.DrawString(thing, e.Font, foreground.ToBrush(), r.X + 1, r.Y - 2);
+        }
 
         private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
             Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));

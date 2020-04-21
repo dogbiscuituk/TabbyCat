@@ -58,39 +58,32 @@
 
         private void Control_DrawItem(object sender, DrawItemEventArgs e)
         {
+            // Hey Imma draw a thing!
             var comboBox = (ComboBox)sender;
-            string colourName;
-            Color colour;
+            var g = e.Graphics;
+            var r = e.Bounds;
+            var selected = (e.State & DrawItemState.Selected) != 0;
+            string thing = "Transparent";
+            // Get my colours ready!
+            var background = Color.Transparent;
             if (e.Index >= 0)
             {
-                colourName = comboBox.Items[e.Index].ToString();
-                colour = Color.FromName(colourName);
+                thing = comboBox.Items[e.Index].ToString();
+                background = Color.FromName(thing);
             }
             else if (comboBox.Tag is Color)
             {
-                colour = (Color)comboBox.Tag;
-                colourName = $"{colour.ToArgb() & 0xffffff:X}";
+                background = (Color)comboBox.Tag;
+                thing = $"{background.ToArgb() & 0xffffff:X}";
             }
-            else
-                return;
-            Color
-                ground = colour,
-                figure = ground.Contrast();
-            var selected = (e.State & DrawItemState.Selected) != 0;
-            var g = e.Graphics;
+            var foreground = background.Contrast();
+            // Draw the thing!
             g.SetOptimization(Optimization.HighQuality);
-            var r = e.Bounds;
-            using (Brush figureBrush = new SolidBrush(figure), groundBrush = new SolidBrush(ground))
-            {
-                e.Graphics.FillRectangle(groundBrush, r);
-                e.Graphics.DrawString(colourName, e.Font, figureBrush, r.X + 1, r.Y);
-                if (selected)
-                    using (Pen pen = new Pen(figureBrush))
-                    {
-                        pen.DashStyle = DashStyle.Dash;
-                        e.Graphics.DrawRectangle(pen, r.X, r.Y, r.Width - 1, r.Height - 1);
-                    }
-            }
+            e.Graphics.FillRectangle(background.ToBrush(), r);
+            e.Graphics.DrawString(thing, e.Font, foreground.ToBrush(), r.X + 1, r.Y - 2);
+            if (selected)
+                using (var pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
+                    e.Graphics.DrawRectangle(pen, r.X + 1, r.Y + 1, r.Width - 2, r.Height - 2);
         }
     }
 }

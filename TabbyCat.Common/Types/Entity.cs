@@ -133,7 +133,7 @@
                     return GetPoints(cx, cy, cz);
                 case Pattern.Lines:
                     return GetLines(cx, cy, cz);
-                case Pattern.Rectangles:
+                case Pattern.Quads:
                     return GetRectangles(cx, cy, cz);
                 case Pattern.Saltires:
                     return GetSaltires(cx, cy);
@@ -242,7 +242,7 @@
                     return GetPointsCount(cx, cy, cz);
                 case Pattern.Lines:
                     return GetLinesCount(cx, cy, cz);
-                case Pattern.Rectangles:
+                case Pattern.Quads:
                     return GetRectanglesCount(cx, cy, cz);
                 case Pattern.Saltires:
                     return GetSaltiresCount(cx, cy);
