@@ -40,7 +40,7 @@
             this.ScenePropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.ScenePropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ScenePropertiesEdit.Name = "ScenePropertiesEdit";
-            this.ScenePropertiesEdit.Size = new System.Drawing.Size(352, 227);
+            this.ScenePropertiesEdit.Size = new System.Drawing.Size(288, 194);
             this.ScenePropertiesEdit.TabIndex = 0;
             // 
             // ScenePropertiesForm
@@ -48,7 +48,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(352, 229);
+            this.ClientSize = new System.Drawing.Size(288, 194);
             this.Controls.Add(this.ScenePropertiesEdit);
             this.Name = "ScenePropertiesForm";
             this.TabText = "Scene";

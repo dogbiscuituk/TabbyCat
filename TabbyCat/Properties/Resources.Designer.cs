@@ -571,7 +571,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GLSL version|The OpenGL Shader Language version
+        ///   Looks up a localized string similar to GL version|The OpenGL Shader Language version
         ///targeted by this code.
         /// </summary>
         public static string Control_Scene_GLVersion {
@@ -717,7 +717,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum|Upper limit of range 
+        ///   Looks up a localized string similar to Max|Upper limit of range 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Maximum {
@@ -754,7 +754,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum|Lower limit of range 
+        ///   Looks up a localized string similar to Min|Lower limit of range 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
         public static string Control_Trace_Minimum {

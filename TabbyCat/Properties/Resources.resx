@@ -423,7 +423,7 @@
     <value>|The perspective field of view angle (degrees)</value>
   </data>
   <data name="Control_Scene_GLVersion" xml:space="preserve">
-    <value>GLSL version|The OpenGL Shader Language version
+    <value>GL version|The OpenGL Shader Language version
 targeted by this code</value>
   </data>
   <data name="Control_Scene_NearPlane" xml:space="preserve">
@@ -473,7 +473,7 @@ is stereoscopic</value>
     <value>|Location z</value>
   </data>
   <data name="Control_Trace_Maximum" xml:space="preserve">
-    <value>Maximum|Upper limit of range 
+    <value>Max|Upper limit of range 
 Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_MaximumX" xml:space="preserve">
@@ -486,7 +486,7 @@ Select the checkbox to adjust the three values at once</value>
     <value>|The maximum value of z</value>
   </data>
   <data name="Control_Trace_Minimum" xml:space="preserve">
-    <value>Minimum|Lower limit of range 
+    <value>Min|Lower limit of range 
 Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="Control_Trace_MinimumX" xml:space="preserve">
