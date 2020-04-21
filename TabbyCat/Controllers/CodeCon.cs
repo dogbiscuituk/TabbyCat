@@ -12,7 +12,6 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
     using System.Globalization;
@@ -23,11 +22,11 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class CodeCon : DockingCon
+    internal abstract partial class CodeCon : DockingCon
     {
-        internal CodeCon(WorldCon worldCon, ShaderRegion shaderRegion) : base(worldCon)
+        internal CodeCon(WorldCon worldCon) : base(worldCon)
         {
-            ShaderRegion = shaderRegion;
+            LoadShaderCode();
             AppCon.InitControlTheme(CodeEdit.HorizontalToolbar, CodeEdit.VerticalToolbar, CodeEdit.PopupEditMenu);
             ShowRuler = false;
             ShowLineNumbers = false;
@@ -44,8 +43,6 @@
 
         private CodeForm _CodeForm;
 
-        private readonly List<int> Breaks = new List<int>();
-
         internal CodeForm CodeForm => _CodeForm ?? (_CodeForm = new CodeForm()
         {
             TabText = GetTabText(),
@@ -54,7 +51,6 @@
         });
 
         private FastColoredTextBox ActiveTextBox;
-        private ShaderRegion _ShaderRegion;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
         private bool Updating;
@@ -63,63 +59,22 @@
 
         private CodePageCon _PrimaryCon, _SecondaryCon;
 
-        private CodeEdit CodeEdit => CodeForm.CodeEdit;
-        private CodePageCon PrimaryCon => _PrimaryCon ?? (_PrimaryCon = new CodePageCon(PrimaryTextBox));
+        protected CodeEdit CodeEdit => CodeForm.CodeEdit;
+        protected CodePageCon PrimaryCon => _PrimaryCon ?? (_PrimaryCon = new CodePageCon(PrimaryTextBox));
         private SplitContainer PrimarySplitter => CodeEdit.BottomSplit;
-        private FastColoredTextBox PrimaryTextBox => CodeEdit.PrimaryTextBox;
+        protected FastColoredTextBox PrimaryTextBox => CodeEdit.PrimaryTextBox;
         private CodePageCon SecondaryCon => _SecondaryCon ?? (_SecondaryCon = new CodePageCon(SecondaryTextBox));
         private SplitContainer SecondarySplitter => CodeEdit.TopSplit;
         private FastColoredTextBox SecondaryTextBox => CodeEdit.SecondaryTextBox;
-        private TraceSelection Selection => WorldCon.Selection;
+
+        protected TraceSelection Selection => WorldCon.Selection;
         private SplitContainer Splitter => CodeEdit.EditSplit;
 
-        internal ShaderRegion ShaderRegion
-        {
-            get => _ShaderRegion;
-            set
-            {
-                if (ShaderRegion == value)
-                    return;
-                _ShaderRegion = value;
-                LoadShaderCode();
-            }
-        }
+        protected abstract string ShaderName { get; }
 
-        private string ShaderName
-        {
-            get
-            {
-                switch (ShaderRegion)
-                {
-                    case ShaderRegion.Scene:
-                        return ShaderType.SceneShaderName();
-                    case ShaderRegion.Trace:
-                        return ShaderType.TraceShaderName();
-                    case ShaderRegion.All:
-                        return ShaderType.ShaderName();
-                }
-                return string.Empty;
-            }
-        }
+        protected abstract IScript ShaderSet { get; }
 
-        private IScript ShaderSet
-        {
-            get
-            {
-                switch (ShaderRegion)
-                {
-                    case ShaderRegion.Scene:
-                        return Scene;
-                    case ShaderRegion.Trace:
-                        return Selection;
-                    case ShaderRegion.All:
-                        return RenderCon;
-                }
-                return null;
-            }
-        }
-
-        private ShaderType ShaderType
+        protected ShaderType ShaderType
         {
             get => _ShaderType;
             set
@@ -286,20 +241,7 @@
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
-        private string GetRegion()
-        {
-            switch (ShaderRegion)
-            {
-                case ShaderRegion.Scene:
-                    return Resources.ShaderRegion_Scene;
-                case ShaderRegion.Trace:
-                    return Resources.ShaderRegion_Trace;
-                case ShaderRegion.All:
-                    return Resources.ShaderRegion_All;
-                default:
-                    return string.Empty;
-            }
-        }
+        protected abstract string GetRegion();
 
         private string GetTabText() => GetText(Resources.ShaderForm_TabText);
 
@@ -537,7 +479,7 @@
             }
         }
 
-        private string GetScript() => GetScript(ShaderType);
+        protected string GetScript() => GetScript(ShaderType);
 
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
@@ -547,13 +489,11 @@
             CodeEdit.lblBuiltInHelp.Text = GetBuiltInHelp();
         }
 
-        private void LoadScript()
+        protected virtual void LoadScript()
         {
             var script = GetScript();
             PrimaryTextBox.Text = script;
             SecondaryTextBox.Text = script;
-            if (ShaderRegion == ShaderRegion.All)
-                FindBreaks(script);
         }
 
         private void LoadShaderCode()
@@ -582,46 +522,17 @@
         private void ResizeBuiltInHelp() => CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
             CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
-        private void Run(ICommand command) => CommandProcessor.Run(command);
+        protected void Run(ICommand command) => CommandProcessor.Run(command);
+
+        protected abstract void RunShaderCommand(string text);
 
         private void SaveShaderCode()
         {
             if (Updating)
                 return;
             Updating = true;
-            var text = CodeEdit.PrimaryTextBox.Text;
-            switch (ShaderRegion)
-            {
-                case ShaderRegion.Scene:
-                    Run(new SceneShaderCommand(ShaderType, text));
-                    break;
-                case ShaderRegion.Trace:
-                    Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
-                    break;
-                case ShaderRegion.All:
-                    FindBreaks(text);
-                    if (Breaks.Any())
-                        for (var traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
-                        {
-                            string
-                                oldScript = traceNumber == 0 ? Scene.GetScript(ShaderType) : Scene.Traces[traceNumber - 1].GetScript(ShaderType),
-                                newScript = ExtractScript(text, traceNumber).Outdent("  ");
-                            if (newScript != oldScript)
-                                if (traceNumber == 0)
-                                    Run(new SceneShaderCommand(ShaderType, newScript));
-                                else
-                                    Run(new TraceShaderCommand(traceNumber - 1, ShaderType, newScript));
-                        }
-                    break;
-            }
+            RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
             Updating = false;
-        }
-
-        private string ExtractScript(string text, int traceNumber)
-        {
-            var breakIndex = 2 * traceNumber + 1;
-            int start = Breaks[breakIndex], end = Breaks[breakIndex + 1];
-            return text.GetLines(start, end - start);
         }
 
         private void SelectNextShader()
@@ -655,64 +566,10 @@
             Updating = false;
         }
 
-        private bool AddBreak(int b)
-        {
-            var ok = !Breaks.Any() || b > Breaks.Last();
-            if (ok)
-                Breaks.Add(b);
-            return ok;
-        }
+        protected virtual bool CodeChanged(string propertyName) => propertyName == ShaderName;
 
-        private void FindBreaks(string script)
+        protected virtual void UpdateUI()
         {
-            Breaks.Clear();
-            if (string.IsNullOrWhiteSpace(script))
-                return;
-            var ok = AddBreak(0) && AddBreak(script.FindFirstTokenLine(BeginSceneToken) + 2) && AddBreak(script.FindFirstTokenLine(EndSceneToken) - 1);
-            for (var index = 0; index < Scene.Traces.Count; index++)
-                ok &= AddBreak(script.FindFirstTokenLine(BeginTraceToken(index)) + 2) & AddBreak(script.FindFirstTokenLine(EndTraceToken(index)) - 1);
-            ok &= AddBreak(script.GetLineCount());
-            if (!ok)
-                Breaks.Clear();
-            for (var index = 0; index < Breaks.Count; index += 2)
-                PrimaryCon.AddSystemRange(new Range(PrimaryTextBox, 0, Breaks[index], 0, Breaks[index + 1]));
-        }
-
-        private bool CodeChanged(string propertyName)
-        {
-            switch (ShaderRegion)
-            {
-                case ShaderRegion.Scene:
-                case ShaderRegion.Trace:
-                    return propertyName == ShaderName;
-                case ShaderRegion.All:
-                    switch (propertyName)
-                    {
-                        case PropertyNames.GLTargetVersion:
-                        case PropertyNames.Traces:
-                            return true;
-                        default:
-                            return
-                                propertyName == ShaderName ||
-                                propertyName == ShaderType.SceneShaderName() ||
-                                propertyName == ShaderType.TraceShaderName();
-                    }
-                default:
-                    return false;
-            }
-        }
-
-        private void UpdateUI()
-        {
-            ToolStripUtils.EnableControls(
-                ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
-                new Control[]
-                {
-                    CodeEdit.HorizontalToolbar,
-                    CodeEdit.VerticalToolbar,
-                    CodeEdit.PrimaryTextBox,
-                    CodeEdit.SecondaryTextBox
-                });
             CodeEdit.tbExport.Enabled = CodeEdit.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
             CodeEdit.tbUndo.Enabled = CodeEdit.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
             CodeEdit.tbRedo.Enabled = CodeEdit.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;

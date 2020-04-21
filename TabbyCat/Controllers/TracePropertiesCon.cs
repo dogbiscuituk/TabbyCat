@@ -6,16 +6,16 @@
     using Controls;
     using Models;
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
     using Properties;
     using System;
     using System.Drawing;
-    using System.Drawing.Drawing2D;
     using System.Linq;
     using System.Windows.Forms;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class TracePropertiesCon : CodeBaseCon
+    internal partial class TracePropertiesCon : CodeBasePropertiesCon
     {
         internal TracePropertiesCon(WorldCon worldCon) : base(worldCon)
         {
@@ -421,6 +421,5 @@
 
         private void Visible_CheckedChanged(object sender, EventArgs e) =>
             Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
-
     }
 }

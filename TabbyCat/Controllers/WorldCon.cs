@@ -55,10 +55,12 @@
         private CommandProcessor _CommandProcessor;
         private GraphicsStateCon _GraphicsStateCon;
         private JsonCon _JsonCon;
-        private CodeCon _SceneCodeCon, _ShaderCodeCon, _TraceCodeCon;
+        private SceneCodeCon _SceneCodeCon;
         private RenderCon _RenderCon;
         private SceneCon _SceneCon;
         private ScenePropertiesCon _ScenePropertiesCon;
+        private ShaderCodeCon _ShaderCodeCon;
+        private TraceCodeCon _TraceCodeCon;
         private TracePropertiesCon _TracePropertiesCon;
 
         protected internal override Scene Scene { get; set; }
@@ -71,11 +73,11 @@
         protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
-        protected override CodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new CodeCon(this, ShaderRegion.Scene));
+        protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
         protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
         protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
-        protected override CodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new CodeCon(this, ShaderRegion.All));
-        protected override CodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new CodeCon(this, ShaderRegion.Trace));
+        protected override ShaderCodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new ShaderCodeCon(this));
+        protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon= new TracePropertiesCon(this));
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;

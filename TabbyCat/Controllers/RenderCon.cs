@@ -154,9 +154,9 @@
                     Resources.Format_Trace,
                     p.Index + 1,
                     p,
-                    BeginTraceToken(p.Index),
+                    Tokens.BeginTrace(p.Index),
                     p.GetScript(shaderType).Indent("  "),
-                    EndTraceToken(p.Index))));
+                    Tokens.EndTrace(p.Index))));
             var cases = !Scene.Traces.Any()
                 ? string.Empty
                 : Scene.Traces
@@ -168,9 +168,9 @@
                     CultureInfo.InvariantCulture,
                     Resources.Format_Scene,
                     version,
-                    BeginSceneToken,
+                    Tokens.BeginScene,
                     sceneScript,
-                    EndSceneToken,
+                    Tokens.EndScene,
                     traceScripts,
                     cases);
         }

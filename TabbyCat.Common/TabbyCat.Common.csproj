@@ -75,10 +75,10 @@
     <Compile Include="Types\ITrace.cs" />
     <Compile Include="Types\Optimization.cs" />
     <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\Tokens.cs" />
     <Compile Include="Types\TraceType.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
-    <Compile Include="Types\ShaderRegion.cs" />
     <Compile Include="Types\SplitType.cs" />
     <Compile Include="Types\Vao.cs" />
     <Compile Include="Types\Vbo.cs" />

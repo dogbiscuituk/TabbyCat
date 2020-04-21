@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal abstract class CodeBaseCon : DockingCon
+    internal abstract class CodeBasePropertiesCon : DockingCon
     {
-        internal CodeBaseCon(WorldCon worldCon) : base(worldCon) { }
+        internal CodeBasePropertiesCon(WorldCon worldCon) : base(worldCon) { }
 
         protected bool Updating;
 

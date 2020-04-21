@@ -14,11 +14,6 @@
     {
         internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
-        protected const string BeginSceneToken = "// Begin Scene";
-        protected static string BeginTraceToken(int index) => $"// Begin Trace #{index + 1}";
-        protected const string EndSceneToken = "// End Scene";
-        protected static string EndTraceToken(int index) => $"// End Trace #{index + 1}";
-
         protected virtual string[] AllProperties => Array.Empty<string>();
         protected Camera Camera => Scene.Camera;
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
@@ -31,7 +26,7 @@
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
-        protected virtual CodeCon SceneCodeCon => WorldCon.SceneCodeCon;
+        protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
         protected CodeForm SceneCodeForm => SceneCodeCon.CodeForm;
         protected virtual SceneCon SceneCon => WorldCon.SceneCon;
         protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
@@ -39,10 +34,10 @@
         protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
         protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
-        protected virtual CodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
+        protected virtual ShaderCodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
         protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
         protected ToolTip ToolTip => WorldForm.ToolTip;
-        protected virtual CodeCon TraceCodeCon => WorldCon.TraceCodeCon;
+        protected virtual TraceCodeCon TraceCodeCon => WorldCon.TraceCodeCon;
         protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
         protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
         protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
