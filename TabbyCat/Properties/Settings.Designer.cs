@@ -25,7 +25,7 @@ namespace TabbyCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("VS2015Blue")]
         public global::TabbyCat.Controls.Types.Theme Options_Theme {
             get {
                 return ((global::TabbyCat.Controls.Types.Theme)(this["Options_Theme"]));

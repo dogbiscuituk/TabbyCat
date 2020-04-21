@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Options_Theme" Type="TabbyCat.Controls.Types.Theme" Scope="User">
-      <Value Profile="(Default)">8</Value>
+      <Value Profile="(Default)">VS2015Blue</Value>
     </Setting>
     <Setting Name="FileFilter" Type="System.String" Scope="User">
       <Value Profile="(Default)">TabbyCat Files (*.tcxf)|*.tcxf|TabbyCat Templates (*.tcxt)|*.tcxt|All Files (*.*)|*.*</Value>

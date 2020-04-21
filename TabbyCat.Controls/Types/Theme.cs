@@ -4,6 +4,8 @@
 
     public enum Theme
     {
+        [Description("None")]
+        None,
         [Description("VS2003")]
         VS2003,
         [Description("VS2005")]

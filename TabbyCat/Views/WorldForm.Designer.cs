@@ -142,10 +142,10 @@
             // 
             // DockPanel
             // 
-            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(370, 289);
+            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(350, 234);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DockLeftPortion = 360D;
-            this.DockPanel.DockRightPortion = 360D;
+            this.DockPanel.DockLeftPortion = 340D;
+            this.DockPanel.DockRightPortion = 340D;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(1551, 814);
@@ -232,19 +232,19 @@
             // tbAddCurve
             // 
             this.tbAddCurve.Name = "tbAddCurve";
-            this.tbAddCurve.Size = new System.Drawing.Size(180, 22);
+            this.tbAddCurve.Size = new System.Drawing.Size(114, 22);
             this.tbAddCurve.Text = "Curve";
             // 
             // tbAddSurface
             // 
             this.tbAddSurface.Name = "tbAddSurface";
-            this.tbAddSurface.Size = new System.Drawing.Size(180, 22);
+            this.tbAddSurface.Size = new System.Drawing.Size(114, 22);
             this.tbAddSurface.Text = "Surface";
             // 
             // tbAddVolume
             // 
             this.tbAddVolume.Name = "tbAddVolume";
-            this.tbAddVolume.Size = new System.Drawing.Size(180, 22);
+            this.tbAddVolume.Size = new System.Drawing.Size(114, 22);
             this.tbAddVolume.Text = "Volume";
             // 
             // tbUndo
@@ -537,19 +537,19 @@
             // AddCurve
             // 
             this.AddCurve.Name = "AddCurve";
-            this.AddCurve.Size = new System.Drawing.Size(180, 22);
+            this.AddCurve.Size = new System.Drawing.Size(119, 22);
             this.AddCurve.Text = "Curve";
             // 
             // AddSurface
             // 
             this.AddSurface.Name = "AddSurface";
-            this.AddSurface.Size = new System.Drawing.Size(180, 22);
+            this.AddSurface.Size = new System.Drawing.Size(119, 22);
             this.AddSurface.Text = "Surface";
             // 
             // AddVolume
             // 
             this.AddVolume.Name = "AddVolume";
-            this.AddVolume.Size = new System.Drawing.Size(180, 22);
+            this.AddVolume.Size = new System.Drawing.Size(119, 22);
             this.AddVolume.Text = "Volume";
             // 
             // EditMenu

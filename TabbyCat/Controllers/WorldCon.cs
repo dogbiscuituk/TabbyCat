@@ -667,11 +667,12 @@
 
         private void ShowControls()
         {
+            var h = 0.28;
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 2.0 / 3);
-            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, 0.475);
+            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - h);
+            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
             SceneCodeForm.Show(TraceCodePane, null);
             GraphicsStateForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();

@@ -163,6 +163,8 @@
         {
             switch (Options.Theme)
             {
+                case Theme.None:
+                    return null;
                 case Theme.VS2003:
                     return new VS2003Theme();
                 case Theme.VS2005:
@@ -194,6 +196,8 @@
         {
             switch (Options.Theme)
             {
+                case Theme.None:
+                    return VsVersion.Unknown;
                 case Theme.VS2003:
                     return VsVersion.Vs2003;
                 case Theme.VS2005:
@@ -219,7 +223,8 @@
         {
             VsTheme = GetVsTheme();
             VsVersion = GetVsVersion();
-            VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
+            if (VsTheme != null)
+                VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
         }
     }
 }

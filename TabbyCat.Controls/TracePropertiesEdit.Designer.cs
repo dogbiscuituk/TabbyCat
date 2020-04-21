@@ -41,6 +41,9 @@
             this.lblPattern = new System.Windows.Forms.Label();
             this.seLocationY = new System.Windows.Forms.NumericUpDown();
             this.seLocationZ = new System.Windows.Forms.NumericUpDown();
+            this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seScaleX = new System.Windows.Forms.NumericUpDown();
             this.seScaleY = new System.Windows.Forms.NumericUpDown();
             this.seScaleZ = new System.Windows.Forms.NumericUpDown();
@@ -58,12 +61,12 @@
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
             this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
             this.lblAll = new System.Windows.Forms.ToolStripLabel();
-            this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).BeginInit();
@@ -78,9 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seStripeCountZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).BeginInit();
             this.SelectionToolbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -140,7 +140,7 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(352, 189);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(352, 190);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // lblStripes
@@ -175,7 +175,7 @@
             this.lblMaximum.TabIndex = 33;
             this.lblMaximum.Text = "Maximum";
             this.lblMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMaximum.UseVisualStyleBackColor = false;
+            this.lblMaximum.UseVisualStyleBackColor = true;
             // 
             // lblMinimum
             // 
@@ -216,7 +216,7 @@
             this.lblSelectedTraces.AutoSize = true;
             this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Control;
             this.lblSelectedTraces.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblSelectedTraces.Location = new System.Drawing.Point(0, 172);
+            this.lblSelectedTraces.Location = new System.Drawing.Point(0, 173);
             this.lblSelectedTraces.Margin = new System.Windows.Forms.Padding(0);
             this.lblSelectedTraces.Name = "lblSelectedTraces";
             this.lblSelectedTraces.Size = new System.Drawing.Size(88, 17);
@@ -283,7 +283,7 @@
             this.lblPattern.Location = new System.Drawing.Point(0, 151);
             this.lblPattern.Margin = new System.Windows.Forms.Padding(0);
             this.lblPattern.Name = "lblPattern";
-            this.lblPattern.Size = new System.Drawing.Size(88, 21);
+            this.lblPattern.Size = new System.Drawing.Size(88, 22);
             this.lblPattern.TabIndex = 26;
             this.lblPattern.Text = "Pattern";
             this.lblPattern.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -333,6 +333,57 @@
             this.seLocationZ.Size = new System.Drawing.Size(88, 21);
             this.seLocationZ.TabIndex = 5;
             this.seLocationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // sePitch
+            // 
+            this.sePitch.BackColor = System.Drawing.SystemColors.Window;
+            this.sePitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.sePitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sePitch.Location = new System.Drawing.Point(88, 46);
+            this.sePitch.Margin = new System.Windows.Forms.Padding(0);
+            this.sePitch.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sePitch.Name = "sePitch";
+            this.sePitch.Size = new System.Drawing.Size(88, 21);
+            this.sePitch.TabIndex = 7;
+            this.sePitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seYaw
+            // 
+            this.seYaw.BackColor = System.Drawing.SystemColors.Window;
+            this.seYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seYaw.Location = new System.Drawing.Point(176, 46);
+            this.seYaw.Margin = new System.Windows.Forms.Padding(0);
+            this.seYaw.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seYaw.Name = "seYaw";
+            this.seYaw.Size = new System.Drawing.Size(88, 21);
+            this.seYaw.TabIndex = 8;
+            this.seYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seRoll
+            // 
+            this.seRoll.BackColor = System.Drawing.SystemColors.Window;
+            this.seRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seRoll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seRoll.Location = new System.Drawing.Point(264, 46);
+            this.seRoll.Margin = new System.Windows.Forms.Padding(0);
+            this.seRoll.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seRoll.Name = "seRoll";
+            this.seRoll.Size = new System.Drawing.Size(88, 21);
+            this.seRoll.TabIndex = 9;
+            this.seRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seScaleX
             // 
@@ -619,7 +670,7 @@
             this.cbVisible.Location = new System.Drawing.Point(264, 151);
             this.cbVisible.Margin = new System.Windows.Forms.Padding(0);
             this.cbVisible.Name = "cbVisible";
-            this.cbVisible.Size = new System.Drawing.Size(88, 21);
+            this.cbVisible.Size = new System.Drawing.Size(88, 22);
             this.cbVisible.TabIndex = 28;
             this.cbVisible.Text = "Visible?";
             this.cbVisible.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -655,7 +706,7 @@
             this.SelectionToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblAll});
             this.SelectionToolbar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.SelectionToolbar.Location = new System.Drawing.Point(88, 172);
+            this.SelectionToolbar.Location = new System.Drawing.Point(88, 173);
             this.SelectionToolbar.Name = "SelectionToolbar";
             this.SelectionToolbar.Padding = new System.Windows.Forms.Padding(0);
             this.SelectionToolbar.Size = new System.Drawing.Size(264, 17);
@@ -669,57 +720,6 @@
             this.lblAll.Size = new System.Drawing.Size(22, 17);
             this.lblAll.Text = "All";
             this.lblAll.ToolTipText = "Select or deselect all traces";
-            // 
-            // sePitch
-            // 
-            this.sePitch.BackColor = System.Drawing.SystemColors.Window;
-            this.sePitch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.sePitch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sePitch.Location = new System.Drawing.Point(88, 46);
-            this.sePitch.Margin = new System.Windows.Forms.Padding(0);
-            this.sePitch.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.sePitch.Name = "sePitch";
-            this.sePitch.Size = new System.Drawing.Size(88, 21);
-            this.sePitch.TabIndex = 7;
-            this.sePitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seYaw
-            // 
-            this.seYaw.BackColor = System.Drawing.SystemColors.Window;
-            this.seYaw.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seYaw.Location = new System.Drawing.Point(176, 46);
-            this.seYaw.Margin = new System.Windows.Forms.Padding(0);
-            this.seYaw.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seYaw.Name = "seYaw";
-            this.seYaw.Size = new System.Drawing.Size(88, 21);
-            this.seYaw.TabIndex = 8;
-            this.seYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seRoll
-            // 
-            this.seRoll.BackColor = System.Drawing.SystemColors.Window;
-            this.seRoll.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seRoll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seRoll.Location = new System.Drawing.Point(264, 46);
-            this.seRoll.Margin = new System.Windows.Forms.Padding(0);
-            this.seRoll.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seRoll.Name = "seRoll";
-            this.seRoll.Size = new System.Drawing.Size(88, 21);
-            this.seRoll.TabIndex = 9;
-            this.seRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TracePropertiesEdit
             // 
@@ -735,6 +735,9 @@
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seScaleZ)).EndInit();
@@ -750,9 +753,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seLocationX)).EndInit();
             this.SelectionToolbar.ResumeLayout(false);
             this.SelectionToolbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sePitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seYaw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seRoll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
