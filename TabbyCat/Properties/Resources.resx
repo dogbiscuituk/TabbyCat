@@ -445,7 +445,7 @@ targeted by this code</value>
     <value>#Samples|The number of samples interpolated over</value>
   </data>
   <data name="Control_Scene_Stereo" xml:space="preserve">
-    <value>Stereo?|Whether or not the current display mode
+    <value>Stereo|Whether or not the current display mode
 is stereoscopic</value>
   </data>
   <data name="Control_Scene_TargetFPS" xml:space="preserve">
@@ -455,7 +455,7 @@ is stereoscopic</value>
     <value>Scene Title|The title of this scene</value>
   </data>
   <data name="Control_Scene_VSync" xml:space="preserve">
-    <value>VSync?|Whether or not to use vertical sync</value>
+    <value>VSync|Whether or not to use vertical sync</value>
   </data>
   <data name="Control_Trace_Description" xml:space="preserve">
     <value>Description|Trace description</value>
@@ -540,7 +540,7 @@ Select the checkbox to adjust the three values at once</value>
     <value>|The number of stripes in the z-direction</value>
   </data>
   <data name="Control_Trace_Visible" xml:space="preserve">
-    <value>Visible?|Whether or not a trace is visible</value>
+    <value>Visible|Whether or not a trace is visible</value>
   </data>
   <data name="Control_Trace_Yaw" xml:space="preserve">
     <value>|Trace yaw (degrees)</value>

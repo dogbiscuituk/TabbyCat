@@ -74,10 +74,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.FileClose = new System.Windows.Forms.ToolStripMenuItem();
             this.FileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddCurve = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddSurface = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddVolume = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.EditUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.EditRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +87,10 @@
             this.EditInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddCurve = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddSurface = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddVolume = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -142,10 +142,10 @@
             // 
             // DockPanel
             // 
-            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(350, 234);
+            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(306, 234);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DockLeftPortion = 340D;
-            this.DockPanel.DockRightPortion = 340D;
+            this.DockPanel.DockLeftPortion = 296D;
+            this.DockPanel.DockRightPortion = 296D;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(1551, 814);
@@ -354,8 +354,8 @@
             this.TimeAccelerate,
             this.aToolStripMenuItem,
             this.FileMenu,
-            this.AddMenu,
             this.EditMenu,
+            this.AddMenu,
             this.ViewMenu,
             this.CameraMenu,
             this.HelpMenu});
@@ -524,34 +524,6 @@
             this.FileExit.Size = new System.Drawing.Size(164, 22);
             this.FileExit.Text = "Close All && Exit";
             // 
-            // AddMenu
-            // 
-            this.AddMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddCurve,
-            this.AddSurface,
-            this.AddVolume});
-            this.AddMenu.Name = "AddMenu";
-            this.AddMenu.Size = new System.Drawing.Size(44, 21);
-            this.AddMenu.Text = "Add";
-            // 
-            // AddCurve
-            // 
-            this.AddCurve.Name = "AddCurve";
-            this.AddCurve.Size = new System.Drawing.Size(119, 22);
-            this.AddCurve.Text = "Curve";
-            // 
-            // AddSurface
-            // 
-            this.AddSurface.Name = "AddSurface";
-            this.AddSurface.Size = new System.Drawing.Size(119, 22);
-            this.AddSurface.Text = "Surface";
-            // 
-            // AddVolume
-            // 
-            this.AddVolume.Name = "AddVolume";
-            this.AddVolume.Size = new System.Drawing.Size(119, 22);
-            this.AddVolume.Text = "Volume";
-            // 
             // EditMenu
             // 
             this.EditMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -656,6 +628,34 @@
             this.EditOptions.Name = "EditOptions";
             this.EditOptions.Size = new System.Drawing.Size(164, 22);
             this.EditOptions.Text = "Options...";
+            // 
+            // AddMenu
+            // 
+            this.AddMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddCurve,
+            this.AddSurface,
+            this.AddVolume});
+            this.AddMenu.Name = "AddMenu";
+            this.AddMenu.Size = new System.Drawing.Size(44, 21);
+            this.AddMenu.Text = "Add";
+            // 
+            // AddCurve
+            // 
+            this.AddCurve.Name = "AddCurve";
+            this.AddCurve.Size = new System.Drawing.Size(119, 22);
+            this.AddCurve.Text = "Curve";
+            // 
+            // AddSurface
+            // 
+            this.AddSurface.Name = "AddSurface";
+            this.AddSurface.Size = new System.Drawing.Size(119, 22);
+            this.AddSurface.Text = "Surface";
+            // 
+            // AddVolume
+            // 
+            this.AddVolume.Name = "AddVolume";
+            this.AddVolume.Size = new System.Drawing.Size(119, 22);
+            this.AddVolume.Text = "Volume";
             // 
             // ViewMenu
             // 

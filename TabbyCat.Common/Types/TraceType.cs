@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Common.Types
 {
-    public enum PlotType
+    public enum TraceType
     {
         None,
         Curve,

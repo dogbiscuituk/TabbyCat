@@ -87,7 +87,7 @@
             // 
             this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TableLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.TableLayoutPanel.BackColor = System.Drawing.SystemColors.Window;
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
@@ -146,7 +146,7 @@
             // lblStripes
             // 
             this.lblStripes.AutoSize = true;
-            this.lblStripes.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStripes.BackColor = System.Drawing.SystemColors.Info;
             this.lblStripes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblStripes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStripes.FlatAppearance.BorderSize = 0;
@@ -154,6 +154,7 @@
             this.lblStripes.Location = new System.Drawing.Point(0, 130);
             this.lblStripes.Margin = new System.Windows.Forms.Padding(0);
             this.lblStripes.Name = "lblStripes";
+            this.lblStripes.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblStripes.Size = new System.Drawing.Size(80, 21);
             this.lblStripes.TabIndex = 34;
             this.lblStripes.Text = "#Stripes";
@@ -163,7 +164,7 @@
             // lblMaximum
             // 
             this.lblMaximum.AutoSize = true;
-            this.lblMaximum.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMaximum.BackColor = System.Drawing.SystemColors.Info;
             this.lblMaximum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMaximum.FlatAppearance.BorderSize = 0;
@@ -171,16 +172,17 @@
             this.lblMaximum.Location = new System.Drawing.Point(0, 109);
             this.lblMaximum.Margin = new System.Windows.Forms.Padding(0);
             this.lblMaximum.Name = "lblMaximum";
+            this.lblMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblMaximum.Size = new System.Drawing.Size(80, 21);
             this.lblMaximum.TabIndex = 33;
             this.lblMaximum.Text = "Max";
             this.lblMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMaximum.UseVisualStyleBackColor = true;
+            this.lblMaximum.UseVisualStyleBackColor = false;
             // 
             // lblMinimum
             // 
             this.lblMinimum.AutoSize = true;
-            this.lblMinimum.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMinimum.BackColor = System.Drawing.SystemColors.Info;
             this.lblMinimum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMinimum.FlatAppearance.BorderSize = 0;
@@ -188,6 +190,7 @@
             this.lblMinimum.Location = new System.Drawing.Point(0, 88);
             this.lblMinimum.Margin = new System.Windows.Forms.Padding(0);
             this.lblMinimum.Name = "lblMinimum";
+            this.lblMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblMinimum.Size = new System.Drawing.Size(80, 21);
             this.lblMinimum.TabIndex = 32;
             this.lblMinimum.Text = "Min";
@@ -197,7 +200,7 @@
             // lblScale
             // 
             this.lblScale.AutoSize = true;
-            this.lblScale.BackColor = System.Drawing.SystemColors.Control;
+            this.lblScale.BackColor = System.Drawing.SystemColors.Info;
             this.lblScale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblScale.FlatAppearance.BorderSize = 0;
@@ -205,6 +208,7 @@
             this.lblScale.Location = new System.Drawing.Point(0, 67);
             this.lblScale.Margin = new System.Windows.Forms.Padding(0);
             this.lblScale.Name = "lblScale";
+            this.lblScale.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblScale.Size = new System.Drawing.Size(80, 21);
             this.lblScale.TabIndex = 31;
             this.lblScale.Text = "Scale";
@@ -214,7 +218,7 @@
             // lblSelectedTraces
             // 
             this.lblSelectedTraces.AutoSize = true;
-            this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Control;
+            this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Window;
             this.lblSelectedTraces.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSelectedTraces.Location = new System.Drawing.Point(0, 173);
             this.lblSelectedTraces.Margin = new System.Windows.Forms.Padding(0);
@@ -227,7 +231,7 @@
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
-            this.lblLocation.BackColor = System.Drawing.SystemColors.Control;
+            this.lblLocation.BackColor = System.Drawing.SystemColors.Window;
             this.lblLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblLocation.Location = new System.Drawing.Point(0, 25);
             this.lblLocation.Margin = new System.Windows.Forms.Padding(0);
@@ -240,7 +244,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.BackColor = System.Drawing.SystemColors.Control;
+            this.lblDescription.BackColor = System.Drawing.SystemColors.Window;
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDescription.Location = new System.Drawing.Point(0, 0);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(0);
@@ -265,7 +269,7 @@
             // lblOrientation
             // 
             this.lblOrientation.AutoSize = true;
-            this.lblOrientation.BackColor = System.Drawing.SystemColors.Control;
+            this.lblOrientation.BackColor = System.Drawing.SystemColors.Window;
             this.lblOrientation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblOrientation.Location = new System.Drawing.Point(0, 46);
             this.lblOrientation.Margin = new System.Windows.Forms.Padding(0);
@@ -278,7 +282,7 @@
             // lblPattern
             // 
             this.lblPattern.AutoSize = true;
-            this.lblPattern.BackColor = System.Drawing.SystemColors.Control;
+            this.lblPattern.BackColor = System.Drawing.SystemColors.Window;
             this.lblPattern.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPattern.Location = new System.Drawing.Point(0, 151);
             this.lblPattern.Margin = new System.Windows.Forms.Padding(0);
@@ -336,7 +340,7 @@
             // 
             // seScaleX
             // 
-            this.seScaleX.BackColor = System.Drawing.SystemColors.Window;
+            this.seScaleX.BackColor = System.Drawing.SystemColors.Info;
             this.seScaleX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleX.DecimalPlaces = 3;
             this.seScaleX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -359,7 +363,7 @@
             // 
             // seScaleY
             // 
-            this.seScaleY.BackColor = System.Drawing.SystemColors.Window;
+            this.seScaleY.BackColor = System.Drawing.SystemColors.Info;
             this.seScaleY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleY.DecimalPlaces = 3;
             this.seScaleY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -382,7 +386,7 @@
             // 
             // seScaleZ
             // 
-            this.seScaleZ.BackColor = System.Drawing.SystemColors.Window;
+            this.seScaleZ.BackColor = System.Drawing.SystemColors.Info;
             this.seScaleZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seScaleZ.DecimalPlaces = 3;
             this.seScaleZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -405,7 +409,7 @@
             // 
             // seMinimumX
             // 
-            this.seMinimumX.BackColor = System.Drawing.SystemColors.Window;
+            this.seMinimumX.BackColor = System.Drawing.SystemColors.Info;
             this.seMinimumX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumX.DecimalPlaces = 3;
             this.seMinimumX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -428,7 +432,7 @@
             // 
             // seMinimumY
             // 
-            this.seMinimumY.BackColor = System.Drawing.SystemColors.Window;
+            this.seMinimumY.BackColor = System.Drawing.SystemColors.Info;
             this.seMinimumY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumY.DecimalPlaces = 3;
             this.seMinimumY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -451,7 +455,7 @@
             // 
             // seMinimumZ
             // 
-            this.seMinimumZ.BackColor = System.Drawing.SystemColors.Window;
+            this.seMinimumZ.BackColor = System.Drawing.SystemColors.Info;
             this.seMinimumZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMinimumZ.DecimalPlaces = 3;
             this.seMinimumZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -474,7 +478,7 @@
             // 
             // seMaximumX
             // 
-            this.seMaximumX.BackColor = System.Drawing.SystemColors.Window;
+            this.seMaximumX.BackColor = System.Drawing.SystemColors.Info;
             this.seMaximumX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumX.DecimalPlaces = 3;
             this.seMaximumX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -497,7 +501,7 @@
             // 
             // seMaximumY
             // 
-            this.seMaximumY.BackColor = System.Drawing.SystemColors.Window;
+            this.seMaximumY.BackColor = System.Drawing.SystemColors.Info;
             this.seMaximumY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumY.DecimalPlaces = 3;
             this.seMaximumY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -520,7 +524,7 @@
             // 
             // seMaximumZ
             // 
-            this.seMaximumZ.BackColor = System.Drawing.SystemColors.Window;
+            this.seMaximumZ.BackColor = System.Drawing.SystemColors.Info;
             this.seMaximumZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seMaximumZ.DecimalPlaces = 3;
             this.seMaximumZ.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -543,7 +547,7 @@
             // 
             // seStripeCountX
             // 
-            this.seStripeCountX.BackColor = System.Drawing.SystemColors.Window;
+            this.seStripeCountX.BackColor = System.Drawing.SystemColors.Info;
             this.seStripeCountX.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripeCountX.Location = new System.Drawing.Point(80, 130);
@@ -560,7 +564,7 @@
             // 
             // seStripeCountY
             // 
-            this.seStripeCountY.BackColor = System.Drawing.SystemColors.Window;
+            this.seStripeCountY.BackColor = System.Drawing.SystemColors.Info;
             this.seStripeCountY.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripeCountY.Location = new System.Drawing.Point(149, 130);
@@ -577,7 +581,7 @@
             // 
             // seStripeCountZ
             // 
-            this.seStripeCountZ.BackColor = System.Drawing.SystemColors.Window;
+            this.seStripeCountZ.BackColor = System.Drawing.SystemColors.Info;
             this.seStripeCountZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.seStripeCountZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seStripeCountZ.Location = new System.Drawing.Point(218, 130);
@@ -611,7 +615,7 @@
             // cbVisible
             // 
             this.cbVisible.AutoSize = true;
-            this.cbVisible.BackColor = System.Drawing.SystemColors.Control;
+            this.cbVisible.BackColor = System.Drawing.SystemColors.Window;
             this.cbVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVisible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbVisible.FlatAppearance.BorderSize = 0;
@@ -619,9 +623,10 @@
             this.cbVisible.Location = new System.Drawing.Point(218, 151);
             this.cbVisible.Margin = new System.Windows.Forms.Padding(0);
             this.cbVisible.Name = "cbVisible";
+            this.cbVisible.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbVisible.Size = new System.Drawing.Size(70, 22);
             this.cbVisible.TabIndex = 28;
-            this.cbVisible.Text = "Visible?";
+            this.cbVisible.Text = "Visible";
             this.cbVisible.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbVisible.UseVisualStyleBackColor = false;
             // 
@@ -726,7 +731,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TracePropertiesEdit";

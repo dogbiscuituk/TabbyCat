@@ -39,8 +39,12 @@
             this.lblFieldOfView = new System.Windows.Forms.Label();
             this.lblNearPlane = new System.Windows.Forms.Label();
             this.lblFarPlane = new System.Windows.Forms.Label();
+            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seCameraPositionY = new System.Windows.Forms.NumericUpDown();
             this.seCameraPositionZ = new System.Windows.Forms.NumericUpDown();
+            this.seCameraPitch = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seCameraYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
+            this.seCameraRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seFrustumMinX = new System.Windows.Forms.NumericUpDown();
             this.seFrustumMinY = new System.Windows.Forms.NumericUpDown();
             this.seFrustumMinZ = new System.Windows.Forms.NumericUpDown();
@@ -57,14 +61,14 @@
             this.seProjectionType = new System.Windows.Forms.DomainUpDown();
             this.seGLSLVersion = new System.Windows.Forms.DomainUpDown();
             this.seSampleCount = new System.Windows.Forms.DomainUpDown();
-            this.seFieldOfView = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seCameraPitch = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seCameraYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seCameraRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).BeginInit();
@@ -72,17 +76,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TableLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.TableLayoutPanel.BackColor = System.Drawing.SystemColors.Window;
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
@@ -140,7 +140,7 @@
             // cbStereo
             // 
             this.cbStereo.AutoSize = true;
-            this.cbStereo.BackColor = System.Drawing.SystemColors.Control;
+            this.cbStereo.BackColor = System.Drawing.SystemColors.Info;
             this.cbStereo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbStereo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbStereo.FlatAppearance.BorderSize = 0;
@@ -151,7 +151,7 @@
             this.cbStereo.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbStereo.Size = new System.Drawing.Size(70, 21);
             this.cbStereo.TabIndex = 12;
-            this.cbStereo.Text = "Stereo?";
+            this.cbStereo.Text = "Stereo";
             this.cbStereo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbStereo.UseVisualStyleBackColor = false;
             // 
@@ -181,7 +181,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.BackColor = System.Drawing.SystemColors.Control;
+            this.lblPosition.BackColor = System.Drawing.SystemColors.Window;
             this.lblPosition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPosition.Location = new System.Drawing.Point(0, 25);
             this.lblPosition.Margin = new System.Windows.Forms.Padding(0);
@@ -194,7 +194,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTitle.BackColor = System.Drawing.SystemColors.Window;
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0);
@@ -219,7 +219,7 @@
             // lblDirection
             // 
             this.lblDirection.AutoSize = true;
-            this.lblDirection.BackColor = System.Drawing.SystemColors.Control;
+            this.lblDirection.BackColor = System.Drawing.SystemColors.Window;
             this.lblDirection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDirection.Location = new System.Drawing.Point(0, 46);
             this.lblDirection.Margin = new System.Windows.Forms.Padding(0);
@@ -232,7 +232,7 @@
             // lblProjection
             // 
             this.lblProjection.AutoSize = true;
-            this.lblProjection.BackColor = System.Drawing.SystemColors.Control;
+            this.lblProjection.BackColor = System.Drawing.SystemColors.Info;
             this.lblProjection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblProjection.Location = new System.Drawing.Point(0, 67);
             this.lblProjection.Margin = new System.Windows.Forms.Padding(0);
@@ -245,7 +245,7 @@
             // lblFieldOfView
             // 
             this.lblFieldOfView.AutoSize = true;
-            this.lblFieldOfView.BackColor = System.Drawing.SystemColors.Control;
+            this.lblFieldOfView.BackColor = System.Drawing.SystemColors.Info;
             this.lblFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFieldOfView.Location = new System.Drawing.Point(0, 88);
             this.lblFieldOfView.Margin = new System.Windows.Forms.Padding(0);
@@ -258,7 +258,7 @@
             // lblNearPlane
             // 
             this.lblNearPlane.AutoSize = true;
-            this.lblNearPlane.BackColor = System.Drawing.SystemColors.Control;
+            this.lblNearPlane.BackColor = System.Drawing.SystemColors.Info;
             this.lblNearPlane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNearPlane.Location = new System.Drawing.Point(0, 109);
             this.lblNearPlane.Margin = new System.Windows.Forms.Padding(0);
@@ -271,7 +271,7 @@
             // lblFarPlane
             // 
             this.lblFarPlane.AutoSize = true;
-            this.lblFarPlane.BackColor = System.Drawing.SystemColors.Control;
+            this.lblFarPlane.BackColor = System.Drawing.SystemColors.Info;
             this.lblFarPlane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFarPlane.Location = new System.Drawing.Point(0, 130);
             this.lblFarPlane.Margin = new System.Windows.Forms.Padding(0);
@@ -280,6 +280,23 @@
             this.lblFarPlane.TabIndex = 21;
             this.lblFarPlane.Text = "Far plane";
             this.lblFarPlane.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // seFieldOfView
+            // 
+            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Info;
+            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFieldOfView.Location = new System.Drawing.Point(80, 88);
+            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(0);
+            this.seFieldOfView.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFieldOfView.Name = "seFieldOfView";
+            this.seFieldOfView.Size = new System.Drawing.Size(69, 21);
+            this.seFieldOfView.TabIndex = 14;
+            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seCameraPositionY
             // 
@@ -326,305 +343,6 @@
             this.seCameraPositionZ.Size = new System.Drawing.Size(70, 21);
             this.seCameraPositionZ.TabIndex = 5;
             this.seCameraPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMinX
-            // 
-            this.seFrustumMinX.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMinX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMinX.DecimalPlaces = 3;
-            this.seFrustumMinX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMinX.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMinX.Location = new System.Drawing.Point(80, 109);
-            this.seFrustumMinX.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMinX.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMinX.Name = "seFrustumMinX";
-            this.seFrustumMinX.Size = new System.Drawing.Size(69, 21);
-            this.seFrustumMinX.TabIndex = 18;
-            this.seFrustumMinX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMinY
-            // 
-            this.seFrustumMinY.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMinY.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMinY.DecimalPlaces = 3;
-            this.seFrustumMinY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMinY.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMinY.Location = new System.Drawing.Point(149, 109);
-            this.seFrustumMinY.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMinY.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMinY.Name = "seFrustumMinY";
-            this.seFrustumMinY.Size = new System.Drawing.Size(69, 21);
-            this.seFrustumMinY.TabIndex = 19;
-            this.seFrustumMinY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMinZ
-            // 
-            this.seFrustumMinZ.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMinZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMinZ.DecimalPlaces = 3;
-            this.seFrustumMinZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMinZ.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMinZ.Location = new System.Drawing.Point(218, 109);
-            this.seFrustumMinZ.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMinZ.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMinZ.Name = "seFrustumMinZ";
-            this.seFrustumMinZ.Size = new System.Drawing.Size(70, 21);
-            this.seFrustumMinZ.TabIndex = 20;
-            this.seFrustumMinZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMaxX
-            // 
-            this.seFrustumMaxX.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMaxX.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMaxX.DecimalPlaces = 3;
-            this.seFrustumMaxX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMaxX.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMaxX.Location = new System.Drawing.Point(80, 130);
-            this.seFrustumMaxX.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMaxX.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMaxX.Name = "seFrustumMaxX";
-            this.seFrustumMaxX.Size = new System.Drawing.Size(69, 21);
-            this.seFrustumMaxX.TabIndex = 22;
-            this.seFrustumMaxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMaxY
-            // 
-            this.seFrustumMaxY.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMaxY.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMaxY.DecimalPlaces = 3;
-            this.seFrustumMaxY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMaxY.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMaxY.Location = new System.Drawing.Point(149, 130);
-            this.seFrustumMaxY.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMaxY.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMaxY.Name = "seFrustumMaxY";
-            this.seFrustumMaxY.Size = new System.Drawing.Size(69, 21);
-            this.seFrustumMaxY.TabIndex = 23;
-            this.seFrustumMaxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFrustumMaxZ
-            // 
-            this.seFrustumMaxZ.BackColor = System.Drawing.SystemColors.Window;
-            this.seFrustumMaxZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFrustumMaxZ.DecimalPlaces = 3;
-            this.seFrustumMaxZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFrustumMaxZ.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.seFrustumMaxZ.Location = new System.Drawing.Point(218, 130);
-            this.seFrustumMaxZ.Margin = new System.Windows.Forms.Padding(0);
-            this.seFrustumMaxZ.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFrustumMaxZ.Name = "seFrustumMaxZ";
-            this.seFrustumMaxZ.Size = new System.Drawing.Size(70, 21);
-            this.seFrustumMaxZ.TabIndex = 24;
-            this.seFrustumMaxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblBackground
-            // 
-            this.lblBackground.AutoSize = true;
-            this.lblBackground.BackColor = System.Drawing.SystemColors.Control;
-            this.lblBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBackground.Location = new System.Drawing.Point(0, 172);
-            this.lblBackground.Margin = new System.Windows.Forms.Padding(0);
-            this.lblBackground.Name = "lblBackground";
-            this.lblBackground.Size = new System.Drawing.Size(80, 22);
-            this.lblBackground.TabIndex = 29;
-            this.lblBackground.Text = "Background";
-            this.lblBackground.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTargetFPS
-            // 
-            this.lblTargetFPS.AutoSize = true;
-            this.lblTargetFPS.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTargetFPS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTargetFPS.Location = new System.Drawing.Point(149, 88);
-            this.lblTargetFPS.Margin = new System.Windows.Forms.Padding(0);
-            this.lblTargetFPS.Name = "lblTargetFPS";
-            this.lblTargetFPS.Size = new System.Drawing.Size(69, 21);
-            this.lblTargetFPS.TabIndex = 15;
-            this.lblTargetFPS.Text = "Target FPS";
-            this.lblTargetFPS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblSamples
-            // 
-            this.lblSamples.AutoSize = true;
-            this.lblSamples.BackColor = System.Drawing.SystemColors.Control;
-            this.lblSamples.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSamples.Location = new System.Drawing.Point(0, 151);
-            this.lblSamples.Margin = new System.Windows.Forms.Padding(0);
-            this.lblSamples.Name = "lblSamples";
-            this.lblSamples.Size = new System.Drawing.Size(80, 21);
-            this.lblSamples.TabIndex = 25;
-            this.lblSamples.Text = "#Samples";
-            this.lblSamples.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblGLSLVersion
-            // 
-            this.lblGLSLVersion.AutoSize = true;
-            this.lblGLSLVersion.BackColor = System.Drawing.SystemColors.Control;
-            this.lblGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGLSLVersion.Location = new System.Drawing.Point(149, 151);
-            this.lblGLSLVersion.Margin = new System.Windows.Forms.Padding(0);
-            this.lblGLSLVersion.Name = "lblGLSLVersion";
-            this.lblGLSLVersion.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblGLSLVersion.Size = new System.Drawing.Size(69, 21);
-            this.lblGLSLVersion.TabIndex = 27;
-            this.lblGLSLVersion.Text = "GL version";
-            this.lblGLSLVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // seFPS
-            // 
-            this.seFPS.BackColor = System.Drawing.SystemColors.Window;
-            this.seFPS.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFPS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFPS.Location = new System.Drawing.Point(218, 88);
-            this.seFPS.Margin = new System.Windows.Forms.Padding(0);
-            this.seFPS.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFPS.Name = "seFPS";
-            this.seFPS.Size = new System.Drawing.Size(70, 21);
-            this.seFPS.TabIndex = 16;
-            this.seFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cbVSync
-            // 
-            this.cbVSync.AutoSize = true;
-            this.cbVSync.BackColor = System.Drawing.SystemColors.Control;
-            this.cbVSync.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbVSync.FlatAppearance.BorderSize = 0;
-            this.cbVSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbVSync.Location = new System.Drawing.Point(218, 172);
-            this.cbVSync.Margin = new System.Windows.Forms.Padding(0);
-            this.cbVSync.Name = "cbVSync";
-            this.cbVSync.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.cbVSync.Size = new System.Drawing.Size(70, 22);
-            this.cbVSync.TabIndex = 31;
-            this.cbVSync.Text = "VSync?";
-            this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbVSync.UseVisualStyleBackColor = false;
-            // 
-            // cbBackground
-            // 
-            this.cbBackground.BackColor = System.Drawing.SystemColors.Window;
-            this.TableLayoutPanel.SetColumnSpan(this.cbBackground, 2);
-            this.cbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbBackground.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbBackground.FormattingEnabled = true;
-            this.cbBackground.ItemHeight = 16;
-            this.cbBackground.Location = new System.Drawing.Point(80, 172);
-            this.cbBackground.Margin = new System.Windows.Forms.Padding(0);
-            this.cbBackground.Name = "cbBackground";
-            this.cbBackground.Size = new System.Drawing.Size(138, 22);
-            this.cbBackground.TabIndex = 30;
-            // 
-            // seProjectionType
-            // 
-            this.seProjectionType.BackColor = System.Drawing.SystemColors.Window;
-            this.seProjectionType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TableLayoutPanel.SetColumnSpan(this.seProjectionType, 2);
-            this.seProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seProjectionType.Location = new System.Drawing.Point(80, 67);
-            this.seProjectionType.Margin = new System.Windows.Forms.Padding(0);
-            this.seProjectionType.Name = "seProjectionType";
-            this.seProjectionType.ReadOnly = true;
-            this.seProjectionType.Size = new System.Drawing.Size(138, 21);
-            this.seProjectionType.TabIndex = 11;
-            this.seProjectionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seGLSLVersion
-            // 
-            this.seGLSLVersion.BackColor = System.Drawing.SystemColors.Window;
-            this.seGLSLVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seGLSLVersion.Location = new System.Drawing.Point(218, 151);
-            this.seGLSLVersion.Margin = new System.Windows.Forms.Padding(0);
-            this.seGLSLVersion.Name = "seGLSLVersion";
-            this.seGLSLVersion.ReadOnly = true;
-            this.seGLSLVersion.Size = new System.Drawing.Size(70, 21);
-            this.seGLSLVersion.TabIndex = 28;
-            this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seSampleCount
-            // 
-            this.seSampleCount.BackColor = System.Drawing.SystemColors.Window;
-            this.seSampleCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seSampleCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seSampleCount.Location = new System.Drawing.Point(80, 151);
-            this.seSampleCount.Margin = new System.Windows.Forms.Padding(0);
-            this.seSampleCount.Name = "seSampleCount";
-            this.seSampleCount.ReadOnly = true;
-            this.seSampleCount.Size = new System.Drawing.Size(69, 21);
-            this.seSampleCount.TabIndex = 26;
-            this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // seFieldOfView
-            // 
-            this.seFieldOfView.BackColor = System.Drawing.SystemColors.Window;
-            this.seFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.seFieldOfView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.seFieldOfView.Location = new System.Drawing.Point(80, 88);
-            this.seFieldOfView.Margin = new System.Windows.Forms.Padding(0);
-            this.seFieldOfView.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.seFieldOfView.Name = "seFieldOfView";
-            this.seFieldOfView.Size = new System.Drawing.Size(69, 21);
-            this.seFieldOfView.TabIndex = 14;
-            this.seFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // seCameraPitch
             // 
@@ -677,12 +395,294 @@
             this.seCameraRoll.TabIndex = 9;
             this.seCameraRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // seFrustumMinX
+            // 
+            this.seFrustumMinX.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMinX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMinX.DecimalPlaces = 3;
+            this.seFrustumMinX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMinX.Location = new System.Drawing.Point(80, 109);
+            this.seFrustumMinX.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMinX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMinX.Name = "seFrustumMinX";
+            this.seFrustumMinX.Size = new System.Drawing.Size(69, 21);
+            this.seFrustumMinX.TabIndex = 18;
+            this.seFrustumMinX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seFrustumMinY
+            // 
+            this.seFrustumMinY.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMinY.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMinY.DecimalPlaces = 3;
+            this.seFrustumMinY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMinY.Location = new System.Drawing.Point(149, 109);
+            this.seFrustumMinY.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMinY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMinY.Name = "seFrustumMinY";
+            this.seFrustumMinY.Size = new System.Drawing.Size(69, 21);
+            this.seFrustumMinY.TabIndex = 19;
+            this.seFrustumMinY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seFrustumMinZ
+            // 
+            this.seFrustumMinZ.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMinZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMinZ.DecimalPlaces = 3;
+            this.seFrustumMinZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMinZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMinZ.Location = new System.Drawing.Point(218, 109);
+            this.seFrustumMinZ.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMinZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMinZ.Name = "seFrustumMinZ";
+            this.seFrustumMinZ.Size = new System.Drawing.Size(70, 21);
+            this.seFrustumMinZ.TabIndex = 20;
+            this.seFrustumMinZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seFrustumMaxX
+            // 
+            this.seFrustumMaxX.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMaxX.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMaxX.DecimalPlaces = 3;
+            this.seFrustumMaxX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMaxX.Location = new System.Drawing.Point(80, 130);
+            this.seFrustumMaxX.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMaxX.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMaxX.Name = "seFrustumMaxX";
+            this.seFrustumMaxX.Size = new System.Drawing.Size(69, 21);
+            this.seFrustumMaxX.TabIndex = 22;
+            this.seFrustumMaxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seFrustumMaxY
+            // 
+            this.seFrustumMaxY.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMaxY.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMaxY.DecimalPlaces = 3;
+            this.seFrustumMaxY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMaxY.Location = new System.Drawing.Point(149, 130);
+            this.seFrustumMaxY.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMaxY.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMaxY.Name = "seFrustumMaxY";
+            this.seFrustumMaxY.Size = new System.Drawing.Size(69, 21);
+            this.seFrustumMaxY.TabIndex = 23;
+            this.seFrustumMaxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seFrustumMaxZ
+            // 
+            this.seFrustumMaxZ.BackColor = System.Drawing.SystemColors.Info;
+            this.seFrustumMaxZ.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFrustumMaxZ.DecimalPlaces = 3;
+            this.seFrustumMaxZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFrustumMaxZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.seFrustumMaxZ.Location = new System.Drawing.Point(218, 130);
+            this.seFrustumMaxZ.Margin = new System.Windows.Forms.Padding(0);
+            this.seFrustumMaxZ.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFrustumMaxZ.Name = "seFrustumMaxZ";
+            this.seFrustumMaxZ.Size = new System.Drawing.Size(70, 21);
+            this.seFrustumMaxZ.TabIndex = 24;
+            this.seFrustumMaxZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblBackground
+            // 
+            this.lblBackground.AutoSize = true;
+            this.lblBackground.BackColor = System.Drawing.SystemColors.Window;
+            this.lblBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBackground.Location = new System.Drawing.Point(0, 172);
+            this.lblBackground.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBackground.Name = "lblBackground";
+            this.lblBackground.Size = new System.Drawing.Size(80, 22);
+            this.lblBackground.TabIndex = 29;
+            this.lblBackground.Text = "Background";
+            this.lblBackground.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTargetFPS
+            // 
+            this.lblTargetFPS.AutoSize = true;
+            this.lblTargetFPS.BackColor = System.Drawing.SystemColors.Info;
+            this.lblTargetFPS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTargetFPS.Location = new System.Drawing.Point(149, 88);
+            this.lblTargetFPS.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTargetFPS.Name = "lblTargetFPS";
+            this.lblTargetFPS.Size = new System.Drawing.Size(69, 21);
+            this.lblTargetFPS.TabIndex = 15;
+            this.lblTargetFPS.Text = "Target FPS";
+            this.lblTargetFPS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSamples
+            // 
+            this.lblSamples.AutoSize = true;
+            this.lblSamples.BackColor = System.Drawing.SystemColors.Window;
+            this.lblSamples.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSamples.Location = new System.Drawing.Point(0, 151);
+            this.lblSamples.Margin = new System.Windows.Forms.Padding(0);
+            this.lblSamples.Name = "lblSamples";
+            this.lblSamples.Size = new System.Drawing.Size(80, 21);
+            this.lblSamples.TabIndex = 25;
+            this.lblSamples.Text = "#Samples";
+            this.lblSamples.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblGLSLVersion
+            // 
+            this.lblGLSLVersion.AutoSize = true;
+            this.lblGLSLVersion.BackColor = System.Drawing.SystemColors.Window;
+            this.lblGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblGLSLVersion.Location = new System.Drawing.Point(149, 151);
+            this.lblGLSLVersion.Margin = new System.Windows.Forms.Padding(0);
+            this.lblGLSLVersion.Name = "lblGLSLVersion";
+            this.lblGLSLVersion.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblGLSLVersion.Size = new System.Drawing.Size(69, 21);
+            this.lblGLSLVersion.TabIndex = 27;
+            this.lblGLSLVersion.Text = "GL version";
+            this.lblGLSLVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // seFPS
+            // 
+            this.seFPS.BackColor = System.Drawing.SystemColors.Info;
+            this.seFPS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seFPS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seFPS.Location = new System.Drawing.Point(218, 88);
+            this.seFPS.Margin = new System.Windows.Forms.Padding(0);
+            this.seFPS.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.seFPS.Name = "seFPS";
+            this.seFPS.Size = new System.Drawing.Size(70, 21);
+            this.seFPS.TabIndex = 16;
+            this.seFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cbVSync
+            // 
+            this.cbVSync.AutoSize = true;
+            this.cbVSync.BackColor = System.Drawing.SystemColors.Window;
+            this.cbVSync.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbVSync.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbVSync.FlatAppearance.BorderSize = 0;
+            this.cbVSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbVSync.Location = new System.Drawing.Point(218, 172);
+            this.cbVSync.Margin = new System.Windows.Forms.Padding(0);
+            this.cbVSync.Name = "cbVSync";
+            this.cbVSync.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbVSync.Size = new System.Drawing.Size(70, 22);
+            this.cbVSync.TabIndex = 31;
+            this.cbVSync.Text = "VSync";
+            this.cbVSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbVSync.UseVisualStyleBackColor = false;
+            // 
+            // cbBackground
+            // 
+            this.cbBackground.BackColor = System.Drawing.SystemColors.Window;
+            this.TableLayoutPanel.SetColumnSpan(this.cbBackground, 2);
+            this.cbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbBackground.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbBackground.FormattingEnabled = true;
+            this.cbBackground.ItemHeight = 16;
+            this.cbBackground.Location = new System.Drawing.Point(80, 172);
+            this.cbBackground.Margin = new System.Windows.Forms.Padding(0);
+            this.cbBackground.Name = "cbBackground";
+            this.cbBackground.Size = new System.Drawing.Size(138, 22);
+            this.cbBackground.TabIndex = 30;
+            // 
+            // seProjectionType
+            // 
+            this.seProjectionType.BackColor = System.Drawing.SystemColors.Info;
+            this.seProjectionType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TableLayoutPanel.SetColumnSpan(this.seProjectionType, 2);
+            this.seProjectionType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seProjectionType.Location = new System.Drawing.Point(80, 67);
+            this.seProjectionType.Margin = new System.Windows.Forms.Padding(0);
+            this.seProjectionType.Name = "seProjectionType";
+            this.seProjectionType.ReadOnly = true;
+            this.seProjectionType.Size = new System.Drawing.Size(138, 21);
+            this.seProjectionType.TabIndex = 11;
+            this.seProjectionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seGLSLVersion
+            // 
+            this.seGLSLVersion.BackColor = System.Drawing.SystemColors.Window;
+            this.seGLSLVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seGLSLVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seGLSLVersion.Location = new System.Drawing.Point(218, 151);
+            this.seGLSLVersion.Margin = new System.Windows.Forms.Padding(0);
+            this.seGLSLVersion.Name = "seGLSLVersion";
+            this.seGLSLVersion.ReadOnly = true;
+            this.seGLSLVersion.Size = new System.Drawing.Size(70, 21);
+            this.seGLSLVersion.TabIndex = 28;
+            this.seGLSLVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // seSampleCount
+            // 
+            this.seSampleCount.BackColor = System.Drawing.SystemColors.Window;
+            this.seSampleCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seSampleCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.seSampleCount.Location = new System.Drawing.Point(80, 151);
+            this.seSampleCount.Margin = new System.Windows.Forms.Padding(0);
+            this.seSampleCount.Name = "seSampleCount";
+            this.seSampleCount.ReadOnly = true;
+            this.seSampleCount.Size = new System.Drawing.Size(69, 21);
+            this.seSampleCount.TabIndex = 26;
+            this.seSampleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ScenePropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ScenePropertiesEdit";
@@ -690,8 +690,12 @@
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seCameraPositionZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMinZ)).EndInit();
@@ -699,10 +703,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFrustumMaxZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seFPS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seFieldOfView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraPitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraYaw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seCameraRoll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

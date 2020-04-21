@@ -222,9 +222,9 @@
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
         private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
         private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
-        private void AddLinePlot_Click(object sender, EventArgs e) => AddCurvePlot();
-        private void AddSurfacePlot_Click(object sender, EventArgs e) => AddSurfacePlot();
-        private void AddVolumePlot_Click(object sender, EventArgs e) => AddVolumePlot();
+        private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
+        private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
+        private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
         private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
         private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
@@ -251,34 +251,19 @@
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
-        private static Trace GetNewTrace(PlotType plotType)
-        {
-            switch (plotType)
-            {
-                case PlotType.Curve:
-                    return new Curve();
-                case PlotType.Surface:
-                    return new Surface();
-                case PlotType.Volume:
-                    return new Volume();
-                default:
-                    return null;
-            }
-        }
+        private void AddCurve() => AddTrace(TraceType.Curve);
 
-        private void AddPlot(PlotType plotType)
+        private void AddSurface() => AddTrace(TraceType.Surface);
+
+        private void AddTrace(TraceType traceType)
         {
-            var trace = GetNewTrace(plotType);
+            var trace = GetNewTrace(traceType);
             trace.Scene = Scene;
             CommandProcessor.AppendTrace(trace);
             Selection.Set(new[] { Scene.Traces.Last() });
         }
 
-        private void AddCurvePlot() => AddPlot(PlotType.Curve);
-
-        private void AddSurfacePlot() => AddPlot(PlotType.Surface);
-
-        private void AddVolumePlot() => AddPlot(PlotType.Volume);
+        private void AddVolume() => AddTrace(TraceType.Volume);
 
         private void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
@@ -390,9 +375,9 @@
                 WorldForm.FileSaveAs.Click += FileSaveAs_Click;
                 WorldForm.FileClose.Click += FileClose_Click;
                 WorldForm.FileExit.Click += FileExit_Click;
-                WorldForm.AddCurve.Click += AddLinePlot_Click;
-                WorldForm.AddSurface.Click += AddSurfacePlot_Click;
-                WorldForm.AddVolume.Click += AddVolumePlot_Click;
+                WorldForm.AddCurve.Click += AddCurve_Click;
+                WorldForm.AddSurface.Click += AddSurface_Click;
+                WorldForm.AddVolume.Click += AddVolume_Click;
                 WorldForm.EditCut.Click += EditCut_Click;
                 WorldForm.EditCopy.Click += EditCopy_Click;
                 WorldForm.EditPaste.Click += EditPaste_Click;
@@ -420,9 +405,9 @@
                 WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
                 WorldForm.FileClose.Click -= FileClose_Click;
                 WorldForm.FileExit.Click -= FileExit_Click;
-                WorldForm.AddCurve.Click -= AddLinePlot_Click;
-                WorldForm.AddSurface.Click -= AddSurfacePlot_Click;
-                WorldForm.AddVolume.Click -= AddVolumePlot_Click;
+                WorldForm.AddCurve.Click -= AddCurve_Click;
+                WorldForm.AddSurface.Click -= AddSurface_Click;
+                WorldForm.AddVolume.Click -= AddVolume_Click;
                 WorldForm.EditCut.Click -= EditCut_Click;
                 WorldForm.EditCopy.Click -= EditCopy_Click;
                 WorldForm.EditPaste.Click -= EditPaste_Click;
@@ -447,9 +432,10 @@
         {
             if (connect)
             {
-                WorldForm.tbAddCurve.Click += AddLinePlot_Click;
-                WorldForm.tbAddSurface.Click += AddSurfacePlot_Click;
-                WorldForm.tbAddVolume.Click += AddVolumePlot_Click;
+                WorldForm.tbAdd.ButtonClick += AddCurve_Click;
+                WorldForm.tbAddCurve.Click += AddCurve_Click;
+                WorldForm.tbAddSurface.Click += AddSurface_Click;
+                WorldForm.tbAddVolume.Click += AddVolume_Click;
                 WorldForm.tbCut.Click += EditCut_Click;
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
@@ -463,9 +449,10 @@
             }
             else
             {
-                WorldForm.tbAddCurve.Click -= AddLinePlot_Click;
-                WorldForm.tbAddSurface.Click -= AddSurfacePlot_Click;
-                WorldForm.tbAddVolume.Click -= AddVolumePlot_Click;
+                WorldForm.tbAdd.ButtonClick -= AddCurve_Click;
+                WorldForm.tbAddCurve.Click -= AddCurve_Click;
+                WorldForm.tbAddSurface.Click -= AddSurface_Click;
+                WorldForm.tbAddVolume.Click -= AddVolume_Click;
                 WorldForm.tbCut.Click -= EditCut_Click;
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;
@@ -547,6 +534,21 @@
         private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
 
         private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
+
+        private static Trace GetNewTrace(TraceType traceType)
+        {
+            switch (traceType)
+            {
+                case TraceType.Curve:
+                    return new Curve();
+                case TraceType.Surface:
+                    return new Surface();
+                case TraceType.Volume:
+                    return new Volume();
+                default:
+                    return null;
+            }
+        }
 
         private WorldCon GetNewWorldCon()
         {

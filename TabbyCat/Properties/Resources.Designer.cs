@@ -635,7 +635,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stereo?|Whether or not the current display mode
+        ///   Looks up a localized string similar to Stereo|Whether or not the current display mode
         ///is stereoscopic.
         /// </summary>
         public static string Control_Scene_Stereo {
@@ -663,7 +663,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VSync?|Whether or not to use vertical sync.
+        ///   Looks up a localized string similar to VSync|Whether or not to use vertical sync.
         /// </summary>
         public static string Control_Scene_VSync {
             get {
@@ -910,7 +910,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visible?|Whether or not a trace is visible.
+        ///   Looks up a localized string similar to Visible|Whether or not a trace is visible.
         /// </summary>
         public static string Control_Trace_Visible {
             get {

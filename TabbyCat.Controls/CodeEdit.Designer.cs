@@ -51,29 +51,14 @@
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
             this.jmkScrollPanel1 = new Jmk.Controls.JmkScrollPanel();
             this.lblBuiltInHelp = new Jmk.Controls.JmkLinkLabel();
-            this.Toolbar = new Jmk.Controls.JmkToolStrip();
-            this.tbExport = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbExportHTML = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbExportRTF = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbPrint = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.VerticalToolbar = new System.Windows.Forms.ToolStrip();
             this.tbUndo = new System.Windows.Forms.ToolStripButton();
             this.tbRedo = new System.Windows.Forms.ToolStripButton();
             this.tbCut = new System.Windows.Forms.ToolStripButton();
             this.tbCopy = new System.Windows.Forms.ToolStripButton();
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbOptions = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tbRuler = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbLineNumbers = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbDocumentMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbSplit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplitHorizontal = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbSplitVertical = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbSplitNone = new System.Windows.Forms.ToolStripMenuItem();
+            this.HorizontalToolbar = new Jmk.Controls.JmkToolStrip();
             this.tbShader = new System.Windows.Forms.ToolStripSplitButton();
             this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
             this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +66,22 @@
             this.miGeometry = new System.Windows.Forms.ToolStripMenuItem();
             this.miFragment = new System.Windows.Forms.ToolStripMenuItem();
             this.miCompute = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbExport = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tbExportHTML = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbExportRTF = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbOptions = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tbRuler = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbLineNumbers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbDocumentMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSplit = new System.Windows.Forms.ToolStripSplitButton();
+            this.tbSplitHorizontal = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSplitVertical = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbSplitNone = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer.ContentPanel.SuspendLayout();
+            this.ToolStripContainer.LeftToolStripPanel.SuspendLayout();
             this.ToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.ToolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
@@ -104,7 +104,8 @@
             this.BottomSplit.Panel2.SuspendLayout();
             this.BottomSplit.SuspendLayout();
             this.jmkScrollPanel1.SuspendLayout();
-            this.Toolbar.SuspendLayout();
+            this.VerticalToolbar.SuspendLayout();
+            this.HorizontalToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStripContainer
@@ -113,9 +114,12 @@
             // ToolStripContainer.ContentPanel
             // 
             this.ToolStripContainer.ContentPanel.Controls.Add(this.MainSplit);
-            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(360, 430);
+            this.ToolStripContainer.ContentPanel.Size = new System.Drawing.Size(337, 430);
             this.ToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ToolStripContainer.LeftToolStripPanelVisible = false;
+            // 
+            // ToolStripContainer.LeftToolStripPanel
+            // 
+            this.ToolStripContainer.LeftToolStripPanel.Controls.Add(this.VerticalToolbar);
             this.ToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.ToolStripContainer.Name = "ToolStripContainer";
             this.ToolStripContainer.RightToolStripPanelVisible = false;
@@ -125,7 +129,7 @@
             // 
             // ToolStripContainer.TopToolStripPanel
             // 
-            this.ToolStripContainer.TopToolStripPanel.Controls.Add(this.Toolbar);
+            this.ToolStripContainer.TopToolStripPanel.Controls.Add(this.HorizontalToolbar);
             // 
             // MainSplit
             // 
@@ -142,7 +146,7 @@
             // MainSplit.Panel2
             // 
             this.MainSplit.Panel2.Controls.Add(this.jmkScrollPanel1);
-            this.MainSplit.Size = new System.Drawing.Size(360, 430);
+            this.MainSplit.Size = new System.Drawing.Size(337, 430);
             this.MainSplit.SplitterDistance = 401;
             this.MainSplit.TabIndex = 4;
             // 
@@ -162,7 +166,7 @@
             // 
             this.EditSplit.Panel2.Controls.Add(this.BottomSplit);
             this.EditSplit.Panel2MinSize = 0;
-            this.EditSplit.Size = new System.Drawing.Size(360, 401);
+            this.EditSplit.Size = new System.Drawing.Size(337, 401);
             this.EditSplit.SplitterDistance = 197;
             this.EditSplit.SplitterWidth = 5;
             this.EditSplit.TabIndex = 3;
@@ -182,8 +186,8 @@
             // TopSplit.Panel2
             // 
             this.TopSplit.Panel2.Controls.Add(this.SecondaryMap);
-            this.TopSplit.Size = new System.Drawing.Size(360, 197);
-            this.TopSplit.SplitterDistance = 227;
+            this.TopSplit.Size = new System.Drawing.Size(337, 197);
+            this.TopSplit.SplitterDistance = 202;
             this.TopSplit.SplitterWidth = 5;
             this.TopSplit.TabIndex = 5;
             // 
@@ -227,7 +231,7 @@
             this.SecondaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("SecondaryTextBox.ServiceColors")));
             this.SecondaryTextBox.ShowFoldingLines = true;
             this.SecondaryTextBox.ShowLineNumbers = false;
-            this.SecondaryTextBox.Size = new System.Drawing.Size(227, 169);
+            this.SecondaryTextBox.Size = new System.Drawing.Size(202, 169);
             this.SecondaryTextBox.SourceTextBox = this.PrimaryTextBox;
             this.SecondaryTextBox.TabIndex = 1;
             this.SecondaryTextBox.TabLength = 2;
@@ -245,46 +249,46 @@
             this.miPaste,
             this.miDelete});
             this.PopupEditMenu.Name = "PopupEditMenu";
-            this.PopupEditMenu.Size = new System.Drawing.Size(181, 164);
+            this.PopupEditMenu.Size = new System.Drawing.Size(108, 142);
             // 
             // miUndo
             // 
             this.miUndo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
             this.miUndo.Name = "miUndo";
-            this.miUndo.Size = new System.Drawing.Size(180, 22);
+            this.miUndo.Size = new System.Drawing.Size(107, 22);
             this.miUndo.Text = "Undo";
             // 
             // miRedo
             // 
             this.miRedo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
             this.miRedo.Name = "miRedo";
-            this.miRedo.Size = new System.Drawing.Size(180, 22);
+            this.miRedo.Size = new System.Drawing.Size(107, 22);
             this.miRedo.Text = "Redo";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
             // 
             // miCut
             // 
             this.miCut.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
             this.miCut.Name = "miCut";
-            this.miCut.Size = new System.Drawing.Size(180, 22);
+            this.miCut.Size = new System.Drawing.Size(107, 22);
             this.miCut.Text = "Cut";
             // 
             // miCopy
             // 
             this.miCopy.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
             this.miCopy.Name = "miCopy";
-            this.miCopy.Size = new System.Drawing.Size(180, 22);
+            this.miCopy.Size = new System.Drawing.Size(107, 22);
             this.miCopy.Text = "Copy";
             // 
             // miPaste
             // 
             this.miPaste.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
             this.miPaste.Name = "miPaste";
-            this.miPaste.Size = new System.Drawing.Size(180, 22);
+            this.miPaste.Size = new System.Drawing.Size(107, 22);
             this.miPaste.Text = "Paste";
             // 
             // miDelete
@@ -292,7 +296,7 @@
             this.miDelete.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
             this.miDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.miDelete.Name = "miDelete";
-            this.miDelete.Size = new System.Drawing.Size(180, 22);
+            this.miDelete.Size = new System.Drawing.Size(107, 22);
             this.miDelete.Text = "Delete";
             // 
             // PrimaryTextBox
@@ -335,7 +339,7 @@
             this.PrimaryTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("PrimaryTextBox.ServiceColors")));
             this.PrimaryTextBox.ShowFoldingLines = true;
             this.PrimaryTextBox.ShowLineNumbers = false;
-            this.PrimaryTextBox.Size = new System.Drawing.Size(227, 171);
+            this.PrimaryTextBox.Size = new System.Drawing.Size(202, 171);
             this.PrimaryTextBox.TabIndex = 2;
             this.PrimaryTextBox.TabLength = 2;
             this.PrimaryTextBox.WordWrap = true;
@@ -350,7 +354,7 @@
             this.SecondaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.SecondaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.SecondaryRuler.Name = "SecondaryRuler";
-            this.SecondaryRuler.Size = new System.Drawing.Size(227, 28);
+            this.SecondaryRuler.Size = new System.Drawing.Size(202, 28);
             this.SecondaryRuler.TabIndex = 4;
             this.SecondaryRuler.Target = this.SecondaryTextBox;
             this.SecondaryRuler.Visible = false;
@@ -362,7 +366,7 @@
             this.SecondaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.SecondaryMap.Location = new System.Drawing.Point(0, 0);
             this.SecondaryMap.Name = "SecondaryMap";
-            this.SecondaryMap.Size = new System.Drawing.Size(128, 197);
+            this.SecondaryMap.Size = new System.Drawing.Size(130, 197);
             this.SecondaryMap.TabIndex = 0;
             this.SecondaryMap.Target = this.SecondaryTextBox;
             // 
@@ -381,8 +385,8 @@
             // BottomSplit.Panel2
             // 
             this.BottomSplit.Panel2.Controls.Add(this.PrimaryMap);
-            this.BottomSplit.Size = new System.Drawing.Size(360, 199);
-            this.BottomSplit.SplitterDistance = 227;
+            this.BottomSplit.Size = new System.Drawing.Size(337, 199);
+            this.BottomSplit.SplitterDistance = 202;
             this.BottomSplit.SplitterWidth = 5;
             this.BottomSplit.TabIndex = 4;
             // 
@@ -395,7 +399,7 @@
             this.PrimaryRuler.MaximumSize = new System.Drawing.Size(1073741824, 24);
             this.PrimaryRuler.MinimumSize = new System.Drawing.Size(0, 28);
             this.PrimaryRuler.Name = "PrimaryRuler";
-            this.PrimaryRuler.Size = new System.Drawing.Size(227, 28);
+            this.PrimaryRuler.Size = new System.Drawing.Size(202, 28);
             this.PrimaryRuler.TabIndex = 3;
             this.PrimaryRuler.Target = this.PrimaryTextBox;
             this.PrimaryRuler.Visible = false;
@@ -407,7 +411,7 @@
             this.PrimaryMap.ForeColor = System.Drawing.Color.Maroon;
             this.PrimaryMap.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMap.Name = "PrimaryMap";
-            this.PrimaryMap.Size = new System.Drawing.Size(128, 199);
+            this.PrimaryMap.Size = new System.Drawing.Size(130, 199);
             this.PrimaryMap.TabIndex = 0;
             this.PrimaryMap.Target = this.PrimaryTextBox;
             // 
@@ -418,7 +422,7 @@
             this.jmkScrollPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.jmkScrollPanel1.Location = new System.Drawing.Point(0, 0);
             this.jmkScrollPanel1.Name = "jmkScrollPanel1";
-            this.jmkScrollPanel1.Size = new System.Drawing.Size(360, 25);
+            this.jmkScrollPanel1.Size = new System.Drawing.Size(337, 25);
             this.jmkScrollPanel1.TabIndex = 2;
             // 
             // lblBuiltInHelp
@@ -432,29 +436,157 @@
             this.lblBuiltInHelp.TabIndex = 1;
             this.lblBuiltInHelp.Text = "Help text will appear here.";
             // 
-            // Toolbar
+            // VerticalToolbar
             // 
-            this.Toolbar.Dock = System.Windows.Forms.DockStyle.None;
-            this.Toolbar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Toolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbExport,
-            this.tbPrint,
-            this.toolStripSeparator1,
+            this.VerticalToolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.VerticalToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.VerticalToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbUndo,
             this.tbRedo,
             this.tbCut,
             this.tbCopy,
             this.tbPaste,
-            this.tbDelete,
-            this.toolStripSeparator2,
+            this.tbDelete});
+            this.VerticalToolbar.Location = new System.Drawing.Point(0, 0);
+            this.VerticalToolbar.Name = "VerticalToolbar";
+            this.VerticalToolbar.Padding = new System.Windows.Forms.Padding(0);
+            this.VerticalToolbar.Size = new System.Drawing.Size(23, 430);
+            this.VerticalToolbar.Stretch = true;
+            this.VerticalToolbar.TabIndex = 0;
+            // 
+            // tbUndo
+            // 
+            this.tbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbUndo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
+            this.tbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbUndo.Name = "tbUndo";
+            this.tbUndo.Size = new System.Drawing.Size(22, 20);
+            this.tbUndo.ToolTipText = "Undo";
+            // 
+            // tbRedo
+            // 
+            this.tbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbRedo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
+            this.tbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbRedo.Name = "tbRedo";
+            this.tbRedo.Size = new System.Drawing.Size(22, 20);
+            this.tbRedo.ToolTipText = "Redo";
+            // 
+            // tbCut
+            // 
+            this.tbCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbCut.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
+            this.tbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbCut.Name = "tbCut";
+            this.tbCut.Size = new System.Drawing.Size(22, 20);
+            this.tbCut.ToolTipText = "Cut";
+            // 
+            // tbCopy
+            // 
+            this.tbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbCopy.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
+            this.tbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbCopy.Name = "tbCopy";
+            this.tbCopy.Size = new System.Drawing.Size(22, 20);
+            this.tbCopy.ToolTipText = "Copy";
+            // 
+            // tbPaste
+            // 
+            this.tbPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbPaste.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
+            this.tbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbPaste.Name = "tbPaste";
+            this.tbPaste.Size = new System.Drawing.Size(22, 20);
+            this.tbPaste.ToolTipText = "Paste";
+            // 
+            // tbDelete
+            // 
+            this.tbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbDelete.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
+            this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
+            this.tbDelete.Name = "tbDelete";
+            this.tbDelete.Size = new System.Drawing.Size(22, 20);
+            this.tbDelete.ToolTipText = "Delete";
+            // 
+            // HorizontalToolbar
+            // 
+            this.HorizontalToolbar.Dock = System.Windows.Forms.DockStyle.None;
+            this.HorizontalToolbar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HorizontalToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.HorizontalToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbShader,
+            this.tbExport,
+            this.tbPrint,
+            this.toolStripSeparator1,
             this.tbOptions,
-            this.tbShader});
-            this.Toolbar.Location = new System.Drawing.Point(0, 0);
-            this.Toolbar.Name = "Toolbar";
-            this.Toolbar.Size = new System.Drawing.Size(360, 25);
-            this.Toolbar.Stretch = true;
-            this.Toolbar.TabIndex = 0;
+            this.tbSplit});
+            this.HorizontalToolbar.Location = new System.Drawing.Point(0, 0);
+            this.HorizontalToolbar.Name = "HorizontalToolbar";
+            this.HorizontalToolbar.Size = new System.Drawing.Size(360, 25);
+            this.HorizontalToolbar.Stretch = true;
+            this.HorizontalToolbar.TabIndex = 0;
+            // 
+            // tbShader
+            // 
+            this.tbShader.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tbShader.AutoSize = false;
+            this.tbShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tbShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miVertex,
+            this.miTessellationControl,
+            this.miTessellationEvaluation,
+            this.miGeometry,
+            this.miFragment,
+            this.miCompute});
+            this.tbShader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbShader.Image = ((System.Drawing.Image)(resources.GetObject("tbShader.Image")));
+            this.tbShader.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbShader.Name = "tbShader";
+            this.tbShader.Size = new System.Drawing.Size(96, 22);
+            this.tbShader.Text = "Vertex";
+            this.tbShader.ToolTipText = "Selected Shader";
+            // 
+            // miVertex
+            // 
+            this.miVertex.Name = "miVertex";
+            this.miVertex.Size = new System.Drawing.Size(180, 22);
+            this.miVertex.Text = "Vertex";
+            this.miVertex.ToolTipText = "Vertex Shader";
+            // 
+            // miTessellationControl
+            // 
+            this.miTessellationControl.Name = "miTessellationControl";
+            this.miTessellationControl.Size = new System.Drawing.Size(180, 22);
+            this.miTessellationControl.Text = "Tess Ctrl";
+            this.miTessellationControl.ToolTipText = "Tessellation Control Shader";
+            // 
+            // miTessellationEvaluation
+            // 
+            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
+            this.miTessellationEvaluation.Size = new System.Drawing.Size(180, 22);
+            this.miTessellationEvaluation.Text = "Tess Eval";
+            this.miTessellationEvaluation.ToolTipText = "Tessellation Evaluation Shader";
+            // 
+            // miGeometry
+            // 
+            this.miGeometry.Name = "miGeometry";
+            this.miGeometry.Size = new System.Drawing.Size(180, 22);
+            this.miGeometry.Text = "Geometry";
+            this.miGeometry.ToolTipText = "Geometry Shader";
+            // 
+            // miFragment
+            // 
+            this.miFragment.Name = "miFragment";
+            this.miFragment.Size = new System.Drawing.Size(180, 22);
+            this.miFragment.Text = "Fragment";
+            this.miFragment.ToolTipText = "Fragment Shader";
+            // 
+            // miCompute
+            // 
+            this.miCompute.Name = "miCompute";
+            this.miCompute.Size = new System.Drawing.Size(180, 22);
+            this.miCompute.Text = "Compute";
+            this.miCompute.ToolTipText = "Compute Shader";
             // 
             // tbExport
             // 
@@ -494,74 +626,13 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // tbUndo
-            // 
-            this.tbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbUndo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
-            this.tbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbUndo.Name = "tbUndo";
-            this.tbUndo.Size = new System.Drawing.Size(23, 22);
-            this.tbUndo.ToolTipText = "Undo";
-            // 
-            // tbRedo
-            // 
-            this.tbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbRedo.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
-            this.tbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbRedo.Name = "tbRedo";
-            this.tbRedo.Size = new System.Drawing.Size(23, 22);
-            this.tbRedo.ToolTipText = "Redo";
-            // 
-            // tbCut
-            // 
-            this.tbCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbCut.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
-            this.tbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbCut.Name = "tbCut";
-            this.tbCut.Size = new System.Drawing.Size(23, 22);
-            this.tbCut.ToolTipText = "Cut";
-            // 
-            // tbCopy
-            // 
-            this.tbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbCopy.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
-            this.tbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbCopy.Name = "tbCopy";
-            this.tbCopy.Size = new System.Drawing.Size(23, 22);
-            this.tbCopy.ToolTipText = "Copy";
-            // 
-            // tbPaste
-            // 
-            this.tbPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbPaste.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
-            this.tbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbPaste.Name = "tbPaste";
-            this.tbPaste.Size = new System.Drawing.Size(23, 22);
-            this.tbPaste.ToolTipText = "Paste";
-            // 
-            // tbDelete
-            // 
-            this.tbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbDelete.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
-            this.tbDelete.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbDelete.Name = "tbDelete";
-            this.tbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tbDelete.ToolTipText = "Delete";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // tbOptions
             // 
             this.tbOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tbOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbRuler,
             this.tbLineNumbers,
-            this.tbDocumentMap,
-            this.toolStripMenuItem2,
-            this.tbSplit});
+            this.tbDocumentMap});
             this.tbOptions.Image = global::TabbyCat.Controls.Properties.Resources.OptionsHS;
             this.tbOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbOptions.Name = "tbOptions";
@@ -571,122 +642,57 @@
             // tbRuler
             // 
             this.tbRuler.Name = "tbRuler";
-            this.tbRuler.Size = new System.Drawing.Size(166, 22);
+            this.tbRuler.Size = new System.Drawing.Size(180, 22);
             this.tbRuler.Text = "Ruler";
             // 
             // tbLineNumbers
             // 
             this.tbLineNumbers.Name = "tbLineNumbers";
-            this.tbLineNumbers.Size = new System.Drawing.Size(166, 22);
+            this.tbLineNumbers.Size = new System.Drawing.Size(180, 22);
             this.tbLineNumbers.Text = "Line Numbers";
             // 
             // tbDocumentMap
             // 
             this.tbDocumentMap.Name = "tbDocumentMap";
-            this.tbDocumentMap.Size = new System.Drawing.Size(166, 22);
+            this.tbDocumentMap.Size = new System.Drawing.Size(180, 22);
             this.tbDocumentMap.Text = "Document Map";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(163, 6);
             // 
             // tbSplit
             // 
+            this.tbSplit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tbSplit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbSplitHorizontal,
             this.tbSplitVertical,
             this.toolStripMenuItem3,
             this.tbSplitNone});
             this.tbSplit.Image = global::TabbyCat.Controls.Properties.Resources.TileWindowsHorizontallyHS;
+            this.tbSplit.ImageTransparentColor = System.Drawing.Color.White;
             this.tbSplit.Name = "tbSplit";
-            this.tbSplit.Size = new System.Drawing.Size(166, 22);
-            this.tbSplit.Text = "Split";
+            this.tbSplit.Size = new System.Drawing.Size(32, 22);
+            this.tbSplit.Text = "toolStripSplitButton1";
             // 
             // tbSplitHorizontal
             // 
             this.tbSplitHorizontal.Name = "tbSplitHorizontal";
-            this.tbSplitHorizontal.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitHorizontal.Size = new System.Drawing.Size(180, 22);
             this.tbSplitHorizontal.Text = "Horizontal";
             // 
             // tbSplitVertical
             // 
             this.tbSplitVertical.Name = "tbSplitVertical";
-            this.tbSplitVertical.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitVertical.Size = new System.Drawing.Size(180, 22);
             this.tbSplitVertical.Text = "Vertical";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(133, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // tbSplitNone
             // 
             this.tbSplitNone.Name = "tbSplitNone";
-            this.tbSplitNone.Size = new System.Drawing.Size(136, 22);
+            this.tbSplitNone.Size = new System.Drawing.Size(180, 22);
             this.tbSplitNone.Text = "None";
-            // 
-            // tbShader
-            // 
-            this.tbShader.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tbShader.AutoSize = false;
-            this.tbShader.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tbShader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miVertex,
-            this.miTessellationControl,
-            this.miTessellationEvaluation,
-            this.miGeometry,
-            this.miFragment,
-            this.miCompute});
-            this.tbShader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbShader.Image = ((System.Drawing.Image)(resources.GetObject("tbShader.Image")));
-            this.tbShader.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbShader.Name = "tbShader";
-            this.tbShader.Size = new System.Drawing.Size(96, 22);
-            this.tbShader.Text = "Vertex";
-            this.tbShader.ToolTipText = "Selected Shader";
-            // 
-            // miVertex
-            // 
-            this.miVertex.Name = "miVertex";
-            this.miVertex.Size = new System.Drawing.Size(133, 22);
-            this.miVertex.Text = "Vertex";
-            this.miVertex.ToolTipText = "Vertex Shader";
-            // 
-            // miTessellationControl
-            // 
-            this.miTessellationControl.Name = "miTessellationControl";
-            this.miTessellationControl.Size = new System.Drawing.Size(133, 22);
-            this.miTessellationControl.Text = "Tess Ctrl";
-            this.miTessellationControl.ToolTipText = "Tessellation Control Shader";
-            // 
-            // miTessellationEvaluation
-            // 
-            this.miTessellationEvaluation.Name = "miTessellationEvaluation";
-            this.miTessellationEvaluation.Size = new System.Drawing.Size(133, 22);
-            this.miTessellationEvaluation.Text = "Tess Eval";
-            this.miTessellationEvaluation.ToolTipText = "Tessellation Evaluation Shader";
-            // 
-            // miGeometry
-            // 
-            this.miGeometry.Name = "miGeometry";
-            this.miGeometry.Size = new System.Drawing.Size(133, 22);
-            this.miGeometry.Text = "Geometry";
-            this.miGeometry.ToolTipText = "Geometry Shader";
-            // 
-            // miFragment
-            // 
-            this.miFragment.Name = "miFragment";
-            this.miFragment.Size = new System.Drawing.Size(133, 22);
-            this.miFragment.Text = "Fragment";
-            this.miFragment.ToolTipText = "Fragment Shader";
-            // 
-            // miCompute
-            // 
-            this.miCompute.Name = "miCompute";
-            this.miCompute.Size = new System.Drawing.Size(133, 22);
-            this.miCompute.Text = "Compute";
-            this.miCompute.ToolTipText = "Compute Shader";
             // 
             // CodeEdit
             // 
@@ -697,6 +703,8 @@
             this.Name = "CodeEdit";
             this.Size = new System.Drawing.Size(360, 455);
             this.ToolStripContainer.ContentPanel.ResumeLayout(false);
+            this.ToolStripContainer.LeftToolStripPanel.ResumeLayout(false);
+            this.ToolStripContainer.LeftToolStripPanel.PerformLayout();
             this.ToolStripContainer.TopToolStripPanel.ResumeLayout(false);
             this.ToolStripContainer.TopToolStripPanel.PerformLayout();
             this.ToolStripContainer.ResumeLayout(false);
@@ -722,8 +730,10 @@
             this.BottomSplit.ResumeLayout(false);
             this.jmkScrollPanel1.ResumeLayout(false);
             this.jmkScrollPanel1.PerformLayout();
-            this.Toolbar.ResumeLayout(false);
-            this.Toolbar.PerformLayout();
+            this.VerticalToolbar.ResumeLayout(false);
+            this.VerticalToolbar.PerformLayout();
+            this.HorizontalToolbar.ResumeLayout(false);
+            this.HorizontalToolbar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -731,15 +741,7 @@
         #endregion
 
         public System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        public Jmk.Controls.JmkToolStrip Toolbar;
-        public System.Windows.Forms.ToolStripDropDownButton tbExport;
-        public System.Windows.Forms.ToolStripMenuItem tbExportHTML;
-        public System.Windows.Forms.ToolStripMenuItem tbExportRTF;
-        public System.Windows.Forms.ToolStripButton tbPrint;
-        public System.Windows.Forms.ToolStripDropDownButton tbOptions;
-        public System.Windows.Forms.ToolStripMenuItem tbRuler;
-        public System.Windows.Forms.ToolStripMenuItem tbLineNumbers;
-        public System.Windows.Forms.ToolStripMenuItem tbDocumentMap;
+        public Jmk.Controls.JmkToolStrip HorizontalToolbar;
         public System.Windows.Forms.SplitContainer EditSplit;
         public System.Windows.Forms.SplitContainer TopSplit;
         public FastColoredTextBoxNS.FastColoredTextBox SecondaryTextBox;
@@ -759,14 +761,6 @@
         public System.Windows.Forms.SplitContainer MainSplit;
         public Jmk.Controls.JmkLinkLabel lblBuiltInHelp;
         public Jmk.Controls.JmkScrollPanel jmkScrollPanel1;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        public System.Windows.Forms.ToolStripButton tbUndo;
-        public System.Windows.Forms.ToolStripButton tbRedo;
-        public System.Windows.Forms.ToolStripButton tbCut;
-        public System.Windows.Forms.ToolStripButton tbCopy;
-        public System.Windows.Forms.ToolStripButton tbPaste;
-        public System.Windows.Forms.ToolStripButton tbDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.ContextMenuStrip PopupEditMenu;
         public System.Windows.Forms.ToolStripMenuItem miUndo;
         public System.Windows.Forms.ToolStripMenuItem miRedo;
@@ -775,8 +769,23 @@
         public System.Windows.Forms.ToolStripMenuItem miCopy;
         public System.Windows.Forms.ToolStripMenuItem miPaste;
         public System.Windows.Forms.ToolStripMenuItem miDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        public System.Windows.Forms.ToolStripMenuItem tbSplit;
+        public System.Windows.Forms.ToolStrip VerticalToolbar;
+        public System.Windows.Forms.ToolStripButton tbUndo;
+        public System.Windows.Forms.ToolStripButton tbRedo;
+        public System.Windows.Forms.ToolStripButton tbCut;
+        public System.Windows.Forms.ToolStripButton tbCopy;
+        public System.Windows.Forms.ToolStripButton tbPaste;
+        public System.Windows.Forms.ToolStripButton tbDelete;
+        public System.Windows.Forms.ToolStripDropDownButton tbExport;
+        public System.Windows.Forms.ToolStripMenuItem tbExportHTML;
+        public System.Windows.Forms.ToolStripMenuItem tbExportRTF;
+        public System.Windows.Forms.ToolStripButton tbPrint;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripDropDownButton tbOptions;
+        public System.Windows.Forms.ToolStripMenuItem tbRuler;
+        public System.Windows.Forms.ToolStripMenuItem tbLineNumbers;
+        public System.Windows.Forms.ToolStripMenuItem tbDocumentMap;
+        public System.Windows.Forms.ToolStripSplitButton tbSplit;
         public System.Windows.Forms.ToolStripMenuItem tbSplitHorizontal;
         public System.Windows.Forms.ToolStripMenuItem tbSplitVertical;
         public System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;

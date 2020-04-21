@@ -48,7 +48,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(288, 194);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(288, 195);
             this.Controls.Add(this.ScenePropertiesEdit);
             this.Name = "ScenePropertiesForm";
             this.TabText = "Scene";

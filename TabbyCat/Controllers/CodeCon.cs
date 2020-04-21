@@ -28,7 +28,7 @@
         internal CodeCon(WorldCon worldCon, ShaderRegion shaderRegion) : base(worldCon)
         {
             ShaderRegion = shaderRegion;
-            AppCon.InitControlTheme(CodeEdit.Toolbar, CodeEdit.PopupEditMenu);
+            AppCon.InitControlTheme(CodeEdit.HorizontalToolbar, CodeEdit.VerticalToolbar, CodeEdit.PopupEditMenu);
             ShowRuler = false;
             ShowLineNumbers = false;
             ShowDocumentMap = false;
@@ -346,6 +346,8 @@
             }
         }
 
+        private void Split_ButtonClick(object sender, EventArgs e) => SplitType = (SplitType)((int)(SplitType + 1) % 3);
+
         private void Split_DropDownOpening(object sender, EventArgs e)
         {
             CodeEdit.tbSplitHorizontal.Checked = SplitType == SplitType.Horizontal;
@@ -466,6 +468,7 @@
                 CodeEdit.tbPaste.Click += Paste_Click;
                 CodeEdit.tbDelete.Click += Delete_Click;
                 CodeEdit.tbRuler.Click += Ruler_Click;
+                CodeEdit.tbSplit.ButtonClick += Split_ButtonClick;
                 CodeEdit.tbSplit.DropDownOpening += Split_DropDownOpening;
                 CodeEdit.tbSplitHorizontal.Click += SplitHorizontal_Click;
                 CodeEdit.tbSplitVertical.Click += SplitVertical_Click;
@@ -489,6 +492,7 @@
                 CodeEdit.tbPaste.Click -= Paste_Click;
                 CodeEdit.tbDelete.Click -= Delete_Click;
                 CodeEdit.tbRuler.Click -= Ruler_Click;
+                CodeEdit.tbSplit.ButtonClick -= Split_ButtonClick;
                 CodeEdit.tbSplit.DropDownOpening -= Split_DropDownOpening;
                 CodeEdit.tbSplitHorizontal.Click -= SplitHorizontal_Click;
                 CodeEdit.tbSplitVertical.Click -= SplitVertical_Click;
@@ -704,7 +708,8 @@
                 ShaderRegion != ShaderRegion.Trace || !Selection.IsEmpty,
                 new Control[]
                 {
-                    CodeEdit.Toolbar,
+                    CodeEdit.HorizontalToolbar,
+                    CodeEdit.VerticalToolbar,
                     CodeEdit.PrimaryTextBox,
                     CodeEdit.SecondaryTextBox
                 });
