@@ -290,17 +290,17 @@
         {
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
+            GraphicsStateCon.Connect(connect);
+            JsonCon.Connect(connect);
+            RenderCon.Connect(connect);
+            SceneCodeCon.Connect(connect);
+            SceneCon.Connect(connect);
+            ScenePropertiesCon.Connect(connect);
+            ShaderCodeCon.Connect(connect);
+            TraceCodeCon.Connect(connect);
+            TracePropertiesCon.Connect(connect);
 
             ConnectJsonCon(connect);
-            JsonCon.Connect(connect);
-
-            GraphicsStateCon.Connect(connect);
-            ShaderCodeCon.Connect(connect);
-            RenderCon.Connect(connect);
-            TracePropertiesCon.Connect(connect);
-            TraceCodeCon.Connect(connect);
-            ScenePropertiesCon.Connect(connect);
-            SceneCodeCon.Connect(connect);
             if (connect)
             {
             }
