@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
+    using Jmk.Controls;
     using Models;
     using Properties;
     using System;
@@ -146,8 +147,9 @@
             {
                 OnFilePathRequest();
                 switch (MessageBox.Show(
+                    WorldForm,
                     Resources.Message_FileModified_Text,
-                    FilePath,
+                    string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : FilePath.CompactText(),
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Warning))
                 {
@@ -247,7 +249,7 @@
 
         private void OnFilePathRequest()
         {
-            var e = new FilePathEventArgs(string.Empty);
+            var e = new FilePathEventArgs(FilePath);
             FilePathRequest?.Invoke(this, e);
             FilePath = e.FilePath;
         }

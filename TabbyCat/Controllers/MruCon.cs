@@ -15,7 +15,8 @@
     /// Display recently used file paths on a dedicated submenu in the application.
     /// Allow these recently used files to be invoked via a virtual "Reopen" method.
     /// Provide a "Clear" subitem to reset the content of this submenu to (empty).
-    /// Note: unsafe code is used to abbreviate long paths (see CompactMenuText method).
+    /// Note: unsafe code is used to abbreviate long paths (see the implementation
+    /// of the  CompactMenuText method).
     /// </summary>
     internal class MruCon : LocalizationCon
     {
@@ -94,11 +95,7 @@
             RefreshRecentMenu();
         }
 
-        private Win32.RegistryKey CreateSubKey()
-        {
-            return Win32.Registry.CurrentUser.CreateSubKey(
-                SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
-        }
+        private Win32.RegistryKey CreateSubKey() => Win32.Registry.CurrentUser.CreateSubKey(SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
 
         private static void DeleteItem(Win32.RegistryKey key, string item)
         {
@@ -109,8 +106,7 @@
                 key.DeleteValue(name);
         }
 
-        private Win32.RegistryKey OpenSubKey(bool writable) =>
-            Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
+        private Win32.RegistryKey OpenSubKey(bool writable) => Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
 
         private void RecentItemClick(object sender, EventArgs e) => Reopen((ToolStripItem)sender);
 

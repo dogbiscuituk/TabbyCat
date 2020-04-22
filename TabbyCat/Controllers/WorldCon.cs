@@ -290,7 +290,10 @@
         {
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
+
             ConnectJsonCon(connect);
+            JsonCon.Connect(connect);
+
             GraphicsStateCon.Connect(connect);
             ShaderCodeCon.Connect(connect);
             RenderCon.Connect(connect);
