@@ -24,12 +24,7 @@
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
-            AppCon.InitControlTheme(
-                WorldPanel,
-                WorldForm.MainMenu,
-                WorldForm.PopupMenu,
-                WorldForm.Toolbar,
-                WorldForm.StatusBar);
+            InitControlTheme();
             ShowControls();
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
@@ -111,6 +106,13 @@
                 AppCon.Remove(this);
             }
         }
+
+        internal void InitControlTheme() => AppCon.InitControlTheme(
+            WorldPanel,
+            WorldForm.MainMenu,
+            WorldForm.PopupMenu,
+            WorldForm.Toolbar,
+            WorldForm.StatusBar);
 
         protected override void DisposeManagedState()
         {

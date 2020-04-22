@@ -139,12 +139,14 @@
     {
         internal static void InitControlTheme(params Control[] controls)
         {
+            ThemeBase theme = VsTheme;
+            VsVersion version = VsVersion;
             foreach (var control in controls)
             {
                 if (control is DockPanel dockPanel)
-                    dockPanel.Theme = VsTheme;
+                    dockPanel.Theme = theme;
                 else if (control is ToolStrip toolStrip)
-                    ToolStripExtender.SetStyle(toolStrip, VsVersion, VsTheme);
+                    ToolStripExtender.SetStyle(toolStrip, version, theme);
             }
         }
 
