@@ -3,6 +3,7 @@
     using Controls.Types;
     using Jmk.Common;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
     using Views;
@@ -12,7 +13,7 @@
         internal OptionsCon(WorldCon worldCon) : base(worldCon)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
-            OptionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().ToArray());
+            OptionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().Reverse().ToArray());
             OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
             OptionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
         }
@@ -26,6 +27,8 @@
         }
 
         private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
+
+        private static IList<string> ThemeDescriptions => typeof(Theme).GetDescriptions().ToList();
 
         protected override void DisposeManagedState()
         {
@@ -42,12 +45,6 @@
             return result;
         }
 
-        private void BtnFilesFolder_Click(object sender, EventArgs e) =>
-            BrowseFolder("files", OptionsDialog.edFilesFolder);
-
-        private void BtnTemplatesFolder_Click(object sender, EventArgs e) =>
-            BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
-
         private void BrowseFolder(string detail, TextBox textBox)
         {
             using (var dialog = new FolderBrowserDialog
@@ -60,9 +57,13 @@
                     textBox.Text = dialog.SelectedPath;
         }
 
+        private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", OptionsDialog.edFilesFolder);
+
+        private void BtnTemplatesFolder_Click(object sender, EventArgs e) => BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
+
         private Options GetOptions() => new Options
         {
-            Theme = (Theme)OptionsDialog.cbTheme.SelectedIndex,
+            Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
             OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
             FilesFolderPath = OptionsDialog.edFilesFolder.Text,
             TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
@@ -72,7 +73,7 @@
 
         private void SetOptions(Options options)
         {
-            OptionsDialog.cbTheme.SelectedIndex = (int)options.Theme;
+            OptionsDialog.cbTheme.Text = ThemeDescriptions[(int)options.Theme];
             OptionsDialog.rbWindowNew.Checked = options.OpenInNewWindow;
             OptionsDialog.rbWindowReuse.Checked = !options.OpenInNewWindow;
             OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;

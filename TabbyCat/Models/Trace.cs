@@ -3,8 +3,10 @@
     using Common.Converters;
     using Common.Types;
     using Common.Utils;
+    using Jmk.Common;
     using Newtonsoft.Json;
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.ComponentModel;
 
@@ -52,6 +54,21 @@
 
         internal Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
 
+        internal string PreviewShader(ShaderType shaderType, string formula)
+        {
+            var script = GetScript(shaderType);
+            var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
+            var endLine = script.FindFirstTokenLine(Tokens.EndFormula);
+            if (0 <= beginLine && beginLine < endLine)
+            {
+                string
+                    head = script.GetLines(0, beginLine),
+                    tail = script.GetLines(endLine, script.GetLineCount() - endLine);
+                return $"{head}\r\n\r\n{formula}\r\n\r\n{tail}";
+            }
+            return string.Empty;
+        }
+
         internal void SetLocation(Vector3 location) => Location = location;
 
         internal void SetOrientation(Vector3 orientation) => Orientation = orientation;
@@ -64,6 +81,8 @@
             SetOrientation(transform.ExtractRotation());
             SetScale(transform.ExtractScale());
         }*/
+
+        protected void SetFormula(ShaderType shaderType, string formula) => SetScript(shaderType, PreviewShader(shaderType, formula));
 
         private void CopyFrom(Trace trace)
         {

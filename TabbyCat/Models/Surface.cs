@@ -2,13 +2,19 @@
 {
     using Common.Types;
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
+    using Properties;
 
     public class Surface : Trace
     {
-        public Surface() : base()
+        public Surface() : base() => Init();
+
+        private void Init()
         {
-            Pattern = Pattern.Fill;
-            StripeCount = new Vector3(1000, 1000, 0);
+            Description = "Surface";
+            Pattern = Pattern.Quads;
+            StripeCount = new Vector3(30, 30, 0);
+            SetFormula(ShaderType.VertexShader, Resources.Surface_VertexFormula);
         }
     }
 }

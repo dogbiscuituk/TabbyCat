@@ -2,13 +2,19 @@
 {
     using Common.Types;
     using OpenTK;
+    using OpenTK.Graphics.OpenGL;
+    using Properties;
 
     public class Curve : Trace
     {
-        public Curve() : base()
+        public Curve() : base() => Init();
+
+        private void Init()
         {
+            Description = "Curve";
             Pattern = Pattern.Lines;
-            StripeCount = new Vector3(10000, 0, 0);
+            StripeCount = new Vector3(1000, 0, 0);
+            SetFormula(ShaderType.VertexShader, Resources.Curve_VertexFormula);
         }
     }
 }
