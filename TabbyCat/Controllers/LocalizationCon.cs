@@ -15,34 +15,6 @@
         internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
         protected virtual string[] AllProperties => Array.Empty<string>();
-        protected Camera Camera => Scene.Camera;
-        protected virtual CameraCon CameraCon => WorldCon.CameraCon;
-        protected virtual Clock Clock => ClockCon.Clock;
-        protected virtual ClockCon ClockCon => WorldCon.ClockCon;
-        internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
-        protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
-        protected GraphicsStateView GpuEdit => GraphicsStateForm.GpuEdit;
-        protected virtual GraphicsStateForm GraphicsStateForm => GraphicsStateCon.GraphicsStateForm;
-        protected virtual JsonCon JsonCon => WorldCon.JsonCon;
-        protected virtual RenderCon RenderCon => WorldCon.RenderCon;
-        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
-        protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
-        protected CodeForm SceneCodeForm => SceneCodeCon.CodeForm;
-        protected virtual SceneCon SceneCon => WorldCon.SceneCon;
-        protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
-        protected virtual SceneForm SceneForm => SceneCon.SceneForm;
-        protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
-        protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
-        protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
-        protected virtual ShaderCodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
-        protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
-        protected ToolTip ToolTip => WorldForm.ToolTip;
-        protected virtual TraceCodeCon TraceCodeCon => WorldCon.TraceCodeCon;
-        protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
-        protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
-        protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
-        protected virtual WorldCon WorldCon { get; }
-        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         protected internal virtual void Connect(bool connect)
         {
@@ -55,6 +27,8 @@
 
             }
         }
+
+        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         protected virtual void Localize() { }
 
@@ -84,6 +58,8 @@
             }
         }
 
+        protected virtual void UpdateProperties(params string[] propertyNames) { }
+
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
             var infos = info.Split('|');
@@ -111,10 +87,47 @@
             }
             return infos[0];
         }
+    }
 
-        protected virtual void UpdateProperties(params string[] propertyNames) { }
+    /// <summary>
+    /// Derived controllers and their views.
+    /// </summary>
+    partial class LocalizationCon
+    {
+        protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
+        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 
-        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+        internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
+
+        protected virtual CameraCon CameraCon => WorldCon.CameraCon;
+        protected virtual ClockCon ClockCon => WorldCon.ClockCon;
+        protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
+        protected virtual JsonCon JsonCon => WorldCon.JsonCon;
+        protected virtual RenderCon RenderCon => WorldCon.RenderCon;
+        protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
+        protected virtual SceneCon SceneCon => WorldCon.SceneCon;
+        protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
+        protected virtual ShaderCodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
+        protected virtual TraceCodeCon TraceCodeCon => WorldCon.TraceCodeCon;
+        protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
+        protected virtual WorldCon WorldCon { get; }
+
+        protected virtual Clock Clock => ClockCon.Clock;
+        protected virtual GraphicsStateForm GraphicsStateForm => GraphicsStateCon.GraphicsStateForm;
+        protected virtual SceneForm SceneForm => SceneCon.SceneForm;
+        protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
+        protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
+
+        protected CodeForm SceneCodeForm => SceneCodeCon.CodeForm;
+        protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
+        protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
+
+        protected GraphicsStateView GpuEdit => GraphicsStateForm.GpuEdit;
+        protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
+
+        protected Camera Camera => Scene.Camera;
+        protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 
     partial class LocalizationCon : IDisposable

@@ -18,7 +18,7 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class WorldCon : LocalizationCon
+    internal partial class WorldCon : LocalizationCon
     {
         internal WorldCon() : base(null)
         {
@@ -45,35 +45,8 @@
         private string LastSpeed, LastTime, LastFPS;
         private int UpdateCount;
 
-        private CameraCon _CameraCon;
-        private ClockCon _ClockCon;
-        private CommandProcessor _CommandProcessor;
-        private GraphicsStateCon _GraphicsStateCon;
-        private JsonCon _JsonCon;
-        private SceneCodeCon _SceneCodeCon;
-        private RenderCon _RenderCon;
-        private SceneCon _SceneCon;
-        private ScenePropertiesCon _ScenePropertiesCon;
-        private ShaderCodeCon _ShaderCodeCon;
-        private TraceCodeCon _TraceCodeCon;
-        private TracePropertiesCon _TracePropertiesCon;
-
         protected internal override Scene Scene { get; set; }
         protected internal override WorldForm WorldForm { get; }
-
-        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
-
-        protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
-        protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
-        protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
-        protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
-        protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
-        protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
-        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
-        protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
-        protected override ShaderCodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new ShaderCodeCon(this));
-        protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
-        protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon= new TracePropertiesCon(this));
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
         private static string GLSLUrl => Settings.Default.GLSLUrl;
@@ -285,30 +258,6 @@
         }
 
         private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
-
-        private void ConnectCons(bool connect)
-        {
-            CameraCon.Connect(connect);
-            ClockCon.Connect(connect);
-            GraphicsStateCon.Connect(connect);
-            JsonCon.Connect(connect);
-            RenderCon.Connect(connect);
-            SceneCodeCon.Connect(connect);
-            SceneCon.Connect(connect);
-            ScenePropertiesCon.Connect(connect);
-            ShaderCodeCon.Connect(connect);
-            TraceCodeCon.Connect(connect);
-            TracePropertiesCon.Connect(connect);
-
-            ConnectJsonCon(connect);
-            if (connect)
-            {
-            }
-            else
-            {
-                RenderCon.Unload();
-            }
-        }
 
         private void ConnectEventHandlers(bool connect)
         {
@@ -750,6 +699,64 @@
             var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
             if (LastTime != time)
                 LastTime = WorldForm.Tlabel.Text = time;
+        }
+    }
+
+    /// <summary>
+    /// Child controllers.
+    /// </summary>
+    partial class WorldCon
+    {
+        private CommandProcessor _CommandProcessor;
+
+        private CameraCon _CameraCon;
+        private ClockCon _ClockCon;
+        private GraphicsStateCon _GraphicsStateCon;
+        private JsonCon _JsonCon;
+        private RenderCon _RenderCon;
+        private SceneCodeCon _SceneCodeCon;
+        private SceneCon _SceneCon;
+        private ScenePropertiesCon _ScenePropertiesCon;
+        private ShaderCodeCon _ShaderCodeCon;
+        private TraceCodeCon _TraceCodeCon;
+        private TracePropertiesCon _TracePropertiesCon;
+
+        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
+
+        protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
+        protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
+        protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
+        protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+        protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
+        protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
+        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
+        protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
+        protected override ShaderCodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new ShaderCodeCon(this));
+        protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
+        protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
+
+        private void ConnectCons(bool connect)
+        {
+            CameraCon.Connect(connect);
+            ClockCon.Connect(connect);
+            GraphicsStateCon.Connect(connect);
+            JsonCon.Connect(connect);
+            RenderCon.Connect(connect);
+            SceneCodeCon.Connect(connect);
+            SceneCon.Connect(connect);
+            ScenePropertiesCon.Connect(connect);
+            ShaderCodeCon.Connect(connect);
+            TraceCodeCon.Connect(connect);
+            TracePropertiesCon.Connect(connect);
+
+            ConnectJsonCon(connect);
+            if (connect)
+            {
+            }
+            else
+            {
+                RenderCon.Unload();
+            }
         }
     }
 }
