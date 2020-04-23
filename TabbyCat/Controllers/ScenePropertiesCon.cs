@@ -76,6 +76,7 @@
                 ScenePropertiesEdit.cbVSync.CheckedChanged += VSync_CheckedChanged;
                 ScenePropertiesEdit.seSampleCount.SelectedItemChanged += Samples_ValueChanged;
                 ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
+                WorldForm.ViewSceneProperties.Click += ViewSceneProperties_Click;
             }
             else
             {
@@ -100,12 +101,14 @@
                 ScenePropertiesEdit.cbVSync.CheckedChanged -= VSync_CheckedChanged;
                 ScenePropertiesEdit.seSampleCount.SelectedItemChanged -= Samples_ValueChanged;
                 ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
+                WorldForm.ViewSceneProperties.Click -= ViewSceneProperties_Click;
             }
         }
 
         protected override void Localize()
         {
             base.Localize();
+            Localize(Resources.Menu_View_SceneProperties, WorldForm.ViewSceneProperties);
             Localize(Resources.Control_Scene_Title, ScenePropertiesEdit.lblTitle, ScenePropertiesEdit.edTitle);
             Localize(Resources.Control_Camera_Position, ScenePropertiesEdit.lblPosition);
             Localize(Resources.Control_Camera_PositionX, ScenePropertiesEdit.seCameraPositionX);
@@ -258,8 +261,7 @@
     /// </summary>
     partial class ScenePropertiesCon
     {
-        private void Background_SelectedIndexChanged(object sender, EventArgs e) =>
-            Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
+        private void Background_SelectedIndexChanged(object sender, EventArgs e) => Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) =>
             Run(new CameraFocusCommand(new Vector3(
@@ -273,11 +275,9 @@
                 (float)ScenePropertiesEdit.seCameraPositionY.Value,
                 (float)ScenePropertiesEdit.seCameraPositionZ.Value)));
 
-        private void FieldOfView_ValueChanged(object sender, EventArgs e) =>
-            Run(new FieldOfViewCommand((float)ScenePropertiesEdit.seFieldOfView.Value));
+        private void FieldOfView_ValueChanged(object sender, EventArgs e) => Run(new FieldOfViewCommand((float)ScenePropertiesEdit.seFieldOfView.Value));
 
-        private void FPS_ValueChanged(object sender, EventArgs e) =>
-            Run(new FpsCommand((float)ScenePropertiesEdit.seFPS.Value));
+        private void FPS_ValueChanged(object sender, EventArgs e) =>  Run(new FpsCommand((float)ScenePropertiesEdit.seFPS.Value));
 
         private void FrustumMax_ValueChanged(object sender, EventArgs e) =>
             Run(new FrustumMaxCommand(new Vector3(
@@ -291,22 +291,18 @@
                 (float)ScenePropertiesEdit.seFrustumMinY.Value,
                 (float)ScenePropertiesEdit.seFrustumMinZ.Value)));
 
-        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
+        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) => Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
 
-        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) =>
-            Run(new ProjectionTypeCommand((ProjectionType)ScenePropertiesEdit.seProjectionType.SelectedIndex));
+        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) => Run(new ProjectionTypeCommand((ProjectionType)ScenePropertiesEdit.seProjectionType.SelectedIndex));
 
-        private void Samples_ValueChanged(object sender, EventArgs e) =>
-            Run(new SamplesCommand(int.Parse(ScenePropertiesEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
+        private void Samples_ValueChanged(object sender, EventArgs e) => Run(new SamplesCommand(int.Parse(ScenePropertiesEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
 
-        private void SceneTitle_TextChanged(object sender, EventArgs e) =>
-            Run(new TitleCommand(ScenePropertiesEdit.edTitle.Text));
+        private void SceneTitle_TextChanged(object sender, EventArgs e) => Run(new TitleCommand(ScenePropertiesEdit.edTitle.Text));
 
-        private void Stereo_CheckedChanged(object sender, EventArgs e) =>
-            Run(new StereoCommand(ScenePropertiesEdit.cbStereo.Checked));
+        private void Stereo_CheckedChanged(object sender, EventArgs e) => Run(new StereoCommand(ScenePropertiesEdit.cbStereo.Checked));
 
-        private void VSync_CheckedChanged(object sender, EventArgs e) =>
-            Run(new VSyncCommand(ScenePropertiesEdit.cbVSync.Checked));
+        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility();
+
+        private void VSync_CheckedChanged(object sender, EventArgs e) => Run(new VSyncCommand(ScenePropertiesEdit.cbVSync.Checked));
     }
 }

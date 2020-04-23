@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class ControlForm
+    partial class ParametersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.slider1 = new TabbyCat.Controls.Slider();
             this.SuspendLayout();
             // 
-            // trackBar1
+            // slider1
             // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBar1.Location = new System.Drawing.Point(0, 0);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(276, 21);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.slider1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.slider1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.slider1.Location = new System.Drawing.Point(0, 0);
+            this.slider1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.slider1.Name = "slider1";
+            this.slider1.Size = new System.Drawing.Size(276, 20);
+            this.slider1.TabIndex = 0;
             // 
-            // ControlForm
+            // ParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(276, 179);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.slider1);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Name = "ControlForm";
+            this.Name = "ParametersForm";
             this.TabText = "Controls";
             this.Text = "Controls";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TrackBar trackBar1;
+        private Controls.Slider slider1;
     }
 }

@@ -4,6 +4,7 @@
     using Common.Types;
     using Common.Utils;
     using Properties;
+    using System;
 
     internal class SceneCodeCon : CodeCon
     {
@@ -15,6 +16,27 @@
 
         protected override string GetRegion() => Resources.ShaderRegion_Scene;
 
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.ViewSceneCode.Click += ViewSceneCode_Click;
+            }
+            else
+            {
+                WorldForm.ViewSceneCode.Click -= ViewSceneCode_Click;
+            }
+        }
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_View_SceneCode, WorldForm.ViewSceneCode);
+        }
+
         protected override void RunShaderCommand(string text) => Run(new SceneShaderCommand(ShaderType, text));
+
+        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility();
     }
 }

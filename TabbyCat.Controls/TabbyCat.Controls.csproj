@@ -76,6 +76,12 @@
     <Compile Include="CodeEdit.Designer.cs">
       <DependentUpon>CodeEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Slider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Slider.Designer.cs">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Types\CodePageCon.cs" />
     <Compile Include="Types\Options.cs" />
     <Compile Include="Types\TextStyleInfo.cs" />
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodeEdit.resx">
       <DependentUpon>CodeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Slider.resx">
+      <DependentUpon>Slider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TracePropertiesEdit.resx">
       <DependentUpon>TracePropertiesEdit.cs</DependentUpon>

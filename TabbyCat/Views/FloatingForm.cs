@@ -12,8 +12,10 @@
 
         private void Init()
         {
-            DoubleClickTitleBarToDock = false;
+            DoubleClickTitleBarToDock = true;
             FormBorderStyle = FormBorderStyle.Sizable;
+            ControlBox = false;
+            MaximizeBox = false;
             MinimizeBox = false;
         }
     }

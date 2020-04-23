@@ -43,6 +43,9 @@
             this.tbAddCurve = new System.Windows.Forms.ToolStripMenuItem();
             this.tbAddSurface = new System.Windows.Forms.ToolStripMenuItem();
             this.tbAddVolume = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbAddSlider = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbAddSignal = new System.Windows.Forms.ToolStripMenuItem();
             this.tbUndo = new System.Windows.Forms.ToolStripSplitButton();
             this.tbRedo = new System.Windows.Forms.ToolStripSplitButton();
             this.tbCut = new System.Windows.Forms.ToolStripButton();
@@ -91,13 +94,17 @@
             this.AddCurve = new System.Windows.Forms.ToolStripMenuItem();
             this.AddSurface = new System.Windows.Forms.ToolStripMenuItem();
             this.AddVolume = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.AddSlider = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddSignal = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewParameters = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ViewAllCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewShaderCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
@@ -123,6 +130,7 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewRestoreWindowLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -223,7 +231,10 @@
             this.tbAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbAddCurve,
             this.tbAddSurface,
-            this.tbAddVolume});
+            this.tbAddVolume,
+            this.toolStripMenuItem11,
+            this.tbAddSlider,
+            this.tbAddSignal});
             this.tbAdd.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
             this.tbAdd.Name = "tbAdd";
@@ -246,6 +257,23 @@
             this.tbAddVolume.Name = "tbAddVolume";
             this.tbAddVolume.Size = new System.Drawing.Size(114, 22);
             this.tbAddVolume.Text = "Volume";
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(111, 6);
+            // 
+            // tbAddSlider
+            // 
+            this.tbAddSlider.Name = "tbAddSlider";
+            this.tbAddSlider.Size = new System.Drawing.Size(114, 22);
+            this.tbAddSlider.Text = "Slider";
+            // 
+            // tbAddSignal
+            // 
+            this.tbAddSignal.Name = "tbAddSignal";
+            this.tbAddSignal.Size = new System.Drawing.Size(114, 22);
+            this.tbAddSignal.Text = "Signal";
             // 
             // tbUndo
             // 
@@ -634,7 +662,10 @@
             this.AddMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddCurve,
             this.AddSurface,
-            this.AddVolume});
+            this.AddVolume,
+            this.toolStripMenuItem4,
+            this.AddSlider,
+            this.AddSignal});
             this.AddMenu.Name = "AddMenu";
             this.AddMenu.Size = new System.Drawing.Size(44, 21);
             this.AddMenu.Text = "Add";
@@ -657,19 +688,38 @@
             this.AddVolume.Size = new System.Drawing.Size(119, 22);
             this.AddVolume.Text = "Volume";
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(116, 6);
+            // 
+            // AddSlider
+            // 
+            this.AddSlider.Name = "AddSlider";
+            this.AddSlider.Size = new System.Drawing.Size(119, 22);
+            this.AddSlider.Text = "Slider";
+            // 
+            // AddSignal
+            // 
+            this.AddSignal.Name = "AddSignal";
+            this.AddSignal.Size = new System.Drawing.Size(119, 22);
+            this.AddSignal.Text = "Signal";
+            // 
             // ViewMenu
             // 
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ViewScene,
+            this.ViewParameters,
             this.toolStripMenuItem6,
             this.ViewSceneProperties,
             this.ViewTraceProperties,
             this.toolStripMenuItem3,
-            this.ViewAllCode,
+            this.ViewShaderCode,
             this.ViewSceneCode,
             this.ViewTraceCode,
             this.toolStripMenuItem7,
-            this.ViewGraphicsState});
+            this.ViewGraphicsState,
+            this.ViewRestoreWindowLayout});
             this.ViewMenu.Name = "ViewMenu";
             this.ViewMenu.Size = new System.Drawing.Size(47, 21);
             this.ViewMenu.Text = "View";
@@ -677,58 +727,64 @@
             // ViewScene
             // 
             this.ViewScene.Name = "ViewScene";
-            this.ViewScene.Size = new System.Drawing.Size(175, 22);
+            this.ViewScene.Size = new System.Drawing.Size(208, 22);
             this.ViewScene.Text = "Scene";
+            // 
+            // ViewParameters
+            // 
+            this.ViewParameters.Name = "ViewParameters";
+            this.ViewParameters.Size = new System.Drawing.Size(208, 22);
+            this.ViewParameters.Text = "Parameters";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(205, 6);
             // 
             // ViewSceneProperties
             // 
             this.ViewSceneProperties.Name = "ViewSceneProperties";
-            this.ViewSceneProperties.Size = new System.Drawing.Size(175, 22);
+            this.ViewSceneProperties.Size = new System.Drawing.Size(208, 22);
             this.ViewSceneProperties.Text = "Scene properties";
             // 
             // ViewTraceProperties
             // 
             this.ViewTraceProperties.Name = "ViewTraceProperties";
-            this.ViewTraceProperties.Size = new System.Drawing.Size(175, 22);
+            this.ViewTraceProperties.Size = new System.Drawing.Size(208, 22);
             this.ViewTraceProperties.Text = "Trace properties";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 6);
             // 
-            // ViewAllCode
+            // ViewShaderCode
             // 
-            this.ViewAllCode.Name = "ViewAllCode";
-            this.ViewAllCode.Size = new System.Drawing.Size(175, 22);
-            this.ViewAllCode.Text = "All code";
+            this.ViewShaderCode.Name = "ViewShaderCode";
+            this.ViewShaderCode.Size = new System.Drawing.Size(208, 22);
+            this.ViewShaderCode.Text = "All code";
             // 
             // ViewSceneCode
             // 
             this.ViewSceneCode.Name = "ViewSceneCode";
-            this.ViewSceneCode.Size = new System.Drawing.Size(175, 22);
+            this.ViewSceneCode.Size = new System.Drawing.Size(208, 22);
             this.ViewSceneCode.Text = "Scene code";
             // 
             // ViewTraceCode
             // 
             this.ViewTraceCode.Name = "ViewTraceCode";
-            this.ViewTraceCode.Size = new System.Drawing.Size(175, 22);
+            this.ViewTraceCode.Size = new System.Drawing.Size(208, 22);
             this.ViewTraceCode.Text = "Trace code";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(205, 6);
             // 
             // ViewGraphicsState
             // 
             this.ViewGraphicsState.Name = "ViewGraphicsState";
-            this.ViewGraphicsState.Size = new System.Drawing.Size(175, 22);
+            this.ViewGraphicsState.Size = new System.Drawing.Size(208, 22);
             this.ViewGraphicsState.Text = "Graphics state";
             // 
             // CameraMenu
@@ -878,6 +934,12 @@
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
             // 
+            // ViewRestoreWindowLayout
+            // 
+            this.ViewRestoreWindowLayout.Name = "ViewRestoreWindowLayout";
+            this.ViewRestoreWindowLayout.Size = new System.Drawing.Size(208, 22);
+            this.ViewRestoreWindowLayout.Text = "Restore window layout";
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -985,7 +1047,7 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         internal System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
         internal System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
-        internal System.Windows.Forms.ToolStripMenuItem ViewAllCode;
+        internal System.Windows.Forms.ToolStripMenuItem ViewShaderCode;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         internal System.Windows.Forms.ToolStripMenuItem ViewScene;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
@@ -999,5 +1061,13 @@
         internal System.Windows.Forms.ToolStripMenuItem AddMenu;
         internal System.Windows.Forms.ToolStripMenuItem AddVolume;
         internal System.Windows.Forms.ToolStripMenuItem tbAddVolume;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        internal System.Windows.Forms.ToolStripMenuItem AddSlider;
+        internal System.Windows.Forms.ToolStripMenuItem AddSignal;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
+        internal System.Windows.Forms.ToolStripMenuItem tbAddSlider;
+        internal System.Windows.Forms.ToolStripMenuItem tbAddSignal;
+        internal System.Windows.Forms.ToolStripMenuItem ViewParameters;
+        internal System.Windows.Forms.ToolStripMenuItem ViewRestoreWindowLayout;
     }
 }

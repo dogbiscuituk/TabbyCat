@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Views
 {
-    public partial class ControlForm : DockingForm
+    public partial class ParametersForm : DockingForm
     {
-        public ControlForm()
+        public ParametersForm()
         {
             InitializeComponent();
         }

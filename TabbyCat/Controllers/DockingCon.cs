@@ -7,5 +7,13 @@
         internal DockingCon(WorldCon worldCon) : base(worldCon) { }
 
         protected internal abstract DockContent Form { get; }
+
+        protected void ToggleVisibility()
+        {
+            if (Form.Visible)
+                Form.Hide();
+            else
+                Form.Activate();
+        }
     }
 }

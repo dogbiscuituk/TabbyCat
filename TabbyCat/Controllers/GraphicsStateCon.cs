@@ -2,6 +2,7 @@
 {
     using Common.Utils;
     using Properties;
+    using System;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
@@ -24,23 +25,37 @@
         {
             base.Connect(connect);
             if (connect)
+            {
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldForm.ViewGraphicsState.Click += ViewGraphicsState_Click;
+            }
             else
+            {
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldForm.ViewGraphicsState.Click -= ViewGraphicsState_Click;
+            }
         }
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_View_GraphicsState, WorldForm.ViewGraphicsState);
+        }
+
+        private void ViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility();
 
         private void WorldCon_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
                 case PropertyNames.GraphicsMode:
-                    GpuEdit.lblGpuMode.Text = Scene.GraphicsMode.ToString();
+                    GraphicsStateView.lblGpuMode.Text = Scene.GraphicsMode.ToString();
                     break;
                 case PropertyNames.GPUStatus:
-                    GpuEdit.lblGpuStatus.Text = Scene.GPUStatus.ToString();
+                    GraphicsStateView.lblGpuStatus.Text = Scene.GPUStatus.ToString();
                     break;
                 case PropertyNames.GPULog:
-                    GpuEdit.lblGpuLog.Text = Scene.GPULog;
+                    GraphicsStateView.lblGpuLog.Text = Scene.GPULog;
                     break;
             }
         }

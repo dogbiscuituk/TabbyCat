@@ -25,7 +25,7 @@
             WorldForm = new WorldForm();
             Scene = new Scene(this);
             InitControlTheme();
-            ShowControls();
+            RestoreWindowLayout();
             Connect(true);
             PopupMenu_Opening(this, new CancelEventArgs());
         }
@@ -94,6 +94,8 @@
             Localize(Resources.Menu_Add_Curve, WorldForm.AddCurve, WorldForm.tbAddCurve);
             Localize(Resources.Menu_Add_Surface, WorldForm.AddSurface, WorldForm.tbAddSurface);
             Localize(Resources.Menu_Add_Volume, WorldForm.AddVolume, WorldForm.tbAddVolume);
+            Localize(Resources.Menu_Add_Slider, WorldForm.AddSlider, WorldForm.tbAddSlider);
+            Localize(Resources.Menu_Add_Signal, WorldForm.AddSignal, WorldForm.tbAddSignal);
             Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
             Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
             Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
@@ -104,13 +106,7 @@
             Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
             Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
             Localize(Resources.Menu_View, WorldForm.ViewMenu);
-            Localize(Resources.Menu_View_Scene, WorldForm.ViewScene);
-            Localize(Resources.Menu_View_SceneProperties, WorldForm.ViewSceneProperties);
-            Localize(Resources.Menu_View_TraceProperties, WorldForm.ViewTraceProperties);
-            Localize(Resources.Menu_View_AllCode, WorldForm.ViewAllCode);
-            Localize(Resources.Menu_View_SceneCode, WorldForm.ViewSceneCode);
-            Localize(Resources.Menu_View_TraceCode, WorldForm.ViewTraceCode);
-            Localize(Resources.Menu_View_GraphicsState, WorldForm.ViewGraphicsState);
+
             Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
             Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
             Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
@@ -170,12 +166,6 @@
 
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
 
-        private void GLControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
-        private void GLControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
-        private void GLControl_Load(object sender, EventArgs e) { }
-        private void GLControl_Paint(object sender, PaintEventArgs e) => RenderCon.Render();
-        private void GLControl_Resize(object sender, EventArgs e) { }
-
         private void JsonCon_FileLoaded(object sender, EventArgs e) => FileLoaded();
         private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
         private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => FilePathRequest(e);
@@ -200,13 +190,9 @@
         private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
         private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
         private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility(ScenePropertiesCon);
-        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility(TracePropertiesCon);
-        private void ViewViewGraphicsState_Click(object sender, EventArgs e) => ToggleVisibility(GraphicsStateCon);
-        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility(SceneCodeCon);
-        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility(TraceCodeCon);
-        private void ViewGpuCode_Click(object sender, EventArgs e) => ToggleVisibility(ShaderCodeCon);
-        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility(SceneCon);
+
+        private void ViewRestoreWindowLayout_Click(object sender, EventArgs e) => RestoreWindowLayout();
+
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
         private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
@@ -232,8 +218,6 @@
         }
 
         private void AddVolume() => AddTrace(TraceType.Volume);
-
-        private void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
         private void BeginUpdate() => ++UpdateCount;
 
@@ -269,25 +253,7 @@
             ConnectGLControl(connect);
         }
 
-        private void ConnectGLControl(bool connect)
-        {
-            if (connect)
-            {
-                SceneControl.BackColorChanged += GLControl_BackColorChanged;
-                SceneControl.ClientSizeChanged += GLControl_ClientSizeChanged;
-                SceneControl.Load += GLControl_Load;
-                SceneControl.Paint += GLControl_Paint;
-                SceneControl.Resize += GLControl_Resize;
-            }
-            else
-            {
-                SceneControl.BackColorChanged -= GLControl_BackColorChanged;
-                SceneControl.ClientSizeChanged -= GLControl_ClientSizeChanged;
-                SceneControl.Load -= GLControl_Load;
-                SceneControl.Paint -= GLControl_Paint;
-                SceneControl.Resize -= GLControl_Resize;
-            }
-        }
+        private void ConnectGLControl(bool connect) => SceneCon.Connect(connect);
 
         private void ConnectJsonCon(bool connect)
         {
@@ -332,13 +298,7 @@
                 WorldForm.EditSelectAll.Click += EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click += EditInvertSelection_Click;
                 WorldForm.EditOptions.Click += EditOptions_Click;
-                WorldForm.ViewSceneProperties.Click += ViewSceneProperties_Click;
-                WorldForm.ViewTraceProperties.Click += ViewTraceProperties_Click;
-                WorldForm.ViewGraphicsState.Click += ViewViewGraphicsState_Click;
-                WorldForm.ViewSceneCode.Click += ViewSceneCode_Click;
-                WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
-                WorldForm.ViewAllCode.Click += ViewGpuCode_Click;
-                WorldForm.ViewScene.Click += ViewScene_Click;
+                WorldForm.ViewRestoreWindowLayout.Click += ViewRestoreWindowLayout_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
                 WorldForm.PopupMenu.Opening += PopupMenu_Opening;
@@ -362,13 +322,7 @@
                 WorldForm.EditSelectAll.Click -= EditSelectAll_Click;
                 WorldForm.EditInvertSelection.Click -= EditInvertSelection_Click;
                 WorldForm.EditOptions.Click -= EditOptions_Click;
-                WorldForm.ViewSceneProperties.Click -= ViewSceneProperties_Click;
-                WorldForm.ViewTraceProperties.Click -= ViewTraceProperties_Click;
-                WorldForm.ViewGraphicsState.Click -= ViewViewGraphicsState_Click;
-                WorldForm.ViewSceneCode.Click -= ViewSceneCode_Click;
-                WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
-                WorldForm.ViewAllCode.Click -= ViewGpuCode_Click;
-                WorldForm.ViewScene.Click -= ViewScene_Click;
+                WorldForm.ViewRestoreWindowLayout.Click -= ViewRestoreWindowLayout_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
                 WorldForm.PopupMenu.Opening -= PopupMenu_Opening;
@@ -580,7 +534,7 @@
             newControl.Size = new System.Drawing.Size(100, 100);
             newControl.TabIndex = 1;
             newControl.VSync = Scene.VSync;
-            BackColorChanged();
+            SceneCon.BackColorChanged();
             parent.SuspendLayout();
             ConnectGLControl(false);
             parent.Controls.Remove(oldControl);
@@ -594,8 +548,6 @@
 
         internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
 
-        private void Resize() => RenderCon.InvalidateProjection();
-
         private bool SaveFile() => JsonCon.Save();
 
         private bool SaveFileAs() => JsonCon.SaveAs();
@@ -606,17 +558,7 @@
 
         private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
 
-        private static void SetVisibility(DockingCon dockingCon, bool visible)
-        {
-            if (visible)
-                dockingCon.Form.Activate();
-            else
-                dockingCon.Form.Hide();
-        }
-
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
-        private void ToggleVisibility(DockingCon dockingCon) => SetVisibility(dockingCon, !dockingCon.Form.Visible);
 
         private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
 
@@ -689,7 +631,7 @@
 
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
-        private ControlCon _ControlCon;
+        private ParametersCon _ControlCon;
         private GraphicsStateCon _GraphicsStateCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
@@ -704,7 +646,7 @@
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
-        protected override ControlCon ControlCon => _ControlCon ?? (_ControlCon = new ControlCon(this));
+        protected override ParametersCon ParametersCon => _ControlCon ?? (_ControlCon = new ParametersCon(this));
         protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
@@ -715,7 +657,7 @@
         protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
-        protected DockPane ControlPane => ControlForm.Pane;
+        protected DockPane ControlPane => ParametersForm.Pane;
         protected DockPane GraphicsStatePane => GraphicsStateForm.Pane;
         protected DockPane SceneCodePane => SceneCodeForm.Pane;
         protected DockPane ScenePane => SceneForm.Pane;
@@ -729,7 +671,7 @@
         {
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
-            ControlCon.Connect(connect);
+            ParametersCon.Connect(connect);
             GraphicsStateCon.Connect(connect);
             JsonCon.Connect(connect);
             RenderCon.Connect(connect);
@@ -750,7 +692,7 @@
             }
         }
 
-        private void ShowControls()
+        private void RestoreWindowLayout()
         {
             const double h = 0.28;
             SceneForm.Show(WorldPanel, DockState.Document);
@@ -761,7 +703,7 @@
             SceneCodeForm.Show(TraceCodePane, null);
             GraphicsStateForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
-            ControlForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
+            ParametersForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
         }
     }
 }

@@ -102,9 +102,9 @@
 
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
-        protected virtual ControlCon ControlCon => WorldCon.ControlCon;
         protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
+        protected virtual ParametersCon ParametersCon => WorldCon.ParametersCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
         protected virtual SceneCon SceneCon => WorldCon.SceneCon;
@@ -115,8 +115,8 @@
         protected virtual WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
-        protected virtual ControlForm ControlForm => ControlCon.ControlForm;
         protected virtual GraphicsStateForm GraphicsStateForm => GraphicsStateCon.GraphicsStateForm;
+        protected virtual ParametersForm ParametersForm => ParametersCon.ParametersForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
         protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
@@ -125,7 +125,7 @@
         protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
         protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
 
-        protected GraphicsStateView GpuEdit => GraphicsStateForm.GpuEdit;
+        protected GraphicsStateView GraphicsStateView => GraphicsStateForm.GraphicsStateView;
         protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
 
         protected Camera Camera => Scene.Camera;

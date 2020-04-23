@@ -928,24 +928,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Controls.
-        /// </summary>
-        public static string ControlForm_TabText {
-            get {
-                return ResourceManager.GetString("ControlForm_TabText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Controls.
-        /// </summary>
-        public static string ControlForm_Text {
-            get {
-                return ResourceManager.GetString("ControlForm_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap CopyHS {
@@ -1389,6 +1371,24 @@ namespace TabbyCat.Properties {
         public static string Menu_Add_Curve {
             get {
                 return ResourceManager.GetString("Menu_Add_Curve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal|Add a new waveform generator to this scene.
+        /// </summary>
+        public static string Menu_Add_Signal {
+            get {
+                return ResourceManager.GetString("Menu_Add_Signal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SliderAdd a new parameter slider control to this scene.
+        /// </summary>
+        public static string Menu_Add_Slider {
+            get {
+                return ResourceManager.GetString("Menu_Add_Slider", resourceCulture);
             }
         }
         
@@ -1871,20 +1871,20 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shader code|Show or hide the main shader code editor.
-        /// </summary>
-        public static string Menu_View_AllCode {
-            get {
-                return ResourceManager.GetString("Menu_View_AllCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Graphics state|Show or hide the graphics mode and status.
         /// </summary>
         public static string Menu_View_GraphicsState {
             get {
                 return ResourceManager.GetString("Menu_View_GraphicsState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters.
+        /// </summary>
+        public static string Menu_View_Parameters {
+            get {
+                return ResourceManager.GetString("Menu_View_Parameters", resourceCulture);
             }
         }
         
@@ -1912,6 +1912,15 @@ namespace TabbyCat.Properties {
         public static string Menu_View_SceneProperties {
             get {
                 return ResourceManager.GetString("Menu_View_SceneProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shader code|Show or hide the main shader code editor.
+        /// </summary>
+        public static string Menu_View_ShaderCode {
+            get {
+                return ResourceManager.GetString("Menu_View_ShaderCode", resourceCulture);
             }
         }
         
@@ -2026,6 +2035,24 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("OptionsHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters.
+        /// </summary>
+        public static string ParametersForm_TabText {
+            get {
+                return ResourceManager.GetString("ParametersForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters.
+        /// </summary>
+        public static string ParametersForm_Text {
+            get {
+                return ResourceManager.GetString("ParametersForm_Text", resourceCulture);
             }
         }
         

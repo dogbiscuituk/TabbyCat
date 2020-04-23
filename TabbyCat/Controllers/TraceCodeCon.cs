@@ -5,6 +5,7 @@
     using Common.Utils;
     using Jmk.Common;
     using Properties;
+    using System;
     using System.Windows.Forms;
 
     internal class TraceCodeCon : CodeCon
@@ -18,6 +19,25 @@
         protected override string GetRegion() => Resources.ShaderRegion_Trace;
 
         protected override void RunShaderCommand(string text) => Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
+            }
+            else
+            {
+                WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
+            }
+        }
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_View_TraceCode, WorldForm.ViewTraceCode);
+        }
 
         protected override void UpdateUI()
         {
@@ -54,6 +74,8 @@
                     Run(new TraceShaderCommand(trace.Index, ShaderType, script));
                 }
             }
-        }
+         }
+
+        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility();
     }
 }

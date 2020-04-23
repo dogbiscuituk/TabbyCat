@@ -6,6 +6,7 @@
     using FastColoredTextBoxNS;
     using Jmk.Common;
     using Properties;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -21,10 +22,29 @@
 
         protected override string GetRegion() => Resources.ShaderRegion_All;
 
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.ViewShaderCode.Click += ViewShaderCode_Click;
+            }
+            else
+            {
+                WorldForm.ViewShaderCode.Click -= ViewShaderCode_Click;
+            }
+        }
+
         protected override void LoadScript()
         {
             base.LoadScript();
             FindBreaks(GetScript());
+        }
+
+        protected override void Localize()
+        {
+            base.Localize();
+            Localize(Resources.Menu_View_ShaderCode, WorldForm.ViewShaderCode);
         }
 
         protected override void RunShaderCommand(string text)
@@ -88,5 +108,7 @@
             for (var index = 0; index < Breaks.Count; index += 2)
                 PrimaryCon.AddSystemRange(new Range(PrimaryTextBox, 0, Breaks[index], 0, Breaks[index + 1]));
         }
+
+        private void ViewShaderCode_Click(object sender, EventArgs e) => ToggleVisibility();
     }
 }

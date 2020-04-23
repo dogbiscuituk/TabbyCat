@@ -6,7 +6,6 @@
     using Controls;
     using Models;
     using OpenTK;
-    using OpenTK.Graphics.OpenGL;
     using Properties;
     using System;
     using System.Drawing;
@@ -64,6 +63,7 @@
             if (connect)
             {
                 UpdateAllProperties();
+                SelectionCon.SelectionChanged += Selection_Changed;
                 TracePropertiesEdit.edDescription.TextChanged += Description_TextChanged;
                 TracePropertiesEdit.seLocationX.ValueChanged += LocationX_ValueChanged;
                 TracePropertiesEdit.seLocationY.ValueChanged += LocationY_ValueChanged;
@@ -86,10 +86,11 @@
                 TracePropertiesEdit.seStripeCountY.ValueChanged += StripeCountY_ValueChanged;
                 TracePropertiesEdit.seStripeCountZ.ValueChanged += StripeCountZ_ValueChanged;
                 TracePropertiesEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                SelectionCon.SelectionChanged += Selection_Changed;
+                WorldForm.ViewTraceProperties.Click += ViewTraceProperties_Click;
             }
             else
             {
+                SelectionCon.SelectionChanged -= Selection_Changed;
                 TracePropertiesEdit.edDescription.TextChanged -= Description_TextChanged;
                 TracePropertiesEdit.seLocationX.ValueChanged -= LocationX_ValueChanged;
                 TracePropertiesEdit.seLocationY.ValueChanged -= LocationY_ValueChanged;
@@ -112,7 +113,7 @@
                 TracePropertiesEdit.seStripeCountY.ValueChanged -= StripeCountY_ValueChanged;
                 TracePropertiesEdit.seStripeCountZ.ValueChanged -= StripeCountZ_ValueChanged;
                 TracePropertiesEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                SelectionCon.SelectionChanged -= Selection_Changed;
+                WorldForm.ViewTraceProperties.Click -= ViewTraceProperties_Click;
             }
             SelectionCon.Connect(connect);
         }
@@ -126,6 +127,7 @@
         protected override void Localize()
         {
             base.Localize();
+            Localize(Resources.Menu_View_TraceProperties, WorldForm.ViewTraceProperties);
             Localize(Resources.Control_Trace_Description, TracePropertiesEdit.lblDescription, TracePropertiesEdit.edDescription);
             Localize(Resources.Control_Trace_Location, TracePropertiesEdit.lblLocation);
             Localize(Resources.Control_Trace_LocationX, TracePropertiesEdit.seLocationX);
@@ -287,8 +289,7 @@
     /// </summary>
     partial class TracePropertiesCon
     {
-        private void Description_TextChanged(object sender, System.EventArgs e) =>
-            Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
+        private void Description_TextChanged(object sender, System.EventArgs e) => Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
 
         private void LocationX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new LocationCommand(p.Index, new Vector3(
@@ -380,8 +381,7 @@
             e.Graphics.DrawString(thing, e.Font, foreground.ToBrush(), r.X + 1, r.Y - 2);
         }
 
-        private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) =>
-            Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));
+        private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) => Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));
 
         private void ScaleX_ValueChanged(object sender, System.EventArgs e) =>
             Run(p => new ScaleCommand(p.Index, new Vector3(
@@ -419,7 +419,8 @@
                 p.StripeCount.Y,
                 (float)TracePropertiesEdit.seStripeCountZ.Value)));
 
-        private void Visible_CheckedChanged(object sender, EventArgs e) =>
-            Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
+        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility();
+
+        private void Visible_CheckedChanged(object sender, EventArgs e) => Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
     }
 }
