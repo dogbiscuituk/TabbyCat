@@ -18,6 +18,8 @@
 
         private SceneForm _SceneForm;
 
+        private bool SceneControlSuspended;
+
         protected internal override DockContent Form => SceneForm;
 
         protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm());
@@ -28,7 +30,8 @@
 
         internal void Do(Action action)
         {
-            if (SceneControl?.IsHandleCreated == true &&
+            if (!SceneControlSuspended &&
+                SceneControl?.IsHandleCreated == true &&
                 SceneControl?.HasValidContext == true &&
                 SceneControl?.Visible == true)
             {
@@ -51,6 +54,8 @@
             base.Connect(connect);
             if (connect)
             {
+                SceneForm.HandleCreated += SceneForm_HandleCreated;
+                SceneForm.HandleDestroyed += SceneForm_HandleDestroyed;
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldForm.ViewScene.Click += ViewScene_Click;
                 SceneControl.BackColorChanged += SceneControl_BackColorChanged;
@@ -61,8 +66,8 @@
             }
             else
             {
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
-                WorldForm.ViewScene.Click -= ViewScene_Click;
+                SceneForm.HandleCreated -= SceneForm_HandleCreated;
+                SceneForm.HandleDestroyed -= SceneForm_HandleDestroyed;
                 SceneControl.BackColorChanged -= SceneControl_BackColorChanged;
                 SceneControl.ClientSizeChanged -= SceneControl_ClientSizeChanged;
                 SceneControl.Load -= SceneControl_Load;
@@ -133,6 +138,18 @@
         }
 
         private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility();
+
+        private void SceneForm_HandleCreated(object sender, EventArgs e)
+        {
+            SceneControlSuspended = false;
+            RecreateSceneControl();
+        }
+
+        private void SceneForm_HandleDestroyed(object sender, EventArgs e)
+        {
+            RenderCon.Invalidate();
+            SceneControlSuspended = true;
+        }
 
         private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => OnPropertyChanged(e.PropertyName);
     }

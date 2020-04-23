@@ -184,6 +184,14 @@
             return info;
         }
 
+        internal void Invalidate()
+        {
+            InvalidateAllTraces();
+            InvalidateCameraView();
+            InvalidateProgram();
+            InvalidateProjection();
+        }
+
         internal void InvalidateAllTraces() => Scene.Traces.ForEach(p => InvalidateTrace(p));
 
         internal void InvalidateCameraView() => CameraViewValid = false;
@@ -248,8 +256,7 @@
                     ValidateTrace(trace);
                     GL.BindVertexArray(trace.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
-                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F),
-                        trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
