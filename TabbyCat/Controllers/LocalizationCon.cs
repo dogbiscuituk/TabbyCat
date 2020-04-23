@@ -5,6 +5,7 @@
     using Controls;
     using Models;
     using OpenTK;
+    using OpenTK.Graphics;
     using System;
     using System.Linq;
     using System.Windows.Forms;
@@ -96,6 +97,7 @@
     {
         protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;

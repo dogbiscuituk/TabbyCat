@@ -5,8 +5,6 @@
     using Common.Utils;
     using Jmk.Common;
     using Models;
-    using OpenTK;
-    using OpenTK.Graphics;
     using Properties;
     using System;
     using System.Collections.Generic;
@@ -41,12 +39,54 @@
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
         private static string GLSLUrl => Settings.Default.GLSLUrl;
-        internal GraphicsMode GraphicsMode => RenderCon._GraphicsMode ?? RenderCon?.GraphicsMode;
 
         internal event PropertyChangedEventHandler PropertyChanged;
         internal event EventHandler
             Pulse,
             SelectionChanged;
+
+        internal void InitControlTheme() => AppCon.InitControlTheme(
+            WorldPanel,
+            WorldForm.MainMenu,
+            WorldForm.PopupMenu,
+            WorldForm.Toolbar,
+            WorldForm.StatusBar);
+
+        internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
+
+        internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
+
+        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
+
+        internal void Show() => WorldForm.Show();
+
+        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
+
+        internal void OnPropertyChanged(string propertyName)
+        {
+            switch (propertyName)
+            {
+                case PropertyNames.Traces:
+                    UpdateSelection();
+                    break;
+                case PropertyNames.FPS:
+                    ClockInit();
+                    break;
+                case PropertyNames.GPULog:
+                case PropertyNames.GPUStatus:
+                    UpdateGpuStatusLabel();
+                    break;
+            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            SceneControl.Invalidate();
+        }
+
+        internal void OnPulse()
+        {
+            UpdateToolbar();
+            UpdateStatusBar();
+            Pulse?.Invoke(this, EventArgs.Empty);
+        }
 
         protected internal override void Connect(bool connect)
         {
@@ -71,12 +111,11 @@
             }
         }
 
-        internal void InitControlTheme() => AppCon.InitControlTheme(
-            WorldPanel,
-            WorldForm.MainMenu,
-            WorldForm.PopupMenu,
-            WorldForm.Toolbar,
-            WorldForm.StatusBar);
+        protected internal override void UpdateAllProperties()
+        {
+            TracePropertiesCon.UpdateAllProperties();
+            ScenePropertiesCon.UpdateAllProperties();
+        }
 
         protected override void DisposeManagedState()
         {
@@ -116,52 +155,6 @@
             Localize(Resources.Menu_Help, WorldForm.HelpMenu);
             Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
             Localize(string.Format(CultureInfo.CurrentCulture, Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
-        }
-
-        protected internal override void UpdateAllProperties()
-        {
-            TracePropertiesCon.UpdateAllProperties();
-            ScenePropertiesCon.UpdateAllProperties();
-        }
-
-        internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
-
-        internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
-
-        internal void Show() => WorldForm.Show();
-
-        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
-
-        internal void OnPropertyChanged(string propertyName)
-        {
-            switch (propertyName)
-            {
-                case PropertyNames.Traces:
-                    UpdateSelection();
-                    break;
-                case PropertyNames.FPS:
-                    ClockInit();
-                    break;
-                case PropertyNames.Samples:
-                    RecreateGLControl("Samples", Scene.Samples);
-                    break;
-                case PropertyNames.Stereo:
-                    RecreateGLControl("Stereo", Scene.Stereo);
-                    break;
-                case PropertyNames.GPULog:
-                case PropertyNames.GPUStatus:
-                    UpdateGpuStatusLabel();
-                    break;
-            }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            SceneControl.Invalidate();
-        }
-
-        internal void OnPulse()
-        {
-            UpdateToolbar();
-            UpdateStatusBar();
-            Pulse?.Invoke(this, EventArgs.Empty);
         }
 
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
@@ -250,10 +243,8 @@
                 WorldForm.FormClosing -= WorldForm_FormClosing;
                 Selection.Changed -= Selection_Changed;
             }
-            ConnectGLControl(connect);
+            SceneCon.Connect(connect);
         }
-
-        private void ConnectGLControl(bool connect) => SceneCon.Connect(connect);
 
         private void ConnectJsonCon(bool connect)
         {
@@ -410,7 +401,7 @@
             CommandProcessor.Clear();
             EndUpdate();
             ConnectCons(true);
-            RecreateGLControl();
+            SceneCon.RecreateSceneControl();
             SetDefaultCamera();
             UpdateAllProperties();
         }
@@ -516,37 +507,6 @@
             }
             Selection.Set(traces);
         }
-
-        private void RecreateGLControl() => RecreateGLControl(GraphicsMode);
-
-        private void RecreateGLControl(string propertyName, object value) => RecreateGLControl(GraphicsMode.Change(propertyName, value));
-
-        private void RecreateGLControl(GraphicsMode mode)
-        {
-            var parent = SceneControl.Parent;
-            GLControl
-                oldControl = SceneControl,
-                newControl = mode == null ? new GLControl() : new GLControl(mode);
-            newControl.BackColor = Scene.BackgroundColour;
-            newControl.Dock = DockStyle.Fill;
-            newControl.Location = new System.Drawing.Point(0, 0);
-            newControl.Name = "GLControl";
-            newControl.Size = new System.Drawing.Size(100, 100);
-            newControl.TabIndex = 1;
-            newControl.VSync = Scene.VSync;
-            SceneCon.BackColorChanged();
-            parent.SuspendLayout();
-            ConnectGLControl(false);
-            parent.Controls.Remove(oldControl);
-            parent.Controls.Add(newControl);
-            ConnectGLControl(true);
-            RenderCon.Refresh();
-            parent.ResumeLayout();
-            oldControl.Dispose();
-            RefreshGraphicsMode();
-        }
-
-        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
 
         private bool SaveFile() => JsonCon.Save();
 

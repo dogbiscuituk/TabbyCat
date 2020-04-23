@@ -74,7 +74,9 @@
             }
         }
 
-        internal GraphicsMode GraphicsMode
+        internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
+
+        protected internal override GraphicsMode GraphicsMode
         {
             get
             {
@@ -88,8 +90,6 @@
                 return _GraphicsMode;
             }
         }
-
-        internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
