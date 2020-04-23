@@ -32,6 +32,45 @@
 
         internal event EventHandler<FilePathEventArgs> FileReopen;
 
+        internal static bool ClipboardCopy(IEnumerable<Trace> traces)
+        {
+            bool result;
+            string text;
+            using (var stream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(stream))
+            using (var textWriter = new JsonTextWriter(streamWriter))
+            {
+                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
+                textWriter.Flush();
+                streamWriter.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var streamReader = new StreamReader(stream))
+                    text = streamReader.ReadToEnd();
+            }
+            var dataObject = new DataObject();
+            dataObject.SetData(AppCon.DataFormat, text);
+            dataObject.SetData(DataFormats.Text, text);
+            Clipboard.SetDataObject(dataObject, copy: true);
+            return result;
+        }
+
+        internal static IEnumerable<Trace> ClipboardPaste()
+        {
+            IEnumerable<Trace> traces = null;
+            if (AppCon.CanPaste)
+                using (var stream = new MemoryStream())
+                using (var streamWriter = new StreamWriter(stream))
+                {
+                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
+                    streamWriter.Flush();
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using (var streamReader = new StreamReader(stream))
+                    using (var textReader = new JsonTextReader(streamReader))
+                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
+                }
+            return traces;
+        }
+
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
@@ -79,45 +118,6 @@
                 FileSaving -= JsonCon_FileSaving;
                 FileSaved -= JsonCon_FileSaved;
             }
-        }
-
-        internal static bool ClipboardCopy(IEnumerable<Trace> traces)
-        {
-            bool result;
-            string text;
-            using (var stream = new MemoryStream())
-            using (var streamWriter = new StreamWriter(stream))
-            using (var textWriter = new JsonTextWriter(streamWriter))
-            {
-                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
-                textWriter.Flush();
-                streamWriter.Flush();
-                stream.Seek(0, SeekOrigin.Begin);
-                using (var streamReader = new StreamReader(stream))
-                    text = streamReader.ReadToEnd();
-            }
-            var dataObject = new DataObject();
-            dataObject.SetData(AppCon.DataFormat, text);
-            dataObject.SetData(DataFormats.Text, text);
-            Clipboard.SetDataObject(dataObject, copy: true);
-            return result;
-        }
-
-        internal static IEnumerable<Trace> ClipboardPaste()
-        {
-            IEnumerable<Trace> traces = null;
-            if (AppCon.CanPaste)
-                using (var stream = new MemoryStream())
-                using (var streamWriter = new StreamWriter(stream))
-                {
-                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
-                    streamWriter.Flush();
-                    stream.Seek(0, SeekOrigin.Begin);
-                    using (var streamReader = new StreamReader(stream))
-                    using (var textReader = new JsonTextReader(streamReader))
-                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
-                }
-            return traces;
         }
 
         protected override void ClearDocument()
@@ -170,7 +170,66 @@
             }
         }
 
-        private void OnFileLoaded()
+        private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
+
+        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
+
+        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
+
+        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
+
+        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
+
+        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
+
+        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
+
+        private static JsonSerializer GetSerializer() => new JsonSerializer
+        {
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            Formatting = Formatting.Indented,
+            MissingMemberHandling = MissingMemberHandling.Error
+        };
+
+        private WorldCon GetNewWorldCon()
+        {
+            if (AppCon.Options.OpenInNewWindow)
+                return AppCon.AddNewWorldCon();
+            if (!JsonCon.SaveIfModified())
+                return null;
+            JsonCon.Clear();
+            SetDefaultCamera();
+            return WorldCon;
+        }
+
+        private void JsonCon_FileLoaded(object sender, EventArgs e) => OnLoad();
+
+        private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
+
+        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => OnFilePathRequest(e);
+
+        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
+
+        private void JsonCon_FileSaved(object sender, EventArgs e) => OnSave();
+
+        private void JsonCon_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
+
+        private void NewEmptyScene() => GetNewWorldCon();
+
+        private void NewFromTemplate()
+        {
+            var worldCon = OpenFile(FilterIndex.Template);
+            if (worldCon != null)
+                worldCon.JsonCon.FilePath = string.Empty;
+        }
+
+        private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.FilePath))
+                e.FilePath = Scene.Title.ToFilename();
+        }
+
+        private void OnLoad()
         {
             WorldCon.ConnectCons(false);
             Scene.WorldCon = WorldCon;
@@ -184,13 +243,7 @@
             UpdateAllProperties();
         }
 
-        private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(e.FilePath))
-                e.FilePath = Scene.Title.ToFilename();
-        }
-
-        private void OnFileSaved()
+        private void OnSave()
         {
             BeginUpdate();
             CommandProcessor.Save();
@@ -198,25 +251,6 @@
             SetDefaultCamera();
             UpdateAllProperties();
         }
-
-        private static JsonSerializer GetSerializer() => new JsonSerializer
-        {
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            Formatting = Formatting.Indented,
-            MissingMemberHandling = MissingMemberHandling.Error
-        };
-
-        private void JsonCon_FileLoaded(object sender, EventArgs e) => OnFileLoaded();
-
-        private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
-
-        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => OnFilePathRequest(e);
-
-        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
-
-        private void JsonCon_FileSaved(object sender, EventArgs e) => OnFileSaved();
-
-        private void JsonCon_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
 
         private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File) => OpenFile(JsonCon.SelectFilePath(filterIndex));
 
@@ -229,47 +263,18 @@
             return worldCon;
         }
 
-        private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
-
-        private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
-
-
-        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
-        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
-        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
-        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
-        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
-        private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
-        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
-
-        private WorldCon GetNewWorldCon()
-        {
-            if (AppCon.Options.OpenInNewWindow)
-                return AppCon.AddNewWorldCon();
-            if (!JsonCon.SaveIfModified())
-                return null;
-            JsonCon.Clear();
-            SetDefaultCamera();
-            return WorldCon;
-        }
-
-        private void NewEmptyScene() => GetNewWorldCon();
-
-        private void NewFromTemplate()
-        {
-            var worldCon = OpenFile(FilterIndex.Template);
-            if (worldCon != null)
-                worldCon.JsonCon.FilePath = string.Empty;
-        }
-
         private bool SaveFile() => JsonCon.Save();
 
         private bool SaveFileAs() => JsonCon.SaveAs();
 
         private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
 
+        private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
+
         private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
 
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
+
+        private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
     }
 }
