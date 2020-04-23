@@ -49,6 +49,23 @@
             }
         }
 
+        internal void OnPropertyChanged(string propertyName)
+        {
+            switch (propertyName)
+            {
+                case PropertyNames.GraphicsMode:
+                    RecreateSceneControl();
+                    break;
+                case PropertyNames.Samples:
+                    RecreateSceneControl("Samples", Scene.Samples);
+                    break;
+                case PropertyNames.Stereo:
+                    RecreateSceneControl("Stereo", Scene.Stereo);
+                    break;
+            }
+            SceneControl.Invalidate();
+        }
+
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
@@ -118,23 +135,6 @@
             RenderCon.Refresh();
             parent.ResumeLayout();
             oldControl.Dispose();
-        }
-
-        internal void OnPropertyChanged(string propertyName)
-        {
-            switch (propertyName)
-            {
-                case PropertyNames.GraphicsMode:
-                    RecreateSceneControl();
-                    break;
-                case PropertyNames.Samples:
-                    RecreateSceneControl("Samples", Scene.Samples);
-                    break;
-                case PropertyNames.Stereo:
-                    RecreateSceneControl("Stereo", Scene.Stereo);
-                    break;
-            }
-            SceneControl.Invalidate();
         }
 
         private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility();
