@@ -44,7 +44,7 @@
             this.Label.Size = new System.Drawing.Size(20, 20);
             this.Label.TabIndex = 0;
             this.Label.Text = "A";
-            this.Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TrackBar
             // 
