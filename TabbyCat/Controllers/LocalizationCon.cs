@@ -95,6 +95,7 @@
     /// </summary>
     partial class LocalizationCon
     {
+        protected internal virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
         protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
         protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
@@ -105,7 +106,6 @@
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
-        protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual ParametersCon ParametersCon => WorldCon.ParametersCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;

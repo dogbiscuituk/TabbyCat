@@ -7,7 +7,6 @@
     using Models;
     using Properties;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
@@ -30,9 +29,7 @@
 
         internal TraceSelection Selection = new TraceSelection();
 
-        private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
-        private int UpdateCount;
 
         protected internal override Scene Scene { get; set; }
         protected internal override WorldForm WorldForm { get; }
@@ -44,6 +41,29 @@
         internal event EventHandler
             Pulse,
             SelectionChanged;
+
+        internal void ConnectCons(bool connect)
+        {
+            CameraCon.Connect(connect);
+            ClockCon.Connect(connect);
+            ParametersCon.Connect(connect);
+            GraphicsStateCon.Connect(connect);
+            JsonCon.Connect(connect);
+            RenderCon.Connect(connect);
+            SceneCodeCon.Connect(connect);
+            SceneCon.Connect(connect);
+            ScenePropertiesCon.Connect(connect);
+            ShaderCodeCon.Connect(connect);
+            TraceCodeCon.Connect(connect);
+            TracePropertiesCon.Connect(connect);
+            if (connect)
+            {
+            }
+            else
+            {
+                RenderCon.Unload();
+            }
+        }
 
         internal void InitControlTheme() => AppCon.InitControlTheme(
             WorldPanel,
@@ -159,20 +179,6 @@
 
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
 
-        private void JsonCon_FileLoaded(object sender, EventArgs e) => FileLoaded();
-        private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
-        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => FilePathRequest(e);
-        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
-        private void JsonCon_FileSaved(object sender, EventArgs e) => FileSaved();
-        private void JsonCon_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
-
-        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
-        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
-        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
-        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
-        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
-        private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
-        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
         private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
         private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
         private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
@@ -195,9 +201,6 @@
 
         private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
 
-        private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen);
-        private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
-
         private void AddCurve() => AddTrace(TraceType.Curve);
 
         private void AddSurface() => AddTrace(TraceType.Surface);
@@ -211,8 +214,6 @@
         }
 
         private void AddVolume() => AddTrace(TraceType.Volume);
-
-        private void BeginUpdate() => ++UpdateCount;
 
         private void ClockInit() => Clock.IntervalMilliseconds = GetFrameMilliseconds();
 
@@ -246,39 +247,10 @@
             SceneCon.Connect(connect);
         }
 
-        private void ConnectJsonCon(bool connect)
-        {
-            if (connect)
-            {
-                JsonCon.FileLoaded += JsonCon_FileLoaded;
-                JsonCon.FilePathChanged += JsonCon_FilePathChanged;
-                JsonCon.FilePathRequest += JsonCon_FilePathRequest;
-                JsonCon.FileReopen += JsonCon_FileReopen;
-                JsonCon.FileSaving += JsonCon_FileSaving;
-                JsonCon.FileSaved += JsonCon_FileSaved;
-            }
-            else
-            {
-                JsonCon.FileLoaded -= JsonCon_FileLoaded;
-                JsonCon.FilePathChanged -= JsonCon_FilePathChanged;
-                JsonCon.FilePathRequest -= JsonCon_FilePathRequest;
-                JsonCon.FileReopen -= JsonCon_FileReopen;
-                JsonCon.FileSaving -= JsonCon_FileSaving;
-                JsonCon.FileSaved -= JsonCon_FileSaved;
-            }
-        }
-
         private void ConnectMainMenu(bool connect)
         {
             if (connect)
             {
-                WorldForm.FileNewEmptyScene.Click += FileNewEmptyScene_Click;
-                WorldForm.FileNewFromTemplate.Click += FileNewFromTemplate_Click;
-                WorldForm.FileOpen.Click += FileOpen_Click;
-                WorldForm.FileSave.Click += FileSave_Click;
-                WorldForm.FileSaveAs.Click += FileSaveAs_Click;
-                WorldForm.FileClose.Click += FileClose_Click;
-                WorldForm.FileExit.Click += FileExit_Click;
                 WorldForm.AddCurve.Click += AddCurve_Click;
                 WorldForm.AddSurface.Click += AddSurface_Click;
                 WorldForm.AddVolume.Click += AddVolume_Click;
@@ -296,13 +268,6 @@
             }
             else
             {
-                WorldForm.FileNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                WorldForm.FileNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                WorldForm.FileOpen.Click -= FileOpen_Click;
-                WorldForm.FileSave.Click -= FileSave_Click;
-                WorldForm.FileSaveAs.Click -= FileSaveAs_Click;
-                WorldForm.FileClose.Click -= FileClose_Click;
-                WorldForm.FileExit.Click -= FileExit_Click;
                 WorldForm.AddCurve.Click -= AddCurve_Click;
                 WorldForm.AddSurface.Click -= AddSurface_Click;
                 WorldForm.AddVolume.Click -= AddVolume_Click;
@@ -332,12 +297,6 @@
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
                 WorldForm.tbDelete.Click += EditDelete_Click;
-                WorldForm.tbNew.ButtonClick += FileNewEmptyScene_Click;
-                WorldForm.tbNewEmptyScene.Click += FileNewEmptyScene_Click;
-                WorldForm.tbNewFromTemplate.Click += FileNewFromTemplate_Click;
-                WorldForm.tbOpen.ButtonClick += FileOpen_Click;
-                WorldForm.tbOpen.DropDownOpening += TbOpen_DropDownOpening;
-                WorldForm.tbSave.Click += TbSave_Click;
             }
             else
             {
@@ -349,12 +308,6 @@
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;
                 WorldForm.tbDelete.Click -= EditDelete_Click;
-                WorldForm.tbNew.ButtonClick -= FileNewEmptyScene_Click;
-                WorldForm.tbNewEmptyScene.Click -= FileNewEmptyScene_Click;
-                WorldForm.tbNewFromTemplate.Click -= FileNewFromTemplate_Click;
-                WorldForm.tbOpen.ButtonClick -= FileOpen_Click;
-                WorldForm.tbOpen.DropDownOpening -= TbOpen_DropDownOpening;
-                WorldForm.tbSave.Click -= TbSave_Click;
             }
         }
 
@@ -382,45 +335,6 @@
                 optionsCon.ShowModal();
         }
 
-        private void EndUpdate()
-        {
-            if (--UpdateCount == 0)
-            {
-                foreach (var propertyName in ChangedPropertyNames)
-                    OnPropertyChanged(propertyName);
-                ChangedPropertyNames.Clear();
-            }
-        }
-
-        private void FileLoaded()
-        {
-            ConnectCons(false);
-            Scene.WorldCon = this;
-            BeginUpdate();
-            Scene.AttachTraces();
-            CommandProcessor.Clear();
-            EndUpdate();
-            ConnectCons(true);
-            SceneCon.RecreateSceneControl();
-            SetDefaultCamera();
-            UpdateAllProperties();
-        }
-
-        private void FilePathRequest(SdiCon.FilePathEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(e.FilePath))
-                e.FilePath = Scene.Title.ToFilename();
-        }
-
-        private void FileSaved()
-        {
-            BeginUpdate();
-            CommandProcessor.Save();
-            EndUpdate();
-            SetDefaultCamera();
-            UpdateAllProperties();
-        }
-
         private void FormClosed() => Connect(false);
 
         private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
@@ -442,17 +356,6 @@
             }
         }
 
-        private WorldCon GetNewWorldCon()
-        {
-            if (AppCon.Options.OpenInNewWindow)
-                return AppCon.AddNewWorldCon();
-            if (!JsonCon.SaveIfModified())
-                return null;
-            JsonCon.Clear();
-            SetDefaultCamera();
-            return this;
-        }
-
         private void HelpAbout()
         {
             using (AboutCon aboutCon = new AboutCon(this))
@@ -460,15 +363,6 @@
         }
 
         private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
-
-        private void NewEmptyScene() => GetNewWorldCon();
-
-        private void NewFromTemplate()
-        {
-            var worldCon = OpenFile(FilterIndex.Template);
-            if (worldCon != null)
-                worldCon.JsonCon.FilePath = string.Empty;
-        }
 
         private void OnSelectionChanged()
         {
@@ -480,18 +374,6 @@
                 WorldForm.tbCopy,
                 WorldForm.tbDelete });
             SelectionChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File) =>
-            OpenFile(JsonCon.SelectFilePath(filterIndex));
-
-        private WorldCon OpenFile(string filePath)
-        {
-            if (string.IsNullOrWhiteSpace(filePath))
-                return null;
-            var worldCon = GetNewWorldCon();
-            worldCon?.LoadFromFile(filePath);
-            return worldCon;
         }
 
         private void PasteFromClipboard()
@@ -508,19 +390,9 @@
             Selection.Set(traces);
         }
 
-        private bool SaveFile() => JsonCon.Save();
-
-        private bool SaveFileAs() => JsonCon.SaveAs();
-
-        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
-
         private void SelectAll() => Selection.AddRange(Scene.Traces);
 
-        private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
-
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
-
-        private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
 
         private void UpdateFramesPerSecond()
         {
@@ -604,11 +476,12 @@
 
         internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
 
+        protected internal override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         protected override ParametersCon ParametersCon => _ControlCon ?? (_ControlCon = new ParametersCon(this));
         protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
-        protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
         protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
@@ -626,31 +499,6 @@
         protected DockPane TraceCodePane => TraceCodeForm.Pane;
         protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
         protected DockPanel WorldPanel => WorldForm.DockPanel;
-
-        private void ConnectCons(bool connect)
-        {
-            CameraCon.Connect(connect);
-            ClockCon.Connect(connect);
-            ParametersCon.Connect(connect);
-            GraphicsStateCon.Connect(connect);
-            JsonCon.Connect(connect);
-            RenderCon.Connect(connect);
-            SceneCodeCon.Connect(connect);
-            SceneCon.Connect(connect);
-            ScenePropertiesCon.Connect(connect);
-            ShaderCodeCon.Connect(connect);
-            TraceCodeCon.Connect(connect);
-            TracePropertiesCon.Connect(connect);
-
-            ConnectJsonCon(connect);
-            if (connect)
-            {
-            }
-            else
-            {
-                RenderCon.Unload();
-            }
-        }
 
         private void RestoreWindowLayout()
         {
