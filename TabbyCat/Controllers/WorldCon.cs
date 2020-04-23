@@ -32,15 +32,6 @@
 
         internal TraceSelection Selection = new TraceSelection();
 
-        protected DockPane GraphicsStatePane => GraphicsStateForm.Pane;
-        protected DockPane SceneCodePane => SceneCodeForm.Pane;
-        protected DockPane ScenePane => SceneForm.Pane;
-        protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
-        protected DockPane ShaderCodePane => ShaderCodeForm.Pane;
-        protected DockPane TraceCodePane => TraceCodeForm.Pane;
-        protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
-        protected DockPanel WorldPanel => WorldForm.DockPanel;
-
         private readonly List<string> ChangedPropertyNames = new List<string>();
         private string LastSpeed, LastTime, LastFPS;
         private int UpdateCount;
@@ -623,19 +614,6 @@
                 dockingCon.Form.Hide();
         }
 
-        private void ShowControls()
-        {
-            var h = 0.28;
-            SceneForm.Show(WorldPanel, DockState.Document);
-            ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
-            TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - h);
-            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
-            SceneCodeForm.Show(TraceCodePane, null);
-            GraphicsStateForm.Show(TraceCodePane, null);
-            TraceCodeForm.Activate();
-        }
-
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
         private void ToggleVisibility(DockingCon dockingCon) => SetVisibility(dockingCon, !dockingCon.Form.Visible);
@@ -711,6 +689,7 @@
 
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
+        private ControlCon _ControlCon;
         private GraphicsStateCon _GraphicsStateCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
@@ -725,6 +704,7 @@
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
+        protected override ControlCon ControlCon => _ControlCon ?? (_ControlCon = new ControlCon(this));
         protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
         protected override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
@@ -735,10 +715,21 @@
         protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
+        protected DockPane ControlPane => ControlForm.Pane;
+        protected DockPane GraphicsStatePane => GraphicsStateForm.Pane;
+        protected DockPane SceneCodePane => SceneCodeForm.Pane;
+        protected DockPane ScenePane => SceneForm.Pane;
+        protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
+        protected DockPane ShaderCodePane => ShaderCodeForm.Pane;
+        protected DockPane TraceCodePane => TraceCodeForm.Pane;
+        protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
+        protected DockPanel WorldPanel => WorldForm.DockPanel;
+
         private void ConnectCons(bool connect)
         {
             CameraCon.Connect(connect);
             ClockCon.Connect(connect);
+            ControlCon.Connect(connect);
             GraphicsStateCon.Connect(connect);
             JsonCon.Connect(connect);
             RenderCon.Connect(connect);
@@ -757,6 +748,20 @@
             {
                 RenderCon.Unload();
             }
+        }
+
+        private void ShowControls()
+        {
+            const double h = 0.28;
+            SceneForm.Show(WorldPanel, DockState.Document);
+            ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
+            TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
+            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - h);
+            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
+            SceneCodeForm.Show(TraceCodePane, null);
+            GraphicsStateForm.Show(TraceCodePane, null);
+            TraceCodeForm.Activate();
+            ControlForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
         }
     }
 }

@@ -931,4 +931,10 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ControlForm_TabText" xml:space="preserve">
+    <value>Controls</value>
+  </data>
+  <data name="ControlForm_Text" xml:space="preserve">
+    <value>Controls</value>
+  </data>
 </root>

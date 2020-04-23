@@ -102,6 +102,7 @@
 
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
+        protected virtual ControlCon ControlCon => WorldCon.ControlCon;
         protected virtual GraphicsStateCon GraphicsStateCon => WorldCon.GraphicsStateCon;
         protected virtual JsonCon JsonCon => WorldCon.JsonCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
@@ -114,6 +115,7 @@
         protected virtual WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
+        protected virtual ControlForm ControlForm => ControlCon.ControlForm;
         protected virtual GraphicsStateForm GraphicsStateForm => GraphicsStateCon.GraphicsStateForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;

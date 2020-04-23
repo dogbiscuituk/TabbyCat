@@ -928,6 +928,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Controls.
+        /// </summary>
+        public static string ControlForm_TabText {
+            get {
+                return ResourceManager.GetString("ControlForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controls.
+        /// </summary>
+        public static string ControlForm_Text {
+            get {
+                return ResourceManager.GetString("ControlForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap CopyHS {

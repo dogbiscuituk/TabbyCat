@@ -89,6 +89,7 @@
     <Compile Include="Controllers\AppCon.cs" />
     <Compile Include="Controllers\CameraCon.cs" />
     <Compile Include="Controllers\ClockCon.cs" />
+    <Compile Include="Controllers\ControlCon.cs" />
     <Compile Include="Controllers\DockingCon.cs" />
     <Compile Include="Controllers\SceneCodeCon.cs" />
     <Compile Include="Controllers\SceneCon.cs" />
@@ -127,6 +128,12 @@
     </Compile>
     <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ControlForm.Designer.cs">
+      <DependentUpon>ControlForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DockingForm.cs">
       <SubType>Form</SubType>
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ControlForm.resx">
+      <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DockingForm.resx">
       <DependentUpon>DockingForm.cs</DependentUpon>
