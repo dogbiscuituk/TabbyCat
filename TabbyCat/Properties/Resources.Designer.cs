@@ -1384,7 +1384,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SliderAdd a new parameter slider control to this scene.
+        ///   Looks up a localized string similar to Slider|Add a new parameter slider control to this scene.
         /// </summary>
         public static string Menu_Add_Slider {
             get {
@@ -1871,11 +1871,11 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Graphics state|Show or hide the graphics mode and status.
+        ///   Looks up a localized string similar to &amp;Full screen|Full screen display on/off|F11.
         /// </summary>
-        public static string Menu_View_GraphicsState {
+        public static string Menu_View_FullScreen {
             get {
-                return ResourceManager.GetString("Menu_View_GraphicsState", resourceCulture);
+                return ResourceManager.GetString("Menu_View_FullScreen", resourceCulture);
             }
         }
         
@@ -2579,6 +2579,15 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mode {0}.
+        /// </summary>
+        public static string Text_GraphicsModeIndexFormat {
+            get {
+                return ResourceManager.GetString("Text_GraphicsModeIndexFormat", resourceCulture);
             }
         }
         

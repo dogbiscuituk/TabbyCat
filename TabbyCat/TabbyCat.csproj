@@ -89,11 +89,11 @@
     <Compile Include="Controllers\AppCon.cs" />
     <Compile Include="Controllers\CameraCon.cs" />
     <Compile Include="Controllers\ClockCon.cs" />
+    <Compile Include="Controllers\FullScreenCon.cs" />
     <Compile Include="Controllers\ParametersCon.cs" />
     <Compile Include="Controllers\DockingCon.cs" />
     <Compile Include="Controllers\SceneCodeCon.cs" />
     <Compile Include="Controllers\SceneCon.cs" />
-    <Compile Include="Controllers\GraphicsStateCon.cs" />
     <Compile Include="Controllers\LocalizationCon.cs" />
     <Compile Include="Controllers\SelectionCon.cs" />
     <Compile Include="Controllers\CodeCon.cs" />
@@ -155,12 +155,6 @@
     <Compile Include="Views\SceneForm.Designer.cs">
       <DependentUpon>SceneForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GraphicsStateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\GraphicsStateForm.Designer.cs">
-      <DependentUpon>GraphicsStateForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\HotkeysForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,9 +210,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SceneForm.resx">
       <DependentUpon>SceneForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\GraphicsStateForm.resx">
-      <DependentUpon>GraphicsStateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>

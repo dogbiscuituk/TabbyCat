@@ -805,9 +805,6 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="Menu_View_TraceCode" xml:space="preserve">
     <value>Trace code|Show or hide the trace code editor</value>
   </data>
-  <data name="Menu_View_GraphicsState" xml:space="preserve">
-    <value>Graphics state|Show or hide the graphics mode and status</value>
-  </data>
   <data name="Menu_View_SceneProperties" xml:space="preserve">
     <value>Scene properties|Show or hide the scene properties editor</value>
   </data>
@@ -941,9 +938,15 @@ Add a new volumetric fill to this scene|F4</value>
     <value>Signal|Add a new waveform generator to this scene</value>
   </data>
   <data name="Menu_Add_Slider" xml:space="preserve">
-    <value>SliderAdd a new parameter slider control to this scene</value>
+    <value>Slider|Add a new parameter slider control to this scene</value>
   </data>
   <data name="Menu_View_Parameters" xml:space="preserve">
     <value>Parameters</value>
+  </data>
+  <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
+    <value>mode {0}</value>
+  </data>
+  <data name="Menu_View_FullScreen" xml:space="preserve">
+    <value>&amp;Full screen|Full screen display on/off|F11</value>
   </data>
 </root>

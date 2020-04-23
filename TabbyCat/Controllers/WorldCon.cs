@@ -29,41 +29,24 @@
 
         internal TraceSelection Selection = new TraceSelection();
 
-        private string LastSpeed, LastTime, LastFPS;
+        private string
+            LastSpeed,
+            LastTime,
+            LastFPS;
 
         protected internal override Scene Scene { get; set; }
+
         protected internal override WorldForm WorldForm { get; }
 
         internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
+
         private static string GLSLUrl => Settings.Default.GLSLUrl;
 
         internal event PropertyChangedEventHandler PropertyChanged;
+
         internal event EventHandler
             Pulse,
             SelectionChanged;
-
-        internal void ConnectCons(bool connect)
-        {
-            CameraCon.Connect(connect);
-            ClockCon.Connect(connect);
-            ParametersCon.Connect(connect);
-            GraphicsStateCon.Connect(connect);
-            JsonCon.Connect(connect);
-            RenderCon.Connect(connect);
-            SceneCodeCon.Connect(connect);
-            SceneCon.Connect(connect);
-            ScenePropertiesCon.Connect(connect);
-            ShaderCodeCon.Connect(connect);
-            TraceCodeCon.Connect(connect);
-            TracePropertiesCon.Connect(connect);
-            if (connect)
-            {
-            }
-            else
-            {
-                RenderCon.Unload();
-            }
-        }
 
         internal void InitControlTheme() => AppCon.InitControlTheme(
             WorldPanel,
@@ -91,6 +74,11 @@
                     break;
                 case PropertyNames.FPS:
                     ClockInit();
+                    break;
+                case PropertyNames.GraphicsMode:
+                case PropertyNames.Samples:
+                case PropertyNames.Stereo:
+                    UpdateGraphicsModeLabel();
                     break;
                 case PropertyNames.GPULog:
                 case PropertyNames.GPUStatus:
@@ -165,7 +153,6 @@
             Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
             Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
             Localize(Resources.Menu_View, WorldForm.ViewMenu);
-
             Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
             Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
             Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
@@ -398,7 +385,7 @@
         {
             var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
             if (LastFPS != fps)
-                LastFPS = WorldForm.FPSlabel.Text = fps;
+                LastFPS = WorldForm.FpsLabel.Text = fps;
         }
 
         private void UpdateGpuStatusLabel()
@@ -408,6 +395,14 @@
             var text = Scene.GPULog;
             label.Text = Regex.Replace(text, @"\s+", " ");
             label.ToolTipText = text;
+        }
+
+        private void UpdateGraphicsModeLabel()
+        {
+            var label = WorldForm.GraphicsModeLabel;
+            var mode = GraphicsMode;
+            label.Text = string.Format(CultureInfo.CurrentCulture, Resources.Text_GraphicsModeIndexFormat, mode.Index);
+            label.ToolTipText = mode.AsString();
         }
 
         private void UpdateSelection()
@@ -450,7 +445,7 @@
         {
             var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
             if (LastTime != time)
-                LastTime = WorldForm.Tlabel.Text = time;
+                LastTime = WorldForm.TimeLabel.Text = time;
         }
     }
 
@@ -464,7 +459,7 @@
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
         private ParametersCon _ControlCon;
-        private GraphicsStateCon _GraphicsStateCon;
+        private FullScreenCon _FullScreenCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
         private SceneCodeCon _SceneCodeCon;
@@ -480,8 +475,8 @@
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
+        protected override FullScreenCon FullScreenCon => _FullScreenCon ?? (_FullScreenCon = new FullScreenCon(this));
         protected override ParametersCon ParametersCon => _ControlCon ?? (_ControlCon = new ParametersCon(this));
-        protected override GraphicsStateCon GraphicsStateCon => _GraphicsStateCon ?? (_GraphicsStateCon = new GraphicsStateCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
         protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
@@ -491,7 +486,6 @@
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
         protected DockPane ControlPane => ParametersForm.Pane;
-        protected DockPane GraphicsStatePane => GraphicsStateForm.Pane;
         protected DockPane SceneCodePane => SceneCodeForm.Pane;
         protected DockPane ScenePane => SceneForm.Pane;
         protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
@@ -499,6 +493,32 @@
         protected DockPane TraceCodePane => TraceCodeForm.Pane;
         protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
         protected DockPanel WorldPanel => WorldForm.DockPanel;
+
+        internal void ConnectCons(bool connect)
+        {
+            Array.ForEach(new LocalizationCon[]
+            {
+                CameraCon,
+                ClockCon,
+                FullScreenCon,
+                ParametersCon,
+                JsonCon,
+                RenderCon,
+                SceneCodeCon,
+                SceneCon,
+                ScenePropertiesCon,
+                ShaderCodeCon,
+                TraceCodeCon,
+                TracePropertiesCon
+            }, p => p.Connect(connect));
+            if (connect)
+            {
+            }
+            else
+            {
+                RenderCon.Unload();
+            }
+        }
 
         private void RestoreWindowLayout()
         {
@@ -509,7 +529,6 @@
             TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - h);
             ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
             SceneCodeForm.Show(TraceCodePane, null);
-            GraphicsStateForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
             ParametersForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
         }

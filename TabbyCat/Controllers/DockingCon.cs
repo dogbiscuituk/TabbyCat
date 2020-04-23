@@ -8,12 +8,14 @@
 
         protected internal abstract DockContent Form { get; }
 
-        protected void ToggleVisibility()
+        internal void SetVisibility(bool visible)
         {
-            if (Form.Visible)
-                Form.Hide();
-            else
+            if (visible)
                 Form.Activate();
+            else
+                Form.Hide();
         }
+
+        protected void ToggleVisibility() => SetVisibility(!Form.Visible);
     }
 }
