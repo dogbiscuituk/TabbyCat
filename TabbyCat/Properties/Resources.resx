@@ -949,4 +949,34 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="Menu_View_FullScreen" xml:space="preserve">
     <value>&amp;Full screen|Full screen display on/off|F11</value>
   </data>
+  <data name="Menu_WaveType_BackwardSawtooth" xml:space="preserve">
+    <value>Backward sawtooth</value>
+  </data>
+  <data name="Menu_WaveType_CustomWave" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Menu_WaveType_FixedValue" xml:space="preserve">
+    <value>Fixed value</value>
+  </data>
+  <data name="Menu_WaveType_ForwardSawtooth" xml:space="preserve">
+    <value>Forward sawtooth</value>
+  </data>
+  <data name="Menu_WaveType_RandomLevels" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="Menu_WaveType_SineWave" xml:space="preserve">
+    <value>Sine wave</value>
+  </data>
+  <data name="Menu_WaveType_SquareWave" xml:space="preserve">
+    <value>Square wave</value>
+  </data>
+  <data name="Menu_WaveType_TriangleWave" xml:space="preserve">
+    <value>Triangle wave</value>
+  </data>
+  <data name="Text_Amplitude" xml:space="preserve">
+    <value>Amplitude = {0}</value>
+  </data>
+  <data name="Text_Frequency" xml:space="preserve">
+    <value>Frequency = {0} Hz</value>
+  </data>
 </root>

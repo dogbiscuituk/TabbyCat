@@ -1943,6 +1943,78 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backward sawtooth.
+        /// </summary>
+        public static string Menu_WaveType_BackwardSawtooth {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_BackwardSawtooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        public static string Menu_WaveType_CustomWave {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_CustomWave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed value.
+        /// </summary>
+        public static string Menu_WaveType_FixedValue {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_FixedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward sawtooth.
+        /// </summary>
+        public static string Menu_WaveType_ForwardSawtooth {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_ForwardSawtooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Random.
+        /// </summary>
+        public static string Menu_WaveType_RandomLevels {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_RandomLevels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sine wave.
+        /// </summary>
+        public static string Menu_WaveType_SineWave {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_SineWave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Square wave.
+        /// </summary>
+        public static string Menu_WaveType_SquareWave {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_SquareWave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triangle wave.
+        /// </summary>
+        public static string Menu_WaveType_TriangleWave {
+            get {
+                return ResourceManager.GetString("Menu_WaveType_TriangleWave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
         /// </summary>
         public static string Message_FileModified_Text {
@@ -2579,6 +2651,24 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amplitude = {0}.
+        /// </summary>
+        public static string Text_Amplitude {
+            get {
+                return ResourceManager.GetString("Text_Amplitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequency = {0} Hz.
+        /// </summary>
+        public static string Text_Frequency {
+            get {
+                return ResourceManager.GetString("Text_Frequency", resourceCulture);
             }
         }
         

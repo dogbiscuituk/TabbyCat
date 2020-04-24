@@ -104,7 +104,7 @@
     <Compile Include="Controllers\OptionsCon.cs" />
     <Compile Include="Controllers\RenderCon.cs" />
     <Compile Include="Controllers\ShaderCodeCon.cs" />
-    <Compile Include="Controllers\SliderCon.cs" />
+    <Compile Include="Controllers\SignalCon.cs" />
     <Compile Include="Controllers\TraceCodeCon.cs" />
     <Compile Include="Controllers\WorldCon.cs" />
     <Compile Include="Controllers\ScenePropertiesCon.cs" />

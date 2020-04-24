@@ -1,12 +1,14 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Properties;
-    using TabbyCat.Views;
+    using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal class ParametersCon : DockingCon
     {
-        internal ParametersCon(WorldCon worldCon) : base(worldCon) { }
+        internal ParametersCon(WorldCon worldCon) : base(worldCon)
+        {
+        }
 
         private ParametersForm _ParametersForm;
 

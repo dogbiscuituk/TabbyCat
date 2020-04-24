@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TabbyCat.Controls
 {
-    public partial class Slider : UserControl
+    public partial class SignalToolbar : UserControl
     {
-        public Slider()
+        public SignalToolbar()
         {
             InitializeComponent();
         }

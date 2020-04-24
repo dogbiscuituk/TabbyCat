@@ -89,6 +89,7 @@
     <Compile Include="Types\Vbo.cs" />
     <Compile Include="Types\VboStore.cs" />
     <Compile Include="Types\VboType.cs" />
+    <Compile Include="Types\WaveType.cs" />
     <Compile Include="Utils\ColourUtils.cs" />
     <Compile Include="Utils\GraphicUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />

@@ -52,6 +52,8 @@
             this.tbCopy = new System.Windows.Forms.ToolStripButton();
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbFullScreen = new System.Windows.Forms.ToolStripButton();
             this.StatusBar = new Jmk.Controls.JmkStatusStrip();
             this.GraphicsModeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -132,8 +134,6 @@
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbFullScreen = new System.Windows.Forms.ToolStripButton();
             this.Toolbar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -333,6 +333,20 @@
             this.tbDelete.Name = "tbDelete";
             this.tbDelete.Size = new System.Drawing.Size(30, 20);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(30, 6);
+            // 
+            // tbFullScreen
+            // 
+            this.tbFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
+            this.tbFullScreen.ImageTransparentColor = System.Drawing.Color.White;
+            this.tbFullScreen.Name = "tbFullScreen";
+            this.tbFullScreen.Size = new System.Drawing.Size(30, 20);
+            this.tbFullScreen.Text = "toolStripButton1";
+            // 
             // StatusBar
             // 
             this.StatusBar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -383,7 +397,7 @@
             // GpuStatusLabel
             // 
             this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(1313, 17);
+            this.GpuStatusLabel.Size = new System.Drawing.Size(1282, 17);
             this.GpuStatusLabel.Spring = true;
             this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -958,20 +972,6 @@
             this.HelpAbout.Name = "HelpAbout";
             this.HelpAbout.Size = new System.Drawing.Size(247, 22);
             this.HelpAbout.Text = "About";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(30, 6);
-            // 
-            // tbFullScreen
-            // 
-            this.tbFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbFullScreen.Image = global::TabbyCat.Properties.Resources.FullScreenHS;
-            this.tbFullScreen.ImageTransparentColor = System.Drawing.Color.White;
-            this.tbFullScreen.Name = "tbFullScreen";
-            this.tbFullScreen.Size = new System.Drawing.Size(30, 20);
-            this.tbFullScreen.Text = "toolStripButton1";
             // 
             // WorldForm
             // 
