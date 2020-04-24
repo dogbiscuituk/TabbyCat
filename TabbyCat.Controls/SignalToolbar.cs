@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace TabbyCat.Controls
+﻿namespace TabbyCat.Controls
 {
+    using System.Windows.Forms;
+
     public partial class SignalToolbar : UserControl
     {
         public SignalToolbar()

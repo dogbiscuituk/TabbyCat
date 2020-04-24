@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignalToolbar));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.WaveTypeButton = new System.Windows.Forms.ToolStripSplitButton();
             this.FixedValue = new System.Windows.Forms.ToolStripMenuItem();
             this.SineWave = new System.Windows.Forms.ToolStripMenuItem();
             this.TriangleWave = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,29 +40,29 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.RandomLevels = new System.Windows.Forms.ToolStripMenuItem();
             this.CustomWave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1.SuspendLayout();
+            this.DeleteButton = new System.Windows.Forms.ToolStripButton();
+            this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // ToolStrip
             // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSplitButton1,
-            this.toolStripButton1});
-            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(55, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.ToolStrip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.WaveTypeButton,
+            this.DeleteButton});
+            this.ToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.ToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.ToolStrip.Name = "ToolStrip";
+            this.ToolStrip.Padding = new System.Windows.Forms.Padding(0);
+            this.ToolStrip.Size = new System.Drawing.Size(55, 25);
+            this.ToolStrip.TabIndex = 0;
+            this.ToolStrip.Text = "toolStrip1";
             // 
-            // toolStripSplitButton1
+            // WaveTypeButton
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.WaveTypeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.WaveTypeButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FixedValue,
             this.SineWave,
             this.TriangleWave,
@@ -72,12 +72,12 @@
             this.toolStripMenuItem1,
             this.RandomLevels,
             this.CustomWave});
-            this.toolStripSplitButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            this.WaveTypeButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WaveTypeButton.Image = ((System.Drawing.Image)(resources.GetObject("WaveTypeButton.Image")));
+            this.WaveTypeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.WaveTypeButton.Name = "WaveTypeButton";
+            this.WaveTypeButton.Size = new System.Drawing.Size(32, 22);
+            this.WaveTypeButton.Text = "toolStripSplitButton1";
             // 
             // FixedValue
             // 
@@ -85,7 +85,6 @@
             this.FixedValue.ImageTransparentColor = System.Drawing.Color.White;
             this.FixedValue.Name = "FixedValue";
             this.FixedValue.Size = new System.Drawing.Size(188, 22);
-            this.FixedValue.Tag = "0";
             this.FixedValue.Text = "Fixed value";
             // 
             // SineWave
@@ -94,7 +93,6 @@
             this.SineWave.ImageTransparentColor = System.Drawing.Color.White;
             this.SineWave.Name = "SineWave";
             this.SineWave.Size = new System.Drawing.Size(188, 22);
-            this.SineWave.Tag = "1";
             this.SineWave.Text = "Sine wave";
             // 
             // TriangleWave
@@ -103,7 +101,6 @@
             this.TriangleWave.ImageTransparentColor = System.Drawing.Color.White;
             this.TriangleWave.Name = "TriangleWave";
             this.TriangleWave.Size = new System.Drawing.Size(188, 22);
-            this.TriangleWave.Tag = "2";
             this.TriangleWave.Text = "Triangle wave";
             // 
             // ForwardSawtooth
@@ -112,7 +109,6 @@
             this.ForwardSawtooth.ImageTransparentColor = System.Drawing.Color.White;
             this.ForwardSawtooth.Name = "ForwardSawtooth";
             this.ForwardSawtooth.Size = new System.Drawing.Size(188, 22);
-            this.ForwardSawtooth.Tag = "3";
             this.ForwardSawtooth.Text = "Forward sawtooth";
             // 
             // BackwardSawtooth
@@ -121,7 +117,6 @@
             this.BackwardSawtooth.ImageTransparentColor = System.Drawing.Color.White;
             this.BackwardSawtooth.Name = "BackwardSawtooth";
             this.BackwardSawtooth.Size = new System.Drawing.Size(188, 22);
-            this.BackwardSawtooth.Tag = "4";
             this.BackwardSawtooth.Text = "Backward sawtooth";
             // 
             // SquareWave
@@ -130,7 +125,6 @@
             this.SquareWave.ImageTransparentColor = System.Drawing.Color.White;
             this.SquareWave.Name = "SquareWave";
             this.SquareWave.Size = new System.Drawing.Size(188, 22);
-            this.SquareWave.Tag = "5";
             this.SquareWave.Text = "Square wave";
             // 
             // toolStripMenuItem1
@@ -144,7 +138,6 @@
             this.RandomLevels.ImageTransparentColor = System.Drawing.Color.White;
             this.RandomLevels.Name = "RandomLevels";
             this.RandomLevels.Size = new System.Drawing.Size(188, 22);
-            this.RandomLevels.Tag = "6";
             this.RandomLevels.Text = "Random levels";
             // 
             // CustomWave
@@ -153,29 +146,28 @@
             this.CustomWave.ImageTransparentColor = System.Drawing.Color.White;
             this.CustomWave.Name = "CustomWave";
             this.CustomWave.Size = new System.Drawing.Size(188, 22);
-            this.CustomWave.Tag = "7";
             this.CustomWave.Text = "Custom wave";
             // 
-            // toolStripButton1
+            // DeleteButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
+            this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(23, 20);
+            this.DeleteButton.Text = "toolStripButton1";
             // 
             // SignalToolbar
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.ToolStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SignalToolbar";
             this.Size = new System.Drawing.Size(55, 25);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.ToolStrip.ResumeLayout(false);
+            this.ToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,9 +175,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        public System.Windows.Forms.ToolStrip ToolStrip;
+        public System.Windows.Forms.ToolStripSplitButton WaveTypeButton;
+        public System.Windows.Forms.ToolStripButton DeleteButton;
         public System.Windows.Forms.ToolStripMenuItem FixedValue;
         public System.Windows.Forms.ToolStripMenuItem SineWave;
         public System.Windows.Forms.ToolStripMenuItem TriangleWave;

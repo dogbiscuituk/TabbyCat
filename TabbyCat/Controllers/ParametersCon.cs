@@ -1,16 +1,17 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Properties;
+    using System.Collections.Generic;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     internal class ParametersCon : DockingCon
     {
-        internal ParametersCon(WorldCon worldCon) : base(worldCon)
-        {
-        }
+        internal ParametersCon(WorldCon worldCon) : base(worldCon) { }
 
         private ParametersForm _ParametersForm;
+
+        private readonly List<SignalCon> SignalCons = new List<SignalCon>();
 
         protected internal override DockContent Form => ParametersForm;
 
@@ -21,12 +22,19 @@
             ToolTipText = Resources.ParametersForm_Text
         });
 
+        internal void AddSignalCon(string name) => SignalCons.Add(new SignalCon(WorldCon, name));
+
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
             {
                 WorldForm.ViewParameters.Click += ViewParameters_Click;
+
+                AddSignalCon("Foo");
+                AddSignalCon("Bar");
+                AddSignalCon("Baz");
+
             }
             else
             {
