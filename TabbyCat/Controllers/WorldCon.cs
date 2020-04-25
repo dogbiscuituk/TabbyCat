@@ -67,6 +67,7 @@
 
         internal void OnPropertyChanged(string propertyName)
         {
+            $"WorldCon.OnPropertyChanged(\"{propertyName}\")".Spit();
             switch (propertyName)
             {
                 case PropertyNames.Traces:
@@ -166,6 +167,7 @@
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
 
         private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
+        private void AddSignal_Click(object sender, EventArgs e) => AddSignal();
         private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
         private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
@@ -186,6 +188,8 @@
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
 
         private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
+
+        private void AddSignal() => CommandProcessor.AppendSignal();
 
         private void AddCurve() => AddTrace(TraceType.Curve);
 
@@ -238,6 +242,7 @@
             if (connect)
             {
                 WorldForm.AddCurve.Click += AddCurve_Click;
+                WorldForm.AddSignal.Click += AddSignal_Click;
                 WorldForm.AddSurface.Click += AddSurface_Click;
                 WorldForm.AddVolume.Click += AddVolume_Click;
                 WorldForm.EditCut.Click += EditCut_Click;
@@ -255,6 +260,7 @@
             else
             {
                 WorldForm.AddCurve.Click -= AddCurve_Click;
+                WorldForm.AddSignal.Click += AddSignal_Click;
                 WorldForm.AddSurface.Click -= AddSurface_Click;
                 WorldForm.AddVolume.Click -= AddVolume_Click;
                 WorldForm.EditCut.Click -= EditCut_Click;
@@ -279,6 +285,7 @@
                 WorldForm.tbAddCurve.Click += AddCurve_Click;
                 WorldForm.tbAddSurface.Click += AddSurface_Click;
                 WorldForm.tbAddVolume.Click += AddVolume_Click;
+                WorldForm.tbAddSignal.Click += AddSignal_Click;
                 WorldForm.tbCut.Click += EditCut_Click;
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
@@ -290,6 +297,7 @@
                 WorldForm.tbAddCurve.Click -= AddCurve_Click;
                 WorldForm.tbAddSurface.Click -= AddSurface_Click;
                 WorldForm.tbAddVolume.Click -= AddVolume_Click;
+                WorldForm.tbAddSignal.Click -= AddSignal_Click;
                 WorldForm.tbCut.Click -= EditCut_Click;
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;
@@ -457,7 +465,7 @@
 
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
-        private ParametersCon _ControlCon;
+        private SignalsCon _ControlCon;
         private FullScreenCon _FullScreenCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
@@ -475,7 +483,7 @@
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         protected override FullScreenCon FullScreenCon => _FullScreenCon ?? (_FullScreenCon = new FullScreenCon(this));
-        protected override ParametersCon ParametersCon => _ControlCon ?? (_ControlCon = new ParametersCon(this));
+        protected override SignalsCon SignalsCon => _ControlCon ?? (_ControlCon = new SignalsCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
         protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
@@ -484,7 +492,7 @@
         protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
-        protected DockPane ControlPane => ParametersForm.Pane;
+        protected DockPane ControlPane => SignalsForm.Pane;
         protected DockPane SceneCodePane => SceneCodeForm.Pane;
         protected DockPane ScenePane => SceneForm.Pane;
         protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
@@ -500,7 +508,7 @@
                 CameraCon,
                 ClockCon,
                 FullScreenCon,
-                ParametersCon,
+                SignalsCon,
                 JsonCon,
                 RenderCon,
                 SceneCodeCon,
@@ -529,7 +537,7 @@
             ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
             SceneCodeForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
-            ParametersForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
+            SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
         }
     }
 }

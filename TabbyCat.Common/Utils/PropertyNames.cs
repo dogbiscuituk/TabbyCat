@@ -8,19 +8,28 @@
         public const string
             Background = "Background",
             Camera = "Camera",
-            CameraFocus = "Camera Focus",
-            CameraPosition = "Camera Position",
-            FarPlane = "Far Plane",
-            FieldOfView = "Field of View",
+            CameraFocus = "Camera focus",
+            CameraPosition = "Camera position",
+            FarPlane = "Far plane",
+            FieldOfView = "Field of view",
             FPS = "FPS",
-            GLTargetVersion = "GL Target Version",
-            NearPlane = "Near Plane",
-            ProjectionType = "Projection Type",
+            GLTargetVersion = "GLSL target version",
+            NearPlane = "Near plane",
+            ProjectionType = "Projection type",
             Samples = "#Samples",
-            SceneTitle = "Scene Title",
+            SceneTitle = "Scene title",
+            Signals = "Signals",
             Stereo = "Stereo",
             Traces = "Traces",
             VSync = "VSync";
+
+        /// <summary>
+        /// Signal property names.
+        /// </summary>
+        public const string
+            Amplitude = "Amplitude",
+            Frequency = "Frequency",
+            WaveType = "Wave type";
 
         /// <summary>
         /// Trace property names.
@@ -40,41 +49,41 @@
         /// GPU property names.
         /// </summary>
         public const string
-            GPULog = "GPU Log",
-            GPUStatus = "GPU Status",
-            GraphicsMode = "Graphics Mode";
+            GPULog = "GPU log",
+            GPUStatus = "GPU status",
+            GraphicsMode = "Graphics mode";
 
         /// <summary>
         /// Scene shader names.
         /// </summary>
         public const string
-            SceneVertex = "Scene Vertex Shader",
-            SceneTessControl = "Scene Tessellation Control Shader",
-            SceneTessEvaluation = "Scene Tessellation Evaluation Shader",
-            SceneGeometry = "Scene Geometry Shader",
-            SceneFragment = "Scene Fragment Shader",
-            SceneCompute = "Scene Compute Shader";
+            SceneVertex = "Scene vertex shader",
+            SceneTessControl = "Scene tessellation control shader",
+            SceneTessEvaluation = "Scene tessellation evaluation shader",
+            SceneGeometry = "Scene geometry shader",
+            SceneFragment = "Scene fragment shader",
+            SceneCompute = "Scene compute shader";
 
         /// <summary>
         /// Trace shader names.
         /// </summary>
         public const string
-            TraceVertex = "Trace Vertex Shader",
-            TraceTessControl = "Trace Tessellation Control Shader",
-            TraceTessEvaluation = "Trace Tessellation Evaluation Shader",
-            TraceGeometry = "Trace Geometry Shader",
-            TraceFragment = "Trace Fragment Shader",
-            TraceCompute = "Trace Compute Shader";
+            TraceVertex = "Trace vertex shader",
+            TraceTessControl = "Trace tessellation control shader",
+            TraceTessEvaluation = "Trace tessellation evaluation shader",
+            TraceGeometry = "Trace geometry shader",
+            TraceFragment = "Trace fragment shader",
+            TraceCompute = "Trace compute shader";
 
         /// <summary>
         /// GPU shader names.
         /// </summary>
         public const string
-            VertexShader = "Vertex Shader",
-            TessControlShader = "Tessellation Control Shader",
-            TessEvaluationShader = "Tessellation Evaluation Shader",
-            GeometryShader = "Geometry Shader",
-            FragmentShader = "Fragment Shader",
-            ComputeShader = "Compute Shader";
+            VertexShader = "Vertex shader",
+            TessControlShader = "Tessellation control shader",
+            TessEvaluationShader = "Tessellation evaluation shader",
+            GeometryShader = "Geometry shader",
+            FragmentShader = "Fragment shader",
+            ComputeShader = "Compute shader";
     }
 }

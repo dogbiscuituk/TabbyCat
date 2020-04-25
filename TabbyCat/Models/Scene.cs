@@ -122,6 +122,7 @@
             GPULog = string.Empty;
             GPUStatus = GPUStatus.OK;
             Projection = new Projection(75, 16, 9, 0.1f, 1000);
+            Signals = new List<Signal>();
             Title = string.Empty;
             Traces = new List<Trace>();
             VSync = false;

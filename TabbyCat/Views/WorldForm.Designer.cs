@@ -94,7 +94,7 @@
             this.EditOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewScene = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewParameters = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSignals = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
@@ -683,7 +683,7 @@
             // 
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ViewScene,
-            this.ViewParameters,
+            this.ViewSignals,
             this.toolStripMenuItem6,
             this.ViewSceneProperties,
             this.ViewTraceProperties,
@@ -704,11 +704,11 @@
             this.ViewScene.Size = new System.Drawing.Size(208, 22);
             this.ViewScene.Text = "Scene";
             // 
-            // ViewParameters
+            // ViewSignals
             // 
-            this.ViewParameters.Name = "ViewParameters";
-            this.ViewParameters.Size = new System.Drawing.Size(208, 22);
-            this.ViewParameters.Text = "Parameters";
+            this.ViewSignals.Name = "ViewSignals";
+            this.ViewSignals.Size = new System.Drawing.Size(208, 22);
+            this.ViewSignals.Text = "Signals";
             // 
             // toolStripMenuItem6
             // 
@@ -1081,7 +1081,7 @@
         internal System.Windows.Forms.ToolStripMenuItem AddSignal;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
         internal System.Windows.Forms.ToolStripMenuItem tbAddSignal;
-        internal System.Windows.Forms.ToolStripMenuItem ViewParameters;
+        internal System.Windows.Forms.ToolStripMenuItem ViewSignals;
         internal System.Windows.Forms.ToolStripMenuItem ViewRestoreWindowLayout;
         internal System.Windows.Forms.ToolStripStatusLabel GraphicsModeLabel;
         internal System.Windows.Forms.ToolStripMenuItem ViewFullScreen;

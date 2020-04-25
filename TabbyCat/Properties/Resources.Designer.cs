@@ -1871,15 +1871,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
-        /// </summary>
-        public static string Menu_View_Parameters {
-            get {
-                return ResourceManager.GetString("Menu_View_Parameters", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Scene|Show or hide the main graphics display window.
         /// </summary>
         public static string Menu_View_Scene {
@@ -1912,6 +1903,15 @@ namespace TabbyCat.Properties {
         public static string Menu_View_ShaderCode {
             get {
                 return ResourceManager.GetString("Menu_View_ShaderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
+        /// </summary>
+        public static string Menu_View_Signals {
+            get {
+                return ResourceManager.GetString("Menu_View_Signals", resourceCulture);
             }
         }
         
@@ -2099,24 +2099,6 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("OptionsHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signal generator.
-        /// </summary>
-        public static string ParametersForm_TabText {
-            get {
-                return ResourceManager.GetString("ParametersForm_TabText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signal generator.
-        /// </summary>
-        public static string ParametersForm_Text {
-            get {
-                return ResourceManager.GetString("ParametersForm_Text", resourceCulture);
             }
         }
         
@@ -2584,6 +2566,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Signal generator.
+        /// </summary>
+        public static string SignalsForm_TabText {
+            get {
+                return ResourceManager.GetString("SignalsForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal generator.
+        /// </summary>
+        public static string SignalsForm_Text {
+            get {
+                return ResourceManager.GetString("SignalsForm_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap SpeechMicHS {
@@ -2697,6 +2697,15 @@ namespace TabbyCat.Properties {
         public static string Text_SelectDeselectAllTraces {
             get {
                 return ResourceManager.GetString("Text_SelectDeselectAllTraces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal &quot;{0}&quot;.
+        /// </summary>
+        public static string Text_SignalName {
+            get {
+                return ResourceManager.GetString("Text_SignalName", resourceCulture);
             }
         }
         

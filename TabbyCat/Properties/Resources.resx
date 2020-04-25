@@ -928,16 +928,16 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ParametersForm_TabText" xml:space="preserve">
+  <data name="SignalsForm_TabText" xml:space="preserve">
     <value>Signal generator</value>
   </data>
-  <data name="ParametersForm_Text" xml:space="preserve">
+  <data name="SignalsForm_Text" xml:space="preserve">
     <value>Signal generator</value>
   </data>
   <data name="Menu_Add_Signal" xml:space="preserve">
     <value>Signal|Add a new waveform generator to this scene</value>
   </data>
-  <data name="Menu_View_Parameters" xml:space="preserve">
+  <data name="Menu_View_Signals" xml:space="preserve">
     <value>Signal generator|Show or hide the signal generator controls</value>
   </data>
   <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
@@ -976,5 +976,8 @@ Add a new volumetric fill to this scene|F4</value>
   </data>
   <data name="Text_Frequency" xml:space="preserve">
     <value>Frequency = {0} Hz</value>
+  </data>
+  <data name="Text_SignalName" xml:space="preserve">
+    <value>Signal "{0}"</value>
   </data>
 </root>

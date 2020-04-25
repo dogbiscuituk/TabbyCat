@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Views
 {
-    partial class ParametersForm
+    partial class SignalsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -75,7 +75,7 @@
             this.FrequencyHeader.Text = "Frequency";
             this.FrequencyHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ParametersForm
+            // SignalsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.ClientSize = new System.Drawing.Size(251, 175);
             this.Controls.Add(this.TableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Name = "ParametersForm";
+            this.Name = "SignalsForm";
             this.TabText = "Signal generator";
             this.Text = "Signal generator";
             this.TableLayoutPanel.ResumeLayout(false);

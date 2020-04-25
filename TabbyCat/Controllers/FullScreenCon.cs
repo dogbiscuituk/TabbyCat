@@ -43,7 +43,7 @@
             }
             Array.ForEach(new DockingCon[]
             {
-                ParametersCon,
+                SignalsCon,
                 SceneCodeCon,
                 ScenePropertiesCon,
                 ShaderCodeCon,

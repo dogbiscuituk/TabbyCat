@@ -26,6 +26,7 @@
         private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
 
         internal bool IsModified => LastSave != UndoStack.Count;
+        internal List<Signal> Signals => Scene.Signals;
         internal List<Trace> Traces => Scene.Traces;
 
         private bool CanUndo => UndoStack.Count > 0;
@@ -49,6 +50,8 @@
         private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
 
         private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
+
+        internal void AppendSignal(Signal signal =null) => Run(new SignalInsertCommand(Signals.Count, signal));
 
         internal void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
 

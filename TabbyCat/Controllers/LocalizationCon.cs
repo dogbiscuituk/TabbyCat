@@ -106,18 +106,18 @@
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         protected virtual FullScreenCon FullScreenCon => WorldCon.FullScreenCon;
-        protected virtual ParametersCon ParametersCon => WorldCon.ParametersCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
         protected virtual SceneCon SceneCon => WorldCon.SceneCon;
         protected virtual ScenePropertiesCon ScenePropertiesCon => WorldCon.ScenePropertiesCon;
         protected virtual ShaderCodeCon ShaderCodeCon => WorldCon.ShaderCodeCon;
+        protected virtual SignalsCon SignalsCon => WorldCon.SignalsCon;
         protected virtual TraceCodeCon TraceCodeCon => WorldCon.TraceCodeCon;
         protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
         protected virtual WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
-        protected virtual ParametersForm ParametersForm => ParametersCon.ParametersForm;
+        protected virtual SignalsForm SignalsForm => SignalsCon.SignalsForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
         protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
@@ -127,6 +127,8 @@
         protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
 
         protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
+        protected TableLayoutPanel SignalsLayoutPanel => SignalsForm.TableLayoutPanel;
+        protected TableLayoutControlCollection SignalsLayoutControls => SignalsLayoutPanel.Controls;
 
         protected Camera Camera => Scene.Camera;
         protected ToolTip ToolTip => WorldForm.ToolTip;

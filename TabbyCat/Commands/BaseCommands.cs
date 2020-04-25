@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Commands
 {
+    using Common.Utils;
     using Models;
     using System;
     using System.Text.RegularExpressions;
@@ -200,15 +201,14 @@
 
         protected override string Target => "Trace";
 
-        protected override void OnPropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertyChanged(propertyName);
+        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
 
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }
 
     internal class SignalsCommand : CollectionCommand<Signal>
     {
-        internal SignalsCommand(int index, bool add) : base(index, add) => PropertyName = "Signals";
+        internal SignalsCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Signals;
 
         protected override void AddItem(Scene scene) => scene.AddSignal(Value);
 
@@ -225,7 +225,7 @@
 
     internal class TracesCommand : CollectionCommand<Trace>
     {
-        internal TracesCommand(int index, bool add) : base(index, add) => PropertyName = "Traces";
+        internal TracesCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Traces;
 
         protected override void AddItem(Scene scene) => scene.AddTrace(Value);
 
