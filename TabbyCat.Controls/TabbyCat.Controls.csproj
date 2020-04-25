@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -94,7 +94,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ScenePropertiesEdit.resx">
       <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
@@ -164,6 +164,22 @@
     <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TileWindowsHorizontallyHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\WaveTypeCustom.png" />
+    <Content Include="Resources\WaveTypeDC.png" />
+    <Content Include="Resources\WaveTypeRandom.png" />
+    <Content Include="Resources\WaveTypeReverseSawtooth.png" />
+    <Content Include="Resources\WaveTypeSawtooth.png" />
+    <Content Include="Resources\WaveTypeSine.png" />
+    <Content Include="Resources\WaveTypeSquare.png" />
+    <Content Include="Resources\WaveTypeTriangle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

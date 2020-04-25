@@ -141,7 +141,6 @@
             Localize(Resources.Menu_Add_Curve, WorldForm.AddCurve, WorldForm.tbAddCurve);
             Localize(Resources.Menu_Add_Surface, WorldForm.AddSurface, WorldForm.tbAddSurface);
             Localize(Resources.Menu_Add_Volume, WorldForm.AddVolume, WorldForm.tbAddVolume);
-            Localize(Resources.Menu_Add_Slider, WorldForm.AddSlider, WorldForm.tbAddSlider);
             Localize(Resources.Menu_Add_Signal, WorldForm.AddSignal, WorldForm.tbAddSignal);
             Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
             Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);

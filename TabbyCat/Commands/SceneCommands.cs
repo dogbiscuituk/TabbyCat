@@ -127,6 +127,16 @@
         { }
     }
 
+    internal class SignalDeleteCommand : SignalsCommand
+    {
+        internal SignalDeleteCommand(int index) : base(index, false) { }
+    }
+
+    internal class SignalInsertCommand : SignalsCommand
+    {
+        internal SignalInsertCommand(int index, Signal signal) : base(index, true) { Value = signal; }
+    }
+
     internal class StereoCommand : ScenePropertyCommand<bool>
     {
         internal StereoCommand(bool value) : base(

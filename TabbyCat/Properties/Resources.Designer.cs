@@ -1384,15 +1384,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slider|Add a new parameter slider control to this scene.
-        /// </summary>
-        public static string Menu_Add_Slider {
-            get {
-                return ResourceManager.GetString("Menu_Add_Slider", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;Surface|z = f(x, y) 
         ///Add a new surface to this scene|F3.
         /// </summary>
@@ -1880,7 +1871,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameters.
+        ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
         /// </summary>
         public static string Menu_View_Parameters {
             get {
@@ -1943,74 +1934,75 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backward sawtooth.
+        ///   Looks up a localized string similar to &amp;Constant|Constant value.
         /// </summary>
-        public static string Menu_WaveType_BackwardSawtooth {
+        public static string Menu_WaveType_Constant {
             get {
-                return ResourceManager.GetString("Menu_WaveType_BackwardSawtooth", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Constant", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom.
+        ///   Looks up a localized string similar to C&amp;ustom|Custom periodic waveform.
         /// </summary>
-        public static string Menu_WaveType_CustomWave {
+        public static string Menu_WaveType_Custom {
             get {
-                return ResourceManager.GetString("Menu_WaveType_CustomWave", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Custom", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fixed value.
+        ///   Looks up a localized string similar to &amp;Noise|Random aperiodic noise
+        ///(&quot;frequency&quot; refers to the number of discrete samples per second).
         /// </summary>
-        public static string Menu_WaveType_FixedValue {
+        public static string Menu_WaveType_Noise {
             get {
-                return ResourceManager.GetString("Menu_WaveType_FixedValue", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Noise", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forward sawtooth.
+        ///   Looks up a localized string similar to &amp;Reverse sawtooth|Reverse sawtooth wave.
         /// </summary>
-        public static string Menu_WaveType_ForwardSawtooth {
+        public static string Menu_WaveType_ReverseSawtooth {
             get {
-                return ResourceManager.GetString("Menu_WaveType_ForwardSawtooth", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_ReverseSawtooth", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Random.
+        ///   Looks up a localized string similar to Sa&amp;wtooth|Sawtooth wave.
         /// </summary>
-        public static string Menu_WaveType_RandomLevels {
+        public static string Menu_WaveType_Sawtooth {
             get {
-                return ResourceManager.GetString("Menu_WaveType_RandomLevels", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Sawtooth", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sine wave.
+        ///   Looks up a localized string similar to S&amp;ine|Sinusoidal wave.
         /// </summary>
-        public static string Menu_WaveType_SineWave {
+        public static string Menu_WaveType_Sine {
             get {
-                return ResourceManager.GetString("Menu_WaveType_SineWave", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Sine", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Square wave.
+        ///   Looks up a localized string similar to &amp;Square|Square wave.
         /// </summary>
-        public static string Menu_WaveType_SquareWave {
+        public static string Menu_WaveType_Square {
             get {
-                return ResourceManager.GetString("Menu_WaveType_SquareWave", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Square", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Triangle wave.
+        ///   Looks up a localized string similar to &amp;Triangle|Triangle wave.
         /// </summary>
-        public static string Menu_WaveType_TriangleWave {
+        public static string Menu_WaveType_Triangle {
             get {
-                return ResourceManager.GetString("Menu_WaveType_TriangleWave", resourceCulture);
+                return ResourceManager.GetString("Menu_WaveType_Triangle", resourceCulture);
             }
         }
         
@@ -2111,7 +2103,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameters.
+        ///   Looks up a localized string similar to Signal generator.
         /// </summary>
         public static string ParametersForm_TabText {
             get {
@@ -2120,7 +2112,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameters.
+        ///   Looks up a localized string similar to Signal generator.
         /// </summary>
         public static string ParametersForm_Text {
             get {

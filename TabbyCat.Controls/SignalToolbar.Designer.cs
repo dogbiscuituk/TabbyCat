@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignalToolbar));
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.WaveTypeButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.FixedValue = new System.Windows.Forms.ToolStripMenuItem();
-            this.SineWave = new System.Windows.Forms.ToolStripMenuItem();
-            this.TriangleWave = new System.Windows.Forms.ToolStripMenuItem();
-            this.ForwardSawtooth = new System.Windows.Forms.ToolStripMenuItem();
+            this.Constant = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sine = new System.Windows.Forms.ToolStripMenuItem();
+            this.Square = new System.Windows.Forms.ToolStripMenuItem();
+            this.Triangle = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sawtooth = new System.Windows.Forms.ToolStripMenuItem();
             this.BackwardSawtooth = new System.Windows.Forms.ToolStripMenuItem();
-            this.SquareWave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.RandomLevels = new System.Windows.Forms.ToolStripMenuItem();
-            this.CustomWave = new System.Windows.Forms.ToolStripMenuItem();
+            this.Custom = new System.Windows.Forms.ToolStripMenuItem();
+            this.Noise = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -63,15 +63,15 @@
             // 
             this.WaveTypeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.WaveTypeButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FixedValue,
-            this.SineWave,
-            this.TriangleWave,
-            this.ForwardSawtooth,
+            this.Constant,
+            this.Sine,
+            this.Square,
+            this.Triangle,
+            this.Sawtooth,
             this.BackwardSawtooth,
-            this.SquareWave,
             this.toolStripMenuItem1,
-            this.RandomLevels,
-            this.CustomWave});
+            this.Custom,
+            this.Noise});
             this.WaveTypeButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WaveTypeButton.Image = ((System.Drawing.Image)(resources.GetObject("WaveTypeButton.Image")));
             this.WaveTypeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -81,79 +81,79 @@
             // 
             // FixedValue
             // 
-            this.FixedValue.Image = global::TabbyCat.Controls.Properties.Resources.CutHS;
-            this.FixedValue.ImageTransparentColor = System.Drawing.Color.White;
-            this.FixedValue.Name = "FixedValue";
-            this.FixedValue.Size = new System.Drawing.Size(188, 22);
-            this.FixedValue.Text = "Fixed value";
+            this.Constant.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeDC;
+            this.Constant.ImageTransparentColor = System.Drawing.Color.White;
+            this.Constant.Name = "FixedValue";
+            this.Constant.Size = new System.Drawing.Size(180, 22);
+            this.Constant.Text = "Constant";
             // 
             // SineWave
             // 
-            this.SineWave.Image = global::TabbyCat.Controls.Properties.Resources.CopyHS;
-            this.SineWave.ImageTransparentColor = System.Drawing.Color.White;
-            this.SineWave.Name = "SineWave";
-            this.SineWave.Size = new System.Drawing.Size(188, 22);
-            this.SineWave.Text = "Sine wave";
-            // 
-            // TriangleWave
-            // 
-            this.TriangleWave.Image = global::TabbyCat.Controls.Properties.Resources.PasteHS;
-            this.TriangleWave.ImageTransparentColor = System.Drawing.Color.White;
-            this.TriangleWave.Name = "TriangleWave";
-            this.TriangleWave.Size = new System.Drawing.Size(188, 22);
-            this.TriangleWave.Text = "Triangle wave";
-            // 
-            // ForwardSawtooth
-            // 
-            this.ForwardSawtooth.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
-            this.ForwardSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.ForwardSawtooth.Name = "ForwardSawtooth";
-            this.ForwardSawtooth.Size = new System.Drawing.Size(188, 22);
-            this.ForwardSawtooth.Text = "Forward sawtooth";
-            // 
-            // BackwardSawtooth
-            // 
-            this.BackwardSawtooth.Image = global::TabbyCat.Controls.Properties.Resources.Edit_UndoHS;
-            this.BackwardSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.BackwardSawtooth.Name = "BackwardSawtooth";
-            this.BackwardSawtooth.Size = new System.Drawing.Size(188, 22);
-            this.BackwardSawtooth.Text = "Backward sawtooth";
+            this.Sine.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeSine;
+            this.Sine.ImageTransparentColor = System.Drawing.Color.White;
+            this.Sine.Name = "SineWave";
+            this.Sine.Size = new System.Drawing.Size(180, 22);
+            this.Sine.Text = "Sine wave";
             // 
             // SquareWave
             // 
-            this.SquareWave.Image = global::TabbyCat.Controls.Properties.Resources.Edit_RedoHS;
-            this.SquareWave.ImageTransparentColor = System.Drawing.Color.White;
-            this.SquareWave.Name = "SquareWave";
-            this.SquareWave.Size = new System.Drawing.Size(188, 22);
-            this.SquareWave.Text = "Square wave";
+            this.Square.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeSquare;
+            this.Square.ImageTransparentColor = System.Drawing.Color.White;
+            this.Square.Name = "SquareWave";
+            this.Square.Size = new System.Drawing.Size(180, 22);
+            this.Square.Text = "Square wave";
+            // 
+            // TriangleWave
+            // 
+            this.Triangle.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeTriangle;
+            this.Triangle.ImageTransparentColor = System.Drawing.Color.White;
+            this.Triangle.Name = "TriangleWave";
+            this.Triangle.Size = new System.Drawing.Size(180, 22);
+            this.Triangle.Text = "Triangle wave";
+            // 
+            // ForwardSawtooth
+            // 
+            this.Sawtooth.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeSawtooth;
+            this.Sawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.Sawtooth.Name = "ForwardSawtooth";
+            this.Sawtooth.Size = new System.Drawing.Size(180, 22);
+            this.Sawtooth.Text = "Sawtooth";
+            // 
+            // BackwardSawtooth
+            // 
+            this.BackwardSawtooth.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeReverseSawtooth;
+            this.BackwardSawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.BackwardSawtooth.Name = "BackwardSawtooth";
+            this.BackwardSawtooth.Size = new System.Drawing.Size(180, 22);
+            this.BackwardSawtooth.Text = "Reverse sawtooth";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(185, 6);
-            // 
-            // RandomLevels
-            // 
-            this.RandomLevels.Image = global::TabbyCat.Controls.Properties.Resources.saveHS;
-            this.RandomLevels.ImageTransparentColor = System.Drawing.Color.White;
-            this.RandomLevels.Name = "RandomLevels";
-            this.RandomLevels.Size = new System.Drawing.Size(188, 22);
-            this.RandomLevels.Text = "Random levels";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // CustomWave
             // 
-            this.CustomWave.Image = global::TabbyCat.Controls.Properties.Resources.PrintHS;
-            this.CustomWave.ImageTransparentColor = System.Drawing.Color.White;
-            this.CustomWave.Name = "CustomWave";
-            this.CustomWave.Size = new System.Drawing.Size(188, 22);
-            this.CustomWave.Text = "Custom wave";
+            this.Custom.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeCustom;
+            this.Custom.ImageTransparentColor = System.Drawing.Color.White;
+            this.Custom.Name = "CustomWave";
+            this.Custom.Size = new System.Drawing.Size(180, 22);
+            this.Custom.Text = "Custom";
+            // 
+            // RandomLevels
+            // 
+            this.Noise.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeRandom;
+            this.Noise.ImageTransparentColor = System.Drawing.Color.White;
+            this.Noise.Name = "RandomLevels";
+            this.Noise.Size = new System.Drawing.Size(180, 22);
+            this.Noise.Text = "Noise";
             // 
             // DeleteButton
             // 
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
-            this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteButton.ImageTransparentColor = System.Drawing.Color.White;
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(23, 20);
             this.DeleteButton.Text = "toolStripButton1";
@@ -178,14 +178,14 @@
         public System.Windows.Forms.ToolStrip ToolStrip;
         public System.Windows.Forms.ToolStripSplitButton WaveTypeButton;
         public System.Windows.Forms.ToolStripButton DeleteButton;
-        public System.Windows.Forms.ToolStripMenuItem FixedValue;
-        public System.Windows.Forms.ToolStripMenuItem SineWave;
-        public System.Windows.Forms.ToolStripMenuItem TriangleWave;
-        public System.Windows.Forms.ToolStripMenuItem ForwardSawtooth;
+        public System.Windows.Forms.ToolStripMenuItem Constant;
+        public System.Windows.Forms.ToolStripMenuItem Sine;
+        public System.Windows.Forms.ToolStripMenuItem Square;
+        public System.Windows.Forms.ToolStripMenuItem Triangle;
+        public System.Windows.Forms.ToolStripMenuItem Sawtooth;
         public System.Windows.Forms.ToolStripMenuItem BackwardSawtooth;
-        public System.Windows.Forms.ToolStripMenuItem SquareWave;
         public System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        public System.Windows.Forms.ToolStripMenuItem RandomLevels;
-        public System.Windows.Forms.ToolStripMenuItem CustomWave;
+        public System.Windows.Forms.ToolStripMenuItem Custom;
+        public System.Windows.Forms.ToolStripMenuItem Noise;
     }
 }

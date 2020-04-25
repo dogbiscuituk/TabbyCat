@@ -75,8 +75,10 @@
         {
             base.Localize();
             foreach (var item in WaveTypeItems)
-                Localize(GetLocalization((WaveType)item.Tag), item);
+                Localize((WaveType)item.Tag, item);
         }
+
+        private void Localize(WaveType waveType, ToolStripItem item) => Localize(GetLocalization(waveType), item);
 
         private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e) => InitToolTip(AmplitudeSlider, Resources.Text_Amplitude);
 
@@ -86,39 +88,40 @@
         {
             switch (waveType)
             {
-                case WaveType.FixedValue:
-                    return Resources.Menu_WaveType_FixedValue;
-                case WaveType.SineWave:
-                    return Resources.Menu_WaveType_SineWave;
-                case WaveType.TriangleWave:
-                    return Resources.Menu_WaveType_TriangleWave;
-                case WaveType.ForwardSawtooth:
-                    return Resources.Menu_WaveType_ForwardSawtooth;
-                case WaveType.BackwardSawtooth:
-                    return Resources.Menu_WaveType_BackwardSawtooth;
-                case WaveType.SquareWave:
-                    return Resources.Menu_WaveType_SquareWave;
-                case WaveType.RandomLevels:
-                    return Resources.Menu_WaveType_RandomLevels;
-                case WaveType.CustomWave:
-                    return Resources.Menu_WaveType_CustomWave;
+                case WaveType.Constant:
+                    return Resources.Menu_WaveType_Constant;
+                case WaveType.Sine:
+                    return Resources.Menu_WaveType_Sine;
+                case WaveType.Square:
+                    return Resources.Menu_WaveType_Square;
+                case WaveType.Triangle:
+                    return Resources.Menu_WaveType_Triangle;
+                case WaveType.Sawtooth:
+                    return Resources.Menu_WaveType_Sawtooth;
+                case WaveType.ReverseSawtooth:
+                    return Resources.Menu_WaveType_ReverseSawtooth;
+                case WaveType.Custom:
+                    return Resources.Menu_WaveType_Custom;
+                case WaveType.Noise:
+                    return Resources.Menu_WaveType_Noise;
                 default:
-                    goto case WaveType.FixedValue;
+                    goto case WaveType.Constant;
             }
         }
 
         private void InitSignalToolbar()
         {
-            WaveTypeButton.Tag = WaveType.FixedValue;
-            SignalToolbar.FixedValue.Tag = WaveType.FixedValue;
-            SignalToolbar.SineWave.Tag = WaveType.SineWave;
-            SignalToolbar.TriangleWave.Tag = WaveType.TriangleWave;
-            SignalToolbar.ForwardSawtooth.Tag = WaveType.ForwardSawtooth;
-            SignalToolbar.BackwardSawtooth.Tag = WaveType.BackwardSawtooth;
-            SignalToolbar.SquareWave.Tag = WaveType.SquareWave;
-            SignalToolbar.RandomLevels.Tag = WaveType.RandomLevels;
-            SignalToolbar.CustomWave.Tag = WaveType.CustomWave;
-            SetWaveType(WaveType.FixedValue);
+            AppCon.InitControlTheme(SignalToolbar.ToolStrip);
+            WaveTypeButton.Tag = WaveType.Constant;
+            SignalToolbar.Constant.Tag = WaveType.Constant;
+            SignalToolbar.Sine.Tag = WaveType.Sine;
+            SignalToolbar.Square.Tag = WaveType.Square;
+            SignalToolbar.Triangle.Tag = WaveType.Triangle;
+            SignalToolbar.Sawtooth.Tag = WaveType.Sawtooth;
+            SignalToolbar.BackwardSawtooth.Tag = WaveType.ReverseSawtooth;
+            SignalToolbar.Custom.Tag = WaveType.Custom;
+            SignalToolbar.Noise.Tag = WaveType.Noise;
+            SetWaveType(WaveType.Constant);
         }
 
         private void InitToolTip(TrackBar slider, string format) => ToolTip.SetToolTip(slider, string.Format(CultureInfo.CurrentCulture, format, slider.Value));
@@ -166,7 +169,7 @@
             WaveTypeButton.Image = item.Image;
             WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
             WaveTypeButton.Tag = item.Tag;
-            WaveTypeButton.ToolTipText = GetLocalization(waveType);
+            Localize(waveType, WaveTypeButton);
             UpdateUI();
         }
 
@@ -174,7 +177,7 @@
 
         private void UpdateUI()
         {
-            var showFrequency = SelectedWaveType != WaveType.FixedValue;
+            var showFrequency = SelectedWaveType != WaveType.Constant;
             TableLayoutPanel.SuspendLayout();
             ParametersForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
             TableLayoutPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);

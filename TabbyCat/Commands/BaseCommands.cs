@@ -51,6 +51,8 @@
             return true;
         }
 
+        protected override string Target => Value.ToString();
+
         protected abstract void AddItem(Scene scene);
 
         protected abstract TItem GetItem(Scene scene);
@@ -60,6 +62,8 @@
         protected abstract TItem GetNewItem(Scene scene);
 
         protected abstract void InsertItem(Scene scene);
+
+        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
 
         protected abstract void RemoveItem(Scene scene);
 
@@ -202,11 +206,26 @@
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }
 
+    internal class SignalsCommand : CollectionCommand<Signal>
+    {
+        internal SignalsCommand(int index, bool add) : base(index, add) => PropertyName = "Signals";
+
+        protected override void AddItem(Scene scene) => scene.AddSignal(Value);
+
+        protected override Signal GetItem(Scene scene) => scene.Signals[Index];
+
+        protected override int GetItemsCount(Scene scene) => scene.Signals.Count;
+
+        protected override Signal GetNewItem(Scene scene) => new Signal();
+
+        protected override void InsertItem(Scene scene) => scene.InsertSignal(Index, Value);
+
+        protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
+    }
+
     internal class TracesCommand : CollectionCommand<Trace>
     {
         internal TracesCommand(int index, bool add) : base(index, add) => PropertyName = "Traces";
-
-        protected override string Target => Value.ToString();
 
         protected override void AddItem(Scene scene) => scene.AddTrace(Value);
 
@@ -217,8 +236,6 @@
         protected override Trace GetNewItem(Scene scene) => new Trace(scene);
 
         protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
-
-        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
 
         protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }

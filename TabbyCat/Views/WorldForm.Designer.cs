@@ -44,7 +44,6 @@
             this.tbAddSurface = new System.Windows.Forms.ToolStripMenuItem();
             this.tbAddVolume = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbAddSlider = new System.Windows.Forms.ToolStripMenuItem();
             this.tbAddSignal = new System.Windows.Forms.ToolStripMenuItem();
             this.tbUndo = new System.Windows.Forms.ToolStripSplitButton();
             this.tbRedo = new System.Windows.Forms.ToolStripSplitButton();
@@ -111,7 +110,6 @@
             this.AddSurface = new System.Windows.Forms.ToolStripMenuItem();
             this.AddVolume = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.AddSlider = new System.Windows.Forms.ToolStripMenuItem();
             this.AddSignal = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraMove = new System.Windows.Forms.ToolStripMenuItem();
@@ -238,7 +236,6 @@
             this.tbAddSurface,
             this.tbAddVolume,
             this.toolStripMenuItem11,
-            this.tbAddSlider,
             this.tbAddSignal});
             this.tbAdd.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.tbAdd.ImageTransparentColor = System.Drawing.Color.White;
@@ -248,36 +245,30 @@
             // tbAddCurve
             // 
             this.tbAddCurve.Name = "tbAddCurve";
-            this.tbAddCurve.Size = new System.Drawing.Size(114, 22);
+            this.tbAddCurve.Size = new System.Drawing.Size(180, 22);
             this.tbAddCurve.Text = "Curve";
             // 
             // tbAddSurface
             // 
             this.tbAddSurface.Name = "tbAddSurface";
-            this.tbAddSurface.Size = new System.Drawing.Size(114, 22);
+            this.tbAddSurface.Size = new System.Drawing.Size(180, 22);
             this.tbAddSurface.Text = "Surface";
             // 
             // tbAddVolume
             // 
             this.tbAddVolume.Name = "tbAddVolume";
-            this.tbAddVolume.Size = new System.Drawing.Size(114, 22);
+            this.tbAddVolume.Size = new System.Drawing.Size(180, 22);
             this.tbAddVolume.Text = "Volume";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(111, 6);
-            // 
-            // tbAddSlider
-            // 
-            this.tbAddSlider.Name = "tbAddSlider";
-            this.tbAddSlider.Size = new System.Drawing.Size(114, 22);
-            this.tbAddSlider.Text = "Slider";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(177, 6);
             // 
             // tbAddSignal
             // 
             this.tbAddSignal.Name = "tbAddSignal";
-            this.tbAddSignal.Size = new System.Drawing.Size(114, 22);
+            this.tbAddSignal.Size = new System.Drawing.Size(180, 22);
             this.tbAddSignal.Text = "Signal";
             // 
             // tbUndo
@@ -397,7 +388,7 @@
             // GpuStatusLabel
             // 
             this.GpuStatusLabel.Name = "GpuStatusLabel";
-            this.GpuStatusLabel.Size = new System.Drawing.Size(1282, 17);
+            this.GpuStatusLabel.Size = new System.Drawing.Size(1313, 17);
             this.GpuStatusLabel.Spring = true;
             this.GpuStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -785,7 +776,6 @@
             this.AddSurface,
             this.AddVolume,
             this.toolStripMenuItem4,
-            this.AddSlider,
             this.AddSignal});
             this.AddMenu.Name = "AddMenu";
             this.AddMenu.Size = new System.Drawing.Size(44, 21);
@@ -813,12 +803,6 @@
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(116, 6);
-            // 
-            // AddSlider
-            // 
-            this.AddSlider.Name = "AddSlider";
-            this.AddSlider.Size = new System.Drawing.Size(119, 22);
-            this.AddSlider.Text = "Slider";
             // 
             // AddSignal
             // 
@@ -1094,10 +1078,8 @@
         internal System.Windows.Forms.ToolStripMenuItem AddVolume;
         internal System.Windows.Forms.ToolStripMenuItem tbAddVolume;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        internal System.Windows.Forms.ToolStripMenuItem AddSlider;
         internal System.Windows.Forms.ToolStripMenuItem AddSignal;
         internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
-        internal System.Windows.Forms.ToolStripMenuItem tbAddSlider;
         internal System.Windows.Forms.ToolStripMenuItem tbAddSignal;
         internal System.Windows.Forms.ToolStripMenuItem ViewParameters;
         internal System.Windows.Forms.ToolStripMenuItem ViewRestoreWindowLayout;

@@ -35,8 +35,8 @@
         [DefaultValue("")]
         public string Title { get; set; }
 
-        [JsonProperty]
-        public List<Trace> Traces { get; private set; }
+        [JsonProperty] public List<Signal> Signals { get; private set; }
+        [JsonProperty] public List<Trace> Traces { get; private set; }
 
         [JsonIgnore]
         public GPUStatus GPUStatus
@@ -72,6 +72,8 @@
 
         private GLControl GLControl => WorldCon?.SceneControl;
 
+        internal void AddSignal(Signal signal) => Signals.Add(signal);
+
         internal void AddTrace(Trace trace) => Traces.Add(trace);
 
         internal void AttachTraces()
@@ -88,9 +90,17 @@
 
         internal Matrix4 GetProjection() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
+        internal void InsertSignal(int index, Signal signal) => Signals.Insert(index, signal);
+
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
         internal void OnPropertyChanged(string propertyName) => WorldCon?.OnPropertyChanged(propertyName);
+
+        internal void RemoveSignal(int index)
+        {
+            if (index >= 0 && index < Signals.Count)
+                Signals.RemoveAt(index);
+        }
 
         internal void RemoveTrace(int index)
         {

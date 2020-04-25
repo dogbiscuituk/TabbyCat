@@ -929,19 +929,16 @@ Add a new volumetric fill to this scene|F4</value>
     <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="ParametersForm_TabText" xml:space="preserve">
-    <value>Parameters</value>
+    <value>Signal generator</value>
   </data>
   <data name="ParametersForm_Text" xml:space="preserve">
-    <value>Parameters</value>
+    <value>Signal generator</value>
   </data>
   <data name="Menu_Add_Signal" xml:space="preserve">
     <value>Signal|Add a new waveform generator to this scene</value>
   </data>
-  <data name="Menu_Add_Slider" xml:space="preserve">
-    <value>Slider|Add a new parameter slider control to this scene</value>
-  </data>
   <data name="Menu_View_Parameters" xml:space="preserve">
-    <value>Parameters</value>
+    <value>Signal generator|Show or hide the signal generator controls</value>
   </data>
   <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
     <value>mode {0}</value>
@@ -949,29 +946,30 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="Menu_View_FullScreen" xml:space="preserve">
     <value>&amp;Full screen|Full screen display on/off|F11</value>
   </data>
-  <data name="Menu_WaveType_BackwardSawtooth" xml:space="preserve">
-    <value>Backward sawtooth</value>
+  <data name="Menu_WaveType_ReverseSawtooth" xml:space="preserve">
+    <value>&amp;Reverse sawtooth|Reverse sawtooth wave</value>
   </data>
-  <data name="Menu_WaveType_CustomWave" xml:space="preserve">
-    <value>Custom</value>
+  <data name="Menu_WaveType_Custom" xml:space="preserve">
+    <value>C&amp;ustom|Custom periodic waveform</value>
   </data>
-  <data name="Menu_WaveType_FixedValue" xml:space="preserve">
-    <value>Fixed value</value>
+  <data name="Menu_WaveType_Constant" xml:space="preserve">
+    <value>&amp;Constant|Constant value</value>
   </data>
-  <data name="Menu_WaveType_ForwardSawtooth" xml:space="preserve">
-    <value>Forward sawtooth</value>
+  <data name="Menu_WaveType_Sawtooth" xml:space="preserve">
+    <value>Sa&amp;wtooth|Sawtooth wave</value>
   </data>
-  <data name="Menu_WaveType_RandomLevels" xml:space="preserve">
-    <value>Random</value>
+  <data name="Menu_WaveType_Noise" xml:space="preserve">
+    <value>&amp;Noise|Random aperiodic noise
+("frequency" refers to the number of discrete samples per second)</value>
   </data>
-  <data name="Menu_WaveType_SineWave" xml:space="preserve">
-    <value>Sine wave</value>
+  <data name="Menu_WaveType_Sine" xml:space="preserve">
+    <value>S&amp;ine|Sinusoidal wave</value>
   </data>
-  <data name="Menu_WaveType_SquareWave" xml:space="preserve">
-    <value>Square wave</value>
+  <data name="Menu_WaveType_Square" xml:space="preserve">
+    <value>&amp;Square|Square wave</value>
   </data>
-  <data name="Menu_WaveType_TriangleWave" xml:space="preserve">
-    <value>Triangle wave</value>
+  <data name="Menu_WaveType_Triangle" xml:space="preserve">
+    <value>&amp;Triangle|Triangle wave</value>
   </data>
   <data name="Text_Amplitude" xml:space="preserve">
     <value>Amplitude = {0}</value>

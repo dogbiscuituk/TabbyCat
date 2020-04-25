@@ -85,8 +85,8 @@
             this.Controls.Add(this.TableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "ParametersForm";
-            this.TabText = "Controls";
-            this.Text = "Controls";
+            this.TabText = "Signal generator";
+            this.Text = "Signal generator";
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
