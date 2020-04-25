@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.FrequencyHeader = new System.Windows.Forms.Label();
             this.AmplitudeHeader = new System.Windows.Forms.Label();
+            this.FrequencyHeader = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,17 +53,6 @@
             this.TableLayoutPanel.Size = new System.Drawing.Size(251, 42);
             this.TableLayoutPanel.TabIndex = 0;
             // 
-            // FrequencyHeader
-            // 
-            this.FrequencyHeader.AutoSize = true;
-            this.FrequencyHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencyHeader.Location = new System.Drawing.Point(128, 0);
-            this.FrequencyHeader.Name = "FrequencyHeader";
-            this.FrequencyHeader.Size = new System.Drawing.Size(119, 17);
-            this.FrequencyHeader.TabIndex = 6;
-            this.FrequencyHeader.Text = "Frequency";
-            this.FrequencyHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AmplitudeHeader
             // 
             this.AmplitudeHeader.AutoSize = true;
@@ -74,6 +63,17 @@
             this.AmplitudeHeader.TabIndex = 5;
             this.AmplitudeHeader.Text = "Amplitude";
             this.AmplitudeHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FrequencyHeader
+            // 
+            this.FrequencyHeader.AutoSize = true;
+            this.FrequencyHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FrequencyHeader.Location = new System.Drawing.Point(128, 0);
+            this.FrequencyHeader.Name = "FrequencyHeader";
+            this.FrequencyHeader.Size = new System.Drawing.Size(119, 17);
+            this.FrequencyHeader.TabIndex = 6;
+            this.FrequencyHeader.Text = "Frequency";
+            this.FrequencyHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ParametersForm
             // 

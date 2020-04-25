@@ -14,7 +14,7 @@
         internal SignalCon(WorldCon worldCon, string name) : base(worldCon)
         {
             var rowIndex = TableLayoutPanel.RowCount - 1;
-            Controls.Add(NameTextBox = NewNameTextBox(name), 0, rowIndex);
+            Controls.Add(NameEditor = NewNameEditor(name), 0, rowIndex);
             Controls.Add(AmplitudeSlider = NewSlider(), 1, rowIndex);
             Controls.Add(FrequencySlider = NewSlider(), 2, rowIndex);
             Controls.Add(SignalToolbar = NewSignalToolbar(), 3, rowIndex);
@@ -24,7 +24,7 @@
             Connect(true);
         }
 
-        private readonly TextBox NameTextBox;
+        private readonly TextBox NameEditor;
 
         private readonly TrackBar
             AmplitudeSlider,
@@ -47,25 +47,27 @@
             base.Connect(connect);
             if (connect)
             {
-                WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
-                WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
-                foreach (var item in WaveTypeItems)
-                    item.Click += WaveTypeItem_Click;
                 AmplitudeSlider.Enter += Signal_Enter;
                 AmplitudeSlider.ValueChanged += AmplitudeSlider_ValueChanged;
                 FrequencySlider.Enter += Signal_Enter;
                 FrequencySlider.ValueChanged += FrequencySlider_ValueChanged;
+                NameEditor.Enter += Signal_Enter;
+                WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
+                WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
+                foreach (var item in WaveTypeItems)
+                    item.Click += WaveTypeItem_Click;
             }
             else
             {
-                WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
-                WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
-                foreach (var item in WaveTypeItems)
-                    item.Click -= WaveTypeItem_Click;
                 AmplitudeSlider.Enter -= Signal_Enter;
                 AmplitudeSlider.ValueChanged -= AmplitudeSlider_ValueChanged;
                 FrequencySlider.Enter -= Signal_Enter;
                 FrequencySlider.ValueChanged -= FrequencySlider_ValueChanged;
+                NameEditor.Enter -= Signal_Enter;
+                WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
+                WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
+                foreach (var item in WaveTypeItems)
+                    item.Click -= WaveTypeItem_Click;
             }
         }
 
@@ -121,7 +123,7 @@
 
         private void InitToolTip(TrackBar slider, string format) => ToolTip.SetToolTip(slider, string.Format(CultureInfo.CurrentCulture, format, slider.Value));
 
-        private static TextBox NewNameTextBox(string name) => new TextBox
+        private static TextBox NewNameEditor(string name) => new TextBox
         {
             AutoSize = true,
             BorderStyle = BorderStyle.None,
@@ -129,7 +131,8 @@
             Margin = new Padding(3, 0, 3, 0),
             Padding = new Padding(0),
             Size = new Size(30, 25),
-            Text = name
+            Text = name,
+            TextAlign = HorizontalAlignment.Center
         };
 
         private static SignalToolbar NewSignalToolbar() => new SignalToolbar
@@ -164,30 +167,18 @@
             WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
             WaveTypeButton.Tag = item.Tag;
             WaveTypeButton.ToolTipText = GetLocalization(waveType);
-            if (waveType == WaveType.FixedValue)
-            {
-                FrequencySlider.Visible = false;
-                TableLayoutPanel.SetColumnSpan(AmplitudeSlider, 2);
-            }
-            else
-            {
-                TableLayoutPanel.SetColumnSpan(AmplitudeSlider, 1);
-                FrequencySlider.Visible = true;
-            }
+            UpdateUI();
         }
 
-        private void Signal_Enter(object sender, System.EventArgs e) => UpdateHeadings();
+        private void Signal_Enter(object sender, System.EventArgs e) => UpdateUI();
 
-        private void UpdateHeadings()
+        private void UpdateUI()
         {
-            if (SelectedWaveType == WaveType.FixedValue)
-            {
-                ParametersForm.FrequencyHeader.Enabled = false;
-            }
-            else
-            {
-                ParametersForm.FrequencyHeader.Enabled = true;
-            }
+            var showFrequency = SelectedWaveType != WaveType.FixedValue;
+            TableLayoutPanel.SuspendLayout();
+            ParametersForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
+            TableLayoutPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
+            TableLayoutPanel.ResumeLayout();
         }
 
         private void WaveTypeButton_ButtonClick(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
@@ -196,6 +187,7 @@
         {
             foreach (var item in WaveTypeItems)
                 item.Checked = (WaveType)item.Tag == SelectedWaveType;
+            UpdateUI();
         }
 
         private void WaveTypeItem_Click(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
