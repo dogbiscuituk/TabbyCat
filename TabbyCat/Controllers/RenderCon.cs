@@ -192,7 +192,7 @@
             InvalidateProjection();
         }
 
-        internal void InvalidateAllTraces() => Scene.Traces.ForEach(p => InvalidateTrace(p));
+        internal void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
 
         internal void InvalidateCameraView() => CameraViewValid = false;
 

@@ -224,10 +224,9 @@
 
         protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
 
-        private static string GetNewSignalName(Scene scene) => 
-            NameSource.Names.First(
-                name => scene.Signals.FirstOrDefault(
-                    signal => signal.Name == name) == null);
+        private static string GetNewSignalName(Scene scene) => NameSource.Names.First(
+            name => scene.Signals.FirstOrDefault(
+                signal => signal.Name == name) == null);
     }
 
     internal class TracesCommand : CollectionCommand<Trace>

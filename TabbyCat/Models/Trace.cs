@@ -41,8 +41,14 @@
             set => _Index = value;
         }
 
+        /// <summary>
+        /// The Scene object which owns this Trace.
+        /// </summary>
         internal Scene Scene;
 
+        /// <summary>
+        /// The Video Array Object associated with this Trace.
+        /// </summary>
         internal Vao Vao;
 
         public override string ToString() =>
