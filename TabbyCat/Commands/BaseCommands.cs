@@ -1,8 +1,10 @@
 ﻿namespace TabbyCat.Commands
 {
     using Common.Utils;
+    using Jmk.Common;
     using Models;
     using System;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -216,11 +218,16 @@
 
         protected override int GetItemsCount(Scene scene) => scene.Signals.Count;
 
-        protected override Signal GetNewItem(Scene scene) => new Signal();
+        protected override Signal GetNewItem(Scene scene) => new Signal() { Name = GetNewSignalName(scene) };
 
         protected override void InsertItem(Scene scene) => scene.InsertSignal(Index, Value);
 
         protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
+
+        private static string GetNewSignalName(Scene scene) => 
+            NameSource.Names.First(
+                name => scene.Signals.FirstOrDefault(
+                    signal => signal.Name == name) == null);
     }
 
     internal class TracesCommand : CollectionCommand<Trace>
