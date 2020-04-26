@@ -5,7 +5,6 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System.Drawing;
-    using Models;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
@@ -127,16 +126,6 @@
         { }
     }
 
-    internal class SignalDeleteCommand : SignalsCommand
-    {
-        internal SignalDeleteCommand(int index) : base(index, false) { }
-    }
-
-    internal class SignalInsertCommand : SignalsCommand
-    {
-        internal SignalInsertCommand(int index, Signal signal) : base(index, true) { Value = signal; }
-    }
-
     internal class StereoCommand : ScenePropertyCommand<bool>
     {
         internal StereoCommand(bool value) : base(
@@ -155,16 +144,6 @@
             s => s.Title,
             (s, v) => s.Title = v)
         { }
-    }
-
-    internal class TraceDeleteCommand : TracesCommand
-    {
-        internal TraceDeleteCommand(int index) : base(index, false) { }
-    }
-
-    internal class TraceInsertCommand : TracesCommand
-    {
-        internal TraceInsertCommand(int index, Trace trace) : base(index, true) { Value = trace; }
     }
 
     internal class VSyncCommand : ScenePropertyCommand<bool>

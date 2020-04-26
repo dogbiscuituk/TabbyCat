@@ -24,6 +24,11 @@
         bool RunOn(Scene scene);
     }
 
+    internal interface ISignalPropertyCommand : ICommand
+    {
+        bool RunOn(Signal signal);
+    }
+
     internal interface ITracePropertyCommand : ICommand
     {
         bool RunOn(Trace trace);
