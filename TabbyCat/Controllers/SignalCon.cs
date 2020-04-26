@@ -152,7 +152,10 @@
 
         private void Localize(WaveType waveType, ToolStripItem item) => Localize(GetLocalization(waveType), item);
 
-        private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e) => InitToolTip(AmplitudeSlider, Resources.Text_Amplitude, Amplitude);
+        private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e)
+        {
+            InitToolTip(AmplitudeSlider, Resources.Text_Amplitude, Amplitude);
+        }
 
         private void FrequencySlider_ValueChanged(object sender, System.EventArgs e) => InitToolTip(FrequencySlider, Resources.Text_Frequency, Frequency);
 

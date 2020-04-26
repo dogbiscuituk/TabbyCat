@@ -522,8 +522,6 @@
         private void ResizeBuiltInHelp() => CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
             CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
-        protected void Run(ICommand command) => CommandProcessor.Run(command);
-
         protected abstract void RunShaderCommand(string text);
 
         private void SaveShaderCode()

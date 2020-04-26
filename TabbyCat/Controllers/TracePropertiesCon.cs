@@ -277,7 +277,7 @@
             if (Updating || Selection.IsEmpty)
                 return;
             Updating = true;
-            Selection.ForEach(p => CommandProcessor.Run(command(p)));
+            Selection.ForEach(p => Run(command(p)));
             Updating = false;
         }
 

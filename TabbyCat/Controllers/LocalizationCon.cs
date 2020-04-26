@@ -13,9 +13,19 @@
 
     internal partial class LocalizationCon
     {
+        // Constructors
+
         internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
+        // Protected properties
+
         protected virtual string[] AllProperties => Array.Empty<string>();
+
+        // Protected internal properties
+
+        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+
+        // Protected internal methods
 
         protected internal virtual void Connect(bool connect)
         {
@@ -29,7 +39,9 @@
             }
         }
 
-        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+        protected internal virtual bool Run(ICommand command) => CommandProcessor.Run(command);
+
+        // Protected methods
 
         protected virtual void Localize() { }
 
@@ -60,6 +72,8 @@
         }
 
         protected virtual void UpdateProperties(params string[] propertyNames) { }
+
+        // Private static methods
 
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {

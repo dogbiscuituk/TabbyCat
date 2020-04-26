@@ -221,13 +221,19 @@
             new ColourCon().AddControls(ScenePropertiesEdit.cbBackground);
         }
 
-        private void Run(ICommand command)
+        protected internal override bool Run(ICommand command)
         {
-            if (Updating)
-                return;
+            if (!Updating)
+                return false;
             Updating = true;
-            CommandProcessor.Run(command);
-            Updating = false;
+            try
+            {
+                return base.Run(command);
+            }
+            finally
+            {
+                Updating = false;
+            }
         }
 
         private void UpdateCameraFocus()

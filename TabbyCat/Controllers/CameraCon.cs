@@ -118,6 +118,6 @@
             Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
         }
 
-        private void RunCameraCommand(Camera camera) => CommandProcessor.Run(new CameraCommand(camera));
+        private void RunCameraCommand(Camera camera) => Run(new CameraCommand(camera));
     }
 }

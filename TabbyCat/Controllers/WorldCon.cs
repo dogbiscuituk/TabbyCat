@@ -379,7 +379,7 @@
             foreach (var trace in traces)
             {
                 trace.Scene = Scene;
-                CommandProcessor.Run(new TraceInsertCommand(index++, trace));
+                Run(new TraceInsertCommand(index++, trace));
             }
             Selection.Set(traces);
         }
