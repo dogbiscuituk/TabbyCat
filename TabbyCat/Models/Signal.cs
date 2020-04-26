@@ -15,11 +15,11 @@
         [DefaultValue(0)]
         public WaveType WaveType { get; set; } = WaveType.Constant;
 
-        [DefaultValue(1f)]
-        public float Amplitude { get; set; } = 1;
+        [DefaultValue(0f)]
+        public float Amplitude { get; set; } = 0;
 
-        [DefaultValue(1f)]
-        public float Frequency { get; set; } = 1;
+        [DefaultValue(0f)]
+        public float Frequency { get; set; } = 0;
 
         public override string ToString() => string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
     }

@@ -39,8 +39,8 @@
             this.TableLayoutPanel.AutoSize = true;
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.Controls.Add(this.AmplitudeHeader, 1, 0);
             this.TableLayoutPanel.Controls.Add(this.FrequencyHeader, 2, 0);
@@ -59,21 +59,22 @@
             this.AmplitudeHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AmplitudeHeader.Location = new System.Drawing.Point(3, 0);
             this.AmplitudeHeader.Name = "AmplitudeHeader";
-            this.AmplitudeHeader.Size = new System.Drawing.Size(119, 17);
+            this.AmplitudeHeader.Size = new System.Drawing.Size(137, 17);
             this.AmplitudeHeader.TabIndex = 5;
             this.AmplitudeHeader.Text = "Amplitude";
-            this.AmplitudeHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AmplitudeHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrequencyHeader
             // 
             this.FrequencyHeader.AutoSize = true;
+            this.TableLayoutPanel.SetColumnSpan(this.FrequencyHeader, 2);
             this.FrequencyHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencyHeader.Location = new System.Drawing.Point(128, 0);
+            this.FrequencyHeader.Location = new System.Drawing.Point(146, 0);
             this.FrequencyHeader.Name = "FrequencyHeader";
-            this.FrequencyHeader.Size = new System.Drawing.Size(119, 17);
+            this.FrequencyHeader.Size = new System.Drawing.Size(102, 17);
             this.FrequencyHeader.TabIndex = 6;
             this.FrequencyHeader.Text = "Frequency";
-            this.FrequencyHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FrequencyHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SignalsForm
             // 
