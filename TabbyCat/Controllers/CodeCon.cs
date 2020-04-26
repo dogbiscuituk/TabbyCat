@@ -53,7 +53,6 @@
         private FastColoredTextBox ActiveTextBox;
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
-        private bool Updating;
 
         protected internal override DockContent Form => CodeForm;
 

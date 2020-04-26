@@ -14,9 +14,9 @@
     {
         internal SignalsCon(WorldCon worldCon) : base(worldCon) { }
 
-        private SignalsForm _SignalsForm;
+        internal readonly List<SignalCon> SignalCons = new List<SignalCon>();
 
-        private readonly List<SignalCon> SignalCons = new List<SignalCon>();
+        private SignalsForm _SignalsForm;
 
         protected internal override DockContent Form => SignalsForm;
 

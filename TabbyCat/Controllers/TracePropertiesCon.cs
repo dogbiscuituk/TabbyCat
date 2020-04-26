@@ -272,13 +272,12 @@
             TracePropertiesEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
         }
 
-        private void Run(Func<Trace, ICommand> command)
+        private bool Run(Func<Trace, ICommand> command)
         {
-            if (Updating || Selection.IsEmpty)
-                return;
-            Updating = true;
-            Selection.ForEach(p => Run(command(p)));
-            Updating = false;
+            var result = false;
+            if (!Selection.IsEmpty)
+                Selection.ForEach(p => result |= Run(command(p)));
+            return result;
         }
 
         private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();

@@ -17,6 +17,10 @@
 
         internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
+        // Protected fields
+
+        protected bool Updating;
+
         // Protected properties
 
         protected virtual string[] AllProperties => Array.Empty<string>();
@@ -39,7 +43,20 @@
             }
         }
 
-        protected internal virtual bool Run(ICommand command) => CommandProcessor.Run(command);
+        protected internal virtual bool Run(ICommand command)
+        {
+            if (Updating)
+                return false;
+            Updating = true;
+            try
+            {
+                return CommandProcessor.Run(command);
+            }
+            finally
+            {
+                Updating = false;
+            }
+        }
 
         // Protected methods
 

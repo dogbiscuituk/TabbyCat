@@ -8,8 +8,6 @@
     {
         internal CodeBasePropertiesCon(WorldCon worldCon) : base(worldCon) { }
 
-        protected bool Updating;
-
         protected internal override void Connect(bool connect)
         {
             base.Connect(connect);

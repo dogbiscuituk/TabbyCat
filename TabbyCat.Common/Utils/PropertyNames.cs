@@ -27,6 +27,7 @@
         /// Signal property names.
         /// </summary>
         public const string
+            Name = "Name",
             Amplitude = "Amplitude",
             Frequency = "Frequency",
             WaveType = "Wave type";

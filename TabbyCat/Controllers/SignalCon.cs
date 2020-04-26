@@ -1,15 +1,18 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
+    using Common.Utils;
     using Controls;
     using Models;
     using Properties;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Drawing;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using TabbyCat.Commands;
 
     internal class SignalCon : LocalizationCon
     {
@@ -35,6 +38,16 @@
             FrequencySlider;
 
         internal SignalToolbar SignalToolbar;
+
+        // Protected properties
+
+        protected override string[] AllProperties => new[]
+        {
+            PropertyNames.Name,
+            PropertyNames.WaveType,
+            PropertyNames.Amplitude,
+            PropertyNames.Frequency
+        };
 
         // Private constants
 
@@ -72,13 +85,18 @@
             set => FrequencySlider.Value = FrequencyToGauge(value);
         }
 
+        private int Index => SignalsCon.SignalCons.IndexOf(this);
+
         private WaveType SelectedWaveType
         {
             get => (WaveType)WaveTypeButton.Tag;
             set
             {
                 if (SelectedWaveType != value)
+                {
                     SetWaveType(value);
+                    Run(new WaveTypeCommand(Index, value));
+                }
             }
         }
 
@@ -120,10 +138,12 @@
                 FrequencySlider.Enter += Signal_Enter;
                 FrequencySlider.ValueChanged += FrequencySlider_ValueChanged;
                 NameEditor.Enter += Signal_Enter;
+                NameEditor.TextChanged += NameEditor_TextChanged;
                 WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
                     item.Click += WaveTypeItem_Click;
+                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
             }
             else
             {
@@ -132,10 +152,12 @@
                 FrequencySlider.Enter -= Signal_Enter;
                 FrequencySlider.ValueChanged -= FrequencySlider_ValueChanged;
                 NameEditor.Enter -= Signal_Enter;
+                NameEditor.TextChanged -= NameEditor_TextChanged;
                 WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
                     item.Click -= WaveTypeItem_Click;
+                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
             }
         }
 
@@ -148,18 +170,45 @@
                 Localize((WaveType)item.Tag, item);
         }
 
+        protected override void UpdateProperties(params string[] propertyNames)
+        {
+            if (Updating)
+                return;
+            Updating = true;
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Name:
+                        break;
+                    case PropertyNames.WaveType:
+                        break;
+                    case PropertyNames.Amplitude:
+                        break;
+                    case PropertyNames.Frequency:
+                        break;
+                }
+            Updating = false;
+        }
+
         // Private methods
 
         private void Localize(WaveType waveType, ToolStripItem item) => Localize(GetLocalization(waveType), item);
 
         private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e)
         {
+            Run(new AmplitudeCommand(Index, Amplitude));
             InitToolTip(AmplitudeSlider, Resources.Text_Amplitude, Amplitude);
         }
 
-        private void FrequencySlider_ValueChanged(object sender, System.EventArgs e) => InitToolTip(FrequencySlider, Resources.Text_Frequency, Frequency);
+        private void FrequencySlider_ValueChanged(object sender, System.EventArgs e)
+        {
+            Run(new FrequencyCommand(Index, Frequency));
+            InitToolTip(FrequencySlider, Resources.Text_Frequency, Frequency);
+        }
 
         private void InitToolTip(TrackBar slider, string format, float value) => ToolTip.SetToolTip(slider, string.Format(CultureInfo.CurrentCulture, format, value));
+
+        private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new NameCommand(Index, NameEditor.Text));
 
         private void Signal_Enter(object sender, System.EventArgs e) => UpdateUI();
 
@@ -182,6 +231,8 @@
         }
 
         private void WaveTypeItem_Click(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
+
+        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
 
         // Private static methods
 
