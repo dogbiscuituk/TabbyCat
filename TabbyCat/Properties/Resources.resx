@@ -175,10 +175,10 @@
   <data name="Control_Trace_ScaleY" xml:space="preserve">
     <value>|The y-component of scale</value>
   </data>
-  <data name="Menu_Edit_Options" xml:space="preserve">
+  <data name="WorldForm_EditOptions" xml:space="preserve">
     <value>&amp;Options...</value>
   </data>
-  <data name="Menu_Camera_RollLeft" xml:space="preserve">
+  <data name="WorldForm_CameraRollLeft" xml:space="preserve">
     <value>Roll &amp;left|Roll the camera to the left|Shift+^PgUp</value>
   </data>
   <data name="TextboxHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -193,7 +193,7 @@
   <data name="Control_Scene_FarPlaneX" xml:space="preserve">
     <value>|The x-component of the far projective plane</value>
   </data>
-  <data name="Menu_Camera_Strafe_Left" xml:space="preserve">
+  <data name="WorldForm_CameraStrafeLeft" xml:space="preserve">
     <value>&amp;Left|Strafe to the left|Shift+^Left</value>
   </data>
   <data name="GoRtlHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -208,7 +208,7 @@
   <data name="CodeForm_OptionsLineNumbers" xml:space="preserve">
     <value>Line numbers|Show/hide line numbers</value>
   </data>
-  <data name="Menu_File_Open" xml:space="preserve">
+  <data name="WorldForm_FileOpen" xml:space="preserve">
     <value>&amp;Open...|Open an existing scene|^O</value>
   </data>
   <data name="CodeForm_Delete" xml:space="preserve">
@@ -229,7 +229,7 @@
   <data name="Control_Camera_PositionZ" xml:space="preserve">
     <value>|Camera z</value>
   </data>
-  <data name="Menu_Camera_Move" xml:space="preserve">
+  <data name="WorldForm_Camera_Move" xml:space="preserve">
     <value>&amp;Move</value>
   </data>
   <data name="Control_Scene_FarPlane" xml:space="preserve">
@@ -244,10 +244,10 @@
   <data name="DoubleLeftArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DoubleLeftArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Edit_Redo" xml:space="preserve">
+  <data name="WorldForm_EditRedo" xml:space="preserve">
     <value>&amp;Redo</value>
   </data>
-  <data name="Menu_File_New_FromTemplate" xml:space="preserve">
+  <data name="WorldForm_FileNewFromTemplate" xml:space="preserve">
     <value>&amp;From template...|Create a new scene based on an existing template</value>
   </data>
   <data name="WaveTypeSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -259,10 +259,10 @@
   <data name="DataContainer_MoveLastHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DataContainer_MoveLastHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_File_ClearThisList" xml:space="preserve">
+  <data name="WorldForm_FileClearThisList" xml:space="preserve">
     <value>Clear this list|Delete all recently used file names</value>
   </data>
-  <data name="Menu_View_ShaderCode" xml:space="preserve">
+  <data name="WorldForm_ViewShaderCode" xml:space="preserve">
     <value>Shader code|Show or hide the main shader code editor</value>
   </data>
   <data name="Text_SignalName" xml:space="preserve">
@@ -277,7 +277,7 @@
   <data name="graphhs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\graphhs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Strafe" xml:space="preserve">
+  <data name="WorldForm_Camera_Strafe" xml:space="preserve">
     <value>&amp;Strafe</value>
   </data>
   <data name="Control_Camera_Pitch" xml:space="preserve">
@@ -286,7 +286,7 @@
   <data name="Control_Scene_NearPlane" xml:space="preserve">
     <value>Near plane|The near projective plane</value>
   </data>
-  <data name="Menu_File_SaveAs" xml:space="preserve">
+  <data name="WorldForm_FileSaveAs" xml:space="preserve">
     <value>Save &amp;as...|Save this scene under a different filename</value>
   </data>
   <data name="Curve_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -295,7 +295,7 @@
   <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Add_Curve" xml:space="preserve">
+  <data name="WorldForm_AddCurve" xml:space="preserve">
     <value>&amp;Curve|y = f(x) 
 Add a new curve to this scene|F2</value>
   </data>
@@ -323,7 +323,7 @@ Add a new curve to this scene|F2</value>
   <data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_File_Close" xml:space="preserve">
+  <data name="WorldForm_FileClose" xml:space="preserve">
     <value>&amp;Close|Close this scene|^F4</value>
   </data>
   <data name="RoutingSlipHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -335,7 +335,7 @@ Add a new curve to this scene|F2</value>
   <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Menu_WaveType_Sawtooth" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeSawtooth" xml:space="preserve">
     <value>Sa&amp;wtooth|Sawtooth wave</value>
   </data>
   <data name="Control_Trace_Pattern" xml:space="preserve">
@@ -359,10 +359,10 @@ Add a new curve to this scene|F2</value>
   <data name="PointerHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PointerHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Move_Forward" xml:space="preserve">
+  <data name="WorldForm_CameraMoveForward" xml:space="preserve">
     <value>&amp;Forward|Move the camera forward|^PgUp</value>
   </data>
-  <data name="Menu_File_New" xml:space="preserve">
+  <data name="WorldForm_FileNew" xml:space="preserve">
     <value>&amp;New|Create a new scene</value>
   </data>
   <data name="SaveFileDialog_Title" xml:space="preserve">
@@ -386,7 +386,7 @@ Add a new curve to this scene|F2</value>
   <data name="BackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Edit_Cut" xml:space="preserve">
+  <data name="WorldForm_EditCut" xml:space="preserve">
     <value>Cu&amp;t|Cut selected trace(s)</value>
   </data>
   <data name="WaveTypeSine" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -422,7 +422,7 @@ Add a new curve to this scene|F2</value>
   <data name="Edit_RedoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_RedoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Move_Up" xml:space="preserve">
+  <data name="WorldForm_CameraMoveUp" xml:space="preserve">
     <value>&amp;Up|Move the camera up while
 keeping it pointed at an object|^Up</value>
   </data>
@@ -431,9 +431,6 @@ keeping it pointed at an object|^Up</value>
   </data>
   <data name="FullScreenHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FullScreenHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Menu_Host_Dock" xml:space="preserve">
-    <value>&amp;Dock</value>
   </data>
   <data name="Scene_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -450,20 +447,20 @@ keeping it pointed at an object|^Up</value>
   <data name="CodeForm_Redo" xml:space="preserve">
     <value>Redo</value>
   </data>
-  <data name="Menu_Time_Stop" xml:space="preserve">
+  <data name="WorldForm_TimeStop" xml:space="preserve">
     <value>&amp;Stop|Stop the passage of time
 and reset the timer to zero</value>
   </data>
   <data name="SendToBackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SendToBackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_WaveType_ReverseSawtooth" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeReverseSawtooth" xml:space="preserve">
     <value>&amp;Reverse sawtooth|Reverse sawtooth wave</value>
   </data>
   <data name="SaveHtmlDialog_Title" xml:space="preserve">
     <value>Save as HTML</value>
   </data>
-  <data name="Menu_Help" xml:space="preserve">
+  <data name="WorldForm_HelpMenu" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
   <data name="Control_Scene_GLVersion" xml:space="preserve">
@@ -479,7 +476,7 @@ targeted by this code</value>
   <data name="TileWindowsHorizontallyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TileWindowsHorizontallyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
+  <data name="WorldForm_HelpOpenGLShadingLanguage" xml:space="preserve">
     <value>OpenGL® shading language</value>
   </data>
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -491,7 +488,7 @@ targeted by this code</value>
   <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
+  <data name="WorldForm_CameraStrafeUp" xml:space="preserve">
     <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
   </data>
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -528,7 +525,7 @@ targeted by this code</value>
     <value>Stereo|Whether or not the current display mode
 is stereoscopic</value>
   </data>
-  <data name="Menu_WaveType_Constant" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeSlider" xml:space="preserve">
     <value>&amp;Constant|Constant value</value>
   </data>
   <data name="Control_Trace_Maximum" xml:space="preserve">
@@ -550,7 +547,7 @@ Select the checkbox to adjust the three values at once</value>
   <data name="Control_Scene_TargetFPS" xml:space="preserve">
     <value>Target FPS|The target number of frames per second</value>
   </data>
-  <data name="Menu_Trace_All" xml:space="preserve">
+  <data name="WorldForm_Trace_All" xml:space="preserve">
     <value>All</value>
     <comment>Do not provide a tooltip (one will be supplied by the toolbar's MouseMove event).</comment>
   </data>
@@ -567,7 +564,7 @@ Select the checkbox to adjust the three values at once</value>
     <value>#Stripes|The number of stripes in each dimension of the trace 
 Select the checkbox to adjust the three values at once</value>
   </data>
-  <data name="Menu_File_Reopen" xml:space="preserve">
+  <data name="WorldForm_FileReopen" xml:space="preserve">
     <value>Reopen|Reopen a recently used scene</value>
   </data>
   <data name="eps_open_largeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -576,7 +573,7 @@ Select the checkbox to adjust the three values at once</value>
   <data name="Text_Amplitude" xml:space="preserve">
     <value>Amplitude = {0}</value>
   </data>
-  <data name="Menu_Camera_Move_Back" xml:space="preserve">
+  <data name="WorldForm_CameraMoveBack" xml:space="preserve">
     <value>&amp;Back|Move the camera back|^PgDn</value>
   </data>
   <data name="PasteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -585,7 +582,7 @@ Select the checkbox to adjust the three values at once</value>
   <data name="WebInsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WebInsertHyperlinkHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_File" xml:space="preserve">
+  <data name="WorldForm_FileMenu" xml:space="preserve">
     <value>&amp;File</value>
   </data>
   <data name="Control_Scene_NearPlaneX" xml:space="preserve">
@@ -594,14 +591,14 @@ Select the checkbox to adjust the three values at once</value>
   <data name="PauseRecorderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseRecorderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_RollRight" xml:space="preserve">
+  <data name="WorldForm_CameraRollRight" xml:space="preserve">
     <value>Roll &amp;right|Roll the camera to the right|Shift+^PgDn</value>
   </data>
-  <data name="Menu_WaveType_Noise" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeNoise" xml:space="preserve">
     <value>&amp;Noise|Random aperiodic noise
 ("frequency" refers to the number of discrete samples per second)</value>
   </data>
-  <data name="Menu_Edit_SelectAll" xml:space="preserve">
+  <data name="WorldForm_EditSelectAll" xml:space="preserve">
     <value>Select &amp;all|Select all traces</value>
   </data>
   <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -610,18 +607,18 @@ Select the checkbox to adjust the three values at once</value>
   <data name="RightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Add_Volume" xml:space="preserve">
+  <data name="WorldForm_AddVolume" xml:space="preserve">
     <value>&amp;Volume|w = f(x, y, z) 
 Add a new volumetric fill to this scene|F4</value>
   </data>
   <data name="Trace_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Menu_Time_Decelerate" xml:space="preserve">
+  <data name="WorldForm_TimeDecelerate" xml:space="preserve">
     <value>&amp;Decelerate|Slow down the passage of time
 (or speed up if in reverse)</value>
   </data>
-  <data name="Menu_WaveType_Sine" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeSine" xml:space="preserve">
     <value>S&amp;ine|Sinusoidal wave</value>
   </data>
   <data name="Control_Scene_FieldOfView" xml:space="preserve">
@@ -633,16 +630,16 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="SignalsForm_TabText" xml:space="preserve">
     <value>Signal generator</value>
   </data>
-  <data name="Menu_Help_About" xml:space="preserve">
+  <data name="WorldForm_HelpAbout" xml:space="preserve">
     <value>&amp;About {0}</value>
   </data>
   <data name="Control_Trace_MinimumY" xml:space="preserve">
     <value>|The minimum value of y</value>
   </data>
-  <data name="Menu_View_Signals" xml:space="preserve">
+  <data name="WorldForm_ViewSignals" xml:space="preserve">
     <value>Signal generator|Show or hide the signal generator controls</value>
   </data>
-  <data name="Menu_Edit_InvertSelection" xml:space="preserve">
+  <data name="WorldForm_EditInvertSelection" xml:space="preserve">
     <value>&amp;Invert selection|Toggle the selected status of each trace</value>
   </data>
   <data name="Control_Trace_Selection" xml:space="preserve">
@@ -669,7 +666,7 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="DoubleRightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DoubleRightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_WaveType_Custom" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeCustom" xml:space="preserve">
     <value>C&amp;ustom|Custom periodic waveform</value>
   </data>
   <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -687,7 +684,7 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="ShowAllCommentsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowAllCommentsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Edit" xml:space="preserve">
+  <data name="WorldForm_EditMenu" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="CodeForm_Cut" xml:space="preserve">
@@ -699,7 +696,7 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="CodeForm_Split" xml:space="preserve">
     <value>Split</value>
   </data>
-  <data name="Menu_View_FullScreen" xml:space="preserve">
+  <data name="WorldForm_ViewFullScreen" xml:space="preserve">
     <value>&amp;Full screen|Full screen display on/off|F11</value>
   </data>
   <data name="Control_Scene_Title" xml:space="preserve">
@@ -708,7 +705,7 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Menu_WaveType_Triangle" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeTriangle" xml:space="preserve">
     <value>&amp;Triangle|Triangle wave</value>
   </data>
   <data name="Control_Trace_Roll" xml:space="preserve">
@@ -723,16 +720,16 @@ Add a new volumetric fill to this scene|F4</value>
   <data name="CodeForm_SplitVertical" xml:space="preserve">
     <value>Vertical|Show two ganged editors side by side</value>
   </data>
-  <data name="Menu_File_Save" xml:space="preserve">
+  <data name="WorldForm_FileSave" xml:space="preserve">
     <value>&amp;Save|Save this scene|^S</value>
   </data>
-  <data name="Menu_WaveType_Square" xml:space="preserve">
+  <data name="SignalsForm_WaveTypeSquare" xml:space="preserve">
     <value>&amp;Square|Square wave</value>
   </data>
   <data name="SaveFormDesignHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveFormDesignHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Move_Left" xml:space="preserve">
+  <data name="WorldForm_CameraMoveLeft" xml:space="preserve">
     <value>&amp;Left|Move the camera left while
 keeping it pointed at an object|^Left</value>
   </data>
@@ -775,10 +772,10 @@ keeping it pointed at an object|^Left</value>
   <data name="GoToNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoToNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Edit_Delete" xml:space="preserve">
+  <data name="WorldForm_EditDelete" xml:space="preserve">
     <value>&amp;Delete|Delete selected trace(s)</value>
   </data>
-  <data name="Menu_View_SceneProperties" xml:space="preserve">
+  <data name="WorldForm_ViewSceneProperties" xml:space="preserve">
     <value>Scene properties|Show or hide the scene properties editor</value>
   </data>
   <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
@@ -787,7 +784,7 @@ keeping it pointed at an object|^Left</value>
   <data name="Control_Scene_Background" xml:space="preserve">
     <value>Background|The colour of the scene background</value>
   </data>
-  <data name="Menu_Camera_Strafe_Down" xml:space="preserve">
+  <data name="WorldForm_CameraStrafeDown" xml:space="preserve">
     <value>&amp;Down|Move the camera straight down|Shift+^Down</value>
   </data>
   <data name="A_Sample_Entry_1" xml:space="preserve">
@@ -808,7 +805,7 @@ keeping it pointed at an object|^Left</value>
   <data name="GraphicsStateForm_Text" xml:space="preserve">
     <value>Graphics state</value>
   </data>
-  <data name="Menu_Camera_Strafe_Right" xml:space="preserve">
+  <data name="WorldForm_CameraStrafeRight" xml:space="preserve">
     <value>&amp;Right|Strafe to the right|Shift+^Right</value>
   </data>
   <data name="RightArrow2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -820,7 +817,7 @@ keeping it pointed at an object|^Left</value>
   <data name="Control_Trace_MinimumX" xml:space="preserve">
     <value>|The minimum value of x</value>
   </data>
-  <data name="Menu_Time_Reverse" xml:space="preserve">
+  <data name="WorldForm_TimeReverse" xml:space="preserve">
     <value>&amp;Reverse|Make time run in reverse</value>
   </data>
   <data name="SendBackwardHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -832,14 +829,14 @@ keeping it pointed at an object|^Left</value>
   <data name="Control_Trace_MinimumZ" xml:space="preserve">
     <value>|The minimum value of z</value>
   </data>
-  <data name="Menu_Camera_Move_Right" xml:space="preserve">
+  <data name="WorldForm_CameraMoveRight" xml:space="preserve">
     <value>&amp;Right|Move the camera right while
 keeping it pointed at an object|^Right</value>
   </data>
   <data name="eps_closedHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eps_closedHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Camera_Reset" xml:space="preserve">
+  <data name="WorldForm_CameraReset" xml:space="preserve">
     <value>&amp;Reset|Return the camera to its default position &amp; direction, 
 as it was after the last new/open/save operation|^Home</value>
   </data>
@@ -849,10 +846,10 @@ as it was after the last new/open/save operation|^Home</value>
   <data name="Control_Scene_FarPlaneZ" xml:space="preserve">
     <value>|The z-component of the far projective plane</value>
   </data>
-  <data name="Menu_Edit_Undo" xml:space="preserve">
+  <data name="WorldForm_EditUndo" xml:space="preserve">
     <value>&amp;Undo</value>
   </data>
-  <data name="Menu_Add_Signal" xml:space="preserve">
+  <data name="WorldForm_AddSignal" xml:space="preserve">
     <value>Signal|Add a new waveform generator to this scene</value>
   </data>
   <data name="InsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -886,27 +883,27 @@ Select the checkbox to adjust the three values at once</value>
   <data name="SignalsForm_Text" xml:space="preserve">
     <value>Signal generator</value>
   </data>
-  <data name="Menu_Add_Surface" xml:space="preserve">
+  <data name="WorldForm_AddSurface" xml:space="preserve">
     <value>&amp;Surface|z = f(x, y) 
 Add a new surface to this scene|F3</value>
   </data>
   <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_View" xml:space="preserve">
+  <data name="WorldForm_View" xml:space="preserve">
     <value>&amp;View|Display of edit controls</value>
   </data>
   <data name="Built_in_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\built_in_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Menu_Time_Accelerate" xml:space="preserve">
+  <data name="WorldForm_TimeAccelerate" xml:space="preserve">
     <value>&amp;Accelerate|Speed up the passage of time
 (or slow down if in reverse)</value>
   </data>
   <data name="Control_Camera_PositionY" xml:space="preserve">
     <value>|Camera y</value>
   </data>
-  <data name="Menu_Time_Forward" xml:space="preserve">
+  <data name="WorldForm_TimeForward" xml:space="preserve">
     <value>&amp;Forward|Make time run forward</value>
   </data>
   <data name="OpenFileHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -918,7 +915,7 @@ Add a new surface to this scene|F3</value>
   <data name="TracePropertiesForm_Text" xml:space="preserve">
     <value>Trace properties</value>
   </data>
-  <data name="Menu_Edit_Paste" xml:space="preserve">
+  <data name="WorldForm_EditPaste" xml:space="preserve">
     <value>&amp;Paste|Paste trace(s) from clipboard</value>
   </data>
   <data name="CodeForm_Paste" xml:space="preserve">
@@ -927,16 +924,16 @@ Add a new surface to this scene|F3</value>
   <data name="ScenePropertiesForm_TabText" xml:space="preserve">
     <value>Scene properties</value>
   </data>
-  <data name="Menu_Edit_Copy" xml:space="preserve">
+  <data name="WorldForm_EditCopy" xml:space="preserve">
     <value>&amp;Copy|Copy selected trace(s)</value>
   </data>
-  <data name="Menu_View_Scene" xml:space="preserve">
+  <data name="WorldForm_ViewScene" xml:space="preserve">
     <value>Scene|Show or hide the main graphics display window</value>
   </data>
   <data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_Time_Pause" xml:space="preserve">
+  <data name="WorldForm_TimePause" xml:space="preserve">
     <value>&amp;Pause|Pause the passage of time</value>
   </data>
   <data name="Control_Trace_MaximumY" xml:space="preserve">
@@ -948,7 +945,7 @@ Add a new surface to this scene|F3</value>
   <data name="CodeForm_Options" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="Menu_Camera" xml:space="preserve">
+  <data name="WorldForm_CameraMenu" xml:space="preserve">
     <value>&amp;Camera</value>
   </data>
   <data name="CodeForm_SaveAsRTF" xml:space="preserve">
@@ -957,16 +954,16 @@ Add a new surface to this scene|F3</value>
   <data name="Scene_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Menu_File_New_EmptyScene" xml:space="preserve">
+  <data name="WorldForm_FileNewEmptyScene" xml:space="preserve">
     <value>&amp;Empty scene|Create a new empty scene|^N</value>
   </data>
   <data name="EditInformationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditInformationHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_View_TraceProperties" xml:space="preserve">
+  <data name="WorldForm_ViewTraceProperties" xml:space="preserve">
     <value>Trace properties|Show or hide the trace properties editor</value>
   </data>
-  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
+  <data name="WorldForm_FileCloseAllAndExit" xml:space="preserve">
     <value>Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4</value>
   </data>
   <data name="NoteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -975,7 +972,7 @@ Add a new surface to this scene|F3</value>
   <data name="Control_Trace_Pitch" xml:space="preserve">
     <value>|Trace pitch (degrees)</value>
   </data>
-  <data name="Menu_Camera_Move_Down" xml:space="preserve">
+  <data name="WorldForm_CameraMoveDown" xml:space="preserve">
     <value>&amp;Down|Move the camera down while
 keeping it pointed at an object|^Down</value>
   </data>
@@ -988,20 +985,17 @@ keeping it pointed at an object|^Down</value>
   <data name="FontDialogHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FontDialogHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Menu_View_TraceCode" xml:space="preserve">
+  <data name="WorldForm_ViewTraceCode" xml:space="preserve">
     <value>Trace code|Show or hide the trace code editor</value>
   </data>
   <data name="CodeForm_Print" xml:space="preserve">
     <value>Print...</value>
   </data>
-  <data name="Menu_Host_Undock" xml:space="preserve">
-    <value>&amp;Undock</value>
-  </data>
   <data name="Control_Trace_Minimum" xml:space="preserve">
     <value>Min|Lower limit of range 
 Select the checkbox to adjust the three values at once</value>
   </data>
-  <data name="Menu_View_SceneCode" xml:space="preserve">
+  <data name="WorldForm_ViewSceneCode" xml:space="preserve">
     <value>Scene code|Show or hide the scene code editor</value>
   </data>
   <data name="Control_Trace_Description" xml:space="preserve">

@@ -100,22 +100,22 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_Camera, WorldForm.CameraMenu);
-            Localize(Resources.Menu_Camera_Strafe, WorldForm.CameraStrafe);
-            Localize(Resources.Menu_Camera_Strafe_Down, WorldForm.CameraStrafeDown);
-            Localize(Resources.Menu_Camera_Strafe_Left, WorldForm.CameraStrafeLeft);
-            Localize(Resources.Menu_Camera_Strafe_Right, WorldForm.CameraStrafeRight);
-            Localize(Resources.Menu_Camera_Strafe_Up, WorldForm.CameraStrafeUp);
-            Localize(Resources.Menu_Camera_Move, WorldForm.CameraMove);
-            Localize(Resources.Menu_Camera_Move_Down, WorldForm.CameraMoveDown);
-            Localize(Resources.Menu_Camera_Move_Left, WorldForm.CameraMoveLeft);
-            Localize(Resources.Menu_Camera_Move_Right, WorldForm.CameraMoveRight);
-            Localize(Resources.Menu_Camera_Move_Up, WorldForm.CameraMoveUp);
-            Localize(Resources.Menu_Camera_Move_Forward, WorldForm.CameraMoveForward);
-            Localize(Resources.Menu_Camera_Move_Back, WorldForm.CameraMoveBack);
-            Localize(Resources.Menu_Camera_RollLeft, WorldForm.CameraRollLeft);
-            Localize(Resources.Menu_Camera_RollRight, WorldForm.CameraRollRight);
-            Localize(Resources.Menu_Camera_Reset, WorldForm.CameraReset);
+            Localize(Resources.WorldForm_CameraMenu, WorldForm.CameraMenu);
+            Localize(Resources.WorldForm_Camera_Strafe, WorldForm.CameraStrafe);
+            Localize(Resources.WorldForm_CameraStrafeDown, WorldForm.CameraStrafeDown);
+            Localize(Resources.WorldForm_CameraStrafeLeft, WorldForm.CameraStrafeLeft);
+            Localize(Resources.WorldForm_CameraStrafeRight, WorldForm.CameraStrafeRight);
+            Localize(Resources.WorldForm_CameraStrafeUp, WorldForm.CameraStrafeUp);
+            Localize(Resources.WorldForm_Camera_Move, WorldForm.CameraMove);
+            Localize(Resources.WorldForm_CameraMoveDown, WorldForm.CameraMoveDown);
+            Localize(Resources.WorldForm_CameraMoveLeft, WorldForm.CameraMoveLeft);
+            Localize(Resources.WorldForm_CameraMoveRight, WorldForm.CameraMoveRight);
+            Localize(Resources.WorldForm_CameraMoveUp, WorldForm.CameraMoveUp);
+            Localize(Resources.WorldForm_CameraMoveForward, WorldForm.CameraMoveForward);
+            Localize(Resources.WorldForm_CameraMoveBack, WorldForm.CameraMoveBack);
+            Localize(Resources.WorldForm_CameraRollLeft, WorldForm.CameraRollLeft);
+            Localize(Resources.WorldForm_CameraRollRight, WorldForm.CameraRollRight);
+            Localize(Resources.WorldForm_CameraReset, WorldForm.CameraReset);
         }
 
         private void RunCameraCommand(Camera camera) => Run(new CameraCommand(camera));

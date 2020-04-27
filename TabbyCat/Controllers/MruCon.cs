@@ -165,7 +165,7 @@
                 {
                     items.Add(new ToolStripSeparator());
                     var item = items.Add(string.Empty);
-                    Localize(Resources.Menu_File_ClearThisList, item);
+                    Localize(Resources.WorldForm_FileClearThisList, item);
                     item.Click += RecentClear_Click;
 
                 }

@@ -44,7 +44,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_ShaderCode, WorldForm.ViewShaderCode);
+            Localize(Resources.WorldForm_ViewShaderCode, WorldForm.ViewShaderCode);
         }
 
         protected override void RunShaderCommand(string text)

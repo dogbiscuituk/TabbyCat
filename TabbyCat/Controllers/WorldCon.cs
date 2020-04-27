@@ -24,7 +24,7 @@
             InitControlTheme();
             RestoreWindowLayout();
             Connect(true);
-            PopupMenu_Opening(this, new CancelEventArgs());
+            PopupWorldForm_Opening(this, new CancelEventArgs());
         }
 
         internal TraceSelection TraceSelection = new TraceSelection();
@@ -141,31 +141,31 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_Edit, WorldForm.EditMenu);
             Localize(Resources.WorldForm_AddMenu, WorldForm.AddMenu, WorldForm.tbAdd);
-            Localize(Resources.Menu_Add_Curve, WorldForm.AddCurve, WorldForm.tbAddCurve);
-            Localize(Resources.Menu_Add_Surface, WorldForm.AddSurface, WorldForm.tbAddSurface);
-            Localize(Resources.Menu_Add_Volume, WorldForm.AddVolume, WorldForm.tbAddVolume);
-            Localize(Resources.Menu_Add_Signal, WorldForm.AddSignal, WorldForm.tbAddSignal);
-            Localize(Resources.Menu_Edit_Undo, WorldForm.EditUndo, WorldForm.tbUndo);
-            Localize(Resources.Menu_Edit_Redo, WorldForm.EditRedo, WorldForm.tbRedo);
-            Localize(Resources.Menu_Edit_Cut, WorldForm.EditCut, WorldForm.tbCut);
-            Localize(Resources.Menu_Edit_Copy, WorldForm.EditCopy, WorldForm.tbCopy);
-            Localize(Resources.Menu_Edit_Paste, WorldForm.EditPaste, WorldForm.tbPaste);
-            Localize(Resources.Menu_Edit_Delete, WorldForm.EditDelete, WorldForm.tbDelete);
-            Localize(Resources.Menu_Edit_SelectAll, WorldForm.EditSelectAll);
-            Localize(Resources.Menu_Edit_InvertSelection, WorldForm.EditInvertSelection);
-            Localize(Resources.Menu_Edit_Options, WorldForm.EditOptions);
-            Localize(Resources.Menu_View, WorldForm.ViewMenu);
-            Localize(Resources.Menu_Time_Accelerate, WorldForm.TimeAccelerate);
-            Localize(Resources.Menu_Time_Decelerate, WorldForm.TimeDecelerate);
-            Localize(Resources.Menu_Time_Forward, WorldForm.TimeForward);
-            Localize(Resources.Menu_Time_Pause, WorldForm.TimePause);
-            Localize(Resources.Menu_Time_Reverse, WorldForm.TimeReverse);
-            Localize(Resources.Menu_Time_Stop, WorldForm.TimeStop);
-            Localize(Resources.Menu_Help, WorldForm.HelpMenu);
-            Localize(Resources.Menu_Help_OpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
-            Localize(string.Format(CultureInfo.CurrentCulture, Resources.Menu_Help_About, Application.ProductName), WorldForm.HelpAbout);
+            Localize(Resources.WorldForm_AddCurve, WorldForm.AddCurve, WorldForm.tbAddCurve);
+            Localize(Resources.WorldForm_AddSurface, WorldForm.AddSurface, WorldForm.tbAddSurface);
+            Localize(Resources.WorldForm_AddVolume, WorldForm.AddVolume, WorldForm.tbAddVolume);
+            Localize(Resources.WorldForm_AddSignal, WorldForm.AddSignal, WorldForm.tbAddSignal);
+            Localize(Resources.WorldForm_EditMenu, WorldForm.EditMenu);
+            Localize(Resources.WorldForm_EditUndo, WorldForm.EditUndo, WorldForm.tbUndo);
+            Localize(Resources.WorldForm_EditRedo, WorldForm.EditRedo, WorldForm.tbRedo);
+            Localize(Resources.WorldForm_EditCut, WorldForm.EditCut, WorldForm.tbCut);
+            Localize(Resources.WorldForm_EditCopy, WorldForm.EditCopy, WorldForm.tbCopy);
+            Localize(Resources.WorldForm_EditPaste, WorldForm.EditPaste, WorldForm.tbPaste);
+            Localize(Resources.WorldForm_EditDelete, WorldForm.EditDelete, WorldForm.tbDelete);
+            Localize(Resources.WorldForm_EditSelectAll, WorldForm.EditSelectAll);
+            Localize(Resources.WorldForm_EditInvertSelection, WorldForm.EditInvertSelection);
+            Localize(Resources.WorldForm_EditOptions, WorldForm.EditOptions);
+            Localize(Resources.WorldForm_View, WorldForm.ViewMenu);
+            Localize(Resources.WorldForm_TimeAccelerate, WorldForm.TimeAccelerate);
+            Localize(Resources.WorldForm_TimeDecelerate, WorldForm.TimeDecelerate);
+            Localize(Resources.WorldForm_TimeForward, WorldForm.TimeForward);
+            Localize(Resources.WorldForm_TimePause, WorldForm.TimePause);
+            Localize(Resources.WorldForm_TimeReverse, WorldForm.TimeReverse);
+            Localize(Resources.WorldForm_TimeStop, WorldForm.TimeStop);
+            Localize(Resources.WorldForm_HelpMenu, WorldForm.HelpMenu);
+            Localize(Resources.WorldForm_HelpOpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
+            Localize(string.Format(CultureInfo.CurrentCulture, Resources.WorldForm_HelpAbout, Application.ProductName), WorldForm.HelpAbout);
         }
 
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
@@ -186,7 +186,7 @@
 
         private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
         private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
-        private void PopupMenu_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
+        private void PopupWorldForm_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
 
         private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
@@ -259,7 +259,7 @@
                 WorldForm.ViewRestoreWindowLayout.Click += ViewRestoreWindowLayout_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click += HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click += HelpAbout_Click;
-                WorldForm.PopupMenu.Opening += PopupMenu_Opening;
+                WorldForm.PopupMenu.Opening += PopupWorldForm_Opening;
             }
             else
             {
@@ -277,7 +277,7 @@
                 WorldForm.ViewRestoreWindowLayout.Click -= ViewRestoreWindowLayout_Click;
                 WorldForm.HelpOpenGLShadingLanguage.Click -= HelpTheOpenGLShadingLanguage_Click;
                 WorldForm.HelpAbout.Click -= HelpAbout_Click;
-                WorldForm.PopupMenu.Opening -= PopupMenu_Opening;
+                WorldForm.PopupMenu.Opening -= PopupWorldForm_Opening;
             }
         }
 

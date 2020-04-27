@@ -137,16 +137,16 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_File, WorldForm.FileMenu);
-            Localize(Resources.Menu_File_New, WorldForm.FileNew, WorldForm.tbNew);
-            Localize(Resources.Menu_File_New_EmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
-            Localize(Resources.Menu_File_New_FromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
-            Localize(Resources.Menu_File_Open, WorldForm.FileOpen, WorldForm.tbOpen);
-            Localize(Resources.Menu_File_Reopen, WorldForm.FileReopen);
-            Localize(Resources.Menu_File_Save, WorldForm.FileSave, WorldForm.tbSave);
-            Localize(Resources.Menu_File_SaveAs, WorldForm.FileSaveAs);
-            Localize(Resources.Menu_File_Close, WorldForm.FileClose);
-            Localize(Resources.Menu_File_CloseAllAndExit, WorldForm.FileExit);
+            Localize(Resources.WorldForm_FileMenu, WorldForm.FileMenu);
+            Localize(Resources.WorldForm_FileNew, WorldForm.FileNew, WorldForm.tbNew);
+            Localize(Resources.WorldForm_FileNewEmptyScene, WorldForm.FileNewEmptyScene, WorldForm.tbNewEmptyScene);
+            Localize(Resources.WorldForm_FileNewFromTemplate, WorldForm.FileNewFromTemplate, WorldForm.tbNewFromTemplate);
+            Localize(Resources.WorldForm_FileOpen, WorldForm.FileOpen, WorldForm.tbOpen);
+            Localize(Resources.WorldForm_FileReopen, WorldForm.FileReopen);
+            Localize(Resources.WorldForm_FileSave, WorldForm.FileSave, WorldForm.tbSave);
+            Localize(Resources.WorldForm_FileSaveAs, WorldForm.FileSaveAs);
+            Localize(Resources.WorldForm_FileClose, WorldForm.FileClose);
+            Localize(Resources.WorldForm_FileCloseAllAndExit, WorldForm.FileExit);
         }
 
         protected override void OnFileReopen(string filePath) => FileReopen?.Invoke(this, new FilePathEventArgs(filePath));

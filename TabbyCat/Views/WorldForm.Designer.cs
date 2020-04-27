@@ -245,30 +245,30 @@
             // tbAddCurve
             // 
             this.tbAddCurve.Name = "tbAddCurve";
-            this.tbAddCurve.Size = new System.Drawing.Size(180, 22);
+            this.tbAddCurve.Size = new System.Drawing.Size(114, 22);
             this.tbAddCurve.Text = "Curve";
             // 
             // tbAddSurface
             // 
             this.tbAddSurface.Name = "tbAddSurface";
-            this.tbAddSurface.Size = new System.Drawing.Size(180, 22);
+            this.tbAddSurface.Size = new System.Drawing.Size(114, 22);
             this.tbAddSurface.Text = "Surface";
             // 
             // tbAddVolume
             // 
             this.tbAddVolume.Name = "tbAddVolume";
-            this.tbAddVolume.Size = new System.Drawing.Size(180, 22);
+            this.tbAddVolume.Size = new System.Drawing.Size(114, 22);
             this.tbAddVolume.Text = "Volume";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(111, 6);
             // 
             // tbAddSignal
             // 
             this.tbAddSignal.Name = "tbAddSignal";
-            this.tbAddSignal.Size = new System.Drawing.Size(180, 22);
+            this.tbAddSignal.Size = new System.Drawing.Size(114, 22);
             this.tbAddSignal.Text = "Signal";
             // 
             // tbUndo
@@ -771,12 +771,15 @@
             // 
             // AddMenu
             // 
+            this.AddMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.AddMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddCurve,
             this.AddSurface,
             this.AddVolume,
             this.toolStripMenuItem4,
             this.AddSignal});
+            this.AddMenu.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
+            this.AddMenu.ImageTransparentColor = System.Drawing.Color.White;
             this.AddMenu.Name = "AddMenu";
             this.AddMenu.Size = new System.Drawing.Size(44, 21);
             this.AddMenu.Text = "Add";
@@ -784,30 +787,30 @@
             // AddCurve
             // 
             this.AddCurve.Name = "AddCurve";
-            this.AddCurve.Size = new System.Drawing.Size(119, 22);
+            this.AddCurve.Size = new System.Drawing.Size(180, 22);
             this.AddCurve.Text = "Curve";
             // 
             // AddSurface
             // 
             this.AddSurface.Name = "AddSurface";
-            this.AddSurface.Size = new System.Drawing.Size(119, 22);
+            this.AddSurface.Size = new System.Drawing.Size(180, 22);
             this.AddSurface.Text = "Surface";
             // 
             // AddVolume
             // 
             this.AddVolume.Name = "AddVolume";
-            this.AddVolume.Size = new System.Drawing.Size(119, 22);
+            this.AddVolume.Size = new System.Drawing.Size(180, 22);
             this.AddVolume.Text = "Volume";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(116, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
             // 
             // AddSignal
             // 
             this.AddSignal.Name = "AddSignal";
-            this.AddSignal.Size = new System.Drawing.Size(119, 22);
+            this.AddSignal.Size = new System.Drawing.Size(180, 22);
             this.AddSignal.Text = "Signal";
             // 
             // CameraMenu

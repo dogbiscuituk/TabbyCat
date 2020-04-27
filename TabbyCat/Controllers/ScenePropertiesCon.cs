@@ -108,7 +108,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_SceneProperties, WorldForm.ViewSceneProperties);
+            Localize(Resources.WorldForm_ViewSceneProperties, WorldForm.ViewSceneProperties);
             Localize(Resources.Control_Scene_Title, ScenePropertiesEdit.lblTitle, ScenePropertiesEdit.edTitle);
             Localize(Resources.Control_Camera_Position, ScenePropertiesEdit.lblPosition);
             Localize(Resources.Control_Camera_PositionX, ScenePropertiesEdit.seCameraPositionX);

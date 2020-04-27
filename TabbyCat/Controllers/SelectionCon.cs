@@ -119,7 +119,7 @@
         {
             Labels.Clear();
             var label = new ToolStripLabel(string.Empty);
-            Localize(Resources.Menu_Trace_All, label);
+            Localize(Resources.WorldForm_Trace_All, label);
             Labels.Add(label);
             label.MouseDown += LabelAll_MouseDown;
             label.MouseMove += Label_MouseMove;

@@ -4,7 +4,7 @@
     using Common.Utils;
     using Controls;
     using Models;
-    using Properties;
+    using TabbyCat.Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -21,11 +21,9 @@
         internal SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
         {
             NameEditor = NewNameEditor(signal.Name);
-            AmplitudeSlider = NewSlider();
-            FrequencySlider = NewSlider();
-            SignalToolbar = NewSignalToolbar();
-            InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
-            InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
+            InitSlider(AmplitudeSlider = NewSlider(), AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
+            InitSlider(FrequencySlider = NewSlider(), FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
+            InitToolbar(SignalToolbar = NewSignalToolbar());
             AppCon.InitControlTheme(SignalToolbar.ToolStrip);
         }
 
@@ -122,7 +120,6 @@
             WaveTypeButton.Image = item.Image;
             WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
             WaveTypeButton.Tag = item.Tag;
-            Localize(waveType, WaveTypeButton);
             UpdateUI();
         }
 
@@ -165,13 +162,6 @@
 
         // Protected methods
 
-        protected override void Localize()
-        {
-            base.Localize();
-            foreach (var item in WaveTypeItems)
-                Localize((WaveType)item.Tag, item);
-        }
-
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
@@ -191,8 +181,6 @@
         }
 
         // Private methods
-
-        private void Localize(WaveType waveType, ToolStripItem item) => Localize(GetLocalization(waveType), item);
 
         private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e)
         {
@@ -246,31 +234,6 @@
 
         private static int FrequencyToGauge(float frequency) => ValueToGauge(value: frequency, min: FreqMin, left: FreqLeft, ratio: FreqRatio);
 
-        private static string GetLocalization(WaveType waveType)
-        {
-            switch (waveType)
-            {
-                case WaveType.Constant:
-                    return Resources.Menu_WaveType_Constant;
-                case WaveType.Sine:
-                    return Resources.Menu_WaveType_Sine;
-                case WaveType.Square:
-                    return Resources.Menu_WaveType_Square;
-                case WaveType.Triangle:
-                    return Resources.Menu_WaveType_Triangle;
-                case WaveType.Sawtooth:
-                    return Resources.Menu_WaveType_Sawtooth;
-                case WaveType.ReverseSawtooth:
-                    return Resources.Menu_WaveType_ReverseSawtooth;
-                case WaveType.Custom:
-                    return Resources.Menu_WaveType_Custom;
-                case WaveType.Noise:
-                    return Resources.Menu_WaveType_Noise;
-                default:
-                    goto case WaveType.Constant;
-            }
-        }
-
         private static void InitSlider(TrackBar slider, int left, int right, int small, int large, int gauge)
         {
             slider.Minimum = left;
@@ -278,6 +241,10 @@
             slider.SmallChange = small;
             slider.LargeChange = large;
             slider.Value = gauge;
+        }
+
+        private void InitToolbar(SignalToolbar signalToolbar)
+        {
         }
 
         private static TextBox NewNameEditor(string name) => new TextBox

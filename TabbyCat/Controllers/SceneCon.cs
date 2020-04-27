@@ -85,7 +85,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_Scene, WorldForm.ViewScene);
+            Localize(Resources.WorldForm_ViewScene, WorldForm.ViewScene);
         }
 
         // Private methods

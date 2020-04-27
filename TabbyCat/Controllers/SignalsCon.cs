@@ -6,6 +6,7 @@
     using Properties;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Forms;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -45,6 +46,14 @@
                 ToolTipText = Resources.SignalsForm_Text
             };
             AppCon.InitControlTheme(signalsForm.Toolbar);
+            signalsForm.WaveTypeSlider.Tag = WaveType.Constant;
+            signalsForm.WaveTypeSine.Tag = WaveType.Sine;
+            signalsForm.WaveTypeSquare.Tag = WaveType.Square;
+            signalsForm.WaveTypeTriangle.Tag = WaveType.Triangle;
+            signalsForm.WaveTypeSawtooth.Tag = WaveType.Sawtooth;
+            signalsForm.WaveTypeReverseSawtooth.Tag = WaveType.ReverseSawtooth;
+            signalsForm.WaveTypeCustom.Tag = WaveType.Custom;
+            signalsForm.WaveTypeNoise.Tag = WaveType.Noise;
             return signalsForm;
         }
 
@@ -53,18 +62,32 @@
         internal void Add(Signal signal)
         {
             var signalCon = new SignalCon(WorldCon, signal);
-
-            SignalsLayoutPanel.RowCount++;
-            SignalsLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 25f));
-            var rowIndex = SignalsCount + 1;
-            SignalsLayoutControls.Add(signalCon.NameEditor, 0, rowIndex);
-            SignalsLayoutControls.Add(signalCon.AmplitudeSlider, 1, rowIndex);
-            SignalsLayoutControls.Add(signalCon.FrequencySlider, 2, rowIndex);
-            SignalsLayoutControls.Add(signalCon.SignalToolbar, 3, rowIndex);
             SignalCons.Add(signalCon);
-            signalCon.SetWaveType(WaveType.Constant);
+
+            //SignalsLayoutPanel.RowCount++;
+            //SignalsLayoutPanel.RowStyles.Add(new RowStyle(/*SizeType.AutoSize*/));
+            //var row = SignalsCount + 1;
+
+            SignalsLayoutControls.Add(signalCon.NameEditor/*, 0, row*/);
+            SignalsLayoutControls.Add(signalCon.AmplitudeSlider/*, 1, row*/);
+            SignalsLayoutControls.Add(signalCon.FrequencySlider/*, 2, row*/);
+            SignalsLayoutControls.Add(signalCon.SignalToolbar/*, 3, row*/);
+
+            // SignalsForm.AddButton.CloneTo(signalCon.SignalToolbar.WaveTypeButton, onClick: false);
+            /* TODO
+            foreach (var menuItem in signalCon.SignalToolbar.WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>())
+                menuItem.Click += MenuItem_Click;
+                */
+            //signalCon.SetWaveType(WaveType.Constant);
+
             signalCon.Connect(true);
         }
+
+        /* TODO
+        private void MenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }*/
 
         internal void BeginUpdate() => SignalsLayoutPanel.SuspendLayout();
 
@@ -93,11 +116,13 @@
             base.Connect(connect);
             if (connect)
             {
+                SignalsForm.AddButton.Click += AddButton_Click;
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click += ViewSignals_Click;
             }
             else
             {
+                SignalsForm.AddButton.Click -= AddButton_Click;
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
@@ -108,7 +133,15 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_Signals, WorldForm.ViewSignals);
+            Localize(Resources.SignalsForm_WaveTypeSlider, SignalsForm.WaveTypeSlider);
+            Localize(Resources.SignalsForm_WaveTypeSine, SignalsForm.WaveTypeSine);
+            Localize(Resources.SignalsForm_WaveTypeSquare, SignalsForm.WaveTypeSquare);
+            Localize(Resources.SignalsForm_WaveTypeTriangle, SignalsForm.WaveTypeTriangle);
+            Localize(Resources.SignalsForm_WaveTypeSawtooth, SignalsForm.WaveTypeSawtooth);
+            Localize(Resources.SignalsForm_WaveTypeReverseSawtooth, SignalsForm.WaveTypeReverseSawtooth);
+            Localize(Resources.SignalsForm_WaveTypeCustom, SignalsForm.WaveTypeCustom);
+            Localize(Resources.SignalsForm_WaveTypeNoise, SignalsForm.WaveTypeNoise);
+            Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 
         protected override void UpdateProperties(params string[] propertyNames)
@@ -123,6 +156,10 @@
         }
 
         // Private methods
+
+        private void AddButton_Click(object sender, System.EventArgs e) => AddSignal();
+
+        private void AddSignal() => CommandProcessor.AppendSignal();
 
         private void Reload()
         {

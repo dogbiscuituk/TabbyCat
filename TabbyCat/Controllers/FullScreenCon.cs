@@ -30,7 +30,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_FullScreen, WorldForm.ViewFullScreen, WorldForm.tbFullScreen);
+            Localize(Resources.WorldForm_ViewFullScreen, WorldForm.ViewFullScreen, WorldForm.tbFullScreen);
         }
 
         private void ViewFullScreen_Click(object sender, System.EventArgs e)

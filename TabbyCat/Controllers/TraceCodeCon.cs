@@ -36,7 +36,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_TraceCode, WorldForm.ViewTraceCode);
+            Localize(Resources.WorldForm_ViewTraceCode, WorldForm.ViewTraceCode);
         }
 
         protected override void UpdateUI()

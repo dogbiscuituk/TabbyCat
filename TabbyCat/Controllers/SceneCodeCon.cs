@@ -32,7 +32,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_SceneCode, WorldForm.ViewSceneCode);
+            Localize(Resources.WorldForm_ViewSceneCode, WorldForm.ViewSceneCode);
         }
 
         protected override void RunShaderCommand(string text) => Run(new SceneShaderCommand(ShaderType, text));

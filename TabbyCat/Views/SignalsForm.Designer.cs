@@ -33,15 +33,15 @@
             this.FrequencyHeader = new System.Windows.Forms.Label();
             this.Toolbar = new System.Windows.Forms.ToolStrip();
             this.AddButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeSlider = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeSine = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeSquare = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeTriangle = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeSawtooth = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeReverseSawtooth = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeCustom = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeNoise = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
@@ -51,6 +51,7 @@
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.AutoSize = true;
+            this.TableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.TableLayoutPanel.ColumnCount = 4;
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
@@ -65,8 +66,8 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 2;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(251, 50);
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TableLayoutPanel.Size = new System.Drawing.Size(251, 25);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // AmplitudeHeader
@@ -110,15 +111,15 @@
             // 
             this.AddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
+            this.WaveTypeSlider,
+            this.WaveTypeSine,
+            this.WaveTypeSquare,
+            this.WaveTypeTriangle,
+            this.WaveTypeSawtooth,
+            this.WaveTypeReverseSawtooth,
             this.toolStripMenuItem9,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
+            this.WaveTypeCustom,
+            this.WaveTypeNoise});
             this.AddButton.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.AddButton.ImageTransparentColor = System.Drawing.Color.White;
             this.AddButton.Name = "AddButton";
@@ -126,74 +127,74 @@
             this.AddButton.Text = "toolStripSplitButton1";
             this.AddButton.ToolTipText = "Add a new signal";
             // 
-            // toolStripMenuItem1
+            // WaveTypeSlider
             // 
-            this.toolStripMenuItem1.Image = global::TabbyCat.Properties.Resources.WaveTypeDC;
-            this.toolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem1.Text = "Slider";
+            this.WaveTypeSlider.Image = global::TabbyCat.Properties.Resources.WaveTypeDC;
+            this.WaveTypeSlider.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSlider.Name = "WaveTypeSlider";
+            this.WaveTypeSlider.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeSlider.Text = "Slider";
             // 
-            // toolStripMenuItem2
+            // WaveTypeSine
             // 
-            this.toolStripMenuItem2.Image = global::TabbyCat.Properties.Resources.WaveTypeSine;
-            this.toolStripMenuItem2.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem2.Text = "Sine";
+            this.WaveTypeSine.Image = global::TabbyCat.Properties.Resources.WaveTypeSine;
+            this.WaveTypeSine.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSine.Name = "WaveTypeSine";
+            this.WaveTypeSine.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeSine.Text = "Sine";
             // 
-            // toolStripMenuItem3
+            // WaveTypeSquare
             // 
-            this.toolStripMenuItem3.Image = global::TabbyCat.Properties.Resources.WaveTypeSquare;
-            this.toolStripMenuItem3.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem3.Text = "Square";
+            this.WaveTypeSquare.Image = global::TabbyCat.Properties.Resources.WaveTypeSquare;
+            this.WaveTypeSquare.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSquare.Name = "WaveTypeSquare";
+            this.WaveTypeSquare.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeSquare.Text = "Square";
             // 
-            // toolStripMenuItem4
+            // WaveTypeTriangle
             // 
-            this.toolStripMenuItem4.Image = global::TabbyCat.Properties.Resources.WaveTypeTriangle;
-            this.toolStripMenuItem4.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem4.Text = "Triangle";
+            this.WaveTypeTriangle.Image = global::TabbyCat.Properties.Resources.WaveTypeTriangle;
+            this.WaveTypeTriangle.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeTriangle.Name = "WaveTypeTriangle";
+            this.WaveTypeTriangle.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeTriangle.Text = "Triangle";
             // 
-            // toolStripMenuItem5
+            // WaveTypeSawtooth
             // 
-            this.toolStripMenuItem5.Image = global::TabbyCat.Properties.Resources.WaveTypeSawtooth2;
-            this.toolStripMenuItem5.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem5.Text = "Sawtooth";
+            this.WaveTypeSawtooth.Image = global::TabbyCat.Properties.Resources.WaveTypeSawtooth2;
+            this.WaveTypeSawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSawtooth.Name = "WaveTypeSawtooth";
+            this.WaveTypeSawtooth.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeSawtooth.Text = "Sawtooth";
             // 
-            // toolStripMenuItem6
+            // WaveTypeReverseSawtooth
             // 
-            this.toolStripMenuItem6.Image = global::TabbyCat.Properties.Resources.WaveTypeReverseSawtooth1;
-            this.toolStripMenuItem6.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem6.Text = "Reverse sawtooth";
+            this.WaveTypeReverseSawtooth.Image = global::TabbyCat.Properties.Resources.WaveTypeReverseSawtooth1;
+            this.WaveTypeReverseSawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeReverseSawtooth.Name = "WaveTypeReverseSawtooth";
+            this.WaveTypeReverseSawtooth.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeReverseSawtooth.Text = "Reverse sawtooth";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
             this.toolStripMenuItem9.Size = new System.Drawing.Size(163, 6);
             // 
-            // toolStripMenuItem7
+            // WaveTypeCustom
             // 
-            this.toolStripMenuItem7.Image = global::TabbyCat.Properties.Resources.WaveTypeCustom;
-            this.toolStripMenuItem7.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem7.Text = "Custom";
+            this.WaveTypeCustom.Image = global::TabbyCat.Properties.Resources.WaveTypeCustom;
+            this.WaveTypeCustom.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeCustom.Name = "WaveTypeCustom";
+            this.WaveTypeCustom.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeCustom.Text = "Custom";
             // 
-            // toolStripMenuItem8
+            // WaveTypeNoise
             // 
-            this.toolStripMenuItem8.Image = global::TabbyCat.Properties.Resources.WaveTypeRandom;
-            this.toolStripMenuItem8.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem8.Text = "Noise";
+            this.WaveTypeNoise.Image = global::TabbyCat.Properties.Resources.WaveTypeRandom;
+            this.WaveTypeNoise.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeNoise.Name = "WaveTypeNoise";
+            this.WaveTypeNoise.Size = new System.Drawing.Size(166, 22);
+            this.WaveTypeNoise.Text = "Noise";
             // 
             // DeleteButton
             // 
@@ -246,14 +247,14 @@
         internal System.Windows.Forms.ToolStripSplitButton AddButton;
         internal System.Windows.Forms.ToolStripButton DeleteButton;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeSlider;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeSine;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeSquare;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeTriangle;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeSawtooth;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeReverseSawtooth;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeCustom;
+        internal System.Windows.Forms.ToolStripMenuItem WaveTypeNoise;
+        internal System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
     }
 }

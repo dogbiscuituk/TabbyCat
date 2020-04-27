@@ -1356,648 +1356,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Curve|y = f(x) 
-        ///Add a new curve to this scene|F2.
-        /// </summary>
-        public static string Menu_Add_Curve {
-            get {
-                return ResourceManager.GetString("Menu_Add_Curve", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signal|Add a new waveform generator to this scene.
-        /// </summary>
-        public static string Menu_Add_Signal {
-            get {
-                return ResourceManager.GetString("Menu_Add_Signal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Surface|z = f(x, y) 
-        ///Add a new surface to this scene|F3.
-        /// </summary>
-        public static string Menu_Add_Surface {
-            get {
-                return ResourceManager.GetString("Menu_Add_Surface", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Volume|w = f(x, y, z) 
-        ///Add a new volumetric fill to this scene|F4.
-        /// </summary>
-        public static string Menu_Add_Volume {
-            get {
-                return ResourceManager.GetString("Menu_Add_Volume", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Camera.
-        /// </summary>
-        public static string Menu_Camera {
-            get {
-                return ResourceManager.GetString("Menu_Camera", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Move.
-        /// </summary>
-        public static string Menu_Camera_Move {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Back|Move the camera back|^PgDn.
-        /// </summary>
-        public static string Menu_Camera_Move_Back {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Back", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Down|Move the camera down while
-        ///keeping it pointed at an object|^Down.
-        /// </summary>
-        public static string Menu_Camera_Move_Down {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Down", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Forward|Move the camera forward|^PgUp.
-        /// </summary>
-        public static string Menu_Camera_Move_Forward {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Forward", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Left|Move the camera left while
-        ///keeping it pointed at an object|^Left.
-        /// </summary>
-        public static string Menu_Camera_Move_Left {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Left", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Right|Move the camera right while
-        ///keeping it pointed at an object|^Right.
-        /// </summary>
-        public static string Menu_Camera_Move_Right {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Right", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Up|Move the camera up while
-        ///keeping it pointed at an object|^Up.
-        /// </summary>
-        public static string Menu_Camera_Move_Up {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Move_Up", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Reset|Return the camera to its default position &amp; direction, 
-        ///as it was after the last new/open/save operation|^Home.
-        /// </summary>
-        public static string Menu_Camera_Reset {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Reset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;left|Roll the camera to the left|Shift+^PgUp.
-        /// </summary>
-        public static string Menu_Camera_RollLeft {
-            get {
-                return ResourceManager.GetString("Menu_Camera_RollLeft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roll &amp;right|Roll the camera to the right|Shift+^PgDn.
-        /// </summary>
-        public static string Menu_Camera_RollRight {
-            get {
-                return ResourceManager.GetString("Menu_Camera_RollRight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Strafe.
-        /// </summary>
-        public static string Menu_Camera_Strafe {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Strafe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Down|Move the camera straight down|Shift+^Down.
-        /// </summary>
-        public static string Menu_Camera_Strafe_Down {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Strafe_Down", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Left|Strafe to the left|Shift+^Left.
-        /// </summary>
-        public static string Menu_Camera_Strafe_Left {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Strafe_Left", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Right|Strafe to the right|Shift+^Right.
-        /// </summary>
-        public static string Menu_Camera_Strafe_Right {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Strafe_Right", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Up|Move the camera straight up|Shift+^Up.
-        /// </summary>
-        public static string Menu_Camera_Strafe_Up {
-            get {
-                return ResourceManager.GetString("Menu_Camera_Strafe_Up", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Edit.
-        /// </summary>
-        public static string Menu_Edit {
-            get {
-                return ResourceManager.GetString("Menu_Edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Copy|Copy selected trace(s).
-        /// </summary>
-        public static string Menu_Edit_Copy {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Copy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cu&amp;t|Cut selected trace(s).
-        /// </summary>
-        public static string Menu_Edit_Cut {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Cut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Delete|Delete selected trace(s).
-        /// </summary>
-        public static string Menu_Edit_Delete {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Delete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Invert selection|Toggle the selected status of each trace.
-        /// </summary>
-        public static string Menu_Edit_InvertSelection {
-            get {
-                return ResourceManager.GetString("Menu_Edit_InvertSelection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Options....
-        /// </summary>
-        public static string Menu_Edit_Options {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Paste|Paste trace(s) from clipboard.
-        /// </summary>
-        public static string Menu_Edit_Paste {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Paste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Redo.
-        /// </summary>
-        public static string Menu_Edit_Redo {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Redo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select &amp;all|Select all traces.
-        /// </summary>
-        public static string Menu_Edit_SelectAll {
-            get {
-                return ResourceManager.GetString("Menu_Edit_SelectAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Undo.
-        /// </summary>
-        public static string Menu_Edit_Undo {
-            get {
-                return ResourceManager.GetString("Menu_Edit_Undo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;File.
-        /// </summary>
-        public static string Menu_File {
-            get {
-                return ResourceManager.GetString("Menu_File", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Clear this list|Delete all recently used file names.
-        /// </summary>
-        public static string Menu_File_ClearThisList {
-            get {
-                return ResourceManager.GetString("Menu_File_ClearThisList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Close|Close this scene|^F4.
-        /// </summary>
-        public static string Menu_File_Close {
-            get {
-                return ResourceManager.GetString("Menu_File_Close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4.
-        /// </summary>
-        public static string Menu_File_CloseAllAndExit {
-            get {
-                return ResourceManager.GetString("Menu_File_CloseAllAndExit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;New|Create a new scene.
-        /// </summary>
-        public static string Menu_File_New {
-            get {
-                return ResourceManager.GetString("Menu_File_New", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Empty scene|Create a new empty scene|^N.
-        /// </summary>
-        public static string Menu_File_New_EmptyScene {
-            get {
-                return ResourceManager.GetString("Menu_File_New_EmptyScene", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;From template...|Create a new scene based on an existing template.
-        /// </summary>
-        public static string Menu_File_New_FromTemplate {
-            get {
-                return ResourceManager.GetString("Menu_File_New_FromTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Open...|Open an existing scene|^O.
-        /// </summary>
-        public static string Menu_File_Open {
-            get {
-                return ResourceManager.GetString("Menu_File_Open", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reopen|Reopen a recently used scene.
-        /// </summary>
-        public static string Menu_File_Reopen {
-            get {
-                return ResourceManager.GetString("Menu_File_Reopen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Save|Save this scene|^S.
-        /// </summary>
-        public static string Menu_File_Save {
-            get {
-                return ResourceManager.GetString("Menu_File_Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save &amp;as...|Save this scene under a different filename.
-        /// </summary>
-        public static string Menu_File_SaveAs {
-            get {
-                return ResourceManager.GetString("Menu_File_SaveAs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Help.
-        /// </summary>
-        public static string Menu_Help {
-            get {
-                return ResourceManager.GetString("Menu_Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;About {0}.
-        /// </summary>
-        public static string Menu_Help_About {
-            get {
-                return ResourceManager.GetString("Menu_Help_About", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OpenGL® shading language.
-        /// </summary>
-        public static string Menu_Help_OpenGLShadingLanguage {
-            get {
-                return ResourceManager.GetString("Menu_Help_OpenGLShadingLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Dock.
-        /// </summary>
-        public static string Menu_Host_Dock {
-            get {
-                return ResourceManager.GetString("Menu_Host_Dock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Undock.
-        /// </summary>
-        public static string Menu_Host_Undock {
-            get {
-                return ResourceManager.GetString("Menu_Host_Undock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time
-        ///(or slow down if in reverse).
-        /// </summary>
-        public static string Menu_Time_Accelerate {
-            get {
-                return ResourceManager.GetString("Menu_Time_Accelerate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Decelerate|Slow down the passage of time
-        ///(or speed up if in reverse).
-        /// </summary>
-        public static string Menu_Time_Decelerate {
-            get {
-                return ResourceManager.GetString("Menu_Time_Decelerate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Forward|Make time run forward.
-        /// </summary>
-        public static string Menu_Time_Forward {
-            get {
-                return ResourceManager.GetString("Menu_Time_Forward", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Pause|Pause the passage of time.
-        /// </summary>
-        public static string Menu_Time_Pause {
-            get {
-                return ResourceManager.GetString("Menu_Time_Pause", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Reverse|Make time run in reverse.
-        /// </summary>
-        public static string Menu_Time_Reverse {
-            get {
-                return ResourceManager.GetString("Menu_Time_Reverse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Stop|Stop the passage of time
-        ///and reset the timer to zero.
-        /// </summary>
-        public static string Menu_Time_Stop {
-            get {
-                return ResourceManager.GetString("Menu_Time_Stop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All.
-        /// </summary>
-        public static string Menu_Trace_All {
-            get {
-                return ResourceManager.GetString("Menu_Trace_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;View|Display of edit controls.
-        /// </summary>
-        public static string Menu_View {
-            get {
-                return ResourceManager.GetString("Menu_View", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Full screen|Full screen display on/off|F11.
-        /// </summary>
-        public static string Menu_View_FullScreen {
-            get {
-                return ResourceManager.GetString("Menu_View_FullScreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene|Show or hide the main graphics display window.
-        /// </summary>
-        public static string Menu_View_Scene {
-            get {
-                return ResourceManager.GetString("Menu_View_Scene", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene code|Show or hide the scene code editor.
-        /// </summary>
-        public static string Menu_View_SceneCode {
-            get {
-                return ResourceManager.GetString("Menu_View_SceneCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scene properties|Show or hide the scene properties editor.
-        /// </summary>
-        public static string Menu_View_SceneProperties {
-            get {
-                return ResourceManager.GetString("Menu_View_SceneProperties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shader code|Show or hide the main shader code editor.
-        /// </summary>
-        public static string Menu_View_ShaderCode {
-            get {
-                return ResourceManager.GetString("Menu_View_ShaderCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
-        /// </summary>
-        public static string Menu_View_Signals {
-            get {
-                return ResourceManager.GetString("Menu_View_Signals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
-        /// </summary>
-        public static string Menu_View_TraceCode {
-            get {
-                return ResourceManager.GetString("Menu_View_TraceCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
-        /// </summary>
-        public static string Menu_View_TraceProperties {
-            get {
-                return ResourceManager.GetString("Menu_View_TraceProperties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Constant|Constant value.
-        /// </summary>
-        public static string Menu_WaveType_Constant {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Constant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to C&amp;ustom|Custom periodic waveform.
-        /// </summary>
-        public static string Menu_WaveType_Custom {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Custom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Noise|Random aperiodic noise
-        ///(&quot;frequency&quot; refers to the number of discrete samples per second).
-        /// </summary>
-        public static string Menu_WaveType_Noise {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Noise", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Reverse sawtooth|Reverse sawtooth wave.
-        /// </summary>
-        public static string Menu_WaveType_ReverseSawtooth {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_ReverseSawtooth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sa&amp;wtooth|Sawtooth wave.
-        /// </summary>
-        public static string Menu_WaveType_Sawtooth {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Sawtooth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to S&amp;ine|Sinusoidal wave.
-        /// </summary>
-        public static string Menu_WaveType_Sine {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Sine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Square|Square wave.
-        /// </summary>
-        public static string Menu_WaveType_Square {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Square", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Triangle|Triangle wave.
-        /// </summary>
-        public static string Menu_WaveType_Triangle {
-            get {
-                return ResourceManager.GetString("Menu_WaveType_Triangle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
         /// </summary>
         public static string Message_FileModified_Text {
@@ -2575,6 +1933,79 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C&amp;ustom|Custom periodic waveform.
+        /// </summary>
+        public static string SignalsForm_WaveTypeCustom {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeCustom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Noise|Random aperiodic noise
+        ///(&quot;frequency&quot; refers to the number of discrete samples per second).
+        /// </summary>
+        public static string SignalsForm_WaveTypeNoise {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeNoise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Reverse sawtooth|Reverse sawtooth wave.
+        /// </summary>
+        public static string SignalsForm_WaveTypeReverseSawtooth {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeReverseSawtooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sa&amp;wtooth|Sawtooth wave.
+        /// </summary>
+        public static string SignalsForm_WaveTypeSawtooth {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeSawtooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S&amp;ine|Sinusoidal wave.
+        /// </summary>
+        public static string SignalsForm_WaveTypeSine {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeSine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Constant|Constant value.
+        /// </summary>
+        public static string SignalsForm_WaveTypeSlider {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeSlider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Square|Square wave.
+        /// </summary>
+        public static string SignalsForm_WaveTypeSquare {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeSquare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Triangle|Triangle wave.
+        /// </summary>
+        public static string SignalsForm_WaveTypeTriangle {
+            get {
+                return ResourceManager.GetString("SignalsForm_WaveTypeTriangle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap SpeechMicHS {
@@ -2949,11 +2380,562 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Curve|y = f(x) 
+        ///Add a new curve to this scene|F2.
+        /// </summary>
+        public static string WorldForm_AddCurve {
+            get {
+                return ResourceManager.GetString("WorldForm_AddCurve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Add|Add a new trace or signal to this scene.
         /// </summary>
         public static string WorldForm_AddMenu {
             get {
                 return ResourceManager.GetString("WorldForm_AddMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal|Add a new waveform generator to this scene.
+        /// </summary>
+        public static string WorldForm_AddSignal {
+            get {
+                return ResourceManager.GetString("WorldForm_AddSignal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Surface|z = f(x, y) 
+        ///Add a new surface to this scene|F3.
+        /// </summary>
+        public static string WorldForm_AddSurface {
+            get {
+                return ResourceManager.GetString("WorldForm_AddSurface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Volume|w = f(x, y, z) 
+        ///Add a new volumetric fill to this scene|F4.
+        /// </summary>
+        public static string WorldForm_AddVolume {
+            get {
+                return ResourceManager.GetString("WorldForm_AddVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Move.
+        /// </summary>
+        public static string WorldForm_Camera_Move {
+            get {
+                return ResourceManager.GetString("WorldForm_Camera_Move", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Strafe.
+        /// </summary>
+        public static string WorldForm_Camera_Strafe {
+            get {
+                return ResourceManager.GetString("WorldForm_Camera_Strafe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Camera.
+        /// </summary>
+        public static string WorldForm_CameraMenu {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Back|Move the camera back|^PgDn.
+        /// </summary>
+        public static string WorldForm_CameraMoveBack {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Down|Move the camera down while
+        ///keeping it pointed at an object|^Down.
+        /// </summary>
+        public static string WorldForm_CameraMoveDown {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Forward|Move the camera forward|^PgUp.
+        /// </summary>
+        public static string WorldForm_CameraMoveForward {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Left|Move the camera left while
+        ///keeping it pointed at an object|^Left.
+        /// </summary>
+        public static string WorldForm_CameraMoveLeft {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Right|Move the camera right while
+        ///keeping it pointed at an object|^Right.
+        /// </summary>
+        public static string WorldForm_CameraMoveRight {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Up|Move the camera up while
+        ///keeping it pointed at an object|^Up.
+        /// </summary>
+        public static string WorldForm_CameraMoveUp {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraMoveUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Reset|Return the camera to its default position &amp; direction, 
+        ///as it was after the last new/open/save operation|^Home.
+        /// </summary>
+        public static string WorldForm_CameraReset {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roll &amp;left|Roll the camera to the left|Shift+^PgUp.
+        /// </summary>
+        public static string WorldForm_CameraRollLeft {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraRollLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roll &amp;right|Roll the camera to the right|Shift+^PgDn.
+        /// </summary>
+        public static string WorldForm_CameraRollRight {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraRollRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Down|Move the camera straight down|Shift+^Down.
+        /// </summary>
+        public static string WorldForm_CameraStrafeDown {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraStrafeDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Left|Strafe to the left|Shift+^Left.
+        /// </summary>
+        public static string WorldForm_CameraStrafeLeft {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraStrafeLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Right|Strafe to the right|Shift+^Right.
+        /// </summary>
+        public static string WorldForm_CameraStrafeRight {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraStrafeRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Up|Move the camera straight up|Shift+^Up.
+        /// </summary>
+        public static string WorldForm_CameraStrafeUp {
+            get {
+                return ResourceManager.GetString("WorldForm_CameraStrafeUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Copy|Copy selected trace(s).
+        /// </summary>
+        public static string WorldForm_EditCopy {
+            get {
+                return ResourceManager.GetString("WorldForm_EditCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cu&amp;t|Cut selected trace(s).
+        /// </summary>
+        public static string WorldForm_EditCut {
+            get {
+                return ResourceManager.GetString("WorldForm_EditCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Delete|Delete selected trace(s).
+        /// </summary>
+        public static string WorldForm_EditDelete {
+            get {
+                return ResourceManager.GetString("WorldForm_EditDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Invert selection|Toggle the selected status of each trace.
+        /// </summary>
+        public static string WorldForm_EditInvertSelection {
+            get {
+                return ResourceManager.GetString("WorldForm_EditInvertSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit.
+        /// </summary>
+        public static string WorldForm_EditMenu {
+            get {
+                return ResourceManager.GetString("WorldForm_EditMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Options....
+        /// </summary>
+        public static string WorldForm_EditOptions {
+            get {
+                return ResourceManager.GetString("WorldForm_EditOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Paste|Paste trace(s) from clipboard.
+        /// </summary>
+        public static string WorldForm_EditPaste {
+            get {
+                return ResourceManager.GetString("WorldForm_EditPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Redo.
+        /// </summary>
+        public static string WorldForm_EditRedo {
+            get {
+                return ResourceManager.GetString("WorldForm_EditRedo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select &amp;all|Select all traces.
+        /// </summary>
+        public static string WorldForm_EditSelectAll {
+            get {
+                return ResourceManager.GetString("WorldForm_EditSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Undo.
+        /// </summary>
+        public static string WorldForm_EditUndo {
+            get {
+                return ResourceManager.GetString("WorldForm_EditUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear this list|Delete all recently used file names.
+        /// </summary>
+        public static string WorldForm_FileClearThisList {
+            get {
+                return ResourceManager.GetString("WorldForm_FileClearThisList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Close|Close this scene|^F4.
+        /// </summary>
+        public static string WorldForm_FileClose {
+            get {
+                return ResourceManager.GetString("WorldForm_FileClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4.
+        /// </summary>
+        public static string WorldForm_FileCloseAllAndExit {
+            get {
+                return ResourceManager.GetString("WorldForm_FileCloseAllAndExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;File.
+        /// </summary>
+        public static string WorldForm_FileMenu {
+            get {
+                return ResourceManager.GetString("WorldForm_FileMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;New|Create a new scene.
+        /// </summary>
+        public static string WorldForm_FileNew {
+            get {
+                return ResourceManager.GetString("WorldForm_FileNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Empty scene|Create a new empty scene|^N.
+        /// </summary>
+        public static string WorldForm_FileNewEmptyScene {
+            get {
+                return ResourceManager.GetString("WorldForm_FileNewEmptyScene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;From template...|Create a new scene based on an existing template.
+        /// </summary>
+        public static string WorldForm_FileNewFromTemplate {
+            get {
+                return ResourceManager.GetString("WorldForm_FileNewFromTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open...|Open an existing scene|^O.
+        /// </summary>
+        public static string WorldForm_FileOpen {
+            get {
+                return ResourceManager.GetString("WorldForm_FileOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reopen|Reopen a recently used scene.
+        /// </summary>
+        public static string WorldForm_FileReopen {
+            get {
+                return ResourceManager.GetString("WorldForm_FileReopen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Save|Save this scene|^S.
+        /// </summary>
+        public static string WorldForm_FileSave {
+            get {
+                return ResourceManager.GetString("WorldForm_FileSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save &amp;as...|Save this scene under a different filename.
+        /// </summary>
+        public static string WorldForm_FileSaveAs {
+            get {
+                return ResourceManager.GetString("WorldForm_FileSaveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;About {0}.
+        /// </summary>
+        public static string WorldForm_HelpAbout {
+            get {
+                return ResourceManager.GetString("WorldForm_HelpAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Help.
+        /// </summary>
+        public static string WorldForm_HelpMenu {
+            get {
+                return ResourceManager.GetString("WorldForm_HelpMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OpenGL® shading language.
+        /// </summary>
+        public static string WorldForm_HelpOpenGLShadingLanguage {
+            get {
+                return ResourceManager.GetString("WorldForm_HelpOpenGLShadingLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Accelerate|Speed up the passage of time
+        ///(or slow down if in reverse).
+        /// </summary>
+        public static string WorldForm_TimeAccelerate {
+            get {
+                return ResourceManager.GetString("WorldForm_TimeAccelerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Decelerate|Slow down the passage of time
+        ///(or speed up if in reverse).
+        /// </summary>
+        public static string WorldForm_TimeDecelerate {
+            get {
+                return ResourceManager.GetString("WorldForm_TimeDecelerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Forward|Make time run forward.
+        /// </summary>
+        public static string WorldForm_TimeForward {
+            get {
+                return ResourceManager.GetString("WorldForm_TimeForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Pause|Pause the passage of time.
+        /// </summary>
+        public static string WorldForm_TimePause {
+            get {
+                return ResourceManager.GetString("WorldForm_TimePause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Reverse|Make time run in reverse.
+        /// </summary>
+        public static string WorldForm_TimeReverse {
+            get {
+                return ResourceManager.GetString("WorldForm_TimeReverse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Stop|Stop the passage of time
+        ///and reset the timer to zero.
+        /// </summary>
+        public static string WorldForm_TimeStop {
+            get {
+                return ResourceManager.GetString("WorldForm_TimeStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string WorldForm_Trace_All {
+            get {
+                return ResourceManager.GetString("WorldForm_Trace_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;View|Display of edit controls.
+        /// </summary>
+        public static string WorldForm_View {
+            get {
+                return ResourceManager.GetString("WorldForm_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Full screen|Full screen display on/off|F11.
+        /// </summary>
+        public static string WorldForm_ViewFullScreen {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewFullScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene|Show or hide the main graphics display window.
+        /// </summary>
+        public static string WorldForm_ViewScene {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewScene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene code|Show or hide the scene code editor.
+        /// </summary>
+        public static string WorldForm_ViewSceneCode {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewSceneCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene properties|Show or hide the scene properties editor.
+        /// </summary>
+        public static string WorldForm_ViewSceneProperties {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewSceneProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shader code|Show or hide the main shader code editor.
+        /// </summary>
+        public static string WorldForm_ViewShaderCode {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewShaderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
+        /// </summary>
+        public static string WorldForm_ViewSignals {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewSignals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
+        /// </summary>
+        public static string WorldForm_ViewTraceCode {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewTraceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
+        /// </summary>
+        public static string WorldForm_ViewTraceProperties {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewTraceProperties", resourceCulture);
             }
         }
         

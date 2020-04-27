@@ -126,7 +126,7 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.Menu_View_TraceProperties, WorldForm.ViewTraceProperties);
+            Localize(Resources.WorldForm_ViewTraceProperties, WorldForm.ViewTraceProperties);
             Localize(Resources.Control_Trace_Description, TracePropertiesEdit.lblDescription, TracePropertiesEdit.edDescription);
             Localize(Resources.Control_Trace_Location, TracePropertiesEdit.lblLocation);
             Localize(Resources.Control_Trace_LocationX, TracePropertiesEdit.seLocationX);
@@ -155,7 +155,7 @@
             Localize(Resources.Control_Trace_Pattern, TracePropertiesEdit.lblPattern, TracePropertiesEdit.cbPattern);
             Localize(Resources.Control_Trace_Visible, TracePropertiesEdit.cbVisible);
             Localize(Resources.Control_Trace_Selection, TracePropertiesEdit.lblSelectedTraces);
-            Localize(Resources.Menu_Trace_All, TracePropertiesEdit.lblAll);
+            Localize(Resources.WorldForm_Trace_All, TracePropertiesEdit.lblAll);
         }
 
         protected override void OnSelectionChanged()
