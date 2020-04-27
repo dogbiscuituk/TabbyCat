@@ -8,21 +8,28 @@
     using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Text;
 
-    internal class RenderCon : LocalizationCon, IScript
+    internal partial class RenderCon : LocalizationCon
     {
+        // Constructors
+
         internal RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
 
-        internal float FramesPerSecond;
+        // Internal fields
 
+        internal float FramesPerSecond;
         internal static GLInfo _GLInfo;
+        internal bool SceneControlSuspended;
 
         internal static GraphicsMode _GraphicsMode;
+
+        // Private fields
 
         private bool
             CameraViewValid,
@@ -51,13 +58,19 @@
 
         private readonly long[] Ticks = new long[64];
 
-        private static readonly object GLInfoSyncRoot = new object();
-
-        private static readonly object GLModeSyncRoot = new object();
-
         private StringBuilder GpuLog;
 
         private readonly System.Diagnostics.Stopwatch Stopwatch = new System.Diagnostics.Stopwatch();
+
+        private int CurrencyCount;
+
+        // Private static fields
+
+        private static readonly object
+            GLInfoSyncRoot = new object(),
+            GLModeSyncRoot = new object();
+
+        // Internal properties
 
         internal GLInfo GLInfo
         {
@@ -66,7 +79,7 @@
                 if (_GLInfo == null)
                 {
                     GLInfo info = null;
-                    SceneCon.Do(() => { info = new GLInfo(); });
+                    UsingGL(() => { info = new GLInfo(); });
                     lock (GLInfoSyncRoot)
                         _GLInfo = info;
                 }
@@ -76,6 +89,8 @@
 
         internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
+        // Protected internal properties
+
         protected internal override GraphicsMode GraphicsMode
         {
             get
@@ -83,7 +98,7 @@
                 if (_GraphicsMode == null)
                 {
                     GraphicsMode mode = null;
-                    SceneCon.Do(() => { mode = SceneControl.GraphicsMode; });
+                    UsingGL(() => { mode = SceneControl.GraphicsMode; });
                     lock (GLModeSyncRoot)
                         _GraphicsMode = mode;
                 }
@@ -91,96 +106,16 @@
             }
         }
 
+        // Private properties
+
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
-        protected internal override void Connect(bool connect)
-        {
-            base.Connect(connect);
-            if (connect)
-            {
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
-            }
-            else
-            {
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
-            }
-        }
-
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case PropertyNames.Camera:
-                case PropertyNames.CameraPosition:
-                case PropertyNames.CameraFocus:
-                    InvalidateCameraView();
-                    break;
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.SceneVertex:
-                case PropertyNames.SceneTessControl:
-                case PropertyNames.SceneTessEvaluation:
-                case PropertyNames.SceneGeometry:
-                case PropertyNames.SceneFragment:
-                case PropertyNames.SceneCompute:
-                case PropertyNames.Traces:
-                case PropertyNames.TraceVertex:
-                case PropertyNames.TraceTessControl:
-                case PropertyNames.TraceTessEvaluation:
-                case PropertyNames.TraceGeometry:
-                case PropertyNames.TraceFragment:
-                case PropertyNames.TraceCompute:
-                    InvalidateProgram();
-                    break;
-                case PropertyNames.ProjectionType:
-                case PropertyNames.FieldOfView:
-                case PropertyNames.NearPlane:
-                case PropertyNames.FarPlane:
-                    InvalidateProjection();
-                    break;
-                case PropertyNames.Pattern:
-                case PropertyNames.StripeCount:
-                    RenderCon.InvalidateAllTraces();
-                    break;
-            }
-        }
-
-        public string GetScript(ShaderType shaderType)
-        {
-            var version = Scene.GLTargetVersion;
-            var sceneScript = Scene.GetScript(shaderType);
-            var traceScripts = string.Concat(Scene.Traces.Select(
-                p => string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.Format_Trace,
-                    p.Index + 1,
-                    p,
-                    Tokens.BeginTrace(p.Index),
-                    p.GetScript(shaderType).Indent("  "),
-                    Tokens.EndTrace(p.Index))));
-            var cases = !Scene.Traces.Any()
-                ? string.Empty
-                : Scene.Traces
-                    .Select(p => string.Format(CultureInfo.InvariantCulture, Resources.Format_Case, p.Index + 1))
-                    .Aggregate((p, q) => $"{p}{q}");
-            return !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
-                ? string.Empty
-                : string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.Format_Scene,
-                    version,
-                    Tokens.BeginScene,
-                    sceneScript,
-                    Tokens.EndScene,
-                    traceScripts,
-                    cases);
-        }
-
-        public void SetScript(ShaderType shaderType, string value) => throw new System.NotImplementedException();
+        // Internal methods
 
         internal GLInfo GetGLInfo()
         {
             GLInfo info = null;
-            SceneCon.Do(() => { info = new GLInfo(); });
+            UsingGL(() => { info = new GLInfo(); });
             return info;
         }
 
@@ -201,7 +136,7 @@
             ProgramCompiled = false;
             InvalidateCameraView();
             InvalidateProjection();
-            SceneCon.Do(() =>
+            UsingGL(() =>
             {
                 DeleteShaders();
                 if (ProgramID != 0)
@@ -217,7 +152,7 @@
         internal void InvalidateTrace(Trace trace)
         {
             if (trace.Vao != null)
-                SceneCon.Do(() =>
+                UsingGL(() =>
                 {
                     trace.Vao.ReleaseBuffers();
                     trace.Vao = null;
@@ -232,7 +167,7 @@
             InvalidateAllTraces();
         }
 
-        internal void Render() => SceneCon.Do(() =>
+        internal void Render() => UsingGL(() =>
         {
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Texture2D);
@@ -266,7 +201,47 @@
             SceneControl.SwapBuffers();
         });
 
-        internal void Unload() => SceneCon.Do(InvalidateAllTraces);
+        internal void Unload() => UsingGL(InvalidateAllTraces);
+
+        internal bool UsingGL(Action action)
+        {
+            var ok = !SceneControlSuspended &&
+                SceneControl?.IsHandleCreated == true &&
+                SceneControl?.HasValidContext == true &&
+                SceneControl?.Visible == true;
+            if (ok)
+            {
+                if (++CurrencyCount == 1)
+                    SceneControl.MakeCurrent();
+                try
+                {
+                    action();
+                }
+                finally
+                {
+                    if (--CurrencyCount == 0)
+                        SceneControl.Context.MakeCurrent(null);
+                }
+            }
+            return ok;
+        }
+
+        // Protected internal methods
+
+        protected internal override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+            }
+            else
+            {
+                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+            }
+        }
+
+        // Private methods
 
         private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
@@ -330,12 +305,6 @@
         }
 
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
-
-        private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
-
-        private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
-
-        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
 
@@ -416,7 +385,89 @@
         private void ValidateTrace(Trace trace)
         {
             if (trace.Vao == null)
-                SceneCon.Do(() => trace.Vao = new Vao(trace));
+                UsingGL(() => trace.Vao = new Vao(trace));
         }
+
+        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case PropertyNames.Camera:
+                case PropertyNames.CameraPosition:
+                case PropertyNames.CameraFocus:
+                    InvalidateCameraView();
+                    break;
+                case PropertyNames.ProjectionType:
+                case PropertyNames.FieldOfView:
+                case PropertyNames.NearPlane:
+                case PropertyNames.FarPlane:
+                    InvalidateProjection();
+                    break;
+                case PropertyNames.GLTargetVersion:
+                case PropertyNames.SceneVertex:
+                case PropertyNames.SceneTessControl:
+                case PropertyNames.SceneTessEvaluation:
+                case PropertyNames.SceneGeometry:
+                case PropertyNames.SceneFragment:
+                case PropertyNames.SceneCompute:
+                case PropertyNames.Traces:
+                case PropertyNames.TraceVertex:
+                case PropertyNames.TraceTessControl:
+                case PropertyNames.TraceTessEvaluation:
+                case PropertyNames.TraceGeometry:
+                case PropertyNames.TraceFragment:
+                case PropertyNames.TraceCompute:
+                    InvalidateProgram();
+                    break;
+                case PropertyNames.Pattern:
+                case PropertyNames.StripeCount:
+                    RenderCon.InvalidateAllTraces();
+                    break;
+            }
+        }
+
+        // Private static methods
+
+        private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
+
+        private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
+
+        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
+    }
+
+    partial class RenderCon : IScript
+    {
+        public string GetScript(ShaderType shaderType)
+        {
+            var version = Scene.GLTargetVersion;
+            var sceneScript = Scene.GetScript(shaderType);
+            var traceScripts = string.Concat(Scene.Traces.Select(
+                p => string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.Format_Trace,
+                    p.Index + 1,
+                    p,
+                    Tokens.BeginTrace(p.Index),
+                    p.GetScript(shaderType).Indent("  "),
+                    Tokens.EndTrace(p.Index))));
+            var cases = !Scene.Traces.Any()
+                ? string.Empty
+                : Scene.Traces
+                    .Select(p => string.Format(CultureInfo.InvariantCulture, Resources.Format_Case, p.Index + 1))
+                    .Aggregate((p, q) => $"{p}{q}");
+            return !Scene.Traces.Any(p => !string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
+                ? string.Empty
+                : string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.Format_Scene,
+                    version,
+                    Tokens.BeginScene,
+                    sceneScript,
+                    Tokens.EndScene,
+                    traceScripts,
+                    cases);
+        }
+
+        public void SetScript(ShaderType shaderType, string value) => throw new System.NotImplementedException();
     }
 }

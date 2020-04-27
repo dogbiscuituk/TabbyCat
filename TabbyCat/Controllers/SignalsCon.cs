@@ -12,15 +12,27 @@
 
     internal class SignalsCon : DockingCon
     {
+        // Constructors
+
         internal SignalsCon(WorldCon worldCon) : base(worldCon) { }
+
+        // Fields
 
         internal readonly List<SignalCon> SignalCons = new List<SignalCon>();
 
         private SignalsForm _SignalsForm;
 
-        protected internal override DockContent Form => SignalsForm;
+        // Internal properties
 
         internal int SignalsCount => SignalCons.Count;
+
+        // Protected internal roperties
+
+        protected internal override DockContent Form => SignalsForm;
+
+        // Protected properties
+
+        protected override string[] AllProperties => new[] { PropertyNames.Signals };
 
         protected override SignalsForm SignalsForm => _SignalsForm ?? (_SignalsForm = new SignalsForm
         {
@@ -28,6 +40,8 @@
             Text = Resources.SignalsForm_Text,
             ToolTipText = Resources.SignalsForm_Text
         });
+
+        // Internal methods
 
         internal void Add(Signal signal)
         {
@@ -46,11 +60,15 @@
             signalCon.Connect(true);
         }
 
+        internal void BeginUpdate() => SignalsLayoutPanel.SuspendLayout();
+
         internal void Clear()
         {
             for (var index = SignalsCount - 1; index >= 0; index--)
                 RemoveAt(index);
         }
+
+        internal void EndUpdate() => SignalsLayoutPanel.ResumeLayout();
 
         internal void RemoveAt(int index)
         {
@@ -61,6 +79,8 @@
             SignalsLayoutPanel.RowStyles.RemoveAt(index + 1);
             SignalsLayoutPanel.RowCount--;
         }
+
+        // Protected internal methods
 
         protected internal override void Connect(bool connect)
         {
@@ -77,15 +97,35 @@
             }
         }
 
+        // Protected methods
+
         protected override void Localize()
         {
             base.Localize();
             Localize(Resources.Menu_View_Signals, WorldForm.ViewSignals);
         }
 
-        internal void BeginUpdate() => SignalsLayoutPanel.SuspendLayout();
+        protected override void UpdateProperties(params string[] propertyNames)
+        {
+            foreach (var propertyName in propertyNames)
+                switch (propertyName)
+                {
+                    case PropertyNames.Signals:
+                        Reload();
+                        break;
+                }
+        }
 
-        internal void EndUpdate() => SignalsLayoutPanel.ResumeLayout();
+        // Private methods
+
+        private void Reload()
+        {
+            BeginUpdate();
+            Clear();
+            foreach (var signal in Scene.Signals)
+                Add(signal);
+            EndUpdate();
+        }
 
         private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
 
@@ -94,11 +134,7 @@
             switch (e.PropertyName)
             {
                 case PropertyNames.Signals:
-                    BeginUpdate();
-                    Clear();
-                    foreach (var signal in Scene.Signals)
-                        Add(signal);
-                    EndUpdate();
+                    Reload();
                     break;
             }
         }

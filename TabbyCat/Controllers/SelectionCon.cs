@@ -10,9 +10,7 @@
 
     internal class SelectionCon : LocalizationCon
     {
-        internal SelectionCon(WorldCon worldCon)
-            : base(worldCon)
-        { }
+        internal SelectionCon(WorldCon worldCon) : base(worldCon) { }
 
         private int LastIndex = -1;
 

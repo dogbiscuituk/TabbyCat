@@ -21,13 +21,13 @@
 
         protected bool Updating;
 
-        // Protected properties
-
-        protected virtual string[] AllProperties => Array.Empty<string>();
-
         // Protected internal properties
 
         protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+
+        // Protected properties
+
+        protected virtual string[] AllProperties => Array.Empty<string>();
 
         // Protected internal methods
 
@@ -36,6 +36,7 @@
             if (connect)
             {
                 Localize();
+                UpdateAllProperties();
             }
             else
             {
@@ -126,13 +127,19 @@
     /// </summary>
     partial class LocalizationCon
     {
-        protected internal virtual JsonCon JsonCon => WorldCon.JsonCon;
-        protected internal GLControl SceneControl => (GLControl)SceneForm?.Controls?.OfType<Control>().FirstOrDefault();
-        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
-        protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
-        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
+        // Internal properties
 
         internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
+
+        // Protected internal properties
+
+        protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
+        protected internal virtual JsonCon JsonCon => WorldCon.JsonCon;
+        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected internal GLControl SceneControl => SceneForm?.Controls?.OfType<GLControl>().FirstOrDefault();
+        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
+
+        // Protected properties
 
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
@@ -148,20 +155,19 @@
         protected virtual WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
-        protected virtual SignalsForm SignalsForm => SignalsCon.SignalsForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
+        protected virtual SignalsForm SignalsForm => SignalsCon.SignalsForm;
         protected virtual TracePropertiesForm TracePropertiesForm => TracePropertiesCon.TracePropertiesForm;
 
         protected CodeForm SceneCodeForm => SceneCodeCon.CodeForm;
         protected CodeForm ShaderCodeForm => ShaderCodeCon.CodeForm;
         protected CodeForm TraceCodeForm => TraceCodeCon.CodeForm;
 
-        protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
-        protected TableLayoutPanel SignalsLayoutPanel => SignalsForm.TableLayoutPanel;
-        protected TableLayoutControlCollection SignalsLayoutControls => SignalsLayoutPanel.Controls;
-
         protected Camera Camera => Scene.Camera;
+        protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
+        protected TableLayoutControlCollection SignalsLayoutControls => SignalsLayoutPanel.Controls;
+        protected TableLayoutPanel SignalsLayoutPanel => SignalsForm.TableLayoutPanel;
         protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 

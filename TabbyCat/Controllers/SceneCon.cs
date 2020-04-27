@@ -12,42 +12,25 @@
 
     internal class SceneCon : DockingCon
     {
+        // Constructors
+
         internal SceneCon(WorldCon worldCon) : base(worldCon) { }
 
-        private int CurrencyCount;
+        // Private fields
 
         private SceneForm _SceneForm;
 
-        private bool SceneControlSuspended;
+        // Protected internal properties
 
         protected internal override DockContent Form => SceneForm;
 
+        // Protected properties
+
         protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm());
 
-        internal void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
+        // Internal methods
 
         internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
-
-        internal void Do(Action action)
-        {
-            if (!SceneControlSuspended &&
-                SceneControl?.IsHandleCreated == true &&
-                SceneControl?.HasValidContext == true &&
-                SceneControl?.Visible == true)
-            {
-                if (++CurrencyCount == 1)
-                    SceneControl.MakeCurrent();
-                try
-                {
-                    action();
-                }
-                finally
-                {
-                    if (--CurrencyCount == 0)
-                        SceneControl.Context.MakeCurrent(null);
-                }
-            }
-        }
 
         internal void OnPropertyChanged(string propertyName)
         {
@@ -65,6 +48,10 @@
             }
             SceneControl.Invalidate();
         }
+
+        internal void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
+
+        // Protected internal methods
 
         protected internal override void Connect(bool connect)
         {
@@ -93,11 +80,15 @@
             }
         }
 
+        // Protected methods
+
         protected override void Localize()
         {
             base.Localize();
             Localize(Resources.Menu_View_Scene, WorldForm.ViewScene);
         }
+
+        // Private methods
 
         private void Resize() => RenderCon.InvalidateProjection();
 
@@ -141,14 +132,14 @@
 
         private void SceneForm_HandleCreated(object sender, EventArgs e)
         {
-            SceneControlSuspended = false;
+            RenderCon.SceneControlSuspended = false;
             RecreateSceneControl();
         }
 
         private void SceneForm_HandleDestroyed(object sender, EventArgs e)
         {
             RenderCon.Invalidate();
-            SceneControlSuspended = true;
+            RenderCon.SceneControlSuspended = true;
         }
 
         private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => OnPropertyChanged(e.PropertyName);

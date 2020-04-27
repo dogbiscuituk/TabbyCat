@@ -14,11 +14,11 @@
 
         protected override string ShaderName => ShaderType.TraceShaderName();
 
-        protected override IScript ShaderSet => Selection;
+        protected override IScript ShaderSet => TraceSelection;
 
         protected override string GetRegion() => Resources.ShaderRegion_Trace;
 
-        protected override void RunShaderCommand(string text) => Selection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+        protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
 
         protected internal override void Connect(bool connect)
         {
@@ -43,7 +43,7 @@
         {
             base.UpdateUI();
             ToolStripUtils.EnableControls(
-                !Selection.IsEmpty,
+                !TraceSelection.IsEmpty,
                 new Control[]
                 {
                     CodeEdit.HorizontalToolbar,
@@ -63,7 +63,7 @@
 
         internal void SetFormula(string formula)
         {
-            foreach (var trace in Selection.Traces)
+            foreach (var trace in TraceSelection.Traces)
             {
                 var script = trace.GetScript(ShaderType);
                 var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;

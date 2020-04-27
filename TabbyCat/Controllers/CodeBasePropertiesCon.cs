@@ -13,7 +13,6 @@
             base.Connect(connect);
             if (connect)
             {
-                UpdateAllProperties();
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldCon.SelectionChanged += WorldCon_SelectionChanged;
             }

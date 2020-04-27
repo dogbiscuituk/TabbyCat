@@ -1,17 +1,16 @@
 ﻿namespace TabbyCat.Models
 {
     using Common.Types;
+    using Jmk.Common;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class TraceSelection : IScript
+    public partial class TraceSelection : Selection<Trace>
     {
-        private readonly List<Trace> _Traces = new List<Trace>();
-        private bool Updated;
-        private int UpdateCount;
+        // Public properties
 
         public string Description
         {
@@ -67,114 +66,24 @@
             set => SetProperty(p => p.Visible = value == true);
         }
 
-        public string GetScript(ShaderType shaderType) =>
-            GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+        // Internal properties
 
-        public void SetScript(ShaderType shaderType, string value) =>
-            SetProperty(p => p.SetScript(shaderType, value));
+        internal IEnumerable<Trace> Traces => Items.OrderBy(p => p.Index);
 
-        public override string ToString() => IsEmpty
-            ? string.Empty
-            : _Traces.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+        internal IEnumerable<int> GetTraceIndices() => Items.Select(p => p.Index);
 
-        internal bool IsEmpty => !_Traces.Any();
-
-        internal IEnumerable<Trace> Traces => _Traces.OrderBy(p => p.Index);
-
-        internal event EventHandler Changed;
-
-        internal void Add(Trace trace)
-        {
-            if (_Traces.Contains(trace))
-                return;
-            _Traces.Add(trace);
-            OnChanged();
-        }
-
-        internal void AddRange(IEnumerable<Trace> traces)
-        {
-            traces = traces.Where(p => !_Traces.Contains(p)).ToList();
-            if (IsEmpty)
-                return;
-            _Traces.AddRange(traces);
-            OnChanged();
-        }
-
-        internal void BeginUpdate() => UpdateCount++;
-
-        internal void Clear()
-        {
-            if (IsEmpty)
-                return;
-            _Traces.Clear();
-            OnChanged();
-        }
-
-        internal void EndUpdate()
-        {
-            if (--UpdateCount > 0 || !Updated)
-                return;
-            Updated = false;
-            OnChanged();
-        }
-
-        internal void ForEach(Action<Trace> action)
-        {
-            foreach (var trace in _Traces)
-                action(trace);
-        }
-
-        internal IEnumerable<int> GetTraceIndices() =>
-            _Traces.Select(p => p.Index);
-
-        internal void Remove(Trace trace)
-        {
-            if (!_Traces.Contains(trace))
-                return;
-            _Traces.Remove(trace);
-            OnChanged();
-        }
-
-        internal void Set(IEnumerable<Trace> traces)
-        {
-            _Traces.Clear();
-            _Traces.AddRange(traces);
-            OnChanged();
-        }
-
-        protected virtual void OnChanged()
-        {
-            if (UpdateCount > 0)
-                Updated = true;
-            else
-                Changed?.Invoke(this, EventArgs.Empty);
-        }
-
-        private bool? GetBool(Func<Trace, bool> f)
-        {
-            if (IsEmpty)
-                return default;
-            bool first = f(_Traces.First());
-            return _Traces.FirstOrDefault(p => !Equals(f(p), first)) != null
-                ? (bool?)null
-                : first;
-        }
-
-        private T GetProperty<T>(Func<Trace, T> f) where T : IEquatable<T>
-        {
-            if (IsEmpty)
-                return default;
-            T first = f(_Traces.First());
-            return _Traces.FirstOrDefault(p => !Equals(f(p), first)) != null
-                ? default
-                : first;
-        }
+        // Private methods
 
         private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
             GetProperty(p => f(p).X),
             GetProperty(p => f(p).Y),
             GetProperty(p => f(p).Z));
+    }
 
-        private void SetProperty(Action<Trace> set) => ForEach(p => set(p));
+    partial class TraceSelection : IScript
+    {
+        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+
+        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
     }
 }

@@ -178,13 +178,11 @@
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
-                    case PropertyNames.Name:
-                        break;
-                    case PropertyNames.WaveType:
-                        break;
                     case PropertyNames.Amplitude:
-                        break;
                     case PropertyNames.Frequency:
+                    case PropertyNames.Name:
+                    case PropertyNames.WaveType:
+                        // Cannot currently respond to these, since there is no way to identify which signal(s) they concern.
                         break;
                 }
             Updating = false;

@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Commands;
     using Common.Types;
     using Common.Utils;
     using Controls;
@@ -66,7 +65,7 @@
         private SplitContainer SecondarySplitter => CodeEdit.TopSplit;
         private FastColoredTextBox SecondaryTextBox => CodeEdit.SecondaryTextBox;
 
-        protected TraceSelection Selection => WorldCon.Selection;
+        protected TraceSelection TraceSelection => WorldCon.TraceSelection;
         private SplitContainer Splitter => CodeEdit.EditSplit;
 
         protected abstract string ShaderName { get; }
@@ -306,8 +305,19 @@
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SaveShaderCode();
-            UpdateUI();
+            if (!Updating)
+            {
+                Updating = true;
+                try
+                {
+                    SaveShaderCode();
+                    UpdateUI();
+                }
+                finally
+                {
+                    Updating = false;
+                }
+            }
         }
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
@@ -523,14 +533,7 @@
 
         protected abstract void RunShaderCommand(string text);
 
-        private void SaveShaderCode()
-        {
-            if (Updating)
-                return;
-            Updating = true;
-            RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
-            Updating = false;
-        }
+        private void SaveShaderCode() => RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
 
         private void SelectNextShader()
         {

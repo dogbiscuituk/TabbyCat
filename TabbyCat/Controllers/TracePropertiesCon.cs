@@ -53,7 +53,7 @@
             PropertyNames.Visible
         };
 
-        private TraceSelection Selection => WorldCon.Selection;
+        private TraceSelection Selection => WorldCon.TraceSelection;
 
         private TracePropertiesEdit TracePropertiesEdit => TracePropertiesForm.TracePropertiesEdit;
 
@@ -62,7 +62,6 @@
             base.Connect(connect);
             if (connect)
             {
-                UpdateAllProperties();
                 SelectionCon.SelectionChanged += Selection_Changed;
                 TracePropertiesEdit.edDescription.TextChanged += Description_TextChanged;
                 TracePropertiesEdit.seLocationX.ValueChanged += LocationX_ValueChanged;
@@ -162,7 +161,7 @@
         protected override void OnSelectionChanged()
         {
             base.OnSelectionChanged();
-            UpdateAllProperties();
+             UpdateAllProperties();
         }
 
         protected internal override void UpdateAllProperties()

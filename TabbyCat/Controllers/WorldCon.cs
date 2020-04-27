@@ -27,7 +27,7 @@
             PopupMenu_Opening(this, new CancelEventArgs());
         }
 
-        internal TraceSelection Selection = new TraceSelection();
+        internal TraceSelection TraceSelection = new TraceSelection();
 
         private string
             LastSpeed,
@@ -122,8 +122,12 @@
 
         protected internal override void UpdateAllProperties()
         {
-            TracePropertiesCon.UpdateAllProperties();
+            SceneCodeCon.UpdateAllProperties();
             ScenePropertiesCon.UpdateAllProperties();
+            ShaderCodeCon.UpdateAllProperties();
+            SignalsCon.UpdateAllProperties();
+            TraceCodeCon.UpdateAllProperties();
+            TracePropertiesCon.UpdateAllProperties();
         }
 
         protected override void DisposeManagedState()
@@ -200,7 +204,7 @@
             var trace = GetNewTrace(traceType);
             trace.Scene = Scene;
             CommandProcessor.AppendTrace(trace);
-            Selection.Set(new[] { Scene.Traces.Last() });
+            TraceSelection.Set(new[] { Scene.Traces.Last() });
         }
 
         private void AddVolume() => AddTrace(TraceType.Volume);
@@ -226,13 +230,13 @@
             {
                 WorldForm.FormClosed += WorldForm_FormClosed;
                 WorldForm.FormClosing += WorldForm_FormClosing;
-                Selection.Changed += Selection_Changed;
+                TraceSelection.Changed += Selection_Changed;
             }
             else
             {
                 WorldForm.FormClosed -= WorldForm_FormClosed;
                 WorldForm.FormClosing -= WorldForm_FormClosing;
-                Selection.Changed -= Selection_Changed;
+                TraceSelection.Changed -= Selection_Changed;
             }
             SceneCon.Connect(connect);
         }
@@ -305,7 +309,7 @@
             }
         }
 
-        private void CopyToClipboard() => JsonCon.ClipboardCopy(Selection.Traces);
+        private void CopyToClipboard() => JsonCon.ClipboardCopy(TraceSelection.Traces);
 
         private void CutToClipboard()
         {
@@ -315,12 +319,12 @@
 
         private void DeleteSelection()
         {
-            if (Selection.IsEmpty)
+            if (TraceSelection.IsEmpty)
                 return;
-            var indices = Selection.GetTraceIndices().OrderByDescending(p => p).ToList();
+            var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
                 CommandProcessor.DeleteTrace(index);
-            Selection.Clear();
+            TraceSelection.Clear();
         }
 
         private void EditOptions()
@@ -356,11 +360,11 @@
                 aboutCon.ShowDialog(WorldForm);
         }
 
-        private void InvertSelection() => Selection.Set(Scene.Traces.Where(p => !Selection.Traces.Contains(p)).ToList());
+        private void InvertSelection() => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
 
         private void OnSelectionChanged()
         {
-            ToolStripUtils.EnableButtons(!Selection.IsEmpty, new ToolStripItem[] {
+            ToolStripUtils.EnableButtons(!TraceSelection.IsEmpty, new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
@@ -381,10 +385,10 @@
                 trace.Scene = Scene;
                 Run(new TraceInsertCommand(index++, trace));
             }
-            Selection.Set(traces);
+            TraceSelection.Set(traces);
         }
 
-        private void SelectAll() => Selection.AddRange(Scene.Traces);
+        private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
 
         internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
 
@@ -414,12 +418,12 @@
 
         private void UpdateSelection()
         {
-            Selection.BeginUpdate();
-            Selection.Traces
+            TraceSelection.BeginUpdate();
+            TraceSelection.Traces
                 .Where(p => !Scene.Traces.Contains(p))
                 .ToList()
-                .ForEach(p => Selection.Remove(p));
-            Selection.EndUpdate();
+                .ForEach(p => TraceSelection.Remove(p));
+            TraceSelection.EndUpdate();
         }
 
         private void UpdateStatusBar()
