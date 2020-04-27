@@ -135,6 +135,7 @@
             {
                 AmplitudeSlider.Enter += Signal_Enter;
                 AmplitudeSlider.ValueChanged += AmplitudeSlider_ValueChanged;
+                DeleteButton.Click += DeleteButton_Click;
                 FrequencySlider.Enter += Signal_Enter;
                 FrequencySlider.ValueChanged += FrequencySlider_ValueChanged;
                 NameEditor.Enter += Signal_Enter;
@@ -149,6 +150,7 @@
             {
                 AmplitudeSlider.Enter -= Signal_Enter;
                 AmplitudeSlider.ValueChanged -= AmplitudeSlider_ValueChanged;
+                DeleteButton.Click -= DeleteButton_Click;
                 FrequencySlider.Enter -= Signal_Enter;
                 FrequencySlider.ValueChanged -= FrequencySlider_ValueChanged;
                 NameEditor.Enter -= Signal_Enter;
@@ -197,6 +199,8 @@
             Run(new AmplitudeCommand(Index, Amplitude));
             InitToolTip(AmplitudeSlider, Resources.Text_Amplitude, Amplitude);
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
 
         private void FrequencySlider_ValueChanged(object sender, System.EventArgs e)
         {

@@ -34,12 +34,19 @@
 
         protected override string[] AllProperties => new[] { PropertyNames.Signals };
 
-        protected override SignalsForm SignalsForm => _SignalsForm ?? (_SignalsForm = new SignalsForm
+        protected override SignalsForm SignalsForm => _SignalsForm ?? (_SignalsForm = NewSignalsForm());
+
+        private SignalsForm NewSignalsForm()
         {
-            TabText = Resources.SignalsForm_TabText,
-            Text = Resources.SignalsForm_Text,
-            ToolTipText = Resources.SignalsForm_Text
-        });
+            var signalsForm = new SignalsForm
+            {
+                TabText = Resources.SignalsForm_TabText,
+                Text = Resources.SignalsForm_Text,
+                ToolTipText = Resources.SignalsForm_Text
+            };
+            AppCon.InitControlTheme(signalsForm.Toolbar);
+            return signalsForm;
+        }
 
         // Internal methods
 
@@ -54,7 +61,6 @@
             SignalsLayoutControls.Add(signalCon.AmplitudeSlider, 1, rowIndex);
             SignalsLayoutControls.Add(signalCon.FrequencySlider, 2, rowIndex);
             SignalsLayoutControls.Add(signalCon.SignalToolbar, 3, rowIndex);
-
             SignalCons.Add(signalCon);
             signalCon.SetWaveType(WaveType.Constant);
             signalCon.Connect(true);

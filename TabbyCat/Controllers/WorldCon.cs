@@ -142,7 +142,7 @@
         {
             base.Localize();
             Localize(Resources.Menu_Edit, WorldForm.EditMenu);
-            Localize(Resources.Menu_Add, WorldForm.AddMenu, WorldForm.tbAdd);
+            Localize(Resources.WorldForm_AddMenu, WorldForm.AddMenu, WorldForm.tbAdd);
             Localize(Resources.Menu_Add_Curve, WorldForm.AddCurve, WorldForm.tbAddCurve);
             Localize(Resources.Menu_Add_Surface, WorldForm.AddSurface, WorldForm.tbAddSurface);
             Localize(Resources.Menu_Add_Volume, WorldForm.AddVolume, WorldForm.tbAddVolume);

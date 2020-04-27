@@ -512,6 +512,16 @@
     <None Include="Resources\ZoomHS.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WaveTypeCustom1.png" />
+    <None Include="Resources\WaveTypeDC1.png" />
+    <None Include="Resources\WaveTypeRandom1.png" />
+    <None Include="Resources\WaveTypeReverseSawtooth1.png" />
+    <None Include="Resources\WaveTypeSawtooth1.png" />
+    <None Include="Resources\WaveTypeSine1.png" />
+    <None Include="Resources\WaveTypeSquare1.png" />
+    <None Include="Resources\WaveTypeTriangle1.png" />
+    <None Include="Resources\WaveTypeSawtooth.png" />
+    <None Include="Resources\WaveTypeReverseSawtooth.png" />
     <Content Include="Snippets\Curve_VertexFormula.txt" />
     <Content Include="Snippets\Scene_ComputeShader.txt" />
     <Content Include="Snippets\Scene_FragmentShader.txt" />

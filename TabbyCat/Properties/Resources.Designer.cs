@@ -1356,15 +1356,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add|Add a new trace to this scene.
-        /// </summary>
-        public static string Menu_Add {
-            get {
-                return ResourceManager.GetString("Menu_Add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;Curve|y = f(x) 
         ///Add a new curve to this scene|F2.
         /// </summary>
@@ -2840,10 +2831,129 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap WaveTypeCustom {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeCustom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeDC {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeDC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeRandom {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeRandom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeReverseSawtooth {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeReverseSawtooth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeReverseSawtooth1 {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeReverseSawtooth1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeSawtooth {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeSawtooth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeSawtooth1 {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeSawtooth1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeSawtooth2 {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeSawtooth2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeSine {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeSine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeSquare {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeSquare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WaveTypeTriangle {
+            get {
+                object obj = ResourceManager.GetObject("WaveTypeTriangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap WebInsertHyperlinkHS {
             get {
                 object obj = ResourceManager.GetObject("WebInsertHyperlinkHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Add|Add a new trace or signal to this scene.
+        /// </summary>
+        public static string WorldForm_AddMenu {
+            get {
+                return ResourceManager.GetString("WorldForm_AddMenu", resourceCulture);
             }
         }
         

@@ -121,8 +121,23 @@
   <data name="RightToLeftDoucmentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RightToLeftDoucmentHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LineColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LineColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Built_in_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="RewindHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RewindHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WaveTypeSawtooth2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeSawtooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WaveTypeReverseSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeReverseSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="A_Sample_Entry_2" xml:space="preserve">
+    <value>Copy|Copy to clipboard|^C</value>
   </data>
   <data name="TaskHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TaskHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,17 +145,56 @@
   <data name="NewDocumentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewDocumentHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FindNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FindNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_StripesX" xml:space="preserve">
+    <value>|The number of stripes in the x-direction</value>
+  </data>
+  <data name="DataContainer_MoveNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MoveNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_Location" xml:space="preserve">
+    <value>Location|Trace location</value>
+  </data>
   <data name="TableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PrintHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PrintHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OpenFileHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenFileHS.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CodeForm_OptionsDocumentMap" xml:space="preserve">
+    <value>Document map|Show/hide document map</value>
+  </data>
+  <data name="Control_Camera_PositionX" xml:space="preserve">
+    <value>|Camera x</value>
+  </data>
+  <data name="Control_Trace_MaximumX" xml:space="preserve">
+    <value>|The maximum value of x</value>
+  </data>
+  <data name="Control_Trace_ScaleY" xml:space="preserve">
+    <value>|The y-component of scale</value>
+  </data>
+  <data name="Menu_Edit_Options" xml:space="preserve">
+    <value>&amp;Options...</value>
+  </data>
+  <data name="Menu_Camera_RollLeft" xml:space="preserve">
+    <value>Roll &amp;left|Roll the camera to the left|Shift+^PgUp</value>
+  </data>
+  <data name="TextboxHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TextboxHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_SaveAsHTML" xml:space="preserve">
+    <value>Save as HTML...</value>
   </data>
   <data name="openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_FarPlaneX" xml:space="preserve">
+    <value>|The x-component of the far projective plane</value>
+  </data>
+  <data name="Menu_Camera_Strafe_Left" xml:space="preserve">
+    <value>&amp;Left|Strafe to the left|Shift+^Left</value>
   </data>
   <data name="GoRtlHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoRtlHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,20 +202,74 @@
   <data name="CutHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CutHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GoLtrHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoLtrHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_OptionsLineNumbers" xml:space="preserve">
+    <value>Line numbers|Show/hide line numbers</value>
+  </data>
+  <data name="Menu_File_Open" xml:space="preserve">
+    <value>&amp;Open...|Open an existing scene|^O</value>
+  </data>
+  <data name="CodeForm_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="FindHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FindHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Trace_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="SaveAsWebPageHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SaveAsWebPageHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Control_Trace_LocationY" xml:space="preserve">
+    <value>|Location y</value>
+  </data>
+  <data name="Text_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Control_Camera_PositionZ" xml:space="preserve">
+    <value>|Camera z</value>
+  </data>
+  <data name="Menu_Camera_Move" xml:space="preserve">
+    <value>&amp;Move</value>
+  </data>
+  <data name="Control_Scene_FarPlane" xml:space="preserve">
+    <value>Far plane|The far projective plane</value>
   </data>
   <data name="PrintPreviewHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PrintPreviewHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SaveAsWebPageHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SaveAsWebPageHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DoubleLeftArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DoubleLeftArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit_Redo" xml:space="preserve">
+    <value>&amp;Redo</value>
+  </data>
+  <data name="Menu_File_New_FromTemplate" xml:space="preserve">
+    <value>&amp;From template...|Create a new scene based on an existing template</value>
+  </data>
+  <data name="WaveTypeSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_OptionsRuler" xml:space="preserve">
+    <value>Ruler|Show/hide ruler</value>
+  </data>
   <data name="DataContainer_MoveLastHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DataContainer_MoveLastHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_File_ClearThisList" xml:space="preserve">
+    <value>Clear this list|Delete all recently used file names</value>
+  </data>
+  <data name="Menu_View_ShaderCode" xml:space="preserve">
+    <value>Shader code|Show or hide the main shader code editor</value>
+  </data>
+  <data name="Text_SignalName" xml:space="preserve">
+    <value>Signal "{0}"</value>
+  </data>
+  <data name="ShaderForm_Text" xml:space="preserve">
+    <value>{0} code</value>
   </data>
   <data name="LegendHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LegendHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,35 +277,126 @@
   <data name="graphhs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\graphhs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Menu_Camera_Strafe" xml:space="preserve">
+    <value>&amp;Strafe</value>
+  </data>
+  <data name="Control_Camera_Pitch" xml:space="preserve">
+    <value>|Camera pitch (degrees)</value>
+  </data>
+  <data name="Control_Scene_NearPlane" xml:space="preserve">
+    <value>Near plane|The near projective plane</value>
+  </data>
+  <data name="Menu_File_SaveAs" xml:space="preserve">
+    <value>Save &amp;as...|Save this scene under a different filename</value>
+  </data>
+  <data name="Curve_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\curve_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Add_Curve" xml:space="preserve">
+    <value>&amp;Curve|y = f(x) 
+Add a new curve to this scene|F2</value>
+  </data>
+  <data name="WaveTypeSquare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeSquare1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="openfolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Trace_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Control_Camera_Position" xml:space="preserve">
+    <value>Position|Camera position</value>
+  </data>
+  <data name="SaveHtmlDialog_Filter" xml:space="preserve">
+    <value>HTML with &lt;PRE&gt;|*.html|HTML without &lt;PRE&gt;|*.html</value>
+  </data>
   <data name="CopyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CopyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SearchWebHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchWebHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShowGridlines2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShowGridlines2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Menu_File_Close" xml:space="preserve">
+    <value>&amp;Close|Close this scene|^F4</value>
+  </data>
+  <data name="RoutingSlipHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RoutingSlipHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_SplitHorizontal" xml:space="preserve">
+    <value>Horizontal|Show two ganged editors stacked</value>
+  </data>
+  <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Menu_WaveType_Sawtooth" xml:space="preserve">
+    <value>Sa&amp;wtooth|Sawtooth wave</value>
+  </data>
+  <data name="Control_Trace_Pattern" xml:space="preserve">
+    <value>Pattern|The trace rendering pattern</value>
+  </data>
+  <data name="Control_Trace_MaximumZ" xml:space="preserve">
+    <value>|The maximum value of z</value>
+  </data>
+  <data name="PieChart3DHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PieChart3DHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Camera_Yaw" xml:space="preserve">
+    <value>|Camera yaw (degrees)</value>
+  </data>
   <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="WaveTypeSawtooth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PointerHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PointerHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DataContainer_MoveNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DataContainer_MoveNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Menu_Camera_Move_Forward" xml:space="preserve">
+    <value>&amp;Forward|Move the camera forward|^PgUp</value>
+  </data>
+  <data name="Menu_File_New" xml:space="preserve">
+    <value>&amp;New|Create a new scene</value>
+  </data>
+  <data name="SaveFileDialog_Title" xml:space="preserve">
+    <value>Save file</value>
   </data>
   <data name="eps_openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eps_openHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Trace_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Text_Frequency" xml:space="preserve">
+    <value>Frequency = {0} Hz</value>
+  </data>
+  <data name="WaveTypeCustom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeCustom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SpeechMicHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeechMicHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit_Cut" xml:space="preserve">
+    <value>Cu&amp;t|Cut selected trace(s)</value>
+  </data>
+  <data name="WaveTypeSine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeSine1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_VSync" xml:space="preserve">
+    <value>VSync|Whether or not to use vertical sync</value>
+  </data>
+  <data name="Control_Camera_Direction" xml:space="preserve">
+    <value>Direction|Camera direction (degrees)</value>
   </data>
   <data name="Format_Case" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_case.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -205,47 +404,180 @@
   <data name="StopHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StopHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SaveFormDesignHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SaveFormDesignHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CodeForm_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ShaderRegion_Scene" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="Trace_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Control_Scene_Samples" xml:space="preserve">
+    <value>#Samples|The number of samples interpolated over</value>
+  </data>
+  <data name="SychronizeListHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SychronizeListHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Edit_RedoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_RedoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Menu_Camera_Move_Up" xml:space="preserve">
+    <value>&amp;Up|Move the camera up while
+keeping it pointed at an object|^Up</value>
+  </data>
+  <data name="Built_in_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="FullScreenHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FullScreenHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Host_Dock" xml:space="preserve">
+    <value>&amp;Dock</value>
+  </data>
+  <data name="Scene_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="action_add_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\action_add_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="saveHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ShowGridlines2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ShowGridlines2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EditTableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditTableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="Menu_Time_Stop" xml:space="preserve">
+    <value>&amp;Stop|Stop the passage of time
+and reset the timer to zero</value>
   </data>
   <data name="SendToBackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SendToBackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DoubleLeftArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DoubleLeftArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Menu_WaveType_ReverseSawtooth" xml:space="preserve">
+    <value>&amp;Reverse sawtooth|Reverse sawtooth wave</value>
+  </data>
+  <data name="SaveHtmlDialog_Title" xml:space="preserve">
+    <value>Save as HTML</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="Control_Scene_GLVersion" xml:space="preserve">
+    <value>GL version|The OpenGL Shader Language version
+targeted by this code</value>
+  </data>
+  <data name="ShaderForm_ToolTipText" xml:space="preserve">
+    <value>{0} code</value>
+  </data>
+  <data name="Control_Trace_LocationX" xml:space="preserve">
+    <value>|Location x</value>
   </data>
   <data name="TileWindowsHorizontallyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TileWindowsHorizontallyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PieChartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PieChartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
+    <value>OpenGL® shading language</value>
   </data>
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CodeForm_Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
+    <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
+  </data>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_ScaleX" xml:space="preserve">
+    <value>|The x-component of scale</value>
+  </data>
+  <data name="Control_Trace_LocationZ" xml:space="preserve">
+    <value>|Location z</value>
+  </data>
+  <data name="HomeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HomeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FlipHorizontalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_Orientation" xml:space="preserve">
+    <value>Orientation|Trace orientation (degrees)</value>
   </data>
   <data name="ShowGridlinesHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowGridlinesHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FFwdHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FFwdHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Text_NewScene" xml:space="preserve">
+    <value>&lt;new scene&gt;</value>
+  </data>
   <data name="FolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_Stereo" xml:space="preserve">
+    <value>Stereo|Whether or not the current display mode
+is stereoscopic</value>
+  </data>
+  <data name="Menu_WaveType_Constant" xml:space="preserve">
+    <value>&amp;Constant|Constant value</value>
+  </data>
+  <data name="Control_Trace_Maximum" xml:space="preserve">
+    <value>Max|Upper limit of range 
+Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="OptionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OptionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FormRunHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FormRunHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Scene_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="PieChartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PieChartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_TargetFPS" xml:space="preserve">
+    <value>Target FPS|The target number of frames per second</value>
+  </data>
+  <data name="Menu_Trace_All" xml:space="preserve">
+    <value>All</value>
+    <comment>Do not provide a tooltip (one will be supplied by the toolbar's MouseMove event).</comment>
+  </data>
+  <data name="RepeatHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RepeatHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WaveTypeDC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeDC1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Color_fontHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Color_fontHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_Stripes" xml:space="preserve">
+    <value>#Stripes|The number of stripes in each dimension of the trace 
+Select the checkbox to adjust the three values at once</value>
+  </data>
+  <data name="Menu_File_Reopen" xml:space="preserve">
+    <value>Reopen|Reopen a recently used scene</value>
+  </data>
   <data name="eps_open_largeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eps_open_largeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Text_Amplitude" xml:space="preserve">
+    <value>Amplitude = {0}</value>
+  </data>
+  <data name="Menu_Camera_Move_Back" xml:space="preserve">
+    <value>&amp;Back|Move the camera back|^PgDn</value>
   </data>
   <data name="PasteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PasteHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,731 +585,432 @@
   <data name="WebInsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WebInsertHyperlinkHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PauseRecorderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PauseRecorderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FontDialogHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FontDialogHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Color_fontHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Color_fontHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LineColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LineColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DataContainer_MoveFirstHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DataContainer_MoveFirstHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DoubleRightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DoubleRightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RestartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RestartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SychronizeListHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SychronizeListHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ShowAllCommentsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ShowAllCommentsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DataContainer_MovePreviousHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DataContainer_MovePreviousHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ResizeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ResizeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GoToNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GoToNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FFwdHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FFwdHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FunctionHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FunctionHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EditTableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EditTableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NoteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NoteHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TextboxHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TextboxHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PrimaryKeyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PrimaryKeyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RoutingSlipHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RoutingSlipHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FullScreenHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FullScreenHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RightArrow2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RightArrow2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eps_closedHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eps_closedHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GoLtrHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GoLtrHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SendBackwardHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SendBackwardHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\InsertHyperlinkHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FormRunHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FormRunHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlipVerticalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipVerticalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="action_add_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\action_add_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PieChart3DHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PieChart3DHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="FindNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FindNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RepeatHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RepeatHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EditInformationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EditInformationHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HomeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HomeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ThinkTimenode_8848" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ThinkTimenode_8848.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Menu_Trace_All" xml:space="preserve">
-    <value>All</value>
-    <comment>Do not provide a tooltip (one will be supplied by the toolbar's MouseMove event).</comment>
-  </data>
-  <data name="Control_Camera_Direction" xml:space="preserve">
-    <value>Direction|Camera direction (degrees)</value>
-  </data>
-  <data name="Control_Camera_Pitch" xml:space="preserve">
-    <value>|Camera pitch (degrees)</value>
-  </data>
-  <data name="Control_Camera_Position" xml:space="preserve">
-    <value>Position|Camera position</value>
-  </data>
-  <data name="Control_Camera_PositionX" xml:space="preserve">
-    <value>|Camera x</value>
-  </data>
-  <data name="Control_Camera_PositionY" xml:space="preserve">
-    <value>|Camera y</value>
-  </data>
-  <data name="Control_Camera_PositionZ" xml:space="preserve">
-    <value>|Camera z</value>
-  </data>
-  <data name="Control_Camera_Roll" xml:space="preserve">
-    <value>|Camera roll (degrees)</value>
-  </data>
-  <data name="Control_Camera_Yaw" xml:space="preserve">
-    <value>|Camera yaw (degrees)</value>
-  </data>
-  <data name="Control_Scene_Background" xml:space="preserve">
-    <value>Background|The colour of the scene background</value>
-  </data>
-  <data name="Control_Scene_FarPlane" xml:space="preserve">
-    <value>Far plane|The far projective plane</value>
-  </data>
-  <data name="Control_Scene_FarPlaneX" xml:space="preserve">
-    <value>|The x-component of the far projective plane</value>
-  </data>
-  <data name="Control_Scene_FarPlaneY" xml:space="preserve">
-    <value>|The y-component of the far projective plane</value>
-  </data>
-  <data name="Control_Scene_FarPlaneZ" xml:space="preserve">
-    <value>|The z-component of the far projective plane</value>
-  </data>
-  <data name="Control_Scene_FieldOfView" xml:space="preserve">
-    <value>|The perspective field of view angle (degrees)</value>
-  </data>
-  <data name="Control_Scene_GLVersion" xml:space="preserve">
-    <value>GL version|The OpenGL Shader Language version
-targeted by this code</value>
-  </data>
-  <data name="Control_Scene_NearPlane" xml:space="preserve">
-    <value>Near plane|The near projective plane</value>
+  <data name="Menu_File" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
   <data name="Control_Scene_NearPlaneX" xml:space="preserve">
     <value>|The x-component of the near projective plane</value>
   </data>
-  <data name="Control_Scene_NearPlaneY" xml:space="preserve">
-    <value>|The y-component of the near projective plane</value>
-  </data>
-  <data name="Control_Scene_NearPlaneZ" xml:space="preserve">
-    <value>|The z-component of the near projective plane</value>
-  </data>
-  <data name="Control_Scene_Projection" xml:space="preserve">
-    <value>Projection|Scene projection type</value>
-  </data>
-  <data name="Control_Scene_Samples" xml:space="preserve">
-    <value>#Samples|The number of samples interpolated over</value>
-  </data>
-  <data name="Control_Scene_Stereo" xml:space="preserve">
-    <value>Stereo|Whether or not the current display mode
-is stereoscopic</value>
-  </data>
-  <data name="Control_Scene_TargetFPS" xml:space="preserve">
-    <value>Target FPS|The target number of frames per second</value>
-  </data>
-  <data name="Control_Scene_Title" xml:space="preserve">
-    <value>Scene Title|The title of this scene</value>
-  </data>
-  <data name="Control_Scene_VSync" xml:space="preserve">
-    <value>VSync|Whether or not to use vertical sync</value>
-  </data>
-  <data name="Control_Trace_Description" xml:space="preserve">
-    <value>Description|Trace description</value>
-  </data>
-  <data name="Control_Trace_Location" xml:space="preserve">
-    <value>Location|Trace location</value>
-  </data>
-  <data name="Control_Trace_LocationX" xml:space="preserve">
-    <value>|Location x</value>
-  </data>
-  <data name="Control_Trace_LocationY" xml:space="preserve">
-    <value>|Location y</value>
-  </data>
-  <data name="Control_Trace_LocationZ" xml:space="preserve">
-    <value>|Location z</value>
-  </data>
-  <data name="Control_Trace_Maximum" xml:space="preserve">
-    <value>Max|Upper limit of range 
-Select the checkbox to adjust the three values at once</value>
-  </data>
-  <data name="Control_Trace_MaximumX" xml:space="preserve">
-    <value>|The maximum value of x</value>
-  </data>
-  <data name="Control_Trace_MaximumY" xml:space="preserve">
-    <value>|The maximum value of y</value>
-  </data>
-  <data name="Control_Trace_MaximumZ" xml:space="preserve">
-    <value>|The maximum value of z</value>
-  </data>
-  <data name="Control_Trace_Minimum" xml:space="preserve">
-    <value>Min|Lower limit of range 
-Select the checkbox to adjust the three values at once</value>
-  </data>
-  <data name="Control_Trace_MinimumX" xml:space="preserve">
-    <value>|The minimum value of x</value>
-  </data>
-  <data name="Control_Trace_MinimumY" xml:space="preserve">
-    <value>|The minimum value of y</value>
-  </data>
-  <data name="Control_Trace_MinimumZ" xml:space="preserve">
-    <value>|The minimum value of z</value>
-  </data>
-  <data name="Control_Trace_Orientation" xml:space="preserve">
-    <value>Orientation|Trace orientation (degrees)</value>
-  </data>
-  <data name="Control_Trace_Pattern" xml:space="preserve">
-    <value>Pattern|The trace rendering pattern</value>
-  </data>
-  <data name="Control_Trace_Pitch" xml:space="preserve">
-    <value>|Trace pitch (degrees)</value>
-  </data>
-  <data name="Control_Trace_Roll" xml:space="preserve">
-    <value>|Trace roll (degrees)</value>
-  </data>
-  <data name="Control_Trace_Scale" xml:space="preserve">
-    <value>Scale|Trace magnification factor 
-Select the checkbox to adjust the three values at once</value>
-  </data>
-  <data name="Control_Trace_ScaleX" xml:space="preserve">
-    <value>|The x-component of scale</value>
-  </data>
-  <data name="Control_Trace_ScaleY" xml:space="preserve">
-    <value>|The y-component of scale</value>
-  </data>
-  <data name="Control_Trace_ScaleZ" xml:space="preserve">
-    <value>|The z-component of scale</value>
-  </data>
-  <data name="Control_Trace_Selection" xml:space="preserve">
-    <value>Selection|The set of selected traces</value>
-  </data>
-  <data name="Control_Trace_Stripes" xml:space="preserve">
-    <value>#Stripes|The number of stripes in each dimension of the trace 
-Select the checkbox to adjust the three values at once</value>
-  </data>
-  <data name="Control_Trace_StripesX" xml:space="preserve">
-    <value>|The number of stripes in the x-direction</value>
-  </data>
-  <data name="Control_Trace_StripesY" xml:space="preserve">
-    <value>|The number of stripes in the y-direction</value>
-  </data>
-  <data name="Control_Trace_StripesZ" xml:space="preserve">
-    <value>|The number of stripes in the z-direction</value>
-  </data>
-  <data name="Control_Trace_Visible" xml:space="preserve">
-    <value>Visible|Whether or not a trace is visible</value>
-  </data>
-  <data name="Control_Trace_Yaw" xml:space="preserve">
-    <value>|Trace yaw (degrees)</value>
-  </data>
-  <data name="Menu_Camera" xml:space="preserve">
-    <value>&amp;Camera</value>
-  </data>
-  <data name="Menu_Camera_Move" xml:space="preserve">
-    <value>&amp;Move</value>
-  </data>
-  <data name="Menu_Camera_Move_Down" xml:space="preserve">
-    <value>&amp;Down|Move the camera down while
-keeping it pointed at an object|^Down</value>
-  </data>
-  <data name="Menu_Camera_Move_Left" xml:space="preserve">
-    <value>&amp;Left|Move the camera left while
-keeping it pointed at an object|^Left</value>
-  </data>
-  <data name="Menu_Camera_Move_Right" xml:space="preserve">
-    <value>&amp;Right|Move the camera right while
-keeping it pointed at an object|^Right</value>
-  </data>
-  <data name="Menu_Camera_Move_Up" xml:space="preserve">
-    <value>&amp;Up|Move the camera up while
-keeping it pointed at an object|^Up</value>
-  </data>
-  <data name="Menu_Camera_RollLeft" xml:space="preserve">
-    <value>Roll &amp;left|Roll the camera to the left|Shift+^PgUp</value>
+  <data name="PauseRecorderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PauseRecorderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Menu_Camera_RollRight" xml:space="preserve">
     <value>Roll &amp;right|Roll the camera to the right|Shift+^PgDn</value>
-  </data>
-  <data name="Menu_Camera_Strafe" xml:space="preserve">
-    <value>&amp;Strafe</value>
-  </data>
-  <data name="Menu_Camera_Strafe_Down" xml:space="preserve">
-    <value>&amp;Down|Move the camera straight down|Shift+^Down</value>
-  </data>
-  <data name="Menu_Camera_Strafe_Left" xml:space="preserve">
-    <value>&amp;Left|Strafe to the left|Shift+^Left</value>
-  </data>
-  <data name="Menu_Camera_Strafe_Right" xml:space="preserve">
-    <value>&amp;Right|Strafe to the right|Shift+^Right</value>
-  </data>
-  <data name="Menu_Camera_Strafe_Up" xml:space="preserve">
-    <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
-  </data>
-  <data name="Menu_Camera_Move_Forward" xml:space="preserve">
-    <value>&amp;Forward|Move the camera forward|^PgUp</value>
-  </data>
-  <data name="Menu_Camera_Move_Back" xml:space="preserve">
-    <value>&amp;Back|Move the camera back|^PgDn</value>
-  </data>
-  <data name="Menu_Edit" xml:space="preserve">
-    <value>&amp;Edit</value>
-  </data>
-  <data name="Menu_Add" xml:space="preserve">
-    <value>&amp;Add|Add a new trace to this scene</value>
-  </data>
-  <data name="Menu_Edit_Copy" xml:space="preserve">
-    <value>&amp;Copy|Copy selected trace(s)</value>
-  </data>
-  <data name="Menu_Edit_Cut" xml:space="preserve">
-    <value>Cu&amp;t|Cut selected trace(s)</value>
-  </data>
-  <data name="Menu_Edit_Delete" xml:space="preserve">
-    <value>&amp;Delete|Delete selected trace(s)</value>
-  </data>
-  <data name="Menu_Edit_InvertSelection" xml:space="preserve">
-    <value>&amp;Invert selection|Toggle the selected status of each trace</value>
-  </data>
-  <data name="Menu_Edit_Options" xml:space="preserve">
-    <value>&amp;Options...</value>
-  </data>
-  <data name="Menu_Edit_Paste" xml:space="preserve">
-    <value>&amp;Paste|Paste trace(s) from clipboard</value>
-  </data>
-  <data name="Menu_Edit_Redo" xml:space="preserve">
-    <value>&amp;Redo</value>
-  </data>
-  <data name="Menu_Edit_SelectAll" xml:space="preserve">
-    <value>Select &amp;all|Select all traces</value>
-  </data>
-  <data name="Menu_Edit_Undo" xml:space="preserve">
-    <value>&amp;Undo</value>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="Menu_File_Close" xml:space="preserve">
-    <value>&amp;Close|Close this scene|^F4</value>
-  </data>
-  <data name="Menu_File_New" xml:space="preserve">
-    <value>&amp;New|Create a new scene</value>
-  </data>
-  <data name="Menu_File_New_EmptyScene" xml:space="preserve">
-    <value>&amp;Empty scene|Create a new empty scene|^N</value>
-  </data>
-  <data name="Menu_File_New_FromTemplate" xml:space="preserve">
-    <value>&amp;From template...|Create a new scene based on an existing template</value>
-  </data>
-  <data name="Menu_File_Open" xml:space="preserve">
-    <value>&amp;Open...|Open an existing scene|^O</value>
-  </data>
-  <data name="Menu_File_Reopen" xml:space="preserve">
-    <value>Reopen|Reopen a recently used scene</value>
-  </data>
-  <data name="Menu_File_Save" xml:space="preserve">
-    <value>&amp;Save|Save this scene|^S</value>
-  </data>
-  <data name="Menu_File_SaveAs" xml:space="preserve">
-    <value>Save &amp;as...|Save this scene under a different filename</value>
-  </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="Menu_Help_About" xml:space="preserve">
-    <value>&amp;About {0}</value>
-  </data>
-  <data name="Menu_Help_OpenGLShadingLanguage" xml:space="preserve">
-    <value>OpenGL® shading language</value>
-  </data>
-  <data name="Menu_Time_Accelerate" xml:space="preserve">
-    <value>&amp;Accelerate|Speed up the passage of time
-(or slow down if in reverse)</value>
-  </data>
-  <data name="Menu_Time_Decelerate" xml:space="preserve">
-    <value>&amp;Decelerate|Slow down the passage of time
-(or speed up if in reverse)</value>
-  </data>
-  <data name="Menu_Time_Forward" xml:space="preserve">
-    <value>&amp;Forward|Make time run forward</value>
-  </data>
-  <data name="Menu_Time_Pause" xml:space="preserve">
-    <value>&amp;Pause|Pause the passage of time</value>
-  </data>
-  <data name="Menu_Time_Reverse" xml:space="preserve">
-    <value>&amp;Reverse|Make time run in reverse</value>
-  </data>
-  <data name="Menu_Time_Stop" xml:space="preserve">
-    <value>&amp;Stop|Stop the passage of time
-and reset the timer to zero</value>
-  </data>
-  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
-    <value>Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4</value>
-  </data>
-  <data name="A_Sample_Entry_1" xml:space="preserve">
-    <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
-  </data>
-  <data name="A_Sample_Entry_2" xml:space="preserve">
-    <value>Copy|Copy to clipboard|^C</value>
-  </data>
-  <data name="Menu_Host_Dock" xml:space="preserve">
-    <value>&amp;Dock</value>
-  </data>
-  <data name="Menu_Host_Undock" xml:space="preserve">
-    <value>&amp;Undock</value>
-  </data>
-  <data name="Text_Properties" xml:space="preserve">
-    <value>Properties</value>
-  </data>
-  <data name="Menu_File_ClearThisList" xml:space="preserve">
-    <value>Clear this list|Delete all recently used file names</value>
-  </data>
-  <data name="Message_FileModified_Text" xml:space="preserve">
-    <value>The contents of this file have changed. Do you want to save the changes?</value>
-  </data>
-  <data name="Message_FileNotFound_Caption" xml:space="preserve">
-    <value>Reopen file</value>
-  </data>
-  <data name="Message_FileNotFound_Text" xml:space="preserve">
-    <value>File "{0}" no longer exists. Remove from menu?</value>
-  </data>
-  <data name="OpenFileDialog_Title" xml:space="preserve">
-    <value>Select the file to open</value>
-  </data>
-  <data name="SaveFileDialog_Title" xml:space="preserve">
-    <value>Save file</value>
-  </data>
-  <data name="SaveHtmlDialog_Filter" xml:space="preserve">
-    <value>HTML with &lt;PRE&gt;|*.html|HTML without &lt;PRE&gt;|*.html</value>
-  </data>
-  <data name="SaveHtmlDialog_Title" xml:space="preserve">
-    <value>Save as HTML</value>
-  </data>
-  <data name="SaveRtfDialog_Filter" xml:space="preserve">
-    <value>Rich Text Format|*.rtf</value>
-  </data>
-  <data name="SaveRtfDialog_Title" xml:space="preserve">
-    <value>Save As RTF</value>
-  </data>
-  <data name="Built_in_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Built_in_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Built_in_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Built_in_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Built_in_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Built_in_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\built_in_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Scene_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Scene_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\scene_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Trace_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Trace_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Trace_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Trace_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Trace_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
-    <value>Select / deselect all traces</value>
-  </data>
-  <data name="Menu_Camera_Reset" xml:space="preserve">
-    <value>&amp;Reset|Return the camera to its default position &amp; direction, 
-as it was after the last new/open/save operation|^Home</value>
-  </data>
-  <data name="Menu_View" xml:space="preserve">
-    <value>&amp;View|Display of edit controls</value>
-  </data>
-  <data name="Menu_View_ShaderCode" xml:space="preserve">
-    <value>Shader code|Show or hide the main shader code editor</value>
-  </data>
-  <data name="Menu_View_SceneCode" xml:space="preserve">
-    <value>Scene code|Show or hide the scene code editor</value>
-  </data>
-  <data name="Menu_View_TraceCode" xml:space="preserve">
-    <value>Trace code|Show or hide the trace code editor</value>
-  </data>
-  <data name="Menu_View_SceneProperties" xml:space="preserve">
-    <value>Scene properties|Show or hide the scene properties editor</value>
-  </data>
-  <data name="Menu_View_TraceProperties" xml:space="preserve">
-    <value>Trace properties|Show or hide the trace properties editor</value>
-  </data>
-  <data name="GraphicsStateForm_TabText" xml:space="preserve">
-    <value>Graphics state</value>
-  </data>
-  <data name="GraphicsStateForm_Text" xml:space="preserve">
-    <value>Graphics state</value>
-  </data>
-  <data name="ScenePropertiesForm_TabText" xml:space="preserve">
-    <value>Scene properties</value>
-  </data>
-  <data name="ScenePropertiesForm_Text" xml:space="preserve">
-    <value>Scene properties</value>
-  </data>
-  <data name="TracePropertiesForm_TabText" xml:space="preserve">
-    <value>Trace properties</value>
-  </data>
-  <data name="TracePropertiesForm_Text" xml:space="preserve">
-    <value>Trace properties</value>
-  </data>
-  <data name="ShaderForm_TabText" xml:space="preserve">
-    <value>{0} code</value>
-  </data>
-  <data name="ShaderForm_Text" xml:space="preserve">
-    <value>{0} code</value>
-  </data>
-  <data name="ShaderForm_ToolTipText" xml:space="preserve">
-    <value>{0} code</value>
-  </data>
-  <data name="ShaderRegion_All" xml:space="preserve">
-    <value>Shader</value>
-  </data>
-  <data name="ShaderRegion_Scene" xml:space="preserve">
-    <value>Scene</value>
-  </data>
-  <data name="ShaderRegion_Trace" xml:space="preserve">
-    <value>Trace</value>
-  </data>
-  <data name="Menu_View_Scene" xml:space="preserve">
-    <value>Scene|Show or hide the main graphics display window</value>
-  </data>
-  <data name="CodeForm_Copy" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="CodeForm_Cut" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="CodeForm_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="CodeForm_Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="CodeForm_OptionsDocumentMap" xml:space="preserve">
-    <value>Document map|Show/hide document map</value>
-  </data>
-  <data name="CodeForm_OptionsLineNumbers" xml:space="preserve">
-    <value>Line numbers|Show/hide line numbers</value>
-  </data>
-  <data name="CodeForm_OptionsRuler" xml:space="preserve">
-    <value>Ruler|Show/hide ruler</value>
-  </data>
-  <data name="CodeForm_Paste" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="CodeForm_Print" xml:space="preserve">
-    <value>Print...</value>
-  </data>
-  <data name="CodeForm_Redo" xml:space="preserve">
-    <value>Redo</value>
-  </data>
-  <data name="CodeForm_Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="CodeForm_SaveAsHTML" xml:space="preserve">
-    <value>Save as HTML...</value>
-  </data>
-  <data name="CodeForm_SaveAsRTF" xml:space="preserve">
-    <value>Save as RTF...</value>
-  </data>
-  <data name="CodeForm_Split" xml:space="preserve">
-    <value>Split</value>
-  </data>
-  <data name="CodeForm_SplitHorizontal" xml:space="preserve">
-    <value>Horizontal|Show two ganged editors stacked</value>
-  </data>
-  <data name="CodeForm_SplitNone" xml:space="preserve">
-    <value>None|Revert to single editor</value>
-  </data>
-  <data name="CodeForm_SplitVertical" xml:space="preserve">
-    <value>Vertical|Show two ganged editors side by side</value>
-  </data>
-  <data name="CodeForm_Undo" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="Text_NewScene" xml:space="preserve">
-    <value>&lt;new scene&gt;</value>
-  </data>
-  <data name="Menu_Add_Curve" xml:space="preserve">
-    <value>&amp;Curve|y = f(x) 
-Add a new curve to this scene|F2</value>
-  </data>
-  <data name="Menu_Add_Surface" xml:space="preserve">
-    <value>&amp;Surface|z = f(x, y) 
-Add a new surface to this scene|F3</value>
-  </data>
-  <data name="Menu_Add_Volume" xml:space="preserve">
-    <value>&amp;Volume|w = f(x, y, z) 
-Add a new volumetric fill to this scene|F4</value>
-  </data>
-  <data name="Curve_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\curve_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Surface_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\surface_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SignalsForm_TabText" xml:space="preserve">
-    <value>Signal generator</value>
-  </data>
-  <data name="SignalsForm_Text" xml:space="preserve">
-    <value>Signal generator</value>
-  </data>
-  <data name="Menu_Add_Signal" xml:space="preserve">
-    <value>Signal|Add a new waveform generator to this scene</value>
-  </data>
-  <data name="Menu_View_Signals" xml:space="preserve">
-    <value>Signal generator|Show or hide the signal generator controls</value>
-  </data>
-  <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
-    <value>mode {0}</value>
-  </data>
-  <data name="Menu_View_FullScreen" xml:space="preserve">
-    <value>&amp;Full screen|Full screen display on/off|F11</value>
-  </data>
-  <data name="Menu_WaveType_ReverseSawtooth" xml:space="preserve">
-    <value>&amp;Reverse sawtooth|Reverse sawtooth wave</value>
-  </data>
-  <data name="Menu_WaveType_Custom" xml:space="preserve">
-    <value>C&amp;ustom|Custom periodic waveform</value>
-  </data>
-  <data name="Menu_WaveType_Constant" xml:space="preserve">
-    <value>&amp;Constant|Constant value</value>
-  </data>
-  <data name="Menu_WaveType_Sawtooth" xml:space="preserve">
-    <value>Sa&amp;wtooth|Sawtooth wave</value>
   </data>
   <data name="Menu_WaveType_Noise" xml:space="preserve">
     <value>&amp;Noise|Random aperiodic noise
 ("frequency" refers to the number of discrete samples per second)</value>
   </data>
+  <data name="Menu_Edit_SelectAll" xml:space="preserve">
+    <value>Select &amp;all|Select all traces</value>
+  </data>
+  <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Add_Volume" xml:space="preserve">
+    <value>&amp;Volume|w = f(x, y, z) 
+Add a new volumetric fill to this scene|F4</value>
+  </data>
+  <data name="Trace_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Menu_Time_Decelerate" xml:space="preserve">
+    <value>&amp;Decelerate|Slow down the passage of time
+(or speed up if in reverse)</value>
+  </data>
   <data name="Menu_WaveType_Sine" xml:space="preserve">
     <value>S&amp;ine|Sinusoidal wave</value>
   </data>
-  <data name="Menu_WaveType_Square" xml:space="preserve">
-    <value>&amp;Square|Square wave</value>
+  <data name="Control_Scene_FieldOfView" xml:space="preserve">
+    <value>|The perspective field of view angle (degrees)</value>
+  </data>
+  <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
+    <value>mode {0}</value>
+  </data>
+  <data name="SignalsForm_TabText" xml:space="preserve">
+    <value>Signal generator</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>&amp;About {0}</value>
+  </data>
+  <data name="Control_Trace_MinimumY" xml:space="preserve">
+    <value>|The minimum value of y</value>
+  </data>
+  <data name="Menu_View_Signals" xml:space="preserve">
+    <value>Signal generator|Show or hide the signal generator controls</value>
+  </data>
+  <data name="Menu_Edit_InvertSelection" xml:space="preserve">
+    <value>&amp;Invert selection|Toggle the selected status of each trace</value>
+  </data>
+  <data name="Control_Trace_Selection" xml:space="preserve">
+    <value>Selection|The set of selected traces</value>
+  </data>
+  <data name="Control_Scene_FarPlaneY" xml:space="preserve">
+    <value>|The y-component of the far projective plane</value>
+  </data>
+  <data name="WorldForm_AddMenu" xml:space="preserve">
+    <value>&amp;Add|Add a new trace or signal to this scene</value>
+  </data>
+  <data name="Built_in_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Scene_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DataContainer_MoveFirstHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MoveFirstHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Built_in_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DoubleRightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DoubleRightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_WaveType_Custom" xml:space="preserve">
+    <value>C&amp;ustom|Custom periodic waveform</value>
+  </data>
+  <data name="Volume_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\volume_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="RestartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RestartHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SaveRtfDialog_Title" xml:space="preserve">
+    <value>Save As RTF</value>
+  </data>
+  <data name="Message_FileModified_Text" xml:space="preserve">
+    <value>The contents of this file have changed. Do you want to save the changes?</value>
+  </data>
+  <data name="ShowAllCommentsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShowAllCommentsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="CodeForm_Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="DataContainer_MovePreviousHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MovePreviousHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_Split" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="Menu_View_FullScreen" xml:space="preserve">
+    <value>&amp;Full screen|Full screen display on/off|F11</value>
+  </data>
+  <data name="Control_Scene_Title" xml:space="preserve">
+    <value>Scene Title|The title of this scene</value>
+  </data>
+  <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Menu_WaveType_Triangle" xml:space="preserve">
     <value>&amp;Triangle|Triangle wave</value>
   </data>
-  <data name="Text_Amplitude" xml:space="preserve">
-    <value>Amplitude = {0}</value>
+  <data name="Control_Trace_Roll" xml:space="preserve">
+    <value>|Trace roll (degrees)</value>
   </data>
-  <data name="Text_Frequency" xml:space="preserve">
-    <value>Frequency = {0} Hz</value>
+  <data name="Control_Trace_ScaleZ" xml:space="preserve">
+    <value>|The z-component of scale</value>
   </data>
-  <data name="Text_SignalName" xml:space="preserve">
-    <value>Signal "{0}"</value>
+  <data name="WaveTypeRandom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeRandom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_SplitVertical" xml:space="preserve">
+    <value>Vertical|Show two ganged editors side by side</value>
+  </data>
+  <data name="Menu_File_Save" xml:space="preserve">
+    <value>&amp;Save|Save this scene|^S</value>
+  </data>
+  <data name="Menu_WaveType_Square" xml:space="preserve">
+    <value>&amp;Square|Square wave</value>
+  </data>
+  <data name="SaveFormDesignHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SaveFormDesignHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Camera_Move_Left" xml:space="preserve">
+    <value>&amp;Left|Move the camera left while
+keeping it pointed at an object|^Left</value>
+  </data>
+  <data name="Built_in_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Control_Trace_StripesZ" xml:space="preserve">
+    <value>|The number of stripes in the z-direction</value>
+  </data>
+  <data name="Message_FileNotFound_Caption" xml:space="preserve">
+    <value>Reopen file</value>
+  </data>
+  <data name="WaveTypeTriangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeTriangle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GraphicsStateForm_TabText" xml:space="preserve">
+    <value>Graphics state</value>
+  </data>
+  <data name="Scene_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="CodeForm_SplitNone" xml:space="preserve">
+    <value>None|Revert to single editor</value>
+  </data>
+  <data name="FunctionHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FunctionHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Scene_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Control_Scene_NearPlaneY" xml:space="preserve">
+    <value>|The y-component of the near projective plane</value>
+  </data>
+  <data name="ColorHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Camera_Roll" xml:space="preserve">
+    <value>|Camera roll (degrees)</value>
+  </data>
+  <data name="GoToNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoToNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Edit_Delete" xml:space="preserve">
+    <value>&amp;Delete|Delete selected trace(s)</value>
+  </data>
+  <data name="Menu_View_SceneProperties" xml:space="preserve">
+    <value>Scene properties|Show or hide the scene properties editor</value>
+  </data>
+  <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
+    <value>Select / deselect all traces</value>
+  </data>
+  <data name="Control_Scene_Background" xml:space="preserve">
+    <value>Background|The colour of the scene background</value>
+  </data>
+  <data name="Menu_Camera_Strafe_Down" xml:space="preserve">
+    <value>&amp;Down|Move the camera straight down|Shift+^Down</value>
+  </data>
+  <data name="A_Sample_Entry_1" xml:space="preserve">
+    <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
+  </data>
+  <data name="CodeForm_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Control_Trace_Visible" xml:space="preserve">
+    <value>Visible|Whether or not a trace is visible</value>
+  </data>
+  <data name="PrimaryKeyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PrimaryKeyHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Message_FileNotFound_Text" xml:space="preserve">
+    <value>File "{0}" no longer exists. Remove from menu?</value>
+  </data>
+  <data name="GraphicsStateForm_Text" xml:space="preserve">
+    <value>Graphics state</value>
+  </data>
+  <data name="Menu_Camera_Strafe_Right" xml:space="preserve">
+    <value>&amp;Right|Strafe to the right|Shift+^Right</value>
+  </data>
+  <data name="RightArrow2HS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RightArrow2HS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShaderForm_TabText" xml:space="preserve">
+    <value>{0} code</value>
+  </data>
+  <data name="Control_Trace_MinimumX" xml:space="preserve">
+    <value>|The minimum value of x</value>
+  </data>
+  <data name="Menu_Time_Reverse" xml:space="preserve">
+    <value>&amp;Reverse|Make time run in reverse</value>
+  </data>
+  <data name="SendBackwardHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SendBackwardHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TracePropertiesForm_TabText" xml:space="preserve">
+    <value>Trace properties</value>
+  </data>
+  <data name="Control_Trace_MinimumZ" xml:space="preserve">
+    <value>|The minimum value of z</value>
+  </data>
+  <data name="Menu_Camera_Move_Right" xml:space="preserve">
+    <value>&amp;Right|Move the camera right while
+keeping it pointed at an object|^Right</value>
+  </data>
+  <data name="eps_closedHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eps_closedHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Camera_Reset" xml:space="preserve">
+    <value>&amp;Reset|Return the camera to its default position &amp; direction, 
+as it was after the last new/open/save operation|^Home</value>
+  </data>
+  <data name="ResizeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ResizeHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_FarPlaneZ" xml:space="preserve">
+    <value>|The z-component of the far projective plane</value>
+  </data>
+  <data name="Menu_Edit_Undo" xml:space="preserve">
+    <value>&amp;Undo</value>
+  </data>
+  <data name="Menu_Add_Signal" xml:space="preserve">
+    <value>Signal|Add a new waveform generator to this scene</value>
+  </data>
+  <data name="InsertHyperlinkHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InsertHyperlinkHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Surface_VertexFormula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\surface_vertexformula.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Control_Trace_Scale" xml:space="preserve">
+    <value>Scale|Trace magnification factor 
+Select the checkbox to adjust the three values at once</value>
+  </data>
+  <data name="FlipVerticalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlipVerticalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScenePropertiesForm_Text" xml:space="preserve">
+    <value>Scene properties</value>
+  </data>
+  <data name="OpenFileDialog_Title" xml:space="preserve">
+    <value>Select the file to open</value>
+  </data>
+  <data name="ShaderRegion_Trace" xml:space="preserve">
+    <value>Trace</value>
+  </data>
+  <data name="Control_Trace_StripesY" xml:space="preserve">
+    <value>|The number of stripes in the y-direction</value>
+  </data>
+  <data name="SaveRtfDialog_Filter" xml:space="preserve">
+    <value>Rich Text Format|*.rtf</value>
+  </data>
+  <data name="SignalsForm_Text" xml:space="preserve">
+    <value>Signal generator</value>
+  </data>
+  <data name="Menu_Add_Surface" xml:space="preserve">
+    <value>&amp;Surface|z = f(x, y) 
+Add a new surface to this scene|F3</value>
+  </data>
+  <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>&amp;View|Display of edit controls</value>
+  </data>
+  <data name="Built_in_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\built_in_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Menu_Time_Accelerate" xml:space="preserve">
+    <value>&amp;Accelerate|Speed up the passage of time
+(or slow down if in reverse)</value>
+  </data>
+  <data name="Control_Camera_PositionY" xml:space="preserve">
+    <value>|Camera y</value>
+  </data>
+  <data name="Menu_Time_Forward" xml:space="preserve">
+    <value>&amp;Forward|Make time run forward</value>
+  </data>
+  <data name="OpenFileHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenFileHS.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Scene_Projection" xml:space="preserve">
+    <value>Projection|Scene projection type</value>
+  </data>
+  <data name="TracePropertiesForm_Text" xml:space="preserve">
+    <value>Trace properties</value>
+  </data>
+  <data name="Menu_Edit_Paste" xml:space="preserve">
+    <value>&amp;Paste|Paste trace(s) from clipboard</value>
+  </data>
+  <data name="CodeForm_Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="ScenePropertiesForm_TabText" xml:space="preserve">
+    <value>Scene properties</value>
+  </data>
+  <data name="Menu_Edit_Copy" xml:space="preserve">
+    <value>&amp;Copy|Copy selected trace(s)</value>
+  </data>
+  <data name="Menu_View_Scene" xml:space="preserve">
+    <value>Scene|Show or hide the main graphics display window</value>
+  </data>
+  <data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Time_Pause" xml:space="preserve">
+    <value>&amp;Pause|Pause the passage of time</value>
+  </data>
+  <data name="Control_Trace_MaximumY" xml:space="preserve">
+    <value>|The maximum value of y</value>
+  </data>
+  <data name="SearchWebHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchWebHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CodeForm_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Menu_Camera" xml:space="preserve">
+    <value>&amp;Camera</value>
+  </data>
+  <data name="CodeForm_SaveAsRTF" xml:space="preserve">
+    <value>Save as RTF...</value>
+  </data>
+  <data name="Scene_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\scene_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Menu_File_New_EmptyScene" xml:space="preserve">
+    <value>&amp;Empty scene|Create a new empty scene|^N</value>
+  </data>
+  <data name="EditInformationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditInformationHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_View_TraceProperties" xml:space="preserve">
+    <value>Trace properties|Show or hide the trace properties editor</value>
+  </data>
+  <data name="Menu_File_CloseAllAndExit" xml:space="preserve">
+    <value>Close all &amp;&amp; e&amp;xit|Close all open scenes and quit|Alt+F4</value>
+  </data>
+  <data name="NoteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoteHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Control_Trace_Pitch" xml:space="preserve">
+    <value>|Trace pitch (degrees)</value>
+  </data>
+  <data name="Menu_Camera_Move_Down" xml:space="preserve">
+    <value>&amp;Down|Move the camera down while
+keeping it pointed at an object|^Down</value>
+  </data>
+  <data name="Control_Trace_Yaw" xml:space="preserve">
+    <value>|Trace yaw (degrees)</value>
+  </data>
+  <data name="ShaderRegion_All" xml:space="preserve">
+    <value>Shader</value>
+  </data>
+  <data name="FontDialogHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontDialogHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_View_TraceCode" xml:space="preserve">
+    <value>Trace code|Show or hide the trace code editor</value>
+  </data>
+  <data name="CodeForm_Print" xml:space="preserve">
+    <value>Print...</value>
+  </data>
+  <data name="Menu_Host_Undock" xml:space="preserve">
+    <value>&amp;Undock</value>
+  </data>
+  <data name="Control_Trace_Minimum" xml:space="preserve">
+    <value>Min|Lower limit of range 
+Select the checkbox to adjust the three values at once</value>
+  </data>
+  <data name="Menu_View_SceneCode" xml:space="preserve">
+    <value>Scene code|Show or hide the scene code editor</value>
+  </data>
+  <data name="Control_Trace_Description" xml:space="preserve">
+    <value>Description|Trace description</value>
+  </data>
+  <data name="Control_Scene_NearPlaneZ" xml:space="preserve">
+    <value>|The z-component of the near projective plane</value>
+  </data>
+  <data name="WaveTypeReverseSawtooth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WaveTypeReverseSawtooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
