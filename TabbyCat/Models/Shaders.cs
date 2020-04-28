@@ -11,11 +11,11 @@
     /// Base class for Scene and Trace (but not TraceSelection).
     /// Provides concrete string properties for shader code.
     /// </summary>
-    public abstract class CodeBase : ICodeBase
+    public abstract class Shaders : IShaders
     {
-        protected CodeBase() { }
+        protected Shaders() { }
 
-        protected CodeBase(CodeBase codeBase) => CopyFrom(codeBase);
+        protected Shaders(Shaders shaders) => CopyFrom(shaders);
 
         [DefaultValue("")] public string VertexShader { get; set; }
         [DefaultValue("")] public string TessControlShader { get; set; }

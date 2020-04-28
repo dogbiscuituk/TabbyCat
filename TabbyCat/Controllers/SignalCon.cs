@@ -8,8 +8,6 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Drawing;
-    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Commands;
@@ -20,22 +18,16 @@
 
         internal SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
         {
-            NameEditor = NewNameEditor(signal.Name);
-            InitSlider(AmplitudeSlider = NewSlider(), AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
-            InitSlider(FrequencySlider = NewSlider(), FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
-            InitToolbar(SignalToolbar = NewSignalToolbar());
-            AppCon.InitControlTheme(SignalToolbar.ToolStrip);
+            SignalEdit = new SignalEdit();
+            NameEditor.AutoSize = true;
+            InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
+            InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
+            AppCon.InitControlTheme(Toolbar);
         }
 
-        // Internal fields
+        // Private fields
 
-        internal TextBox NameEditor;
-
-        internal TrackBar
-            AmplitudeSlider,
-            FrequencySlider;
-
-        internal SignalToolbar SignalToolbar;
+        private SignalEdit SignalEdit;
 
         // Protected properties
 
@@ -69,13 +61,18 @@
 
         // Private properties
 
+        private TrackBar AmplitudeSlider => SignalEdit.AmplitudeSlider;
+        private ToolStripButton DeleteButton => SignalEdit.DeleteButton;
+        private TrackBar FrequencySlider => SignalEdit.FrequencySlider;
+        private TextBox NameEditor => SignalEdit.NameEditor;
+        private ToolStrip Toolbar => SignalEdit.Toolbar;
+        private ToolStripSplitButton WaveTypeButton => SignalEdit.WaveTypeButton;
+
         private float Amplitude
         {
             get => AmplitudeFromGauge(AmplitudeSlider.Value);
             set => AmplitudeSlider.Value = AmplitudeToGauge(value);
         }
-
-        private ToolStripButton DeleteButton => SignalToolbar.DeleteButton;
 
         private float Frequency
         {
@@ -98,19 +95,9 @@
             }
         }
 
-        private ToolStripSplitButton WaveTypeButton => SignalToolbar.WaveTypeButton;
-
         private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>();
 
         // Internal methods
-
-        internal void DisposeControls() => DisposeControls(NameEditor, AmplitudeSlider, FrequencySlider, SignalToolbar);
-
-        internal void DisposeControls(params Control[] controls) => Array.ForEach(controls, control =>
-        {
-            SignalsControls.Remove(control);
-            control.Dispose();
-        });
 
         internal void SetWaveType(WaveType waveType)
         {
@@ -203,10 +190,10 @@
         private void UpdateUI()
         {
             var showFrequency = SelectedWaveType != WaveType.Constant;
-            SignalsCon.BeginUpdate();
-            SignalsForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
-            SignalsPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
-            SignalsCon.EndUpdate();
+            //SignalsCon.BeginUpdate();
+            //SignalsForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
+            //SignalsPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
+            //SignalsCon.EndUpdate();
         }
 
         private void WaveTypeButton_ButtonClick(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
@@ -240,35 +227,6 @@
             slider.LargeChange = large;
             slider.Value = gauge;
         }
-
-        private void InitToolbar(SignalToolbar signalToolbar)
-        {
-        }
-
-        private static TextBox NewNameEditor(string name) => new TextBox
-        {
-            AutoSize = true,
-            BorderStyle = BorderStyle.None,
-            Dock = DockStyle.Fill,
-            Margin = new Padding(3, 0, 3, 0),
-            Padding = new Padding(0),
-            Size = new Size(30, 25),
-            Text = name,
-            TextAlign = HorizontalAlignment.Center
-        };
-
-        private static SignalToolbar NewSignalToolbar() => new SignalToolbar
-        {
-            Dock = DockStyle.Fill,
-            Margin = new Padding(0)
-        };
-
-        private static TrackBar NewSlider() => new TrackBar
-        {
-            Dock = DockStyle.Fill,
-            Margin = new Padding(0),
-            TickStyle = TickStyle.None
-        };
 
         private static float ValueFromGauge(int gauge, int left, float min, float ratio) => min + (gauge - left) * ratio;
 

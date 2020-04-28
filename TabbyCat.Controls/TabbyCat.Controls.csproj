@@ -70,11 +70,11 @@
     <Compile Include="CodeEdit.Designer.cs">
       <DependentUpon>CodeEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignalToolbar.cs">
+    <Compile Include="SignalEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SignalToolbar.Designer.cs">
-      <DependentUpon>SignalToolbar.cs</DependentUpon>
+    <Compile Include="SignalEdit.Designer.cs">
+      <DependentUpon>SignalEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Types\CodePageCon.cs" />
     <Compile Include="Types\Options.cs" />
@@ -102,8 +102,8 @@
     <EmbeddedResource Include="CodeEdit.resx">
       <DependentUpon>CodeEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignalToolbar.resx">
-      <DependentUpon>SignalToolbar.cs</DependentUpon>
+    <EmbeddedResource Include="SignalEdit.resx">
+      <DependentUpon>SignalEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TracePropertiesEdit.resx">
       <DependentUpon>TracePropertiesEdit.cs</DependentUpon>

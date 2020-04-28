@@ -100,7 +100,7 @@
     <Compile Include="Controllers\LocalizationCon.cs" />
     <Compile Include="Controllers\SelectionCon.cs" />
     <Compile Include="Controllers\CodeCon.cs" />
-    <Compile Include="Controllers\CodeBasePropertiesCon.cs" />
+    <Compile Include="Controllers\PropertiesCon.cs" />
     <Compile Include="Controllers\ColourCon.cs" />
     <Compile Include="Controllers\JsonCon.cs" />
     <Compile Include="Controllers\MruCon.cs" />
@@ -114,7 +114,7 @@
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\TracePropertiesCon.cs" />
     <Compile Include="Converters\SignalConverter.cs" />
-    <Compile Include="Models\CodeBase.cs" />
+    <Compile Include="Models\Shaders.cs" />
     <Compile Include="Models\Curve.cs" />
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Signal.cs" />

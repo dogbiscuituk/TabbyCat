@@ -10,7 +10,7 @@
     using Properties;
     using System.ComponentModel;
 
-    public class Trace : CodeBase, ITrace
+    public class Trace : Shaders, ITrace
     {
         public Trace() : base() => Init();
 

@@ -11,7 +11,7 @@
     using System.ComponentModel;
     using System.Drawing;
 
-    public class Scene : CodeBase, IScene
+    public class Scene : Shaders, IScene
     {
         public Scene() : base() => Init();
 

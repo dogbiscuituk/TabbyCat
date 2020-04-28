@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal abstract class CodeBasePropertiesCon : DockingCon
+    internal abstract class PropertiesCon : DockingCon
     {
-        internal CodeBasePropertiesCon(WorldCon worldCon) : base(worldCon) { }
+        internal PropertiesCon(WorldCon worldCon) : base(worldCon) { }
 
         protected internal override void Connect(bool connect)
         {

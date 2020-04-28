@@ -2,7 +2,7 @@
 {
     using OpenTK;
 
-    public interface ITrace : ICodeBase
+    public interface ITrace : IShaders
     {
         string Description { get; set; }
         Pattern Pattern { get; set; }

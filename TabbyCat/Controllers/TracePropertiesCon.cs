@@ -14,7 +14,7 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class TracePropertiesCon : CodeBasePropertiesCon
+    internal partial class TracePropertiesCon : PropertiesCon
     {
         internal TracePropertiesCon(WorldCon worldCon) : base(worldCon)
         {

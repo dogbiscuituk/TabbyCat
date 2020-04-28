@@ -2,7 +2,7 @@
 {
     using System.Drawing;
 
-    public interface IScene : ICodeBase
+    public interface IScene : IShaders
     {
         Color BackgroundColour { get; set; }
         Camera Camera { get; set; }

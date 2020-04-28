@@ -14,7 +14,7 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class ScenePropertiesCon : CodeBasePropertiesCon
+    internal partial class ScenePropertiesCon : PropertiesCon
     {
         internal ScenePropertiesCon(WorldCon worldCon) : base(worldCon)
         {

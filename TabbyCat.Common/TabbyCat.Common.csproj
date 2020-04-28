@@ -74,7 +74,7 @@
     <Compile Include="Types\FilterIndex.cs" />
     <Compile Include="Types\GLInfo.cs" />
     <Compile Include="Types\GLSL4.60.7.cs" />
-    <Compile Include="Types\ICodeBase.cs" />
+    <Compile Include="Types\IShaders.cs" />
     <Compile Include="Types\IScene.cs" />
     <Compile Include="Types\IScript.cs" />
     <Compile Include="Types\ITrace.cs" />
