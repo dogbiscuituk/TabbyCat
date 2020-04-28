@@ -153,7 +153,6 @@
             Localize(Resources.WorldForm_AddCurve, WorldForm.AddCurve, WorldForm.tbAddCurve);
             Localize(Resources.WorldForm_AddSurface, WorldForm.AddSurface, WorldForm.tbAddSurface);
             Localize(Resources.WorldForm_AddVolume, WorldForm.AddVolume, WorldForm.tbAddVolume);
-            Localize(Resources.WorldForm_AddSignal, WorldForm.AddSignal, WorldForm.tbAddSignal);
             Localize(Resources.WorldForm_EditMenu, WorldForm.EditMenu);
             Localize(Resources.WorldForm_EditUndo, WorldForm.EditUndo, WorldForm.tbUndo);
             Localize(Resources.WorldForm_EditRedo, WorldForm.EditRedo, WorldForm.tbRedo);
@@ -179,7 +178,6 @@
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
 
         private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
-        private void AddSignal_Click(object sender, EventArgs e) => AddSignal();
         private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
         private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
         private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
@@ -200,8 +198,6 @@
         private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
 
         private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
-
-        private void AddSignal() => CommandCon.AppendSignal();
 
         private void AddCurve() => AddTrace(TraceType.Curve);
 
@@ -254,7 +250,6 @@
             if (connect)
             {
                 WorldForm.AddCurve.Click += AddCurve_Click;
-                WorldForm.AddSignal.Click += AddSignal_Click;
                 WorldForm.AddSurface.Click += AddSurface_Click;
                 WorldForm.AddVolume.Click += AddVolume_Click;
                 WorldForm.EditCut.Click += EditCut_Click;
@@ -272,7 +267,6 @@
             else
             {
                 WorldForm.AddCurve.Click -= AddCurve_Click;
-                WorldForm.AddSignal.Click += AddSignal_Click;
                 WorldForm.AddSurface.Click -= AddSurface_Click;
                 WorldForm.AddVolume.Click -= AddVolume_Click;
                 WorldForm.EditCut.Click -= EditCut_Click;
@@ -297,7 +291,6 @@
                 WorldForm.tbAddCurve.Click += AddCurve_Click;
                 WorldForm.tbAddSurface.Click += AddSurface_Click;
                 WorldForm.tbAddVolume.Click += AddVolume_Click;
-                WorldForm.tbAddSignal.Click += AddSignal_Click;
                 WorldForm.tbCut.Click += EditCut_Click;
                 WorldForm.tbCopy.Click += EditCopy_Click;
                 WorldForm.tbPaste.Click += EditPaste_Click;
@@ -309,7 +302,6 @@
                 WorldForm.tbAddCurve.Click -= AddCurve_Click;
                 WorldForm.tbAddSurface.Click -= AddSurface_Click;
                 WorldForm.tbAddVolume.Click -= AddVolume_Click;
-                WorldForm.tbAddSignal.Click -= AddSignal_Click;
                 WorldForm.tbCut.Click -= EditCut_Click;
                 WorldForm.tbCopy.Click -= EditCopy_Click;
                 WorldForm.tbPaste.Click -= EditPaste_Click;

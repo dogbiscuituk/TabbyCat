@@ -1924,7 +1924,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a new signal to this scene.
+        ///   Looks up a localized string similar to |Add a new signal to this scene.
         /// </summary>
         public static string SignalsForm_AddButton {
             get {
@@ -2450,15 +2450,6 @@ namespace TabbyCat.Properties {
         public static string WorldForm_AddMenu {
             get {
                 return ResourceManager.GetString("WorldForm_AddMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signal|Add a new waveform generator to this scene.
-        /// </summary>
-        public static string WorldForm_AddSignal {
-            get {
-                return ResourceManager.GetString("WorldForm_AddSignal", resourceCulture);
             }
         }
         

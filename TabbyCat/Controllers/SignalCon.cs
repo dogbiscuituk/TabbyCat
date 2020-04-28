@@ -19,6 +19,7 @@
         internal SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
         {
             SignalEdit = new SignalEdit();
+            Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
             InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
@@ -27,6 +28,7 @@
 
         // Internal fields
 
+        internal int Index;
         internal SignalEdit SignalEdit;
 
         // Protected properties
@@ -79,8 +81,6 @@
             get => FrequencyFromGauge(FrequencySlider.Value);
             set => FrequencySlider.Value = FrequencyToGauge(value);
         }
-
-        private int Index => SignalsCon.SignalCons.IndexOf(this);
 
         private WaveType SelectedWaveType
         {

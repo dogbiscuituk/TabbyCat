@@ -5,6 +5,7 @@
     using Properties;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Forms;
     using TabbyCat.Common.Types;
     using Views;
@@ -44,31 +45,26 @@
 
         // Internal methods
 
-        internal void Add() => Add(new Signal());
-
-        internal void Add(Signal signal) => Insert(SignalsCount, signal);
+        internal void InsertAt(int index)
+        {
+            var signal = Scene.Signals[index];
+            AdjustIndices(index, +1);
+            SignalCon newSignalCon = new SignalCon(WorldCon, signal);
+            var signalEdit = newSignalCon.SignalEdit;
+            signalEdit.Dock = DockStyle.Top;
+            SignalCons.Add(newSignalCon);
+            SignalsForm.Controls.Add(signalEdit);
+            signalEdit.BringToFront();
+            newSignalCon.Connect(true);
+        }
 
         internal void RemoveAt(int index)
         {
-            var signalCon = SignalCons[index];
-            signalCon.Connect(false);
-            SignalsForm.Controls.Remove(signalCon.SignalEdit);
+            var oldSignalCon = SignalCons[index];
+            oldSignalCon.Connect(false);
+            SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
             SignalCons.RemoveAt(index);
-        }
-
-        internal void Insert(int index, Signal signal)
-        {
-            var signalCon = new SignalCon(WorldCon, signal);
-            var signalEdit = signalCon.SignalEdit;
-            signalEdit.Dock = DockStyle.Top;
-            if (index >= SignalsCount)
-                SignalCons.Add(signalCon);
-            else
-                SignalCons.Insert(index, signalCon);
-            SignalsForm.Controls.Add(signalEdit);
-            SignalsForm.Controls.SetChildIndex(signalEdit, index + 1);
-            signalEdit.BringToFront();
-            signalCon.Connect(true);
+            AdjustIndices(index, -1);
         }
 
         // Protected internal methods
@@ -102,6 +98,7 @@
             Localize(Resources.SignalsForm_AmplitudeLabel, SignalsForm.AmplitudeLabel);
             Localize(Resources.SignalsForm_FrequencyLabel, SignalsForm.FrequencyLabel);
             Localize(Resources.SignalsForm_AddButton, SignalsForm.AddButton);
+            Localize(Resources.SignalsForm_DeleteAllButton, SignalsForm.DeleteAllButton);
             Localize(Resources.SignalsForm_WaveTypeSlider, SignalsForm.WaveTypeSlider);
             Localize(Resources.SignalsForm_WaveTypeSine, SignalsForm.WaveTypeSine);
             Localize(Resources.SignalsForm_WaveTypeSquare, SignalsForm.WaveTypeSquare);
@@ -110,7 +107,6 @@
             Localize(Resources.SignalsForm_WaveTypeReverseSawtooth, SignalsForm.WaveTypeReverseSawtooth);
             Localize(Resources.SignalsForm_WaveTypeCustom, SignalsForm.WaveTypeCustom);
             Localize(Resources.SignalsForm_WaveTypeNoise, SignalsForm.WaveTypeNoise);
-            Localize(Resources.SignalsForm_DeleteAllButton, SignalsForm.DeleteAllButton);
             Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 
@@ -150,6 +146,12 @@
             return _SignalsForm;
         }
 
+        private void AdjustIndices(int index, int delta)
+        {
+            foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
+                signalCon.Index += delta;
+        }
+
         private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
 
         private void WorldCon_CollectionChanged(object sender, CollectionChangedEventArgs e)
@@ -159,7 +161,7 @@
                 case PropertyNames.Signals:
                     var index = e.Index;
                     if (e.Adding)
-                        Insert(index, Scene.Signals[e.Index]);
+                        InsertAt(e.Index);
                     else
                         RemoveAt(index);
                     break;
