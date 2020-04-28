@@ -7,6 +7,7 @@
     using OpenTK;
     using OpenTK.Graphics;
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using Views;
@@ -51,7 +52,7 @@
             Updating = true;
             try
             {
-                return CommandProcessor.Run(command);
+                return CommandCon.Run(command);
             }
             finally
             {
@@ -88,6 +89,12 @@
                 }
             }
         }
+
+        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls) =>
+            Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+
+        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) =>
+            Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
         protected virtual void UpdateProperties(params string[] propertyNames) { }
 
@@ -129,7 +136,7 @@
     {
         // Internal properties
 
-        internal virtual CommandProcessor CommandProcessor => WorldCon.CommandProcessor;
+        internal virtual CommandCon CommandCon => WorldCon.CommandCon;
 
         // Protected internal properties
 

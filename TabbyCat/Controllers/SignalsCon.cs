@@ -161,7 +161,7 @@
 
         private void AddButton_Click(object sender, System.EventArgs e) => AddSignal();
 
-        private void AddSignal() => CommandProcessor.AppendSignal();
+        private void AddSignal() => CommandCon.AppendSignal();
 
         private void Reload()
         {

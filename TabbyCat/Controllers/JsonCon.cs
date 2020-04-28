@@ -122,7 +122,7 @@
 
         protected override void ClearDocument()
         {
-            CommandProcessor.Clear();
+            CommandCon.Clear();
             Scene.Clear();
             WorldCon.UpdateAllProperties();
         }
@@ -235,7 +235,7 @@
             Scene.WorldCon = WorldCon;
             BeginUpdate();
             Scene.AttachTraces();
-            CommandProcessor.Clear();
+            CommandCon.Clear();
             EndUpdate();
             WorldCon.ConnectCons(true);
             SceneCon.RecreateSceneControl();
@@ -246,7 +246,7 @@
         private void OnSave()
         {
             BeginUpdate();
-            CommandProcessor.Save();
+            CommandCon.Save();
             EndUpdate();
             SetDefaultCamera();
             UpdateAllProperties();

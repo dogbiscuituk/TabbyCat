@@ -83,7 +83,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CollectionCommands.cs" />
     <Compile Include="Commands\CommandInterfaces.cs" />
-    <Compile Include="Commands\CommandProcessor.cs" />
+    <Compile Include="Controllers\CommandCon.cs" />
     <Compile Include="Commands\PropertyCommands.cs" />
     <Compile Include="Commands\SceneCommands.cs" />
     <Compile Include="Commands\SignalCommands.cs" />

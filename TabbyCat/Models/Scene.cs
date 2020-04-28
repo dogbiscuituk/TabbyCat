@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Models
 {
-    using Commands;
     using Common.Types;
     using Common.Utils;
     using Controllers;
@@ -64,11 +63,11 @@
             }
         }
 
-        internal CommandProcessor CommandProcessor => WorldCon?.CommandProcessor;
+        internal CommandCon CommandCon => WorldCon?.CommandCon;
 
         internal GraphicsMode GraphicsMode => WorldCon?.GraphicsMode;
 
-        internal bool IsModified => CommandProcessor?.IsModified ?? false;
+        internal bool IsModified => CommandCon?.IsModified ?? false;
 
         private GLControl GLControl => WorldCon?.SceneControl;
 

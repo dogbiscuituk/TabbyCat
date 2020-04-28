@@ -1915,6 +1915,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to |Amplitude = {0:f3}.
+        /// </summary>
+        public static string SignalsForm_Amplitude {
+            get {
+                return ResourceManager.GetString("SignalsForm_Amplitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to |Frequency = {0:f3} Hz.
+        /// </summary>
+        public static string SignalsForm_Frequency {
+            get {
+                return ResourceManager.GetString("SignalsForm_Frequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signal generator.
         /// </summary>
         public static string SignalsForm_TabText {
@@ -2065,24 +2083,6 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TaskHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Amplitude = {0}.
-        /// </summary>
-        public static string Text_Amplitude {
-            get {
-                return ResourceManager.GetString("Text_Amplitude", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frequency = {0} Hz.
-        /// </summary>
-        public static string Text_Frequency {
-            get {
-                return ResourceManager.GetString("Text_Frequency", resourceCulture);
             }
         }
         

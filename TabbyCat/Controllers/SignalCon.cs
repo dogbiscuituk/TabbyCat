@@ -50,12 +50,12 @@
         // Private constants
 
         private const int
-            AmpLeft = -1000,
-            AmpRight = +1000,
+            AmpLeft = -1024,
+            AmpRight = +1024,
             AmpSmall = 1,
             AmpLarge = 10,
             FreqLeft = 0,
-            FreqRight = 1000,
+            FreqRight = 1024,
             FreqSmall = 1,
             FreqLarge = 10;
 
@@ -185,7 +185,7 @@
         private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e)
         {
             Run(new AmplitudeCommand(Index, Amplitude));
-            InitToolTip(AmplitudeSlider, Resources.Text_Amplitude, Amplitude);
+            LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
@@ -193,10 +193,8 @@
         private void FrequencySlider_ValueChanged(object sender, System.EventArgs e)
         {
             Run(new FrequencyCommand(Index, Frequency));
-            InitToolTip(FrequencySlider, Resources.Text_Frequency, Frequency);
+            LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
-
-        private void InitToolTip(TrackBar slider, string format, float value) => ToolTip.SetToolTip(slider, string.Format(CultureInfo.CurrentCulture, format, value));
 
         private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new NameCommand(Index, NameEditor.Text));
 

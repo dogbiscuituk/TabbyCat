@@ -110,7 +110,7 @@
             {
                 ConnectEventHandlers(true);
                 ConnectCons(true);
-                CommandProcessor.Clear();
+                CommandCon.Clear();
                 Clock.Tick += Clock_Tick;
                 ClockStartup();
             }
@@ -119,7 +119,7 @@
                 ClockShutdown();
                 Clock.Tick -= Clock_Tick;
                 RenderCon.InvalidateProgram();
-                CommandProcessor.Clear();
+                CommandCon.Clear();
                 ConnectCons(false);
                 ConnectEventHandlers(false);
                 AppCon.Remove(this);
@@ -171,7 +171,7 @@
             Localize(Resources.WorldForm_TimeStop, WorldForm.TimeStop);
             Localize(Resources.WorldForm_HelpMenu, WorldForm.HelpMenu);
             Localize(Resources.WorldForm_HelpOpenGLShadingLanguage, WorldForm.HelpOpenGLShadingLanguage);
-            Localize(string.Format(CultureInfo.CurrentCulture, Resources.WorldForm_HelpAbout, Application.ProductName), WorldForm.HelpAbout);
+            LocalizeFmt(Resources.WorldForm_HelpAbout, Application.ProductName, WorldForm.HelpAbout);
         }
 
         private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
@@ -199,7 +199,7 @@
 
         private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
 
-        private void AddSignal() => CommandProcessor.AppendSignal();
+        private void AddSignal() => CommandCon.AppendSignal();
 
         private void AddCurve() => AddTrace(TraceType.Curve);
 
@@ -209,7 +209,7 @@
         {
             var trace = GetNewTrace(traceType);
             trace.Scene = Scene;
-            CommandProcessor.AppendTrace(trace);
+            CommandCon.AppendTrace(trace);
             TraceSelection.Set(new[] { Scene.Traces.Last() });
         }
 
@@ -329,7 +329,7 @@
                 return;
             var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
-                CommandProcessor.DeleteTrace(index);
+                CommandCon.DeleteTrace(index);
             TraceSelection.Clear();
         }
 
@@ -471,11 +471,9 @@
     /// </summary>
     partial class WorldCon
     {
-        private CommandProcessor _CommandProcessor;
-
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
-        private SignalsCon _ControlCon;
+        private CommandCon _CommandCon;
         private FullScreenCon _FullScreenCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
@@ -483,10 +481,11 @@
         private SceneCon _SceneCon;
         private ScenePropertiesCon _ScenePropertiesCon;
         private ShaderCodeCon _ShaderCodeCon;
+        private SignalsCon _ControlCon;
         private TraceCodeCon _TraceCodeCon;
         private TracePropertiesCon _TracePropertiesCon;
 
-        internal override CommandProcessor CommandProcessor => _CommandProcessor ?? (_CommandProcessor = new CommandProcessor(this));
+        internal override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
 
         protected internal override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
 

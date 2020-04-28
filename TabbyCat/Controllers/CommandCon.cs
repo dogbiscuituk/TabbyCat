@@ -1,6 +1,6 @@
-﻿namespace TabbyCat.Commands
+﻿namespace TabbyCat.Controllers
 {
-    using Controllers;
+    using Commands;
     using Models;
     using System;
     using System.Collections.Generic;
@@ -8,9 +8,9 @@
     using System.Windows.Forms;
     using Views;
 
-    internal class CommandProcessor : LocalizationCon
+    internal class CommandCon : LocalizationCon
     {
-        internal CommandProcessor(WorldCon worldCon) : base(worldCon)
+        internal CommandCon(WorldCon worldCon) : base(worldCon)
         {
             WorldForm.EditUndo.Click += EditUndo_Click;
             WorldForm.tbUndo.ButtonClick += EditUndo_Click;
