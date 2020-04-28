@@ -64,14 +64,15 @@
             var signalCon = new SignalCon(WorldCon, signal);
             SignalCons.Add(signalCon);
 
-            //SignalsLayoutPanel.RowCount++;
-            //SignalsLayoutPanel.RowStyles.Add(new RowStyle(/*SizeType.AutoSize*/));
-            //var row = SignalsCount + 1;
+            var rowStyle = SignalsPanel.RowStyles[SignalsPanel.RowCount - 1];
+            SignalsPanel.RowStyles.Add(new RowStyle(rowStyle.SizeType, rowStyle.Height));
+            SignalsPanel.RowCount++;
+            var row = SignalsCount - 2;
 
-            SignalsLayoutControls.Add(signalCon.NameEditor/*, 0, row*/);
-            SignalsLayoutControls.Add(signalCon.AmplitudeSlider/*, 1, row*/);
-            SignalsLayoutControls.Add(signalCon.FrequencySlider/*, 2, row*/);
-            SignalsLayoutControls.Add(signalCon.SignalToolbar/*, 3, row*/);
+            SignalsControls.Add(signalCon.NameEditor, 1, row);
+            SignalsControls.Add(signalCon.AmplitudeSlider, 2, row);
+            SignalsControls.Add(signalCon.FrequencySlider, 3, row);
+            SignalsControls.Add(signalCon.SignalToolbar, 4, row);
 
             // SignalsForm.AddButton.CloneTo(signalCon.SignalToolbar.WaveTypeButton, onClick: false);
             /* TODO
@@ -89,7 +90,7 @@
 
         }*/
 
-        internal void BeginUpdate() => SignalsLayoutPanel.SuspendLayout();
+        internal void BeginUpdate() => SignalsPanel.SuspendLayout();
 
         internal void Clear()
         {
@@ -97,7 +98,7 @@
                 RemoveAt(index);
         }
 
-        internal void EndUpdate() => SignalsLayoutPanel.ResumeLayout();
+        internal void EndUpdate() => SignalsPanel.ResumeLayout();
 
         internal void RemoveAt(int index)
         {
@@ -105,8 +106,9 @@
             signalCon.Connect(false);
             SignalCons.RemoveAt(index);
             signalCon.DisposeControls();
-            SignalsLayoutPanel.RowStyles.RemoveAt(index + 1);
-            SignalsLayoutPanel.RowCount--;
+            var row = index + 1;
+            SignalsPanel.RowCount--;
+            SignalsPanel.RowStyles.RemoveAt(row);
         }
 
         // Protected internal methods

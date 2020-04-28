@@ -166,8 +166,8 @@
 
         protected Camera Camera => Scene.Camera;
         protected ScenePropertiesEdit ScenePropertiesEdit => ScenePropertiesForm.ScenePropertiesEdit;
-        protected TableLayoutControlCollection SignalsLayoutControls => SignalsLayoutPanel.Controls;
-        protected TableLayoutPanel SignalsLayoutPanel => SignalsForm.TableLayoutPanel;
+        protected TableLayoutControlCollection SignalsControls => SignalsPanel.Controls;
+        protected TableLayoutPanel SignalsPanel => SignalsForm.TableLayoutPanel;
         protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 

@@ -65,6 +65,12 @@
 
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
+        internal void OnCollectionChanged(string propertyName, bool adding, int index)
+        {
+            $"WorldCon.OnCollectionChanged(\"{propertyName}\", adding: {adding}, index: {index})".Spit();
+
+        }
+
         internal void OnPropertyChanged(string propertyName)
         {
             $"WorldCon.OnPropertyChanged(\"{propertyName}\")".Spit();

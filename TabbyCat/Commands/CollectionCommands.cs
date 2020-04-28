@@ -17,7 +17,11 @@
     /// </summary>
     internal abstract class CollectionCommand<TItem> : Command<TItem>, ICollectionCommand
     {
+        // Constructors
+
         internal CollectionCommand(int index, bool add) : base(index) { Adding = add; }
+
+        // Public properties
 
         public bool Adding { get; set; }
 
@@ -25,9 +29,13 @@
 
         public override string UndoAction => GetAction(true);
 
-        public override void Invert() { Adding = !Adding; }
+        // Protected properties
 
-        public override string ToString() => $"{(Adding ? "Add" : "Remove")} {Target}";
+        protected override string Target => Value.ToString();
+
+        // Public methods
+
+        public override void Invert() { Adding = !Adding; }
 
         public override bool Run(Scene scene)
         {
@@ -49,10 +57,13 @@
                     Value = GetItem(scene);
                 RemoveItem(scene);
             }
+            OnCollectionChanged(scene);
             return true;
         }
 
-        protected override string Target => Value.ToString();
+        public override string ToString() => $"{(Adding ? "Add" : "Remove")} {Target}";
+
+        // Protected methods
 
         protected abstract void AddItem(Scene scene);
 
@@ -64,9 +75,11 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
+        protected virtual void OnCollectionChanged(Scene scene) => scene.OnCollectionChanged(PropertyName, Adding, Index);
 
         protected abstract void RemoveItem(Scene scene);
+
+        // Private methods
 
         private string GetAction(bool undo) => $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
     }

@@ -94,6 +94,8 @@
 
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
+        internal void OnCollectionChanged(string propertyName, bool adding, int index) => WorldCon.OnCollectionChanged(propertyName, adding, index);
+
         internal void OnPropertyChanged(string propertyName) => WorldCon?.OnPropertyChanged(propertyName);
 
         internal void RemoveSignal(int index)

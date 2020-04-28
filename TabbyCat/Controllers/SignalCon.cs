@@ -108,7 +108,7 @@
 
         internal void DisposeControls(params Control[] controls) => Array.ForEach(controls, control =>
         {
-            SignalsLayoutControls.Remove(control);
+            SignalsControls.Remove(control);
             control.Dispose();
         });
 
@@ -207,7 +207,7 @@
             var showFrequency = SelectedWaveType != WaveType.Constant;
             SignalsCon.BeginUpdate();
             SignalsForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
-            SignalsLayoutPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
+            SignalsPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
             SignalsCon.EndUpdate();
         }
 

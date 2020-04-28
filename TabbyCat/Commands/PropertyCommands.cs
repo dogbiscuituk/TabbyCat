@@ -4,48 +4,6 @@
     using System;
     using System.Text.RegularExpressions;
 
-    internal abstract class Command<TValue> : ICommand
-    {
-        protected Command(int index = 0) { Index = index; }
-
-        public int Index { get; private set; }
-
-        public abstract string RedoAction { get; }
-
-        public abstract string UndoAction { get; }
-
-        internal TValue Value { get; set; }
-
-        /// <summary>
-        /// Invoke the Run method of the command, then immediately invert
-        /// the command in readiness for its transfer between the Undo and
-        /// Redo stacks. Since most commands are their own inverses (they
-        /// just tell the Scene "Swap your property value with the one I'm
-        /// carrying", the Invert() method is almost always empty. See the
-        /// SceneInsertTraceCommand and SceneDeleteTraceCommand classes
-        /// for two notable exceptions to this rule.
-        /// </summary>
-        /// <param name="scene"></param>
-        public bool Do(Scene scene)
-        {
-            var result = Run(scene);
-            if (result)
-                OnPropertyChanged(scene, PropertyName);
-            Invert();
-            return result;
-        }
-
-        public virtual void Invert() { }
-
-        protected abstract void OnPropertyChanged(Scene scene, string propertyName);
-
-        public abstract bool Run(Scene scene);
-
-        public string PropertyName { get; set; }
-
-        protected abstract string Target { get; }
-    }
-
     internal abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
         protected PropertyCommand(int index, string propertyName,
@@ -113,9 +71,6 @@
         protected override string Target => "Scene";
 
         protected override Scene GetItem(Scene scene) => scene;
-
-        protected override void OnPropertyChanged(Scene scene, string propertyName) =>
-            scene.OnPropertyChanged(propertyName);
     }
 
     internal abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
@@ -133,8 +88,6 @@
         }
 
         protected override string Target => "Signal";
-
-        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
 
         protected override Signal GetItem(Scene scene) => scene.Signals[Index];
     }
@@ -154,8 +107,6 @@
         }
 
         protected override string Target => "Trace";
-
-        protected override void OnPropertyChanged(Scene scene, string propertyName) => scene.OnPropertyChanged(propertyName);
 
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }
