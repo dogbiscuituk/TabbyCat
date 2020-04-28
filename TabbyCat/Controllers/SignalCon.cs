@@ -25,9 +25,9 @@
             AppCon.InitControlTheme(Toolbar);
         }
 
-        // Private fields
+        // Internal fields
 
-        private SignalEdit SignalEdit;
+        internal SignalEdit SignalEdit;
 
         // Protected properties
 
@@ -189,7 +189,7 @@
 
         private void UpdateUI()
         {
-            var showFrequency = SelectedWaveType != WaveType.Constant;
+            //var showFrequency = SelectedWaveType != WaveType.Constant;
             //SignalsCon.BeginUpdate();
             //SignalsForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
             //SignalsPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);

@@ -1915,6 +1915,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Signal generator.
+        /// </summary>
+        public static string SignalsForm {
+            get {
+                return ResourceManager.GetString("SignalsForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new signal to this scene.
+        /// </summary>
+        public static string SignalsForm_AddButton {
+            get {
+                return ResourceManager.GetString("SignalsForm_AddButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to |Amplitude = {0:f3}.
         /// </summary>
         public static string SignalsForm_Amplitude {
@@ -1924,11 +1942,48 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amplitude|The amplitude of an AC (non-constant) signal
+        ///The value of a constant DC signal..
+        /// </summary>
+        public static string SignalsForm_AmplitudeLabel {
+            get {
+                return ResourceManager.GetString("SignalsForm_AmplitudeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete all existing signals from this scene.
+        /// </summary>
+        public static string SignalsForm_DeleteAllButton {
+            get {
+                return ResourceManager.GetString("SignalsForm_DeleteAllButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to |Frequency = {0:f3} Hz.
         /// </summary>
         public static string SignalsForm_Frequency {
             get {
                 return ResourceManager.GetString("SignalsForm_Frequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hz|The frequency associated with an AC (non-constant) signal.
+        /// </summary>
+        public static string SignalsForm_FrequencyLabel {
+            get {
+                return ResourceManager.GetString("SignalsForm_FrequencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name|The name given to this signal in code.
+        /// </summary>
+        public static string SignalsForm_NameLabel {
+            get {
+                return ResourceManager.GetString("SignalsForm_NameLabel", resourceCulture);
             }
         }
         

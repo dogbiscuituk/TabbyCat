@@ -42,6 +42,8 @@
 
         private static string GLSLUrl => Settings.Default.GLSLUrl;
 
+        internal event EventHandler<CollectionChangedEventArgs> CollectionChanged;
+
         internal event PropertyChangedEventHandler PropertyChanged;
 
         internal event EventHandler
@@ -65,10 +67,10 @@
 
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
-        internal void OnCollectionChanged(string propertyName, bool adding, int index)
+        internal void OnCollectionChanged(string collectionName, bool adding, int index)
         {
-            $"WorldCon.OnCollectionChanged(\"{propertyName}\", adding: {adding}, index: {index})".Spit();
-
+            $"WorldCon.OnCollectionChanged(\"{collectionName}\", adding: {adding}, index: {index})".Spit();
+            CollectionChanged?.Invoke(this, new CollectionChangedEventArgs(collectionName, adding, index));
         }
 
         internal void OnPropertyChanged(string propertyName)

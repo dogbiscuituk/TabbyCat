@@ -44,7 +44,7 @@
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.ColumnCount = 4;
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -58,29 +58,29 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(458, 25);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(260, 25);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // NameEditor
             // 
             this.NameEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NameEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameEditor.Location = new System.Drawing.Point(3, 3);
+            this.NameEditor.Location = new System.Drawing.Point(3, 4);
+            this.NameEditor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameEditor.Name = "NameEditor";
-            this.NameEditor.Size = new System.Drawing.Size(38, 13);
+            this.NameEditor.Size = new System.Drawing.Size(44, 18);
             this.NameEditor.TabIndex = 0;
-            this.NameEditor.Text = "WXYZ";
+            this.NameEditor.Text = "A";
             this.NameEditor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AmplitudeSlider
             // 
             this.AmplitudeSlider.AutoSize = false;
             this.AmplitudeSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AmplitudeSlider.Location = new System.Drawing.Point(44, 0);
+            this.AmplitudeSlider.Location = new System.Drawing.Point(50, 0);
             this.AmplitudeSlider.Margin = new System.Windows.Forms.Padding(0);
-            this.AmplitudeSlider.MinimumSize = new System.Drawing.Size(60, 0);
             this.AmplitudeSlider.Name = "AmplitudeSlider";
-            this.AmplitudeSlider.Size = new System.Drawing.Size(239, 25);
+            this.AmplitudeSlider.Size = new System.Drawing.Size(81, 25);
             this.AmplitudeSlider.TabIndex = 1;
             this.AmplitudeSlider.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -88,11 +88,10 @@
             // 
             this.FrequencySlider.AutoSize = false;
             this.FrequencySlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencySlider.Location = new System.Drawing.Point(283, 0);
+            this.FrequencySlider.Location = new System.Drawing.Point(131, 0);
             this.FrequencySlider.Margin = new System.Windows.Forms.Padding(0);
-            this.FrequencySlider.MinimumSize = new System.Drawing.Size(30, 0);
             this.FrequencySlider.Name = "FrequencySlider";
-            this.FrequencySlider.Size = new System.Drawing.Size(117, 25);
+            this.FrequencySlider.Size = new System.Drawing.Size(40, 25);
             this.FrequencySlider.TabIndex = 2;
             this.FrequencySlider.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -103,10 +102,10 @@
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WaveTypeButton,
             this.DeleteButton});
-            this.Toolbar.Location = new System.Drawing.Point(400, 0);
+            this.Toolbar.Location = new System.Drawing.Point(171, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Padding = new System.Windows.Forms.Padding(0);
-            this.Toolbar.Size = new System.Drawing.Size(58, 25);
+            this.Toolbar.Size = new System.Drawing.Size(89, 25);
             this.Toolbar.TabIndex = 3;
             // 
             // WaveTypeButton
@@ -129,12 +128,13 @@
             // 
             // SignalEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SignalEdit";
-            this.Size = new System.Drawing.Size(458, 25);
+            this.Size = new System.Drawing.Size(260, 25);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmplitudeSlider)).EndInit();
