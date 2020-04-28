@@ -74,14 +74,14 @@
             base.Connect(connect);
             if (connect)
             {
-                SignalsForm.AddButton.Click += AddButton_Click;
+                SignalsForm.AddButton.ButtonClick += AddButton_ButtonClick;
                 WorldCon.CollectionChanged += WorldCon_CollectionChanged;
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click += ViewSignals_Click;
             }
             else
             {
-                SignalsForm.AddButton.Click -= AddButton_Click;
+                SignalsForm.AddButton.ButtonClick -= AddButton_ButtonClick;
                 WorldCon.CollectionChanged += WorldCon_CollectionChanged;
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
@@ -122,7 +122,7 @@
 
         // Private methods
 
-        private void AddButton_Click(object sender, System.EventArgs e) => AddSignal();
+        private void AddButton_ButtonClick(object sender, System.EventArgs e) => AddSignal();
 
         private void AddSignal() => CommandCon.AppendSignal();
 

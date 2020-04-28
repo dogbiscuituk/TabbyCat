@@ -51,7 +51,7 @@
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
             this.jmkScrollPanel1 = new Jmk.Controls.JmkScrollPanel();
             this.lblBuiltInHelp = new Jmk.Controls.JmkLinkLabel();
-            this.VerticalToolbar = new System.Windows.Forms.ToolStrip();
+            this.VerticalToolbar = new Jmk.Controls.JmkToolStrip();
             this.tbUndo = new System.Windows.Forms.ToolStripButton();
             this.tbRedo = new System.Windows.Forms.ToolStripButton();
             this.tbCut = new System.Windows.Forms.ToolStripButton();
@@ -769,7 +769,7 @@
         public System.Windows.Forms.ToolStripMenuItem miCopy;
         public System.Windows.Forms.ToolStripMenuItem miPaste;
         public System.Windows.Forms.ToolStripMenuItem miDelete;
-        public System.Windows.Forms.ToolStrip VerticalToolbar;
+        public Jmk.Controls.JmkToolStrip VerticalToolbar;
         public System.Windows.Forms.ToolStripButton tbUndo;
         public System.Windows.Forms.ToolStripButton tbRedo;
         public System.Windows.Forms.ToolStripButton tbCut;

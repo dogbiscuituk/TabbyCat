@@ -56,7 +56,7 @@
             this.cbPattern = new System.Windows.Forms.ComboBox();
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
-            this.SelectionToolbar = new System.Windows.Forms.ToolStrip();
+            this.SelectionToolbar = new Jmk.Controls.JmkToolStrip();
             this.lblAll = new System.Windows.Forms.ToolStripLabel();
             this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
             this.seYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
@@ -793,7 +793,7 @@
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.Label lblSelectedTraces;
-        public System.Windows.Forms.ToolStrip SelectionToolbar;
+        public Jmk.Controls.JmkToolStrip SelectionToolbar;
         public System.Windows.Forms.ToolStripLabel lblAll;
         public System.Windows.Forms.CheckBox lblScale;
         public System.Windows.Forms.CheckBox lblMinimum;

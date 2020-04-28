@@ -31,7 +31,7 @@
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.NameLabel = new System.Windows.Forms.Label();
             this.FrequencyLabel = new System.Windows.Forms.Label();
-            this.Toolbar = new System.Windows.Forms.ToolStrip();
+            this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.AddButton = new System.Windows.Forms.ToolStripSplitButton();
             this.DeleteAllButton = new System.Windows.Forms.ToolStripButton();
             this.AmplitudeLabel = new System.Windows.Forms.Label();
@@ -236,7 +236,7 @@
 
         public System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
         public System.Windows.Forms.Label FrequencyLabel;
-        public System.Windows.Forms.ToolStrip Toolbar;
+        public Jmk.Controls.JmkToolStrip Toolbar;
         public System.Windows.Forms.ToolStripSplitButton AddButton;
         public System.Windows.Forms.ToolStripButton DeleteAllButton;
         public System.Windows.Forms.Label AmplitudeLabel;
