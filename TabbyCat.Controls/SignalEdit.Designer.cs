@@ -80,7 +80,7 @@
             this.AmplitudeSlider.Margin = new System.Windows.Forms.Padding(0);
             this.AmplitudeSlider.MinimumSize = new System.Drawing.Size(60, 0);
             this.AmplitudeSlider.Name = "AmplitudeSlider";
-            this.AmplitudeSlider.Size = new System.Drawing.Size(238, 25);
+            this.AmplitudeSlider.Size = new System.Drawing.Size(239, 25);
             this.AmplitudeSlider.TabIndex = 1;
             this.AmplitudeSlider.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -88,7 +88,7 @@
             // 
             this.FrequencySlider.AutoSize = false;
             this.FrequencySlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencySlider.Location = new System.Drawing.Point(282, 0);
+            this.FrequencySlider.Location = new System.Drawing.Point(283, 0);
             this.FrequencySlider.Margin = new System.Windows.Forms.Padding(0);
             this.FrequencySlider.MinimumSize = new System.Drawing.Size(30, 0);
             this.FrequencySlider.Name = "FrequencySlider";
@@ -98,22 +98,19 @@
             // 
             // Toolbar
             // 
-            this.Toolbar.AutoSize = false;
-            this.Toolbar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Toolbar.GripMargin = new System.Windows.Forms.Padding(0);
             this.Toolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WaveTypeButton,
             this.DeleteButton});
-            this.Toolbar.Location = new System.Drawing.Point(399, 0);
+            this.Toolbar.Location = new System.Drawing.Point(400, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Padding = new System.Windows.Forms.Padding(0);
-            this.Toolbar.Size = new System.Drawing.Size(59, 25);
+            this.Toolbar.Size = new System.Drawing.Size(58, 25);
             this.Toolbar.TabIndex = 3;
             // 
             // WaveTypeButton
             // 
-            this.WaveTypeButton.AutoSize = false;
             this.WaveTypeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.WaveTypeButton.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeDC;
             this.WaveTypeButton.ImageTransparentColor = System.Drawing.Color.White;
@@ -123,13 +120,12 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.AutoSize = false;
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.DeleteButton.Image = global::TabbyCat.Controls.Properties.Resources.Delete;
             this.DeleteButton.ImageTransparentColor = System.Drawing.Color.White;
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(0);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(23, 20);
+            this.DeleteButton.Size = new System.Drawing.Size(23, 25);
             // 
             // SignalEdit
             // 
@@ -137,8 +133,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.MaximumSize = new System.Drawing.Size(0, 25);
-            this.MinimumSize = new System.Drawing.Size(0, 25);
             this.Name = "SignalEdit";
             this.Size = new System.Drawing.Size(458, 25);
             this.TableLayoutPanel.ResumeLayout(false);

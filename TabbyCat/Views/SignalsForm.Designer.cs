@@ -55,7 +55,7 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(661, 25);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(354, 25);
             this.TableLayoutPanel.TabIndex = 1;
             // 
             // NameLabel
@@ -72,10 +72,10 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(419, 0);
+            this.label1.Location = new System.Drawing.Point(213, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 25);
+            this.label1.Size = new System.Drawing.Size(83, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "Hz";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,7 +87,7 @@
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddButton,
             this.DeleteButton});
-            this.Toolbar.Location = new System.Drawing.Point(603, 0);
+            this.Toolbar.Location = new System.Drawing.Point(296, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Padding = new System.Windows.Forms.Padding(0);
             this.Toolbar.Size = new System.Drawing.Size(58, 25);
@@ -95,6 +95,7 @@
             // 
             // AddButton
             // 
+            this.AddButton.BackColor = System.Drawing.SystemColors.Control;
             this.AddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddButton.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.AddButton.ImageTransparentColor = System.Drawing.Color.White;
@@ -104,6 +105,7 @@
             // 
             // DeleteButton
             // 
+            this.DeleteButton.BackColor = System.Drawing.SystemColors.Control;
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.DeleteButton.Image = global::TabbyCat.Properties.Resources.Delete;
             this.DeleteButton.ImageTransparentColor = System.Drawing.Color.White;
@@ -117,7 +119,7 @@
             this.AmplitudeLabel.Location = new System.Drawing.Point(44, 0);
             this.AmplitudeLabel.Margin = new System.Windows.Forms.Padding(0);
             this.AmplitudeLabel.Name = "AmplitudeLabel";
-            this.AmplitudeLabel.Size = new System.Drawing.Size(375, 25);
+            this.AmplitudeLabel.Size = new System.Drawing.Size(169, 25);
             this.AmplitudeLabel.TabIndex = 4;
             this.AmplitudeLabel.Text = "Amplitude";
             this.AmplitudeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -128,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(661, 232);
+            this.ClientSize = new System.Drawing.Size(354, 232);
             this.Controls.Add(this.TableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "SignalsForm";
