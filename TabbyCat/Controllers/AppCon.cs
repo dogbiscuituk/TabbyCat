@@ -14,6 +14,8 @@
 
     internal static partial class AppCon
     {
+        // Constructors
+
         static AppCon()
         {
             Pulse.Tick += Pulse_Tick;
@@ -21,11 +23,17 @@
             AddNewWorldCon();
         }
 
+        // Internal fields
+
         internal static bool CanPaste;
 
         internal static string DataFormat = "TabbyCatDataFormat";
 
+        internal static Random Random = new Random();
+
         internal static List<WorldCon> WorldCons = new List<WorldCon>();
+
+        // Private fields
 
         private static AboutDialog _AboutDialog;
 
@@ -34,6 +42,8 @@
         private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
         private static int PulseCount;
+
+        // Internal properties
 
         internal static AboutDialog AboutDialog
         {
@@ -77,7 +87,11 @@
             }
         }
 
+        // Private properties
+
         private static Settings Settings => Settings.Default;
+
+        // Internal methods
 
         internal static WorldCon AddNewWorldCon()
         {
@@ -109,6 +123,8 @@
             if (WorldCons.Count == 0)
                 Close();
         }
+
+        // Private methods
 
         private static void ApplyOptions()
         {

@@ -8,6 +8,7 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
+    using TabbyCat.Commands;
     using TabbyCat.Common.Types;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -61,11 +62,11 @@
 
         internal void RemoveAt(int index)
         {
-            var oldSignalCon = SignalCons[index];
+            var oldSignalCon = SignalCons.First(p => p.Index == index);
             oldSignalCon.Connect(false);
             SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
-            SignalCons.RemoveAt(index);
-            AdjustIndices(index, -1);
+            SignalCons.Remove(oldSignalCon);
+            AdjustIndices(index + 1, -1);
         }
 
         // Protected internal methods
@@ -76,6 +77,7 @@
             if (connect)
             {
                 SignalsForm.AddButton.ButtonClick += AddButton_ButtonClick;
+                SignalsForm.DeleteAllButton.Click += DeleteAllButton_Click;
                 WorldCon.CollectionChanged += WorldCon_CollectionChanged;
                 WorldCon.PropertyChanged += WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click += ViewSignals_Click;
@@ -83,6 +85,7 @@
             else
             {
                 SignalsForm.AddButton.ButtonClick -= AddButton_ButtonClick;
+                SignalsForm.DeleteAllButton.Click -= DeleteAllButton_Click;
                 WorldCon.CollectionChanged += WorldCon_CollectionChanged;
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
@@ -144,6 +147,12 @@
                 signalCon.Index += delta;
         }
 
+        private void DeleteAllButton_Click(object sender, System.EventArgs e)
+        {
+            for (var index = SignalsCount - 1; index >= 0; index--)
+                Run(new SignalDeleteCommand(index));
+        }
+
         private SignalsForm NewSignalsForm()
         {
             _SignalsForm = new SignalsForm
@@ -172,11 +181,10 @@
             switch (e.CollectionName)
             {
                 case PropertyNames.Signals:
-                    var index = e.Index;
                     if (e.Adding)
                         InsertAt(e.Index);
                     else
-                        RemoveAt(index);
+                        RemoveAt(e.Index);
                     break;
             }
         }

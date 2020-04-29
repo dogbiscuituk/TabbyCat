@@ -24,11 +24,11 @@
             NameEditor.Text = signal.Name;
             InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
-            WaveTypeButton.Tag = signal.WaveType;
             SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, onClick: false);
             AppCon.InitControlTheme(Toolbar);
             UpdateAllProperties();
         }
+
 
         // Internal fields
 
@@ -88,14 +88,16 @@
 
         private WaveType SelectedWaveType
         {
-            get => (WaveType)WaveTypeButton.Tag;
+            get
+            {
+                var tag = WaveTypeButton.Tag;
+                return tag == null ? WaveType.Constant : (WaveType)tag;
+            }
             set
             {
+                SetWaveType(value);
                 if (SelectedWaveType != value)
-                {
-                    SetWaveType(value);
                     Run(new WaveTypeCommand(Index, value));
-                }
             }
         }
 
@@ -158,21 +160,20 @@
             if (Updating)
                 return;
             Updating = true;
-            var signal = Scene.Signals[Index];
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
                     case PropertyNames.Amplitude:
-                        Amplitude = signal.Amplitude;
+                        Amplitude = Scene.Signals[Index].Amplitude;
                         break;
                     case PropertyNames.Frequency:
-                        Frequency = signal.Frequency;
+                        Frequency = Scene.Signals[Index].Frequency;
                         break;
                     case PropertyNames.Name:
-                        NameEditor.Text = signal.Name;
+                        NameEditor.Text = Scene.Signals[Index].Name;
                         break;
                     case PropertyNames.WaveType:
-                        SelectedWaveType = signal.WaveType;
+                        SelectedWaveType = Scene.Signals[Index].WaveType;
                         break;
                 }
             Updating = false;
@@ -180,7 +181,7 @@
 
         // Private methods
 
-        private void AmplitudeSlider_ValueChanged(object sender, System.EventArgs e)
+        private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
             Run(new AmplitudeCommand(Index, Amplitude));
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
@@ -188,7 +189,7 @@
 
         private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
 
-        private void FrequencySlider_ValueChanged(object sender, System.EventArgs e)
+        private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
             Run(new FrequencyCommand(Index, Frequency));
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
@@ -196,27 +197,20 @@
 
         private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new NameCommand(Index, NameEditor.Text));
 
-        private void Signal_Enter(object sender, System.EventArgs e) => UpdateUI();
+        private void Signal_Enter(object sender, EventArgs e) => UpdateUI();
 
-        private void UpdateUI()
-        {
-            //var showFrequency = SelectedWaveType != WaveType.Constant;
-            //SignalsCon.BeginUpdate();
-            //SignalsForm.FrequencyHeader.Enabled = FrequencySlider.Visible = showFrequency;
-            //SignalsPanel.SetColumnSpan(AmplitudeSlider, showFrequency ? 1 : 2);
-            //SignalsCon.EndUpdate();
-        }
+        private void UpdateUI() => FrequencySlider.Enabled = SelectedWaveType != WaveType.Constant;
 
-        private void WaveTypeButton_ButtonClick(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
+        private void WaveTypeButton_ButtonClick(object sender, EventArgs e) => SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
 
-        private void WaveTypeButton_DropDownOpening(object sender, System.EventArgs e)
+        private void WaveTypeButton_DropDownOpening(object sender, EventArgs e)
         {
             foreach (var item in WaveTypeItems)
                 item.Checked = (WaveType)item.Tag == SelectedWaveType;
             UpdateUI();
         }
 
-        private void WaveTypeItem_Click(object sender, System.EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
+        private void WaveTypeItem_Click(object sender, EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
 
         private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
 
