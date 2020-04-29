@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Utils;
+    using Jmk.Common;
     using Models;
     using Properties;
     using System.Collections.Generic;
@@ -86,6 +87,11 @@
                 WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
+            foreach (var item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
+                if (connect)
+                    item.Click += AddButton_ButtonClick;
+                else
+                    item.Click -= AddButton_ButtonClick;
         }
 
         // Protected methods
@@ -122,9 +128,21 @@
 
         // Private methods
 
-        private void AddButton_ButtonClick(object sender, System.EventArgs e) => AddSignal();
+        private void AddButton_ButtonClick(object sender, System.EventArgs e) => AddSignal((WaveType)((ToolStripItem)sender).Tag);
 
-        private void AddSignal() => CommandCon.AppendSignal();
+        private void AddSignal(WaveType waveType) => CommandCon.AppendSignal(new Signal
+        {
+            Name = NameSource.Names.First(
+                name => Scene.Signals.FirstOrDefault(
+                    signal => signal.Name == name) == null),
+            WaveType = waveType
+        });
+
+        private void AdjustIndices(int index, int delta)
+        {
+            foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
+                signalCon.Index += delta;
+        }
 
         private SignalsForm NewSignalsForm()
         {
@@ -134,22 +152,17 @@
                 Text = Resources.SignalsForm_Text,
                 ToolTipText = Resources.SignalsForm_Text
             };
-            _SignalsForm.WaveTypeSlider.Tag = WaveType.Constant;
-            _SignalsForm.WaveTypeSine.Tag = WaveType.Sine;
-            _SignalsForm.WaveTypeSquare.Tag = WaveType.Square;
-            _SignalsForm.WaveTypeTriangle.Tag = WaveType.Triangle;
-            _SignalsForm.WaveTypeSawtooth.Tag = WaveType.Sawtooth;
-            _SignalsForm.WaveTypeReverseSawtooth.Tag = WaveType.ReverseSawtooth;
-            _SignalsForm.WaveTypeCustom.Tag = WaveType.Custom;
-            _SignalsForm.WaveTypeNoise.Tag = WaveType.Noise;
+            Init(_SignalsForm.AddButton, WaveType.Constant);
+            Init(_SignalsForm.WaveTypeSlider, WaveType.Constant);
+            Init(_SignalsForm.WaveTypeSine, WaveType.Sine);
+            Init(_SignalsForm.WaveTypeSquare, WaveType.Square);
+            Init(_SignalsForm.WaveTypeTriangle, WaveType.Triangle);
+            Init(_SignalsForm.WaveTypeSawtooth, WaveType.Sawtooth);
+            Init(_SignalsForm.WaveTypeReverseSawtooth, WaveType.ReverseSawtooth);
+            Init(_SignalsForm.WaveTypeCustom, WaveType.Custom);
+            Init(_SignalsForm.WaveTypeNoise, WaveType.Noise);
             AppCon.InitControlTheme(Toolbar);
             return _SignalsForm;
-        }
-
-        private void AdjustIndices(int index, int delta)
-        {
-            foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
-                signalCon.Index += delta;
         }
 
         private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
@@ -177,5 +190,9 @@
                     break;
             }
         }
+
+        // Private static methods
+
+        private static void Init(ToolStripItem item, WaveType waveType) => item.Tag = waveType;
     }
 }

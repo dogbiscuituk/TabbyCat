@@ -21,9 +21,13 @@
             SignalEdit = new SignalEdit();
             Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
+            NameEditor.Text = signal.Name;
             InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
+            WaveTypeButton.Tag = signal.WaveType;
+            SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, onClick: false);
             AppCon.InitControlTheme(Toolbar);
+            UpdateAllProperties();
         }
 
         // Internal fields
@@ -49,7 +53,7 @@
             AmpSmall = 1,
             AmpLarge = 10,
             FreqLeft = 0,
-            FreqRight = 1024,
+            FreqRight = 1000,
             FreqSmall = 1,
             FreqLarge = 10;
 
@@ -154,14 +158,21 @@
             if (Updating)
                 return;
             Updating = true;
+            var signal = Scene.Signals[Index];
             foreach (var propertyName in propertyNames)
                 switch (propertyName)
                 {
                     case PropertyNames.Amplitude:
+                        Amplitude = signal.Amplitude;
+                        break;
                     case PropertyNames.Frequency:
+                        Frequency = signal.Frequency;
+                        break;
                     case PropertyNames.Name:
+                        NameEditor.Text = signal.Name;
+                        break;
                     case PropertyNames.WaveType:
-                        // Cannot currently respond to these, since there is no way to identify which signal(s) they concern.
+                        SelectedWaveType = signal.WaveType;
                         break;
                 }
             Updating = false;

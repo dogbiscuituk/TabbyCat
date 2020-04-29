@@ -98,17 +98,11 @@
 
         protected override int GetItemsCount(Scene scene) => scene.Signals.Count;
 
-        protected override Signal GetNewItem(Scene scene) => new Signal() { Name = GetNewSignalName(scene) };
+        protected override Signal GetNewItem(Scene scene) => new Signal();
 
         protected override void InsertItem(Scene scene) => scene.InsertSignal(Index, Value);
 
         protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
-
-        // Private static methods
-
-        private static string GetNewSignalName(Scene scene) => NameSource.Names.First(
-            name => scene.Signals.FirstOrDefault(
-                signal => signal.Name == name) == null);
     }
 
     internal class SignalDeleteCommand : SignalCollectionCommand
