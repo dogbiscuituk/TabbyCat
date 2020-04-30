@@ -5,7 +5,6 @@
     using System;
     using System.ComponentModel;
     using System.Globalization;
-    using TabbyCat.Controllers;
 
     public class Signal
     {
@@ -21,10 +20,10 @@
         [DefaultValue(0)]
         public WaveType WaveType { get; set; } = WaveType.Constant;
 
-        [DefaultValue(0f)]
+        [DefaultValue(0)]
         public float Amplitude { get; set; } = 0;
 
-        [DefaultValue(0f)]
+        [DefaultValue(0)]
         public float Frequency { get; set; } = 0;
 
         // Public methods
@@ -36,11 +35,10 @@
         private float GetScaleAt(float time)
         {
             if (WaveType == WaveType.Constant)
-                return Amplitude;
-            if (Frequency == 0)
-                time = 0;
-            else
-                time = (time % (1 / Frequency)) * Frequency;
+                return 1;
+            time *= Frequency;
+            time -= (float)Math.Floor(time);
+            //time -= (float)Math.Floor(time *= Frequency);
             switch (WaveType)
             {
                 case WaveType.Sine:
@@ -54,10 +52,8 @@
                     return 2 * time - 1;
                 case WaveType.ReverseSawtooth:
                     return 1 - 2 * time;
-                case WaveType.Noise:
-                    return (float)(2 * AppCon.Random.NextDouble() - 1);
                 default:
-                    return 0f;
+                    return 0;
             }
         }
     }

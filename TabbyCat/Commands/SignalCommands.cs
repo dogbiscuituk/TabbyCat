@@ -9,7 +9,7 @@
             index,
             PropertyNames.Amplitude,
             value,
-            t => t.Amplitude,
+            t => (float)t.Amplitude,
             (t, v) => t.Amplitude = v)
         { }
     }
@@ -20,7 +20,7 @@
             index,
             PropertyNames.Frequency,
             value,
-            t => t.Frequency,
+            t => (float)t.Frequency,
             (t, v) => t.Frequency = v)
         { }
     }

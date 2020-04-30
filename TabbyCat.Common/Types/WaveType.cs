@@ -7,8 +7,6 @@
         Square,
         Triangle,
         Sawtooth,
-        ReverseSawtooth,
-        Custom,
-        Noise
+        ReverseSawtooth
     }
 }

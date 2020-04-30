@@ -114,8 +114,6 @@
             Localize(Resources.SignalsForm_WaveTypeTriangle, SignalsForm.WaveTypeTriangle);
             Localize(Resources.SignalsForm_WaveTypeSawtooth, SignalsForm.WaveTypeSawtooth);
             Localize(Resources.SignalsForm_WaveTypeReverseSawtooth, SignalsForm.WaveTypeReverseSawtooth);
-            Localize(Resources.SignalsForm_WaveTypeCustom, SignalsForm.WaveTypeCustom);
-            Localize(Resources.SignalsForm_WaveTypeNoise, SignalsForm.WaveTypeNoise);
             Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 
@@ -168,8 +166,6 @@
             Init(_SignalsForm.WaveTypeTriangle, WaveType.Triangle);
             Init(_SignalsForm.WaveTypeSawtooth, WaveType.Sawtooth);
             Init(_SignalsForm.WaveTypeReverseSawtooth, WaveType.ReverseSawtooth);
-            Init(_SignalsForm.WaveTypeCustom, WaveType.Custom);
-            Init(_SignalsForm.WaveTypeNoise, WaveType.Noise);
             AppCon.InitControlTheme(Toolbar);
             return _SignalsForm;
         }

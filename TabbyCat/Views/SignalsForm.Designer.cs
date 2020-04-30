@@ -41,9 +41,6 @@
             this.WaveTypeTriangle = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeSawtooth = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeReverseSawtooth = new System.Windows.Forms.ToolStripMenuItem();
-            this.separator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.WaveTypeCustom = new System.Windows.Forms.ToolStripMenuItem();
-            this.WaveTypeNoise = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanel.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
@@ -112,10 +109,7 @@
             this.WaveTypeSquare,
             this.WaveTypeTriangle,
             this.WaveTypeSawtooth,
-            this.WaveTypeReverseSawtooth,
-            this.separator1,
-            this.WaveTypeCustom,
-            this.WaveTypeNoise});
+            this.WaveTypeReverseSawtooth});
             this.AddButton.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.AddButton.ImageTransparentColor = System.Drawing.Color.White;
             this.AddButton.Margin = new System.Windows.Forms.Padding(0);
@@ -191,27 +185,6 @@
             this.WaveTypeReverseSawtooth.Size = new System.Drawing.Size(180, 22);
             this.WaveTypeReverseSawtooth.Text = "Reverse sawtooth";
             // 
-            // toolStripMenuItem1
-            // 
-            this.separator1.Name = "toolStripMenuItem1";
-            this.separator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // Custom
-            // 
-            this.WaveTypeCustom.Image = global::TabbyCat.Properties.Resources.WaveTypeCustom;
-            this.WaveTypeCustom.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeCustom.Name = "Custom";
-            this.WaveTypeCustom.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeCustom.Text = "Custom...";
-            // 
-            // Noise
-            // 
-            this.WaveTypeNoise.Image = global::TabbyCat.Properties.Resources.WaveTypeRandom;
-            this.WaveTypeNoise.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeNoise.Name = "Noise";
-            this.WaveTypeNoise.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeNoise.Text = "Noise";
-            // 
             // SignalsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -247,8 +220,5 @@
         public System.Windows.Forms.ToolStripMenuItem WaveTypeTriangle;
         public System.Windows.Forms.ToolStripMenuItem WaveTypeSawtooth;
         public System.Windows.Forms.ToolStripMenuItem WaveTypeReverseSawtooth;
-        public System.Windows.Forms.ToolStripSeparator separator1;
-        public System.Windows.Forms.ToolStripMenuItem WaveTypeCustom;
-        public System.Windows.Forms.ToolStripMenuItem WaveTypeNoise;
     }
 }

@@ -2015,16 +2015,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Noise|Random aperiodic noise
-        ///(&quot;frequency&quot; refers to the number of discrete samples per second).
-        /// </summary>
-        public static string SignalsForm_WaveTypeNoise {
-            get {
-                return ResourceManager.GetString("SignalsForm_WaveTypeNoise", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;Reverse sawtooth|Reverse sawtooth wave.
         /// </summary>
         public static string SignalsForm_WaveTypeReverseSawtooth {

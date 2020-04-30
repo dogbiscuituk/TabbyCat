@@ -57,7 +57,7 @@
             FreqSmall = 1,
             FreqLarge = 10;
 
-        private const float
+        private const double
             AmpMin = -1,
             AmpMax = +1,
             AmpRatio = (AmpMax - AmpMin) / (AmpRight - AmpLeft),
@@ -74,13 +74,13 @@
         private ToolStrip Toolbar => SignalEdit.Toolbar;
         private ToolStripSplitButton WaveTypeButton => SignalEdit.WaveTypeButton;
 
-        private float Amplitude
+        private double Amplitude
         {
             get => AmplitudeFromGauge(AmplitudeSlider.Value);
             set => AmplitudeSlider.Value = AmplitudeToGauge(value);
         }
 
-        private float Frequency
+        private double Frequency
         {
             get => FrequencyFromGauge(FrequencySlider.Value);
             set => FrequencySlider.Value = FrequencyToGauge(value);
@@ -183,7 +183,7 @@
 
         private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
-            Run(new AmplitudeCommand(Index, Amplitude));
+            Run(new AmplitudeCommand(Index, (float)Amplitude));
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
@@ -191,7 +191,7 @@
 
         private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
-            Run(new FrequencyCommand(Index, Frequency));
+            Run(new FrequencyCommand(Index, (float)Frequency));
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
 
@@ -216,13 +216,13 @@
 
         // Private static methods
 
-        private static float AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpLeft, min: AmpMin, ratio: AmpRatio);
+        private static double AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpLeft, min: AmpMin, ratio: AmpRatio);
 
-        private static int AmplitudeToGauge(float amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpLeft, ratio: AmpRatio);
+        private static int AmplitudeToGauge(double amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpLeft, ratio: AmpRatio);
 
-        private static float FrequencyFromGauge(int gauge) => ValueFromGauge(gauge, left: FreqLeft, min: FreqMin, ratio: FreqRatio);
+        private static double FrequencyFromGauge(int gauge) => ValueFromGauge(gauge, left: FreqLeft, min: FreqMin, ratio: FreqRatio);
 
-        private static int FrequencyToGauge(float frequency) => ValueToGauge(value: frequency, min: FreqMin, left: FreqLeft, ratio: FreqRatio);
+        private static int FrequencyToGauge(double frequency) => ValueToGauge(value: frequency, min: FreqMin, left: FreqLeft, ratio: FreqRatio);
 
         private static void InitSlider(TrackBar slider, int left, int right, int small, int large, int gauge)
         {
@@ -233,8 +233,8 @@
             slider.Value = gauge;
         }
 
-        private static float ValueFromGauge(int gauge, int left, float min, float ratio) => min + (gauge - left) * ratio;
+        private static double ValueFromGauge(int gauge, int left, double min, double ratio) => min + (gauge - left) * ratio;
 
-        private static int ValueToGauge(float value, float min, int left, float ratio) => (int)Math.Round(left + (value - min) / ratio);
+        private static int ValueToGauge(double value, double min, int left, double ratio) => (int)Math.Round(left + (value - min) / ratio);
     }
 }

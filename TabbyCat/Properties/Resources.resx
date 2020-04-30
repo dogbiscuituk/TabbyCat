@@ -594,10 +594,6 @@ Select the checkbox to adjust the three values at once</value>
   <data name="WorldForm_CameraRollRight" xml:space="preserve">
     <value>Roll &amp;right|Roll the camera to the right|Shift+^PgDn</value>
   </data>
-  <data name="SignalsForm_WaveTypeNoise" xml:space="preserve">
-    <value>&amp;Noise|Random aperiodic noise
-("frequency" refers to the number of discrete samples per second)</value>
-  </data>
   <data name="WorldForm_EditSelectAll" xml:space="preserve">
     <value>Select &amp;all|Select all traces</value>
   </data>
