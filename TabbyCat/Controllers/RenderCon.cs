@@ -181,7 +181,7 @@
                 GL.UseProgram(ProgramID); // Start Shader
                 ValidateCameraView();
                 ValidateProjection();
-                LoadSignals();
+                LoadParameters();
                 for (int traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
                 {
                     var trace = Scene.Traces[traceIndex];
@@ -321,9 +321,7 @@
 
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
 
-        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
-
-        private void LoadSignals()
+        private void LoadParameters() // Time and AC/DC signals.
         {
             var time = Clock.VirtualSecondsElapsed;
             LoadFloat(Loc_TimeValue, time);
@@ -333,6 +331,8 @@
                 LoadFloat(Loc_Signals[index], signal.GetValueAt(time));
             }
         }
+
+        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
 
         private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
 
