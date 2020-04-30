@@ -1,9 +1,2 @@
 ﻿layout (location = 0) in vec3 position;
 out vec3 colour;
-
-uniform float timeValue;
-uniform int traceNumber; // Starts at 1
-uniform mat4
-  transform,
-  cameraView,
-  projection;

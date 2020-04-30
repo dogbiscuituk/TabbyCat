@@ -45,20 +45,7 @@
             }
         }
 
-        protected internal virtual bool Run(ICommand command)
-        {
-            if (Updating)
-                return false;
-            Updating = true;
-            try
-            {
-                return CommandCon.Run(command);
-            }
-            finally
-            {
-                Updating = false;
-            }
-        }
+        protected internal virtual bool Run(ICommand command) => CommandCon.Run(command);
 
         // Protected methods
 

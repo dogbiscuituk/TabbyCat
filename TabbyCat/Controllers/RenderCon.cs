@@ -56,6 +56,8 @@
             Loc_TraceNumber,
             Loc_Transform;
 
+        private List<int> Loc_Signals = new List<int>();
+
         private readonly long[] Ticks = new long[64];
 
         private StringBuilder GpuLog;
@@ -179,7 +181,7 @@
                 GL.UseProgram(ProgramID); // Start Shader
                 ValidateCameraView();
                 ValidateProjection();
-                LoadTimeValue();
+                LoadSignals();
                 for (int traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
                 {
                     var trace = Scene.Traces[traceIndex];
@@ -293,6 +295,16 @@
             DeleteShader(ref ComputeShaderID);
         }
 
+        private string GetSignalScript()
+        {
+            var script = new StringBuilder();
+            script.Append("uniform float timeValue");
+            foreach (var signal in Scene.Signals)
+                script.AppendFormat(CultureInfo.CurrentCulture, ", {0}", signal.Name);
+            script.Append(";");
+            return script.ToString();
+        }
+
         private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
 
         private void GetUniformLocations()
@@ -302,13 +314,25 @@
             Loc_TimeValue = GetUniformLocation("timeValue");
             Loc_TraceNumber = GetUniformLocation("traceNumber");
             Loc_Transform = GetUniformLocation("transform");
+            Loc_Signals.Clear();
+            foreach (var signal in Scene.Signals)
+                Loc_Signals.Add(GetUniformLocation(signal.Name));
         }
 
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
 
         private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
 
-        private void LoadTimeValue() => LoadFloat(Loc_TimeValue, Clock.VirtualSecondsElapsed);
+        private void LoadSignals()
+        {
+            var time = Clock.VirtualSecondsElapsed;
+            LoadFloat(Loc_TimeValue, time);
+            for (int index = 0; index < Scene.Signals.Count; index++)
+            {
+                var signal = Scene.Signals[index];
+                LoadFloat(Loc_Signals[index], signal.GetValueAt(time));
+            }
+        }
 
         private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
 
@@ -364,12 +388,12 @@
                 GL.LinkProgram(ProgramID);
                 GL.ValidateProgram(ProgramID);
                 Log(GL.GetProgramInfoLog(ProgramID));
-                GetUniformLocations();
             }
             DeleteShaders();
             Log("End of log.");
             Scene.GPULog = GpuLog.ToString().TrimEnd();
             GpuLog = null;
+            GetUniformLocations();
             ProgramCompiled = true;
         }
 
@@ -410,6 +434,7 @@
                 case PropertyNames.SceneGeometry:
                 case PropertyNames.SceneFragment:
                 case PropertyNames.SceneCompute:
+                case PropertyNames.Signals:
                 case PropertyNames.Traces:
                 case PropertyNames.TraceVertex:
                 case PropertyNames.TraceTessControl:
@@ -440,6 +465,7 @@
         public string GetScript(ShaderType shaderType)
         {
             var version = Scene.GLTargetVersion;
+            var signals = GetSignalScript();
             var sceneScript = Scene.GetScript(shaderType);
             var traceScripts = string.Concat(Scene.Traces.Select(
                 p => string.Format(
@@ -461,6 +487,7 @@
                     CultureInfo.InvariantCulture,
                     Resources.Format_Scene,
                     version,
+                    signals,
                     Tokens.BeginScene,
                     sceneScript,
                     Tokens.EndScene,

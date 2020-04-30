@@ -1,15 +1,19 @@
 ﻿#version {0}
  
+uniform int traceNumber;
 {1}
+uniform mat4 transform, cameraView, projection;
  
 {2}
  
 {3}
  
-{4}void main()
+{4}
+ 
+{5}void main()
 {{
   switch (traceNumber)
   {{
-{5}    default: break;
+{6}    default: break;
   }}
 }}
