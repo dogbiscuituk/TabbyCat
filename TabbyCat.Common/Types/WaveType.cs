@@ -6,7 +6,7 @@
         Sine,
         Square,
         Triangle,
-        Sawtooth,
-        ReverseSawtooth
+        RampUp,
+        RampDown
     }
 }

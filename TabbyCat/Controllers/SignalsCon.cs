@@ -164,8 +164,8 @@
             Init(_SignalsForm.WaveTypeSine, WaveType.Sine);
             Init(_SignalsForm.WaveTypeSquare, WaveType.Square);
             Init(_SignalsForm.WaveTypeTriangle, WaveType.Triangle);
-            Init(_SignalsForm.WaveTypeSawtooth, WaveType.Sawtooth);
-            Init(_SignalsForm.WaveTypeReverseSawtooth, WaveType.ReverseSawtooth);
+            Init(_SignalsForm.WaveTypeSawtooth, WaveType.RampUp);
+            Init(_SignalsForm.WaveTypeReverseSawtooth, WaveType.RampDown);
             AppCon.InitControlTheme(Toolbar);
             return _SignalsForm;
         }

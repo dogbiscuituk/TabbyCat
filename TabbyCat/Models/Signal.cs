@@ -48,9 +48,9 @@
                 case WaveType.Triangle:
                     var t = 4 * time;
                     return t < 1 ? t : t < 3 ? 2 - t : t - 4;
-                case WaveType.Sawtooth:
+                case WaveType.RampUp:
                     return 2 * time - 1;
-                case WaveType.ReverseSawtooth:
+                case WaveType.RampDown:
                     return 1 - 2 * time;
                 default:
                     return 0;

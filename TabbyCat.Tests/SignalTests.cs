@@ -13,10 +13,10 @@
         public void TestGetValueConstant(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.Constant, amplitude, frequency, time, expected);
 
         [TestCaseSource(typeof(SingalTestData), "ReverseSawtoothTestCases")]
-        public void TestGetValueReverseSawtooth(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.ReverseSawtooth, amplitude, frequency, time, expected);
+        public void TestGetValueReverseSawtooth(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.RampDown, amplitude, frequency, time, expected);
 
         [TestCaseSource(typeof(SingalTestData), "SawtoothTestCases")]
-        public void TestGetValueSawtooth(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.Sawtooth, amplitude, frequency, time, expected);
+        public void TestGetValueSawtooth(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.RampUp, amplitude, frequency, time, expected);
 
         [TestCaseSource(typeof(SingalTestData), "SineTestCases")]
         public void TestGetValueSine(float amplitude, float frequency, float time, float expected) => TestGetValue(WaveType.Sine, amplitude, frequency, time, expected);
