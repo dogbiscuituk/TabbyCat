@@ -37,8 +37,8 @@
             this.WaveTypeSine = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeSquare = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeTriangle = new System.Windows.Forms.ToolStripMenuItem();
-            this.WaveTypeSawtooth = new System.Windows.Forms.ToolStripMenuItem();
-            this.WaveTypeReverseSawtooth = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeRampUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.WaveTypeRampDown = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteAllButton = new System.Windows.Forms.ToolStripButton();
             this.AmplitudeLabel = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
@@ -108,8 +108,8 @@
             this.WaveTypeSine,
             this.WaveTypeSquare,
             this.WaveTypeTriangle,
-            this.WaveTypeSawtooth,
-            this.WaveTypeReverseSawtooth});
+            this.WaveTypeRampUp,
+            this.WaveTypeRampDown});
             this.AddButton.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
             this.AddButton.ImageTransparentColor = System.Drawing.Color.White;
             this.AddButton.Margin = new System.Windows.Forms.Padding(0);
@@ -148,21 +148,21 @@
             this.WaveTypeTriangle.Size = new System.Drawing.Size(180, 22);
             this.WaveTypeTriangle.Text = "Triangle";
             // 
-            // WaveTypeSawtooth
+            // WaveTypeRampUp
             // 
-            this.WaveTypeSawtooth.Image = global::TabbyCat.Properties.Resources.WaveType_RampUp;
-            this.WaveTypeSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeSawtooth.Name = "WaveTypeSawtooth";
-            this.WaveTypeSawtooth.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeSawtooth.Text = "Sawtooth";
+            this.WaveTypeRampUp.Image = global::TabbyCat.Properties.Resources.WaveType_RampUp;
+            this.WaveTypeRampUp.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeRampUp.Name = "WaveTypeRampUp";
+            this.WaveTypeRampUp.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeRampUp.Text = "Ramp up";
             // 
-            // WaveTypeReverseSawtooth
+            // WaveTypeReverseRampDown
             // 
-            this.WaveTypeReverseSawtooth.Image = global::TabbyCat.Properties.Resources.WaveType_RampDown;
-            this.WaveTypeReverseSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeReverseSawtooth.Name = "WaveTypeReverseSawtooth";
-            this.WaveTypeReverseSawtooth.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeReverseSawtooth.Text = "Reverse sawtooth";
+            this.WaveTypeRampDown.Image = global::TabbyCat.Properties.Resources.WaveType_RampDown;
+            this.WaveTypeRampDown.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeRampDown.Name = "WaveTypeRampDown";
+            this.WaveTypeRampDown.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeRampDown.Text = "Ramp down";
             // 
             // DeleteAllButton
             // 
@@ -218,7 +218,7 @@
         public System.Windows.Forms.ToolStripMenuItem WaveTypeSine;
         public System.Windows.Forms.ToolStripMenuItem WaveTypeSquare;
         public System.Windows.Forms.ToolStripMenuItem WaveTypeTriangle;
-        public System.Windows.Forms.ToolStripMenuItem WaveTypeSawtooth;
-        public System.Windows.Forms.ToolStripMenuItem WaveTypeReverseSawtooth;
+        public System.Windows.Forms.ToolStripMenuItem WaveTypeRampUp;
+        public System.Windows.Forms.ToolStripMenuItem WaveTypeRampDown;
     }
 }
