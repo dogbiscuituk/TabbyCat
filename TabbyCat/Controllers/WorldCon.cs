@@ -390,7 +390,7 @@
 
         private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
 
-        internal void ShowOpenGLSLBook() => $"{GLSLUrl}".Launch();
+        internal void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
 
         private void UpdateFramesPerSecond()
         {

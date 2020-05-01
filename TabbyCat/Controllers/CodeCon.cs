@@ -201,7 +201,7 @@
 
         private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
 
-        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => e.Link.LinkData.ToString().Launch();
+        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LaunchBrowser(e.Link.LinkData.ToString());
 
         private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) => e.Value = LookupParameterValue(e.Name);
 

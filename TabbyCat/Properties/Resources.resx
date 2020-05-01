@@ -1019,4 +1019,12 @@ The value of a constant DC signal.</value>
   <data name="SignalsForm_NameLabel" xml:space="preserve">
     <value>Name|The name given to this signal in code</value>
   </data>
+  <data name="Text_LaunchCaption" xml:space="preserve">
+    <value>Browse confirmation</value>
+  </data>
+  <data name="Text_LaunchMessage" xml:space="preserve">
+    <value>This will open the following page in a new browser window:
+
+{0}</value>
+  </data>
 </root>

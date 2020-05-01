@@ -3,9 +3,11 @@
     using Commands;
     using Common.Types;
     using Controls;
+    using Jmk.Common;
     using Models;
     using OpenTK;
     using OpenTK.Graphics;
+    using Properties;
     using System;
     using System.Globalization;
     using System.Linq;
@@ -84,6 +86,18 @@
             Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
         protected virtual void UpdateProperties(params string[] propertyNames) { }
+
+        // Protected static methods
+
+        protected static void LaunchBrowser(string path)
+        {
+            if (MessageBox.Show(
+                string.Format(CultureInfo.CurrentCulture, Resources.Text_LaunchMessage, path),
+                Resources.Text_LaunchCaption,
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information) == DialogResult.OK)
+                path.Launch();
+        }
 
         // Private static methods
 

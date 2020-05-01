@@ -1179,17 +1179,21 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to #version {0}
         /// 
+        ///uniform int traceNumber;
         ///{1}
+        ///uniform mat4 transform, cameraView, projection;
         /// 
         ///{2}
         /// 
         ///{3}
         /// 
-        ///{4}void main()
+        ///{4}
+        /// 
+        ///{5}void main()
         ///{{
         ///  switch (traceNumber)
         ///  {{
-        ///{5}    default: break;
+        ///{6}    default: break;
         ///  }}
         ///}}.
         /// </summary>
@@ -1727,10 +1731,7 @@ namespace TabbyCat.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to in vec3 colour;
-        ///out vec4 FragColor;
-        ///
-        ///uniform float timeValue;
-        ///uniform int traceNumber; // Starts at 1.
+        ///out vec4 FragColor;.
         /// </summary>
         public static string Scene_FragmentShader {
             get {
@@ -1767,14 +1768,7 @@ namespace TabbyCat.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to layout (location = 0) in vec3 position;
-        ///out vec3 colour;
-        ///
-        ///uniform float timeValue;
-        ///uniform int traceNumber; // Starts at 1
-        ///uniform mat4
-        ///  transform,
-        ///  cameraView,
-        ///  projection;.
+        ///out vec3 colour;.
         /// </summary>
         public static string Scene_VertexShader {
             get {
@@ -2137,6 +2131,26 @@ namespace TabbyCat.Properties {
         public static string Text_GraphicsModeIndexFormat {
             get {
                 return ResourceManager.GetString("Text_GraphicsModeIndexFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse confirmation.
+        /// </summary>
+        public static string Text_LaunchCaption {
+            get {
+                return ResourceManager.GetString("Text_LaunchCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will open the following page in a new browser window:
+        ///
+        ///{0}.
+        /// </summary>
+        public static string Text_LaunchMessage {
+            get {
+                return ResourceManager.GetString("Text_LaunchMessage", resourceCulture);
             }
         }
         
