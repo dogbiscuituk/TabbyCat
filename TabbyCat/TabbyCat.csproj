@@ -523,6 +523,12 @@
     <None Include="Resources\WaveTypeTriangle1.png" />
     <None Include="Resources\WaveTypeSawtooth.png" />
     <None Include="Resources\WaveTypeReverseSawtooth.png" />
+    <None Include="Resources\WaveType_Constant.png" />
+    <None Include="Resources\WaveType_Sine.png" />
+    <None Include="Resources\WaveType_Square.png" />
+    <None Include="Resources\WaveType_Triangle.png" />
+    <None Include="Resources\WaveType_RampUp.png" />
+    <None Include="Resources\WaveType_RampDown.png" />
     <Content Include="Snippets\Curve_VertexFormula.txt" />
     <Content Include="Snippets\Scene_ComputeShader.txt" />
     <Content Include="Snippets\Scene_FragmentShader.txt" />

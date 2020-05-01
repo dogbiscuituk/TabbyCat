@@ -33,14 +33,14 @@
             this.FrequencyLabel = new System.Windows.Forms.Label();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.AddButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.DeleteAllButton = new System.Windows.Forms.ToolStripButton();
-            this.AmplitudeLabel = new System.Windows.Forms.Label();
             this.WaveTypeSlider = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeSine = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeSquare = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeTriangle = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeSawtooth = new System.Windows.Forms.ToolStripMenuItem();
             this.WaveTypeReverseSawtooth = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteAllButton = new System.Windows.Forms.ToolStripButton();
+            this.AmplitudeLabel = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
             this.Toolbar.SuspendLayout();
             this.SuspendLayout();
@@ -75,13 +75,13 @@
             this.NameLabel.Text = "Name";
             this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // FrequencyLabel
             // 
             this.FrequencyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencyLabel.Location = new System.Drawing.Point(179, 0);
+            this.FrequencyLabel.Location = new System.Drawing.Point(158, 0);
             this.FrequencyLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.FrequencyLabel.Name = "label1";
-            this.FrequencyLabel.Size = new System.Drawing.Size(63, 25);
+            this.FrequencyLabel.Name = "FrequencyLabel";
+            this.FrequencyLabel.Size = new System.Drawing.Size(53, 25);
             this.FrequencyLabel.TabIndex = 5;
             this.FrequencyLabel.Text = "Hz";
             this.FrequencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,10 +93,10 @@
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddButton,
             this.DeleteAllButton});
-            this.Toolbar.Location = new System.Drawing.Point(242, 0);
+            this.Toolbar.Location = new System.Drawing.Point(211, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Padding = new System.Windows.Forms.Padding(0);
-            this.Toolbar.Size = new System.Drawing.Size(58, 25);
+            this.Toolbar.Size = new System.Drawing.Size(89, 25);
             this.Toolbar.TabIndex = 3;
             // 
             // AddButton
@@ -116,6 +116,54 @@
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(32, 25);
             // 
+            // WaveTypeSlider
+            // 
+            this.WaveTypeSlider.Image = global::TabbyCat.Properties.Resources.WaveType_Constant;
+            this.WaveTypeSlider.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSlider.Name = "WaveTypeSlider";
+            this.WaveTypeSlider.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSlider.Text = "Slider";
+            // 
+            // WaveTypeSine
+            // 
+            this.WaveTypeSine.Image = global::TabbyCat.Properties.Resources.WaveType_Sine;
+            this.WaveTypeSine.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSine.Name = "WaveTypeSine";
+            this.WaveTypeSine.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSine.Text = "Sine";
+            // 
+            // WaveTypeSquare
+            // 
+            this.WaveTypeSquare.Image = global::TabbyCat.Properties.Resources.WaveType_Square;
+            this.WaveTypeSquare.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSquare.Name = "WaveTypeSquare";
+            this.WaveTypeSquare.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSquare.Text = "Square";
+            // 
+            // WaveTypeTriangle
+            // 
+            this.WaveTypeTriangle.Image = global::TabbyCat.Properties.Resources.WaveType_Triangle;
+            this.WaveTypeTriangle.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeTriangle.Name = "WaveTypeTriangle";
+            this.WaveTypeTriangle.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeTriangle.Text = "Triangle";
+            // 
+            // WaveTypeSawtooth
+            // 
+            this.WaveTypeSawtooth.Image = global::TabbyCat.Properties.Resources.WaveType_RampUp;
+            this.WaveTypeSawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeSawtooth.Name = "WaveTypeSawtooth";
+            this.WaveTypeSawtooth.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSawtooth.Text = "Sawtooth";
+            // 
+            // WaveTypeReverseSawtooth
+            // 
+            this.WaveTypeReverseSawtooth.Image = global::TabbyCat.Properties.Resources.WaveType_RampDown;
+            this.WaveTypeReverseSawtooth.ImageTransparentColor = System.Drawing.Color.White;
+            this.WaveTypeReverseSawtooth.Name = "WaveTypeReverseSawtooth";
+            this.WaveTypeReverseSawtooth.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeReverseSawtooth.Text = "Reverse sawtooth";
+            // 
             // DeleteAllButton
             // 
             this.DeleteAllButton.BackColor = System.Drawing.SystemColors.Control;
@@ -132,58 +180,10 @@
             this.AmplitudeLabel.Location = new System.Drawing.Point(50, 0);
             this.AmplitudeLabel.Margin = new System.Windows.Forms.Padding(0);
             this.AmplitudeLabel.Name = "AmplitudeLabel";
-            this.AmplitudeLabel.Size = new System.Drawing.Size(129, 25);
+            this.AmplitudeLabel.Size = new System.Drawing.Size(108, 25);
             this.AmplitudeLabel.TabIndex = 4;
             this.AmplitudeLabel.Text = "Amplitude";
             this.AmplitudeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Slider
-            // 
-            this.WaveTypeSlider.Image = global::TabbyCat.Properties.Resources.WaveTypeDC;
-            this.WaveTypeSlider.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeSlider.Name = "Slider";
-            this.WaveTypeSlider.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeSlider.Text = "Slider";
-            // 
-            // Sine
-            // 
-            this.WaveTypeSine.Image = global::TabbyCat.Properties.Resources.WaveTypeSine;
-            this.WaveTypeSine.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeSine.Name = "Sine";
-            this.WaveTypeSine.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeSine.Text = "Sine";
-            // 
-            // Square
-            // 
-            this.WaveTypeSquare.Image = global::TabbyCat.Properties.Resources.WaveTypeSquare;
-            this.WaveTypeSquare.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeSquare.Name = "Square";
-            this.WaveTypeSquare.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeSquare.Text = "Square";
-            // 
-            // Triangle
-            // 
-            this.WaveTypeTriangle.Image = global::TabbyCat.Properties.Resources.WaveTypeTriangle;
-            this.WaveTypeTriangle.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeTriangle.Name = "Triangle";
-            this.WaveTypeTriangle.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeTriangle.Text = "Triangle";
-            // 
-            // Sawtooth
-            // 
-            this.WaveTypeSawtooth.Image = global::TabbyCat.Properties.Resources.WaveTypeSawtooth2;
-            this.WaveTypeSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeSawtooth.Name = "Sawtooth";
-            this.WaveTypeSawtooth.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeSawtooth.Text = "Sawtooth";
-            // 
-            // ReverseSawtooth
-            // 
-            this.WaveTypeReverseSawtooth.Image = global::TabbyCat.Properties.Resources.WaveTypeReverseSawtooth1;
-            this.WaveTypeReverseSawtooth.ImageTransparentColor = System.Drawing.Color.White;
-            this.WaveTypeReverseSawtooth.Name = "ReverseSawtooth";
-            this.WaveTypeReverseSawtooth.Size = new System.Drawing.Size(180, 22);
-            this.WaveTypeReverseSawtooth.Text = "Reverse sawtooth";
             // 
             // SignalsForm
             // 
