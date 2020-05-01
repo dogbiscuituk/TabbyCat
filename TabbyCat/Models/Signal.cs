@@ -38,7 +38,7 @@
                 return 1;
             time *= Frequency;
             time -= (float)Math.Floor(time);
-            //time -= (float)Math.Floor(time *= Frequency);
+            float t;
             switch (WaveType)
             {
                 case WaveType.Sine:
@@ -46,12 +46,14 @@
                 case WaveType.Square:
                     return time < 0.5 ? +1 : -1;
                 case WaveType.Triangle:
-                    var t = 4 * time;
+                    t = 4 * time;
                     return t < 1 ? t : t < 3 ? 2 - t : t - 4;
                 case WaveType.RampUp:
-                    return 2 * time - 1;
+                    t = 2 * time;
+                    return t < 1 ? t : t - 2;
                 case WaveType.RampDown:
-                    return 1 - 2 * time;
+                    t = 2 * time;
+                    return t < 1 ? -t : 2 - t;
                 default:
                     return 0;
             }

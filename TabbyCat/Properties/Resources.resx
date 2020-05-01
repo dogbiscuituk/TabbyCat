@@ -396,8 +396,8 @@ Add a new curve to this scene|F2</value>
     <value>&amp;Left|Move the camera left while
 keeping it pointed at an object|^Left</value>
   </data>
-  <data name="SignalsForm_WaveTypeSawtooth" xml:space="preserve">
-    <value>Sa&amp;wtooth|Sawtooth wave</value>
+  <data name="SignalsForm_WaveTypeRampUp" xml:space="preserve">
+    <value>Ramp up|Sawtooth wave</value>
   </data>
   <data name="WorldForm_CameraReset" xml:space="preserve">
     <value>&amp;Reset|Return the camera to its default position &amp; direction, 
@@ -555,8 +555,8 @@ Add a new surface to this scene|F3</value>
   <data name="OptionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OptionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SignalsForm_WaveTypeReverseSawtooth" xml:space="preserve">
-    <value>&amp;Reverse sawtooth|Reverse sawtooth wave</value>
+  <data name="SignalsForm_WaveTypeRampDown" xml:space="preserve">
+    <value>Ramp down|Reverse sawtooth wave</value>
   </data>
   <data name="Scene_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -656,7 +656,7 @@ Select the checkbox to adjust the three values at once</value>
     <value>|The minimum value of y</value>
   </data>
   <data name="SignalsForm_WaveTypeSlider" xml:space="preserve">
-    <value>&amp;Constant|Constant value</value>
+    <value>&amp;Constant|Constant (adjustable) value</value>
   </data>
   <data name="WorldForm_CameraMenu" xml:space="preserve">
     <value>&amp;Camera</value>

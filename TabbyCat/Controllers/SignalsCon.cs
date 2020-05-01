@@ -112,8 +112,8 @@
             Localize(Resources.SignalsForm_WaveTypeSine, SignalsForm.WaveTypeSine);
             Localize(Resources.SignalsForm_WaveTypeSquare, SignalsForm.WaveTypeSquare);
             Localize(Resources.SignalsForm_WaveTypeTriangle, SignalsForm.WaveTypeTriangle);
-            Localize(Resources.SignalsForm_WaveTypeSawtooth, SignalsForm.WaveTypeRampUp);
-            Localize(Resources.SignalsForm_WaveTypeReverseSawtooth, SignalsForm.WaveTypeRampDown);
+            Localize(Resources.SignalsForm_WaveTypeRampUp, SignalsForm.WaveTypeRampUp);
+            Localize(Resources.SignalsForm_WaveTypeRampDown, SignalsForm.WaveTypeRampDown);
             Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 

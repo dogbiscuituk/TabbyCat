@@ -34,15 +34,15 @@
         {
             get
             {
-                yield return new TestCaseData(1, 1, 0 / 8f, 1);
-                yield return new TestCaseData(2, 1, 1 / 8f, 1.5f);
-                yield return new TestCaseData(3, 1, 2 / 8f, 1.5f);
-                yield return new TestCaseData(4, 1, 3 / 8f, 1);
-                yield return new TestCaseData(5, 1, 4 / 8f, 0);
-                yield return new TestCaseData(6, 2, 5 / 8f / 2, -1.5f);
-                yield return new TestCaseData(7, 3, 6 / 8f / 3, -3.5f);
-                yield return new TestCaseData(8, 4, 7 / 8f / 4, -6);
-                yield return new TestCaseData(9, 5, 8 / 8f / 5, 9);
+                yield return new TestCaseData(1, 1, 0 / 8f, 0);
+                yield return new TestCaseData(2, 1, 1 / 8f, -0.5f);
+                yield return new TestCaseData(3, 1, 2 / 8f, -1.5f);
+                yield return new TestCaseData(4, 1, 3 / 8f, -3);
+                yield return new TestCaseData(5, 1, 4 / 8f, 5);
+                yield return new TestCaseData(6, 2, 5 / 8f / 2, 4.5f);
+                yield return new TestCaseData(7, 3, 6 / 8f / 3, 3.5f);
+                yield return new TestCaseData(8, 4, 7 / 8f / 4, 2);
+                yield return new TestCaseData(9, 5, 8 / 8f / 5, 0);
             }
         }
 
@@ -54,15 +54,15 @@
         {
             get
             {
-                yield return new TestCaseData(1, 1, 0 / 8f, -1);
-                yield return new TestCaseData(2, 1, 1 / 8f, -1.5f);
-                yield return new TestCaseData(3, 1, 2 / 8f, -1.5f);
-                yield return new TestCaseData(4, 1, 3 / 8f, -1);
-                yield return new TestCaseData(5, 1, 4 / 8f, 0);
-                yield return new TestCaseData(6, 2, 5 / 8f / 2, 1.5f);
-                yield return new TestCaseData(7, 3, 6 / 8f / 3, 3.5f);
-                yield return new TestCaseData(8, 4, 7 / 8f / 4, 6);
-                yield return new TestCaseData(9, 5, 8 / 8f / 5, -9);
+                yield return new TestCaseData(1, 1, 0 / 8f, 0);
+                yield return new TestCaseData(2, 1, 1 / 8f, 0.5f);
+                yield return new TestCaseData(3, 1, 2 / 8f, 1.5f);
+                yield return new TestCaseData(4, 1, 3 / 8f, 3);
+                yield return new TestCaseData(5, 1, 4 / 8f, -5);
+                yield return new TestCaseData(6, 2, 5 / 8f / 2, -4.5f);
+                yield return new TestCaseData(7, 3, 6 / 8f / 3, -3.5f);
+                yield return new TestCaseData(8, 4, 7 / 8f / 4, -2);
+                yield return new TestCaseData(9, 5, 8 / 8f / 5, 0);
             }
         }
 

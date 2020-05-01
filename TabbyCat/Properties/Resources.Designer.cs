@@ -2009,20 +2009,20 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Reverse sawtooth|Reverse sawtooth wave.
+        ///   Looks up a localized string similar to Ramp down|Reverse sawtooth wave.
         /// </summary>
-        public static string SignalsForm_WaveTypeReverseSawtooth {
+        public static string SignalsForm_WaveTypeRampDown {
             get {
-                return ResourceManager.GetString("SignalsForm_WaveTypeReverseSawtooth", resourceCulture);
+                return ResourceManager.GetString("SignalsForm_WaveTypeRampDown", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sa&amp;wtooth|Sawtooth wave.
+        ///   Looks up a localized string similar to Ramp up|Sawtooth wave.
         /// </summary>
-        public static string SignalsForm_WaveTypeSawtooth {
+        public static string SignalsForm_WaveTypeRampUp {
             get {
-                return ResourceManager.GetString("SignalsForm_WaveTypeSawtooth", resourceCulture);
+                return ResourceManager.GetString("SignalsForm_WaveTypeRampUp", resourceCulture);
             }
         }
         
@@ -2036,7 +2036,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Constant|Constant value.
+        ///   Looks up a localized string similar to &amp;Constant|Constant (adjustable) value.
         /// </summary>
         public static string SignalsForm_WaveTypeSlider {
             get {
