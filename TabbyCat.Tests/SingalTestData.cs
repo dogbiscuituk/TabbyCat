@@ -27,10 +27,10 @@
         }
 
         /// <summary>
-        /// Test data for case WaveType ReverseSawtooth.
+        /// Test data for case WaveType RampDown.
         /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
         /// </summary>
-        public static IEnumerable ReverseSawtoothTestCases
+        public static IEnumerable RampDownTestCases
         {
             get
             {
@@ -47,10 +47,10 @@
         }
 
         /// <summary>
-        /// Test data for case WaveType Sawtooth.
+        /// Test data for case WaveType RampUp.
         /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
         /// </summary>
-        public static IEnumerable SawtoothTestCases
+        public static IEnumerable RampUpTestCases
         {
             get
             {
