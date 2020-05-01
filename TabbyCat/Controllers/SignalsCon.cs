@@ -47,6 +47,12 @@
 
         // Internal methods
 
+        internal void Clear()
+        {
+            for (var index = SignalCons.Count - 1; index >= 0; index--)
+                RemoveAt(index);
+        }
+
         internal void InsertAt(int index)
         {
             var signal = Scene.Signals[index];
@@ -58,6 +64,13 @@
             SignalsForm.Controls.Add(signalEdit);
             signalEdit.BringToFront();
             newSignalCon.Connect(true);
+        }
+
+        internal void Load()
+        {
+            Clear();
+            for (var index = 0; index < Scene.Signals.Count; index++)
+                InsertAt(index);
         }
 
         internal void RemoveAt(int index)

@@ -221,21 +221,6 @@
             new ColourCon().AddControls(ScenePropertiesEdit.cbBackground);
         }
 
-        protected internal override bool Run(ICommand command)
-        {
-            if (!Updating)
-                return false;
-            Updating = true;
-            try
-            {
-                return base.Run(command);
-            }
-            finally
-            {
-                Updating = false;
-            }
-        }
-
         private void UpdateCameraFocus()
         {
             ScenePropertiesEdit.seCameraPitch.Value = (decimal)Scene.Camera.Focus.X;

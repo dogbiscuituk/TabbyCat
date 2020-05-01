@@ -120,12 +120,7 @@
             }
         }
 
-        protected override void ClearDocument()
-        {
-            CommandCon.Clear();
-            Scene.Clear();
-            WorldCon.UpdateAllProperties();
-        }
+        protected override void ClearDocument() => OnClear();
 
         protected override bool LoadFromStream(Stream stream)
         {
@@ -223,6 +218,14 @@
                 worldCon.JsonCon.FilePath = string.Empty;
         }
 
+        private void OnClear()
+        {
+            CommandCon.Clear();
+            Scene.Clear();
+            SignalsCon.Clear();
+            Reset();
+        }
+
         private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.FilePath))
@@ -239,8 +242,8 @@
             EndUpdate();
             WorldCon.ConnectCons(true);
             SceneCon.RecreateSceneControl();
-            SetDefaultCamera();
-            UpdateAllProperties();
+            SignalsCon.Load();
+            Reset();
         }
 
         private void OnSave()
@@ -248,8 +251,7 @@
             BeginUpdate();
             CommandCon.Save();
             EndUpdate();
-            SetDefaultCamera();
-            UpdateAllProperties();
+            Reset();
         }
 
         private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File) => OpenFile(JsonCon.SelectFilePath(filterIndex));
@@ -261,6 +263,12 @@
             var worldCon = GetNewWorldCon();
             worldCon?.LoadFromFile(filePath);
             return worldCon;
+        }
+
+        private void Reset()
+        {
+            SetDefaultCamera();
+            WorldCon.UpdateAllProperties();
         }
 
         private bool SaveFile() => JsonCon.Save();
