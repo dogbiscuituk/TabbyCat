@@ -1,16 +1,16 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
     using Common.Types;
     using Common.Utils;
     using Controls;
     using Models;
-    using TabbyCat.Properties;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
 
     internal class SignalCon : LocalizationCon
     {
