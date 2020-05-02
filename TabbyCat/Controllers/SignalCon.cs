@@ -22,13 +22,12 @@
             Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
             NameEditor.Text = signal.Name;
-            InitSlider(AmplitudeSlider, AmpLeft, AmpRight, AmpSmall, AmpLarge, AmplitudeToGauge(signal.Amplitude));
-            InitSlider(FrequencySlider, FreqLeft, FreqRight, FreqSmall, FreqLarge, FrequencyToGauge(signal.Frequency));
+            InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
+            InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
             SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, onClick: false);
             AppCon.InitControlTheme(Toolbar);
             UpdateAllProperties();
         }
-
 
         // Internal fields
 
@@ -48,22 +47,32 @@
         // Private constants
 
         private const int
-            AmpLeft = -1024,
-            AmpRight = +1024,
-            AmpSmall = 1,
-            AmpLarge = 10,
-            FreqLeft = 0,
-            FreqRight = 1000,
-            FreqSmall = 1,
-            FreqLarge = 10;
+            AmpGaugeMin = -1024,
+            AmpGaugeMax = +1024,
+            AmpGaugeSmall = 1,
+            AmpGaugeLarge = 10,
+            AmpGaugeRange = AmpGaugeMax - AmpGaugeMin,
+            FreqGaugeMin = 0,
+            FreqGaugeMax = 1000,
+            FreqGaugeSmall = 1,
+            FreqGaugeLarge = 10,
+            FreqGaugeRange = FreqGaugeMax - FreqGaugeMin;
 
         private const double
             AmpMin = -1,
             AmpMax = +1,
-            AmpRatio = (AmpMax - AmpMin) / (AmpRight - AmpLeft),
-            FreqMin = 0,
+            FreqMin = 0.1,
             FreqMax = 100,
-            FreqRatio = (FreqMax - FreqMin) / (FreqRight - FreqLeft);
+            AmpRange = AmpMax - AmpMin,
+            AmpRatio = AmpRange / AmpGaugeRange;
+
+        // Private fields
+
+        private static readonly double
+            LogFreqMin = Math.Log(FreqMin),
+            LogFreqMax = Math.Log(FreqMax),
+            LogFreqRange = LogFreqMax - LogFreqMin,
+            LogFreqRatio = LogFreqRange / FreqGaugeRange;
 
         // Private properties
 
@@ -216,13 +225,13 @@
 
         // Private static methods
 
-        private static double AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpLeft, min: AmpMin, ratio: AmpRatio);
+        private static double AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
 
-        private static int AmplitudeToGauge(double amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpLeft, ratio: AmpRatio);
+        private static int AmplitudeToGauge(double amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
 
-        private static double FrequencyFromGauge(int gauge) => ValueFromGauge(gauge, left: FreqLeft, min: FreqMin, ratio: FreqRatio);
+        private static double FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
 
-        private static int FrequencyToGauge(double frequency) => ValueToGauge(value: frequency, min: FreqMin, left: FreqLeft, ratio: FreqRatio);
+        private static int FrequencyToGauge(double frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
 
         private static void InitSlider(TrackBar slider, int left, int right, int small, int large, int gauge)
         {
@@ -235,6 +244,10 @@
 
         private static double ValueFromGauge(int gauge, int left, double min, double ratio) => min + (gauge - left) * ratio;
 
+        private static double ValueFromGaugeLog(int gauge, int left, double min, double ratio) => Math.Exp(min + (gauge - left) * ratio);
+
         private static int ValueToGauge(double value, double min, int left, double ratio) => (int)Math.Round(left + (value - min) / ratio);
+
+        private static int ValueToGaugeLog(double value, double min, int left, double ratio) => (int)Math.Round(left + (Math.Log(value) - min) / ratio);
     }
 }

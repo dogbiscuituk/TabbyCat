@@ -24,7 +24,7 @@
         public float Amplitude { get; set; } = 0;
 
         [DefaultValue(0)]
-        public float Frequency { get; set; } = 0;
+        public float Frequency { get; set; } = 1;
 
         // Public methods
 
