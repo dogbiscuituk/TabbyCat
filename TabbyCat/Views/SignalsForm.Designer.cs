@@ -110,7 +110,7 @@
             this.WaveTypeTriangle,
             this.WaveTypeRampUp,
             this.WaveTypeRampDown});
-            this.AddButton.Image = global::TabbyCat.Properties.Resources.action_add_16xLG;
+            this.AddButton.Image = global::TabbyCat.Properties.Resources.AddSignal;
             this.AddButton.ImageTransparentColor = System.Drawing.Color.White;
             this.AddButton.Margin = new System.Windows.Forms.Padding(0);
             this.AddButton.Name = "AddButton";
@@ -156,7 +156,7 @@
             this.WaveTypeRampUp.Size = new System.Drawing.Size(180, 22);
             this.WaveTypeRampUp.Text = "Ramp up";
             // 
-            // WaveTypeReverseRampDown
+            // WaveTypeRampDown
             // 
             this.WaveTypeRampDown.Image = global::TabbyCat.Properties.Resources.WaveType_RampDown;
             this.WaveTypeRampDown.ImageTransparentColor = System.Drawing.Color.White;
