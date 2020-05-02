@@ -169,6 +169,12 @@
 
         // Protected methods
 
+        protected override void Localize()
+        {
+            Localize(Resources.SignalsForm_WaveType, SignalEdit.WaveTypeButton);
+            Localize(Resources.SignalsForm_DeleteButton, SignalEdit.DeleteButton);
+        }
+
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)

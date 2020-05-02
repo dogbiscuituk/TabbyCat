@@ -890,8 +890,8 @@ keeping it pointed at an object|^Down</value>
   <data name="OpenFileDialog_Title" xml:space="preserve">
     <value>Select the file to open</value>
   </data>
-  <data name="SignalsForm_WaveTypeCustom" xml:space="preserve">
-    <value>C&amp;ustom|Custom periodic waveform</value>
+  <data name="SignalsForm_WaveType" xml:space="preserve">
+    <value>|Change the waveform of this signal</value>
   </data>
   <data name="ShaderRegion_Trace" xml:space="preserve">
     <value>Trace</value>
@@ -1047,5 +1047,8 @@ Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="AddSignal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddSignal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SignalsForm_DeleteButton" xml:space="preserve">
+    <value>|Delete this signal</value>
   </data>
 </root>
