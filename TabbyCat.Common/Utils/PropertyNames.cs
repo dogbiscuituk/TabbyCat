@@ -29,7 +29,11 @@
         public const string
             Name = "Name",
             Amplitude = "Amplitude",
+            AmplitudeMaximum = "Maximum amplitude",
+            AmplitudeMinimum = "Minimum amplitude",
             Frequency = "Frequency",
+            FrequencyMaximum = "Maximum frequency",
+            FrequencyMinimum = "Minimum frequency",
             WaveType = "Wave type";
 
         /// <summary>

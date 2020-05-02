@@ -22,6 +22,7 @@
             Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
             NameEditor.Text = signal.Name;
+            InitRanges(signal);
             InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
             SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, onClick: false);
@@ -38,10 +39,14 @@
 
         protected override string[] AllProperties => new[]
         {
+            PropertyNames.Amplitude,
+            PropertyNames.AmplitudeMaximum,
+            PropertyNames.AmplitudeMinimum,
+            PropertyNames.Frequency,
+            PropertyNames.FrequencyMaximum,
+            PropertyNames.FrequencyMinimum,
             PropertyNames.Name,
             PropertyNames.WaveType,
-            PropertyNames.Amplitude,
-            PropertyNames.Frequency
         };
 
         // Private constants
@@ -58,21 +63,13 @@
             FreqGaugeLarge = 10,
             FreqGaugeRange = FreqGaugeMax - FreqGaugeMin;
 
-        private const double
-            AmpMin = -1,
-            AmpMax = +1,
-            FreqMin = 0.1,
-            FreqMax = 100,
-            AmpRange = AmpMax - AmpMin,
-            AmpRatio = AmpRange / AmpGaugeRange;
-
         // Private fields
 
-        private static readonly double
-            LogFreqMin = Math.Log(FreqMin),
-            LogFreqMax = Math.Log(FreqMax),
-            LogFreqRange = LogFreqMax - LogFreqMin,
-            LogFreqRatio = LogFreqRange / FreqGaugeRange;
+        private float
+            AmpMin,
+            AmpRatio,
+            LogFreqMin,
+            LogFreqRatio;
 
         // Private properties
 
@@ -83,13 +80,13 @@
         private ToolStrip Toolbar => SignalEdit.Toolbar;
         private ToolStripSplitButton WaveTypeButton => SignalEdit.WaveTypeButton;
 
-        private double Amplitude
+        private float Amplitude
         {
             get => AmplitudeFromGauge(AmplitudeSlider.Value);
             set => AmplitudeSlider.Value = AmplitudeToGauge(value);
         }
 
-        private double Frequency
+        private float Frequency
         {
             get => FrequencyFromGauge(FrequencySlider.Value);
             set => FrequencySlider.Value = FrequencyToGauge(value);
@@ -113,6 +110,14 @@
         private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>();
 
         // Internal methods
+
+        internal void InitRanges(Signal signal)
+        {
+            AmpMin = signal.AmplitudeMinimum;
+            AmpRatio = (signal.AmplitudeMaximum - AmpMin) / AmpGaugeRange;
+            LogFreqMin = (float)Math.Log(signal.FrequencyMinimum);
+            LogFreqRatio = (float)(Math.Log(signal.FrequencyMaximum) - LogFreqMin) / FreqGaugeRange;
+        }
 
         internal void SetWaveType(WaveType waveType)
         {
@@ -178,6 +183,12 @@
                     case PropertyNames.Frequency:
                         Frequency = Scene.Signals[Index].Frequency;
                         break;
+                    case PropertyNames.AmplitudeMaximum:
+                    case PropertyNames.AmplitudeMinimum:
+                    case PropertyNames.FrequencyMaximum:
+                    case PropertyNames.FrequencyMinimum:
+                        InitRanges(Scene.Signals[Index]);
+                        break;
                     case PropertyNames.Name:
                         NameEditor.Text = Scene.Signals[Index].Name;
                         break;
@@ -190,19 +201,27 @@
 
         // Private methods
 
+        private float AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
+
         private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
             Run(new AmplitudeCommand(Index, (float)Amplitude));
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
+        private int AmplitudeToGauge(float amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
+
         private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
+
+        private float FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
 
         private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
             Run(new FrequencyCommand(Index, (float)Frequency));
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
+
+        private int FrequencyToGauge(float frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
 
         private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new NameCommand(Index, NameEditor.Text));
 
@@ -225,14 +244,6 @@
 
         // Private static methods
 
-        private static double AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
-
-        private static int AmplitudeToGauge(double amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
-
-        private static double FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
-
-        private static int FrequencyToGauge(double frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
-
         private static void InitSlider(TrackBar slider, int left, int right, int small, int large, int gauge)
         {
             slider.Minimum = left;
@@ -242,12 +253,12 @@
             slider.Value = gauge;
         }
 
-        private static double ValueFromGauge(int gauge, int left, double min, double ratio) => min + (gauge - left) * ratio;
+        private static float ValueFromGauge(int gauge, int left, float min, float ratio) => min + (gauge - left) * ratio;
 
-        private static double ValueFromGaugeLog(int gauge, int left, double min, double ratio) => Math.Exp(min + (gauge - left) * ratio);
+        private static float ValueFromGaugeLog(int gauge, int left, float min, float ratio) => (float)Math.Exp(min + (gauge - left) * ratio);
 
-        private static int ValueToGauge(double value, double min, int left, double ratio) => (int)Math.Round(left + (value - min) / ratio);
+        private static int ValueToGauge(float value, float min, int left, float ratio) => (int)Math.Round(left + (value - min) / ratio);
 
-        private static int ValueToGaugeLog(double value, double min, int left, double ratio) => (int)Math.Round(left + (Math.Log(value) - min) / ratio);
+        private static int ValueToGaugeLog(float value, float min, int left, float ratio) => (int)Math.Round(left + (Math.Log(value) - min) / ratio);
     }
 }

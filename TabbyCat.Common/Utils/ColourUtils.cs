@@ -66,8 +66,8 @@
         /// </summary>
         /// <param name="colour">The sample colour.</param>
         /// <returns>The sample colour's Luma value.</returns>
-        public static double Luma(this Color colour) =>
-            (0.2126 * colour.R + 0.7152 * colour.G + 0.0722 * colour.B) / 255;
+        public static float Luma(this Color colour) =>
+            (0.2126f * colour.R + 0.7152f * colour.G + 0.0722f * colour.B) / 255;
 
         private static IEnumerable<Color> OrderByColourProperties(
             this IEnumerable<Color> colours, string colourProperties)

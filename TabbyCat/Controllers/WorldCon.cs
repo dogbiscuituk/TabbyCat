@@ -532,7 +532,7 @@
 
         private void RestoreWindowLayout()
         {
-            const double h = 0.28;
+            const float h = 0.28f;
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);

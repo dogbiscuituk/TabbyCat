@@ -583,7 +583,7 @@ Add a new surface to this scene|F3</value>
     <value>..\Resources\Color_fontHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SignalsForm_Frequency" xml:space="preserve">
-    <value>|Frequency = {0:f3} Hz</value>
+    <value>|Frequency = {0:f2} Hz</value>
   </data>
   <data name="Control_Trace_Stripes" xml:space="preserve">
     <value>#Stripes|The number of stripes in each dimension of the trace 

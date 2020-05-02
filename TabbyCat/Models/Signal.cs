@@ -23,8 +23,20 @@
         [DefaultValue(0)]
         public float Amplitude { get; set; } = 0;
 
+        [DefaultValue(1)]
+        public float AmplitudeMaximum { get; set; } = 1;
+
+        [DefaultValue(-1)]
+        public float AmplitudeMinimum { get; set; } = -1;
+
         [DefaultValue(0)]
         public float Frequency { get; set; } = 1;
+
+        [DefaultValue(100)]
+        public float FrequencyMaximum { get; set; } = 100;
+
+        [DefaultValue(0.1f)]
+        public float FrequencyMinimum { get; set; } = 0.1f;
 
         // Public methods
 

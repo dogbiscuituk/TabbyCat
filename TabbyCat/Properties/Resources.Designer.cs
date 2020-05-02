@@ -1955,7 +1955,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |Frequency = {0:f3} Hz.
+        ///   Looks up a localized string similar to |Frequency = {0:f2} Hz.
         /// </summary>
         public static string SignalsForm_Frequency {
             get {
