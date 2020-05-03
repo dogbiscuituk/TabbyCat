@@ -89,6 +89,15 @@
 
         // Protected static methods
 
+        protected static void InitCommonControls(Control control)
+        {
+            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
+            {
+                spinEdit.Minimum = decimal.MinValue;
+                spinEdit.Maximum = decimal.MaxValue;
+            }
+        }
+
         protected static void LaunchBrowser(string path)
         {
             if (MessageBox.Show(

@@ -24,7 +24,7 @@
             InitRanges(signal);
             InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
-            SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, onClick: false);
+            SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, ToolStripUtils.CloneOptions.None);
             AppCon.InitControlTheme(Toolbar);
             UpdateAllProperties();
         }
@@ -78,6 +78,8 @@
         private TextBox NameEditor => SignalEdit.NameEditor;
         private ToolStrip Toolbar => SignalEdit.Toolbar;
         private ToolStripSplitButton WaveTypeButton => SignalEdit.WaveTypeButton;
+        private Signal Signal => Scene.Signals[Index];
+        private ToolStripMenuItem SignalProperties => SignalEdit.SignalProperties;
 
         private float Amplitude
         {
@@ -106,7 +108,7 @@
             }
         }
 
-        private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>();
+        private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>().Where(p => p.Tag != null);
 
         // Internal methods
 
@@ -136,13 +138,14 @@
             base.Connect(connect);
             if (connect)
             {
-                AmplitudeSlider.Enter += Signal_Enter;
                 AmplitudeSlider.ValueChanged += AmplitudeSlider_ValueChanged;
+                AmplitudeSlider.Enter += Signal_Enter;
                 DeleteButton.Click += DeleteButton_Click;
                 FrequencySlider.Enter += Signal_Enter;
                 FrequencySlider.ValueChanged += FrequencySlider_ValueChanged;
                 NameEditor.Enter += Signal_Enter;
                 NameEditor.TextChanged += NameEditor_TextChanged;
+                SignalProperties.Click += SignalProperties_Click;
                 WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
@@ -158,6 +161,7 @@
                 FrequencySlider.ValueChanged -= FrequencySlider_ValueChanged;
                 NameEditor.Enter -= Signal_Enter;
                 NameEditor.TextChanged -= NameEditor_TextChanged;
+                SignalProperties.Click -= SignalProperties_Click;
                 WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
@@ -183,22 +187,22 @@
                 switch (propertyName)
                 {
                     case PropertyNames.Amplitude:
-                        Amplitude = Scene.Signals[Index].Amplitude;
+                        Amplitude = Signal.Amplitude;
                         break;
                     case PropertyNames.Frequency:
-                        Frequency = Scene.Signals[Index].Frequency;
+                        Frequency = Signal.Frequency;
                         break;
                     case PropertyNames.AmplitudeMaximum:
                     case PropertyNames.AmplitudeMinimum:
                     case PropertyNames.FrequencyMaximum:
                     case PropertyNames.FrequencyMinimum:
-                        InitRanges(Scene.Signals[Index]);
+                        InitRanges(Signal);
                         break;
                     case PropertyNames.Name:
-                        NameEditor.Text = Scene.Signals[Index].Name;
+                        NameEditor.Text = Signal.Name;
                         break;
                     case PropertyNames.WaveType:
-                        SelectedWaveType = Scene.Signals[Index].WaveType;
+                        SelectedWaveType = Signal.WaveType;
                         break;
                 }
             Updating = false;
@@ -228,9 +232,27 @@
 
         private int FrequencyToGauge(float frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
 
-        private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new NameCommand(Index, NameEditor.Text));
+        private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new SignalNameCommand(Index, NameEditor.Text));
 
         private void Signal_Enter(object sender, EventArgs e) => UpdateUI();
+
+        private void SignalProperties_Click(object sender, EventArgs e)
+        {
+            Signal signal;
+            using (var signalPropertiesCon = new SignalPropertiesCon(WorldCon))
+
+                signal = signalPropertiesCon.ShowDialog(Signal);
+            if (signal == Signal)
+                return;
+            Run(new SignalNameCommand(Index, signal.Name));
+            Run(new WaveTypeCommand(Index, signal.WaveType));
+            Run(new AmplitudeCommand(Index, signal.Amplitude));
+            Run(new AmplitudeMinimumCommand(Index, signal.AmplitudeMinimum));
+            Run(new AmplitudeMaximumCommand(Index, signal.AmplitudeMaximum));
+            Run(new FrequencyCommand(Index, signal.Frequency));
+            Run(new FrequencyMinimumCommand(Index, signal.FrequencyMinimum));
+            Run(new FrequencyMaximumCommand(Index, signal.FrequencyMaximum));
+        }
 
         private void UpdateUI() => FrequencySlider.Enabled = SelectedWaveType != WaveType.Constant;
 

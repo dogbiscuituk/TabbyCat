@@ -93,6 +93,7 @@
     <Compile Include="Controllers\CameraCon.cs" />
     <Compile Include="Controllers\ClockCon.cs" />
     <Compile Include="Controllers\FullScreenCon.cs" />
+    <Compile Include="Controllers\SignalPropertiesCon.cs" />
     <Compile Include="Controllers\SignalsCon.cs" />
     <Compile Include="Controllers\DockingCon.cs" />
     <Compile Include="Controllers\SceneCodeCon.cs" />
@@ -134,6 +135,12 @@
     </Compile>
     <Compile Include="Views\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignalPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SignalPropertiesDialog.Designer.cs">
+      <DependentUpon>SignalPropertiesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SignalsForm.cs">
       <SubType>Form</SubType>
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignalPropertiesDialog.resx">
+      <DependentUpon>SignalPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SignalsForm.resx">
       <DependentUpon>SignalsForm.cs</DependentUpon>

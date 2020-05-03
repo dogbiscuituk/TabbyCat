@@ -205,7 +205,7 @@
             ClockCon.UpdateTimeControls();
         }
 
-        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu);
+        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
 
         private void ConnectEventHandlers(bool connect)
         {

@@ -34,6 +34,8 @@
             this.FrequencySlider = new System.Windows.Forms.TrackBar();
             this.Toolbar = new Jmk.Controls.JmkToolStrip();
             this.WaveTypeButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.SignalProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmplitudeSlider)).BeginInit();
@@ -111,11 +113,25 @@
             // WaveTypeButton
             // 
             this.WaveTypeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.WaveTypeButton.Image = global::TabbyCat.Controls.Properties.Resources.WaveTypeDC;
+            this.WaveTypeButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SignalProperties,
+            this.toolStripMenuItem1});
+            this.WaveTypeButton.Image = global::TabbyCat.Controls.Properties.Resources.WaveType_Constant;
             this.WaveTypeButton.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeButton.Margin = new System.Windows.Forms.Padding(0);
             this.WaveTypeButton.Name = "WaveTypeButton";
             this.WaveTypeButton.Size = new System.Drawing.Size(32, 25);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // SignalProperties
+            // 
+            this.SignalProperties.Name = "SignalProperties";
+            this.SignalProperties.Size = new System.Drawing.Size(180, 22);
+            this.SignalProperties.Text = "Properties...";
             // 
             // DeleteButton
             // 
@@ -154,5 +170,7 @@
         public Jmk.Controls.JmkToolStrip Toolbar;
         public System.Windows.Forms.ToolStripSplitButton WaveTypeButton;
         public System.Windows.Forms.ToolStripButton DeleteButton;
+        public System.Windows.Forms.ToolStripMenuItem SignalProperties;
+        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

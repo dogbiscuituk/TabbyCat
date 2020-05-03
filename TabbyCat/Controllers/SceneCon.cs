@@ -32,7 +32,7 @@
 
         internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
-        internal void OnPropertyEdit(string propertyName, int index)
+        internal void OnPropertyEdit(string propertyName)
         {
             switch (propertyName)
             {
@@ -144,6 +144,6 @@
             RenderCon.SceneControlSuspended = true;
         }
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.PropertyName, e.Index);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.PropertyName);
     }
 }

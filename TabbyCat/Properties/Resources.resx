@@ -136,9 +136,6 @@
   <data name="CodeForm_SaveAsRTF" xml:space="preserve">
     <value>Save as RTF...</value>
   </data>
-  <data name="WaveTypeReverseSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeReverseSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="WorldForm_CameraMoveRight" xml:space="preserve">
     <value>&amp;Right|Move the camera right while
 keeping it pointed at an object|^Right</value>
@@ -212,9 +209,6 @@ keeping it pointed at an object|^Right</value>
   <data name="CodeForm_SplitNone" xml:space="preserve">
     <value>None|Revert to single editor</value>
   </data>
-  <data name="WaveTypeSine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeSine1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="WorldForm_CameraMoveBack" xml:space="preserve">
     <value>&amp;Back|Move the camera back|^PgDn</value>
   </data>
@@ -259,9 +253,6 @@ keeping it pointed at an object|^Right</value>
   </data>
   <data name="WaveType_Sine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WaveType_Sine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WaveTypeReverseSawtooth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeReverseSawtooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PrintPreviewHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PrintPreviewHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,9 +316,6 @@ keeping it pointed at an object|^Right</value>
 
 {0}</value>
   </data>
-  <data name="WaveTypeSquare" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeSquare1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="openfolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -348,9 +336,6 @@ keeping it pointed at an object|^Right</value>
   </data>
   <data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WaveTypeTriangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeTriangle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WorldForm_ViewSceneCode" xml:space="preserve">
     <value>Scene code|Show or hide the scene code editor</value>
@@ -390,9 +375,6 @@ keeping it pointed at an object|^Right</value>
   </data>
   <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="WaveTypeSawtooth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PointerHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PointerHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -617,9 +599,6 @@ Select the checkbox to adjust the three values at once</value>
   <data name="WorldForm_ViewScene" xml:space="preserve">
     <value>Scene|Show or hide the main graphics display window</value>
   </data>
-  <data name="WaveTypeSawtooth2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeSawtooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="PauseRecorderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PauseRecorderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -635,9 +614,6 @@ Select the checkbox to adjust the three values at once</value>
   <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="WaveTypeSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeSawtooth1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="WorldForm_EditDelete" xml:space="preserve">
     <value>&amp;Delete|Delete selected trace(s)</value>
   </data>
@@ -649,9 +625,6 @@ Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="SearchWebHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SearchWebHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WaveTypeRandom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeRandom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Text_GraphicsModeIndexFormat" xml:space="preserve">
     <value>mode {0}</value>
@@ -747,9 +720,6 @@ Add a new surface to this scene|F3</value>
   </data>
   <data name="WorldForm_EditRedo" xml:space="preserve">
     <value>&amp;Redo</value>
-  </data>
-  <data name="WaveTypeCustom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeCustom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WorldForm_CameraStrafeUp" xml:space="preserve">
     <value>&amp;Up|Move the camera straight up|Shift+^Up</value>
@@ -932,9 +902,6 @@ targeted by this code</value>
   </data>
   <data name="Control_Scene_Projection" xml:space="preserve">
     <value>Projection|Scene projection type</value>
-  </data>
-  <data name="WaveTypeDC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WaveTypeDC1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SignalsForm_AddButton" xml:space="preserve">
     <value>|Add a new signal to this scene</value>

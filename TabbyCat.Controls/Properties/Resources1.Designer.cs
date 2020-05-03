@@ -182,49 +182,9 @@ namespace TabbyCat.Controls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeCustom {
+        internal static System.Drawing.Bitmap WaveType_Constant {
             get {
-                object obj = ResourceManager.GetObject("WaveTypeCustom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeDC {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeDC", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeRandom {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeRandom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeReverseSawtooth {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeReverseSawtooth", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeSawtooth {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeSawtooth", resourceCulture);
+                object obj = ResourceManager.GetObject("WaveType_Constant", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -235,26 +195,6 @@ namespace TabbyCat.Controls.Properties {
         internal static System.Drawing.Bitmap WaveTypeSine {
             get {
                 object obj = ResourceManager.GetObject("WaveTypeSine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeSquare {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeSquare", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WaveTypeTriangle {
-            get {
-                object obj = ResourceManager.GetObject("WaveTypeTriangle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -24,15 +24,6 @@
             }
         }
 
-        protected void InitCommonControls(Control control)
-        {
-            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
-            {
-                spinEdit.Minimum = decimal.MinValue;
-                spinEdit.Maximum = decimal.MaxValue;
-            }
-        }
-
         protected virtual void OnSelectionEdit() { }
 
         protected void SetToolTip(Control control, string toolTip)

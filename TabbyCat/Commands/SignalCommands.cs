@@ -69,9 +69,9 @@
         { }
     }
 
-    internal class NameCommand : SignalPropertyCommand<string>
+    internal class SignalNameCommand : SignalPropertyCommand<string>
     {
-        internal NameCommand(int index, string value) : base(
+        internal SignalNameCommand(int index, string value) : base(
             index,
             PropertyNames.Name,
             value,
