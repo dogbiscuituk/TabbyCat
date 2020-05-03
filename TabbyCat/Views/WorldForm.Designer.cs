@@ -147,10 +147,10 @@
             // 
             // DockPanel
             // 
-            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(306, 234);
+            this.DockPanel.DefaultFloatWindowSize = new System.Drawing.Size(328, 288);
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DockLeftPortion = 296D;
-            this.DockPanel.DockRightPortion = 296D;
+            this.DockPanel.DockLeftPortion = 320D;
+            this.DockPanel.DockRightPortion = 320D;
             this.DockPanel.Location = new System.Drawing.Point(33, 25);
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(1551, 814);
@@ -239,19 +239,19 @@
             // tbAddCurve
             // 
             this.tbAddCurve.Name = "tbAddCurve";
-            this.tbAddCurve.Size = new System.Drawing.Size(180, 22);
+            this.tbAddCurve.Size = new System.Drawing.Size(114, 22);
             this.tbAddCurve.Text = "Curve";
             // 
             // tbAddSurface
             // 
             this.tbAddSurface.Name = "tbAddSurface";
-            this.tbAddSurface.Size = new System.Drawing.Size(180, 22);
+            this.tbAddSurface.Size = new System.Drawing.Size(114, 22);
             this.tbAddSurface.Text = "Surface";
             // 
             // tbAddVolume
             // 
             this.tbAddVolume.Name = "tbAddVolume";
-            this.tbAddVolume.Size = new System.Drawing.Size(180, 22);
+            this.tbAddVolume.Size = new System.Drawing.Size(114, 22);
             this.tbAddVolume.Text = "Volume";
             // 
             // tbUndo
@@ -768,19 +768,19 @@
             // AddCurve
             // 
             this.AddCurve.Name = "AddCurve";
-            this.AddCurve.Size = new System.Drawing.Size(180, 22);
+            this.AddCurve.Size = new System.Drawing.Size(119, 22);
             this.AddCurve.Text = "Curve";
             // 
             // AddSurface
             // 
             this.AddSurface.Name = "AddSurface";
-            this.AddSurface.Size = new System.Drawing.Size(180, 22);
+            this.AddSurface.Size = new System.Drawing.Size(119, 22);
             this.AddSurface.Text = "Surface";
             // 
             // AddVolume
             // 
             this.AddVolume.Name = "AddVolume";
-            this.AddVolume.Size = new System.Drawing.Size(180, 22);
+            this.AddVolume.Size = new System.Drawing.Size(119, 22);
             this.AddVolume.Text = "Volume";
             // 
             // CameraMenu
@@ -804,7 +804,7 @@
             this.CameraMoveForward,
             this.CameraMoveBack});
             this.CameraMove.Name = "CameraMove";
-            this.CameraMove.Size = new System.Drawing.Size(180, 22);
+            this.CameraMove.Size = new System.Drawing.Size(110, 22);
             this.CameraMove.Text = "Move";
             // 
             // CameraMoveLeft
@@ -853,7 +853,7 @@
             this.CameraRollLeft,
             this.CameraRollRight});
             this.CameraStrafe.Name = "CameraStrafe";
-            this.CameraStrafe.Size = new System.Drawing.Size(180, 22);
+            this.CameraStrafe.Size = new System.Drawing.Size(110, 22);
             this.CameraStrafe.Text = "Strafe";
             // 
             // CameraStrafeLeft
@@ -895,12 +895,12 @@
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(107, 6);
             // 
             // CameraReset
             // 
             this.CameraReset.Name = "CameraReset";
-            this.CameraReset.Size = new System.Drawing.Size(180, 22);
+            this.CameraReset.Size = new System.Drawing.Size(110, 22);
             this.CameraReset.Text = "Reset";
             // 
             // HelpMenu

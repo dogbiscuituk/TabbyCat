@@ -35,22 +35,21 @@
             // 
             this.TracePropertiesEdit.AutoScroll = true;
             this.TracePropertiesEdit.AutoSize = true;
-            this.TracePropertiesEdit.BackColor = System.Drawing.SystemColors.Control;
-            this.TracePropertiesEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TracePropertiesEdit.BackColor = System.Drawing.SystemColors.Window;
+            this.TracePropertiesEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TracePropertiesEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TracePropertiesEdit.Location = new System.Drawing.Point(0, 0);
             this.TracePropertiesEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TracePropertiesEdit.Name = "TracePropertiesEdit";
-            this.TracePropertiesEdit.Size = new System.Drawing.Size(288, 190);
+            this.TracePropertiesEdit.Size = new System.Drawing.Size(301, 286);
             this.TracePropertiesEdit.TabIndex = 0;
             // 
             // TracePropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(288, 191);
+            this.ClientSize = new System.Drawing.Size(301, 286);
             this.Controls.Add(this.TracePropertiesEdit);
             this.Name = "TracePropertiesForm";
             this.TabText = "Trace";

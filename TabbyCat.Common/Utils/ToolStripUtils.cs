@@ -10,16 +10,16 @@
         [Flags]
         public enum CloneOptions
         {
-            [Description("None of the possible options are present.")]
+            [Description("None of the available options are selected.")]
             None = 0x00,
 
-            [Description("Whether or not the destination items are cleared before the copy operation.")]
+            [Description("The destination items will be cleared before the copy operation.")]
             ClearTarget = 0x01,
 
-            [Description("Whether or not the OnClick event handlers are copied across.")]
+            [Description("Existing OnClick event handlers will be copied across.")]
             CopyClickHandler = 0x02,
 
-            [Description("All of the possible options are present.")]
+            [Description("All of the available options are selected.")]
             All = ClearTarget | CopyClickHandler,
         }
 

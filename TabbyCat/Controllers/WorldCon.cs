@@ -515,15 +515,17 @@
 
         private void RestoreWindowLayout()
         {
-            const float h = 0.28f;
+            const float
+                hTop = 0.34f,
+                hBottom = 0.35f;
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
             TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - h);
-            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, h / (1 - h));
+            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - hTop);
+            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, hBottom / (1 - hTop));
             SceneCodeForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
-            SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
+            SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, hBottom);
         }
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)

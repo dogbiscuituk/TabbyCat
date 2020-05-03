@@ -103,8 +103,6 @@
             set
             {
                 SetWaveType(value);
-                if (SelectedWaveType != value)
-                    Run(new WaveTypeCommand(Index, value));
             }
         }
 
@@ -265,7 +263,7 @@
             UpdateUI();
         }
 
-        private void WaveTypeItem_Click(object sender, EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
+        private void WaveTypeItem_Click(object sender, EventArgs e) => Run(new WaveTypeCommand(Index, (WaveType)((ToolStripItem)sender).Tag));
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 

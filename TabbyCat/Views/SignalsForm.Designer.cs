@@ -67,6 +67,7 @@
             // NameLabel
             // 
             this.NameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLabel.Location = new System.Drawing.Point(0, 0);
             this.NameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.NameLabel.Name = "NameLabel";
@@ -78,10 +79,11 @@
             // FrequencyLabel
             // 
             this.FrequencyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrequencyLabel.Location = new System.Drawing.Point(158, 0);
+            this.FrequencyLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FrequencyLabel.Location = new System.Drawing.Point(179, 0);
             this.FrequencyLabel.Margin = new System.Windows.Forms.Padding(0);
             this.FrequencyLabel.Name = "FrequencyLabel";
-            this.FrequencyLabel.Size = new System.Drawing.Size(53, 25);
+            this.FrequencyLabel.Size = new System.Drawing.Size(63, 25);
             this.FrequencyLabel.TabIndex = 5;
             this.FrequencyLabel.Text = "Hz";
             this.FrequencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,10 +95,10 @@
             this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddButton,
             this.DeleteAllButton});
-            this.Toolbar.Location = new System.Drawing.Point(211, 0);
+            this.Toolbar.Location = new System.Drawing.Point(242, 0);
             this.Toolbar.Name = "Toolbar";
             this.Toolbar.Padding = new System.Windows.Forms.Padding(0);
-            this.Toolbar.Size = new System.Drawing.Size(89, 25);
+            this.Toolbar.Size = new System.Drawing.Size(58, 25);
             this.Toolbar.TabIndex = 3;
             // 
             // AddButton
@@ -121,7 +123,7 @@
             this.WaveTypeSlider.Image = global::TabbyCat.Properties.Resources.WaveType_Constant;
             this.WaveTypeSlider.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeSlider.Name = "WaveTypeSlider";
-            this.WaveTypeSlider.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSlider.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeSlider.Text = "Slider";
             // 
             // WaveTypeSine
@@ -129,7 +131,7 @@
             this.WaveTypeSine.Image = global::TabbyCat.Properties.Resources.WaveType_Sine;
             this.WaveTypeSine.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeSine.Name = "WaveTypeSine";
-            this.WaveTypeSine.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSine.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeSine.Text = "Sine";
             // 
             // WaveTypeSquare
@@ -137,7 +139,7 @@
             this.WaveTypeSquare.Image = global::TabbyCat.Properties.Resources.WaveType_Square;
             this.WaveTypeSquare.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeSquare.Name = "WaveTypeSquare";
-            this.WaveTypeSquare.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeSquare.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeSquare.Text = "Square";
             // 
             // WaveTypeTriangle
@@ -145,7 +147,7 @@
             this.WaveTypeTriangle.Image = global::TabbyCat.Properties.Resources.WaveType_Triangle;
             this.WaveTypeTriangle.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeTriangle.Name = "WaveTypeTriangle";
-            this.WaveTypeTriangle.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeTriangle.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeTriangle.Text = "Triangle";
             // 
             // WaveTypeRampUp
@@ -153,7 +155,7 @@
             this.WaveTypeRampUp.Image = global::TabbyCat.Properties.Resources.WaveType_RampUp;
             this.WaveTypeRampUp.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeRampUp.Name = "WaveTypeRampUp";
-            this.WaveTypeRampUp.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeRampUp.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeRampUp.Text = "Ramp up";
             // 
             // WaveTypeRampDown
@@ -161,7 +163,7 @@
             this.WaveTypeRampDown.Image = global::TabbyCat.Properties.Resources.WaveType_RampDown;
             this.WaveTypeRampDown.ImageTransparentColor = System.Drawing.Color.White;
             this.WaveTypeRampDown.Name = "WaveTypeRampDown";
-            this.WaveTypeRampDown.Size = new System.Drawing.Size(180, 22);
+            this.WaveTypeRampDown.Size = new System.Drawing.Size(138, 22);
             this.WaveTypeRampDown.Text = "Ramp down";
             // 
             // DeleteAllButton
@@ -177,10 +179,11 @@
             // AmplitudeLabel
             // 
             this.AmplitudeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AmplitudeLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AmplitudeLabel.Location = new System.Drawing.Point(50, 0);
             this.AmplitudeLabel.Margin = new System.Windows.Forms.Padding(0);
             this.AmplitudeLabel.Name = "AmplitudeLabel";
-            this.AmplitudeLabel.Size = new System.Drawing.Size(108, 25);
+            this.AmplitudeLabel.Size = new System.Drawing.Size(129, 25);
             this.AmplitudeLabel.TabIndex = 4;
             this.AmplitudeLabel.Text = "Amplitude";
             this.AmplitudeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
