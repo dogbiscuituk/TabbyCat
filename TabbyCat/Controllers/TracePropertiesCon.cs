@@ -158,9 +158,9 @@
             Localize(Resources.WorldForm_Trace_All, TracePropertiesEdit.lblAll);
         }
 
-        protected override void OnSelectionChanged()
+        protected override void OnSelectionEdit()
         {
-            base.OnSelectionChanged();
+            base.OnSelectionEdit();
              UpdateAllProperties();
         }
 
@@ -222,7 +222,7 @@
                         TracePropertiesEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
                         break;
                     case PropertyNames.Traces:
-                        OnSelectionChanged();
+                        OnSelectionEdit();
                         break;
                     case PropertyNames.Visible:
                         TracePropertiesEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);

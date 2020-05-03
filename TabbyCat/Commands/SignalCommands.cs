@@ -9,8 +9,30 @@
             index,
             PropertyNames.Amplitude,
             value,
-            t => (float)t.Amplitude,
+            t => t.Amplitude,
             (t, v) => t.Amplitude = v)
+        { }
+    }
+
+    internal class AmplitudeMaximumCommand : SignalPropertyCommand<float>
+    {
+        internal AmplitudeMaximumCommand(int index, float value) : base(
+        index,
+        PropertyNames.AmplitudeMaximum,
+        value,
+        t => t.AmplitudeMaximum,
+        (t, v) => t.AmplitudeMaximum = v)
+        { }
+    }
+
+    internal class AmplitudeMinimumCommand : SignalPropertyCommand<float>
+    {
+        internal AmplitudeMinimumCommand(int index, float value) : base(
+        index,
+        PropertyNames.AmplitudeMinimum,
+        value,
+        t => t.AmplitudeMinimum,
+        (t, v) => t.AmplitudeMinimum = v)
         { }
     }
 
@@ -20,8 +42,30 @@
             index,
             PropertyNames.Frequency,
             value,
-            t => (float)t.Frequency,
+            t => t.Frequency,
             (t, v) => t.Frequency = v)
+        { }
+    }
+
+    internal class FrequencyMaximumCommand : SignalPropertyCommand<float>
+    {
+        internal FrequencyMaximumCommand(int index, float value) : base(
+            index,
+            PropertyNames.FrequencyMaximum,
+            value,
+            t => t.FrequencyMaximum,
+            (t, v) => t.FrequencyMaximum = v)
+        { }
+    }
+
+    internal class FrequencyMinimumCommand : SignalPropertyCommand<float>
+    {
+        internal FrequencyMinimumCommand(int index, float value) : base(
+            index,
+            PropertyNames.FrequencyMinimum,
+            value,
+            t => t.FrequencyMinimum,
+            (t, v) => t.FrequencyMinimum = v)
         { }
     }
 

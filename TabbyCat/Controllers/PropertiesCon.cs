@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using System.ComponentModel;
+    using Common.Types;
+    using System;
     using System.Linq;
     using System.Windows.Forms;
 
@@ -13,13 +14,13 @@
             base.Connect(connect);
             if (connect)
             {
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
-                WorldCon.SelectionChanged += WorldCon_SelectionChanged;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
+                WorldCon.SelectionChanged += WorldCon_SelectionEdit;
             }
             else
             {
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
-                WorldCon.SelectionChanged -= WorldCon_SelectionChanged;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
+                WorldCon.SelectionChanged -= WorldCon_SelectionEdit;
             }
         }
 
@@ -32,7 +33,7 @@
             }
         }
 
-        protected virtual void OnSelectionChanged() { }
+        protected virtual void OnSelectionEdit() { }
 
         protected void SetToolTip(Control control, string toolTip)
         {
@@ -40,8 +41,8 @@
                 ToolTip.SetToolTip(control, toolTip);
         }
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
-        private void WorldCon_SelectionChanged(object sender, System.EventArgs e) => OnSelectionChanged();
+        private void WorldCon_SelectionEdit(object sender, EventArgs e) => OnSelectionEdit();
     }
 }

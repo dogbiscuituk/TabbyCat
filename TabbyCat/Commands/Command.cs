@@ -39,7 +39,7 @@
         {
             var result = Run(scene);
             if (result)
-                OnPropertyChanged(scene);
+                OnPropertyEdit(scene);
             Invert();
             return result;
         }
@@ -50,6 +50,6 @@
 
         // Protected methods
 
-        protected virtual void OnPropertyChanged(Scene scene) => scene.OnPropertyChanged(PropertyName);
+        protected virtual void OnPropertyEdit(Scene scene) => scene.OnPropertyEdit(PropertyName, Index);
     }
 }

@@ -10,7 +10,6 @@
     using Properties;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
     using System.Text;
@@ -56,7 +55,7 @@
             Loc_TraceNumber,
             Loc_Transform;
 
-        private List<int> Loc_Signals = new List<int>();
+        private readonly List<int> Loc_Signals = new List<int>();
 
         private readonly long[] Ticks = new long[64];
 
@@ -235,11 +234,11 @@
             base.Connect(connect);
             if (connect)
             {
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
             }
             else
             {
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
             }
         }
 
@@ -412,7 +411,7 @@
                 UsingGL(() => trace.Vao = new Vao(trace));
         }
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
             switch (e.PropertyName)
             {

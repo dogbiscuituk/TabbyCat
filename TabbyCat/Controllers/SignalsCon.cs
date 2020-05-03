@@ -1,15 +1,14 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Commands;
+    using Common.Types;
     using Common.Utils;
     using Jmk.Common;
     using Models;
     using Properties;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
-    using TabbyCat.Commands;
-    using TabbyCat.Common.Types;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
@@ -91,16 +90,16 @@
             {
                 SignalsForm.AddButton.ButtonClick += AddButton_ButtonClick;
                 SignalsForm.DeleteAllButton.Click += DeleteAllButton_Click;
-                WorldCon.CollectionChanged += WorldCon_CollectionChanged;
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.CollectionEdit += WorldCon_CollectionEdit;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
                 WorldForm.ViewSignals.Click += ViewSignals_Click;
             }
             else
             {
                 SignalsForm.AddButton.ButtonClick -= AddButton_ButtonClick;
                 SignalsForm.DeleteAllButton.Click -= DeleteAllButton_Click;
-                WorldCon.CollectionChanged += WorldCon_CollectionChanged;
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.CollectionEdit += WorldCon_CollectionEdit;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
             foreach (var item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
@@ -185,9 +184,9 @@
 
         private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
 
-        private void WorldCon_CollectionChanged(object sender, CollectionChangedEventArgs e)
+        private void WorldCon_CollectionEdit(object sender, CollectionEditEventArgs e)
         {
-            switch (e.CollectionName)
+            switch (e.PropertyName)
             {
                 case PropertyNames.Signals:
                     if (e.Adding)
@@ -199,7 +198,7 @@
         }
 
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
             switch (e.PropertyName)
             {

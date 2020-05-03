@@ -1,9 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using Common.Utils;
-    using Jmk.Common;
     using Models;
-    using System.Linq;
 
     /// <summary>
     /// Common ancestor for collection management (item insert and delete) commands.
@@ -57,7 +55,7 @@
                     Value = GetItem(scene);
                 RemoveItem(scene);
             }
-            OnCollectionChanged(scene);
+            OnCollectionEdit(scene);
             return true;
         }
 
@@ -75,7 +73,7 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected virtual void OnCollectionChanged(Scene scene) => scene.OnCollectionChanged(PropertyName, Adding, Index);
+        protected virtual void OnCollectionEdit(Scene scene) => scene.OnCollectionEdit(PropertyName, Index, Adding);
 
         protected abstract void RemoveItem(Scene scene);
 

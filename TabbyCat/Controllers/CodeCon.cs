@@ -5,13 +5,11 @@
     using Controls;
     using Controls.Types;
     using FastColoredTextBoxNS;
-    using Jmk.Common;
     using Jmk.Controls;
     using Models;
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System;
-    using System.ComponentModel;
     using System.Drawing;
     using System.Globalization;
     using System.IO;
@@ -156,14 +154,14 @@
             ConnectHelp(connect);
             if (connect)
             {
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
                 WorldCon.Pulse += WorldCon_Pulse;
                 WorldCon.SelectionChanged += WorldCon_SelectionChanged;
                 LoadContent();
             }
             else
             {
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
                 WorldCon.Pulse -= WorldCon_Pulse;
                 WorldCon.SelectionChanged -= WorldCon_SelectionChanged;
             }
@@ -322,7 +320,7 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
         private void WorldCon_Pulse(object sender, EventArgs e) => CodeEdit.tbPaste.Enabled = CanPaste();
 

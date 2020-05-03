@@ -46,7 +46,7 @@
                 if (GPUStatus == value)
                     return;
                 _GPUStatus = value;
-                OnPropertyChanged(PropertyNames.GPUStatus);
+                OnPropertyEdit(PropertyNames.GPUStatus);
             }
         }
 
@@ -59,7 +59,7 @@
                 if (GPULog == value)
                     return;
                 _GPULog = value;
-                OnPropertyChanged(PropertyNames.GPULog);
+                OnPropertyEdit(PropertyNames.GPULog);
             }
         }
 
@@ -93,9 +93,9 @@
 
         internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
 
-        internal void OnCollectionChanged(string propertyName, bool adding, int index) => WorldCon.OnCollectionChanged(propertyName, adding, index);
+        internal void OnCollectionEdit(string propertyName, int index, bool adding) => WorldCon.OnCollectionEdit(propertyName, index, adding);
 
-        internal void OnPropertyChanged(string propertyName) => WorldCon?.OnPropertyChanged(propertyName);
+        internal void OnPropertyEdit(string propertyName, int index = 0) => WorldCon?.OnPropertyEdit(propertyName, index);
 
         internal void RemoveSignal(int index)
         {

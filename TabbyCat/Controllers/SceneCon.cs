@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Common.Types;
     using Common.Utils;
     using OpenTK;
     using OpenTK.Graphics;
     using Properties;
     using System;
-    using System.ComponentModel;
     using System.Windows.Forms;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -32,7 +32,7 @@
 
         internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
-        internal void OnPropertyChanged(string propertyName)
+        internal void OnPropertyEdit(string propertyName, int index)
         {
             switch (propertyName)
             {
@@ -58,25 +58,27 @@
             base.Connect(connect);
             if (connect)
             {
-                SceneForm.HandleCreated += SceneForm_HandleCreated;
-                SceneForm.HandleDestroyed += SceneForm_HandleDestroyed;
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
-                WorldForm.ViewScene.Click += ViewScene_Click;
                 SceneControl.BackColorChanged += SceneControl_BackColorChanged;
                 SceneControl.ClientSizeChanged += SceneControl_ClientSizeChanged;
                 SceneControl.Load += SceneControl_Load;
                 SceneControl.Paint += SceneControl_Paint;
                 SceneControl.Resize += SceneControl_Resize;
+                SceneForm.HandleCreated += SceneForm_HandleCreated;
+                SceneForm.HandleDestroyed += SceneForm_HandleDestroyed;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
+                WorldForm.ViewScene.Click += ViewScene_Click;
             }
             else
             {
-                SceneForm.HandleCreated -= SceneForm_HandleCreated;
-                SceneForm.HandleDestroyed -= SceneForm_HandleDestroyed;
                 SceneControl.BackColorChanged -= SceneControl_BackColorChanged;
                 SceneControl.ClientSizeChanged -= SceneControl_ClientSizeChanged;
                 SceneControl.Load -= SceneControl_Load;
                 SceneControl.Paint -= SceneControl_Paint;
                 SceneControl.Resize -= SceneControl_Resize;
+                SceneForm.HandleCreated -= SceneForm_HandleCreated;
+                SceneForm.HandleDestroyed -= SceneForm_HandleDestroyed;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
+                WorldForm.ViewScene.Click -= ViewScene_Click;
             }
         }
 
@@ -142,6 +144,6 @@
             RenderCon.SceneControlSuspended = true;
         }
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => OnPropertyChanged(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.PropertyName, e.Index);
     }
 }

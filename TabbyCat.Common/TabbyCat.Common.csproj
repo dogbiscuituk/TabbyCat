@@ -69,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Camera.cs" />
     <Compile Include="Types\Clock.cs" />
-    <Compile Include="Types\CollectionChangedEventArgs.cs" />
+    <Compile Include="Types\CollectionEditEventArgs.cs" />
     <Compile Include="Types\Entity.cs" />
     <Compile Include="Types\FillType.cs" />
     <Compile Include="Types\FilterIndex.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Types\ITrace.cs" />
     <Compile Include="Types\Optimization.cs" />
     <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\PropertyEditEventArgs.cs" />
     <Compile Include="Types\Tokens.cs" />
     <Compile Include="Types\TraceType.cs" />
     <Compile Include="Types\Projection.cs" />

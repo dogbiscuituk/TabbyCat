@@ -42,9 +42,9 @@
 
         private static string GLSLUrl => Settings.Default.GLSLUrl;
 
-        internal event EventHandler<CollectionChangedEventArgs> CollectionChanged;
+        internal event EventHandler<CollectionEditEventArgs> CollectionEdit;
 
-        internal event PropertyChangedEventHandler PropertyChanged;
+        internal event EventHandler<PropertyEditEventArgs> PropertyEdit;
 
         internal event EventHandler
             Pulse,
@@ -61,41 +61,22 @@
 
         internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
 
-        internal void RefreshGraphicsMode() => OnPropertyChanged(PropertyNames.GraphicsMode);
+        internal void RefreshGraphicsMode() => OnPropertyEdit(PropertyNames.GraphicsMode);
 
         internal void Show() => WorldForm.Show();
 
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
-        internal void OnCollectionChanged(string collectionName, bool adding, int index)
+        internal void OnCollectionEdit(string collectionName, int index, bool adding)
         {
-            $"WorldCon.OnCollectionChanged(\"{collectionName}\", adding: {adding}, index: {index})".Spit();
-            CollectionChanged?.Invoke(this, new CollectionChangedEventArgs(collectionName, adding, index));
+            $"WorldCon.OnCollectionEdit(\"{collectionName}\", adding: {adding}, index: {index})".Spit();
+            CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collectionName, index, adding));
         }
 
-        internal void OnPropertyChanged(string propertyName)
+        internal void OnPropertyEdit(string propertyName, int index = 0)
         {
-            $"WorldCon.OnPropertyChanged(\"{propertyName}\")".Spit();
-            switch (propertyName)
-            {
-                case PropertyNames.Traces:
-                    UpdateSelection();
-                    break;
-                case PropertyNames.FPS:
-                    ClockInit();
-                    break;
-                case PropertyNames.GraphicsMode:
-                case PropertyNames.Samples:
-                case PropertyNames.Stereo:
-                    UpdateGraphicsModeLabel();
-                    break;
-                case PropertyNames.GPULog:
-                case PropertyNames.GPUStatus:
-                    UpdateGpuStatusLabel();
-                    break;
-            }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            SceneControl.Invalidate();
+            $"WorldCon.OnPropertyEdit(\"{propertyName}\", {index}".Spit();
+            PropertyEdit?.Invoke(this, new PropertyEditEventArgs(propertyName, index));
         }
 
         internal void OnPulse()
@@ -232,15 +213,17 @@
             ConnectToolbar(connect);
             if (connect)
             {
+                PropertyEdit += WorldCon_PropertyEdit;
+                TraceSelection.Changed += Selection_Changed;
                 WorldForm.FormClosed += WorldForm_FormClosed;
                 WorldForm.FormClosing += WorldForm_FormClosing;
-                TraceSelection.Changed += Selection_Changed;
             }
             else
             {
+                PropertyEdit -= WorldCon_PropertyEdit;
+                TraceSelection.Changed -= Selection_Changed;
                 WorldForm.FormClosed -= WorldForm_FormClosed;
                 WorldForm.FormClosing -= WorldForm_FormClosing;
-                TraceSelection.Changed -= Selection_Changed;
             }
             SceneCon.Connect(connect);
         }
@@ -541,6 +524,29 @@
             SceneCodeForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
             SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, h);
+        }
+
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case PropertyNames.Traces:
+                    UpdateSelection();
+                    break;
+                case PropertyNames.FPS:
+                    ClockInit();
+                    break;
+                case PropertyNames.GraphicsMode:
+                case PropertyNames.Samples:
+                case PropertyNames.Stereo:
+                    UpdateGraphicsModeLabel();
+                    break;
+                case PropertyNames.GPULog:
+                case PropertyNames.GPUStatus:
+                    UpdateGpuStatusLabel();
+                    break;
+            }
+            SceneControl.Invalidate();
         }
     }
 }

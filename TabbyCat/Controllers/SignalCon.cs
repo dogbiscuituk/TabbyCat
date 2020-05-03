@@ -8,7 +8,6 @@
     using Properties;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Windows.Forms;
 
@@ -148,7 +147,7 @@
                 WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
                     item.Click += WaveTypeItem_Click;
-                WorldCon.PropertyChanged += WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit += WorldCon_PropertyEdit;
             }
             else
             {
@@ -163,7 +162,7 @@
                 WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
                     item.Click -= WaveTypeItem_Click;
-                WorldCon.PropertyChanged -= WorldCon_PropertyChanged;
+                WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
             }
         }
 
@@ -211,7 +210,7 @@
 
         private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
-            Run(new AmplitudeCommand(Index, (float)Amplitude));
+            Run(new AmplitudeCommand(Index, Amplitude));
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
@@ -223,7 +222,7 @@
 
         private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
-            Run(new FrequencyCommand(Index, (float)Frequency));
+            Run(new FrequencyCommand(Index, Frequency));
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
 
@@ -246,7 +245,7 @@
 
         private void WaveTypeItem_Click(object sender, EventArgs e) => SelectedWaveType = (WaveType)((ToolStripItem)sender).Tag;
 
-        private void WorldCon_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
         // Private static methods
 

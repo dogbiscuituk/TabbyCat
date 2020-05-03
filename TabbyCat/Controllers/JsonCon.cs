@@ -160,7 +160,7 @@
             if (--UpdateCount == 0)
             {
                 foreach (var propertyName in ChangedPropertyNames)
-                    WorldCon.OnPropertyChanged(propertyName);
+                    WorldCon.OnPropertyEdit(propertyName);
                 ChangedPropertyNames.Clear();
             }
         }
