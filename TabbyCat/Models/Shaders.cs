@@ -15,10 +15,7 @@
     {
         protected Shaders() { }
 
-        protected Shaders(Shaders shaders)
-        {
-            CopyFrom(shaders);
-        }
+        protected Shaders(Shaders shaders) => CopyFrom(shaders);
 
         [DefaultValue("")] public string VertexShader { get; set; }
         [DefaultValue("")] public string TessControlShader { get; set; }
@@ -73,9 +70,6 @@
             }
         }
 
-        private void CopyFrom(IScript source)
-        {
-            Array.ForEach(ShaderUtils.All.ToArray(), p => SetScript(p, source.GetScript(p)));
-        }
+        private void CopyFrom(IScript source) => Array.ForEach(ShaderUtils.All.ToArray(), p => SetScript(p, source.GetScript(p)));
     }
 }

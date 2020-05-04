@@ -124,9 +124,6 @@
         public static List<string> AutocompleteItems { get; } =
             _Directives.Select(p => $"#{p}").Union(_Functions).Union(_Keywords).ToList();
 
-        private static string Concat(IEnumerable<string> words)
-        {
-            return string.Concat("(", words.Aggregate((s, t) => $"{s}|{t}"), ")");
-        }
+        private static string Concat(IEnumerable<string> words) => string.Concat("(", words.Aggregate((s, t) => $"{s}|{t}"), ")");
     }
 }

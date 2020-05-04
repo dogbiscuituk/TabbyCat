@@ -4,9 +4,6 @@
 
     public partial class HotkeysForm : DockContent
     {
-        public HotkeysForm()
-        {
-            InitializeComponent();
-        }
+        public HotkeysForm() => InitializeComponent();
     }
 }

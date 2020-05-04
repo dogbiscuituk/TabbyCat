@@ -16,7 +16,7 @@
         internal void AddControls(params ComboBox[] controls)
         {
             Controls.AddRange(controls);
-            foreach (ComboBox control in controls)
+            foreach (var control in controls)
             {
                 control.Items.AddRange(NonSystemColourNames);
                 control.DrawItem += Control_DrawItem;
@@ -25,7 +25,7 @@
 
         internal void Clear()
         {
-            foreach (ComboBox control in Controls)
+            foreach (var control in Controls)
             {
                 control.DrawItem -= Control_DrawItem;
             }
@@ -35,7 +35,7 @@
 
         internal Color GetColour(ComboBox comboBox)
         {
-            object item = comboBox.SelectedItem;
+            var item = comboBox.SelectedItem;
             if (item != null)
             {
                 return Color.FromName(item.ToString());
@@ -52,9 +52,9 @@
 
         internal void SetColour(ComboBox comboBox, Color colour)
         {
-            int argb = colour.ToArgb();
+            var argb = colour.ToArgb();
             comboBox.Tag = colour;
-            string name = comboBox.Items.Cast<string>()
+            var name = comboBox.Items.Cast<string>()
                 .FirstOrDefault(s => Color.FromName(s).ToArgb() == argb);
             comboBox.SelectedIndex =
                 string.IsNullOrWhiteSpace(name) ? -1 : comboBox.Items.IndexOf(name);
@@ -66,10 +66,10 @@
 
         private void Control_DrawItem(object sender, DrawItemEventArgs e)
         {
-            bool selected = (e.State & DrawItemState.Selected) != 0;
-            string text = "Transparent";
-            Color background = Color.Transparent;
-            ComboBox comboBox = (ComboBox)sender;
+            var selected = (e.State & DrawItemState.Selected) != 0;
+            var text = "Transparent";
+            var background = Color.Transparent;
+            var comboBox = (ComboBox)sender;
             if (e.Index >= 0)
             {
                 text = comboBox.Items[e.Index].ToString();
@@ -80,12 +80,12 @@
                 background = (Color)comboBox.Tag;
                 text = $"{background.ToArgb() & 0xffffff:X}";
             }
-            Color foreground = background.Contrast();
+            var foreground = background.Contrast();
             ColourUtils.DrawText(e, foreground, background, text);
             if (selected)
             {
-                Rectangle r = e.Bounds;
-                using (Pen pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
+                var r = e.Bounds;
+                using (var pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
                 {
                     e.Graphics.DrawRectangle(pen, r.X + 1, r.Y + 1, r.Width - 2, r.Height - 2);
                 }

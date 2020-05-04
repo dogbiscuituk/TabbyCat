@@ -2,9 +2,6 @@
 {
     public partial class CodeForm : DockingForm
     {
-        public CodeForm()
-        {
-            InitializeComponent();
-        }
+        public CodeForm() => InitializeComponent();
     }
 }

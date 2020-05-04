@@ -12,7 +12,7 @@
 
         internal static Vbo AcquireVbo(this ITrace trace, VboType vboType)
         {
-            Vbo vbo = Vbos.FirstOrDefault(p => p.Matches(trace, vboType));
+            var vbo = Vbos.FirstOrDefault(p => p.Matches(trace, vboType));
             if (vbo == null)
             {
                 Vbos.Add(vbo = new Vbo(trace, vboType));

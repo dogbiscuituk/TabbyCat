@@ -7,10 +7,7 @@
 
     public class Surface : Trace
     {
-        public Surface() : base()
-        {
-            Init();
-        }
+        public Surface() : base() => Init();
 
         private void Init()
         {

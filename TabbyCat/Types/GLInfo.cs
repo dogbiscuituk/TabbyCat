@@ -30,9 +30,6 @@
         public string Vendor { get; }
         public string Renderer { get; }
 
-        public override string ToString()
-        {
-            return $"{Number}, {Major}, {Minor}, {Shader}, {Vendor}, {Renderer}";
-        }
+        public override string ToString() => $"{Number}, {Major}, {Minor}, {Shader}, {Vendor}, {Renderer}";
     }
 }

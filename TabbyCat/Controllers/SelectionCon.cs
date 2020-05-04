@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Jmk.Common;
     using Properties;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
+    using Utils;
 
     internal class SelectionCon : LocalizationCon
     {
@@ -46,7 +46,7 @@
             get => Labels.Count - 1;
             set
             {
-                int delta = value - TraceCount;
+                var delta = value - TraceCount;
                 for (; delta > 0; delta--)
                 {
                     AddLabel();
@@ -94,18 +94,15 @@
 
         private void AddLabel()
         {
-            int traceIndex = TraceCount;
-            ToolStripLabel label = new ToolStripLabel($"{TraceCount + 1}");
+            var traceIndex = TraceCount;
+            var label = new ToolStripLabel($"{TraceCount + 1}");
             Labels.Add(label);
             label.MouseDown += Label_MouseDown;
             label.MouseMove += Label_MouseMove;
             label.Paint += Label_Paint;
         }
 
-        private void ClearSelection()
-        {
-            _Selection.Clear();
-        }
+        private void ClearSelection() => _Selection.Clear();
 
         private void Exclude(int traceIndex)
         {
@@ -142,7 +139,7 @@
         private void Init()
         {
             Labels.Clear();
-            ToolStripLabel label = new ToolStripLabel(string.Empty);
+            var label = new ToolStripLabel(string.Empty);
             Localize(Resources.WorldForm_Trace_All, label);
             Labels.Add(label);
             label.MouseDown += LabelAll_MouseDown;
@@ -174,7 +171,7 @@
 
         private void Label_MouseDown(object sender, MouseEventArgs e)
         {
-            int traceIndex = Labels.IndexOf(sender as ToolStripItem) - 1;
+            var traceIndex = Labels.IndexOf(sender as ToolStripItem) - 1;
             bool
                 shift = (Control.ModifierKeys & Keys.Shift) != 0,
                 ctrl = (Control.ModifierKeys & Keys.Control) != 0;
@@ -203,10 +200,7 @@
             OnSelectionChanged();
         }
 
-        private void Label_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender);
-        }
+        private void Label_MouseMove(object sender, MouseEventArgs e) => MouseMove(sender);
 
         private void Label_Paint(object sender, PaintEventArgs e)
         {
@@ -218,15 +212,15 @@
 
         private void MouseMove(object sender)
         {
-            ToolStripLabel label = sender as ToolStripLabel;
+            var label = sender as ToolStripLabel;
             if (label == PrevLabel)
             {
                 return;
             }
 
             PrevLabel = label;
-            int index = Labels.IndexOf(label);
-            string
+            var index = Labels.IndexOf(label);
+            var
                 tooltip = index < 0
                 ? string.Empty
                 : index == 0
@@ -243,29 +237,23 @@
 
         private void Paint_Highlight(object sender, PaintEventArgs e)
         {
-            ToolStripItem item = (ToolStripItem)sender;
-            Graphics g = e.Graphics;
+            var item = (ToolStripItem)sender;
+            var g = e.Graphics;
             g.FillRectangle(Highlight, 1, 1, item.Width - 2, item.Height - 1);
             g.DrawString(item.Text, HighlightFont, HighlightText, 1, 0);
         }
 
         private void RemoveLabel()
         {
-            ToolStripItem label = Labels[TraceCount];
+            var label = Labels[TraceCount];
             Labels.Remove(label);
             label.MouseDown -= Label_MouseDown;
             label.Paint -= Label_Paint;
         }
 
-        private void SelectAll()
-        {
-            IncludeRange(0, TraceCount - 1);
-        }
+        private void SelectAll() => IncludeRange(0, TraceCount - 1);
 
-        private void Toolbar_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(Toolbar.GetItemAt(e.X, e.Y));
-        }
+        private void Toolbar_MouseMove(object sender, MouseEventArgs e) => MouseMove(Toolbar.GetItemAt(e.X, e.Y));
 
         private void Toggle(int traceIndex)
         {
@@ -279,11 +267,8 @@
             }
         }
 
-        private static string ToString(IEnumerable<int> items)
-        {
-            return items == null || !items.Any()
+        private static string ToString(IEnumerable<int> items) => items == null || !items.Any()
 ? string.Empty
 : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
-        }
     }
 }

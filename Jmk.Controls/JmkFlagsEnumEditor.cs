@@ -9,19 +9,16 @@
 
     public class JmkFlagsEnumEditor : UITypeEditor, IDisposable
     {
-        public JmkFlagsEnumEditor()
+        public JmkFlagsEnumEditor() => FlagsCheckedListBox = new JmkFlagsCheckedListBox
         {
-            FlagsCheckedListBox = new JmkFlagsCheckedListBox
-            {
-                BorderStyle = BorderStyle.None
-            };
-        }
+            BorderStyle = BorderStyle.None
+        };
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
             if (context != null && context.Instance != null && provider != null)
             {
-                IWindowsFormsEditorService service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+                var service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
                 if (service != null)
                 {
                     FlagsCheckedListBox.EnumValue = (Enum)Convert.ChangeType(
@@ -33,10 +30,7 @@
             return null;
         }
 
-        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
-        {
-            return UITypeEditorEditStyle.DropDown;
-        }
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
 
         private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
 

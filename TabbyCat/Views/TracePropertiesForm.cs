@@ -2,9 +2,6 @@
 {
     public partial class TracePropertiesForm : DockingForm
     {
-        public TracePropertiesForm()
-        {
-            InitializeComponent();
-        }
+        public TracePropertiesForm() => InitializeComponent();
     }
 }

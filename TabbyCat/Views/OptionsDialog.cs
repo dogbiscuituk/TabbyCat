@@ -4,9 +4,6 @@
 
     public partial class OptionsDialog : Form
     {
-        public OptionsDialog()
-        {
-            InitializeComponent();
-        }
+        public OptionsDialog() => InitializeComponent();
     }
 }

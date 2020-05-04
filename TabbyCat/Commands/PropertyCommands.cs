@@ -22,8 +22,8 @@
 
         public override bool Run(Scene scene)
         {
-            TValue value = GetValue(scene);
-            bool result = !Equals(value, Value);
+            var value = GetValue(scene);
+            var result = !Equals(value, Value);
             if (result)
             {
                 SetValue(scene, Value);
@@ -35,7 +35,7 @@
         public override string ToString()
         {
             const int maxLength = 50;
-            string s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
+            var s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
             if (s.Length > maxLength)
             {
                 s = $"{s.Substring(0, maxLength)}…";
@@ -52,15 +52,9 @@
 
         protected abstract TItem GetItem(Scene scene);
 
-        protected TValue GetValue(Scene scene)
-        {
-            return Get(GetItem(scene));
-        }
+        protected TValue GetValue(Scene scene) => Get(GetItem(scene));
 
-        protected void SetValue(Scene scene, TValue value)
-        {
-            Set(GetItem(scene), value);
-        }
+        protected void SetValue(Scene scene, TValue value) => Set(GetItem(scene), value);
     }
 
     internal abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
@@ -82,10 +76,7 @@
 
         protected override string Target => "Scene";
 
-        protected override Scene GetItem(Scene scene)
-        {
-            return scene;
-        }
+        protected override Scene GetItem(Scene scene) => scene;
     }
 
     internal abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
@@ -107,10 +98,7 @@
 
         protected override string Target => "Signal";
 
-        protected override Signal GetItem(Scene scene)
-        {
-            return scene.Signals[Index];
-        }
+        protected override Signal GetItem(Scene scene) => scene.Signals[Index];
     }
 
     internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
@@ -132,9 +120,6 @@
 
         protected override string Target => "Trace";
 
-        protected override Trace GetItem(Scene scene)
-        {
-            return scene.Traces[Index];
-        }
+        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }
 }

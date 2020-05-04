@@ -7,10 +7,7 @@
 
     public static class JmkControl
     {
-        public static string CompactMenuText(this string text)
-        {
-            return Path.ChangeExtension(text, string.Empty).CompactText().AmpersandEscape();
-        }
+        public static string CompactMenuText(this string text) => Path.ChangeExtension(text, string.Empty).CompactText().AmpersandEscape();
 
         /// <summary>
         /// 
@@ -32,11 +29,11 @@
                 return string.Empty;
             }
 
-            string result = text.TrimEnd('.');
+            var result = text.TrimEnd('.');
             TextRenderer.MeasureText(
                 result, SystemFonts.MenuFont, new Size(320, 0),
                 TextFormatFlags.PathEllipsis | TextFormatFlags.ModifyString);
-            int length = result.IndexOf((char)0);
+            var length = result.IndexOf((char)0);
             if (length >= 0)
             {
                 result = result.Substring(0, length);

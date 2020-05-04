@@ -138,7 +138,7 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
-            foreach (string propertyName in propertyNames)
+            foreach (var propertyName in propertyNames)
             {
                 switch (propertyName)
                 {
@@ -154,7 +154,7 @@
             }
 
             Updating = true;
-            foreach (string propertyName in propertyNames)
+            foreach (var propertyName in propertyNames)
             {
                 switch (propertyName)
                 {
@@ -246,7 +246,7 @@
 
         private void UpdateUI()
         {
-            bool perspective = ScenePropertiesEdit.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
+            var perspective = ScenePropertiesEdit.seProjectionType.SelectedIndex == (int)ProjectionType.Perspective;
             ScenePropertiesEdit.lblFieldOfView.Visible =
             ScenePropertiesEdit.seFieldOfView.Visible = perspective;
             ScenePropertiesEdit.seFrustumMinX.Visible =
@@ -261,86 +261,44 @@
     /// </summary>
     internal partial class ScenePropertiesCon
     {
-        private void Background_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
-        }
+        private void Background_SelectedIndexChanged(object sender, EventArgs e) => Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
 
-        private void CameraFocus_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new CameraFocusCommand(new Vector3(
+        private void CameraFocus_ValueChanged(object sender, EventArgs e) => Run(new CameraFocusCommand(new Vector3(
 (float)ScenePropertiesEdit.seCameraPitch.Value,
 (float)ScenePropertiesEdit.seCameraYaw.Value,
 (float)ScenePropertiesEdit.seCameraRoll.Value)));
-        }
 
-        private void CameraPosition_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new CameraPositionCommand(new Vector3(
+        private void CameraPosition_ValueChanged(object sender, EventArgs e) => Run(new CameraPositionCommand(new Vector3(
 (float)ScenePropertiesEdit.seCameraPositionX.Value,
 (float)ScenePropertiesEdit.seCameraPositionY.Value,
 (float)ScenePropertiesEdit.seCameraPositionZ.Value)));
-        }
 
-        private void FieldOfView_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new FieldOfViewCommand((float)ScenePropertiesEdit.seFieldOfView.Value));
-        }
+        private void FieldOfView_ValueChanged(object sender, EventArgs e) => Run(new FieldOfViewCommand((float)ScenePropertiesEdit.seFieldOfView.Value));
 
-        private void FPS_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new FpsCommand((float)ScenePropertiesEdit.seFPS.Value));
-        }
+        private void FPS_ValueChanged(object sender, EventArgs e) => Run(new FpsCommand((float)ScenePropertiesEdit.seFPS.Value));
 
-        private void FrustumMax_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new FrustumMaxCommand(new Vector3(
+        private void FrustumMax_ValueChanged(object sender, EventArgs e) => Run(new FrustumMaxCommand(new Vector3(
 (float)ScenePropertiesEdit.seFrustumMaxX.Value,
 (float)ScenePropertiesEdit.seFrustumMaxY.Value,
 (float)ScenePropertiesEdit.seFrustumMaxZ.Value)));
-        }
 
-        private void FrustumMin_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new FrustumMinCommand(new Vector3(
+        private void FrustumMin_ValueChanged(object sender, EventArgs e) => Run(new FrustumMinCommand(new Vector3(
 (float)ScenePropertiesEdit.seFrustumMinX.Value,
 (float)ScenePropertiesEdit.seFrustumMinY.Value,
 (float)ScenePropertiesEdit.seFrustumMinZ.Value)));
-        }
 
-        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e)
-        {
-            Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
-        }
+        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) => Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
 
-        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e)
-        {
-            Run(new ProjectionTypeCommand((ProjectionType)ScenePropertiesEdit.seProjectionType.SelectedIndex));
-        }
+        private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) => Run(new ProjectionTypeCommand((ProjectionType)ScenePropertiesEdit.seProjectionType.SelectedIndex));
 
-        private void Samples_ValueChanged(object sender, EventArgs e)
-        {
-            Run(new SamplesCommand(int.Parse(ScenePropertiesEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
-        }
+        private void Samples_ValueChanged(object sender, EventArgs e) => Run(new SamplesCommand(int.Parse(ScenePropertiesEdit.seSampleCount.Text, CultureInfo.CurrentCulture)));
 
-        private void SceneTitle_TextChanged(object sender, EventArgs e)
-        {
-            Run(new TitleCommand(ScenePropertiesEdit.edTitle.Text));
-        }
+        private void SceneTitle_TextChanged(object sender, EventArgs e) => Run(new TitleCommand(ScenePropertiesEdit.edTitle.Text));
 
-        private void Stereo_CheckedChanged(object sender, EventArgs e)
-        {
-            Run(new StereoCommand(ScenePropertiesEdit.cbStereo.Checked));
-        }
+        private void Stereo_CheckedChanged(object sender, EventArgs e) => Run(new StereoCommand(ScenePropertiesEdit.cbStereo.Checked));
 
-        private void ViewSceneProperties_Click(object sender, EventArgs e)
-        {
-            ToggleVisibility();
-        }
+        private void ViewSceneProperties_Click(object sender, EventArgs e) => ToggleVisibility();
 
-        private void VSync_CheckedChanged(object sender, EventArgs e)
-        {
-            Run(new VSyncCommand(ScenePropertiesEdit.cbVSync.Checked));
-        }
+        private void VSync_CheckedChanged(object sender, EventArgs e) => Run(new VSyncCommand(ScenePropertiesEdit.cbVSync.Checked));
     }
 }

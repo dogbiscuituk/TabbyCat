@@ -46,7 +46,7 @@
                 return new TextStyleInfos();
             }
 
-            string[] t = s.Split(':');
+            var t = s.Split(':');
             return new TextStyleInfos
             {
                 Comments = TextStyleInfo.Parse(t[0]),
@@ -60,9 +60,6 @@
             };
         }
 
-        public override string ToString()
-        {
-            return $"{Comments}:{Directives}:{Functions}:{Keywords}:{Numbers}:{ReadOnly}:{ReservedWords}:{Strings}";
-        }
+        public override string ToString() => $"{Comments}:{Directives}:{Functions}:{Keywords}:{Numbers}:{ReadOnly}:{ReservedWords}:{Strings}";
     }
 }

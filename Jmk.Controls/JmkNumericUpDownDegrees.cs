@@ -4,14 +4,8 @@
 
     public partial class JmkNumericUpDownDegrees : NumericUpDown
     {
-        public JmkNumericUpDownDegrees()
-        {
-            InitializeComponent();
-        }
+        public JmkNumericUpDownDegrees() => InitializeComponent();
 
-        protected override void UpdateEditText()
-        {
-            Text = $"{Value}°";
-        }
+        protected override void UpdateEditText() => Text = $"{Value}°";
     }
 }

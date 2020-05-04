@@ -7,10 +7,7 @@
 
     public class Volume : Trace
     {
-        public Volume() : base()
-        {
-            Init();
-        }
+        public Volume() : base() => Init();
 
         private void Init()
         {

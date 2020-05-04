@@ -28,7 +28,7 @@
 
         internal class FilePathEventArgs : EventArgs
         {
-            internal FilePathEventArgs(string filePath) { FilePath = filePath; }
+            internal FilePathEventArgs(string filePath) => FilePath = filePath;
             internal string FilePath { get; set; }
         }
 
@@ -59,7 +59,7 @@
                     return;
                 }
 
-                string filePath = value.Trim();
+                var filePath = value.Trim();
                 if (FilePath != filePath)
                 {
                     _filePath = filePath;
@@ -89,7 +89,7 @@
 
         internal override void Reopen(ToolStripItem menuItem)
         {
-            string filePath = menuItem.ToolTipText;
+            var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
             {
                 if (MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
@@ -112,12 +112,9 @@
             }
         }
 
-        internal bool Save(FilterIndex filterIndex = FilterIndex.Default)
-        {
-            return string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath)
+        internal bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath)
 ? SaveAs(filterIndex)
 : SaveToFile(FilePath);
-        }
 
         internal bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
         {
@@ -153,7 +150,7 @@
 
         private static void InitFolderPath(FileDialog dialog, FilterIndex filterIndex)
         {
-            string folderPath = string.Empty;
+            var folderPath = string.Empty;
             if (!string.IsNullOrWhiteSpace(dialog.FileName))
             {
                 folderPath = Path.GetDirectoryName(dialog.FileName);
@@ -205,7 +202,7 @@
             Justification = "Can't predict what exception types the client-supplied action may throw, but the sole purpose of this method is simply to swallow them all.")]
         protected static bool UseStream(Action action)
         {
-            bool result = true;
+            var result = true;
             try
             {
                 action();
@@ -222,41 +219,32 @@
             return result;
         }
 
-        protected virtual void OnFilePathChanged()
-        {
-            FilePathChanged?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnFilePathChanged() => FilePathChanged?.Invoke(this, EventArgs.Empty);
 
-        protected virtual void OnFileLoaded()
-        {
-            FileLoaded?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnFileLoaded() => FileLoaded?.Invoke(this, EventArgs.Empty);
 
         protected virtual bool OnFileLoading()
         {
-            bool result = true;
-            EventHandler<CancelEventArgs> fileLoading = FileLoading;
+            var result = true;
+            var fileLoading = FileLoading;
             if (fileLoading != null)
             {
-                CancelEventArgs e = new CancelEventArgs();
+                var e = new CancelEventArgs();
                 fileLoading(this, e);
                 result = !e.Cancel;
             }
             return result;
         }
 
-        protected virtual void OnFileSaved()
-        {
-            FileSaved?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnFileSaved() => FileSaved?.Invoke(this, EventArgs.Empty);
 
         protected virtual bool OnFileSaving()
         {
-            bool result = true;
-            EventHandler<CancelEventArgs> fileSaving = FileSaving;
+            var result = true;
+            var fileSaving = FileSaving;
             if (fileSaving != null)
             {
-                CancelEventArgs e = new CancelEventArgs();
+                var e = new CancelEventArgs();
                 fileSaving(this, e);
                 result = !e.Cancel;
             }
@@ -265,10 +253,10 @@
 
         internal bool LoadFromFile(string filePath)
         {
-            bool result = false;
+            var result = false;
             if (OnFileLoading())
             {
-                using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
                     result = LoadFromStream(stream);
                 }
@@ -285,17 +273,17 @@
 
         private void OnFilePathRequest()
         {
-            FilePathEventArgs e = new FilePathEventArgs(FilePath);
+            var e = new FilePathEventArgs(FilePath);
             FilePathRequest?.Invoke(this, e);
             FilePath = e.FilePath;
         }
 
         private bool SaveToFile(string filePath)
         {
-            bool result = false;
+            var result = false;
             if (OnFileSaving())
             {
-                using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
                     result = SaveToStream(stream);
                     if (result)

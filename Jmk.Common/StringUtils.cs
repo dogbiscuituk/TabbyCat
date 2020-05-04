@@ -15,10 +15,7 @@
         /// </summary>
         /// <param name="s">The input string</param>
         /// <returns>The input string with all ampersands escaped (doubled up).</returns>
-        public static string AmpersandEscape(this string s)
-        {
-            return s?.Replace("&", "&&");
-        }
+        public static string AmpersandEscape(this string s) => s?.Replace("&", "&&");
 
         /// <summary>
         /// Convert a string, obtained from an accelerator-enabled UI context
@@ -27,10 +24,7 @@
         /// </summary>
         /// <param name="s">The string obtained from the UI context.</param>
         /// <returns>The input string with all escaped (doubled) ampersands unescaped.</returns>
-        public static string AmpersandUnescape(this string s)
-        {
-            return s?.Replace("&&", "&");
-        }
+        public static string AmpersandUnescape(this string s) => s?.Replace("&&", "&");
 
         /// <summary>
         /// Find which line of a multiline text string contains the first occurrence of a given token.
@@ -38,10 +32,7 @@
         /// <param name="s">The given multiline text string.</param>
         /// <param name="t">The token to search for.</param>
         /// <returns>The zero-based index of the line containing the first occurrence of the given token.</returns>
-        public static int FindFirstTokenLine(this string s, string t)
-        {
-            return s == null ? -1 : s.Substring(0, s.IndexOf(t, StringComparison.InvariantCulture)).GetLineCount() - 1;
-        }
+        public static int FindFirstTokenLine(this string s, string t) => s == null ? -1 : s.Substring(0, s.IndexOf(t, StringComparison.InvariantCulture)).GetLineCount() - 1;
 
         /// <summary>
         /// Get the number of occurrences of a given character in a string.
@@ -49,10 +40,7 @@
         /// <param name="s">The source string.</param>
         /// <param name="c">The character to count.</param>
         /// <returns>The number of occurrences of the given character in the string.</returns>
-        public static int GetCharCount(this string s, char c)
-        {
-            return string.IsNullOrEmpty(s) ? 0 : s.Count(p => p == c);
-        }
+        public static int GetCharCount(this string s, char c) => string.IsNullOrEmpty(s) ? 0 : s.Count(p => p == c);
 
         /// <summary>
         /// Find the position of the nth occurrence of a character in a string.
@@ -84,10 +72,7 @@
         /// <param name="s">The multiline text string.</param>
         /// <returns>The number of lines in the multiline text string.
         /// Empty lines are included in the count, but the empty string itself returns zero.</returns>
-        public static int GetLineCount(this string s)
-        {
-            return string.IsNullOrEmpty(s) ? 0 : s.GetCharCount('\n') + 1;
-        }
+        public static int GetLineCount(this string s) => string.IsNullOrEmpty(s) ? 0 : s.GetCharCount('\n') + 1;
 
         /// <summary>
         /// Find the position within a multiline text string where a particular line begins.
@@ -102,7 +87,7 @@
                 return -1;
             }
 
-            int index = $"\n{s}".GetCharPos('\n', line);
+            var index = $"\n{s}".GetCharPos('\n', line);
             return index >= 0 ? index : -1;
         }
 
@@ -121,13 +106,13 @@
                 return null;
             }
 
-            int start = s.GetLinePos(first);
+            var start = s.GetLinePos(first);
             if (start < 0)
             {
                 return string.Empty;
             }
 
-            int end = s.GetLinePos(first + count);
+            var end = s.GetLinePos(first + count);
             if (end < start)
             {
                 end = s.Length;
@@ -136,15 +121,9 @@
             return s.Substring(start, end - start).Trim();
         }
 
-        public static string Indent(this string s, string indent)
-        {
-            return $"\n{s}"?.Replace("\n", $"\n{indent}").Substring(1);
-        }
+        public static string Indent(this string s, string indent) => $"\n{s}"?.Replace("\n", $"\n{indent}").Substring(1);
 
-        public static string Outdent(this string s, string indent)
-        {
-            return $"\n{s}"?.Replace($"\n{indent}", "\n").Substring(1);
-        }
+        public static string Outdent(this string s, string indent) => $"\n{s}"?.Replace($"\n{indent}", "\n").Substring(1);
 
         /// <summary>
         /// Make a legal file name from a given string which may contain prohibited
@@ -168,9 +147,9 @@
                 return string.Empty;
             }
 
-            StringBuilder t = new StringBuilder(s.Trim());
+            var t = new StringBuilder(s.Trim());
             t.Replace('.', ',');
-            foreach (char c in Path.GetInvalidFileNameChars())
+            foreach (var c in Path.GetInvalidFileNameChars())
             {
                 t.Replace(c, '_');
             }
@@ -185,11 +164,8 @@
         /// </summary>
         /// <param name="s">The input string.</param>
         /// <returns>A copy of the input string with the first character capitalized.</returns>
-        public static string ToTitleCase(this string s)
-        {
-            return string.IsNullOrWhiteSpace(s)
+        public static string ToTitleCase(this string s) => string.IsNullOrWhiteSpace(s)
 ? string.Empty
 : $"{char.ToUpper(s[0], CultureInfo.CurrentCulture)}{s.ToLower(CultureInfo.CurrentCulture).Substring(1)}";
-        }
     }
 }

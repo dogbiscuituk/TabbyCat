@@ -10,10 +10,10 @@
     {
         public override Signal ReadJson(JsonReader reader, Type t, Signal v, bool b, JsonSerializer s)
         {
-            JToken token = JToken.Load(reader);
+            var token = JToken.Load(reader);
             if (token.Type == JTokenType.Array)
             {
-                JArray array = (JArray)token;
+                var array = (JArray)token;
                 if (array.Count == 4 &&
                     array[0].Type == JTokenType.String &&
                     array[1].Type == JTokenType.Integer &&

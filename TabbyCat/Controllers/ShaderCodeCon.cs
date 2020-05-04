@@ -20,10 +20,7 @@
 
         protected override IScript ShaderSet => RenderCon;
 
-        protected override string GetRegion()
-        {
-            return Resources.ShaderRegion_All;
-        }
+        protected override string GetRegion() => Resources.ShaderRegion_All;
 
         protected internal override void Connect(bool connect)
         {
@@ -55,7 +52,7 @@
             FindBreaks(text);
             if (Breaks.Any())
             {
-                for (int traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
+                for (var traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
                 {
                     string
                         oldScript = traceNumber == 0 ? Scene.GetScript(ShaderType) : Scene.Traces[traceNumber - 1].GetScript(ShaderType),
@@ -92,7 +89,7 @@
 
         private bool AddBreak(int b)
         {
-            bool ok = !Breaks.Any() || b > Breaks.Last();
+            var ok = !Breaks.Any() || b > Breaks.Last();
             if (ok)
             {
                 Breaks.Add(b);
@@ -103,7 +100,7 @@
 
         private string ExtractScript(string text, int traceNumber)
         {
-            int breakIndex = 2 * traceNumber + 1;
+            var breakIndex = 2 * traceNumber + 1;
             int start = Breaks[breakIndex], end = Breaks[breakIndex + 1];
             return text.GetLines(start, end - start);
         }
@@ -116,8 +113,8 @@
                 return;
             }
 
-            bool ok = AddBreak(0) && AddBreak(script.FindFirstTokenLine(Tokens.BeginScene) + 2) && AddBreak(script.FindFirstTokenLine(Tokens.EndScene) - 1);
-            for (int index = 0; index < Scene.Traces.Count; index++)
+            var ok = AddBreak(0) && AddBreak(script.FindFirstTokenLine(Tokens.BeginScene) + 2) && AddBreak(script.FindFirstTokenLine(Tokens.EndScene) - 1);
+            for (var index = 0; index < Scene.Traces.Count; index++)
             {
                 ok &= AddBreak(script.FindFirstTokenLine(Tokens.BeginTrace(index)) + 2) & AddBreak(script.FindFirstTokenLine(Tokens.EndTrace(index)) - 1);
             }
@@ -128,15 +125,12 @@
                 Breaks.Clear();
             }
 
-            for (int index = 0; index < Breaks.Count; index += 2)
+            for (var index = 0; index < Breaks.Count; index += 2)
             {
                 PrimaryCon.AddSystemRange(new Range(PrimaryTextBox, 0, Breaks[index], 0, Breaks[index + 1]));
             }
         }
 
-        private void ViewShaderCode_Click(object sender, EventArgs e)
-        {
-            ToggleVisibility();
-        }
+        private void ViewShaderCode_Click(object sender, EventArgs e) => ToggleVisibility();
     }
 }

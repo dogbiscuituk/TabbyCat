@@ -6,10 +6,7 @@
     {
         // Constructors
 
-        public PropertyEditEventArgs(string propertyName, int index) : base(propertyName)
-        {
-            Index = index;
-        }
+        public PropertyEditEventArgs(string propertyName, int index) : base(propertyName) => Index = index;
 
         // Public properties
 

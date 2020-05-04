@@ -6,14 +6,8 @@
 
     public class FloatingFormFactory : IFloatWindowFactory
     {
-        public FloatWindow CreateFloatWindow(DockPanel panel, DockPane pane)
-        {
-            return new FloatingForm(panel, pane);
-        }
+        public FloatWindow CreateFloatWindow(DockPanel panel, DockPane pane) => new FloatingForm(panel, pane);
 
-        public FloatWindow CreateFloatWindow(DockPanel panel, DockPane pane, Rectangle r)
-        {
-            return new FloatingForm(panel, pane, r);
-        }
+        public FloatWindow CreateFloatWindow(DockPanel panel, DockPane pane, Rectangle r) => new FloatingForm(panel, pane, r);
     }
 }

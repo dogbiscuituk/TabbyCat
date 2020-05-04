@@ -18,10 +18,7 @@
     {
         // Constructors
 
-        internal LocalizationCon(WorldCon worldCon)
-        {
-            WorldCon = worldCon;
-        }
+        internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
         // Protected fields
 
@@ -29,10 +26,7 @@
 
         // Protected internal properties
 
-        protected internal virtual void UpdateAllProperties()
-        {
-            UpdateProperties(AllProperties);
-        }
+        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         // Protected properties
 
@@ -53,10 +47,7 @@
             }
         }
 
-        protected internal virtual bool Run(ICommand command)
-        {
-            return CommandCon.Run(command);
-        }
+        protected internal virtual bool Run(ICommand command) => CommandCon.Run(command);
 
         // Protected methods
 
@@ -65,7 +56,7 @@
         protected virtual void Localize(string info, params Control[] controls)
         {
             string hint, text = Parse(info, out hint, out _, out _);
-            foreach (Control control in controls)
+            foreach (var control in controls)
             {
                 if (!string.IsNullOrWhiteSpace(text))
                 {
@@ -78,8 +69,8 @@
 
         protected virtual void Localize(string info, params ToolStripItem[] items)
         {
-            string text = Parse(info, out string hint, out string keys, out Keys shortcut);
-            foreach (ToolStripItem item in items)
+            var text = Parse(info, out var hint, out var keys, out var shortcut);
+            foreach (var item in items)
             {
                 item.Text = text;
                 item.ToolTipText = hint;
@@ -91,15 +82,9 @@
             }
         }
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls)
-        {
-            Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
-        }
+        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls)
-        {
-            Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
-        }
+        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
         protected virtual void UpdateProperties(params string[] propertyNames) { }
 
@@ -107,7 +92,7 @@
 
         protected static void InitCommonControls(Control control)
         {
-            foreach (NumericUpDown spinEdit in control.Controls.OfType<NumericUpDown>())
+            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
             {
                 spinEdit.Minimum = decimal.MinValue;
                 spinEdit.Maximum = decimal.MaxValue;
@@ -130,7 +115,7 @@
 
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
-            string[] infos = info.Split('|');
+            var infos = info.Split('|');
             hint = string.Empty;
             keys = string.Empty;
             shortcut = Keys.None;

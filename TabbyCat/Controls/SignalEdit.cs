@@ -4,9 +4,6 @@
 
     public partial class SignalEdit : UserControl
     {
-        public SignalEdit()
-        {
-            InitializeComponent();
-        }
+        public SignalEdit() => InitializeComponent();
     }
 }

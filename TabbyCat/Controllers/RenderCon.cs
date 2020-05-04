@@ -18,10 +18,7 @@
     {
         // Constructors
 
-        internal RenderCon(WorldCon worldCon) : base(worldCon)
-        {
-            Stopwatch.Start();
-        }
+        internal RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
 
         // Internal fields
 
@@ -135,15 +132,9 @@
             InvalidateProjection();
         }
 
-        internal void InvalidateAllTraces()
-        {
-            Scene.Traces.ForEach(InvalidateTrace);
-        }
+        internal void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
 
-        internal void InvalidateCameraView()
-        {
-            CameraViewValid = false;
-        }
+        internal void InvalidateCameraView() => CameraViewValid = false;
 
         internal void InvalidateProgram()
         {
@@ -161,10 +152,7 @@
             });
         }
 
-        internal void InvalidateProjection()
-        {
-            ProjectionValid = false;
-        }
+        internal void InvalidateProjection() => ProjectionValid = false;
 
         internal void InvalidateTrace(Trace trace)
         {
@@ -189,54 +177,48 @@
             InvalidateAllTraces();
         }
 
-        internal void Render()
-        {
-            UsingGL(() =>
-{
-    GL.Enable(EnableCap.DepthTest);
-    GL.Enable(EnableCap.Texture2D);
-    GL.ClearColor(Scene.BackgroundColour);
-    GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-    ValidateProgram();
-    if (ProgramValid)
-    {
-        GL.UseProgram(ProgramID); // Start Shader
-        ValidateCameraView();
-        ValidateProjection();
-        LoadParameters();
-        for (int traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-        {
-            Trace trace = Scene.Traces[traceIndex];
-            if (!trace.Visible)
-            {
-                continue;
-            }
+        internal void Render() => UsingGL(() =>
+                    {
+                        GL.Enable(EnableCap.DepthTest);
+                        GL.Enable(EnableCap.Texture2D);
+                        GL.ClearColor(Scene.BackgroundColour);
+                        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+                        ValidateProgram();
+                        if (ProgramValid)
+                        {
+                            GL.UseProgram(ProgramID); // Start Shader
+                            ValidateCameraView();
+                            ValidateProjection();
+                            LoadParameters();
+                            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
+                            {
+                                var trace = Scene.Traces[traceIndex];
+                                if (!trace.Visible)
+                                {
+                                    continue;
+                                }
 
-            int traceNumber = traceIndex + 1;
-            LoadTraceNumber(traceNumber);
-            LoadTransform(trace);
-            ValidateTrace(trace);
-            GL.BindVertexArray(trace.Vao.VaoID);
-            GL.EnableVertexAttribArray(0);
-            GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
-            GL.DisableVertexAttribArray(0);
-            GL.BindVertexArray(0);
-        }
-        GL.UseProgram(0); // Stop Shader
-        UpdateFPS();
-    }
-    SceneControl.SwapBuffers();
-});
-        }
+                                var traceNumber = traceIndex + 1;
+                                LoadTraceNumber(traceNumber);
+                                LoadTransform(trace);
+                                ValidateTrace(trace);
+                                GL.BindVertexArray(trace.Vao.VaoID);
+                                GL.EnableVertexAttribArray(0);
+                                GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                                GL.DisableVertexAttribArray(0);
+                                GL.BindVertexArray(0);
+                            }
+                            GL.UseProgram(0); // Stop Shader
+                            UpdateFPS();
+                        }
+                        SceneControl.SwapBuffers();
+                    });
 
-        internal void Unload()
-        {
-            UsingGL(InvalidateAllTraces);
-        }
+        internal void Unload() => UsingGL(InvalidateAllTraces);
 
         internal bool UsingGL(Action action)
         {
-            bool ok = !SceneControlSuspended &&
+            var ok = !SceneControlSuspended &&
                 SceneControl?.IsHandleCreated == true &&
                 SceneControl?.HasValidContext == true &&
                 SceneControl?.Visible == true;
@@ -279,26 +261,20 @@
 
         // Private methods
 
-        private void BindAttribute(int attributeIndex, string variableName)
-        {
-            GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
-        }
+        private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(ProgramID, attributeIndex, variableName);
 
-        private void BindAttributes()
-        {
-            BindAttribute(0, "position");
-        }
+        private void BindAttributes() => BindAttribute(0, "position");
 
         private int CreateShader(ShaderType shaderType)
         {
-            string script = GetScript(shaderType);
+            var script = GetScript(shaderType);
             if (string.IsNullOrWhiteSpace(script))
             {
                 return 0;
             }
 
             Log($"Compiling {shaderType.ShaderName()};");
-            int shaderID = GL.CreateShader(shaderType);
+            var shaderID = GL.CreateShader(shaderType);
             GL.ShaderSource(shaderID, script);
             GL.CompileShader(shaderID);
             GL.AttachShader(ProgramID, shaderID);
@@ -340,9 +316,9 @@
 
         private string GetSignalScript()
         {
-            StringBuilder script = new StringBuilder();
+            var script = new StringBuilder();
             script.Append("uniform float timeValue");
-            foreach (Signal signal in Scene.Signals)
+            foreach (var signal in Scene.Signals)
             {
                 script.AppendFormat(CultureInfo.CurrentCulture, ", {0}", signal.Name);
             }
@@ -351,10 +327,7 @@
             return script.ToString();
         }
 
-        private int GetUniformLocation(string uniformName)
-        {
-            return GL.GetUniformLocation(ProgramID, uniformName);
-        }
+        private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(ProgramID, uniformName);
 
         private void GetUniformLocations()
         {
@@ -364,42 +337,30 @@
             Loc_TraceNumber = GetUniformLocation("traceNumber");
             Loc_Transform = GetUniformLocation("transform");
             Loc_Signals.Clear();
-            foreach (Signal signal in Scene.Signals)
+            foreach (var signal in Scene.Signals)
             {
                 Loc_Signals.Add(GetUniformLocation(signal.Name));
             }
         }
 
-        private void LoadCameraView()
-        {
-            LoadMatrix(Loc_CameraView, Scene.GetCameraView());
-        }
+        private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
 
         private void LoadParameters() // Time and AC/DC signals.
         {
-            float time = Clock.VirtualSecondsElapsed;
+            var time = Clock.VirtualSecondsElapsed;
             LoadFloat(Loc_TimeValue, time);
-            for (int index = 0; index < Scene.Signals.Count; index++)
+            for (var index = 0; index < Scene.Signals.Count; index++)
             {
-                Signal signal = Scene.Signals[index];
+                var signal = Scene.Signals[index];
                 LoadFloat(Loc_Signals[index], signal.GetValueAt(time));
             }
         }
 
-        private void LoadProjection()
-        {
-            LoadMatrix(Loc_Projection, Scene.GetProjection());
-        }
+        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
 
-        private void LoadTraceNumber(int traceIndex)
-        {
-            LoadInt(Loc_TraceNumber, traceIndex);
-        }
+        private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
 
-        private void LoadTransform(Trace trace)
-        {
-            LoadMatrix(Loc_Transform, trace.GetTransform());
-        }
+        private void LoadTransform(Trace trace) => LoadMatrix(Loc_Transform, trace.GetTransform());
 
         private void Log(string s)
         {
@@ -428,10 +389,10 @@
                 TickCount++;
             }
 
-            float fps = 0f;
+            var fps = 0f;
             if (TickCount > 1)
             {
-                IEnumerable<long> ticks = Ticks.Take(TickCount);
+                var ticks = Ticks.Take(TickCount);
                 fps = 1000f * (TickCount - 1) / (ticks.Max() - ticks.Min());
             }
             FramesPerSecond = fps;
@@ -534,30 +495,21 @@
 
         // Private static methods
 
-        private static void LoadFloat(int location, float value)
-        {
-            GL.Uniform1(location, value);
-        }
+        private static void LoadFloat(int location, float value) => GL.Uniform1(location, value);
 
-        private static void LoadInt(int location, int value)
-        {
-            GL.Uniform1(location, value);
-        }
+        private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
 
-        private static void LoadMatrix(int location, Matrix4 value)
-        {
-            GL.UniformMatrix4(location, false, ref value);
-        }
+        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
     }
 
     internal partial class RenderCon : IScript
     {
         public string GetScript(ShaderType shaderType)
         {
-            string version = Scene.GLTargetVersion;
-            string signals = GetSignalScript();
-            string sceneScript = Scene.GetScript(shaderType);
-            string traceScripts = string.Concat(Scene.Traces.Select(
+            var version = Scene.GLTargetVersion;
+            var signals = GetSignalScript();
+            var sceneScript = Scene.GetScript(shaderType);
+            var traceScripts = string.Concat(Scene.Traces.Select(
                 p => string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.Format_Trace,
@@ -566,7 +518,7 @@
                     Tokens.BeginTrace(p.Index),
                     p.GetScript(shaderType).Indent("  "),
                     Tokens.EndTrace(p.Index))));
-            string cases = !Scene.Traces.Any()
+            var cases = !Scene.Traces.Any()
                 ? string.Empty
                 : Scene.Traces
                     .Select(p => string.Format(CultureInfo.InvariantCulture, Resources.Format_Case, p.Index + 1))
@@ -585,9 +537,6 @@
                     cases);
         }
 
-        public void SetScript(ShaderType shaderType, string value)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void SetScript(ShaderType shaderType, string value) => throw new System.NotImplementedException();
     }
 }

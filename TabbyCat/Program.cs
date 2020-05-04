@@ -25,7 +25,7 @@
                 return;
             }
 
-            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo(args[0]);
+            var culture = new System.Globalization.CultureInfo(args[0]);
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;

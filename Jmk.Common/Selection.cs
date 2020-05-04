@@ -48,10 +48,7 @@
             OnChanged();
         }
 
-        public void BeginUpdate()
-        {
-            UpdateCount++;
-        }
+        public void BeginUpdate() => UpdateCount++;
 
         public void Clear()
         {
@@ -77,7 +74,7 @@
 
         public void ForEach(Action<TItem> action)
         {
-            foreach (TItem item in Items)
+            foreach (var item in Items)
             {
                 action(item);
             }
@@ -101,10 +98,7 @@
             OnChanged();
         }
 
-        public override string ToString()
-        {
-            return IsEmpty ? string.Empty : Items.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
-        }
+        public override string ToString() => IsEmpty ? string.Empty : Items.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
 
         // Protected methods
 
@@ -115,7 +109,7 @@
                 return default;
             }
 
-            bool first = f(Items.First());
+            var first = f(Items.First());
             return Items.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? (bool?)null
                 : first;
@@ -128,7 +122,7 @@
                 return default;
             }
 
-            TProperty first = f(Items.First());
+            var first = f(Items.First());
             return Items.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? default
                 : first;
@@ -146,9 +140,6 @@
             }
         }
 
-        protected void SetProperty(Action<TItem> set)
-        {
-            ForEach(set);
-        }
+        protected void SetProperty(Action<TItem> set) => ForEach(set);
     }
 }

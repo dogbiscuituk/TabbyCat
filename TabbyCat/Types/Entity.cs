@@ -5,25 +5,13 @@
 
     public static class Entity
     {
-        public static IEnumerable<float> GetCoords(this ITrace trace)
-        {
-            return trace != null ? GetCoords(trace.StripeCount) : null;
-        }
+        public static IEnumerable<float> GetCoords(this ITrace trace) => trace != null ? GetCoords(trace.StripeCount) : null;
 
-        public static int GetCoordsCount(this ITrace trace)
-        {
-            return trace != null ? GetCoordsCount(trace.StripeCount) : 0;
-        }
+        public static int GetCoordsCount(this ITrace trace) => trace != null ? GetCoordsCount(trace.StripeCount) : 0;
 
-        public static IEnumerable<int> GetIndices(this ITrace trace)
-        {
-            return trace != null ? GetIndices(trace.Pattern, trace.StripeCount) : null;
-        }
+        public static IEnumerable<int> GetIndices(this ITrace trace) => trace != null ? GetIndices(trace.Pattern, trace.StripeCount) : null;
 
-        public static int GetIndicesCount(this ITrace trace)
-        {
-            return trace != null ? GetIndicesCount(trace.Pattern, trace.StripeCount) : 0;
-        }
+        public static int GetIndicesCount(this ITrace trace) => trace != null ? GetIndicesCount(trace.Pattern, trace.StripeCount) : 0;
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -36,10 +24,7 @@
         /// <returns>
         /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
         /// </returns>
-        private static IEnumerable<float> GetCoords(Vector3 stripeCount)
-        {
-            return GetCoords((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
-        }
+        private static IEnumerable<float> GetCoords(Vector3 stripeCount) => GetCoords((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -58,15 +43,15 @@
         /// </returns>
         private static IEnumerable<float> GetCoords(int cx, int cy, int cz)
         {
-            for (int i = 0; i <= cx; i++)
+            for (var i = 0; i <= cx; i++)
             {
-                float x = cx == 0 ? 0 : 2f * i / cx - 1;
-                for (int j = 0; j <= cy; j++)
+                var x = cx == 0 ? 0 : 2f * i / cx - 1;
+                for (var j = 0; j <= cy; j++)
                 {
-                    float y = cy == 0 ? 0 : 2f * j / cy - 1;
-                    for (int k = 0; k <= cz; k++)
+                    var y = cy == 0 ? 0 : 2f * j / cy - 1;
+                    for (var k = 0; k <= cz; k++)
                     {
-                        float z = cz == 0 ? 0 : 2f * k / cz - 1;
+                        var z = cz == 0 ? 0 : 2f * k / cz - 1;
                         yield return x;
                         yield return y;
                         yield return z;
@@ -115,12 +100,12 @@
         /// </returns>
         private static IEnumerable<int> GetFill(int cx, int cy)
         {
-            int p = 0;
-            bool even = true;
+            var p = 0;
+            var even = true;
             yield return 0;
-            for (int i = 0; i < cx; i++)
+            for (var i = 0; i < cx; i++)
             {
-                for (int j = 0; j < cy; j++)
+                for (var j = 0; j < cy; j++)
                 {
                     yield return p + cy + 1;
                     yield return even ? ++p : --p;
@@ -130,10 +115,7 @@
             }
         }
 
-        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripeCount)
-        {
-            return GetIndices(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
-        }
+        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripeCount) => GetIndices(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
@@ -155,15 +137,12 @@
             return new int[1] { 0 };
         }
 
-        private static IEnumerable<int> GetLines(int cx, int cy, int cz)
-        {
-            return GetPoints(cx, cy, cz);
-        }
+        private static IEnumerable<int> GetLines(int cx, int cy, int cz) => GetPoints(cx, cy, cz);
 
         private static IEnumerable<int> GetPoints(int cx, int cy, int cz)
         {
-            int n = GetPointsCount(cx, cy, cz);
-            for (int p = 0; p < n; p++)
+            var n = GetPointsCount(cx, cy, cz);
+            for (var p = 0; p < n; p++)
             {
                 yield return p;
             }
@@ -171,12 +150,12 @@
 
         private static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
         {
-            int p = 0;
-            for (int x = 0; x <= cx; x++)
+            var p = 0;
+            for (var x = 0; x <= cx; x++)
             {
-                for (int y = 0; y <= cy; y++)
+                for (var y = 0; y <= cy; y++)
                 {
-                    for (int z = 0; z <= cz; z++)
+                    for (var z = 0; z <= cz; z++)
                     {
                         if (x < cx)
                         {
@@ -203,7 +182,7 @@
         {
             for (int i = 0, p = 0; i <= cx; i++)
             {
-                for (int j = 0; j <= cy; j++)
+                for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
@@ -231,7 +210,7 @@
         {
             for (int i = 0, p = 0; i <= cx; i++)
             {
-                for (int j = 0; j <= cy; j++)
+                for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
                     {
@@ -253,15 +232,9 @@
             }
         }
 
-        private static int GetCoordsCount(Vector3 stripeCount)
-        {
-            return GetCoordsCount((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
-        }
+        private static int GetCoordsCount(Vector3 stripeCount) => GetCoordsCount((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
-        private static int GetIndicesCount(Pattern pattern, Vector3 stripeCount)
-        {
-            return GetIndicesCount(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
-        }
+        private static int GetIndicesCount(Pattern pattern, Vector3 stripeCount) => GetIndicesCount(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {
@@ -283,39 +256,18 @@
             return 1;
         }
 
-        private static int GetCoordsCount(int cx, int cy, int cz)
-        {
-            return 3 * (cx + 1) * (cy + 1) * (cz + 1);
-        }
+        private static int GetCoordsCount(int cx, int cy, int cz) => 3 * (cx + 1) * (cy + 1) * (cz + 1);
 
-        private static int GetFillCount(int cx, int cy)
-        {
-            return cx * (2 * cy + 1) + 1;
-        }
+        private static int GetFillCount(int cx, int cy) => cx * (2 * cy + 1) + 1;
 
-        private static int GetLinesCount(int cx, int cy, int cz)
-        {
-            return GetPointsCount(cx, cy, cz);
-        }
+        private static int GetLinesCount(int cx, int cy, int cz) => GetPointsCount(cx, cy, cz);
 
-        private static int GetPointsCount(int cx, int cy, int cz)
-        {
-            return (cx + 1) * (cy + 1) * (cz + 1);
-        }
+        private static int GetPointsCount(int cx, int cy, int cz) => (cx + 1) * (cy + 1) * (cz + 1);
 
-        private static int GetRectanglesCount(int cx, int cy, int cz)
-        {
-            return 2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
-        }
+        private static int GetRectanglesCount(int cx, int cy, int cz) => 2 * (3 * cx * cy * cz + 2 * (cx * cy + cx * cz + cy * cz) + cx + cy + cz);
 
-        private static int GetSaltiresCount(int cx, int cy)
-        {
-            return 8 * cx * cy + 2 * (cx + cy);
-        }
+        private static int GetSaltiresCount(int cx, int cy) => 8 * cx * cy + 2 * (cx + cy);
 
-        private static int GetTrianglesCount(int cx, int cy)
-        {
-            return 6 * cx * cy + 2 * (cx + cy);
-        }
+        private static int GetTrianglesCount(int cx, int cy) => 6 * cx * cy + 2 * (cx + cy);
     }
 }

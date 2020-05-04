@@ -33,14 +33,8 @@
             }
         }
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
-        {
-            UpdateProperties(e.PropertyName);
-        }
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
-        private void WorldCon_SelectionEdit(object sender, EventArgs e)
-        {
-            OnSelectionEdit();
-        }
+        private void WorldCon_SelectionEdit(object sender, EventArgs e) => OnSelectionEdit();
     }
 }

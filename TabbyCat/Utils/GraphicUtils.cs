@@ -21,7 +21,7 @@
                 depth = mode.Depth,
                 samples = mode.Samples,
                 stencil = mode.Stencil;
-            bool
+            var
                 stereo = mode.Stereo;
             switch (propertyName)
             {
@@ -42,9 +42,7 @@
                 stereo: stereo);
         }
 
-        public static string AsString(this GraphicsMode mode)
-        {
-            return mode == null ? string.Empty : string.Format(
+        public static string AsString(this GraphicsMode mode) => mode == null ? string.Empty : string.Format(
 CultureInfo.CurrentCulture,
 Resources.GraphicsModeFormat,
 mode.Index,
@@ -55,6 +53,5 @@ mode.Depth,
 mode.Samples,
 mode.Stencil,
 mode.Stereo);
-        }
     }
 }

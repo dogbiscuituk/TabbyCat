@@ -2,9 +2,6 @@
 {
     public partial class SignalsForm : DockingForm
     {
-        public SignalsForm()
-        {
-            InitializeComponent();
-        }
+        public SignalsForm() => InitializeComponent();
     }
 }

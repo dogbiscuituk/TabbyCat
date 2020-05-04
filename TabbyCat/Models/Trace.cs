@@ -12,20 +12,11 @@
 
     public class Trace : Shaders, ITrace
     {
-        public Trace() : base()
-        {
-            Init();
-        }
+        public Trace() : base() => Init();
 
-        internal Trace(Scene scene) : this()
-        {
-            Scene = scene;
-        }
+        internal Trace(Scene scene) : this() => Scene = scene;
 
-        internal Trace(Trace trace) : base(trace)
-        {
-            CopyFrom(trace);
-        }
+        internal Trace(Trace trace) : base(trace) => CopyFrom(trace);
 
         private int _Index;
 
@@ -71,25 +62,19 @@
         /// </summary>
         internal Vao Vao;
 
-        public override string ToString()
-        {
-            return !string.IsNullOrWhiteSpace(Description)
+        public override string ToString() => !string.IsNullOrWhiteSpace(Description)
 ? Description
 : Index >= 0
 ? $"Trace #{Index + 1}"
 : "New trace";
-        }
 
-        internal Matrix4 GetTransform()
-        {
-            return MathUtils.CreateTransformation(Location, Orientation, Scale);
-        }
+        internal Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
 
         internal string PreviewShader(ShaderType shaderType, string formula)
         {
-            string script = GetScript(shaderType);
-            int beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
-            int endLine = script.FindFirstTokenLine(Tokens.EndFormula);
+            var script = GetScript(shaderType);
+            var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
+            var endLine = script.FindFirstTokenLine(Tokens.EndFormula);
             if (0 <= beginLine && beginLine < endLine)
             {
                 string
@@ -100,20 +85,11 @@
             return string.Empty;
         }
 
-        internal void SetLocation(Vector3 location)
-        {
-            Location = location;
-        }
+        internal void SetLocation(Vector3 location) => Location = location;
 
-        internal void SetOrientation(Vector3 orientation)
-        {
-            Orientation = orientation;
-        }
+        internal void SetOrientation(Vector3 orientation) => Orientation = orientation;
 
-        internal void SetScale(Vector3 scale)
-        {
-            Scale = scale;
-        }
+        internal void SetScale(Vector3 scale) => Scale = scale;
 
         /*internal void SetTransform(Matrix4 transform)
         {
@@ -122,10 +98,7 @@
             SetScale(transform.ExtractScale());
         }*/
 
-        protected void SetFormula(ShaderType shaderType, string formula)
-        {
-            SetScript(shaderType, PreviewShader(shaderType, formula));
-        }
+        protected void SetFormula(ShaderType shaderType, string formula) => SetScript(shaderType, PreviewShader(shaderType, formula));
 
         private void CopyFrom(Trace trace)
         {

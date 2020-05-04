@@ -50,7 +50,7 @@
             {
                 if (_AboutDialog == null)
                 {
-                    using (AboutCon aboutCon = new AboutCon(null))
+                    using (var aboutCon = new AboutCon(null))
                     {
                         _AboutDialog = aboutCon.AboutDialog;
                     }
@@ -64,7 +64,7 @@
         {
             get
             {
-                Options options = new Options
+                var options = new Options
                 {
                     Theme = Settings.Options_Theme,
                     OpenInNewWindow = Settings.Options_OpenInNewWindow,
@@ -105,17 +105,14 @@
 
         internal static WorldCon AddNewWorldCon()
         {
-            WorldCon worldCon = new WorldCon();
+            var worldCon = new WorldCon();
             WorldCons.Add(worldCon);
             worldCon.Show();
             worldCon.RefreshGraphicsMode();
             return worldCon;
         }
 
-        internal static void Close()
-        {
-            Application.Exit();
-        }
+        internal static void Close() => Application.Exit();
 
         internal static string GetDefaultFolder(FilterIndex filterIndex)
         {
@@ -160,7 +157,7 @@
         private static void Pulse_Tick(object sender, EventArgs e)
         {
             CanPaste = Clipboard.ContainsData(DataFormat);
-            foreach (WorldCon worldCon in WorldCons)
+            foreach (var worldCon in WorldCons)
             {
                 worldCon.OnPulse();
             }
@@ -183,9 +180,9 @@
     {
         internal static void InitControlTheme(params Control[] controls)
         {
-            ThemeBase theme = VsTheme;
-            VsVersion version = VsVersion;
-            foreach (Control control in controls)
+            var theme = VsTheme;
+            var version = VsVersion;
+            foreach (var control in controls)
             {
                 if (control is DockPanel dockPanel)
                 {

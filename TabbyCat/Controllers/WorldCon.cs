@@ -50,40 +50,22 @@
             Pulse,
             SelectionChanged;
 
-        internal void InitControlTheme()
-        {
-            AppCon.InitControlTheme(
+        internal void InitControlTheme() => AppCon.InitControlTheme(
 WorldPanel,
 WorldForm.MainMenu,
 WorldForm.PopupMenu,
 WorldForm.Toolbar,
 WorldForm.StatusBar);
-        }
 
-        internal void LoadFromFile(string filePath)
-        {
-            JsonCon.LoadFromFile(filePath);
-        }
+        internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
 
-        internal void ModifiedChanged()
-        {
-            WorldForm.Text = JsonCon.WindowCaption;
-        }
+        internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
 
-        internal void RefreshGraphicsMode()
-        {
-            OnPropertyEdit(PropertyNames.GraphicsMode);
-        }
+        internal void RefreshGraphicsMode() => OnPropertyEdit(PropertyNames.GraphicsMode);
 
-        internal void Show()
-        {
-            WorldForm.Show();
-        }
+        internal void Show() => WorldForm.Show();
 
-        internal void Show(IWin32Window owner)
-        {
-            WorldForm.Show(owner);
-        }
+        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
         internal void OnCollectionEdit(string collectionName, int index, bool adding)
         {
@@ -174,125 +156,59 @@ WorldForm.StatusBar);
             LocalizeFmt(Resources.WorldForm_HelpAbout, Application.ProductName, WorldForm.HelpAbout);
         }
 
-        private void Clock_Tick(object sender, EventArgs e) { RenderCon.Render(); }
+        private void Clock_Tick(object sender, EventArgs e) => RenderCon.Render();
 
-        private void AddCurve_Click(object sender, EventArgs e)
-        {
-            AddCurve();
-        }
+        private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
 
-        private void AddSurface_Click(object sender, EventArgs e)
-        {
-            AddSurface();
-        }
+        private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
 
-        private void AddVolume_Click(object sender, EventArgs e)
-        {
-            AddVolume();
-        }
+        private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
 
-        private void EditCut_Click(object sender, EventArgs e)
-        {
-            CutToClipboard();
-        }
+        private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
 
-        private void EditCopy_Click(object sender, EventArgs e)
-        {
-            CopyToClipboard();
-        }
+        private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
 
-        private void EditPaste_Click(object sender, EventArgs e)
-        {
-            PasteFromClipboard();
-        }
+        private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
 
-        private void EditDelete_Click(object sender, EventArgs e)
-        {
-            DeleteSelection();
-        }
+        private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
 
-        private void EditSelectAll_Click(object sender, EventArgs e)
-        {
-            SelectAll();
-        }
+        private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
 
-        private void EditInvertSelection_Click(object sender, EventArgs e)
-        {
-            InvertSelection();
-        }
+        private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
 
-        private void EditOptions_Click(object sender, EventArgs e)
-        {
-            EditOptions();
-        }
+        private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
 
-        private void ViewRestoreWindowLayout_Click(object sender, EventArgs e)
-        {
-            RestoreWindowLayout();
-        }
+        private void ViewRestoreWindowLayout_Click(object sender, EventArgs e) => RestoreWindowLayout();
 
-        private void HelpAbout_Click(object sender, EventArgs e)
-        {
-            HelpAbout();
-        }
+        private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
 
-        private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e)
-        {
-            ShowOpenGLSLBook();
-        }
+        private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
 
-        private void PopupWorldForm_Opening(object sender, CancelEventArgs e)
-        {
-            CreateMainMenuClone();
-        }
+        private void PopupWorldForm_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
 
-        private void WorldForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            FormClosed();
-        }
+        private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
 
-        private void WorldForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = !FormClosing(e.CloseReason);
-        }
+        private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
 
-        private void Selection_Changed(object sender, EventArgs e)
-        {
-            OnSelectionChanged();
-        }
+        private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
 
-        private void AddCurve()
-        {
-            AddTrace(TraceType.Curve);
-        }
+        private void AddCurve() => AddTrace(TraceType.Curve);
 
-        private void AddSurface()
-        {
-            AddTrace(TraceType.Surface);
-        }
+        private void AddSurface() => AddTrace(TraceType.Surface);
 
         private void AddTrace(TraceType traceType)
         {
-            Trace trace = GetNewTrace(traceType);
+            var trace = GetNewTrace(traceType);
             trace.Scene = Scene;
             CommandCon.AppendTrace(trace);
             TraceSelection.Set(new[] { Scene.Traces.Last() });
         }
 
-        private void AddVolume()
-        {
-            AddTrace(TraceType.Volume);
-        }
+        private void AddVolume() => AddTrace(TraceType.Volume);
 
-        private void ClockInit()
-        {
-            Clock.IntervalMilliseconds = GetFrameMilliseconds();
-        }
+        private void ClockInit() => Clock.IntervalMilliseconds = GetFrameMilliseconds();
 
-        private void ClockShutdown()
-        {
-            Clock.Stop();
-        }
+        private void ClockShutdown() => Clock.Stop();
 
         private void ClockStartup()
         {
@@ -301,10 +217,7 @@ WorldForm.StatusBar);
             ClockCon.UpdateTimeControls();
         }
 
-        private void CreateMainMenuClone()
-        {
-            WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
-        }
+        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
 
         private void ConnectEventHandlers(bool connect)
         {
@@ -391,10 +304,7 @@ WorldForm.StatusBar);
             }
         }
 
-        private void CopyToClipboard()
-        {
-            JsonCon.ClipboardCopy(TraceSelection.Traces);
-        }
+        private void CopyToClipboard() => JsonCon.ClipboardCopy(TraceSelection.Traces);
 
         private void CutToClipboard()
         {
@@ -409,8 +319,8 @@ WorldForm.StatusBar);
                 return;
             }
 
-            System.Collections.Generic.List<int> indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
-            foreach (int index in indices)
+            var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
+            foreach (var index in indices)
             {
                 CommandCon.DeleteTrace(index);
             }
@@ -420,26 +330,17 @@ WorldForm.StatusBar);
 
         private void EditOptions()
         {
-            using (OptionsCon optionsCon = new OptionsCon(this))
+            using (var optionsCon = new OptionsCon(this))
             {
                 optionsCon.ShowModal();
             }
         }
 
-        private void FormClosed()
-        {
-            Connect(false);
-        }
+        private void FormClosed() => Connect(false);
 
-        private bool FormClosing(CloseReason _)
-        {
-            return JsonCon.SaveIfModified();
-        }
+        private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
 
-        private int GetFrameMilliseconds()
-        {
-            return (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
-        }
+        private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
 
         private static Trace GetNewTrace(TraceType traceType)
         {
@@ -458,16 +359,13 @@ WorldForm.StatusBar);
 
         private void HelpAbout()
         {
-            using (AboutCon aboutCon = new AboutCon(this))
+            using (var aboutCon = new AboutCon(this))
             {
                 aboutCon.ShowDialog(WorldForm);
             }
         }
 
-        private void InvertSelection()
-        {
-            TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
-        }
+        private void InvertSelection() => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
 
         private void OnSelectionChanged()
         {
@@ -483,14 +381,14 @@ WorldForm.StatusBar);
 
         private void PasteFromClipboard()
         {
-            System.Collections.Generic.IEnumerable<Trace> traces = JsonCon.ClipboardPaste();
+            var traces = JsonCon.ClipboardPaste();
             if (traces == null || !traces.Any())
             {
                 return;
             }
 
-            int index = Scene.Traces.Count;
-            foreach (Trace trace in traces)
+            var index = Scene.Traces.Count;
+            foreach (var trace in traces)
             {
                 trace.Scene = Scene;
                 Run(new TraceInsertCommand(index++, trace));
@@ -498,19 +396,13 @@ WorldForm.StatusBar);
             TraceSelection.Set(traces);
         }
 
-        private void SelectAll()
-        {
-            TraceSelection.AddRange(Scene.Traces);
-        }
+        private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
 
-        internal void ShowOpenGLSLBook()
-        {
-            LaunchBrowser($"{GLSLUrl}");
-        }
+        internal void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
 
         private void UpdateFramesPerSecond()
         {
-            string fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
+            var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
             if (LastFPS != fps)
             {
                 LastFPS = WorldForm.FpsLabel.Text = fps;
@@ -519,17 +411,17 @@ WorldForm.StatusBar);
 
         private void UpdateGpuStatusLabel()
         {
-            ToolStripStatusLabel label = WorldForm.GpuStatusLabel;
+            var label = WorldForm.GpuStatusLabel;
             label.ForeColor = Scene.GPUStatus.GetColour();
-            string text = Scene.GPULog;
+            var text = Scene.GPULog;
             label.Text = Regex.Replace(text, @"\s+", " ");
             label.ToolTipText = text;
         }
 
         private void UpdateGraphicsModeLabel()
         {
-            ToolStripStatusLabel label = WorldForm.GraphicsModeLabel;
-            OpenTK.Graphics.GraphicsMode mode = GraphicsMode;
+            var label = WorldForm.GraphicsModeLabel;
+            var mode = GraphicsMode;
             label.Text = string.Format(CultureInfo.CurrentCulture, Resources.Text_GraphicsModeIndexFormat, mode.Index);
             label.ToolTipText = mode.AsString();
         }
@@ -554,14 +446,14 @@ WorldForm.StatusBar);
         private void UpdateTimeFactor()
         {
             string speed;
-            float factor = Clock.VirtualTimeFactor;
+            var factor = Clock.VirtualTimeFactor;
             if (factor == 0)
             {
                 speed = "time × 0";
             }
             else
             {
-                bool divide = Math.Abs(factor) < 1;
+                var divide = Math.Abs(factor) < 1;
                 if (divide)
                 {
                     factor = 1 / factor;
@@ -575,14 +467,11 @@ WorldForm.StatusBar);
             }
         }
 
-        private void UpdateToolbar()
-        {
-            WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
-        }
+        private void UpdateToolbar() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
 
         private void UpdateVirtualTime()
         {
-            string time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
+            var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
             if (LastTime != time)
             {
                 LastTime = WorldForm.TimeLabel.Text = time;

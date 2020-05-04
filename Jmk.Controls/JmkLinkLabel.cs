@@ -42,10 +42,7 @@
 
         private int Offset;
 
-        protected virtual void OnActiveLinkChanged()
-        {
-            ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnActiveLinkChanged() => ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -55,7 +52,7 @@
                 return;
             }
 
-            Link link = PointInLink(e.X, e.Y);
+            var link = PointInLink(e.X, e.Y);
             if (link == ActiveLink)
             {
                 return;
@@ -73,30 +70,30 @@
 
         private string EvaluateLink(Match match)
         {
-            GroupCollection groups = match.Groups;
+            var groups = match.Groups;
             Group
                 group1 = groups[1],
                 group2 = groups[2];
             int
                 start = group1.Index,
                 length = group1.Length;
-            string url = group2.Value;
+            var url = group2.Value;
             Links.Add(new Link(start - 1 + Offset, length, url) { Description = url });
-            string result = groups[1].Value;
+            var result = groups[1].Value;
             Offset += result.Length - match.Value.Length;
             return result;
         }
 
         private string EvaluateParameter(Match match)
         {
-            string parameter = match.Groups[1].Value;
-            LookupParameterEventArgs e = new LookupParameterEventArgs
+            var parameter = match.Groups[1].Value;
+            var e = new LookupParameterEventArgs
             {
                 Name = parameter,
                 Value = string.Empty
             };
             LookupParameterValue?.Invoke(this, e);
-            string result = e.Value;
+            var result = e.Value;
             Offset += result.Length - match.Value.Length;
             return result;
         }

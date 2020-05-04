@@ -39,7 +39,7 @@
         internal DialogResult ShowModal()
         {
             Options = AppCon.Options;
-            DialogResult result = OptionsDialog.ShowDialog(WorldForm);
+            var result = OptionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
             {
                 AppCon.Options = Options;
@@ -50,7 +50,7 @@
 
         private void BrowseFolder(string detail, TextBox textBox)
         {
-            using (FolderBrowserDialog dialog = new FolderBrowserDialog
+            using (var dialog = new FolderBrowserDialog
             {
                 Description = $"Select the default folder for storing scene {detail}:",
                 SelectedPath = textBox.Text,
@@ -64,28 +64,19 @@
             }
         }
 
-        private void BtnFilesFolder_Click(object sender, EventArgs e)
-        {
-            BrowseFolder("files", OptionsDialog.edFilesFolder);
-        }
+        private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", OptionsDialog.edFilesFolder);
 
-        private void BtnTemplatesFolder_Click(object sender, EventArgs e)
-        {
-            BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
-        }
+        private void BtnTemplatesFolder_Click(object sender, EventArgs e) => BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
 
-        private Options GetOptions()
+        private Options GetOptions() => new Options
         {
-            return new Options
-            {
-                Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
-                OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
-                FilesFolderPath = OptionsDialog.edFilesFolder.Text,
-                TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
-                SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
-                GLSLPath = OptionsDialog.edGLSLUrl.Text
-            };
-        }
+            Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
+            OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
+            FilesFolderPath = OptionsDialog.edFilesFolder.Text,
+            TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
+            SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
+            GLSLPath = OptionsDialog.edGLSLUrl.Text
+        };
 
         private void SetOptions(Options options)
         {

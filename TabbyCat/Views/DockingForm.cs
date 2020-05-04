@@ -4,9 +4,6 @@
 
     public partial class DockingForm : DockContent
     {
-        public DockingForm()
-        {
-            InitializeComponent();
-        }
+        public DockingForm() => InitializeComponent();
     }
 }

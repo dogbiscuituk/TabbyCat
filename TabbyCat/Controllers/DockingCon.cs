@@ -20,9 +20,6 @@
             }
         }
 
-        protected void ToggleVisibility()
-        {
-            SetVisibility(!Form.Visible);
-        }
+        protected void ToggleVisibility() => SetVisibility(!Form.Visible);
     }
 }

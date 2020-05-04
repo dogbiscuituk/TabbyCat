@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Colours.cs" />
     <Compile Include="EnumUtils.cs" />
     <Compile Include="NameSource.cs" />
     <Compile Include="Processes.cs" />

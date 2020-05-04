@@ -21,14 +21,8 @@
         /// </summary>
         /// <param name="flags">The flag set.</param>
         /// <returns>True if part of the flag set, otherwise false.</returns>
-        public bool IsMemberFlag(JmkFlagsCheckedListBoxItem flags)
-        {
-            return IsFlag && (Value & flags?.Value) == Value;
-        }
+        public bool IsMemberFlag(JmkFlagsCheckedListBoxItem flags) => IsFlag && (Value & flags?.Value) == Value;
 
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
     }
 }

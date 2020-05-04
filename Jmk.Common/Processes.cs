@@ -23,9 +23,6 @@
             }
         }
 
-        public static void Spit(this string s)
-        {
-            Debug.WriteLine($"* {DateTime.Now:yyyy-MM-dd hh:mm:ss.fff} * {s}");
-        }
+        public static void Spit(this string s) => Debug.WriteLine($"* {DateTime.Now:yyyy-MM-dd hh:mm:ss.fff} * {s}");
     }
 }

@@ -41,7 +41,7 @@
                 return null;
             }
 
-            string[] t = s.Split(';');
+            var t = s.Split(';');
             return new TextStyleInfo
             (
                 Color.FromName(t[0]),
@@ -50,9 +50,6 @@
             );
         }
 
-        public override string ToString()
-        {
-            return $"{Foreground.Name}; {Background.Name}; {FontStyle}";
-        }
+        public override string ToString() => $"{Foreground.Name}; {Background.Name}; {FontStyle}";
     }
 }

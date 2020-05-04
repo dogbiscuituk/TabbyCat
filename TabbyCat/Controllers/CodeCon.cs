@@ -28,7 +28,7 @@
             ShowLineNumbers = false;
             ShowDocumentMap = false;
             SplitType = SplitType.None;
-            ToolStripItemCollection items = CodeEdit.tbShader.DropDownItems;
+            var items = CodeEdit.tbShader.DropDownItems;
             items[0].Tag = ShaderType.VertexShader;
             items[1].Tag = ShaderType.TessControlShader;
             items[2].Tag = ShaderType.TessEvaluationShader;
@@ -196,49 +196,25 @@
             Localize(Resources.CodeForm_SplitNone, CodeEdit.tbSplitNone);
         }
 
-        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e)
-        {
-            WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
-        }
+        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
 
-        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LaunchBrowser(e.Link.LinkData.ToString());
-        }
+        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LaunchBrowser(e.Link.LinkData.ToString());
 
-        private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e)
-        {
-            e.Value = LookupParameterValue(e.Name);
-        }
+        private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) => e.Value = LookupParameterValue(e.Name);
 
-        private void BuiltInHelpParent_Resize(object sender, EventArgs e)
-        {
-            ResizeBuiltInHelp();
-        }
+        private void BuiltInHelpParent_Resize(object sender, EventArgs e) => ResizeBuiltInHelp();
 
-        private void Copy_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.Copy();
-        }
+        private void Copy_Click(object sender, EventArgs e) => ActiveTextBox?.Copy();
 
-        private void Cut_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.Cut();
-        }
+        private void Cut_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
 
-        private void Delete_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.ClearSelected();
-        }
+        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.ClearSelected();
 
-        private void DocumentMap_Click(object sender, System.EventArgs e)
-        {
-            ShowDocumentMap = !ShowDocumentMap;
-        }
+        private void DocumentMap_Click(object sender, System.EventArgs e) => ShowDocumentMap = !ShowDocumentMap;
 
         private void ExportHTML_Click(object sender, System.EventArgs e)
         {
-            using (SaveFileDialog dialog = new SaveFileDialog
+            using (var dialog = new SaveFileDialog
             {
                 Filter = Resources.SaveHtmlDialog_Filter,
                 Title = Resources.SaveHtmlDialog_Title
@@ -253,7 +229,7 @@
 
         private void ExportRTF_Click(object sender, System.EventArgs e)
         {
-            using (SaveFileDialog dialog = new SaveFileDialog
+            using (var dialog = new SaveFileDialog
             {
                 Filter = Resources.SaveRtfDialog_Filter,
                 Title = Resources.SaveRtfDialog_Title
@@ -266,37 +242,19 @@
             }
         }
 
-        private void Focus_Changed(object sender, EventArgs e)
-        {
-            SetActiveTextBox(sender as FastColoredTextBox);
-        }
+        private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
         protected abstract string GetRegion();
 
-        private string GetTabText()
-        {
-            return GetText(Resources.ShaderForm_TabText);
-        }
+        private string GetTabText() => GetText(Resources.ShaderForm_TabText);
 
-        private string GetText()
-        {
-            return GetText(Resources.ShaderForm_Text);
-        }
+        private string GetText() => GetText(Resources.ShaderForm_Text);
 
-        private string GetText(string format)
-        {
-            return string.Format(CultureInfo.CurrentCulture, format, GetRegion());
-        }
+        private string GetText(string format) => string.Format(CultureInfo.CurrentCulture, format, GetRegion());
 
-        private string GetToolTipText()
-        {
-            return GetText(Resources.ShaderForm_ToolTipText);
-        }
+        private string GetToolTipText() => GetText(Resources.ShaderForm_ToolTipText);
 
-        private void LineNumbers_Click(object sender, System.EventArgs e)
-        {
-            ShowLineNumbers = !ShowLineNumbers;
-        }
+        private void LineNumbers_Click(object sender, System.EventArgs e) => ShowLineNumbers = !ShowLineNumbers;
 
         private void Options_DropDownOpening(object sender, System.EventArgs e)
         {
@@ -305,46 +263,25 @@
             CodeEdit.tbDocumentMap.Checked = ShowDocumentMap;
         }
 
-        private void Paste_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.Paste();
-        }
+        private void Paste_Click(object sender, EventArgs e) => ActiveTextBox?.Paste();
 
-        private void Print_Click(object sender, System.EventArgs e)
-        {
-            PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
-        }
+        private void Print_Click(object sender, System.EventArgs e) => PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
-        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            LoadShaderCode();
-        }
+        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) => LoadShaderCode();
 
-        private void Redo_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.Redo();
-        }
+        private void Redo_Click(object sender, EventArgs e) => ActiveTextBox?.Redo();
 
-        private void Ruler_Click(object sender, System.EventArgs e)
-        {
-            ShowRuler = !ShowRuler;
-        }
+        private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
 
-        private void Shader_ButtonClick(object sender, EventArgs e)
-        {
-            SelectNextShader();
-        }
+        private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
-        private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            ShaderType = (ShaderType)e.ClickedItem.Tag;
-        }
+        private void Shader_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e) => ShaderType = (ShaderType)e.ClickedItem.Tag;
 
         private void Shader_DropDownOpening(object sender, EventArgs e)
         {
             foreach (ToolStripMenuItem item in CodeEdit.tbShader.DropDownItems)
             {
-                ShaderType shaderType = (ShaderType)item.Tag;
+                var shaderType = (ShaderType)item.Tag;
                 item.CheckState =
                     shaderType == ShaderType
                     ? CheckState.Checked
@@ -354,10 +291,7 @@
             }
         }
 
-        private void Split_ButtonClick(object sender, EventArgs e)
-        {
-            SplitType = (SplitType)((int)(SplitType + 1) % 3);
-        }
+        private void Split_ButtonClick(object sender, EventArgs e) => SplitType = (SplitType)((int)(SplitType + 1) % 3);
 
         private void Split_DropDownOpening(object sender, EventArgs e)
         {
@@ -366,25 +300,13 @@
             CodeEdit.tbSplitNone.Checked = SplitType == SplitType.None;
         }
 
-        private void SplitHorizontal_Click(object sender, EventArgs e)
-        {
-            SplitType = SplitType.Horizontal;
-        }
+        private void SplitHorizontal_Click(object sender, EventArgs e) => SplitType = SplitType.Horizontal;
 
-        private void SplitNone_Click(object sender, EventArgs e)
-        {
-            SplitType = SplitType.None;
-        }
+        private void SplitNone_Click(object sender, EventArgs e) => SplitType = SplitType.None;
 
-        private void SplitVertical_Click(object sender, EventArgs e)
-        {
-            SplitType = SplitType.Vertical;
-        }
+        private void SplitVertical_Click(object sender, EventArgs e) => SplitType = SplitType.Vertical;
 
-        private void TextBox_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateUI();
-        }
+        private void TextBox_SelectionChanged(object sender, EventArgs e) => UpdateUI();
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -403,25 +325,13 @@
             }
         }
 
-        private void Undo_Click(object sender, EventArgs e)
-        {
-            ActiveTextBox?.Undo();
-        }
+        private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
-        {
-            UpdateProperties(e.PropertyName);
-        }
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
-        private void WorldCon_Pulse(object sender, EventArgs e)
-        {
-            CodeEdit.tbPaste.Enabled = CanPaste();
-        }
+        private void WorldCon_Pulse(object sender, EventArgs e) => CodeEdit.tbPaste.Enabled = CanPaste();
 
-        private void WorldCon_SelectionChanged(object sender, EventArgs e)
-        {
-            OnSelectionChanged();
-        }
+        private void WorldCon_SelectionChanged(object sender, EventArgs e) => OnSelectionChanged();
 
         private static bool CanPaste()
         {
@@ -583,15 +493,9 @@
             }
         }
 
-        protected string GetScript()
-        {
-            return GetScript(ShaderType);
-        }
+        protected string GetScript() => GetScript(ShaderType);
 
-        private string GetScript(ShaderType shaderType)
-        {
-            return ShaderSet.GetScript(shaderType);
-        }
+        private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
         private void LoadContent()
         {
@@ -601,7 +505,7 @@
 
         protected virtual void LoadScript()
         {
-            string script = GetScript();
+            var script = GetScript();
             PrimaryTextBox.Text = script;
             SecondaryTextBox.Text = script;
         }
@@ -630,27 +534,18 @@
             }
         }
 
-        private void OnSelectionChanged()
-        {
-            LoadShaderCode();
-        }
+        private void OnSelectionChanged() => LoadShaderCode();
 
-        private void ResizeBuiltInHelp()
-        {
-            CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
+        private void ResizeBuiltInHelp() => CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
 CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
-        }
 
         protected abstract void RunShaderCommand(string text);
 
-        private void SaveShaderCode()
-        {
-            RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
-        }
+        private void SaveShaderCode() => RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
 
         private void SelectNextShader()
         {
-            ShaderType s = ShaderType;
+            var s = ShaderType;
             do
             {
                 s = s.Next();
@@ -678,7 +573,7 @@ CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScro
             }
 
             Updating = true;
-            foreach (string propertyName in propertyNames)
+            foreach (var propertyName in propertyNames)
             {
                 if (CodeChanged(propertyName))
                 {
@@ -690,10 +585,7 @@ CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScro
             Updating = false;
         }
 
-        protected virtual bool CodeChanged(string propertyName)
-        {
-            return propertyName == ShaderName;
-        }
+        protected virtual bool CodeChanged(string propertyName) => propertyName == ShaderName;
 
         protected virtual void UpdateUI()
         {

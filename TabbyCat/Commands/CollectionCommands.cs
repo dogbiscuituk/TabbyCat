@@ -17,7 +17,7 @@
     {
         // Constructors
 
-        internal CollectionCommand(int index, bool add) : base(index) { Adding = add; }
+        internal CollectionCommand(int index, bool add) : base(index) => Adding = add;
 
         // Public properties
 
@@ -33,7 +33,7 @@
 
         // Public methods
 
-        public override void Invert() { Adding = !Adding; }
+        public override void Invert() => Adding = !Adding;
 
         public override bool Run(Scene scene)
         {
@@ -44,7 +44,7 @@
                     Value = GetNewItem(scene);
                 }
 
-                int count = GetItemsCount(scene);
+                var count = GetItemsCount(scene);
                 if (Index >= 0 && Index < count)
                 {
                     InsertItem(scene);
@@ -71,10 +71,7 @@
             return true;
         }
 
-        public override string ToString()
-        {
-            return $"{(Adding ? "Add" : "Remove")} {Target}";
-        }
+        public override string ToString() => $"{(Adding ? "Add" : "Remove")} {Target}";
 
         // Protected methods
 
@@ -88,61 +85,34 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected virtual void OnCollectionEdit(Scene scene)
-        {
-            scene.OnCollectionEdit(PropertyName, Index, Adding);
-        }
+        protected virtual void OnCollectionEdit(Scene scene) => scene.OnCollectionEdit(PropertyName, Index, Adding);
 
         protected abstract void RemoveItem(Scene scene);
 
         // Private methods
 
-        private string GetAction(bool undo)
-        {
-            return $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
-        }
+        private string GetAction(bool undo) => $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
     }
 
     internal class SignalCollectionCommand : CollectionCommand<Signal>
     {
         // Constructors
 
-        internal SignalCollectionCommand(int index, bool add) : base(index, add)
-        {
-            PropertyName = PropertyNames.Signals;
-        }
+        internal SignalCollectionCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Signals;
 
         // Protected methods
 
-        protected override void AddItem(Scene scene)
-        {
-            scene.AddSignal(Value);
-        }
+        protected override void AddItem(Scene scene) => scene.AddSignal(Value);
 
-        protected override Signal GetItem(Scene scene)
-        {
-            return scene.Signals[Index];
-        }
+        protected override Signal GetItem(Scene scene) => scene.Signals[Index];
 
-        protected override int GetItemsCount(Scene scene)
-        {
-            return scene.Signals.Count;
-        }
+        protected override int GetItemsCount(Scene scene) => scene.Signals.Count;
 
-        protected override Signal GetNewItem(Scene scene)
-        {
-            return new Signal();
-        }
+        protected override Signal GetNewItem(Scene scene) => new Signal();
 
-        protected override void InsertItem(Scene scene)
-        {
-            scene.InsertSignal(Index, Value);
-        }
+        protected override void InsertItem(Scene scene) => scene.InsertSignal(Index, Value);
 
-        protected override void RemoveItem(Scene scene)
-        {
-            scene.RemoveSignal(Index);
-        }
+        protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
     }
 
     internal class SignalDeleteCommand : SignalCollectionCommand
@@ -152,49 +122,28 @@
 
     internal class SignalInsertCommand : SignalCollectionCommand
     {
-        internal SignalInsertCommand(int index, Signal signal) : base(index, true) { Value = signal; }
+        internal SignalInsertCommand(int index, Signal signal) : base(index, true) => Value = signal;
     }
 
     internal class TraceCollectionCommand : CollectionCommand<Trace>
     {
         // Constructors
 
-        internal TraceCollectionCommand(int index, bool add) : base(index, add)
-        {
-            PropertyName = PropertyNames.Traces;
-        }
+        internal TraceCollectionCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Traces;
 
         // Protected methods
 
-        protected override void AddItem(Scene scene)
-        {
-            scene.AddTrace(Value);
-        }
+        protected override void AddItem(Scene scene) => scene.AddTrace(Value);
 
-        protected override Trace GetItem(Scene scene)
-        {
-            return scene.Traces[Index];
-        }
+        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
 
-        protected override int GetItemsCount(Scene scene)
-        {
-            return scene.Traces.Count;
-        }
+        protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
 
-        protected override Trace GetNewItem(Scene scene)
-        {
-            return new Trace(scene);
-        }
+        protected override Trace GetNewItem(Scene scene) => new Trace(scene);
 
-        protected override void InsertItem(Scene scene)
-        {
-            scene.InsertTrace(Index, Value);
-        }
+        protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
 
-        protected override void RemoveItem(Scene scene)
-        {
-            scene.RemoveTrace(Index);
-        }
+        protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }
 
     internal class TraceDeleteCommand : TraceCollectionCommand
@@ -204,6 +153,6 @@
 
     internal class TraceInsertCommand : TraceCollectionCommand
     {
-        internal TraceInsertCommand(int index, Trace trace) : base(index, true) { Value = trace; }
+        internal TraceInsertCommand(int index, Trace trace) : base(index, true) => Value = trace;
     }
 }

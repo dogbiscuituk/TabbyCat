@@ -4,9 +4,6 @@
 
     public partial class CodeEdit : UserControl
     {
-        public CodeEdit()
-        {
-            InitializeComponent();
-        }
+        public CodeEdit() => InitializeComponent();
     }
 }

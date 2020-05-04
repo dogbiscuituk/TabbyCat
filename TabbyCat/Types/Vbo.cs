@@ -43,21 +43,15 @@
             ? BufferTarget.ArrayBuffer
             : BufferTarget.ElementArrayBuffer;
 
-        internal void AddRef()
-        {
-            RefCount++;
-        }
+        internal void AddRef() => RefCount++;
 
-        internal bool Matches(ITrace trace, VboType vboType)
-        {
-            return VboType == vboType &&
+        internal bool Matches(ITrace trace, VboType vboType) => VboType == vboType &&
 StripeCount == trace.StripeCount &&
 (VboType != VboType.Index || Pattern == trace.Pattern);
-        }
 
         internal bool Release()
         {
-            bool result = --RefCount <= 0;
+            var result = --RefCount <= 0;
             if (result)
             {
                 GL.DeleteBuffer(BufferID);
@@ -66,9 +60,6 @@ StripeCount == trace.StripeCount &&
             return result;
         }
 
-        private void BufferData<T>(int byteCount, IEnumerable<T> data) where T : struct
-        {
-            GL.BufferData(BufferTarget, byteCount, data.ToArray(), BufferUsageHint.StaticDraw);
-        }
+        private void BufferData<T>(int byteCount, IEnumerable<T> data) where T : struct => GL.BufferData(BufferTarget, byteCount, data.ToArray(), BufferUsageHint.StaticDraw);
     }
 }

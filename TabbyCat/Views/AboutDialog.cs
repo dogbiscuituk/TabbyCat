@@ -4,9 +4,6 @@
 
     internal partial class AboutDialog : Form
     {
-        internal AboutDialog()
-        {
-            InitializeComponent();
-        }
+        internal AboutDialog() => InitializeComponent();
     }
 }

@@ -12,7 +12,7 @@
 
         internal Signal ShowDialog(Signal signal)
         {
-            using (SignalPropertiesDialog dialog = new SignalPropertiesDialog())
+            using (var dialog = new SignalPropertiesDialog())
             {
                 InitCommonControls(dialog.TableLayoutPanel);
                 dialog.edName.Text = signal.Name;

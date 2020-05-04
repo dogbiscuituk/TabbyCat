@@ -48,7 +48,7 @@
 
         internal void Clear()
         {
-            for (int index = SignalCons.Count - 1; index >= 0; index--)
+            for (var index = SignalCons.Count - 1; index >= 0; index--)
             {
                 RemoveAt(index);
             }
@@ -56,10 +56,10 @@
 
         internal void InsertAt(int index)
         {
-            Signal signal = Scene.Signals[index];
+            var signal = Scene.Signals[index];
             AdjustIndices(index, +1);
-            SignalCon newSignalCon = new SignalCon(WorldCon, signal);
-            Controls.SignalEdit signalEdit = newSignalCon.SignalEdit;
+            var newSignalCon = new SignalCon(WorldCon, signal);
+            var signalEdit = newSignalCon.SignalEdit;
             signalEdit.Dock = DockStyle.Top;
             SignalCons.Add(newSignalCon);
             SignalsForm.Controls.Add(signalEdit);
@@ -70,7 +70,7 @@
         internal void Load()
         {
             Clear();
-            for (int index = 0; index < Scene.Signals.Count; index++)
+            for (var index = 0; index < Scene.Signals.Count; index++)
             {
                 InsertAt(index);
             }
@@ -78,7 +78,7 @@
 
         internal void RemoveAt(int index)
         {
-            SignalCon oldSignalCon = SignalCons.First(p => p.Index == index);
+            var oldSignalCon = SignalCons.First(p => p.Index == index);
             oldSignalCon.Connect(false);
             SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
             SignalCons.Remove(oldSignalCon);
@@ -106,7 +106,7 @@
                 WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
-            foreach (ToolStripMenuItem item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
+            foreach (var item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
             {
                 if (connect)
                 {
@@ -141,7 +141,7 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
-            foreach (string propertyName in propertyNames)
+            foreach (var propertyName in propertyNames)
             {
                 switch (propertyName)
                 {
@@ -153,25 +153,19 @@
 
         // Private methods
 
-        private void AddButton_ButtonClick(object sender, System.EventArgs e)
-        {
-            AddSignal((WaveType)((ToolStripItem)sender).Tag);
-        }
+        private void AddButton_ButtonClick(object sender, System.EventArgs e) => AddSignal((WaveType)((ToolStripItem)sender).Tag);
 
-        private void AddSignal(WaveType waveType)
+        private void AddSignal(WaveType waveType) => CommandCon.AppendSignal(new Signal
         {
-            CommandCon.AppendSignal(new Signal
-            {
-                Name = NameSource.Names.First(
+            Name = NameSource.Names.First(
 name => Scene.Signals.FirstOrDefault(
 signal => signal.Name == name) == null),
-                WaveType = waveType
-            });
-        }
+            WaveType = waveType
+        });
 
         private void AdjustIndices(int index, int delta)
         {
-            foreach (SignalCon signalCon in SignalCons.Where(p => p.Index >= index).ToList())
+            foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
             {
                 signalCon.Index += delta;
             }
@@ -179,7 +173,7 @@ signal => signal.Name == name) == null),
 
         private void DeleteAllButton_Click(object sender, System.EventArgs e)
         {
-            for (int index = SignalsCount - 1; index >= 0; index--)
+            for (var index = SignalsCount - 1; index >= 0; index--)
             {
                 Run(new SignalDeleteCommand(index));
             }
@@ -204,10 +198,7 @@ signal => signal.Name == name) == null),
             return _SignalsForm;
         }
 
-        private void ViewSignals_Click(object sender, System.EventArgs e)
-        {
-            ToggleVisibility();
-        }
+        private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
 
         private void WorldCon_CollectionEdit(object sender, CollectionEditEventArgs e)
         {
@@ -239,9 +230,6 @@ signal => signal.Name == name) == null),
 
         // Private static methods
 
-        private static void Init(ToolStripItem item, WaveType waveType)
-        {
-            item.Tag = waveType;
-        }
+        private static void Init(ToolStripItem item, WaveType waveType) => item.Tag = waveType;
     }
 }

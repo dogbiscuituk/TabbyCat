@@ -30,29 +30,14 @@
         [JsonIgnore] public Vector3 Uright => Vector3.Cross(Ufront, Uup).Normalized();
         [JsonIgnore] public Vector3 Uup { get; set; } = new Vector3(0, 1, 0);
 
-        public static bool operator ==(Camera a, Camera b)
-        {
-            return a?.Position == b?.Position && a?.Focus == b?.Focus;
-        }
+        public static bool operator ==(Camera a, Camera b) => a?.Position == b?.Position && a?.Focus == b?.Focus;
 
-        public static bool operator !=(Camera a, Camera b)
-        {
-            return !(a == b);
-        }
+        public static bool operator !=(Camera a, Camera b) => !(a == b);
 
-        public override bool Equals(object obj)
-        {
-            return obj is Camera camera && camera == this;
-        }
+        public override bool Equals(object obj) => obj is Camera camera && camera == this;
 
-        public override int GetHashCode()
-        {
-            return Position.GetHashCode() ^ Focus.GetHashCode();
-        }
+        public override int GetHashCode() => Position.GetHashCode() ^ Focus.GetHashCode();
 
-        public override string ToString()
-        {
-            return $"{Position},{Focus}";
-        }
+        public override string ToString() => $"{Position},{Focus}";
     }
 }

@@ -2,9 +2,6 @@
 {
     public partial class ScenePropertiesForm : DockingForm
     {
-        public ScenePropertiesForm()
-        {
-            InitializeComponent();
-        }
+        public ScenePropertiesForm() => InitializeComponent();
     }
 }

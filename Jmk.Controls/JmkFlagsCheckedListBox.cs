@@ -7,10 +7,7 @@
 
     public partial class JmkFlagsCheckedListBox : CheckedListBox
     {
-        public JmkFlagsCheckedListBox()
-        {
-            InitializeComponent();
-        }
+        public JmkFlagsCheckedListBox() => InitializeComponent();
 
         private Type _EnumType;
         private Enum _EnumValue;
@@ -30,10 +27,7 @@
             }
         }
 
-        public JmkFlagsCheckedListBoxItem Add(string text, int value)
-        {
-            return Add(new JmkFlagsCheckedListBoxItem(text, value));
-        }
+        public JmkFlagsCheckedListBoxItem Add(string text, int value) => Add(new JmkFlagsCheckedListBoxItem(text, value));
 
         public JmkFlagsCheckedListBoxItem Add(JmkFlagsCheckedListBoxItem item)
         {
@@ -43,8 +37,8 @@
 
         public int GetCurrentValue()
         {
-            int result = 0;
-            for (int index = 0; index < Items.Count; index++)
+            var result = 0;
+            for (var index = 0; index < Items.Count; index++)
             {
                 if (GetItemChecked(index))
                 {
@@ -76,8 +70,8 @@
                 UpdateItems(0);
             }
 
-            int result = 0;
-            for (int index = 0; index < Items.Count; index++)
+            var result = 0;
+            for (var index = 0; index < Items.Count; index++)
             {
                 if (GetItemChecked(index))
                 {
@@ -100,9 +94,9 @@
         protected void UpdateItems(int value)
         {
             Updating = true;
-            for (int index = 0; index < Items.Count; index++)
+            for (var index = 0; index < Items.Count; index++)
             {
-                JmkFlagsCheckedListBoxItem item = (JmkFlagsCheckedListBoxItem)Items[index];
+                var item = (JmkFlagsCheckedListBoxItem)Items[index];
                 SetItemChecked(index, item.Value == 0
                     ? value == 0
                     : (item.Value & value) == item.Value && item.Value != 0);
@@ -110,22 +104,16 @@
             Updating = false;
         }
 
-        private void Apply()
-        {
-            UpdateItems(ChangeType(_EnumValue));
-        }
+        private void Apply() => UpdateItems(ChangeType(_EnumValue));
 
         private void Populate()
         {
-            foreach (string name in Enum.GetNames(_EnumType))
+            foreach (var name in Enum.GetNames(_EnumType))
             {
                 Add(name, ChangeType(Enum.Parse(_EnumType, name)));
             }
         }
 
-        private static int ChangeType(object value)
-        {
-            return (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);
-        }
+        private static int ChangeType(object value) => (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);
     }
 }

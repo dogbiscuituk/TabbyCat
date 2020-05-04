@@ -4,9 +4,6 @@
 
     public partial class TracePropertiesEdit : UserControl
     {
-        public TracePropertiesEdit()
-        {
-            InitializeComponent();
-        }
+        public TracePropertiesEdit() => InitializeComponent();
     }
 }

@@ -10,10 +10,10 @@
     {
         public override Vector3 ReadJson(JsonReader reader, Type t, Vector3 v, bool b, JsonSerializer s)
         {
-            JToken token = JToken.Load(reader);
+            var token = JToken.Load(reader);
             if (token.Type == JTokenType.Array)
             {
-                JArray array = (JArray)token;
+                var array = (JArray)token;
                 if (array.Count == 3 && array.All(p => p.Type == JTokenType.Float))
                 {
                     return new Vector3(

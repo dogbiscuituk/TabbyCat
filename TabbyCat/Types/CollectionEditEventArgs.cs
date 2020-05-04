@@ -4,10 +4,7 @@
     {
         // Constructors
 
-        public CollectionEditEventArgs(string collectionName, int index, bool adding) : base(collectionName, index)
-        {
-            Adding = adding;
-        }
+        public CollectionEditEventArgs(string collectionName, int index, bool adding) : base(collectionName, index) => Adding = adding;
 
         // Public properties
 

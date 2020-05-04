@@ -4,9 +4,6 @@
 
     public partial class ScenePropertiesEdit : UserControl
     {
-        public ScenePropertiesEdit()
-        {
-            InitializeComponent();
-        }
+        public ScenePropertiesEdit() => InitializeComponent();
     }
 }

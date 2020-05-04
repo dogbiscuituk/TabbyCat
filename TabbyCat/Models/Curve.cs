@@ -7,10 +7,7 @@
 
     public class Curve : Trace
     {
-        public Curve() : base()
-        {
-            Init();
-        }
+        public Curve() : base() => Init();
 
         private void Init()
         {

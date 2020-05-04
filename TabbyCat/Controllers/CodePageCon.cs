@@ -43,7 +43,7 @@
                 return;
             }
 
-            Range rangeAll = TextBox.Range;
+            var rangeAll = TextBox.Range;
             if (range.End.iLine > rangeAll.End.iLine)
             {
                 range.End = rangeAll.End;
@@ -55,11 +55,11 @@
 
         public List<Range> GetUserRanges()
         {
-            List<Range> ranges = new List<Range>();
-            bool inRange = false;
-            for (int lineIndex = 0; lineIndex < TextBox.LinesCount; lineIndex++)
+            var ranges = new List<Range>();
+            var inRange = false;
+            for (var lineIndex = 0; lineIndex < TextBox.LinesCount; lineIndex++)
             {
-                Range range = TextBox.GetLine(lineIndex);
+                var range = TextBox.GetLine(lineIndex);
                 if (!range.ReadOnly)
                 {
                     if (!inRange)
@@ -69,7 +69,7 @@
                     }
                     else
                     {
-                        int rangeIndex = ranges.Count - 1;
+                        var rangeIndex = ranges.Count - 1;
                         ranges[rangeIndex] = ranges[rangeIndex].GetUnionWith(range);
                     }
                 }
@@ -118,7 +118,7 @@
 
         private void TextBox_TextChanging(object sender, TextChangingEventArgs e)
         {
-            Range selection = TextBox.Selection;
+            var selection = TextBox.Selection;
             e.Cancel = selection.IsReadOnlyLeftChar() || selection.IsReadOnlyRightChar();
         }
 
@@ -134,10 +134,7 @@
             AutocompleteMenu.Items.Width = 200;
         }
 
-        private Languages GetLanguage()
-        {
-            return GetLanguage(Language);
-        }
+        private Languages GetLanguage() => GetLanguage(Language);
 
         private void Init()
         {
@@ -255,11 +252,10 @@
 
         private static void InitStyle(TextStyleInfo info, TextStyle style)
         {
-            bool stock;
             if (((SolidBrush)style.ForeBrush).Color != info.Foreground)
-                style.ForeBrush = info.Foreground.ToBrush(out stock);
+                style.ForeBrush = info.Foreground.ToBrush();
             if (((SolidBrush)style.BackgroundBrush).Color != info.Background)
-                style.BackgroundBrush = info.Background.ToBrush(out stock);
+                style.BackgroundBrush = info.Background.ToBrush();
             style.FontStyle = info.FontStyle;
         }
 
@@ -278,10 +274,7 @@
             textBox.AddStyle(DirectiveStyle);
         }
 
-        private static TextStyle NewTextStyle()
-        {
-            return new TextStyle(Brushes.Black, Brushes.Transparent, 0);
-        }
+        private static TextStyle NewTextStyle() => new TextStyle(Brushes.Black, Brushes.Transparent, 0);
     }
 
     public partial class CodePageCon : IDisposable

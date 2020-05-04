@@ -35,55 +35,25 @@
         private string UndoAction => UndoStack.Peek().UndoAction;
         private string RedoAction => RedoStack.Peek().RedoAction;
 
-        private void EditRedo_Click(object sender, EventArgs e)
-        {
-            Redo();
-        }
+        private void EditRedo_Click(object sender, EventArgs e) => Redo();
 
-        private void EditUndo_Click(object sender, EventArgs e)
-        {
-            Undo();
-        }
+        private void EditUndo_Click(object sender, EventArgs e) => Undo();
 
-        private void TbUndo_DropDownOpening(object sender, EventArgs e)
-        {
-            Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
-        }
+        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
 
-        private void TbRedo_DropDownOpening(object sender, EventArgs e)
-        {
-            Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
-        }
+        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
 
-        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e)
-        {
-            HighlightUndoRedoItems((ToolStripItem)sender);
-        }
+        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
-        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e)
-        {
-            HighlightUndoRedoItems((ToolStripItem)sender);
-        }
+        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
-        private void RedoMultiple(object sender, EventArgs e)
-        {
-            DoMultiple(sender, RedoStack, () => Redo());
-        }
+        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
 
-        private void UndoMultiple(object sender, EventArgs e)
-        {
-            DoMultiple(sender, UndoStack, () => Undo());
-        }
+        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
-        internal void AppendSignal(Signal signal = null)
-        {
-            Run(new SignalInsertCommand(Signals.Count, signal));
-        }
+        internal void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
 
-        internal void AppendTrace(Trace trace = null)
-        {
-            Run(new TraceInsertCommand(Traces.Count, trace));
-        }
+        internal void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
 
         internal void Clear()
         {
@@ -93,15 +63,9 @@
             UpdateUI();
         }
 
-        internal void DeleteTrace(int index)
-        {
-            Run(new TraceDeleteCommand(index));
-        }
+        internal void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
 
-        internal void InsertTrace(int index, Trace trace = null)
-        {
-            Run(new TraceInsertCommand(index, trace));
-        }
+        internal void InsertTrace(int index, Trace trace = null) => Run(new TraceInsertCommand(index, trace));
 
         /// <summary>
         /// Run a command, pushing its memento on to the Undo stack.
@@ -130,7 +94,7 @@
             UpdateUI();
         }
 
-        private void BeginUpdate() { ++UpdateCount; }
+        private void BeginUpdate() => ++UpdateCount;
 
         private bool CanGroup(ICommand cmd1, ICommand cmd2)
         {
@@ -171,13 +135,13 @@
         private void Copy(Stack<ICommand> source, ToolStripDropDownItem target, EventHandler handler)
         {
             const int MaxItems = 20;
-            ICommand[] commands = source.ToArray();
-            ToolStripItemCollection items = target.DropDownItems;
+            var commands = source.ToArray();
+            var items = target.DropDownItems;
             items.Clear();
-            for (int n = 0; n < Math.Min(commands.Length, MaxItems); n++)
+            for (var n = 0; n < Math.Min(commands.Length, MaxItems); n++)
             {
-                ICommand command = commands[n];
-                ToolStripItem item = items.Add(command.ToString(), null, handler);
+                var command = commands[n];
+                var item = items.Add(command.ToString(), null, handler);
                 item.Tag = command;
                 item.MouseEnter += UndoRedoItems_MouseEnter;
                 item.Paint += UndoRedoItems_Paint;
@@ -187,7 +151,7 @@
         private void DoMultiple(object sender, Stack<ICommand> stack, Action act)
         {
             BeginUpdate();
-            object peek = ((ToolStripItem)sender).Tag;
+            var peek = ((ToolStripItem)sender).Tag;
             bool more;
             do
             {
@@ -213,8 +177,8 @@
                 return;
             }
 
-            ToolStripItemCollection items = activeItem.GetCurrentParent().Items;
-            int index = items.IndexOf(activeItem);
+            var items = activeItem.GetCurrentParent().Items;
+            var index = items.IndexOf(activeItem);
             foreach (ToolStripItem item in items)
             {
                 item.BackColor = Color.FromKnownColor(items.IndexOf(item) <= index
@@ -223,10 +187,7 @@
             }
         }
 
-        private bool Redo()
-        {
-            return CanRedo && Redo(RedoStack.Pop());
-        }
+        private bool Redo() => CanRedo && Redo(RedoStack.Pop());
 
         private bool Redo(ICommand command)
         {
@@ -244,10 +205,7 @@
             return true;
         }
 
-        private bool Undo()
-        {
-            return CanUndo && Undo(UndoStack.Pop());
-        }
+        private bool Undo() => CanUndo && Undo(UndoStack.Pop());
 
         private bool Undo(ICommand command)
         {

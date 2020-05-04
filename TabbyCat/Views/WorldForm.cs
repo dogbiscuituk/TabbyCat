@@ -4,9 +4,6 @@
 
     public partial class WorldForm : Form
     {
-        public WorldForm()
-        {
-            InitializeComponent();
-        }
+        public WorldForm() => InitializeComponent();
     }
 }

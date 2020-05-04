@@ -97,7 +97,7 @@
         {
             get
             {
-                object tag = WaveTypeButton.Tag;
+                var tag = WaveTypeButton.Tag;
                 return tag == null ? WaveType.Constant : (WaveType)tag;
             }
             set => SetWaveType(value);
@@ -117,7 +117,7 @@
 
         internal void SetWaveType(WaveType waveType)
         {
-            ToolStripMenuItem item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType);
+            var item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType);
             if (item == null)
             {
                 item = WaveTypeItems.First();
@@ -146,7 +146,7 @@
                 SignalProperties.Click += SignalProperties_Click;
                 WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
-                foreach (ToolStripMenuItem item in WaveTypeItems)
+                foreach (var item in WaveTypeItems)
                 {
                     item.Click += WaveTypeItem_Click;
                 }
@@ -165,7 +165,7 @@
                 SignalProperties.Click -= SignalProperties_Click;
                 WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
-                foreach (ToolStripMenuItem item in WaveTypeItems)
+                foreach (var item in WaveTypeItems)
                 {
                     item.Click -= WaveTypeItem_Click;
                 }
@@ -190,7 +190,7 @@
             }
 
             Updating = true;
-            foreach (string propertyName in propertyNames)
+            foreach (var propertyName in propertyNames)
             {
                 switch (propertyName)
                 {
@@ -220,10 +220,7 @@
 
         // Private methods
 
-        private float AmplitudeFromGauge(int gauge)
-        {
-            return ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
-        }
+        private float AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
 
         private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
@@ -231,20 +228,11 @@
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
-        private int AmplitudeToGauge(float amplitude)
-        {
-            return ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
-        }
+        private int AmplitudeToGauge(float amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            Run(new SignalDeleteCommand(Index));
-        }
+        private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
 
-        private float FrequencyFromGauge(int gauge)
-        {
-            return ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
-        }
+        private float FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
 
         private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
@@ -252,25 +240,16 @@
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
 
-        private int FrequencyToGauge(float frequency)
-        {
-            return ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
-        }
+        private int FrequencyToGauge(float frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
 
-        private void NameEditor_TextChanged(object sender, EventArgs e)
-        {
-            Run(new SignalNameCommand(Index, NameEditor.Text));
-        }
+        private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new SignalNameCommand(Index, NameEditor.Text));
 
-        private void Signal_Enter(object sender, EventArgs e)
-        {
-            UpdateUI();
-        }
+        private void Signal_Enter(object sender, EventArgs e) => UpdateUI();
 
         private void SignalProperties_Click(object sender, EventArgs e)
         {
             Signal signal;
-            using (SignalPropertiesCon signalPropertiesCon = new SignalPropertiesCon(WorldCon))
+            using (var signalPropertiesCon = new SignalPropertiesCon(WorldCon))
             {
                 signal = signalPropertiesCon.ShowDialog(Signal);
             }
@@ -290,19 +269,13 @@
             Run(new FrequencyMaximumCommand(Index, signal.FrequencyMaximum));
         }
 
-        private void UpdateUI()
-        {
-            FrequencySlider.Enabled = SelectedWaveType != WaveType.Constant;
-        }
+        private void UpdateUI() => FrequencySlider.Enabled = SelectedWaveType != WaveType.Constant;
 
-        private void WaveTypeButton_ButtonClick(object sender, EventArgs e)
-        {
-            SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
-        }
+        private void WaveTypeButton_ButtonClick(object sender, EventArgs e) => SelectedWaveType = (WaveType)(((int)SelectedWaveType + 1) % 8);
 
         private void WaveTypeButton_DropDownOpening(object sender, EventArgs e)
         {
-            foreach (ToolStripMenuItem item in WaveTypeItems)
+            foreach (var item in WaveTypeItems)
             {
                 item.Checked = (WaveType)item.Tag == SelectedWaveType;
             }
@@ -310,15 +283,9 @@
             UpdateUI();
         }
 
-        private void WaveTypeItem_Click(object sender, EventArgs e)
-        {
-            Run(new WaveTypeCommand(Index, (WaveType)((ToolStripItem)sender).Tag));
-        }
+        private void WaveTypeItem_Click(object sender, EventArgs e) => Run(new WaveTypeCommand(Index, (WaveType)((ToolStripItem)sender).Tag));
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
-        {
-            UpdateProperties(e.PropertyName);
-        }
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
 
         // Private static methods
 
@@ -331,24 +298,12 @@
             slider.Value = gauge;
         }
 
-        private static float ValueFromGauge(int gauge, int left, float min, float ratio)
-        {
-            return min + (gauge - left) * ratio;
-        }
+        private static float ValueFromGauge(int gauge, int left, float min, float ratio) => min + (gauge - left) * ratio;
 
-        private static float ValueFromGaugeLog(int gauge, int left, float min, float ratio)
-        {
-            return (float)Math.Exp(min + (gauge - left) * ratio);
-        }
+        private static float ValueFromGaugeLog(int gauge, int left, float min, float ratio) => (float)Math.Exp(min + (gauge - left) * ratio);
 
-        private static int ValueToGauge(float value, float min, int left, float ratio)
-        {
-            return (int)Math.Round(left + (value - min) / ratio);
-        }
+        private static int ValueToGauge(float value, float min, int left, float ratio) => (int)Math.Round(left + (value - min) / ratio);
 
-        private static int ValueToGaugeLog(float value, float min, int left, float ratio)
-        {
-            return (int)Math.Round(left + (Math.Log(value) - min) / ratio);
-        }
+        private static int ValueToGaugeLog(float value, float min, int left, float ratio) => (int)Math.Round(left + (Math.Log(value) - min) / ratio);
     }
 }

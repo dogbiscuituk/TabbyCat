@@ -26,11 +26,11 @@
             {
                 if (Running != value)
                 {
-                    DateTime now = DateTime.Now;
+                    var now = DateTime.Now;
                     if (Running)
                     {
                         Timer.Enabled = false;
-                        TimeSpan elapsed = now - _StartedAt;
+                        var elapsed = now - _StartedAt;
                         _RealTimeElapsed += elapsed;
                         _VirtualTimeElapsed += GetVirtualIncrement(now);
                     }
@@ -68,7 +68,7 @@
             {
                 if (VirtualTimeFactor != value)
                 {
-                    bool running = Running;
+                    var running = Running;
                     Stop();
                     _VirtualTimeFactor = value;
                     if (running)
@@ -81,15 +81,9 @@
 
         public event EventHandler<EventArgs> Tick;
 
-        public void Accelerate()
-        {
-            VirtualTimeFactor = +Scale(+VirtualTimeFactor);
-        }
+        public void Accelerate() => VirtualTimeFactor = +Scale(+VirtualTimeFactor);
 
-        public void Decelerate()
-        {
-            VirtualTimeFactor = -Scale(-VirtualTimeFactor);
-        }
+        public void Decelerate() => VirtualTimeFactor = -Scale(-VirtualTimeFactor);
 
         public void Reset()
         {
@@ -125,10 +119,7 @@
             Running = false;
         }
 
-        private TimeSpan GetVirtualIncrement(DateTime now)
-        {
-            return TimeSpan.FromSeconds((now - _StartedAt).TotalSeconds * VirtualTimeFactor);
-        }
+        private TimeSpan GetVirtualIncrement(DateTime now) => TimeSpan.FromSeconds((now - _StartedAt).TotalSeconds * VirtualTimeFactor);
 
         private static float Scale(float factor)
         {
@@ -147,10 +138,7 @@
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            Tick?.Invoke(this, EventArgs.Empty);
-        }
+        private void Timer_Tick(object sender, EventArgs e) => Tick?.Invoke(this, EventArgs.Empty);
 
         #region IDisposable
 

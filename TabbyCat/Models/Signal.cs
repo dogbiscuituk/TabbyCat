@@ -40,15 +40,9 @@
 
         // Public methods
 
-        public float GetValueAt(float time)
-        {
-            return Amplitude * GetScaleAt(time);
-        }
+        public float GetValueAt(float time) => Amplitude * GetScaleAt(time);
 
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
-        }
+        public override string ToString() => string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
 
         private float GetScaleAt(float time)
         {
