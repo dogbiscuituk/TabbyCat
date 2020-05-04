@@ -51,11 +51,11 @@
             SelectionChanged;
 
         internal void InitControlTheme() => AppCon.InitControlTheme(
-WorldPanel,
-WorldForm.MainMenu,
-WorldForm.PopupMenu,
-WorldForm.Toolbar,
-WorldForm.StatusBar);
+            WorldPanel,
+            WorldForm.MainMenu,
+            WorldForm.PopupMenu,
+            WorldForm.Toolbar,
+            WorldForm.StatusBar);
 
         internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
 
@@ -315,25 +315,19 @@ WorldForm.StatusBar);
         private void DeleteSelection()
         {
             if (TraceSelection.IsEmpty)
-            {
                 return;
-            }
-
             var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
             {
                 CommandCon.DeleteTrace(index);
             }
-
             TraceSelection.Clear();
         }
 
         private void EditOptions()
         {
             using (var optionsCon = new OptionsCon(this))
-            {
                 optionsCon.ShowModal();
-            }
         }
 
         private void FormClosed() => Connect(false);
