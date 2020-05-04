@@ -21,7 +21,7 @@
         {
             if (context != null && context.Instance != null && provider != null)
             {
-                var service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+                IWindowsFormsEditorService service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
                 if (service != null)
                 {
                     FlagsCheckedListBox.EnumValue = (Enum)Convert.ChangeType(
@@ -33,7 +33,10 @@
             return null;
         }
 
-        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.DropDown;
+        }
 
         private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
 

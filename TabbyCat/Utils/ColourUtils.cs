@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Utils
 {
-    using Common.Types;
     using Jmk.Common;
     using System;
     using System.Collections.Generic;
@@ -10,6 +9,7 @@
     using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
+    using Types;
 
     public static class ColourUtils
     {
@@ -28,12 +28,20 @@
 
         // Public methods
 
-        public static Color Contrast(this Color colour) => colour.IsBright() ? Color.Black : Color.White;
+        public static Color Contrast(this Color colour)
+        {
+            return colour.IsBright() ? Color.Black : Color.White;
+        }
 
         public static void DrawText(DrawItemEventArgs e, Color foreground, Color background, string text)
         {
-            var g = e.Graphics;
-            var r = e.Bounds;
+            if (e == null)
+            {
+                return;
+            }
+
+            Graphics g = e.Graphics;
+            Rectangle r = e.Bounds;
             g.SetOptimization(Optimization.HighQuality);
             background.WithBrush(brush => g.FillRectangle(brush, r));
             foreground.WithBrush(brush => g.DrawString(text, e.Font, brush, r.X + 1, r.Y - 2));
@@ -54,27 +62,44 @@
             }
         }
 
-        public static IEnumerable<Color> GetColours() =>
-                    Enum.GetValues(typeof(KnownColor))
-                    .Cast<KnownColor>()
-                    .Select(Color.FromKnownColor)
-                    .Where(c => !c.IsSystemColor);
+        public static IEnumerable<Color> GetColours()
+        {
+            return Enum.GetValues(typeof(KnownColor))
+.Cast<KnownColor>()
+.Select(Color.FromKnownColor)
+.Where(c => !c.IsSystemColor);
+        }
 
         public static IEnumerable<string> GetNonSystemColourNames(string orderByColourProperties)
         {
-            var colours = GetColours();
+            IEnumerable<Color> colours = GetColours();
             if (orderByColourProperties != null)
+            {
                 colours = colours.OrderByColourProperties(orderByColourProperties);
+            }
+
             return colours.Select(c => c.Name);
         }
 
-        public static bool IsBright(this Color colour) => colour.Luma() > 0.5;
+        public static bool IsBright(this Color colour)
+        {
+            return colour.Luma() > 0.5;
+        }
 
-        public static bool IsDark(this Color colour) => colour.Luma() <= 0.5;
+        public static bool IsDark(this Color colour)
+        {
+            return colour.Luma() <= 0.5;
+        }
 
-        public static bool IsVeryBright(this Color colour) => colour.Luma() > 0.75;
+        public static bool IsVeryBright(this Color colour)
+        {
+            return colour.Luma() > 0.75;
+        }
 
-        public static bool IsVeryDark(this Color colour) => colour.Luma() <= 0.25;
+        public static bool IsVeryDark(this Color colour)
+        {
+            return colour.Luma() <= 0.25;
+        }
 
         /// <summary>
         /// Luma can be used to determine whether or not a Color is "bright", "dark", etc.
@@ -82,12 +107,18 @@
         /// </summary>
         /// <param name="colour">The sample colour.</param>
         /// <returns>The sample colour's Luma value.</returns>
-        public static float Luma(this Color colour) => (0.2126f * colour.R + 0.7152f * colour.G + 0.0722f * colour.B) / 255;
+        public static float Luma(this Color colour)
+        {
+            return (0.2126f * colour.R + 0.7152f * colour.G + 0.0722f * colour.B) / 255;
+        }
 
         public static void SetOptimization(this Graphics g, Optimization optimization)
         {
             if (g == null)
+            {
                 return;
+            }
+
             switch (optimization)
             {
                 case Optimization.HighSpeed:
@@ -116,7 +147,7 @@
 
         public static Brush ToBrush(this Color colour, out bool stock)
         {
-            var prop = GetProp(colour);
+            PropertyInfo prop = GetProp(colour);
             stock = prop != null;
             return stock ? (Brush)prop.GetValue(null) : new SolidBrush(colour);
         }
@@ -124,27 +155,39 @@
         public static void WithBrush(this Color colour, Action<Brush> action)
         {
             if (action == null)
+            {
                 return;
-            var prop = GetProp(colour);
+            }
+
+            PropertyInfo prop = GetProp(colour);
             if (prop != null)
+            {
                 action((Brush)prop.GetValue(null));
+            }
             else
-                using (var brush = new SolidBrush(colour))
+            {
+                using (SolidBrush brush = new SolidBrush(colour))
+                {
                     action(brush);
+                }
+            }
         }
 
         // Private methods
 
-        private static PropertyInfo GetProp(Color colour) => typeof(Brushes).GetProperty(colour.Name, BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static);
+        private static PropertyInfo GetProp(Color colour)
+        {
+            return typeof(Brushes).GetProperty(colour.Name, BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static);
+        }
 
         private static IEnumerable<Color> OrderByColourProperties(this IEnumerable<Color> colours, string colourProperties)
         {
             IOrderedEnumerable<Color> result = null;
-            var first = true;
-            foreach (var colourProperty in colourProperties.Split(',')
+            bool first = true;
+            foreach (string colourProperty in colourProperties.Split(',')
                 .Select(p => p.Trim().ToTitleCase()))
             {
-                var colourOrder = ColourOrders[colourProperty];
+                Func<Color, float> colourOrder = ColourOrders[colourProperty];
                 result =
                     first
                     ? colours.OrderBy(colourOrder)

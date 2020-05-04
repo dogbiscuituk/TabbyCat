@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics;
     using Properties;
     using System;
     using System.Windows.Forms;
+    using Types;
     using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -30,7 +30,10 @@
 
         // Internal methods
 
-        internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
+        internal void BackColorChanged()
+        {
+            SceneControl.Parent.BackColor = Scene.BackgroundColour;
+        }
 
         internal void OnPropertyEdit(string propertyName)
         {
@@ -49,7 +52,10 @@
             SceneControl.Invalidate();
         }
 
-        internal void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
+        internal void RecreateSceneControl()
+        {
+            RecreateSceneControl(GraphicsMode);
+        }
 
         // Protected internal methods
 
@@ -92,23 +98,38 @@
 
         // Private methods
 
-        private void Resize() => RenderCon.InvalidateProjection();
+        private void Resize()
+        {
+            RenderCon.InvalidateProjection();
+        }
 
-        private void SceneControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
+        private void SceneControl_BackColorChanged(object sender, EventArgs e)
+        {
+            BackColorChanged();
+        }
 
-        private void SceneControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
+        private void SceneControl_ClientSizeChanged(object sender, EventArgs e)
+        {
+            Resize();
+        }
 
         private void SceneControl_Load(object sender, EventArgs e) { }
 
-        private void SceneControl_Paint(object sender, PaintEventArgs e) => RenderCon.Render();
+        private void SceneControl_Paint(object sender, PaintEventArgs e)
+        {
+            RenderCon.Render();
+        }
 
         private void SceneControl_Resize(object sender, EventArgs e) { }
 
-        private void RecreateSceneControl(string propertyName, object value) => RecreateSceneControl(GraphicsMode.Change(propertyName, value));
+        private void RecreateSceneControl(string propertyName, object value)
+        {
+            RecreateSceneControl(GraphicsMode.Change(propertyName, value));
+        }
 
         private void RecreateSceneControl(GraphicsMode mode)
         {
-            var parent = SceneControl.Parent;
+            Control parent = SceneControl.Parent;
             GLControl
                 oldControl = SceneControl,
                 newControl = mode == null ? new GLControl() : new GLControl(mode);
@@ -130,7 +151,10 @@
             oldControl.Dispose();
         }
 
-        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewScene_Click(object sender, EventArgs e)
+        {
+            ToggleVisibility();
+        }
 
         private void SceneForm_HandleCreated(object sender, EventArgs e)
         {
@@ -144,6 +168,9 @@
             RenderCon.SceneControlSuspended = true;
         }
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
+        {
+            OnPropertyEdit(e.PropertyName);
+        }
     }
 }

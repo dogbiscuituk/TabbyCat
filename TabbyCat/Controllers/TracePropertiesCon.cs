@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Common.Types;
     using Controls;
     using Models;
     using OpenTK;
@@ -10,6 +9,7 @@
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
+    using Types;
     using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -161,7 +161,7 @@
         protected override void OnSelectionEdit()
         {
             base.OnSelectionEdit();
-             UpdateAllProperties();
+            UpdateAllProperties();
         }
 
         protected internal override void UpdateAllProperties()
@@ -180,9 +180,13 @@
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
+            {
                 return;
+            }
+
             Updating = true;
-            foreach (var propertyName in propertyNames)
+            foreach (string propertyName in propertyNames)
+            {
                 switch (propertyName)
                 {
                     case PropertyNames.Description:
@@ -228,13 +232,18 @@
                         TracePropertiesEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);
                         break;
                 }
+            }
+
             Updating = false;
         }
 
         private void CopySelectionFromControl()
         {
             if (SelectionUpdating)
+            {
                 return;
+            }
+
             SelectionUpdating = true;
             Selection.Set(SelectionCon.Selection.Select(p => Scene.Traces[p]));
             SelectionUpdating = false;
@@ -243,7 +252,10 @@
         private void CopySelectionToControl()
         {
             if (SelectionUpdating)
+            {
                 return;
+            }
+
             SelectionUpdating = true;
             SelectionCon.TraceCount = Scene.Traces.Count;
             SelectionCon.Selection = Selection.GetTraceIndices().ToList();
@@ -273,98 +285,131 @@
 
         private bool Run(Func<Trace, ICommand> command)
         {
-            var result = false;
+            bool result = false;
             if (!Selection.IsEmpty)
+            {
                 Selection.ForEach(p => result |= Run(command(p)));
+            }
+
             return result;
         }
 
-        private void Selection_Changed(object sender, EventArgs e) => CopySelectionFromControl();
+        private void Selection_Changed(object sender, EventArgs e)
+        {
+            CopySelectionFromControl();
+        }
     }
 
     /// <summary>
     /// Command runners.
     /// </summary>
-    partial class TracePropertiesCon
+    internal partial class TracePropertiesCon
     {
-        private void Description_TextChanged(object sender, System.EventArgs e) => Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
+        private void Description_TextChanged(object sender, System.EventArgs e)
+        {
+            Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
+        }
 
-        private void LocationX_ValueChanged(object sender, System.EventArgs e) =>
+        private void LocationX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new LocationCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.seLocationX.Value,
-                p.Location.Y,
-                p.Location.Z)));
+(float)TracePropertiesEdit.seLocationX.Value,
+p.Location.Y,
+p.Location.Z)));
+        }
 
-        private void LocationY_ValueChanged(object sender, System.EventArgs e) =>
+        private void LocationY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new LocationCommand(p.Index, new Vector3(
-                p.Location.X,
-                (float)TracePropertiesEdit.seLocationY.Value,
-                p.Location.Z)));
+p.Location.X,
+(float)TracePropertiesEdit.seLocationY.Value,
+p.Location.Z)));
+        }
 
-        private void LocationZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void LocationZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new LocationCommand(p.Index, new Vector3(
-                p.Location.X,
-                p.Location.Y,
-                (float)TracePropertiesEdit.seLocationZ.Value)));
+p.Location.X,
+p.Location.Y,
+(float)TracePropertiesEdit.seLocationZ.Value)));
+        }
 
-        private void MaximumX_ValueChanged(object sender, System.EventArgs e) =>
+        private void MaximumX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MaximumCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.seMaximumX.Value,
-                p.Maximum.Y,
-                p.Maximum.Z)));
+(float)TracePropertiesEdit.seMaximumX.Value,
+p.Maximum.Y,
+p.Maximum.Z)));
+        }
 
-        private void MaximumY_ValueChanged(object sender, System.EventArgs e) =>
+        private void MaximumY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MaximumCommand(p.Index, new Vector3(
-                p.Maximum.X,
-                (float)TracePropertiesEdit.seMaximumY.Value,
-                p.Maximum.Z)));
+p.Maximum.X,
+(float)TracePropertiesEdit.seMaximumY.Value,
+p.Maximum.Z)));
+        }
 
-        private void MaximumZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void MaximumZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MaximumCommand(p.Index, new Vector3(
-                p.Maximum.X,
-                p.Maximum.Y,
-                (float)TracePropertiesEdit.seMaximumZ.Value)));
+p.Maximum.X,
+p.Maximum.Y,
+(float)TracePropertiesEdit.seMaximumZ.Value)));
+        }
 
-        private void MinimumX_ValueChanged(object sender, System.EventArgs e) =>
+        private void MinimumX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MinimumCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.seMinimumX.Value,
-                p.Minimum.Y,
-                p.Minimum.Z)));
+(float)TracePropertiesEdit.seMinimumX.Value,
+p.Minimum.Y,
+p.Minimum.Z)));
+        }
 
-        private void MinimumY_ValueChanged(object sender, System.EventArgs e) =>
+        private void MinimumY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MinimumCommand(p.Index, new Vector3(
-                p.Minimum.X,
-                (float)TracePropertiesEdit.seMinimumY.Value,
-                p.Minimum.Z)));
+p.Minimum.X,
+(float)TracePropertiesEdit.seMinimumY.Value,
+p.Minimum.Z)));
+        }
 
-        private void MinimumZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void MinimumZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new MinimumCommand(p.Index, new Vector3(
-                p.Minimum.X,
-                p.Minimum.Y,
-                (float)TracePropertiesEdit.seMinimumZ.Value)));
+p.Minimum.X,
+p.Minimum.Y,
+(float)TracePropertiesEdit.seMinimumZ.Value)));
+        }
 
-        private void OrientationX_ValueChanged(object sender, System.EventArgs e) =>
+        private void OrientationX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new OrientationCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.sePitch.Value,
-                p.Orientation.Y,
-                p.Orientation.Z)));
+(float)TracePropertiesEdit.sePitch.Value,
+p.Orientation.Y,
+p.Orientation.Z)));
+        }
 
-        private void OrientationY_ValueChanged(object sender, System.EventArgs e) =>
+        private void OrientationY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new OrientationCommand(p.Index, new Vector3(
-                p.Orientation.X,
-                (float)TracePropertiesEdit.seYaw.Value,
-                p.Orientation.Z)));
+p.Orientation.X,
+(float)TracePropertiesEdit.seYaw.Value,
+p.Orientation.Z)));
+        }
 
-        private void OrientationZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void OrientationZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new OrientationCommand(p.Index, new Vector3(
-                p.Orientation.X,
-                p.Orientation.Y,
-                (float)TracePropertiesEdit.seRoll.Value)));
+p.Orientation.X,
+p.Orientation.Y,
+(float)TracePropertiesEdit.seRoll.Value)));
+        }
 
         private void Pattern_DrawItem(object sender, DrawItemEventArgs e)
         {
-            var comboBox = (ComboBox)sender;
-            var selected = (e.State & DrawItemState.Selected) != 0;
+            ComboBox comboBox = (ComboBox)sender;
+            bool selected = (e.State & DrawItemState.Selected) != 0;
             ColourUtils.DrawText(
                 e,
                 foreground: selected ? Color.FromKnownColor(KnownColor.HighlightText) : comboBox.ForeColor,
@@ -372,46 +417,67 @@
                 text: comboBox.Items[e.Index].ToString());
         }
 
-        private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) => Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));
+        private void Pattern_SelectedValueChanged(object sender, System.EventArgs e)
+        {
+            Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));
+        }
 
-        private void ScaleX_ValueChanged(object sender, System.EventArgs e) =>
+        private void ScaleX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new ScaleCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.seScaleX.Value,
-                p.Scale.Y,
-                p.Scale.Z)));
+(float)TracePropertiesEdit.seScaleX.Value,
+p.Scale.Y,
+p.Scale.Z)));
+        }
 
-        private void ScaleY_ValueChanged(object sender, System.EventArgs e) =>
+        private void ScaleY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new ScaleCommand(p.Index, new Vector3(
-                p.Scale.X,
-                (float)TracePropertiesEdit.seScaleY.Value,
-                p.Scale.Z)));
+p.Scale.X,
+(float)TracePropertiesEdit.seScaleY.Value,
+p.Scale.Z)));
+        }
 
-        private void ScaleZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void ScaleZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new ScaleCommand(p.Index, new Vector3(
-                p.Scale.X,
-                p.Scale.Y,
-                (float)TracePropertiesEdit.seScaleZ.Value)));
+p.Scale.X,
+p.Scale.Y,
+(float)TracePropertiesEdit.seScaleZ.Value)));
+        }
 
-        private void StripeCountX_ValueChanged(object sender, System.EventArgs e) =>
+        private void StripeCountX_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new StripeCountCommand(p.Index, new Vector3(
-                (float)TracePropertiesEdit.seStripeCountX.Value,
-                p.StripeCount.Y,
-                p.StripeCount.Z)));
+(float)TracePropertiesEdit.seStripeCountX.Value,
+p.StripeCount.Y,
+p.StripeCount.Z)));
+        }
 
-        private void StripeCountY_ValueChanged(object sender, System.EventArgs e) =>
+        private void StripeCountY_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new StripeCountCommand(p.Index, new Vector3(
-                p.StripeCount.X,
-                (float)TracePropertiesEdit.seStripeCountY.Value,
-                p.StripeCount.Z)));
+p.StripeCount.X,
+(float)TracePropertiesEdit.seStripeCountY.Value,
+p.StripeCount.Z)));
+        }
 
-        private void StripeCountZ_ValueChanged(object sender, System.EventArgs e) =>
+        private void StripeCountZ_ValueChanged(object sender, System.EventArgs e)
+        {
             Run(p => new StripeCountCommand(p.Index, new Vector3(
-                p.StripeCount.X,
-                p.StripeCount.Y,
-                (float)TracePropertiesEdit.seStripeCountZ.Value)));
+p.StripeCount.X,
+p.StripeCount.Y,
+(float)TracePropertiesEdit.seStripeCountZ.Value)));
+        }
 
-        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewTraceProperties_Click(object sender, EventArgs e)
+        {
+            ToggleVisibility();
+        }
 
-        private void Visible_CheckedChanged(object sender, EventArgs e) => Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
+        private void Visible_CheckedChanged(object sender, EventArgs e)
+        {
+            Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
+        }
     }
 }

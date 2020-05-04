@@ -42,16 +42,25 @@
 
         private int Offset;
 
-        protected virtual void OnActiveLinkChanged() => ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
+        protected virtual void OnActiveLinkChanged()
+        {
+            ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
+        }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
             if (e == null)
+            {
                 return;
-            var link = PointInLink(e.X, e.Y);
+            }
+
+            Link link = PointInLink(e.X, e.Y);
             if (link == ActiveLink)
+            {
                 return;
+            }
+
             ActiveLink = link;
             OnActiveLinkChanged();
         }
@@ -64,30 +73,30 @@
 
         private string EvaluateLink(Match match)
         {
-            var groups = match.Groups;
+            GroupCollection groups = match.Groups;
             Group
                 group1 = groups[1],
                 group2 = groups[2];
             int
                 start = group1.Index,
                 length = group1.Length;
-            var url = group2.Value;
+            string url = group2.Value;
             Links.Add(new Link(start - 1 + Offset, length, url) { Description = url });
-            var result = groups[1].Value;
+            string result = groups[1].Value;
             Offset += result.Length - match.Value.Length;
             return result;
         }
 
         private string EvaluateParameter(Match match)
         {
-            var parameter = match.Groups[1].Value;
-            var e = new LookupParameterEventArgs
+            string parameter = match.Groups[1].Value;
+            LookupParameterEventArgs e = new LookupParameterEventArgs
             {
                 Name = parameter,
                 Value = string.Empty
             };
             LookupParameterValue?.Invoke(this, e);
-            var result = e.Value;
+            string result = e.Value;
             Offset += result.Length - match.Value.Length;
             return result;
         }

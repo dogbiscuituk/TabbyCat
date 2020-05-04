@@ -30,7 +30,9 @@
             , "AAAA"
             // NB: ~500ms test case upcoming; comment out the next line if not worth it (see also "NB" above).
             , "AAAAA"
-            )] string expected) =>
+            )] string expected)
+        {
             Assert.AreEqual(expected, NameSource.Names.Skip(index).First());
+        }
     }
 }

@@ -64,35 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TypeConverters\QuaternionConverter.cs" />
-    <Compile Include="TypeConverters\Vector3Converter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\Camera.cs" />
-    <Compile Include="Types\Clock.cs" />
-    <Compile Include="Types\CollectionEditEventArgs.cs" />
-    <Compile Include="Types\Entity.cs" />
-    <Compile Include="Types\FillType.cs" />
-    <Compile Include="Types\FilterIndex.cs" />
-    <Compile Include="Types\GLInfo.cs" />
-    <Compile Include="Types\GLSL4.60.7.cs" />
-    <Compile Include="Types\IShaders.cs" />
-    <Compile Include="Types\IScene.cs" />
-    <Compile Include="Types\IScript.cs" />
-    <Compile Include="Types\ITrace.cs" />
-    <Compile Include="Types\Optimization.cs" />
-    <Compile Include="Types\Pattern.cs" />
-    <Compile Include="Types\PropertyEditEventArgs.cs" />
-    <Compile Include="Types\Tokens.cs" />
-    <Compile Include="Types\TraceType.cs" />
-    <Compile Include="Types\Projection.cs" />
-    <Compile Include="Types\ProjectionType.cs" />
-    <Compile Include="Types\SplitType.cs" />
-    <Compile Include="Types\Vao.cs" />
-    <Compile Include="Types\Vbo.cs" />
-    <Compile Include="Types\VboStore.cs" />
-    <Compile Include="Types\VboType.cs" />
-    <Compile Include="Types\WaveType.cs" />
-    <Compile Include="Types\GPUStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

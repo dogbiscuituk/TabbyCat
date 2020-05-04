@@ -26,9 +26,9 @@ namespace TabbyCat.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("VS2015Blue")]
-        public global::TabbyCat.Controls.Types.Theme Options_Theme {
+        public global::TabbyCat.Types.Theme Options_Theme {
             get {
-                return ((global::TabbyCat.Controls.Types.Theme)(this["Options_Theme"]));
+                return ((global::TabbyCat.Types.Theme)(this["Options_Theme"]));
             }
             set {
                 this["Options_Theme"] = value;
@@ -111,9 +111,9 @@ namespace TabbyCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::TabbyCat.Controls.Types.TextStyleInfos SyntaxHighlightStyles {
+        public global::TabbyCat.Types.TextStyleInfos SyntaxHighlightStyles {
             get {
-                return ((global::TabbyCat.Controls.Types.TextStyleInfos)(this["SyntaxHighlightStyles"]));
+                return ((global::TabbyCat.Types.TextStyleInfos)(this["SyntaxHighlightStyles"]));
             }
             set {
                 this["SyntaxHighlightStyles"] = value;

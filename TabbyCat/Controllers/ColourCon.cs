@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Drawing.Drawing2D;
@@ -17,7 +16,7 @@
         internal void AddControls(params ComboBox[] controls)
         {
             Controls.AddRange(controls);
-            foreach (var control in controls)
+            foreach (ComboBox control in controls)
             {
                 control.Items.AddRange(NonSystemColourNames);
                 control.DrawItem += Control_DrawItem;
@@ -26,27 +25,36 @@
 
         internal void Clear()
         {
-            foreach (var control in Controls)
+            foreach (ComboBox control in Controls)
+            {
                 control.DrawItem -= Control_DrawItem;
+            }
+
             Controls.Clear();
         }
 
         internal Color GetColour(ComboBox comboBox)
         {
-            var item = comboBox.SelectedItem;
+            object item = comboBox.SelectedItem;
             if (item != null)
+            {
                 return Color.FromName(item.ToString());
+            }
             else if (comboBox.Tag is Color)
+            {
                 return (Color)comboBox.Tag;
+            }
             else
+            {
                 return Color.Transparent;
+            }
         }
 
         internal void SetColour(ComboBox comboBox, Color colour)
         {
-            var argb = colour.ToArgb();
+            int argb = colour.ToArgb();
             comboBox.Tag = colour;
-            var name = comboBox.Items.Cast<string>()
+            string name = comboBox.Items.Cast<string>()
                 .FirstOrDefault(s => Color.FromName(s).ToArgb() == argb);
             comboBox.SelectedIndex =
                 string.IsNullOrWhiteSpace(name) ? -1 : comboBox.Items.IndexOf(name);
@@ -58,10 +66,10 @@
 
         private void Control_DrawItem(object sender, DrawItemEventArgs e)
         {
-            var selected = (e.State & DrawItemState.Selected) != 0;
+            bool selected = (e.State & DrawItemState.Selected) != 0;
             string text = "Transparent";
-            var background = Color.Transparent;
-            var comboBox = (ComboBox)sender;
+            Color background = Color.Transparent;
+            ComboBox comboBox = (ComboBox)sender;
             if (e.Index >= 0)
             {
                 text = comboBox.Items[e.Index].ToString();
@@ -72,13 +80,15 @@
                 background = (Color)comboBox.Tag;
                 text = $"{background.ToArgb() & 0xffffff:X}";
             }
-            var foreground = background.Contrast();
+            Color foreground = background.Contrast();
             ColourUtils.DrawText(e, foreground, background, text);
             if (selected)
             {
-                var r = e.Bounds;
-                using (var pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
+                Rectangle r = e.Bounds;
+                using (Pen pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
+                {
                     e.Graphics.DrawRectangle(pen, r.X + 1, r.Y + 1, r.Width - 2, r.Height - 2);
+                }
             }
         }
     }

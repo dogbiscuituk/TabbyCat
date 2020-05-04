@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Controls.Types;
     using Jmk.Common;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
+    using Types;
     using Views;
 
     internal class OptionsCon : LocalizationCon
@@ -39,37 +39,53 @@
         internal DialogResult ShowModal()
         {
             Options = AppCon.Options;
-            var result = OptionsDialog.ShowDialog(WorldForm);
+            DialogResult result = OptionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
+            {
                 AppCon.Options = Options;
+            }
+
             return result;
         }
 
         private void BrowseFolder(string detail, TextBox textBox)
         {
-            using (var dialog = new FolderBrowserDialog
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog
             {
                 Description = $"Select the default folder for storing scene {detail}:",
                 SelectedPath = textBox.Text,
                 ShowNewFolderButton = true
             })
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     textBox.Text = dialog.SelectedPath;
+                }
+            }
         }
 
-        private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", OptionsDialog.edFilesFolder);
-
-        private void BtnTemplatesFolder_Click(object sender, EventArgs e) => BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
-
-        private Options GetOptions() => new Options
+        private void BtnFilesFolder_Click(object sender, EventArgs e)
         {
-            Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
-            OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
-            FilesFolderPath = OptionsDialog.edFilesFolder.Text,
-            TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
-            SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
-            GLSLPath = OptionsDialog.edGLSLUrl.Text
-        };
+            BrowseFolder("files", OptionsDialog.edFilesFolder);
+        }
+
+        private void BtnTemplatesFolder_Click(object sender, EventArgs e)
+        {
+            BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
+        }
+
+        private Options GetOptions()
+        {
+            return new Options
+            {
+                Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
+                OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
+                FilesFolderPath = OptionsDialog.edFilesFolder.Text,
+                TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
+                SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
+                GLSLPath = OptionsDialog.edGLSLUrl.Text
+            };
+        }
 
         private void SetOptions(Options options)
         {

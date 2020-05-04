@@ -1,13 +1,16 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using Types;
 
     public class Volume : Trace
     {
-        public Volume() : base() => Init();
+        public Volume() : base()
+        {
+            Init();
+        }
 
         private void Init()
         {

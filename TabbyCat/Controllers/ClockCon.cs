@@ -1,12 +1,15 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using System;
+    using Types;
     using Views;
 
     internal class ClockCon : LocalizationCon
     {
-        internal ClockCon(WorldCon worldCon) : base(worldCon) => UpdateTimeControls();
+        internal ClockCon(WorldCon worldCon) : base(worldCon)
+        {
+            UpdateTimeControls();
+        }
 
         private Clock _Clock;
 

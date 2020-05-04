@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TabbyCat.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Options_Theme" Type="TabbyCat.Controls.Types.Theme" Scope="User">
+    <Setting Name="Options_Theme" Type="TabbyCat.Types.Theme" Scope="User">
       <Value Profile="(Default)">VS2015Blue</Value>
     </Setting>
     <Setting Name="FileFilter" Type="System.String" Scope="User">
@@ -23,7 +23,7 @@
     <Setting Name="KnownColorSortOrder" Type="System.String" Scope="User">
       <Value Profile="(Default)">Hue, Saturation</Value>
     </Setting>
-    <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Controls.Types.TextStyleInfos" Scope="User">
+    <Setting Name="SyntaxHighlightStyles" Type="TabbyCat.Types.TextStyleInfos" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GLSLUrl" Type="System.String" Scope="User">

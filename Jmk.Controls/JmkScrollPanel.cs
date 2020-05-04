@@ -11,6 +11,9 @@
         /// <param name="activeControl">The selected child control.</param>
         /// <returns>The current value of the panel's AutoScrollPosition.
         /// Returning this value essentially causes the scroll method to do nothing.</returns>
-        protected override Point ScrollToControl(Control activeControl) => AutoScrollPosition;
+        protected override Point ScrollToControl(Control activeControl)
+        {
+            return AutoScrollPosition;
+        }
     }
 }

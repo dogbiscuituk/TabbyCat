@@ -4,13 +4,13 @@
     using System;
     using System.Windows.Forms;
 
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(params string[] args)
+        private static void Main(params string[] args)
         {
             ParseCommandLine(args);
             Application.EnableVisualStyles();
@@ -21,8 +21,11 @@
         private static void ParseCommandLine(string[] args)
         {
             if (args.Length < 1)
+            {
                 return;
-            var culture = new System.Globalization.CultureInfo(args[0]);
+            }
+
+            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo(args[0]);
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;

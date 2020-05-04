@@ -37,9 +37,12 @@
         /// <param name="scene">The Scene object upon which the command is executed.</param>
         public bool Do(Scene scene)
         {
-            var result = Run(scene);
+            bool result = Run(scene);
             if (result)
+            {
                 OnPropertyEdit(scene);
+            }
+
             Invert();
             return result;
         }
@@ -50,6 +53,9 @@
 
         // Protected methods
 
-        protected virtual void OnPropertyEdit(Scene scene) => scene.OnPropertyEdit(PropertyName, Index);
+        protected virtual void OnPropertyEdit(Scene scene)
+        {
+            scene.OnPropertyEdit(PropertyName, Index);
+        }
     }
 }

@@ -11,11 +11,18 @@
         internal void SetVisibility(bool visible)
         {
             if (visible)
+            {
                 Form.Activate();
+            }
             else
+            {
                 Form.Hide();
+            }
         }
 
-        protected void ToggleVisibility() => SetVisibility(!Form.Visible);
+        protected void ToggleVisibility()
+        {
+            SetVisibility(!Form.Visible);
+        }
     }
 }

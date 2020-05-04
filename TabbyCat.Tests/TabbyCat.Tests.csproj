@@ -56,10 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
-      <Project>{2AE90AE3-BFD0-4B81-B894-12DD5CA59828}</Project>
-      <Name>TabbyCat.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TabbyCat\TabbyCat.csproj">
       <Project>{EFF699A0-C701-41CF-8EAD-1473BEF2332F}</Project>
       <Name>TabbyCat</Name>

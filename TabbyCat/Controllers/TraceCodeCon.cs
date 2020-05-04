@@ -1,11 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Common.Types;
     using Jmk.Common;
     using Properties;
     using System;
     using System.Windows.Forms;
+    using Types;
     using Utils;
 
     internal class TraceCodeCon : CodeCon
@@ -16,9 +16,15 @@
 
         protected override IScript ShaderSet => TraceSelection;
 
-        protected override string GetRegion() => Resources.ShaderRegion_Trace;
+        protected override string GetRegion()
+        {
+            return Resources.ShaderRegion_Trace;
+        }
 
-        protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+        protected override void RunShaderCommand(string text)
+        {
+            TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+        }
 
         protected internal override void Connect(bool connect)
         {
@@ -55,27 +61,30 @@
 
         internal string GetFormula()
         {
-            var script = GetScript();
-            var first = script.FindFirstTokenLine(Tokens.BeginFormula);
-            var last = script.FindFirstTokenLine(Tokens.EndFormula);
+            string script = GetScript();
+            int first = script.FindFirstTokenLine(Tokens.BeginFormula);
+            int last = script.FindFirstTokenLine(Tokens.EndFormula);
             return 0 <= first && first < last ? script.GetLines(first, last - first) : string.Empty;
         }
 
         internal void SetFormula(string formula)
         {
-            foreach (var trace in TraceSelection.Traces)
+            foreach (Models.Trace trace in TraceSelection.Traces)
             {
-                var script = trace.GetScript(ShaderType);
-                var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
-                var endLine = script.FindFirstTokenLine(Tokens.EndFormula);
+                string script = trace.GetScript(ShaderType);
+                int beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
+                int endLine = script.FindFirstTokenLine(Tokens.EndFormula);
                 if (0 <= beginLine && beginLine < endLine)
                 {
                     script = $"{script.GetLines(0, beginLine)}{formula}{script.GetLines(endLine, script.GetLineCount() - endLine)}";
                     Run(new TraceShaderCommand(trace.Index, ShaderType, script));
                 }
             }
-         }
+        }
 
-        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewTraceCode_Click(object sender, EventArgs e)
+        {
+            ToggleVisibility();
+        }
     }
 }

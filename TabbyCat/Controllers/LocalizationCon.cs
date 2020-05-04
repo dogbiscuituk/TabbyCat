@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Common.Types;
     using Controls;
     using Jmk.Common;
     using Models;
@@ -12,13 +11,17 @@
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using Types;
     using Views;
 
     internal partial class LocalizationCon
     {
         // Constructors
 
-        internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
+        internal LocalizationCon(WorldCon worldCon)
+        {
+            WorldCon = worldCon;
+        }
 
         // Protected fields
 
@@ -26,7 +29,10 @@
 
         // Protected internal properties
 
-        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+        protected internal virtual void UpdateAllProperties()
+        {
+            UpdateProperties(AllProperties);
+        }
 
         // Protected properties
 
@@ -47,7 +53,10 @@
             }
         }
 
-        protected internal virtual bool Run(ICommand command) => CommandCon.Run(command);
+        protected internal virtual bool Run(ICommand command)
+        {
+            return CommandCon.Run(command);
+        }
 
         // Protected methods
 
@@ -56,18 +65,21 @@
         protected virtual void Localize(string info, params Control[] controls)
         {
             string hint, text = Parse(info, out hint, out _, out _);
-            foreach (var control in controls)
+            foreach (Control control in controls)
             {
                 if (!string.IsNullOrWhiteSpace(text))
+                {
                     control.Text = text;
+                }
+
                 ToolTip.SetToolTip(control, hint);
             }
         }
 
         protected virtual void Localize(string info, params ToolStripItem[] items)
         {
-            var text = Parse(info, out string hint, out string keys, out Keys shortcut);
-            foreach (var item in items)
+            string text = Parse(info, out string hint, out string keys, out Keys shortcut);
+            foreach (ToolStripItem item in items)
             {
                 item.Text = text;
                 item.ToolTipText = hint;
@@ -79,11 +91,15 @@
             }
         }
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls) =>
+        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls)
+        {
             Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        }
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) =>
+        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls)
+        {
             Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        }
 
         protected virtual void UpdateProperties(params string[] propertyNames) { }
 
@@ -91,7 +107,7 @@
 
         protected static void InitCommonControls(Control control)
         {
-            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
+            foreach (NumericUpDown spinEdit in control.Controls.OfType<NumericUpDown>())
             {
                 spinEdit.Minimum = decimal.MinValue;
                 spinEdit.Maximum = decimal.MaxValue;
@@ -105,14 +121,16 @@
                 Resources.Text_LaunchCaption,
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information) == DialogResult.OK)
+            {
                 path.Launch();
+            }
         }
 
         // Private static methods
 
         private static string Parse(string info, out string hint, out string keys, out Keys shortcut)
         {
-            var infos = info.Split('|');
+            string[] infos = info.Split('|');
             hint = string.Empty;
             keys = string.Empty;
             shortcut = Keys.None;
@@ -120,6 +138,7 @@
             {
                 keys = infos[2];
                 if (!string.IsNullOrWhiteSpace(keys))
+                {
                     try
                     {
                         shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
@@ -128,12 +147,15 @@
                     {
                         System.Diagnostics.Debug.WriteLine($"InitMenuItems(\"{info}\", ...): {ex.Message}");
                     }
+                }
             }
             if (infos.Length > 1)
             {
                 hint = infos[1];
                 if (shortcut != Keys.None)
+                {
                     hint = $"{hint} ({keys})";
+                }
             }
             return infos[0];
         }
@@ -142,7 +164,7 @@
     /// <summary>
     /// Derived controllers and their views.
     /// </summary>
-    partial class LocalizationCon
+    internal partial class LocalizationCon
     {
         // Internal properties
 
@@ -152,7 +174,7 @@
 
         protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         protected internal virtual JsonCon JsonCon => WorldCon.JsonCon;
-        protected internal virtual Scene Scene { get => WorldCon.Scene; set { WorldCon.Scene = value; } }
+        protected internal virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
         protected internal GLControl SceneControl => SceneForm?.Controls?.OfType<GLControl>().FirstOrDefault();
         protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
 
@@ -186,7 +208,7 @@
         protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 
-    partial class LocalizationCon : IDisposable
+    internal partial class LocalizationCon : IDisposable
     {
         private bool Disposed;
 

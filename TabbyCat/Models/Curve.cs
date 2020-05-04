@@ -1,13 +1,16 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using Types;
 
     public class Curve : Trace
     {
-        public Curve() : base() => Init();
+        public Curve() : base()
+        {
+            Init();
+        }
 
         private void Init()
         {

@@ -24,7 +24,10 @@
             : base(worldCon)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
+            {
                 throw new ArgumentNullException(nameof(subKeyName));
+            }
+
             SubKeyName = string.Format(
                 CultureInfo.InvariantCulture,
                 @"Software\{0}\{1}\{2}",
@@ -48,9 +51,12 @@
         {
             try
             {
-                var key = CreateSubKey();
+                Win32.RegistryKey key = CreateSubKey();
                 if (key == null)
+                {
                     return;
+                }
+
                 try
                 {
                     DeleteItem(key, item);
@@ -76,9 +82,12 @@
         {
             try
             {
-                var key = OpenSubKey(true);
+                Win32.RegistryKey key = OpenSubKey(true);
                 if (key == null)
+                {
                     return;
+                }
+
                 try
                 {
                     DeleteItem(key, item);
@@ -95,28 +104,45 @@
             RefreshRecentMenu();
         }
 
-        private Win32.RegistryKey CreateSubKey() => Win32.Registry.CurrentUser.CreateSubKey(SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+        private Win32.RegistryKey CreateSubKey()
+        {
+            return Win32.Registry.CurrentUser.CreateSubKey(SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+        }
 
         private static void DeleteItem(Win32.RegistryKey key, string item)
         {
-            var name = key.GetValueNames()
+            string name = key.GetValueNames()
                 .Where(n => key.GetValue(n, null) as string == item)
                 .FirstOrDefault();
             if (name != null)
+            {
                 key.DeleteValue(name);
+            }
         }
 
-        private Win32.RegistryKey OpenSubKey(bool writable) => Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
+        private Win32.RegistryKey OpenSubKey(bool writable)
+        {
+            return Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
+        }
 
-        private void RecentItemClick(object sender, EventArgs e) => Reopen((ToolStripItem)sender);
+        private void RecentItemClick(object sender, EventArgs e)
+        {
+            Reopen((ToolStripItem)sender);
+        }
 
         private void RecentClear_Click(object sender, EventArgs e)
         {
             Win32.RegistryKey key = OpenSubKey(true);
             if (key == null)
+            {
                 return;
+            }
+
             foreach (string name in key.GetValueNames())
+            {
                 key.DeleteValue(name, true);
+            }
+
             key.Close();
             if (RecentMenu != null)
             {
@@ -132,8 +158,11 @@
         private void RefreshRecentMenu()
         {
             if (RecentMenu == null)
+            {
                 return;
-            var items = RecentMenu.DropDownItems;
+            }
+
+            ToolStripItemCollection items = RecentMenu.DropDownItems;
             items.Clear();
             Win32.RegistryKey key = null;
             try
@@ -147,12 +176,14 @@
             bool ok = key != null;
             if (ok)
             {
-                foreach (var name in key.GetValueNames().OrderByDescending(n => n))
+                foreach (string name in key.GetValueNames().OrderByDescending(n => n))
+                {
                     if (key.GetValue(name, null) is string value)
+                    {
                         try
                         {
-                            var text = value.Split('|')[0].CompactMenuText();
-                            var item = items.Add(text, null, RecentItemClick);
+                            string text = value.Split('|')[0].CompactMenuText();
+                            ToolStripItem item = items.Add(text, null, RecentItemClick);
                             item.Tag = value;
                             item.ToolTipText = value.Replace('|', '\n');
                         }
@@ -160,11 +191,14 @@
                         {
                             Console.WriteLine(ex);
                         }
+                    }
+                }
+
                 ok = items.Count > 0;
                 if (ok)
                 {
                     items.Add(new ToolStripSeparator());
-                    var item = items.Add(string.Empty);
+                    ToolStripItem item = items.Add(string.Empty);
                     Localize(Resources.WorldForm_FileClearThisList, item);
                     item.Click += RecentClear_Click;
 

@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Common.Types;
     using Properties;
     using System;
+    using Types;
     using Utils;
 
     internal class SceneCodeCon : CodeCon
@@ -14,7 +14,10 @@
 
         protected override IScript ShaderSet => Scene;
 
-        protected override string GetRegion() => Resources.ShaderRegion_Scene;
+        protected override string GetRegion()
+        {
+            return Resources.ShaderRegion_Scene;
+        }
 
         protected internal override void Connect(bool connect)
         {
@@ -35,8 +38,14 @@
             Localize(Resources.WorldForm_ViewSceneCode, WorldForm.ViewSceneCode);
         }
 
-        protected override void RunShaderCommand(string text) => Run(new SceneShaderCommand(ShaderType, text));
+        protected override void RunShaderCommand(string text)
+        {
+            Run(new SceneShaderCommand(ShaderType, text));
+        }
 
-        private void ViewSceneCode_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewSceneCode_Click(object sender, EventArgs e)
+        {
+            ToggleVisibility();
+        }
     }
 }

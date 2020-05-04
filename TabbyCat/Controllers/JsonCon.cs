@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using Jmk.Common;
     using Models;
     using Newtonsoft.Json;
@@ -10,6 +9,7 @@
     using System.ComponentModel;
     using System.IO;
     using System.Windows.Forms;
+    using Types;
     using Utils;
 
     /// <summary>
@@ -36,18 +36,20 @@
         {
             bool result;
             string text;
-            using (var stream = new MemoryStream())
-            using (var streamWriter = new StreamWriter(stream))
-            using (var textWriter = new JsonTextWriter(streamWriter))
+            using (MemoryStream stream = new MemoryStream())
+            using (StreamWriter streamWriter = new StreamWriter(stream))
+            using (JsonTextWriter textWriter = new JsonTextWriter(streamWriter))
             {
                 result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
                 textWriter.Flush();
                 streamWriter.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
-                using (var streamReader = new StreamReader(stream))
+                using (StreamReader streamReader = new StreamReader(stream))
+                {
                     text = streamReader.ReadToEnd();
+                }
             }
-            var dataObject = new DataObject();
+            DataObject dataObject = new DataObject();
             dataObject.SetData(AppCon.DataFormat, text);
             dataObject.SetData(DataFormats.Text, text);
             Clipboard.SetDataObject(dataObject, copy: true);
@@ -58,16 +60,21 @@
         {
             IEnumerable<Trace> traces = null;
             if (AppCon.CanPaste)
-                using (var stream = new MemoryStream())
-                using (var streamWriter = new StreamWriter(stream))
+            {
+                using (MemoryStream stream = new MemoryStream())
+                using (StreamWriter streamWriter = new StreamWriter(stream))
                 {
                     streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
                     streamWriter.Flush();
                     stream.Seek(0, SeekOrigin.Begin);
-                    using (var streamReader = new StreamReader(stream))
-                    using (var textReader = new JsonTextReader(streamReader))
+                    using (StreamReader streamReader = new StreamReader(stream))
+                    using (JsonTextReader textReader = new JsonTextReader(streamReader))
+                    {
                         UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
+                    }
                 }
+            }
+
             return traces;
         }
 
@@ -120,13 +127,18 @@
             }
         }
 
-        protected override void ClearDocument() => OnClear();
+        protected override void ClearDocument()
+        {
+            OnClear();
+        }
 
         protected override bool LoadFromStream(Stream stream)
         {
-            using (var streamReader = new StreamReader(stream))
-            using (var textReader = new JsonTextReader(streamReader))
+            using (StreamReader streamReader = new StreamReader(stream))
+            using (JsonTextReader textReader = new JsonTextReader(streamReader))
+            {
                 return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
+            }
         }
 
         protected override void Localize()
@@ -144,78 +156,142 @@
             Localize(Resources.WorldForm_FileCloseAllAndExit, WorldForm.FileExit);
         }
 
-        protected override void OnFileReopen(string filePath) => FileReopen?.Invoke(this, new FilePathEventArgs(filePath));
+        protected override void OnFileReopen(string filePath)
+        {
+            FileReopen?.Invoke(this, new FilePathEventArgs(filePath));
+        }
 
         protected override bool SaveToStream(Stream stream)
         {
-            using (var streamWriter = new StreamWriter(stream))
-            using (var TextWriter = new JsonTextWriter(streamWriter))
+            using (StreamWriter streamWriter = new StreamWriter(stream))
+            using (JsonTextWriter TextWriter = new JsonTextWriter(streamWriter))
+            {
                 return UseStream(() => GetSerializer().Serialize(TextWriter, Scene));
+            }
         }
 
-        private void BeginUpdate() => ++UpdateCount;
+        private void BeginUpdate()
+        {
+            ++UpdateCount;
+        }
 
         private void EndUpdate()
         {
             if (--UpdateCount == 0)
             {
-                foreach (var propertyName in ChangedPropertyNames)
+                foreach (string propertyName in ChangedPropertyNames)
+                {
                     WorldCon.OnPropertyEdit(propertyName);
+                }
+
                 ChangedPropertyNames.Clear();
             }
         }
 
-        private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
-
-        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
-
-        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
-
-        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
-
-        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
-
-        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
-
-        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
-
-        private static JsonSerializer GetSerializer() => new JsonSerializer
+        private void FileClose_Click(object sender, System.EventArgs e)
         {
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            Formatting = Formatting.Indented,
-            MissingMemberHandling = MissingMemberHandling.Error
-        };
+            WorldForm.Close();
+        }
+
+        private void FileExit_Click(object sender, System.EventArgs e)
+        {
+            AppCon.Close();
+        }
+
+        private void FileNewEmptyScene_Click(object sender, System.EventArgs e)
+        {
+            NewEmptyScene();
+        }
+
+        private void FileNewFromTemplate_Click(object sender, System.EventArgs e)
+        {
+            NewFromTemplate();
+        }
+
+        private void FileOpen_Click(object sender, System.EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void FileSave_Click(object sender, System.EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void FileSaveAs_Click(object sender, System.EventArgs e)
+        {
+            SaveFileAs();
+        }
+
+        private static JsonSerializer GetSerializer()
+        {
+            return new JsonSerializer
+            {
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+                Formatting = Formatting.Indented,
+                MissingMemberHandling = MissingMemberHandling.Error
+            };
+        }
 
         private WorldCon GetNewWorldCon()
         {
             if (AppCon.Options.OpenInNewWindow)
+            {
                 return AppCon.AddNewWorldCon();
+            }
+
             if (!JsonCon.SaveIfModified())
+            {
                 return null;
+            }
+
             JsonCon.Clear();
             SetDefaultCamera();
             return WorldCon;
         }
 
-        private void JsonCon_FileLoaded(object sender, EventArgs e) => OnLoad();
+        private void JsonCon_FileLoaded(object sender, EventArgs e)
+        {
+            OnLoad();
+        }
 
-        private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
+        private void JsonCon_FilePathChanged(object sender, EventArgs e)
+        {
+            UpdateCaption();
+        }
 
-        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => OnFilePathRequest(e);
+        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e)
+        {
+            OnFilePathRequest(e);
+        }
 
-        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
+        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e)
+        {
+            OpenFile(e.FilePath);
+        }
 
-        private void JsonCon_FileSaved(object sender, EventArgs e) => OnSave();
+        private void JsonCon_FileSaved(object sender, EventArgs e)
+        {
+            OnSave();
+        }
 
-        private void JsonCon_FileSaving(object sender, CancelEventArgs e) => e.Cancel = false;
+        private void JsonCon_FileSaving(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+        }
 
-        private void NewEmptyScene() => GetNewWorldCon();
+        private void NewEmptyScene()
+        {
+            GetNewWorldCon();
+        }
 
         private void NewFromTemplate()
         {
-            var worldCon = OpenFile(FilterIndex.Template);
+            WorldCon worldCon = OpenFile(FilterIndex.Template);
             if (worldCon != null)
+            {
                 worldCon.JsonCon.FilePath = string.Empty;
+            }
         }
 
         private void OnClear()
@@ -229,7 +305,9 @@
         private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.FilePath))
+            {
                 e.FilePath = Scene.Title.ToFilename();
+            }
         }
 
         private void OnLoad()
@@ -254,13 +332,19 @@
             Reset();
         }
 
-        private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File) => OpenFile(JsonCon.SelectFilePath(filterIndex));
+        private WorldCon OpenFile(FilterIndex filterIndex = FilterIndex.File)
+        {
+            return OpenFile(JsonCon.SelectFilePath(filterIndex));
+        }
 
         private WorldCon OpenFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
+            {
                 return null;
-            var worldCon = GetNewWorldCon();
+            }
+
+            WorldCon worldCon = GetNewWorldCon();
             worldCon?.LoadFromFile(filePath);
             return worldCon;
         }
@@ -271,17 +355,35 @@
             WorldCon.UpdateAllProperties();
         }
 
-        private bool SaveFile() => JsonCon.Save();
+        private bool SaveFile()
+        {
+            return JsonCon.Save();
+        }
 
-        private bool SaveFileAs() => JsonCon.SaveAs();
+        private bool SaveFileAs()
+        {
+            return JsonCon.SaveAs();
+        }
 
-        private bool SaveOrSaveAs() => Scene.IsModified ? SaveFile() : SaveFileAs();
+        private bool SaveOrSaveAs()
+        {
+            return Scene.IsModified ? SaveFile() : SaveFileAs();
+        }
 
-        private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
+        private void SetDefaultCamera()
+        {
+            CameraCon.SetDefaultCamera();
+        }
 
-        private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen, ToolStripUtils.CloneOptions.All);
+        private void TbOpen_DropDownOpening(object sender, EventArgs e)
+        {
+            WorldForm.FileReopen.CloneTo(WorldForm.tbOpen, ToolStripUtils.CloneOptions.All);
+        }
 
-        private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
+        private void TbSave_Click(object sender, EventArgs e)
+        {
+            SaveOrSaveAs();
+        }
 
         private void UpdateCaption() { WorldForm.Text = JsonCon.WindowCaption; }
     }

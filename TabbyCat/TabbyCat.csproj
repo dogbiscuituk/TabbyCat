@@ -115,6 +115,30 @@
     <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\TracePropertiesCon.cs" />
+    <Compile Include="Controls\CodeEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CodeEdit.Designer.cs">
+      <DependentUpon>CodeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScenePropertiesEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ScenePropertiesEdit.Designer.cs">
+      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SignalEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SignalEdit.Designer.cs">
+      <DependentUpon>SignalEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TracePropertiesEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TracePropertiesEdit.Designer.cs">
+      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Converters\SignalConverter.cs" />
     <Compile Include="Models\Shaders.cs" />
     <Compile Include="Models\Curve.cs" />
@@ -131,6 +155,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Converters\QuaternionConverter.cs" />
+    <Compile Include="Converters\Vector3Converter.cs" />
+    <Compile Include="Types\Camera.cs" />
+    <Compile Include="Types\Clock.cs" />
+    <Compile Include="Types\CollectionEditEventArgs.cs" />
+    <Compile Include="Types\Entity.cs" />
+    <Compile Include="Types\FillType.cs" />
+    <Compile Include="Types\FilterIndex.cs" />
+    <Compile Include="Types\GLInfo.cs" />
+    <Compile Include="Types\GLSL4.60.7.cs" />
+    <Compile Include="Types\GPUStatus.cs" />
+    <Compile Include="Types\IScene.cs" />
+    <Compile Include="Types\IScript.cs" />
+    <Compile Include="Types\IShaders.cs" />
+    <Compile Include="Types\ITrace.cs" />
+    <Compile Include="Types\Optimization.cs" />
+    <Compile Include="Types\Options.cs" />
+    <Compile Include="Types\Pattern.cs" />
+    <Compile Include="Types\Projection.cs" />
+    <Compile Include="Types\ProjectionType.cs" />
+    <Compile Include="Types\PropertyEditEventArgs.cs" />
+    <Compile Include="Types\SplitType.cs" />
+    <Compile Include="Types\TextStyleInfo.cs" />
+    <Compile Include="Types\TextStyleInfos.cs" />
+    <Compile Include="Converters\TextStyleInfosTypeConverter.cs" />
+    <Compile Include="Converters\TextStyleInfoTypeConverter.cs" />
+    <Compile Include="Types\Theme.cs" />
+    <Compile Include="Types\Tokens.cs" />
+    <Compile Include="Types\TraceType.cs" />
+    <Compile Include="Types\Vao.cs" />
+    <Compile Include="Types\Vbo.cs" />
+    <Compile Include="Types\VboStore.cs" />
+    <Compile Include="Types\VboType.cs" />
+    <Compile Include="Types\WaveType.cs" />
     <Compile Include="Utils\ColourUtils.cs" />
     <Compile Include="Utils\GraphicUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
@@ -210,6 +268,18 @@
     <Compile Include="Views\WorldForm.Designer.cs">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\CodeEdit.resx">
+      <DependentUpon>CodeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScenePropertiesEdit.resx">
+      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SignalEdit.resx">
+      <DependentUpon>SignalEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TracePropertiesEdit.resx">
+      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -273,14 +343,6 @@
     <ProjectReference Include="..\Jmk.Controls\Jmk.Controls.csproj">
       <Project>{6b45e0f7-a8b0-4d9b-b730-e361d62fb1f4}</Project>
       <Name>Jmk.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TabbyCat.Common\TabbyCat.Common.csproj">
-      <Project>{2ae90ae3-bfd0-4b81-b894-12dd5ca59828}</Project>
-      <Name>TabbyCat.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TabbyCat.Controls\TabbyCat.Controls.csproj">
-      <Project>{863f94ec-92f5-4b7c-833e-6016ed499ca4}</Project>
-      <Name>TabbyCat.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

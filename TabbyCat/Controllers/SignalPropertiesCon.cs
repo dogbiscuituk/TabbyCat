@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using Models;
     using System;
     using System.Windows.Forms;
+    using Types;
     using Views;
 
     internal class SignalPropertiesCon : LocalizationCon
@@ -12,7 +12,7 @@
 
         internal Signal ShowDialog(Signal signal)
         {
-            using (var dialog = new SignalPropertiesDialog())
+            using (SignalPropertiesDialog dialog = new SignalPropertiesDialog())
             {
                 InitCommonControls(dialog.TableLayoutPanel);
                 dialog.edName.Text = signal.Name;
@@ -25,6 +25,7 @@
                 dialog.seFrequencyValue.Value = (decimal)signal.Frequency;
                 dialog.seFrequencyMaximum.Value = (decimal)signal.FrequencyMaximum;
                 if (dialog.ShowDialog(SignalsForm) == DialogResult.OK)
+                {
                     signal = new Signal
                     {
                         Name = dialog.edName.Text,
@@ -36,6 +37,8 @@
                         Frequency = (float)dialog.seFrequencyValue.Value,
                         FrequencyMaximum = (float)dialog.seFrequencyMaximum.Value,
                     };
+                }
+
                 return signal;
             }
         }

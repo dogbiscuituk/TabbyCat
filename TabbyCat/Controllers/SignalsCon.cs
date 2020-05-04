@@ -1,13 +1,13 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Common.Types;
     using Jmk.Common;
     using Models;
     using Properties;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
+    using Types;
     using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
@@ -48,16 +48,18 @@
 
         internal void Clear()
         {
-            for (var index = SignalCons.Count - 1; index >= 0; index--)
+            for (int index = SignalCons.Count - 1; index >= 0; index--)
+            {
                 RemoveAt(index);
+            }
         }
 
         internal void InsertAt(int index)
         {
-            var signal = Scene.Signals[index];
+            Signal signal = Scene.Signals[index];
             AdjustIndices(index, +1);
             SignalCon newSignalCon = new SignalCon(WorldCon, signal);
-            var signalEdit = newSignalCon.SignalEdit;
+            Controls.SignalEdit signalEdit = newSignalCon.SignalEdit;
             signalEdit.Dock = DockStyle.Top;
             SignalCons.Add(newSignalCon);
             SignalsForm.Controls.Add(signalEdit);
@@ -68,13 +70,15 @@
         internal void Load()
         {
             Clear();
-            for (var index = 0; index < Scene.Signals.Count; index++)
+            for (int index = 0; index < Scene.Signals.Count; index++)
+            {
                 InsertAt(index);
+            }
         }
 
         internal void RemoveAt(int index)
         {
-            var oldSignalCon = SignalCons.First(p => p.Index == index);
+            SignalCon oldSignalCon = SignalCons.First(p => p.Index == index);
             oldSignalCon.Connect(false);
             SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
             SignalCons.Remove(oldSignalCon);
@@ -102,11 +106,17 @@
                 WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
-            foreach (var item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
+            foreach (ToolStripMenuItem item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
+            {
                 if (connect)
+                {
                     item.Click += AddButton_ButtonClick;
+                }
                 else
+                {
                     item.Click -= AddButton_ButtonClick;
+                }
+            }
         }
 
         // Protected methods
@@ -131,36 +141,48 @@
 
         protected override void UpdateProperties(params string[] propertyNames)
         {
-            foreach (var propertyName in propertyNames)
+            foreach (string propertyName in propertyNames)
+            {
                 switch (propertyName)
                 {
                     case PropertyNames.Signals:
                         break;
                 }
+            }
         }
 
         // Private methods
 
-        private void AddButton_ButtonClick(object sender, System.EventArgs e) => AddSignal((WaveType)((ToolStripItem)sender).Tag);
-
-        private void AddSignal(WaveType waveType) => CommandCon.AppendSignal(new Signal
+        private void AddButton_ButtonClick(object sender, System.EventArgs e)
         {
-            Name = NameSource.Names.First(
-                name => Scene.Signals.FirstOrDefault(
-                    signal => signal.Name == name) == null),
-            WaveType = waveType
-        });
+            AddSignal((WaveType)((ToolStripItem)sender).Tag);
+        }
+
+        private void AddSignal(WaveType waveType)
+        {
+            CommandCon.AppendSignal(new Signal
+            {
+                Name = NameSource.Names.First(
+name => Scene.Signals.FirstOrDefault(
+signal => signal.Name == name) == null),
+                WaveType = waveType
+            });
+        }
 
         private void AdjustIndices(int index, int delta)
         {
-            foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
+            foreach (SignalCon signalCon in SignalCons.Where(p => p.Index >= index).ToList())
+            {
                 signalCon.Index += delta;
+            }
         }
 
         private void DeleteAllButton_Click(object sender, System.EventArgs e)
         {
-            for (var index = SignalsCount - 1; index >= 0; index--)
+            for (int index = SignalsCount - 1; index >= 0; index--)
+            {
                 Run(new SignalDeleteCommand(index));
+            }
         }
 
         private SignalsForm NewSignalsForm()
@@ -182,7 +204,10 @@
             return _SignalsForm;
         }
 
-        private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
+        private void ViewSignals_Click(object sender, System.EventArgs e)
+        {
+            ToggleVisibility();
+        }
 
         private void WorldCon_CollectionEdit(object sender, CollectionEditEventArgs e)
         {
@@ -190,9 +215,14 @@
             {
                 case PropertyNames.Signals:
                     if (e.Adding)
+                    {
                         InsertAt(e.Index);
+                    }
                     else
+                    {
                         RemoveAt(e.Index);
+                    }
+
                     break;
             }
         }
@@ -209,6 +239,9 @@
 
         // Private static methods
 
-        private static void Init(ToolStripItem item, WaveType waveType) => item.Tag = waveType;
+        private static void Init(ToolStripItem item, WaveType waveType)
+        {
+            item.Tag = waveType;
+        }
     }
 }

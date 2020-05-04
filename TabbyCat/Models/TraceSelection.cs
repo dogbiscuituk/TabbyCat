@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using Jmk.Common;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Types;
 
     public partial class TraceSelection : Selection<Trace>
     {
@@ -70,20 +70,32 @@
 
         internal IEnumerable<Trace> Traces => Items.OrderBy(p => p.Index);
 
-        internal IEnumerable<int> GetTraceIndices() => Items.Select(p => p.Index);
+        internal IEnumerable<int> GetTraceIndices()
+        {
+            return Items.Select(p => p.Index);
+        }
 
         // Private methods
 
-        private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
-            GetProperty(p => f(p).X),
-            GetProperty(p => f(p).Y),
-            GetProperty(p => f(p).Z));
+        private Vector3 GetVector3(Func<Trace, Vector3> f)
+        {
+            return new Vector3(
+GetProperty(p => f(p).X),
+GetProperty(p => f(p).Y),
+GetProperty(p => f(p).Z));
+        }
     }
 
-    partial class TraceSelection : IScript
+    public partial class TraceSelection : IScript
     {
-        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+        public string GetScript(ShaderType shaderType)
+        {
+            return GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+        }
 
-        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
+        public void SetScript(ShaderType shaderType, string value)
+        {
+            SetProperty(p => p.SetScript(shaderType, value));
+        }
     }
 }

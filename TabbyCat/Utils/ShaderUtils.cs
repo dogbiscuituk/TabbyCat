@@ -36,16 +36,25 @@
             }
         }
 
-        public static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_SceneScope);
+        public static string SceneShaderName(this ShaderType shaderType)
+        {
+            return shaderType.ShaderName(Resources.PropertyName_SceneScope);
+        }
 
-        public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
+        public static string ShaderName(this ShaderType shaderType)
+        {
+            return shaderType.ShaderName(Resources.PropertyName_ShaderScope);
+        }
 
-        public static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
-                CultureInfo.CurrentCulture,
-                Resources.PropertyName_ShaderFormat,
-                scope,
-                shaderType.ShaderTag(),
-                Resources.PropertyName_Shader);
+        public static string ShaderName(this ShaderType shaderType, string scope)
+        {
+            return string.Format(
+CultureInfo.CurrentCulture,
+Resources.PropertyName_ShaderFormat,
+scope,
+shaderType.ShaderTag(),
+Resources.PropertyName_Shader);
+        }
 
         public static string ShaderTag(this ShaderType shaderType)
         {
@@ -68,6 +77,9 @@
             }
         }
 
-        public static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_TraceScope);
+        public static string TraceShaderName(this ShaderType shaderType)
+        {
+            return shaderType.ShaderName(Resources.PropertyName_TraceScope);
+        }
     }
 }

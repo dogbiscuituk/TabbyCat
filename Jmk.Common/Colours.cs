@@ -7,8 +7,8 @@
     {
         public static Brush ToBrush(this Color colour)
         {
-            var flags = BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static;
-            var prop = typeof(Brushes).GetProperty(colour.Name, flags);
+            BindingFlags flags = BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static;
+            PropertyInfo prop = typeof(Brushes).GetProperty(colour.Name, flags);
             return prop != null ? (Brush)prop.GetValue(null) : new SolidBrush(colour);
         }
     }

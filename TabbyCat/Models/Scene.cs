@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using Controllers;
     using Newtonsoft.Json;
     using OpenTK;
@@ -9,13 +8,20 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
+    using Types;
     using Utils;
 
     public class Scene : Shaders, IScene
     {
-        public Scene() : base() => Init();
+        public Scene() : base()
+        {
+            Init();
+        }
 
-        internal Scene(WorldCon worldCon) : this() => WorldCon = worldCon;
+        internal Scene(WorldCon worldCon) : this()
+        {
+            WorldCon = worldCon;
+        }
 
         internal WorldCon WorldCon;
 
@@ -44,7 +50,10 @@
             set
             {
                 if (GPUStatus == value)
+                {
                     return;
+                }
+
                 _GPUStatus = value;
                 OnPropertyEdit(PropertyNames.GPUStatus);
             }
@@ -57,7 +66,10 @@
             set
             {
                 if (GPULog == value)
+                {
                     return;
+                }
+
                 _GPULog = value;
                 OnPropertyEdit(PropertyNames.GPULog);
             }
@@ -71,42 +83,78 @@
 
         private GLControl GLControl => WorldCon?.SceneControl;
 
-        internal void AddSignal(Signal signal) => Signals.Add(signal);
+        internal void AddSignal(Signal signal)
+        {
+            Signals.Add(signal);
+        }
 
-        internal void AddTrace(Trace trace) => Traces.Add(trace);
+        internal void AddTrace(Trace trace)
+        {
+            Traces.Add(trace);
+        }
 
         internal void AttachTraces()
         {
-            foreach (var trace in Traces)
+            foreach (Trace trace in Traces)
+            {
                 trace.Scene = this;
+            }
         }
 
-        internal void Clear() => Init();
+        internal void Clear()
+        {
+            Init();
+        }
 
-        internal Matrix4 GetCameraView() => MathUtils.CreateCameraView(Camera);
+        internal Matrix4 GetCameraView()
+        {
+            return MathUtils.CreateCameraView(Camera);
+        }
 
-        internal GraphicsMode GetGraphicsMode() => WorldCon?.GraphicsMode;
+        internal GraphicsMode GetGraphicsMode()
+        {
+            return WorldCon?.GraphicsMode;
+        }
 
-        internal Matrix4 GetProjection() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
+        internal Matrix4 GetProjection()
+        {
+            return MathUtils.CreateProjection(Projection, GLControl.ClientSize);
+        }
 
-        internal void InsertSignal(int index, Signal signal) => Signals.Insert(index, signal);
+        internal void InsertSignal(int index, Signal signal)
+        {
+            Signals.Insert(index, signal);
+        }
 
-        internal void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
+        internal void InsertTrace(int index, Trace trace)
+        {
+            Traces.Insert(index, trace);
+        }
 
-        internal void OnCollectionEdit(string propertyName, int index, bool adding) => WorldCon.OnCollectionEdit(propertyName, index, adding);
+        internal void OnCollectionEdit(string propertyName, int index, bool adding)
+        {
+            WorldCon.OnCollectionEdit(propertyName, index, adding);
+        }
 
-        internal void OnPropertyEdit(string propertyName, int index = 0) => WorldCon?.OnPropertyEdit(propertyName, index);
+        internal void OnPropertyEdit(string propertyName, int index = 0)
+        {
+            WorldCon?.OnPropertyEdit(propertyName, index);
+        }
 
         internal void RemoveSignal(int index)
         {
             if (index >= 0 && index < Signals.Count)
+            {
                 Signals.RemoveAt(index);
+            }
         }
 
         internal void RemoveTrace(int index)
         {
             if (index >= 0 && index < Traces.Count)
+            {
                 Traces.RemoveAt(index);
+            }
         }
 
         internal void SetCameraView(Matrix4 _) { }

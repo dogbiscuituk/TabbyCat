@@ -1,9 +1,8 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
     using System;
-    using System.Linq;
     using System.Windows.Forms;
+    using Types;
 
     internal abstract class PropertiesCon : DockingCon
     {
@@ -29,11 +28,19 @@
         protected void SetToolTip(Control control, string toolTip)
         {
             if (ToolTip.GetToolTip(control) != toolTip)
+            {
                 ToolTip.SetToolTip(control, toolTip);
+            }
         }
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
+        {
+            UpdateProperties(e.PropertyName);
+        }
 
-        private void WorldCon_SelectionEdit(object sender, EventArgs e) => OnSelectionEdit();
+        private void WorldCon_SelectionEdit(object sender, EventArgs e)
+        {
+            OnSelectionEdit();
+        }
     }
 }

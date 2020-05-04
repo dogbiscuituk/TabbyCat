@@ -16,10 +16,15 @@
 
         private static IEnumerable<string> GetNames()
         {
-            for (var n = 0; ; n++)
+            for (int n = 0; ; n++)
+            {
                 yield return ToName(n);
+            }
         }
 
-        private static string ToName(int n) => n < 26 ? $"{(char)('A' + n)}" : $"{ToName(n / 26 - 1)}{(char)('A' + n % 26)}";
+        private static string ToName(int n)
+        {
+            return n < 26 ? $"{(char)('A' + n)}" : $"{ToName(n / 26 - 1)}{(char)('A' + n % 26)}";
+        }
     }
 }

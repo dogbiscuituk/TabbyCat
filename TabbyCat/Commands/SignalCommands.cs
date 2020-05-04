@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Commands
 {
-    using Common.Types;
+    using Types;
     using Utils;
 
     internal class AmplitudeCommand : SignalPropertyCommand<float>

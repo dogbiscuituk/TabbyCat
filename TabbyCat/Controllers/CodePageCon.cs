@@ -1,7 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
-    using Controls.Types;
     using FastColoredTextBoxNS;
     using Properties;
     using System;
@@ -10,6 +8,7 @@
     using System.Globalization;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using Types;
     using Utils;
     using Languages = FastColoredTextBoxNS.Language;
 
@@ -40,21 +39,27 @@
         public void AddSystemRange(Range range)
         {
             if (range == null)
+            {
                 return;
-            var rangeAll = TextBox.Range;
+            }
+
+            Range rangeAll = TextBox.Range;
             if (range.End.iLine > rangeAll.End.iLine)
+            {
                 range.End = rangeAll.End;
+            }
+
             range.SetStyle(ReadOnlyStyle);
             range.SetStyle(ReadOnlyTextStyle);
         }
 
         public List<Range> GetUserRanges()
         {
-            var ranges = new List<Range>();
-            var inRange = false;
-            for (var lineIndex = 0; lineIndex < TextBox.LinesCount; lineIndex++)
+            List<Range> ranges = new List<Range>();
+            bool inRange = false;
+            for (int lineIndex = 0; lineIndex < TextBox.LinesCount; lineIndex++)
             {
-                var range = TextBox.GetLine(lineIndex);
+                Range range = TextBox.GetLine(lineIndex);
                 if (!range.ReadOnly)
                 {
                     if (!inRange)
@@ -64,12 +69,14 @@
                     }
                     else
                     {
-                        var rangeIndex = ranges.Count - 1;
+                        int rangeIndex = ranges.Count - 1;
                         ranges[rangeIndex] = ranges[rangeIndex].GetUnionWith(range);
                     }
                 }
                 else
+                {
                     inRange = false;
+                }
             }
             return ranges;
         }
@@ -89,13 +96,18 @@
         private void TextBox_PaintLine(object sender, PaintLineEventArgs e)
         {
             if (new Range(TextBox, e.LineIndex).ReadOnly)
+            {
                 e.Graphics.FillRectangle(Brushes.WhiteSmoke, e.LineRect);
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (Language == "GLSL")
+            {
                 SyntaxHighlightGLSL(e);
+            }
+
             if (TextBox.Text.Trim().StartsWith("<?xml", ignoreCase: false, CultureInfo.InvariantCulture))
             {
                 TextBox.Language = Languages.XML;
@@ -106,7 +118,7 @@
 
         private void TextBox_TextChanging(object sender, TextChangingEventArgs e)
         {
-            var selection = TextBox.Selection;
+            Range selection = TextBox.Selection;
             e.Cancel = selection.IsReadOnlyLeftChar() || selection.IsReadOnlyRightChar();
         }
 
@@ -122,7 +134,10 @@
             AutocompleteMenu.Items.Width = 200;
         }
 
-        private Languages GetLanguage() => GetLanguage(Language);
+        private Languages GetLanguage()
+        {
+            return GetLanguage(Language);
+        }
 
         private void Init()
         {
@@ -140,7 +155,10 @@
         private void SetLanguage(string language)
         {
             if (Language == language)
+            {
                 return;
+            }
+
             TextBoxLanguage = language;
             InitStylesPriority(TextBox);
             TextBox.Language = GetLanguage();
@@ -197,7 +215,10 @@
         public static void ApplyStyles(TextStyleInfos styles)
         {
             if (styles == null)
+            {
                 return;
+            }
+
             InitStyle(styles.Comments, CommentStyle);
             InitStyle(styles.Directives, DirectiveStyle);
             InitStyle(styles.Functions, FunctionStyle);
@@ -257,10 +278,13 @@
             textBox.AddStyle(DirectiveStyle);
         }
 
-        private static TextStyle NewTextStyle() => new TextStyle(Brushes.Black, Brushes.Transparent, 0);
+        private static TextStyle NewTextStyle()
+        {
+            return new TextStyle(Brushes.Black, Brushes.Transparent, 0);
+        }
     }
 
-    partial class CodePageCon : IDisposable
+    public partial class CodePageCon : IDisposable
     {
         private bool Disposed;
 

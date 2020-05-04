@@ -1,13 +1,16 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using Types;
 
     public class Surface : Trace
     {
-        public Surface() : base() => Init();
+        public Surface() : base()
+        {
+            Init();
+        }
 
         private void Init()
         {

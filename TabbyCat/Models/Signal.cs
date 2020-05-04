@@ -1,10 +1,10 @@
 ﻿namespace TabbyCat.Models
 {
-    using Common.Types;
     using Properties;
     using System;
     using System.ComponentModel;
     using System.Globalization;
+    using Types;
 
     public class Signal
     {
@@ -40,14 +40,23 @@
 
         // Public methods
 
-        public float GetValueAt(float time) => Amplitude * GetScaleAt(time);
+        public float GetValueAt(float time)
+        {
+            return Amplitude * GetScaleAt(time);
+        }
 
-        public override string ToString() => string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
+        }
 
         private float GetScaleAt(float time)
         {
             if (WaveType == WaveType.Constant)
+            {
                 return 1;
+            }
+
             time *= Frequency;
             time -= (float)Math.Floor(time);
             float t;

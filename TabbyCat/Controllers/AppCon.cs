@@ -1,12 +1,11 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Common.Types;
-    using Controls.Types;
     using Properties;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Forms;
+    using Types;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
     using static WeifenLuo.WinFormsUI.Docking.DockPanelExtender;
@@ -39,7 +38,7 @@
 
         private static readonly string DefaultFilesFolderPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
 
-        private readonly static Timer Pulse = new Timer { Interval = 200, Enabled = true };
+        private static readonly Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
         private static int PulseCount;
 
@@ -50,8 +49,13 @@
             get
             {
                 if (_AboutDialog == null)
+                {
                     using (AboutCon aboutCon = new AboutCon(null))
+                    {
                         _AboutDialog = aboutCon.AboutDialog;
+                    }
+                }
+
                 return _AboutDialog;
             }
         }
@@ -60,7 +64,7 @@
         {
             get
             {
-                var options = new Options
+                Options options = new Options
                 {
                     Theme = Settings.Options_Theme,
                     OpenInNewWindow = Settings.Options_OpenInNewWindow,
@@ -70,9 +74,15 @@
                     GLSLPath = Settings.GLSLUrl
                 };
                 if (string.IsNullOrWhiteSpace(options.FilesFolderPath))
+                {
                     options.FilesFolderPath = DefaultFilesFolderPath;
+                }
+
                 if (string.IsNullOrWhiteSpace(options.TemplatesFolderPath))
+                {
                     options.TemplatesFolderPath = $"{DefaultFilesFolderPath}\\Templates";
+                }
+
                 return options;
             }
             set
@@ -95,14 +105,17 @@
 
         internal static WorldCon AddNewWorldCon()
         {
-            var worldCon = new WorldCon();
+            WorldCon worldCon = new WorldCon();
             WorldCons.Add(worldCon);
             worldCon.Show();
             worldCon.RefreshGraphicsMode();
             return worldCon;
         }
 
-        internal static void Close() => Application.Exit();
+        internal static void Close()
+        {
+            Application.Exit();
+        }
 
         internal static string GetDefaultFolder(FilterIndex filterIndex)
         {
@@ -121,7 +134,9 @@
         {
             WorldCons.Remove(worldCon);
             if (WorldCons.Count == 0)
+            {
                 Close();
+            }
         }
 
         // Private methods
@@ -130,39 +145,56 @@
         {
             InitTheme();
             if (!Directory.Exists(Options.FilesFolderPath))
+            {
                 Directory.CreateDirectory(Options.FilesFolderPath);
+            }
+
             if (!Directory.Exists(Options.TemplatesFolderPath))
+            {
                 Directory.CreateDirectory(Options.TemplatesFolderPath);
+            }
+
             CodePageCon.ApplyStyles(Options.SyntaxHighlightStyles);
         }
 
         private static void Pulse_Tick(object sender, EventArgs e)
         {
             CanPaste = Clipboard.ContainsData(DataFormat);
-            foreach (var worldCon in WorldCons)
+            foreach (WorldCon worldCon in WorldCons)
+            {
                 worldCon.OnPulse();
+            }
+
             if (PulseCount < 10)
+            {
                 PulseCount++;
+            }
             else
+            {
                 AboutDialog.Hide();
+            }
         }
     }
 
     /// <summary>
     /// Visual Studio Themes.
     /// </summary>
-    partial class AppCon
+    internal partial class AppCon
     {
         internal static void InitControlTheme(params Control[] controls)
         {
             ThemeBase theme = VsTheme;
             VsVersion version = VsVersion;
-            foreach (var control in controls)
+            foreach (Control control in controls)
             {
                 if (control is DockPanel dockPanel)
+                {
                     dockPanel.Theme = theme;
+                }
                 else if (control is ToolStrip toolStrip)
+                {
                     ToolStripExtender.SetStyle(toolStrip, version, theme);
+                }
             }
         }
 
@@ -242,7 +274,9 @@
             VsTheme = GetVsTheme();
             VsVersion = GetVsVersion();
             if (VsTheme != null)
+            {
                 VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
+            }
         }
     }
 }

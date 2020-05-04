@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Commands
 {
-    using Common.Types;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System.Drawing;
+    using Types;
     using Utils;
 
     internal class BackgroundColourCommand : ScenePropertyCommand<Color>

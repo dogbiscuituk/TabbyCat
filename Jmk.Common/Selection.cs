@@ -28,7 +28,10 @@
         public void Add(TItem item)
         {
             if (Items.Contains(item))
+            {
                 return;
+            }
+
             Items.Add(item);
             OnChanged();
         }
@@ -37,17 +40,26 @@
         {
             items = items.Where(p => !Items.Contains(p)).ToList();
             if (IsEmpty)
+            {
                 return;
+            }
+
             Items.AddRange(items);
             OnChanged();
         }
 
-        public void BeginUpdate() => UpdateCount++;
+        public void BeginUpdate()
+        {
+            UpdateCount++;
+        }
 
         public void Clear()
         {
             if (IsEmpty)
+            {
                 return;
+            }
+
             Items.Clear();
             OnChanged();
         }
@@ -55,21 +67,29 @@
         public void EndUpdate()
         {
             if (--UpdateCount > 0 || !Updated)
+            {
                 return;
+            }
+
             Updated = false;
             OnChanged();
         }
 
         public void ForEach(Action<TItem> action)
         {
-            foreach (var item in Items)
+            foreach (TItem item in Items)
+            {
                 action(item);
+            }
         }
 
         public void Remove(TItem item)
         {
             if (!Items.Contains(item))
+            {
                 return;
+            }
+
             Items.Remove(item);
             OnChanged();
         }
@@ -81,14 +101,20 @@
             OnChanged();
         }
 
-        public override string ToString() => IsEmpty ? string.Empty : Items.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+        public override string ToString()
+        {
+            return IsEmpty ? string.Empty : Items.Select(p => p.ToString()).Aggregate((s, t) => $"{s}, {t}");
+        }
 
         // Protected methods
 
         protected bool? GetBool(Func<TItem, bool> f)
         {
             if (IsEmpty || f == null)
+            {
                 return default;
+            }
+
             bool first = f(Items.First());
             return Items.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? (bool?)null
@@ -98,7 +124,10 @@
         protected TProperty GetProperty<TProperty>(Func<TItem, TProperty> f) where TProperty : IEquatable<TProperty>
         {
             if (IsEmpty || f == null)
+            {
                 return default;
+            }
+
             TProperty first = f(Items.First());
             return Items.FirstOrDefault(p => !Equals(f(p), first)) != null
                 ? default
@@ -108,11 +137,18 @@
         protected virtual void OnChanged()
         {
             if (UpdateCount > 0)
+            {
                 Updated = true;
+            }
             else
+            {
                 Changed?.Invoke(this, EventArgs.Empty);
+            }
         }
 
-        protected void SetProperty(Action<TItem> set) => ForEach(set);
+        protected void SetProperty(Action<TItem> set)
+        {
+            ForEach(set);
+        }
     }
 }

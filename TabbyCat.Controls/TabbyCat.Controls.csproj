@@ -57,55 +57,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScenePropertiesEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ScenePropertiesEdit.Designer.cs">
-      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CodeEdit.Designer.cs">
-      <DependentUpon>CodeEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SignalEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SignalEdit.Designer.cs">
-      <DependentUpon>SignalEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Types\Options.cs" />
-    <Compile Include="Types\TextStyleInfo.cs" />
-    <Compile Include="Types\TextStyleInfos.cs" />
-    <Compile Include="Types\TextStyleInfosTypeConverter.cs" />
-    <Compile Include="Types\TextStyleInfoTypeConverter.cs" />
-    <Compile Include="TracePropertiesEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TracePropertiesEdit.Designer.cs">
-      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Types\Theme.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ScenePropertiesEdit.resx">
-      <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CodeEdit.resx">
-      <DependentUpon>CodeEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SignalEdit.resx">
-      <DependentUpon>SignalEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TracePropertiesEdit.resx">
-      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
