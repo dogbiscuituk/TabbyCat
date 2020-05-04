@@ -151,14 +151,10 @@
         {
             IOrderedEnumerable<Color> result = null;
             var first = true;
-            foreach (var colourProperty in colourProperties.Split(',')
-                .Select(p => p.Trim().ToTitleCase()))
+            foreach (var colourProperty in colourProperties.Split(',').Select(p => p.Trim().ToTitleCase()))
             {
                 var colourOrder = ColourOrders[colourProperty];
-                result =
-                    first
-                    ? colours.OrderBy(colourOrder)
-                    : result.ThenBy(colourOrder);
+                result = first ? colours.OrderBy(colourOrder) : result.ThenBy(colourOrder);
                 first = false;
             }
             return result;

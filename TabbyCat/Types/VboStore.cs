@@ -14,10 +14,7 @@
         {
             var vbo = Vbos.FirstOrDefault(p => p.Matches(trace, vboType));
             if (vbo == null)
-            {
                 Vbos.Add(vbo = new Vbo(trace, vboType));
-            }
-
             vbo.AddRef();
             return vbo;
         }
@@ -25,9 +22,7 @@
         internal static void ReleaseVbo(this Vbo vbo)
         {
             if (vbo != null && vbo.Release())
-            {
                 Vbos.Remove(vbo);
-            }
         }
     }
 }

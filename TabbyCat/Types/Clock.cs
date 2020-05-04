@@ -72,9 +72,7 @@
                     Stop();
                     _VirtualTimeFactor = value;
                     if (running)
-                    {
                         Start();
-                    }
                 }
             }
         }
@@ -96,9 +94,7 @@
         public void Resume()
         {
             if (_SuspendCount > 0 && --_SuspendCount == 0)
-            {
                 Running = true;
-            }
         }
 
         public void Start()

@@ -41,11 +41,11 @@
         public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
 
         public static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
-CultureInfo.CurrentCulture,
-Resources.PropertyName_ShaderFormat,
-scope,
-shaderType.ShaderTag(),
-Resources.PropertyName_Shader);
+            CultureInfo.CurrentCulture,
+            Resources.PropertyName_ShaderFormat,
+            scope,
+            shaderType.ShaderTag(),
+            Resources.PropertyName_Shader);
 
         public static string ShaderTag(this ShaderType shaderType)
         {

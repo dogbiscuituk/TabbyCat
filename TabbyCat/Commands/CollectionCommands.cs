@@ -40,31 +40,19 @@
             if (Adding)
             {
                 if (Value == null)
-                {
                     Value = GetNewItem(scene);
-                }
-
                 var count = GetItemsCount(scene);
                 if (Index >= 0 && Index < count)
-                {
                     InsertItem(scene);
-                }
                 else if (Index == count)
-                {
                     AddItem(scene);
-                }
                 else
-                {
                     return false;
-                }
             }
             else
             {
                 if (Value == null)
-                {
                     Value = GetItem(scene);
-                }
-
                 RemoveItem(scene);
             }
             OnCollectionEdit(scene);

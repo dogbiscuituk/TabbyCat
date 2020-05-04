@@ -49,13 +49,8 @@
             get
             {
                 if (_AboutDialog == null)
-                {
                     using (var aboutCon = new AboutCon(null))
-                    {
                         _AboutDialog = aboutCon.AboutDialog;
-                    }
-                }
-
                 return _AboutDialog;
             }
         }
@@ -74,15 +69,9 @@
                     GLSLPath = Settings.GLSLUrl
                 };
                 if (string.IsNullOrWhiteSpace(options.FilesFolderPath))
-                {
                     options.FilesFolderPath = DefaultFilesFolderPath;
-                }
-
                 if (string.IsNullOrWhiteSpace(options.TemplatesFolderPath))
-                {
                     options.TemplatesFolderPath = $"{DefaultFilesFolderPath}\\Templates";
-                }
-
                 return options;
             }
             set
@@ -131,9 +120,7 @@
         {
             WorldCons.Remove(worldCon);
             if (WorldCons.Count == 0)
-            {
                 Close();
-            }
         }
 
         // Private methods
@@ -142,15 +129,9 @@
         {
             InitTheme();
             if (!Directory.Exists(Options.FilesFolderPath))
-            {
                 Directory.CreateDirectory(Options.FilesFolderPath);
-            }
-
             if (!Directory.Exists(Options.TemplatesFolderPath))
-            {
                 Directory.CreateDirectory(Options.TemplatesFolderPath);
-            }
-
             CodePageCon.ApplyStyles(Options.SyntaxHighlightStyles);
         }
 
@@ -158,18 +139,11 @@
         {
             CanPaste = Clipboard.ContainsData(DataFormat);
             foreach (var worldCon in WorldCons)
-            {
                 worldCon.OnPulse();
-            }
-
             if (PulseCount < 10)
-            {
                 PulseCount++;
-            }
             else
-            {
                 AboutDialog.Hide();
-            }
         }
     }
 
@@ -183,16 +157,10 @@
             var theme = VsTheme;
             var version = VsVersion;
             foreach (var control in controls)
-            {
                 if (control is DockPanel dockPanel)
-                {
                     dockPanel.Theme = theme;
-                }
                 else if (control is ToolStrip toolStrip)
-                {
                     ToolStripExtender.SetStyle(toolStrip, version, theme);
-                }
-            }
         }
 
         private static readonly IFloatWindowFactory FloatingFormFactory = new FloatingFormFactory();
@@ -271,9 +239,7 @@
             VsTheme = GetVsTheme();
             VsVersion = GetVsVersion();
             if (VsTheme != null)
-            {
                 VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
-            }
         }
     }
 }

@@ -63,10 +63,10 @@
         internal Vao Vao;
 
         public override string ToString() => !string.IsNullOrWhiteSpace(Description)
-? Description
-: Index >= 0
-? $"Trace #{Index + 1}"
-: "New trace";
+            ? Description
+            : Index >= 0
+            ? $"Trace #{Index + 1}"
+            : "New trace";
 
         internal Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
 
@@ -90,13 +90,6 @@
         internal void SetOrientation(Vector3 orientation) => Orientation = orientation;
 
         internal void SetScale(Vector3 scale) => Scale = scale;
-
-        /*internal void SetTransform(Matrix4 transform)
-        {
-            SetLocation(transform.ExtractTranslation());
-            SetOrientation(transform.ExtractRotation());
-            SetScale(transform.ExtractScale());
-        }*/
 
         protected void SetFormula(ShaderType shaderType, string formula) => SetScript(shaderType, PreviewShader(shaderType, formula));
 

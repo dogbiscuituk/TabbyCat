@@ -58,23 +58,15 @@
         public static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
         {
             if (items != null)
-            {
                 foreach (var item in items)
-                {
                     item.Enabled = enabled;
-                }
-            }
         }
 
         public static void EnableControls(bool enabled, IEnumerable<Control> controls)
         {
             if (controls != null)
-            {
                 foreach (var control in controls)
-                {
                     control.Enabled = enabled;
-                }
-            }
         }
 
         // Private methods
@@ -102,10 +94,7 @@
                         ToolTipText = menuItem.ToolTipText
                     };
                     if (menuItem.HasDropDownItems)
-                    {
                         menuItem.DropDownItems.CloneTo(target.DropDownItems, options);
-                    }
-
                     return target;
             }
             return null;
@@ -114,14 +103,9 @@
         private static void CloneTo(this ToolStripItemCollection source, ToolStripItemCollection target, CloneOptions options)
         {
             if ((options & CloneOptions.ClearTarget) != 0)
-            {
                 target.Clear();
-            }
-
             foreach (ToolStripItem item in source)
-            {
                 target.Add(item.CloneItem(options));
-            }
         }
     }
 }

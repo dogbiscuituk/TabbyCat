@@ -46,17 +46,14 @@
         internal void AddRef() => RefCount++;
 
         internal bool Matches(ITrace trace, VboType vboType) => VboType == vboType &&
-StripeCount == trace.StripeCount &&
-(VboType != VboType.Index || Pattern == trace.Pattern);
+            StripeCount == trace.StripeCount &&
+            (VboType != VboType.Index || Pattern == trace.Pattern);
 
         internal bool Release()
         {
             var result = --RefCount <= 0;
             if (result)
-            {
                 GL.DeleteBuffer(BufferID);
-            }
-
             return result;
         }
 

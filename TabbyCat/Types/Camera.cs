@@ -15,10 +15,7 @@
         public Camera(Camera camera)
         {
             if (camera == null)
-            {
                 return;
-            }
-
             Position = camera.Position;
             Focus = camera.Focus;
         }

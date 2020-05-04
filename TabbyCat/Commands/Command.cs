@@ -39,10 +39,7 @@
         {
             var result = Run(scene);
             if (result)
-            {
                 OnPropertyEdit(scene);
-            }
-
             Invert();
             return result;
         }

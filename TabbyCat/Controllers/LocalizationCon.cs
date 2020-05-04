@@ -43,7 +43,6 @@
             }
             else
             {
-
             }
         }
 
@@ -59,10 +58,7 @@
             foreach (var control in controls)
             {
                 if (!string.IsNullOrWhiteSpace(text))
-                {
                     control.Text = text;
-                }
-
                 ToolTip.SetToolTip(control, hint);
             }
         }
@@ -106,9 +102,7 @@
                 Resources.Text_LaunchCaption,
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information) == DialogResult.OK)
-            {
                 path.Launch();
-            }
         }
 
         // Private static methods
@@ -123,7 +117,6 @@
             {
                 keys = infos[2];
                 if (!string.IsNullOrWhiteSpace(keys))
-                {
                     try
                     {
                         shortcut = (Keys)new KeysConverter().ConvertFrom(keys.Replace("^", "Control+"));
@@ -132,15 +125,12 @@
                     {
                         System.Diagnostics.Debug.WriteLine($"InitMenuItems(\"{info}\", ...): {ex.Message}");
                     }
-                }
             }
             if (infos.Length > 1)
             {
                 hint = infos[1];
                 if (shortcut != Keys.None)
-                {
                     hint = $"{hint} ({keys})";
-                }
             }
             return infos[0];
         }

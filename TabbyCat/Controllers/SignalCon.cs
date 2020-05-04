@@ -119,10 +119,7 @@
         {
             var item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType);
             if (item == null)
-            {
                 item = WaveTypeItems.First();
-            }
-
             WaveTypeButton.Image = item.Image;
             WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
             WaveTypeButton.Tag = item.Tag;
@@ -147,10 +144,7 @@
                 WaveTypeButton.ButtonClick += WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening += WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
-                {
                     item.Click += WaveTypeItem_Click;
-                }
-
                 WorldCon.PropertyEdit += WorldCon_PropertyEdit;
             }
             else
@@ -166,10 +160,7 @@
                 WaveTypeButton.ButtonClick -= WaveTypeButton_ButtonClick;
                 WaveTypeButton.DropDownOpening -= WaveTypeButton_DropDownOpening;
                 foreach (var item in WaveTypeItems)
-                {
                     item.Click -= WaveTypeItem_Click;
-                }
-
                 WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
             }
         }
@@ -185,13 +176,9 @@
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
-            {
                 return;
-            }
-
             Updating = true;
             foreach (var propertyName in propertyNames)
-            {
                 switch (propertyName)
                 {
                     case PropertyNames.Amplitude:
@@ -213,8 +200,6 @@
                         SelectedWaveType = Signal.WaveType;
                         break;
                 }
-            }
-
             Updating = false;
         }
 
@@ -250,15 +235,9 @@
         {
             Signal signal;
             using (var signalPropertiesCon = new SignalPropertiesCon(WorldCon))
-            {
                 signal = signalPropertiesCon.ShowDialog(Signal);
-            }
-
             if (signal == Signal)
-            {
                 return;
-            }
-
             Run(new SignalNameCommand(Index, signal.Name));
             Run(new WaveTypeCommand(Index, signal.WaveType));
             Run(new AmplitudeCommand(Index, signal.Amplitude));
@@ -276,10 +255,7 @@
         private void WaveTypeButton_DropDownOpening(object sender, EventArgs e)
         {
             foreach (var item in WaveTypeItems)
-            {
                 item.Checked = (WaveType)item.Tag == SelectedWaveType;
-            }
-
             UpdateUI();
         }
 

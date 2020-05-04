@@ -25,7 +25,6 @@
                 dialog.seFrequencyValue.Value = (decimal)signal.Frequency;
                 dialog.seFrequencyMaximum.Value = (decimal)signal.FrequencyMaximum;
                 if (dialog.ShowDialog(SignalsForm) == DialogResult.OK)
-                {
                     signal = new Signal
                     {
                         Name = dialog.edName.Text,
@@ -37,8 +36,6 @@
                         Frequency = (float)dialog.seFrequencyValue.Value,
                         FrequencyMaximum = (float)dialog.seFrequencyMaximum.Value,
                     };
-                }
-
                 return signal;
             }
         }

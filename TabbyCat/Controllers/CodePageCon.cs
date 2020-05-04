@@ -39,16 +39,10 @@
         public void AddSystemRange(Range range)
         {
             if (range == null)
-            {
                 return;
-            }
-
             var rangeAll = TextBox.Range;
             if (range.End.iLine > rangeAll.End.iLine)
-            {
                 range.End = rangeAll.End;
-            }
-
             range.SetStyle(ReadOnlyStyle);
             range.SetStyle(ReadOnlyTextStyle);
         }
@@ -61,7 +55,6 @@
             {
                 var range = TextBox.GetLine(lineIndex);
                 if (!range.ReadOnly)
-                {
                     if (!inRange)
                     {
                         ranges.Add(range);
@@ -72,11 +65,8 @@
                         var rangeIndex = ranges.Count - 1;
                         ranges[rangeIndex] = ranges[rangeIndex].GetUnionWith(range);
                     }
-                }
                 else
-                {
                     inRange = false;
-                }
             }
             return ranges;
         }
@@ -96,18 +86,13 @@
         private void TextBox_PaintLine(object sender, PaintLineEventArgs e)
         {
             if (new Range(TextBox, e.LineIndex).ReadOnly)
-            {
                 e.Graphics.FillRectangle(Brushes.WhiteSmoke, e.LineRect);
-            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (Language == "GLSL")
-            {
                 SyntaxHighlightGLSL(e);
-            }
-
             if (TextBox.Text.Trim().StartsWith("<?xml", ignoreCase: false, CultureInfo.InvariantCulture))
             {
                 TextBox.Language = Languages.XML;
@@ -152,10 +137,7 @@
         private void SetLanguage(string language)
         {
             if (Language == language)
-            {
                 return;
-            }
-
             TextBoxLanguage = language;
             InitStylesPriority(TextBox);
             TextBox.Language = GetLanguage();
@@ -212,10 +194,7 @@
         public static void ApplyStyles(TextStyleInfos styles)
         {
             if (styles == null)
-            {
                 return;
-            }
-
             InitStyle(styles.Comments, CommentStyle);
             InitStyle(styles.Directives, DirectiveStyle);
             InitStyle(styles.Functions, FunctionStyle);
@@ -289,15 +268,12 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!Disposed)
+            if (!Disposed && disposing)
             {
-                if (disposing)
-                {
-                    AutocompleteMenu?.Dispose();
-                    TextBox?.Dispose();
-                }
-                Disposed = true;
+                AutocompleteMenu?.Dispose();
+                TextBox?.Dispose();
             }
+            Disposed = true;
         }
     }
 }

@@ -46,14 +46,9 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    FlagsCheckedListBox?.Dispose();
-                }
-                Disposed = true;
-            }
+            if (!Disposed && disposing)
+                FlagsCheckedListBox?.Dispose();
+            Disposed = true;
         }
 
         #endregion

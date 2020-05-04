@@ -26,10 +26,7 @@
         internal void Clear()
         {
             foreach (var control in Controls)
-            {
                 control.DrawItem -= Control_DrawItem;
-            }
-
             Controls.Clear();
         }
 
@@ -37,17 +34,11 @@
         {
             var item = comboBox.SelectedItem;
             if (item != null)
-            {
                 return Color.FromName(item.ToString());
-            }
             else if (comboBox.Tag is Color)
-            {
                 return (Color)comboBox.Tag;
-            }
             else
-            {
                 return Color.Transparent;
-            }
         }
 
         internal void SetColour(ComboBox comboBox, Color colour)
@@ -86,9 +77,7 @@
             {
                 var r = e.Bounds;
                 using (var pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
-                {
                     e.Graphics.DrawRectangle(pen, r.X + 1, r.Y + 1, r.Width - 2, r.Height - 2);
-                }
             }
         }
     }

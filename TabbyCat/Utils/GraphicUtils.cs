@@ -9,10 +9,7 @@
         public static GraphicsMode Change(this GraphicsMode mode, string propertyName, object value)
         {
             if (mode == null)
-            {
                 mode = new GraphicsMode();
-            }
-
             ColorFormat
                 accum = mode.AccumulatorFormat,
                 color = mode.ColorFormat;
@@ -43,15 +40,15 @@
         }
 
         public static string AsString(this GraphicsMode mode) => mode == null ? string.Empty : string.Format(
-CultureInfo.CurrentCulture,
-Resources.GraphicsModeFormat,
-mode.Index,
-mode.ColorFormat,
-mode.AccumulatorFormat,
-mode.Buffers,
-mode.Depth,
-mode.Samples,
-mode.Stencil,
-mode.Stereo);
+            CultureInfo.CurrentCulture,
+            Resources.GraphicsModeFormat,
+            mode.Index,
+            mode.ColorFormat,
+            mode.AccumulatorFormat,
+            mode.Buffers,
+            mode.Depth,
+            mode.Samples,
+            mode.Stencil,
+            mode.Stereo);
     }
 }

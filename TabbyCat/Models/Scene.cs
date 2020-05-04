@@ -44,10 +44,7 @@
             set
             {
                 if (GPUStatus == value)
-                {
                     return;
-                }
-
                 _GPUStatus = value;
                 OnPropertyEdit(PropertyNames.GPUStatus);
             }
@@ -60,10 +57,7 @@
             set
             {
                 if (GPULog == value)
-                {
                     return;
-                }
-
                 _GPULog = value;
                 OnPropertyEdit(PropertyNames.GPULog);
             }
@@ -84,9 +78,7 @@
         internal void AttachTraces()
         {
             foreach (var trace in Traces)
-            {
                 trace.Scene = this;
-            }
         }
 
         internal void Clear() => Init();
@@ -108,17 +100,13 @@
         internal void RemoveSignal(int index)
         {
             if (index >= 0 && index < Signals.Count)
-            {
                 Signals.RemoveAt(index);
-            }
         }
 
         internal void RemoveTrace(int index)
         {
             if (index >= 0 && index < Traces.Count)
-            {
                 Traces.RemoveAt(index);
-            }
         }
 
         internal void SetCameraView(Matrix4 _) { }

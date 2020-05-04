@@ -55,10 +55,7 @@
             set
             {
                 if (value == null)
-                {
                     return;
-                }
-
                 var filePath = value.Trim();
                 if (FilePath != filePath)
                 {
@@ -79,12 +76,7 @@
             filterIndex = EvalFilterIndex(filterIndex);
             OpenFileDialog.FilterIndex = (int)filterIndex;
             InitFolderPath(OpenFileDialog, filterIndex);
-            if (OpenFileDialog.ShowDialog() != DialogResult.OK)
-            {
-                return null;
-            }
-
-            return OpenFileDialog.FileName;
+            return OpenFileDialog.ShowDialog() != DialogResult.OK ? null : OpenFileDialog.FileName;
         }
 
         internal override void Reopen(ToolStripItem menuItem)
@@ -94,35 +86,24 @@
             {
                 if (MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
                     Resources.Message_FileNotFound_Caption, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
                     RemoveItem(filePath);
-                }
-
                 return;
             }
             OnFileReopen(filePath);
-
         }
 
         protected virtual void OnFileReopen(string filePath)
         {
             if (SaveIfModified())
-            {
                 LoadFromFile(filePath);
-            }
         }
 
-        internal bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath)
-? SaveAs(filterIndex)
-: SaveToFile(FilePath);
+        internal bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath) ? SaveAs(filterIndex) : SaveToFile(FilePath);
 
         internal bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
         {
             if (string.IsNullOrWhiteSpace(FilePath))
-            {
                 OnFilePathRequest();
-            }
-
             SaveFileDialog.FileName = FilePath;
             filterIndex = EvalFilterIndex(filterIndex);
             InitFolderPath(SaveFileDialog, filterIndex);
@@ -134,7 +115,6 @@
         private FilterIndex EvalFilterIndex(FilterIndex filterIndex)
         {
             if (filterIndex == FilterIndex.Default)
-            {
                 switch (Path.GetExtension(FilePath))
                 {
                     case ".tgt":
@@ -143,8 +123,6 @@
                     default:
                         return FilterIndex.File;
                 }
-            }
-
             return filterIndex;
         }
 
@@ -152,14 +130,9 @@
         {
             var folderPath = string.Empty;
             if (!string.IsNullOrWhiteSpace(dialog.FileName))
-            {
                 folderPath = Path.GetDirectoryName(dialog.FileName);
-            }
-
             if (string.IsNullOrWhiteSpace(folderPath))
-            {
                 dialog.InitialDirectory = AppCon.GetDefaultFolder(filterIndex);
-            }
         }
 
         internal bool SaveIfModified()
@@ -257,10 +230,7 @@
             if (OnFileLoading())
             {
                 using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                {
                     result = LoadFromStream(stream);
-                }
-
                 if (result)
                 {
                     FilePath = filePath;
@@ -282,7 +252,6 @@
         {
             var result = false;
             if (OnFileSaving())
-            {
                 using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
                     result = SaveToStream(stream);
@@ -293,8 +262,6 @@
                         OnFileSaved();
                     }
                 }
-            }
-
             return result;
         }
     }

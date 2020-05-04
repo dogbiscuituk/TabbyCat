@@ -20,14 +20,10 @@
     /// </summary>
     internal class MruCon : LocalizationCon
     {
-        protected MruCon(WorldCon worldCon, string subKeyName)
-            : base(worldCon)
+        protected MruCon(WorldCon worldCon, string subKeyName) : base(worldCon)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
-            {
                 throw new ArgumentNullException(nameof(subKeyName));
-            }
-
             SubKeyName = string.Format(
                 CultureInfo.InvariantCulture,
                 @"Software\{0}\{1}\{2}",
@@ -53,10 +49,7 @@
             {
                 var key = CreateSubKey();
                 if (key == null)
-                {
                     return;
-                }
-
                 try
                 {
                     DeleteItem(key, item);
@@ -84,10 +77,7 @@
             {
                 var key = OpenSubKey(true);
                 if (key == null)
-                {
                     return;
-                }
-
                 try
                 {
                     DeleteItem(key, item);
@@ -112,9 +102,7 @@
                 .Where(n => key.GetValue(n, null) as string == item)
                 .FirstOrDefault();
             if (name != null)
-            {
                 key.DeleteValue(name);
-            }
         }
 
         private Win32.RegistryKey OpenSubKey(bool writable) => Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
@@ -125,15 +113,9 @@
         {
             var key = OpenSubKey(true);
             if (key == null)
-            {
                 return;
-            }
-
             foreach (var name in key.GetValueNames())
-            {
                 key.DeleteValue(name, true);
-            }
-
             key.Close();
             if (RecentMenu != null)
             {
@@ -149,10 +131,7 @@
         private void RefreshRecentMenu()
         {
             if (RecentMenu == null)
-            {
                 return;
-            }
-
             var items = RecentMenu.DropDownItems;
             items.Clear();
             Win32.RegistryKey key = null;
@@ -168,9 +147,7 @@
             if (ok)
             {
                 foreach (var name in key.GetValueNames().OrderByDescending(n => n))
-                {
                     if (key.GetValue(name, null) is string value)
-                    {
                         try
                         {
                             var text = value.Split('|')[0].CompactMenuText();
@@ -182,9 +159,6 @@
                         {
                             Console.WriteLine(ex);
                         }
-                    }
-                }
-
                 ok = items.Count > 0;
                 if (ok)
                 {
@@ -192,7 +166,6 @@
                     var item = items.Add(string.Empty);
                     Localize(Resources.WorldForm_FileClearThisList, item);
                     item.Click += RecentClear_Click;
-
                 }
             }
             RecentMenu.Enabled = ok;

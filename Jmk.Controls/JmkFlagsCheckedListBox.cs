@@ -39,13 +39,8 @@
         {
             var result = 0;
             for (var index = 0; index < Items.Count; index++)
-            {
                 if (GetItemChecked(index))
-                {
                     result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
-                }
-            }
-
             return result;
         }
 
@@ -53,41 +48,23 @@
         {
             base.OnItemCheck(e);
             if (!Updating && e != null)
-            {
                 UpdateItems((JmkFlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
-            }
         }
 
         protected void UpdateItems(JmkFlagsCheckedListBoxItem item, CheckState state)
         {
             if (item == null)
-            {
                 return;
-            }
-
             if (item.Value == 0)
-            {
                 UpdateItems(0);
-            }
-
             var result = 0;
             for (var index = 0; index < Items.Count; index++)
-            {
                 if (GetItemChecked(index))
-                {
                     result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
-                }
-            }
-
             if (state == CheckState.Unchecked)
-            {
                 result &= ~item.Value;
-            }
             else
-            {
                 result |= item.Value;
-            }
-
             UpdateItems(result);
         }
 
@@ -109,9 +86,7 @@
         private void Populate()
         {
             foreach (var name in Enum.GetNames(_EnumType))
-            {
                 Add(name, ChangeType(Enum.Parse(_EnumType, name)));
-            }
         }
 
         private static int ChangeType(object value) => (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);

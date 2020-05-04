@@ -219,12 +219,8 @@
                 Filter = Resources.SaveHtmlDialog_Filter,
                 Title = Resources.SaveHtmlDialog_Title
             })
-            {
                 if (dialog.ShowDialog() == DialogResult.OK)
-                {
                     File.WriteAllText(dialog.FileName, GetHTML(dialog.FilterIndex));
-                }
-            }
         }
 
         private void ExportRTF_Click(object sender, System.EventArgs e)
@@ -234,12 +230,8 @@
                 Filter = Resources.SaveRtfDialog_Filter,
                 Title = Resources.SaveRtfDialog_Title
             })
-            {
                 if (dialog.ShowDialog() == DialogResult.OK)
-                {
                     File.WriteAllText(dialog.FileName, PrimaryTextBox.Rtf);
-                }
-            }
         }
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
@@ -513,10 +505,7 @@
         private void LoadShaderCode()
         {
             if (Updating)
-            {
                 return;
-            }
-
             Updating = true;
             LoadScript();
             Updating = false;
@@ -537,7 +526,7 @@
         private void OnSelectionChanged() => LoadShaderCode();
 
         private void ResizeBuiltInHelp() => CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
-CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
+            CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
 
         protected abstract void RunShaderCommand(string text);
 
@@ -547,15 +536,10 @@ CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScro
         {
             var s = ShaderType;
             do
-            {
                 s = s.Next();
-            }
             while (string.IsNullOrWhiteSpace(GetScript(s)) && s != ShaderType);
             if (s == ShaderType)
-            {
                 s = s.Next();
-            }
-
             ShaderType = s;
         }
 
@@ -568,20 +552,14 @@ CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScro
         protected override void UpdateProperties(params string[] propertyNames)
         {
             if (Updating)
-            {
                 return;
-            }
-
             Updating = true;
             foreach (var propertyName in propertyNames)
-            {
                 if (CodeChanged(propertyName))
                 {
                     LoadScript();
                     break;
                 }
-            }
-
             Updating = false;
         }
 

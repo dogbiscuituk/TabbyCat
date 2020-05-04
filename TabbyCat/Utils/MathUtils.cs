@@ -28,11 +28,12 @@
             return Matrix4.Identity;
         }
 
-        public static Matrix4 CreateTransformation(Vector3 location, Vector3 orientation, Vector3 scale) => Matrix4.CreateScale(scale.X, scale.Y, scale.Z) *
-Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(orientation.Z)) *
-Matrix4.CreateRotationY(MathHelper.DegreesToRadians(orientation.Y)) *
-Matrix4.CreateRotationX(MathHelper.DegreesToRadians(orientation.X)) *
-Matrix4.CreateTranslation(location);
+        public static Matrix4 CreateTransformation(Vector3 location, Vector3 orientation, Vector3 scale) =>
+            Matrix4.CreateScale(scale.X, scale.Y, scale.Z) *
+            Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(orientation.Z)) *
+            Matrix4.CreateRotationY(MathHelper.DegreesToRadians(orientation.Y)) *
+            Matrix4.CreateRotationX(MathHelper.DegreesToRadians(orientation.X)) *
+            Matrix4.CreateTranslation(location);
 
         public static int GCD(int a, int b) => b == 0 ? a : GCD(b, a % b);
     }

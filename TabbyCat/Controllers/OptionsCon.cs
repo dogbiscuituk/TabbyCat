@@ -41,10 +41,7 @@
             Options = AppCon.Options;
             var result = OptionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
-            {
                 AppCon.Options = Options;
-            }
-
             return result;
         }
 
@@ -56,12 +53,8 @@
                 SelectedPath = textBox.Text,
                 ShowNewFolderButton = true
             })
-            {
                 if (dialog.ShowDialog() == DialogResult.OK)
-                {
                     textBox.Text = dialog.SelectedPath;
-                }
-            }
         }
 
         private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", OptionsDialog.edFilesFolder);

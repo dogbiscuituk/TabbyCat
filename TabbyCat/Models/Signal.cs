@@ -47,10 +47,7 @@
         private float GetScaleAt(float time)
         {
             if (WaveType == WaveType.Constant)
-            {
                 return 1;
-            }
-
             time *= Frequency;
             time -= (float)Math.Floor(time);
             float t;

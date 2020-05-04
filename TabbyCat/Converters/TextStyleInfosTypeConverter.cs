@@ -11,9 +11,9 @@
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value) => value is string s ? TextStyleInfos.Parse(s) : base.ConvertFrom(context, culture, value);
 
-        public override PropertyDescriptorCollection GetProperties(
-            ITypeDescriptorContext context, object value, Attribute[] attributes) => TypeDescriptor.GetProperties(typeof(TextStyleInfos), attributes).Sort(new[]
-{
+        public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes) =>
+            TypeDescriptor.GetProperties(typeof(TextStyleInfos), attributes).Sort(new[]
+            {
                 "Comments",
                 "Directives",
                 "Functions",

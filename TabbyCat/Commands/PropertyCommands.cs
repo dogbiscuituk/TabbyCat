@@ -37,10 +37,7 @@
             const int maxLength = 50;
             var s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
             if (s.Length > maxLength)
-            {
                 s = $"{s.Substring(0, maxLength)}…";
-            }
-
             return $"{PropertyName} = {s}";
         }
 
@@ -66,10 +63,7 @@
         public bool RunOn(Scene scene)
         {
             if (Equals(Get(scene), Value))
-            {
                 return false;
-            }
-
             Set(scene, Value);
             return true;
         }
@@ -88,10 +82,7 @@
         public bool RunOn(Signal signal)
         {
             if (Equals(Get(signal), Value))
-            {
                 return false;
-            }
-
             Set(signal, Value);
             return true;
         }
@@ -110,10 +101,7 @@
         public bool RunOn(Trace trace)
         {
             if (Equals(Get(trace), Value))
-            {
                 return false;
-            }
-
             Set(trace, Value);
             return true;
         }

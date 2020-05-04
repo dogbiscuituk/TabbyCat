@@ -318,9 +318,7 @@
                 return;
             var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
-            {
                 CommandCon.DeleteTrace(index);
-            }
             TraceSelection.Clear();
         }
 
@@ -354,9 +352,7 @@
         private void HelpAbout()
         {
             using (var aboutCon = new AboutCon(this))
-            {
                 aboutCon.ShowDialog(WorldForm);
-            }
         }
 
         private void InvertSelection() => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
@@ -377,10 +373,7 @@
         {
             var traces = JsonCon.ClipboardPaste();
             if (traces == null || !traces.Any())
-            {
                 return;
-            }
-
             var index = Scene.Traces.Count;
             foreach (var trace in traces)
             {
@@ -398,9 +391,7 @@
         {
             var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
             if (LastFPS != fps)
-            {
                 LastFPS = WorldForm.FpsLabel.Text = fps;
-            }
         }
 
         private void UpdateGpuStatusLabel()
@@ -442,23 +433,16 @@
             string speed;
             var factor = Clock.VirtualTimeFactor;
             if (factor == 0)
-            {
                 speed = "time × 0";
-            }
             else
             {
                 var divide = Math.Abs(factor) < 1;
                 if (divide)
-                {
                     factor = 1 / factor;
-                }
-
                 speed = divide ? $"time ÷ {factor}" : $"time × {factor}";
             }
             if (LastSpeed != speed)
-            {
                 LastSpeed = WorldForm.SpeedLabel.Text = speed;
-            }
         }
 
         private void UpdateToolbar() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
@@ -467,9 +451,7 @@
         {
             var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
             if (LastTime != time)
-            {
                 LastTime = WorldForm.TimeLabel.Text = time;
-            }
         }
     }
 

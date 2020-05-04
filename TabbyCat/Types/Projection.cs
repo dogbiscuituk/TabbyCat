@@ -17,10 +17,7 @@
         public Projection(Projection projection)
         {
             if (projection == null)
-            {
                 return;
-            }
-
             ProjectionType = projection.ProjectionType;
             FieldOfView = projection.FieldOfView;
             FrustumMin = projection.FrustumMin;

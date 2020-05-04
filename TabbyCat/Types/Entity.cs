@@ -143,18 +143,14 @@
         {
             var n = GetPointsCount(cx, cy, cz);
             for (var p = 0; p < n; p++)
-            {
                 yield return p;
-            }
         }
 
         private static IEnumerable<int> GetRectangles(int cx, int cy, int cz)
         {
             var p = 0;
             for (var x = 0; x <= cx; x++)
-            {
                 for (var y = 0; y <= cy; y++)
-                {
                     for (var z = 0; z <= cz; z++)
                     {
                         if (x < cx)
@@ -174,14 +170,11 @@
                         }
                         p++;
                     }
-                }
-            }
         }
 
         private static IEnumerable<int> GetSaltires(int cx, int cy)
         {
             for (int i = 0, p = 0; i <= cx; i++)
-            {
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
@@ -203,13 +196,11 @@
                     }
                     p++;
                 }
-            }
         }
 
         private static IEnumerable<int> GetTriangles(int cx, int cy)
         {
             for (int i = 0, p = 0; i <= cx; i++)
-            {
                 for (var j = 0; j <= cy; j++)
                 {
                     if (j < cy)
@@ -229,7 +220,6 @@
                     }
                     p++;
                 }
-            }
         }
 
         private static int GetCoordsCount(Vector3 stripeCount) => GetCoordsCount((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);

@@ -25,20 +25,14 @@
         public static string CompactText(this string text)
         {
             if (string.IsNullOrWhiteSpace(text))
-            {
                 return string.Empty;
-            }
-
             var result = text.TrimEnd('.');
             TextRenderer.MeasureText(
                 result, SystemFonts.MenuFont, new Size(320, 0),
                 TextFormatFlags.PathEllipsis | TextFormatFlags.ModifyString);
             var length = result.IndexOf((char)0);
             if (length >= 0)
-            {
                 result = result.Substring(0, length);
-            }
-
             return result;
         }
 
@@ -46,9 +40,7 @@
         {
             const int WM_MOUSEACTIVATE = 0x21;
             if (m.Msg == WM_MOUSEACTIVATE && control != null && control.CanFocus && !control.Focused)
-            {
                 control.Focus();
-            }
         }
     }
 }

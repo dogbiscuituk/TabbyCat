@@ -45,9 +45,7 @@
                 streamWriter.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
                 using (var streamReader = new StreamReader(stream))
-                {
                     text = streamReader.ReadToEnd();
-                }
             }
             var dataObject = new DataObject();
             dataObject.SetData(AppCon.DataFormat, text);
@@ -69,12 +67,9 @@
                     stream.Seek(0, SeekOrigin.Begin);
                     using (var streamReader = new StreamReader(stream))
                     using (var textReader = new JsonTextReader(streamReader))
-                    {
                         UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
-                    }
                 }
             }
-
             return traces;
         }
 
@@ -133,9 +128,7 @@
         {
             using (var streamReader = new StreamReader(stream))
             using (var textReader = new JsonTextReader(streamReader))
-            {
                 return UseStream(() => Scene = GetSerializer().Deserialize<Scene>(textReader));
-            }
         }
 
         protected override void Localize()
@@ -159,9 +152,7 @@
         {
             using (var streamWriter = new StreamWriter(stream))
             using (var TextWriter = new JsonTextWriter(streamWriter))
-            {
                 return UseStream(() => GetSerializer().Serialize(TextWriter, Scene));
-            }
         }
 
         private void BeginUpdate() => ++UpdateCount;
@@ -171,10 +162,7 @@
             if (--UpdateCount == 0)
             {
                 foreach (var propertyName in ChangedPropertyNames)
-                {
                     WorldCon.OnPropertyEdit(propertyName);
-                }
-
                 ChangedPropertyNames.Clear();
             }
         }
@@ -203,15 +191,9 @@
         private WorldCon GetNewWorldCon()
         {
             if (AppCon.Options.OpenInNewWindow)
-            {
                 return AppCon.AddNewWorldCon();
-            }
-
             if (!JsonCon.SaveIfModified())
-            {
                 return null;
-            }
-
             JsonCon.Clear();
             SetDefaultCamera();
             return WorldCon;
@@ -235,9 +217,7 @@
         {
             var worldCon = OpenFile(FilterIndex.Template);
             if (worldCon != null)
-            {
                 worldCon.JsonCon.FilePath = string.Empty;
-            }
         }
 
         private void OnClear()
@@ -251,9 +231,7 @@
         private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.FilePath))
-            {
                 e.FilePath = Scene.Title.ToFilename();
-            }
         }
 
         private void OnLoad()
@@ -283,10 +261,7 @@
         private WorldCon OpenFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
-            {
                 return null;
-            }
-
             var worldCon = GetNewWorldCon();
             worldCon?.LoadFromFile(filePath);
             return worldCon;

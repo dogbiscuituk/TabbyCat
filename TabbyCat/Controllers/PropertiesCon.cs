@@ -28,9 +28,7 @@
         protected void SetToolTip(Control control, string toolTip)
         {
             if (ToolTip.GetToolTip(control) != toolTip)
-            {
                 ToolTip.SetToolTip(control, toolTip);
-            }
         }
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);

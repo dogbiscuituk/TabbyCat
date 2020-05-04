@@ -37,10 +37,7 @@
         public static TextStyleInfo Parse(string s)
         {
             if (s == null)
-            {
                 return null;
-            }
-
             var t = s.Split(';');
             return new TextStyleInfo
             (

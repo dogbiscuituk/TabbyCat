@@ -42,10 +42,7 @@
         public static TextStyleInfos Parse(string s)
         {
             if (s == null)
-            {
                 return new TextStyleInfos();
-            }
-
             var t = s.Split(':');
             return new TextStyleInfos
             {

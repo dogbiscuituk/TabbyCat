@@ -75,15 +75,9 @@
         protected internal override bool Run(ICommand command)
         {
             if (command == null)
-            {
                 return false;
-            }
-
             if (LastSave > UndoStack.Count)
-            {
                 LastSave = -1;
-            }
-
             RedoStack.Clear();
             return Redo(command);
         }
@@ -99,20 +93,14 @@
         private bool CanGroup(ICommand cmd1, ICommand cmd2)
         {
             if (cmd2 is ICollectionCommand)
-            {
                 return false;
-            }
-
             if (cmd1.GetType() == cmd2.GetType())
-            {
                 switch (cmd1)
                 {
                     case IScenePropertyCommand _: return true;
                     case ITracePropertyCommand tpc1: return tpc1.Index == ((ITracePropertyCommand)cmd2).Index;
                 }
-            }
             else if (cmd1 is ICollectionCommand cc1 && !cc1.Adding)
-            {
                 switch (cc1)
                 {
                     case ITracesCommand tc1:
@@ -127,8 +115,6 @@
                         }
                         break;
                 }
-            }
-
             return false;
         }
 
@@ -165,26 +151,19 @@
         private void EndUpdate()
         {
             if (--UpdateCount == 0)
-            {
                 UpdateUI();
-            }
         }
 
         private static void HighlightUndoRedoItems(ToolStripItem activeItem)
         {
             if (!activeItem.Selected)
-            {
                 return;
-            }
-
             var items = activeItem.GetCurrentParent().Items;
             var index = items.IndexOf(activeItem);
             foreach (ToolStripItem item in items)
-            {
                 item.BackColor = Color.FromKnownColor(items.IndexOf(item) <= index
                     ? KnownColor.GradientActiveCaption
                     : KnownColor.Control);
-            }
         }
 
         private bool Redo() => CanRedo && Redo(RedoStack.Pop());
@@ -192,15 +171,9 @@
         private bool Redo(ICommand command)
         {
             if (!command.Do(Scene))
-            {
                 return false;
-            }
-
             if (!(CanUndo && CanGroup(UndoStack.Peek(), command)))
-            {
                 UndoStack.Push(command);
-            }
-
             UpdateUI();
             return true;
         }
@@ -210,10 +183,7 @@
         private bool Undo(ICommand command)
         {
             if (!command.Do(Scene))
-            {
                 return false;
-            }
-
             RedoStack.Push(command);
             UpdateUI();
             return true;
@@ -222,10 +192,7 @@
         private void UpdateUI()
         {
             if (UpdateCount > 0)
-            {
                 return;
-            }
-
             string
                 undo = CanUndo ? $"Undo {UndoAction}" : "Undo",
                 redo = CanRedo ? $"Redo {RedoAction}" : "Redo";

@@ -35,10 +35,7 @@
         public override void WriteJson(JsonWriter writer, Signal value, JsonSerializer s)
         {
             if (writer == null || value == null)
-            {
                 return;
-            }
-
             writer.WriteStartArray();
             writer.WriteValue(value.Name);
             writer.WriteValue((int)value.WaveType);

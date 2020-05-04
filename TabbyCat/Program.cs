@@ -21,10 +21,7 @@
         private static void ParseCommandLine(string[] args)
         {
             if (args.Length < 1)
-            {
                 return;
-            }
-
             var culture = new System.Globalization.CultureInfo(args[0]);
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;

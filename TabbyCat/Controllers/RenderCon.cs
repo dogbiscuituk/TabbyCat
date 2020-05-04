@@ -82,9 +82,7 @@
                     GLInfo info = null;
                     UsingGL(() => { info = new GLInfo(); });
                     lock (GLInfoSyncRoot)
-                    {
                         _GLInfo = info;
-                    }
                 }
                 return _GLInfo;
             }
@@ -103,9 +101,7 @@
                     GraphicsMode mode = null;
                     UsingGL(() => { mode = SceneControl.GraphicsMode; });
                     lock (GLModeSyncRoot)
-                    {
                         _GraphicsMode = mode;
-                    }
                 }
                 return _GraphicsMode;
             }
@@ -157,62 +153,54 @@
         internal void InvalidateTrace(Trace trace)
         {
             if (trace.Vao != null)
-            {
                 UsingGL(() =>
                 {
                     trace.Vao.ReleaseBuffers();
                     trace.Vao = null;
                 });
-            }
         }
 
         internal void Refresh()
         {
             lock (GLModeSyncRoot)
-            {
                 _GraphicsMode = null;
-            }
-
             InvalidateProgram();
             InvalidateAllTraces();
         }
 
         internal void Render() => UsingGL(() =>
-                    {
-                        GL.Enable(EnableCap.DepthTest);
-                        GL.Enable(EnableCap.Texture2D);
-                        GL.ClearColor(Scene.BackgroundColour);
-                        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-                        ValidateProgram();
-                        if (ProgramValid)
-                        {
-                            GL.UseProgram(ProgramID); // Start Shader
-                            ValidateCameraView();
-                            ValidateProjection();
-                            LoadParameters();
-                            for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
-                            {
-                                var trace = Scene.Traces[traceIndex];
-                                if (!trace.Visible)
-                                {
-                                    continue;
-                                }
-
-                                var traceNumber = traceIndex + 1;
-                                LoadTraceNumber(traceNumber);
-                                LoadTransform(trace);
-                                ValidateTrace(trace);
-                                GL.BindVertexArray(trace.Vao.VaoID);
-                                GL.EnableVertexAttribArray(0);
-                                GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
-                                GL.DisableVertexAttribArray(0);
-                                GL.BindVertexArray(0);
-                            }
-                            GL.UseProgram(0); // Stop Shader
-                            UpdateFPS();
-                        }
-                        SceneControl.SwapBuffers();
-                    });
+        {
+            GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.Texture2D);
+            GL.ClearColor(Scene.BackgroundColour);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            ValidateProgram();
+            if (ProgramValid)
+            {
+                GL.UseProgram(ProgramID); // Start Shader
+                ValidateCameraView();
+                ValidateProjection();
+                LoadParameters();
+                for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
+                {
+                    var trace = Scene.Traces[traceIndex];
+                    if (!trace.Visible)
+                        continue;
+                    var traceNumber = traceIndex + 1;
+                    LoadTraceNumber(traceNumber);
+                    LoadTransform(trace);
+                    ValidateTrace(trace);
+                    GL.BindVertexArray(trace.Vao.VaoID);
+                    GL.EnableVertexAttribArray(0);
+                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    GL.DisableVertexAttribArray(0);
+                    GL.BindVertexArray(0);
+                }
+                GL.UseProgram(0); // Stop Shader
+                UpdateFPS();
+            }
+            SceneControl.SwapBuffers();
+        });
 
         internal void Unload() => UsingGL(InvalidateAllTraces);
 
@@ -225,10 +213,7 @@
             if (ok)
             {
                 if (++CurrencyCount == 1)
-                {
                     SceneControl.MakeCurrent();
-                }
-
                 try
                 {
                     action();
@@ -236,9 +221,7 @@
                 finally
                 {
                     if (--CurrencyCount == 0)
-                    {
                         SceneControl.Context.MakeCurrent(null);
-                    }
                 }
             }
             return ok;
@@ -269,10 +252,7 @@
         {
             var script = GetScript(shaderType);
             if (string.IsNullOrWhiteSpace(script))
-            {
                 return 0;
-            }
-
             Log($"Compiling {shaderType.ShaderName()};");
             var shaderID = GL.CreateShader(shaderType);
             GL.ShaderSource(shaderID, script);
@@ -319,10 +299,7 @@
             var script = new StringBuilder();
             script.Append("uniform float timeValue");
             foreach (var signal in Scene.Signals)
-            {
                 script.AppendFormat(CultureInfo.CurrentCulture, ", {0}", signal.Name);
-            }
-
             script.Append(";");
             return script.ToString();
         }
@@ -338,9 +315,7 @@
             Loc_Transform = GetUniformLocation("transform");
             Loc_Signals.Clear();
             foreach (var signal in Scene.Signals)
-            {
                 Loc_Signals.Add(GetUniformLocation(signal.Name));
-            }
         }
 
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
@@ -365,30 +340,20 @@
         private void Log(string s)
         {
             if (string.IsNullOrWhiteSpace(s))
-            {
                 return;
-            }
-
             GpuLog.AppendLine(s.Trim());
             s = s.ToUpper(CultureInfo.InvariantCulture);
             if (s.Contains("ERROR"))
-            {
                 Scene.GPUStatus = GPUStatus.Error;
-            }
             else if (Scene.GPUStatus == GPUStatus.OK && s.Contains("WARNING"))
-            {
                 Scene.GPUStatus = GPUStatus.Warning;
-            }
         }
 
         private void UpdateFPS()
         {
             Ticks[TickIndex = (TickIndex + 1) % Ticks.Length] = Stopwatch.ElapsedMilliseconds;
             if (TickCount < Ticks.Length)
-            {
                 TickCount++;
-            }
-
             var fps = 0f;
             if (TickCount > 1)
             {
@@ -401,10 +366,7 @@
         private void ValidateCameraView()
         {
             if (CameraViewValid)
-            {
                 return;
-            }
-
             LoadCameraView();
             CameraViewValid = true;
         }
@@ -412,19 +374,13 @@
         private void ValidateProgram()
         {
             if (ProgramCompiled)
-            {
                 return;
-            }
-
             Scene.GPUStatus = GPUStatus.OK;
             GpuLog = new StringBuilder();
             ProgramID = GL.CreateProgram();
             CreateShaders();
             if (!ShaderTypes.Any())
-            {
                 Log("No Trace Shaders found to compile.");
-            }
-
             if (Scene.GPUStatus == GPUStatus.OK)
             {
                 Log("Linking program;");
@@ -444,10 +400,7 @@
         private void ValidateProjection()
         {
             if (ProjectionValid)
-            {
                 return;
-            }
-
             GL.Viewport(SceneControl.Size);
             LoadProjection();
             ProjectionValid = true;
@@ -456,9 +409,7 @@
         private void ValidateTrace(Trace trace)
         {
             if (trace.Vao == null)
-            {
                 UsingGL(() => trace.Vao = new Vao(trace));
-            }
         }
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)

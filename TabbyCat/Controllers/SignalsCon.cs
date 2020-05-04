@@ -49,9 +49,7 @@
         internal void Clear()
         {
             for (var index = SignalCons.Count - 1; index >= 0; index--)
-            {
                 RemoveAt(index);
-            }
         }
 
         internal void InsertAt(int index)
@@ -71,9 +69,7 @@
         {
             Clear();
             for (var index = 0; index < Scene.Signals.Count; index++)
-            {
                 InsertAt(index);
-            }
         }
 
         internal void RemoveAt(int index)
@@ -142,13 +138,11 @@
         protected override void UpdateProperties(params string[] propertyNames)
         {
             foreach (var propertyName in propertyNames)
-            {
                 switch (propertyName)
                 {
                     case PropertyNames.Signals:
                         break;
                 }
-            }
         }
 
         // Private methods
@@ -158,25 +152,21 @@
         private void AddSignal(WaveType waveType) => CommandCon.AppendSignal(new Signal
         {
             Name = NameSource.Names.First(
-name => Scene.Signals.FirstOrDefault(
-signal => signal.Name == name) == null),
+                name => Scene.Signals.FirstOrDefault(
+                    signal => signal.Name == name) == null),
             WaveType = waveType
         });
 
         private void AdjustIndices(int index, int delta)
         {
             foreach (var signalCon in SignalCons.Where(p => p.Index >= index).ToList())
-            {
                 signalCon.Index += delta;
-            }
         }
 
         private void DeleteAllButton_Click(object sender, System.EventArgs e)
         {
             for (var index = SignalsCount - 1; index >= 0; index--)
-            {
                 Run(new SignalDeleteCommand(index));
-            }
         }
 
         private SignalsForm NewSignalsForm()
@@ -206,14 +196,9 @@ signal => signal.Name == name) == null),
             {
                 case PropertyNames.Signals:
                     if (e.Adding)
-                    {
                         InsertAt(e.Index);
-                    }
                     else
-                    {
                         RemoveAt(e.Index);
-                    }
-
                     break;
             }
         }

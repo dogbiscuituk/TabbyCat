@@ -75,9 +75,9 @@
         // Private methods
 
         private Vector3 GetVector3(Func<Trace, Vector3> f) => new Vector3(
-GetProperty(p => f(p).X),
-GetProperty(p => f(p).Y),
-GetProperty(p => f(p).Z));
+            GetProperty(p => f(p).X),
+            GetProperty(p => f(p).Y),
+            GetProperty(p => f(p).Z));
     }
 
     public partial class TraceSelection : IScript

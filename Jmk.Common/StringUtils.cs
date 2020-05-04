@@ -53,16 +53,9 @@
         public static int GetCharPos(this string s, char c, int index)
         {
             if (string.IsNullOrEmpty(s) || index < 0)
-            {
                 return -1;
-            }
-
             int p;
-            for (p = -1; (p = s.IndexOf(c, p + 1)) >= 0 && --index >= 0;)
-            {
-                ;
-            }
-
+            for (p = -1; (p = s.IndexOf(c, p + 1)) >= 0 && --index >= 0;) ;
             return p;
         }
 
@@ -83,10 +76,7 @@
         public static int GetLinePos(this string s, int line)
         {
             if (line < 0)
-            {
                 return -1;
-            }
-
             var index = $"\n{s}".GetCharPos('\n', line);
             return index >= 0 ? index : -1;
         }
@@ -102,22 +92,13 @@
         public static string GetLines(this string s, int first, int count)
         {
             if (s == null)
-            {
                 return null;
-            }
-
             var start = s.GetLinePos(first);
             if (start < 0)
-            {
                 return string.Empty;
-            }
-
             var end = s.GetLinePos(first + count);
             if (end < start)
-            {
                 end = s.Length;
-            }
-
             return s.Substring(start, end - start).Trim();
         }
 
@@ -143,17 +124,11 @@
         public static string ToFilename(this string s)
         {
             if (string.IsNullOrWhiteSpace(s))
-            {
                 return string.Empty;
-            }
-
             var t = new StringBuilder(s.Trim());
             t.Replace('.', ',');
             foreach (var c in Path.GetInvalidFileNameChars())
-            {
                 t.Replace(c, '_');
-            }
-
             s = t.ToString();
             return Regex.IsMatch(s, @"(^CON$|^PRN$|^AUX$|^CLOCK\$$|^NUL$|^COM[0-9]$|^LPT[0-9]$)",
                 RegexOptions.IgnoreCase) ? s + "_" : s;
@@ -165,7 +140,7 @@
         /// <param name="s">The input string.</param>
         /// <returns>A copy of the input string with the first character capitalized.</returns>
         public static string ToTitleCase(this string s) => string.IsNullOrWhiteSpace(s)
-? string.Empty
-: $"{char.ToUpper(s[0], CultureInfo.CurrentCulture)}{s.ToLower(CultureInfo.CurrentCulture).Substring(1)}";
+            ? string.Empty
+            : $"{char.ToUpper(s[0], CultureInfo.CurrentCulture)}{s.ToLower(CultureInfo.CurrentCulture).Substring(1)}";
     }
 }

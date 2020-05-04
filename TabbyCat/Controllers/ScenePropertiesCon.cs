@@ -139,23 +139,16 @@
         protected override void UpdateProperties(params string[] propertyNames)
         {
             foreach (var propertyName in propertyNames)
-            {
                 switch (propertyName)
                 {
                     case PropertyNames.ProjectionType:
                         UpdateUI();
                         break;
                 }
-            }
-
             if (Updating)
-            {
                 return;
-            }
-
             Updating = true;
             foreach (var propertyName in propertyNames)
-            {
                 switch (propertyName)
                 {
                     case PropertyNames.Background:
@@ -206,8 +199,6 @@
                         ScenePropertiesEdit.cbVSync.Checked = Scene.VSync;
                         break;
                 }
-            }
-
             Updating = false;
             UpdateUI();
         }
@@ -264,28 +255,28 @@
         private void Background_SelectedIndexChanged(object sender, EventArgs e) => Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
 
         private void CameraFocus_ValueChanged(object sender, EventArgs e) => Run(new CameraFocusCommand(new Vector3(
-(float)ScenePropertiesEdit.seCameraPitch.Value,
-(float)ScenePropertiesEdit.seCameraYaw.Value,
-(float)ScenePropertiesEdit.seCameraRoll.Value)));
+            (float)ScenePropertiesEdit.seCameraPitch.Value,
+            (float)ScenePropertiesEdit.seCameraYaw.Value,
+            (float)ScenePropertiesEdit.seCameraRoll.Value)));
 
         private void CameraPosition_ValueChanged(object sender, EventArgs e) => Run(new CameraPositionCommand(new Vector3(
-(float)ScenePropertiesEdit.seCameraPositionX.Value,
-(float)ScenePropertiesEdit.seCameraPositionY.Value,
-(float)ScenePropertiesEdit.seCameraPositionZ.Value)));
+            (float)ScenePropertiesEdit.seCameraPositionX.Value,
+            (float)ScenePropertiesEdit.seCameraPositionY.Value,
+            (float)ScenePropertiesEdit.seCameraPositionZ.Value)));
 
         private void FieldOfView_ValueChanged(object sender, EventArgs e) => Run(new FieldOfViewCommand((float)ScenePropertiesEdit.seFieldOfView.Value));
 
         private void FPS_ValueChanged(object sender, EventArgs e) => Run(new FpsCommand((float)ScenePropertiesEdit.seFPS.Value));
 
         private void FrustumMax_ValueChanged(object sender, EventArgs e) => Run(new FrustumMaxCommand(new Vector3(
-(float)ScenePropertiesEdit.seFrustumMaxX.Value,
-(float)ScenePropertiesEdit.seFrustumMaxY.Value,
-(float)ScenePropertiesEdit.seFrustumMaxZ.Value)));
+            (float)ScenePropertiesEdit.seFrustumMaxX.Value,
+            (float)ScenePropertiesEdit.seFrustumMaxY.Value,
+            (float)ScenePropertiesEdit.seFrustumMaxZ.Value)));
 
         private void FrustumMin_ValueChanged(object sender, EventArgs e) => Run(new FrustumMinCommand(new Vector3(
-(float)ScenePropertiesEdit.seFrustumMinX.Value,
-(float)ScenePropertiesEdit.seFrustumMinY.Value,
-(float)ScenePropertiesEdit.seFrustumMinZ.Value)));
+            (float)ScenePropertiesEdit.seFrustumMinX.Value,
+            (float)ScenePropertiesEdit.seFrustumMinY.Value,
+            (float)ScenePropertiesEdit.seFrustumMinZ.Value)));
 
         private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) => Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
 

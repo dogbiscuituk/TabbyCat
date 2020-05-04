@@ -30,10 +30,7 @@
             set
             {
                 if (ToString(Selection) == ToString(value))
-                {
                     return;
-                }
-
                 _Selection = value;
                 OnSelectionChanged();
             }
@@ -48,23 +45,16 @@
             {
                 var delta = value - TraceCount;
                 for (; delta > 0; delta--)
-                {
                     AddLabel();
-                }
-
                 for (; delta < 0; delta++)
-                {
                     RemoveLabel();
-                }
-
                 LastIndex = -1;
             }
         }
 
         private bool AllSelected => Selection.Count == TraceCount;
 
-        private Font HighlightFont => _HighlightFont ??
-            (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
+        private Font HighlightFont => _HighlightFont ?? (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
 
         private ToolStrip Toolbar => TracePropertiesCon.SelectionToolbar;
 
@@ -107,33 +97,23 @@
         private void Exclude(int traceIndex)
         {
             if (_Selection.Contains(traceIndex))
-            {
                 _Selection.Remove(traceIndex);
-            }
         }
 
         private void Include(int traceIndex)
         {
             if (!_Selection.Contains(traceIndex))
-            {
                 _Selection.Add(traceIndex);
-            }
         }
 
         private void IncludeRange(int low, int high)
         {
             if (low > high)
-            {
                 IncludeRange(high, low);
-            }
             else
-            {
                 do
-                {
                     Include(low++);
-                }
                 while (low <= high);
-            }
         }
 
         private void Init()
@@ -150,23 +130,16 @@
         private void LabelAll_MouseDown(object sender, MouseEventArgs e)
         {
             if (AllSelected)
-            {
                 ClearSelection();
-            }
             else
-            {
                 SelectAll();
-            }
-
             OnSelectionChanged();
         }
 
         private void LabelAll_Paint(object sender, PaintEventArgs e)
         {
             if (TraceCount > 0 && AllSelected)
-            {
                 Paint_Highlight(sender, e);
-            }
         }
 
         private void Label_MouseDown(object sender, MouseEventArgs e)
@@ -176,25 +149,15 @@
                 shift = (Control.ModifierKeys & Keys.Shift) != 0,
                 ctrl = (Control.ModifierKeys & Keys.Control) != 0;
             if (!ctrl)
-            {
                 ClearSelection();
-            }
-
             if (shift && LastIndex >= 0)
-            {
                 IncludeRange(LastIndex, traceIndex);
-            }
             else
             {
                 if (ctrl)
-                {
                     Toggle(traceIndex);
-                }
                 else
-                {
                     Include(traceIndex);
-                }
-
                 LastIndex = traceIndex;
             }
             OnSelectionChanged();
@@ -205,23 +168,17 @@
         private void Label_Paint(object sender, PaintEventArgs e)
         {
             if (_Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
-            {
                 Paint_Highlight(sender, e);
-            }
         }
 
         private void MouseMove(object sender)
         {
             var label = sender as ToolStripLabel;
             if (label == PrevLabel)
-            {
                 return;
-            }
-
             PrevLabel = label;
             var index = Labels.IndexOf(label);
-            var
-                tooltip = index < 0
+            var tooltip = index < 0
                 ? string.Empty
                 : index == 0
                 ? Resources.Text_SelectDeselectAllTraces
@@ -258,17 +215,13 @@
         private void Toggle(int traceIndex)
         {
             if (_Selection.Contains(traceIndex))
-            {
                 Exclude(traceIndex);
-            }
             else
-            {
                 Include(traceIndex);
-            }
         }
 
         private static string ToString(IEnumerable<int> items) => items == null || !items.Any()
-? string.Empty
-: string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
+            ? string.Empty
+            : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
     }
 }
