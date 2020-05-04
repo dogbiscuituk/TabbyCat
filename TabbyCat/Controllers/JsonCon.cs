@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
     using Jmk.Common;
     using Models;
     using Newtonsoft.Json;
@@ -11,6 +10,7 @@
     using System.ComponentModel;
     using System.IO;
     using System.Windows.Forms;
+    using Utils;
 
     /// <summary>
     /// Extend SdiCon to provide concrete I/O methods using Json data format.

@@ -1302,6 +1302,22 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Graphics mode index: {0}
+        ///Colour format: {1}
+        ///Accumulator: {2}
+        ///Buffers: {3}
+        ///Depth: {4}
+        ///Samples: {5}
+        ///Stencil: {6}
+        ///Stereo: {7}.
+        /// </summary>
+        public static string GraphicsModeFormat {
+            get {
+                return ResourceManager.GetString("GraphicsModeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Graphics state.
         /// </summary>
         public static string GraphicsStateForm_TabText {
@@ -1562,6 +1578,51 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("PrintPreviewHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene.
+        /// </summary>
+        public static string PropertyName_SceneScope {
+            get {
+                return ResourceManager.GetString("PropertyName_SceneScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shader.
+        /// </summary>
+        public static string PropertyName_Shader {
+            get {
+                return ResourceManager.GetString("PropertyName_Shader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}{1}{2}.
+        /// </summary>
+        public static string PropertyName_ShaderFormat {
+            get {
+                return ResourceManager.GetString("PropertyName_ShaderFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PropertyName_ShaderScope {
+            get {
+                return ResourceManager.GetString("PropertyName_ShaderScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace.
+        /// </summary>
+        public static string PropertyName_TraceScope {
+            get {
+                return ResourceManager.GetString("PropertyName_TraceScope", resourceCulture);
             }
         }
         
@@ -2179,6 +2240,15 @@ namespace TabbyCat.Properties {
         public static string Text_NewScene {
             get {
                 return ResourceManager.GetString("Text_NewScene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} cannot be null..
+        /// </summary>
+        public static string Text_ParameterCannotBeNull {
+            get {
+                return ResourceManager.GetString("Text_ParameterCannotBeNull", resourceCulture);
             }
         }
         

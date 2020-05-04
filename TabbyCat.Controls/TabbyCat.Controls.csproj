@@ -76,7 +76,6 @@
     <Compile Include="SignalEdit.Designer.cs">
       <DependentUpon>SignalEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Types\CodePageCon.cs" />
     <Compile Include="Types\Options.cs" />
     <Compile Include="Types\TextStyleInfo.cs" />
     <Compile Include="Types\TextStyleInfos.cs" />

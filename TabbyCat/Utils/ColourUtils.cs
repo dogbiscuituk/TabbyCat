@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.Utils
+﻿namespace TabbyCat.Utils
 {
     using Common.Types;
     using Jmk.Common;

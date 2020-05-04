@@ -59,21 +59,5 @@ namespace TabbyCat.Common.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Graphics mode index: {0}
-        ///Colour format: {1}
-        ///Accumulator: {2}
-        ///Buffers: {3}
-        ///Depth: {4}
-        ///Samples: {5}
-        ///Stencil: {6}
-        ///Stereo: {7}.
-        /// </summary>
-        internal static string GraphicsModeFormat {
-            get {
-                return ResourceManager.GetString("GraphicsModeFormat", resourceCulture);
-            }
-        }
     }
 }

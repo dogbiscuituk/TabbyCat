@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Models
 {
     using Common.Types;
-    using Common.Utils;
     using Controllers;
     using Newtonsoft.Json;
     using OpenTK;
@@ -10,6 +9,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
+    using Utils;
 
     public class Scene : Shaders, IScene
     {

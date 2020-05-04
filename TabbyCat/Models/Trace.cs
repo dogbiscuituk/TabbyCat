@@ -2,13 +2,13 @@
 {
     using Common.Converters;
     using Common.Types;
-    using Common.Utils;
     using Jmk.Common;
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.ComponentModel;
+    using Utils;
 
     public class Trace : Shaders, ITrace
     {

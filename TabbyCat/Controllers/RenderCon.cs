@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
     using Jmk.Common;
     using Models;
     using OpenTK;
@@ -13,6 +12,7 @@
     using System.Globalization;
     using System.Linq;
     using System.Text;
+    using Utils;
 
     internal partial class RenderCon : LocalizationCon
     {
@@ -413,6 +413,11 @@
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
+            if (e.PropertyName.Contains(Resources.PropertyName_Shader))
+            {
+                InvalidateProgram();
+                return;
+            }
             switch (e.PropertyName)
             {
                 case PropertyNames.Camera:
@@ -427,20 +432,8 @@
                     InvalidateProjection();
                     break;
                 case PropertyNames.GLTargetVersion:
-                case PropertyNames.SceneVertex:
-                case PropertyNames.SceneTessControl:
-                case PropertyNames.SceneTessEvaluation:
-                case PropertyNames.SceneGeometry:
-                case PropertyNames.SceneFragment:
-                case PropertyNames.SceneCompute:
                 case PropertyNames.Signals:
                 case PropertyNames.Traces:
-                case PropertyNames.TraceVertex:
-                case PropertyNames.TraceTessControl:
-                case PropertyNames.TraceTessEvaluation:
-                case PropertyNames.TraceGeometry:
-                case PropertyNames.TraceFragment:
-                case PropertyNames.TraceCompute:
                     InvalidateProgram();
                     break;
                 case PropertyNames.Pattern:

@@ -161,15 +161,6 @@ namespace TabbyCat.Controls.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} cannot be null..
-        /// </summary>
-        internal static string Text_ParameterCannotBeNull {
-            get {
-                return ResourceManager.GetString("Text_ParameterCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap TileWindowsHorizontallyHS {

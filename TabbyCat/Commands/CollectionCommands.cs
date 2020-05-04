@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
-    using Common.Utils;
     using Models;
+    using Utils;
 
     /// <summary>
     /// Common ancestor for collection management (item insert and delete) commands.

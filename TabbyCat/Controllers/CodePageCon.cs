@@ -1,15 +1,16 @@
-﻿namespace TabbyCat.Controls.Types
+﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
-    using Controls.Properties;
+    using Controls.Types;
     using FastColoredTextBoxNS;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Globalization;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using Utils;
     using Languages = FastColoredTextBoxNS.Language;
 
     /// <summary>

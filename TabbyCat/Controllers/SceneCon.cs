@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
     using OpenTK;
     using OpenTK.Graphics;
     using Properties;
     using System;
     using System.Windows.Forms;
+    using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 

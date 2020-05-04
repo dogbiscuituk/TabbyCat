@@ -92,13 +92,7 @@
     <Compile Include="Types\VboStore.cs" />
     <Compile Include="Types\VboType.cs" />
     <Compile Include="Types\WaveType.cs" />
-    <Compile Include="Utils\ColourUtils.cs" />
-    <Compile Include="Utils\GraphicUtils.cs" />
-    <Compile Include="Utils\MathUtils.cs" />
-    <Compile Include="Utils\PropertyNames.cs" />
-    <Compile Include="Utils\ShaderUtils.cs" />
     <Compile Include="Types\GPUStatus.cs" />
-    <Compile Include="Utils\ToolStripUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -127,6 +121,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -2,7 +2,6 @@
 {
     using Commands;
     using Common.Types;
-    using Common.Utils;
     using Jmk.Common;
     using Models;
     using Properties;
@@ -12,6 +11,7 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
@@ -69,13 +69,13 @@
 
         internal void OnCollectionEdit(string collectionName, int index, bool adding)
         {
-            $"WorldCon.OnCollectionEdit(\"{collectionName}\", adding: {adding}, index: {index})".Spit();
+            $"WorldCon.OnCollectionEdit(\"{collectionName}\", adding: {adding}, index: {index});".Spit();
             CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collectionName, index, adding));
         }
 
         internal void OnPropertyEdit(string propertyName, int index = 0)
         {
-            $"WorldCon.OnPropertyEdit(\"{propertyName}\", {index}".Spit();
+            $"WorldCon.OnPropertyEdit(\"{propertyName}\", index: {index});".Spit();
             PropertyEdit?.Invoke(this, new PropertyEditEventArgs(propertyName, index));
         }
 

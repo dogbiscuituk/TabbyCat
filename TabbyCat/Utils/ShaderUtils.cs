@@ -1,7 +1,9 @@
-﻿namespace TabbyCat.Common.Utils
+﻿namespace TabbyCat.Utils
 {
     using OpenTK.Graphics.OpenGL;
+    using Properties;
     using System.Collections.Generic;
+    using System.Globalization;
 
     public static class ShaderUtils
     {
@@ -34,9 +36,16 @@
             }
         }
 
-        public static string SceneShaderName(this ShaderType shaderType) => $"Scene {shaderType.ShaderTag()} Shader";
+        public static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_SceneScope);
 
-        public static string ShaderName(this ShaderType shaderType) => $"{shaderType.ShaderTag()} Shader";
+        public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
+
+        public static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
+                CultureInfo.CurrentCulture,
+                Resources.PropertyName_ShaderFormat,
+                scope,
+                shaderType.ShaderTag(),
+                Resources.PropertyName_Shader);
 
         public static string ShaderTag(this ShaderType shaderType)
         {
@@ -59,6 +68,6 @@
             }
         }
 
-        public static string TraceShaderName(this ShaderType shaderType) => $"Trace {shaderType.ShaderTag()} Shader";
+        public static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_TraceScope);
     }
 }

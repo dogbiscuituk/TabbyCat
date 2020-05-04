@@ -1,7 +1,7 @@
-﻿namespace TabbyCat.Common.Utils
+﻿namespace TabbyCat.Utils
 {
-    using Common.Properties;
     using OpenTK.Graphics;
+    using Properties;
     using System.Globalization;
 
     public static class GraphicUtils

@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Commands
 {
     using Common.Types;
-    using Common.Utils;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
+    using Utils;
 
     internal class DescriptionCommand : TracePropertyCommand<string>
     {

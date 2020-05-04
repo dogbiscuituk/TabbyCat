@@ -1018,4 +1018,32 @@ Select the checkbox to adjust the three values at once</value>
   <data name="SignalsForm_DeleteButton" xml:space="preserve">
     <value>|Delete this signal</value>
   </data>
+  <data name="GraphicsModeFormat" xml:space="preserve">
+    <value>Graphics mode index: {0}
+Colour format: {1}
+Accumulator: {2}
+Buffers: {3}
+Depth: {4}
+Samples: {5}
+Stencil: {6}
+Stereo: {7}</value>
+  </data>
+  <data name="PropertyName_SceneScope" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="PropertyName_Shader" xml:space="preserve">
+    <value>shader</value>
+  </data>
+  <data name="PropertyName_ShaderFormat" xml:space="preserve">
+    <value>{0}{1}{2}</value>
+  </data>
+  <data name="PropertyName_ShaderScope" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PropertyName_TraceScope" xml:space="preserve">
+    <value>Trace</value>
+  </data>
+  <data name="Text_ParameterCannotBeNull" xml:space="preserve">
+    <value>{0} cannot be null.</value>
+  </data>
 </root>

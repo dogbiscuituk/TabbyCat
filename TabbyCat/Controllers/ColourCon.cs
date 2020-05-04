@@ -1,12 +1,12 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Drawing.Drawing2D;
     using System.Linq;
     using System.Windows.Forms;
+    using Utils;
 
     internal class ColourCon
     {

@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Common.Types;
-    using Common.Utils;
     using Controls;
     using Controls.Types;
     using FastColoredTextBoxNS;
@@ -16,6 +15,7 @@
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
+    using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 

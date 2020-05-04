@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Common.Utils
+﻿namespace TabbyCat.Utils
 {
     public static class PropertyNames
     {
@@ -57,38 +57,5 @@
             GPULog = "GPU log",
             GPUStatus = "GPU status",
             GraphicsMode = "Graphics mode";
-
-        /// <summary>
-        /// Scene shader names.
-        /// </summary>
-        public const string
-            SceneVertex = "Scene vertex shader",
-            SceneTessControl = "Scene tessellation control shader",
-            SceneTessEvaluation = "Scene tessellation evaluation shader",
-            SceneGeometry = "Scene geometry shader",
-            SceneFragment = "Scene fragment shader",
-            SceneCompute = "Scene compute shader";
-
-        /// <summary>
-        /// Trace shader names.
-        /// </summary>
-        public const string
-            TraceVertex = "Trace vertex shader",
-            TraceTessControl = "Trace tessellation control shader",
-            TraceTessEvaluation = "Trace tessellation evaluation shader",
-            TraceGeometry = "Trace geometry shader",
-            TraceFragment = "Trace fragment shader",
-            TraceCompute = "Trace compute shader";
-
-        /// <summary>
-        /// GPU shader names.
-        /// </summary>
-        public const string
-            VertexShader = "Vertex shader",
-            TessControlShader = "Tessellation control shader",
-            TessEvaluationShader = "Tessellation evaluation shader",
-            GeometryShader = "Geometry shader",
-            FragmentShader = "Fragment shader",
-            ComputeShader = "Compute shader";
     }
 }

@@ -2,13 +2,13 @@
 {
     using Commands;
     using Common.Types;
-    using Common.Utils;
     using FastColoredTextBoxNS;
     using Jmk.Common;
     using Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Utils;
 
     internal class ShaderCodeCon : CodeCon
     {

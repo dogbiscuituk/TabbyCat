@@ -83,6 +83,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CollectionCommands.cs" />
     <Compile Include="Commands\CommandInterfaces.cs" />
+    <Compile Include="Controllers\CodePageCon.cs" />
     <Compile Include="Controllers\CommandCon.cs" />
     <Compile Include="Commands\PropertyCommands.cs" />
     <Compile Include="Commands\SceneCommands.cs" />
@@ -130,6 +131,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ColourUtils.cs" />
+    <Compile Include="Utils\GraphicUtils.cs" />
+    <Compile Include="Utils\MathUtils.cs" />
+    <Compile Include="Utils\PropertyNames.cs" />
+    <Compile Include="Utils\ShaderUtils.cs" />
+    <Compile Include="Utils\ToolStripUtils.cs" />
     <Compile Include="Views\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
