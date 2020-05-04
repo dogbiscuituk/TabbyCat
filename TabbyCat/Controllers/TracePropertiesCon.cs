@@ -363,20 +363,13 @@
 
         private void Pattern_DrawItem(object sender, DrawItemEventArgs e)
         {
-            // Hey Imma draw a thing!
             var comboBox = (ComboBox)sender;
-            var g = e.Graphics;
-            var r = e.Bounds;
             var selected = (e.State & DrawItemState.Selected) != 0;
-            var thing = comboBox.Items[e.Index].ToString();
-            // Get my colours ready!
-            Color
-                foreground = selected ? Color.FromKnownColor(KnownColor.HighlightText) : comboBox.ForeColor,
-                background = selected ? Color.FromKnownColor(KnownColor.Highlight) : comboBox.BackColor;
-            // Draw the thing!
-            g.SetOptimization(Optimization.HighQuality);
-            e.Graphics.FillRectangle(background.ToBrush(), r);
-            e.Graphics.DrawString(thing, e.Font, foreground.ToBrush(), r.X + 1, r.Y - 2);
+            ColourUtils.DrawText(
+                e,
+                foreground: selected ? Color.FromKnownColor(KnownColor.HighlightText) : comboBox.ForeColor,
+                background: selected ? Color.FromKnownColor(KnownColor.Highlight) : comboBox.BackColor,
+                text: comboBox.Items[e.Index].ToString());
         }
 
         private void Pattern_SelectedValueChanged(object sender, System.EventArgs e) => Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));

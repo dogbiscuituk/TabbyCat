@@ -58,32 +58,28 @@
 
         private void Control_DrawItem(object sender, DrawItemEventArgs e)
         {
-            // Hey Imma draw a thing!
-            var comboBox = (ComboBox)sender;
-            var g = e.Graphics;
-            var r = e.Bounds;
             var selected = (e.State & DrawItemState.Selected) != 0;
-            string thing = "Transparent";
-            // Get my colours ready!
+            string text = "Transparent";
             var background = Color.Transparent;
+            var comboBox = (ComboBox)sender;
             if (e.Index >= 0)
             {
-                thing = comboBox.Items[e.Index].ToString();
-                background = Color.FromName(thing);
+                text = comboBox.Items[e.Index].ToString();
+                background = Color.FromName(text);
             }
             else if (comboBox.Tag is Color)
             {
                 background = (Color)comboBox.Tag;
-                thing = $"{background.ToArgb() & 0xffffff:X}";
+                text = $"{background.ToArgb() & 0xffffff:X}";
             }
             var foreground = background.Contrast();
-            // Draw the thing!
-            g.SetOptimization(Optimization.HighQuality);
-            e.Graphics.FillRectangle(background.ToBrush(), r);
-            e.Graphics.DrawString(thing, e.Font, foreground.ToBrush(), r.X + 1, r.Y - 2);
+            ColourUtils.DrawText(e, foreground, background, text);
             if (selected)
+            {
+                var r = e.Bounds;
                 using (var pen = new Pen(foreground) { DashStyle = DashStyle.Dash })
                     e.Graphics.DrawRectangle(pen, r.X + 1, r.Y + 1, r.Width - 2, r.Height - 2);
+            }
         }
     }
 }

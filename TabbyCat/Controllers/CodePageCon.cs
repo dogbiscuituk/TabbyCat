@@ -234,10 +234,11 @@
 
         private static void InitStyle(TextStyleInfo info, TextStyle style)
         {
+            bool stock;
             if (((SolidBrush)style.ForeBrush).Color != info.Foreground)
-                style.ForeBrush = info.Foreground.ToBrush();
+                style.ForeBrush = info.Foreground.ToBrush(out stock);
             if (((SolidBrush)style.BackgroundBrush).Color != info.Background)
-                style.BackgroundBrush = info.Background.ToBrush();
+                style.BackgroundBrush = info.Background.ToBrush(out stock);
             style.FontStyle = info.FontStyle;
         }
 

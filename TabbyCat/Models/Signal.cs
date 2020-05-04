@@ -20,19 +20,19 @@
         [DefaultValue(0)]
         public WaveType WaveType { get; set; } = WaveType.Constant;
 
-        [DefaultValue(0)]
+        [DefaultValue(0f)]
         public float Amplitude { get; set; } = 0;
 
-        [DefaultValue(1)]
+        [DefaultValue(1f)]
         public float AmplitudeMaximum { get; set; } = 1;
 
-        [DefaultValue(-1)]
+        [DefaultValue(-1f)]
         public float AmplitudeMinimum { get; set; } = -1;
 
-        [DefaultValue(0)]
+        [DefaultValue(0f)]
         public float Frequency { get; set; } = 1;
 
-        [DefaultValue(100)]
+        [DefaultValue(100f)]
         public float FrequencyMaximum { get; set; } = 100;
 
         [DefaultValue(0.1f)]

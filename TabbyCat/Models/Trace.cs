@@ -28,12 +28,23 @@
         [DefaultValue(true)]
         public bool Visible { get; set; } = true;
 
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 Location { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 Maximum { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 Minimum { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 Orientation { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 Scale { get; set; }
-        [JsonConverter(typeof(Vector3Converter))] public Vector3 StripeCount { get; set; }
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 Location { get; set; }
+
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 Maximum { get; set; }
+
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 Minimum { get; set; }
+
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 Orientation { get; set; }
+
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 Scale { get; set; }
+
+        [JsonConverter(typeof(Vector3Converter))]
+        public Vector3 StripeCount { get; set; }
 
         internal int Index
         {

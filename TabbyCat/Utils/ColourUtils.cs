@@ -9,22 +9,35 @@
     using System.Drawing.Text;
     using System.Linq;
     using System.Reflection;
+    using System.Windows.Forms;
 
     public static class ColourUtils
     {
-        private static readonly Dictionary<string, Func<Color, float>> ColourOrders =
-            new Dictionary<string, Func<Color, float>>
-            {
-                { "Alpha", c => c.A },
-                { "Red", c => c.R },
-                { "Green", c=> c.G },
-                { "Blue", c => c.B },
-                { "Hue", c => c.GetHue() },
-                { "Saturation", c => c.GetSaturation() },
-                { "Brightness", c => c.GetBrightness() }
-            };
+        // Private fields
+
+        private static readonly Dictionary<string, Func<Color, float>> ColourOrders = new Dictionary<string, Func<Color, float>>
+        {
+            { "Alpha", c => c.A },
+            { "Red", c => c.R },
+            { "Green", c=> c.G },
+            { "Blue", c => c.B },
+            { "Hue", c => c.GetHue() },
+            { "Saturation", c => c.GetSaturation() },
+            { "Brightness", c => c.GetBrightness() }
+        };
+
+        // Public methods
 
         public static Color Contrast(this Color colour) => colour.IsBright() ? Color.Black : Color.White;
+
+        public static void DrawText(DrawItemEventArgs e, Color foreground, Color background, string text)
+        {
+            var g = e.Graphics;
+            var r = e.Bounds;
+            g.SetOptimization(Optimization.HighQuality);
+            background.WithBrush(brush => g.FillRectangle(brush, r));
+            foreground.WithBrush(brush => g.DrawString(text, e.Font, brush, r.X + 1, r.Y - 2));
+        }
 
         public static Color GetColour(this GPUStatus status)
         {
@@ -56,8 +69,11 @@
         }
 
         public static bool IsBright(this Color colour) => colour.Luma() > 0.5;
+
         public static bool IsDark(this Color colour) => colour.Luma() <= 0.5;
+
         public static bool IsVeryBright(this Color colour) => colour.Luma() > 0.75;
+
         public static bool IsVeryDark(this Color colour) => colour.Luma() <= 0.25;
 
         /// <summary>
@@ -66,26 +82,7 @@
         /// </summary>
         /// <param name="colour">The sample colour.</param>
         /// <returns>The sample colour's Luma value.</returns>
-        public static float Luma(this Color colour) =>
-            (0.2126f * colour.R + 0.7152f * colour.G + 0.0722f * colour.B) / 255;
-
-        private static IEnumerable<Color> OrderByColourProperties(
-            this IEnumerable<Color> colours, string colourProperties)
-        {
-            IOrderedEnumerable<Color> result = null;
-            var first = true;
-            foreach (var colourProperty in colourProperties.Split(',')
-                .Select(p => p.Trim().ToTitleCase()))
-            {
-                var colourOrder = ColourOrders[colourProperty];
-                result =
-                    first
-                    ? colours.OrderBy(colourOrder)
-                    : result.ThenBy(colourOrder);
-                first = false;
-            }
-            return result;
-        }
+        public static float Luma(this Color colour) => (0.2126f * colour.R + 0.7152f * colour.G + 0.0722f * colour.B) / 255;
 
         public static void SetOptimization(this Graphics g, Optimization optimization)
         {
@@ -117,11 +114,44 @@
             }
         }
 
-        public static Brush ToBrush(this Color colour)
+        public static Brush ToBrush(this Color colour, out bool stock)
         {
-            var flags = BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static;
-            var prop = typeof(Brushes).GetProperty(colour.Name, flags);
-            return prop != null ? (Brush)prop.GetValue(null) : new SolidBrush(colour);
+            var prop = GetProp(colour);
+            stock = prop != null;
+            return stock ? (Brush)prop.GetValue(null) : new SolidBrush(colour);
+        }
+
+        public static void WithBrush(this Color colour, Action<Brush> action)
+        {
+            if (action == null)
+                return;
+            var prop = GetProp(colour);
+            if (prop != null)
+                action((Brush)prop.GetValue(null));
+            else
+                using (var brush = new SolidBrush(colour))
+                    action(brush);
+        }
+
+        // Private methods
+
+        private static PropertyInfo GetProp(Color colour) => typeof(Brushes).GetProperty(colour.Name, BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static);
+
+        private static IEnumerable<Color> OrderByColourProperties(this IEnumerable<Color> colours, string colourProperties)
+        {
+            IOrderedEnumerable<Color> result = null;
+            var first = true;
+            foreach (var colourProperty in colourProperties.Split(',')
+                .Select(p => p.Trim().ToTitleCase()))
+            {
+                var colourOrder = ColourOrders[colourProperty];
+                result =
+                    first
+                    ? colours.OrderBy(colourOrder)
+                    : result.ThenBy(colourOrder);
+                first = false;
+            }
+            return result;
         }
     }
 }
