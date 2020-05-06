@@ -2,19 +2,19 @@
 {
     using System;
 
-    public class PropertyEditEventArgs : EventArgs
+    internal class PropertyEditEventArgs : EventArgs
     {
         // Constructors
 
-        public PropertyEditEventArgs(Property property, int index) : base()
+        internal PropertyEditEventArgs(Property property, int index) : base()
         {
             Index = index;
             Property = property;
         }
 
-        // Public properties
+        // Internal properties
 
-        public int Index { get; set; }
-        public Property Property { get; set; }
+        internal int Index { get; set; }
+        internal Property Property { get; set; }
     }
 }

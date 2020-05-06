@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Types
 {
-    public enum Property
+    internal enum Property
     {
         None,
 

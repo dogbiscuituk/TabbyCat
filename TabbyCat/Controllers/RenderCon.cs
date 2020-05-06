@@ -80,7 +80,7 @@
                 if (_GLInfo == null)
                 {
                     GLInfo info = null;
-                    UsingGL(() => { info = new GLInfo(); });
+                    UsingGL(() => info = new GLInfo());
                     lock (GLInfoSyncRoot)
                         _GLInfo = info;
                 }
@@ -99,7 +99,7 @@
                 if (_GraphicsMode == null)
                 {
                     GraphicsMode mode = null;
-                    UsingGL(() => { mode = SceneControl.GraphicsMode; });
+                    UsingGL(() => mode = SceneControl.GraphicsMode);
                     lock (GLModeSyncRoot)
                         _GraphicsMode = mode;
                 }
@@ -116,7 +116,7 @@
         internal GLInfo GetGLInfo()
         {
             GLInfo info = null;
-            UsingGL(() => { info = new GLInfo(); });
+            UsingGL(() => info = new GLInfo());
             return info;
         }
 

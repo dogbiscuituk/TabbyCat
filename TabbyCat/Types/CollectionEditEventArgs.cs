@@ -1,13 +1,13 @@
 ﻿namespace TabbyCat.Types
 {
-    public class CollectionEditEventArgs : PropertyEditEventArgs
+    internal class CollectionEditEventArgs : PropertyEditEventArgs
     {
         // Constructors
 
-        public CollectionEditEventArgs(Property collection, int index, bool adding) : base(collection, index) => Adding = adding;
+        internal CollectionEditEventArgs(Property collection, int index, bool adding) : base(collection, index) => Adding = adding;
 
-        // Public properties
+        // Internal properties
 
-        public bool Adding { get; set; }
+        internal bool Adding { get; set; }
     }
 }
