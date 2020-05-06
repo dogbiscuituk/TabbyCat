@@ -61,22 +61,22 @@
 
         internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
 
-        internal void RefreshGraphicsMode() => OnPropertyEdit(PropertyNames.GraphicsMode);
+        internal void RefreshGraphicsMode() => OnPropertyEdit(Property.GraphicsMode);
 
         internal void Show() => WorldForm.Show();
 
         internal void Show(IWin32Window owner) => WorldForm.Show(owner);
 
-        internal void OnCollectionEdit(string collectionName, int index, bool adding)
+        internal void OnCollectionEdit(Property collection, int index, bool adding)
         {
-            $"WorldCon.OnCollectionEdit(\"{collectionName}\", adding: {adding}, index: {index});".Spit();
-            CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collectionName, index, adding));
+            $"WorldCon.OnCollectionEdit(\"{collection}\", adding: {adding}, index: {index});".Spit();
+            CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collection, index, adding));
         }
 
-        internal void OnPropertyEdit(string propertyName, int index = 0)
+        internal void OnPropertyEdit(Property property, int index = 0)
         {
-            $"WorldCon.OnPropertyEdit(\"{propertyName}\", index: {index});".Spit();
-            PropertyEdit?.Invoke(this, new PropertyEditEventArgs(propertyName, index));
+            $"WorldCon.OnPropertyEdit(\"{property}\", index: {index});".Spit();
+            PropertyEdit?.Invoke(this, new PropertyEditEventArgs(property, index));
         }
 
         internal void OnPulse()
@@ -542,21 +542,21 @@
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
-            switch (e.PropertyName)
+            switch (e.Property)
             {
-                case PropertyNames.Traces:
+                case Property.Traces:
                     UpdateSelection();
                     break;
-                case PropertyNames.FPS:
+                case Property.TargetFPS:
                     ClockInit();
                     break;
-                case PropertyNames.GraphicsMode:
-                case PropertyNames.Samples:
-                case PropertyNames.Stereo:
+                case Property.GraphicsMode:
+                case Property.Samples:
+                case Property.Stereo:
                     UpdateGraphicsModeLabel();
                     break;
-                case PropertyNames.GPULog:
-                case PropertyNames.GPUStatus:
+                case Property.GPULog:
+                case Property.GPUStatus:
                     UpdateGpuStatusLabel();
                     break;
             }

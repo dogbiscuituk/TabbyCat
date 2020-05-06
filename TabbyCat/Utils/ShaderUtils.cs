@@ -4,6 +4,7 @@
     using Properties;
     using System.Collections.Generic;
     using System.Globalization;
+    using Types;
 
     public static class ShaderUtils
     {
@@ -36,6 +37,8 @@
             }
         }
 
+        public static Property SceneShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.SceneVertexShader - Property.VertexShader);
+
         public static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_SceneScope);
 
         public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
@@ -46,6 +49,27 @@
             scope,
             shaderType.ShaderTag(),
             Resources.PropertyName_Shader);
+
+        public static Property ShaderProperty(this ShaderType shaderType)
+        {
+            switch (shaderType)
+            {
+                case ShaderType.VertexShader:
+                    return Property.VertexShader;
+                case ShaderType.TessControlShader:
+                    return Property.TessellationControlShader;
+                case ShaderType.TessEvaluationShader:
+                    return Property.TessellationEvaluationShader;
+                case ShaderType.GeometryShader:
+                    return Property.GeometryShader;
+                case ShaderType.FragmentShader:
+                    return Property.FragmentShader;
+                case ShaderType.ComputeShader:
+                    return Property.ComputeShader;
+                default:
+                    return 0;
+            }
+        }
 
         public static string ShaderTag(this ShaderType shaderType)
         {
@@ -67,6 +91,8 @@
                     return string.Empty;
             }
         }
+
+        public static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
 
         public static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_TraceScope);
     }

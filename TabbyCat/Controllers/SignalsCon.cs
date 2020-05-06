@@ -36,7 +36,7 @@
 
         // Protected properties
 
-        protected override string[] AllProperties => new[] { PropertyNames.Signals };
+        protected override Property[] AllProperties => new[] { Property.Signals };
 
         protected override SignalsForm SignalsForm => _SignalsForm ?? NewSignalsForm();
 
@@ -135,12 +135,12 @@
             Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 
-        protected override void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params Property[] properties)
         {
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
+            foreach (var property in properties)
+                switch (property)
                 {
-                    case PropertyNames.Signals:
+                    case Property.Signals:
                         break;
                 }
         }
@@ -192,9 +192,9 @@
 
         private void WorldCon_CollectionEdit(object sender, CollectionEditEventArgs e)
         {
-            switch (e.PropertyName)
+            switch (e.Property)
             {
-                case PropertyNames.Signals:
+                case Property.Signals:
                     if (e.Adding)
                         InsertAt(e.Index);
                     else
@@ -206,9 +206,9 @@
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
-            switch (e.PropertyName)
+            switch (e.Property)
             {
-                case PropertyNames.Signals:
+                case Property.Signals:
                     break;
             }
         }

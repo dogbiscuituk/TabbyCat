@@ -16,7 +16,7 @@
 
         private readonly List<int> Breaks = new List<int>();
 
-        protected override string ShaderName => ShaderType.ShaderName();
+        protected override Property Shader => ShaderType.ShaderProperty();
 
         protected override IScript ShaderSet => RenderCon;
 
@@ -66,18 +66,18 @@
             }
         }
 
-        protected override bool CodeChanged(string propertyName)
+        protected override bool CodeChanged(Property property)
         {
-            switch (propertyName)
+            switch (property)
             {
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.Traces:
+                case Property.GLTargetVersion:
+                case Property.Traces:
                     return true;
                 default:
                     return
-                        propertyName == ShaderName ||
-                        propertyName == ShaderType.SceneShaderName() ||
-                        propertyName == ShaderType.TraceShaderName();
+                        property == Shader ||
+                        property == ShaderType.SceneShader() ||
+                        property == ShaderType.TraceShader();
             }
         }
 

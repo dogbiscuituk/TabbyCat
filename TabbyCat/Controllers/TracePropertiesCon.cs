@@ -40,17 +40,17 @@
 
         internal ToolStrip SelectionToolbar => TracePropertiesEdit.SelectionToolbar;
 
-        protected override string[] AllProperties => new[]
+        protected override Property[] AllProperties => new[]
         {
-            PropertyNames.Description,
-            PropertyNames.Location,
-            PropertyNames.Maximum,
-            PropertyNames.Minimum,
-            PropertyNames.Orientation,
-            PropertyNames.Pattern,
-            PropertyNames.Scale,
-            PropertyNames.StripeCount,
-            PropertyNames.Visible
+            Property.TraceDescription,
+            Property.TraceLocation,
+            Property.TraceMaximum,
+            Property.TraceMinimum,
+            Property.TraceOrientation,
+            Property.TracePattern,
+            Property.TraceScale,
+            Property.TraceStripeCount,
+            Property.TraceVisible
         };
 
         private TraceSelection Selection => WorldCon.TraceSelection;
@@ -177,54 +177,54 @@
                 }));
         }
 
-        protected override void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params Property[] properties)
         {
             if (Updating)
                 return;
             Updating = true;
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
+            foreach (var property in properties)
+                switch (property)
                 {
-                    case PropertyNames.Description:
+                    case Property.TraceDescription:
                         TracePropertiesEdit.edDescription.Text = Selection.Description;
                         break;
-                    case PropertyNames.Location:
+                    case Property.TraceLocation:
                         TracePropertiesEdit.seLocationX.Value = (decimal)Selection.Location.X;
                         TracePropertiesEdit.seLocationY.Value = (decimal)Selection.Location.Y;
                         TracePropertiesEdit.seLocationZ.Value = (decimal)Selection.Location.Z;
                         break;
-                    case PropertyNames.Maximum:
+                    case Property.TraceMaximum:
                         TracePropertiesEdit.seMaximumX.Value = (decimal)Selection.Maximum.X;
                         TracePropertiesEdit.seMaximumY.Value = (decimal)Selection.Maximum.Y;
                         TracePropertiesEdit.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
                         break;
-                    case PropertyNames.Minimum:
+                    case Property.TraceMinimum:
                         TracePropertiesEdit.seMinimumX.Value = (decimal)Selection.Minimum.X;
                         TracePropertiesEdit.seMinimumY.Value = (decimal)Selection.Minimum.Y;
                         TracePropertiesEdit.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
                         break;
-                    case PropertyNames.Orientation:
+                    case Property.TraceOrientation:
                         TracePropertiesEdit.sePitch.Value = (decimal)Selection.Orientation.X;
                         TracePropertiesEdit.seYaw.Value = (decimal)Selection.Orientation.Y;
                         TracePropertiesEdit.seRoll.Value = (decimal)Selection.Orientation.Z;
                         break;
-                    case PropertyNames.Pattern:
+                    case Property.TracePattern:
                         TracePropertiesEdit.cbPattern.SelectedItem = Selection.Pattern;
                         break;
-                    case PropertyNames.Scale:
+                    case Property.TraceScale:
                         TracePropertiesEdit.seScaleX.Value = (decimal)Selection.Scale.X;
                         TracePropertiesEdit.seScaleY.Value = (decimal)Selection.Scale.Y;
                         TracePropertiesEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
                         break;
-                    case PropertyNames.StripeCount:
+                    case Property.TraceStripeCount:
                         TracePropertiesEdit.seStripeCountX.Value = (decimal)Selection.StripeCount.X;
                         TracePropertiesEdit.seStripeCountY.Value = (decimal)Selection.StripeCount.Y;
                         TracePropertiesEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
                         break;
-                    case PropertyNames.Traces:
+                    case Property.Traces:
                         OnSelectionEdit();
                         break;
-                    case PropertyNames.Visible:
+                    case Property.TraceVisible:
                         TracePropertiesEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);
                         break;
                 }

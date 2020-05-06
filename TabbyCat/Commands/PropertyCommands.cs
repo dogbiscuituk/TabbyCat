@@ -3,14 +3,13 @@
     using Models;
     using System;
     using System.Text.RegularExpressions;
+    using Types;
 
     internal abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
-        protected PropertyCommand(int index, string propertyName,
-            TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set)
-            : base(index)
+        protected PropertyCommand(int index, Property property, TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set) : base(index)
         {
-            PropertyName = propertyName;
+            Property = property;
             Value = value;
             Get = get;
             Set = set;
@@ -38,10 +37,10 @@
             var s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
             if (s.Length > maxLength)
                 s = $"{s.Substring(0, maxLength)}…";
-            return $"{PropertyName} = {s}";
+            return $"{Property} = {s}";
         }
 
-        private string Action => $"{PropertyName} change";
+        private string Action => $"{Property} change";
 
         protected Func<TItem, TValue> Get;
 
@@ -56,9 +55,7 @@
 
     internal abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
     {
-        protected ScenePropertyCommand(string propertyName,
-            TValue value, Func<Scene, TValue> get, Action<Scene, TValue> set)
-            : base(0, propertyName, value, get, set) { }
+        protected ScenePropertyCommand(Property property, TValue value, Func<Scene, TValue> get, Action<Scene, TValue> set) : base(0, property, value, get, set) { }
 
         public bool RunOn(Scene scene)
         {
@@ -75,9 +72,7 @@
 
     internal abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
     {
-        protected SignalPropertyCommand(int index, string propertyName,
-            TValue value, Func<Signal, TValue> get, Action<Signal, TValue> set)
-            : base(index, propertyName, value, get, set) { }
+        protected SignalPropertyCommand(int index, Property property, TValue value, Func<Signal, TValue> get, Action<Signal, TValue> set) : base(index, property, value, get, set) { }
 
         public bool RunOn(Signal signal)
         {
@@ -94,9 +89,7 @@
 
     internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
     {
-        protected TracePropertyCommand(int index, string propertyName,
-            TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set)
-            : base(index, propertyName, value, get, set) { }
+        protected TracePropertyCommand(int index, Property property, TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set) : base(index, property, value, get, set) { }
 
         public bool RunOn(Trace trace)
         {

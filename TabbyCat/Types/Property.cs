@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Types
 {
-    internal enum Property
+    public enum Property
     {
         None,
 
@@ -50,6 +50,29 @@
 
         GPULog,
         GPUStatus,
-        GraphicsMode
+        GraphicsMode,
+
+        // Shader properties
+
+        FirstShader,
+        VertexShader,
+        TessellationControlShader,
+        TessellationEvaluationShader,
+        GeometryShader,
+        FragmentShader,
+        ComputeShader,
+        SceneVertexShader,
+        SceneTessellationControlShader,
+        SceneTessellationEvaluationShader,
+        SceneGeometryShader,
+        SceneFragmentShader,
+        SceneComputeShader,
+        TraceVertexShader,
+        TraceTessellationControlShader,
+        TraceTessellationEvaluationShader,
+        TraceGeometryShader,
+        TraceFragmentShader,
+        TraceComputeShader,
+        LastShader,
     }
 }

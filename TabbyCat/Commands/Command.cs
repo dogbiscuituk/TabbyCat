@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using Models;
+    using Types;
 
     internal abstract class Command<TValue> : ICommand
     {
@@ -11,7 +12,7 @@
         // Public properties
 
         public int Index { get; private set; }
-        public string PropertyName { get; set; }
+        public Property Property { get; set; }
         public abstract string RedoAction { get; }
         public abstract string UndoAction { get; }
 
@@ -50,6 +51,6 @@
 
         // Protected methods
 
-        protected virtual void OnPropertyEdit(Scene scene) => scene.OnPropertyEdit(PropertyName, Index);
+        protected virtual void OnPropertyEdit(Scene scene) => scene.OnPropertyEdit(Property, Index);
     }
 }

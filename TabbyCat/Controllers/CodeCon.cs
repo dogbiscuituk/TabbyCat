@@ -65,7 +65,7 @@
         protected TraceSelection TraceSelection => WorldCon.TraceSelection;
         private SplitContainer Splitter => CodeEdit.EditSplit;
 
-        protected abstract string ShaderName { get; }
+        protected abstract Property Shader { get; }
 
         protected abstract IScript ShaderSet { get; }
 
@@ -319,7 +319,7 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.Property);
 
         private void WorldCon_Pulse(object sender, EventArgs e) => CodeEdit.tbPaste.Enabled = CanPaste();
 
@@ -549,13 +549,13 @@
             UpdateUI();
         }
 
-        protected override void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params Property[] properties)
         {
             if (Updating)
                 return;
             Updating = true;
-            foreach (var propertyName in propertyNames)
-                if (CodeChanged(propertyName))
+            foreach (var property in properties)
+                if (CodeChanged(property))
                 {
                     LoadScript();
                     break;
@@ -563,7 +563,7 @@
             Updating = false;
         }
 
-        protected virtual bool CodeChanged(string propertyName) => propertyName == ShaderName;
+        protected virtual bool CodeChanged(Property property) => property == Shader;
 
         protected virtual void UpdateUI()
         {

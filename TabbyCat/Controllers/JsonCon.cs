@@ -21,7 +21,7 @@
     {
         internal JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
 
-        private readonly List<string> ChangedPropertyNames = new List<string>();
+        private readonly List<Property> ChangedProperties = new List<Property>();
 
         private int UpdateCount;
 
@@ -161,9 +161,9 @@
         {
             if (--UpdateCount == 0)
             {
-                foreach (var propertyName in ChangedPropertyNames)
-                    WorldCon.OnPropertyEdit(propertyName);
-                ChangedPropertyNames.Clear();
+                foreach (var property in ChangedProperties)
+                    WorldCon.OnPropertyEdit(property);
+                ChangedProperties.Clear();
             }
         }
 

@@ -30,7 +30,7 @@
 
         // Protected properties
 
-        protected virtual string[] AllProperties => Array.Empty<string>();
+        protected virtual Property[] AllProperties => Array.Empty<Property>();
 
         // Protected internal methods
 
@@ -82,7 +82,7 @@
 
         protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
-        protected virtual void UpdateProperties(params string[] propertyNames) { }
+        protected virtual void UpdateProperties(params Property[] properties) { }
 
         // Protected static methods
 

@@ -32,17 +32,17 @@
 
         internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
-        internal void OnPropertyEdit(string propertyName)
+        internal void OnPropertyEdit(Property property)
         {
-            switch (propertyName)
+            switch (property)
             {
-                case PropertyNames.GraphicsMode:
+                case Property.GraphicsMode:
                     RecreateSceneControl();
                     break;
-                case PropertyNames.Samples:
+                case Property.Samples:
                     RecreateSceneControl("Samples", Scene.Samples);
                     break;
-                case PropertyNames.Stereo:
+                case Property.Stereo:
                     RecreateSceneControl("Stereo", Scene.Stereo);
                     break;
             }
@@ -144,6 +144,6 @@
             RenderCon.SceneControlSuspended = true;
         }
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.Property);
     }
 }

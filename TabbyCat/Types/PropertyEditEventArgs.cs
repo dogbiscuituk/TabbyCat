@@ -1,15 +1,20 @@
 ﻿namespace TabbyCat.Types
 {
-    using System.ComponentModel;
+    using System;
 
-    public class PropertyEditEventArgs : PropertyChangedEventArgs
+    public class PropertyEditEventArgs : EventArgs
     {
         // Constructors
 
-        public PropertyEditEventArgs(string propertyName, int index) : base(propertyName) => Index = index;
+        public PropertyEditEventArgs(Property property, int index) : base()
+        {
+            Index = index;
+            Property = property;
+        }
 
         // Public properties
 
         public int Index { get; set; }
+        public Property Property { get; set; }
     }
 }

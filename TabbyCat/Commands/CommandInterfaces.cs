@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Commands
 {
     using Models;
+    using Types;
 
     internal interface ICollectionCommand : ICommand
     {
@@ -10,7 +11,7 @@
     internal interface ICommand
     {
         int Index { get; }
-        string PropertyName { get; }
+        Property Property { get; }
         string RedoAction { get; }
         string UndoAction { get; }
 

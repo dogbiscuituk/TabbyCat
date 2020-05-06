@@ -33,21 +33,21 @@
             ToolTipText = Resources.ScenePropertiesForm_Text
         });
 
-        protected override string[] AllProperties => new[]
+        protected override Property[] AllProperties => new[]
         {
-            PropertyNames.Background,
-            PropertyNames.CameraFocus,
-            PropertyNames.CameraPosition,
-            PropertyNames.FarPlane,
-            PropertyNames.FieldOfView,
-            PropertyNames.FPS,
-            PropertyNames.GLTargetVersion,
-            PropertyNames.NearPlane,
-            PropertyNames.ProjectionType,
-            PropertyNames.Samples,
-            PropertyNames.SceneTitle,
-            PropertyNames.Stereo,
-            PropertyNames.VSync
+            Property.Background,
+            Property.CameraFocus,
+            Property.CameraPosition,
+            Property.FarPlane,
+            Property.FieldOfView,
+            Property.TargetFPS,
+            Property.GLTargetVersion,
+            Property.NearPlane,
+            Property.ProjectionType,
+            Property.Samples,
+            Property.SceneTitle,
+            Property.Stereo,
+            Property.VSync
         };
 
         protected internal override void Connect(bool connect)
@@ -136,66 +136,66 @@
             Localize(Resources.Control_Scene_VSync, ScenePropertiesEdit.cbVSync);
         }
 
-        protected override void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params Property[] properties)
         {
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
+            foreach (var property in properties)
+                switch (property)
                 {
-                    case PropertyNames.ProjectionType:
+                    case Property.ProjectionType:
                         UpdateUI();
                         break;
                 }
             if (Updating)
                 return;
             Updating = true;
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
+            foreach (var property in properties)
+                switch (property)
                 {
-                    case PropertyNames.Background:
+                    case Property.Background:
                         ScenePropertiesEdit.cbBackground.Text = Scene.BackgroundColour.Name;
                         break;
-                    case PropertyNames.Camera:
+                    case Property.Camera:
                         UpdateCameraPosition();
                         UpdateCameraFocus();
                         break;
-                    case PropertyNames.CameraFocus:
+                    case Property.CameraFocus:
                         UpdateCameraFocus();
                         break;
-                    case PropertyNames.CameraPosition:
+                    case Property.CameraPosition:
                         UpdateCameraPosition();
                         break;
-                    case PropertyNames.FarPlane:
+                    case Property.FarPlane:
                         ScenePropertiesEdit.seFrustumMaxX.Value = (decimal)Scene.Projection.FrustumMax.X;
                         ScenePropertiesEdit.seFrustumMaxY.Value = (decimal)Scene.Projection.FrustumMax.Y;
                         ScenePropertiesEdit.seFrustumMaxZ.Value = (decimal)Scene.Projection.FrustumMax.Z;
                         break;
-                    case PropertyNames.FieldOfView:
+                    case Property.FieldOfView:
                         ScenePropertiesEdit.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
                         break;
-                    case PropertyNames.FPS:
+                    case Property.TargetFPS:
                         ScenePropertiesEdit.seFPS.Value = (decimal)Scene.FPS;
                         break;
-                    case PropertyNames.GLTargetVersion:
+                    case Property.GLTargetVersion:
                         ScenePropertiesEdit.seGLSLVersion.Text = Scene.GLTargetVersion;
                         break;
-                    case PropertyNames.NearPlane:
+                    case Property.NearPlane:
                         ScenePropertiesEdit.seFrustumMinX.Value = (decimal)Scene.Projection.FrustumMin.X;
                         ScenePropertiesEdit.seFrustumMinY.Value = (decimal)Scene.Projection.FrustumMin.Y;
                         ScenePropertiesEdit.seFrustumMinZ.Value = (decimal)Scene.Projection.FrustumMin.Z;
                         break;
-                    case PropertyNames.ProjectionType:
+                    case Property.ProjectionType:
                         ScenePropertiesEdit.seProjectionType.SelectedIndex = (int)Scene.Projection.ProjectionType;
                         break;
-                    case PropertyNames.Samples:
+                    case Property.Samples:
                         ScenePropertiesEdit.seSampleCount.Text = Scene.Samples.ToString(CultureInfo.CurrentCulture);
                         break;
-                    case PropertyNames.SceneTitle:
+                    case Property.SceneTitle:
                         ScenePropertiesEdit.edTitle.Text = Scene.Title;
                         break;
-                    case PropertyNames.Stereo:
+                    case Property.Stereo:
                         ScenePropertiesEdit.cbStereo.Checked = Scene.Stereo;
                         break;
-                    case PropertyNames.VSync:
+                    case Property.VSync:
                         ScenePropertiesEdit.cbVSync.Checked = Scene.VSync;
                         break;
                 }

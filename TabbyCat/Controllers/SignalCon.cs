@@ -36,16 +36,16 @@
 
         // Protected properties
 
-        protected override string[] AllProperties => new[]
+        protected override Property[] AllProperties => new[]
         {
-            PropertyNames.Amplitude,
-            PropertyNames.AmplitudeMaximum,
-            PropertyNames.AmplitudeMinimum,
-            PropertyNames.Frequency,
-            PropertyNames.FrequencyMaximum,
-            PropertyNames.FrequencyMinimum,
-            PropertyNames.Name,
-            PropertyNames.WaveType,
+            Property.SignalAmplitude,
+            Property.SignalAmplitudeMaximum,
+            Property.SignalAmplitudeMinimum,
+            Property.SignalFrequency,
+            Property.SignalFrequencyMaximum,
+            Property.SignalFrequencyMinimum,
+            Property.SignalName,
+            Property.SignalWaveType,
         };
 
         // Private constants
@@ -173,30 +173,30 @@
             Localize(Resources.SignalsForm_DeleteButton, SignalEdit.DeleteButton);
         }
 
-        protected override void UpdateProperties(params string[] propertyNames)
+        protected override void UpdateProperties(params Property[] properties)
         {
             if (Updating)
                 return;
             Updating = true;
-            foreach (var propertyName in propertyNames)
-                switch (propertyName)
+            foreach (var property in properties)
+                switch (property)
                 {
-                    case PropertyNames.Amplitude:
+                    case Property.SignalAmplitude:
                         Amplitude = Signal.Amplitude;
                         break;
-                    case PropertyNames.Frequency:
+                    case Property.SignalFrequency:
                         Frequency = Signal.Frequency;
                         break;
-                    case PropertyNames.AmplitudeMaximum:
-                    case PropertyNames.AmplitudeMinimum:
-                    case PropertyNames.FrequencyMaximum:
-                    case PropertyNames.FrequencyMinimum:
+                    case Property.SignalAmplitudeMaximum:
+                    case Property.SignalAmplitudeMinimum:
+                    case Property.SignalFrequencyMaximum:
+                    case Property.SignalFrequencyMinimum:
                         InitRanges(Signal);
                         break;
-                    case PropertyNames.Name:
+                    case Property.SignalName:
                         NameEditor.Text = Signal.Name;
                         break;
-                    case PropertyNames.WaveType:
+                    case Property.SignalWaveType:
                         SelectedWaveType = Signal.WaveType;
                         break;
                 }
@@ -261,7 +261,7 @@
 
         private void WaveTypeItem_Click(object sender, EventArgs e) => Run(new WaveTypeCommand(Index, (WaveType)((ToolStripItem)sender).Tag));
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.PropertyName);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.Property);
 
         // Private static methods
 

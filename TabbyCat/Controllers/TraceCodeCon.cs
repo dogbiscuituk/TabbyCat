@@ -12,7 +12,7 @@
     {
         internal TraceCodeCon(WorldCon worldCon) : base(worldCon) { }
 
-        protected override string ShaderName => ShaderType.TraceShaderName();
+        protected override Property Shader => ShaderType.TraceShader();
 
         protected override IScript ShaderSet => TraceSelection;
 

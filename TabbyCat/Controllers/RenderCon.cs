@@ -414,31 +414,31 @@
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
-            if (e.PropertyName.Contains(Resources.PropertyName_Shader))
+            if (e.Property >= Property.FirstShader && e.Property <= Property.LastShader)
             {
                 InvalidateProgram();
                 return;
             }
-            switch (e.PropertyName)
+            switch (e.Property)
             {
-                case PropertyNames.Camera:
-                case PropertyNames.CameraPosition:
-                case PropertyNames.CameraFocus:
+                case Property.Camera:
+                case Property.CameraPosition:
+                case Property.CameraFocus:
                     InvalidateCameraView();
                     break;
-                case PropertyNames.ProjectionType:
-                case PropertyNames.FieldOfView:
-                case PropertyNames.NearPlane:
-                case PropertyNames.FarPlane:
+                case Property.ProjectionType:
+                case Property.FieldOfView:
+                case Property.NearPlane:
+                case Property.FarPlane:
                     InvalidateProjection();
                     break;
-                case PropertyNames.GLTargetVersion:
-                case PropertyNames.Signals:
-                case PropertyNames.Traces:
+                case Property.GLTargetVersion:
+                case Property.Signals:
+                case Property.Traces:
                     InvalidateProgram();
                     break;
-                case PropertyNames.Pattern:
-                case PropertyNames.StripeCount:
+                case Property.TracePattern:
+                case Property.TraceStripeCount:
                     RenderCon.InvalidateAllTraces();
                     break;
             }

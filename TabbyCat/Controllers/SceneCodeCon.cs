@@ -10,7 +10,7 @@
     {
         internal SceneCodeCon(WorldCon worldCon) : base(worldCon) { }
 
-        protected override string ShaderName => ShaderType.SceneShaderName();
+        protected override Property Shader => ShaderType.SceneShader();
 
         protected override IScript ShaderSet => Scene;
 

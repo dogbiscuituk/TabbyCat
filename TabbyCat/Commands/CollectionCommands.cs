@@ -2,6 +2,7 @@
 {
     using Models;
     using Utils;
+    using Types;
 
     /// <summary>
     /// Common ancestor for collection management (item insert and delete) commands.
@@ -73,20 +74,20 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected virtual void OnCollectionEdit(Scene scene) => scene.OnCollectionEdit(PropertyName, Index, Adding);
+        protected virtual void OnCollectionEdit(Scene scene) => scene.OnCollectionEdit(Property, Index, Adding);
 
         protected abstract void RemoveItem(Scene scene);
 
         // Private methods
 
-        private string GetAction(bool undo) => $"{PropertyName} {(Adding ^ undo ? "addition" : "removal")}";
+        private string GetAction(bool undo) => $"{Property} {(Adding ^ undo ? "addition" : "removal")}";
     }
 
     internal class SignalCollectionCommand : CollectionCommand<Signal>
     {
         // Constructors
 
-        internal SignalCollectionCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Signals;
+        internal SignalCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Signals;
 
         // Protected methods
 
@@ -117,7 +118,7 @@
     {
         // Constructors
 
-        internal TraceCollectionCommand(int index, bool add) : base(index, add) => PropertyName = PropertyNames.Traces;
+        internal TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
 
         // Protected methods
 

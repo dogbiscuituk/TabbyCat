@@ -9,7 +9,7 @@
     {
         internal DescriptionCommand(int index, string value) : base(
             index,
-            PropertyNames.Description,
+            Property.TraceDescription,
             value,
             t => t.Description,
             (t, v) => t.Description = v)
@@ -20,7 +20,7 @@
     {
         internal LocationCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.Location,
+            Property.TraceLocation,
             value,
             e => e.Location,
             (e, v) => e.Location = v)
@@ -31,7 +31,7 @@
     {
         internal MaximumCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.Maximum,
+            Property.TraceMaximum,
             value,
             t => t.Maximum,
             (t, v) => t.Maximum = v)
@@ -42,7 +42,7 @@
     {
         internal MinimumCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.Minimum,
+            Property.TraceMinimum,
             value,
             t => t.Minimum,
             (t, v) => t.Minimum = v)
@@ -53,7 +53,7 @@
     {
         internal OrientationCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.Orientation,
+            Property.TraceOrientation,
             value,
             e => e.Orientation,
             (e, v) => e.Orientation = v)
@@ -64,7 +64,7 @@
     {
         internal PatternCommand(int index, Pattern value) : base(
             index,
-            PropertyNames.Pattern,
+            Property.TracePattern,
             value,
             t => t.Pattern,
             (t, v) => t.Pattern = v)
@@ -75,7 +75,7 @@
     {
         internal ScaleCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.Scale,
+            Property.TraceScale,
             value,
             e => e.Scale,
             (e, v) => e.Scale = v)
@@ -86,7 +86,7 @@
     {
         internal StripeCountCommand(int index, Vector3 value) : base(
             index,
-            PropertyNames.StripeCount,
+            Property.TraceStripeCount,
             value,
             t => t.StripeCount,
             (t, v) => t.StripeCount = v)
@@ -97,7 +97,7 @@
     {
         internal TraceShaderCommand(int index, ShaderType shaderType, string value) : base(
             index,
-            shaderType.TraceShaderName(),
+            shaderType.TraceShader(),
             value,
             t => t.GetScript(shaderType),
             (t, v) => t.SetScript(shaderType, v))
@@ -108,7 +108,7 @@
     {
         internal VisibleCommand(int index, bool value) : base(
             index,
-            PropertyNames.Visible,
+            Property.TraceVisible,
             value,
             t => t.Visible,
             (t, v) => t.Visible = v)
