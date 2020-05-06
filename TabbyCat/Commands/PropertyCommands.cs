@@ -4,6 +4,7 @@
     using System;
     using System.Text.RegularExpressions;
     using Types;
+    using Utils;
 
     internal abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
@@ -37,10 +38,10 @@
             var s = Regex.Replace($"{Value}", @"[\s]+", " ", RegexOptions.Singleline);
             if (s.Length > maxLength)
                 s = $"{s.Substring(0, maxLength)}…";
-            return $"{Property} = {s}";
+            return $"{Property.AsString()} = {s}";
         }
 
-        private string Action => $"{Property} change";
+        private string Action => $"{Property.AsString()} change";
 
         protected Func<TItem, TValue> Get;
 

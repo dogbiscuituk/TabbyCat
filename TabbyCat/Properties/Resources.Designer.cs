@@ -1582,6 +1582,519 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to background.
+        /// </summary>
+        public static string Property_Background {
+            get {
+                return ResourceManager.GetString("Property_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to camera.
+        /// </summary>
+        public static string Property_Camera {
+            get {
+                return ResourceManager.GetString("Property_Camera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to camera focus.
+        /// </summary>
+        public static string Property_CameraFocus {
+            get {
+                return ResourceManager.GetString("Property_CameraFocus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to camera position.
+        /// </summary>
+        public static string Property_CameraPosition {
+            get {
+                return ResourceManager.GetString("Property_CameraPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to compute shader.
+        /// </summary>
+        public static string Property_ComputeShader {
+            get {
+                return ResourceManager.GetString("Property_ComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to far plane.
+        /// </summary>
+        public static string Property_FarPlane {
+            get {
+                return ResourceManager.GetString("Property_FarPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to field of view.
+        /// </summary>
+        public static string Property_FieldOfView {
+            get {
+                return ResourceManager.GetString("Property_FieldOfView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first shader (placeholder).
+        /// </summary>
+        public static string Property_FirstShader {
+            get {
+                return ResourceManager.GetString("Property_FirstShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fragment shader.
+        /// </summary>
+        public static string Property_FragmentShader {
+            get {
+                return ResourceManager.GetString("Property_FragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to geometry shader.
+        /// </summary>
+        public static string Property_GeometryShader {
+            get {
+                return ResourceManager.GetString("Property_GeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GLSL target version.
+        /// </summary>
+        public static string Property_GLTarget_Version {
+            get {
+                return ResourceManager.GetString("Property_GLTarget Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU log.
+        /// </summary>
+        public static string Property_GPULog {
+            get {
+                return ResourceManager.GetString("Property_GPULog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU status.
+        /// </summary>
+        public static string Property_GPUStatus {
+            get {
+                return ResourceManager.GetString("Property_GPUStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to graphics mode.
+        /// </summary>
+        public static string Property_GraphicsMode {
+            get {
+                return ResourceManager.GetString("Property_GraphicsMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Property_LastShader {
+            get {
+                return ResourceManager.GetString("Property_LastShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to near plane.
+        /// </summary>
+        public static string Property_NearPlane {
+            get {
+                return ResourceManager.GetString("Property_NearPlane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nothing.
+        /// </summary>
+        public static string Property_None {
+            get {
+                return ResourceManager.GetString("Property_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to projection type.
+        /// </summary>
+        public static string Property_ProjectionType {
+            get {
+                return ResourceManager.GetString("Property_ProjectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #samples.
+        /// </summary>
+        public static string Property_Samples {
+            get {
+                return ResourceManager.GetString("Property_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene compute shader.
+        /// </summary>
+        public static string Property_SceneComputeShader {
+            get {
+                return ResourceManager.GetString("Property_SceneComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene fragment shader.
+        /// </summary>
+        public static string Property_SceneFragmentShader {
+            get {
+                return ResourceManager.GetString("Property_SceneFragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene geometry shader.
+        /// </summary>
+        public static string Property_SceneGeometryShader {
+            get {
+                return ResourceManager.GetString("Property_SceneGeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene tessellation control shader.
+        /// </summary>
+        public static string Property_SceneTessellationControlShader {
+            get {
+                return ResourceManager.GetString("Property_SceneTessellationControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene tessellation evaluation shader.
+        /// </summary>
+        public static string Property_SceneTessellationEvaluationShader {
+            get {
+                return ResourceManager.GetString("Property_SceneTessellationEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene title.
+        /// </summary>
+        public static string Property_SceneTitle {
+            get {
+                return ResourceManager.GetString("Property_SceneTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scene vertex shader.
+        /// </summary>
+        public static string Property_SceneVertexShader {
+            get {
+                return ResourceManager.GetString("Property_SceneVertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to signal amplitude.
+        /// </summary>
+        public static string Property_SignalAmplitude {
+            get {
+                return ResourceManager.GetString("Property_SignalAmplitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to maximum signal amplitude.
+        /// </summary>
+        public static string Property_SignalAmplitudeMaximum {
+            get {
+                return ResourceManager.GetString("Property_SignalAmplitudeMaximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minimum signal amplitude.
+        /// </summary>
+        public static string Property_SignalAmplitudeMinimum {
+            get {
+                return ResourceManager.GetString("Property_SignalAmplitudeMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to signal frequency.
+        /// </summary>
+        public static string Property_SignalFrequency {
+            get {
+                return ResourceManager.GetString("Property_SignalFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to maximum signal frequency.
+        /// </summary>
+        public static string Property_SignalFrequencyMaximum {
+            get {
+                return ResourceManager.GetString("Property_SignalFrequencyMaximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minimum signal frequency.
+        /// </summary>
+        public static string Property_SignalFrequencyMinimum {
+            get {
+                return ResourceManager.GetString("Property_SignalFrequencyMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to signal name.
+        /// </summary>
+        public static string Property_SignalName {
+            get {
+                return ResourceManager.GetString("Property_SignalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to signals.
+        /// </summary>
+        public static string Property_Signals {
+            get {
+                return ResourceManager.GetString("Property_Signals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to signal wave type.
+        /// </summary>
+        public static string Property_SignalWaveType {
+            get {
+                return ResourceManager.GetString("Property_SignalWaveType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stereo.
+        /// </summary>
+        public static string Property_Stereo {
+            get {
+                return ResourceManager.GetString("Property_Stereo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to target FPS.
+        /// </summary>
+        public static string Property_TargetFPS {
+            get {
+                return ResourceManager.GetString("Property_TargetFPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tessellation control shader.
+        /// </summary>
+        public static string Property_TessellationControlShader {
+            get {
+                return ResourceManager.GetString("Property_TessellationControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tessellation evaluation shader.
+        /// </summary>
+        public static string Property_TessellationEvaluationShader {
+            get {
+                return ResourceManager.GetString("Property_TessellationEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace compute shader.
+        /// </summary>
+        public static string Property_TraceComputeShader {
+            get {
+                return ResourceManager.GetString("Property_TraceComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace description.
+        /// </summary>
+        public static string Property_TraceDescription {
+            get {
+                return ResourceManager.GetString("Property_TraceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace fragment shader.
+        /// </summary>
+        public static string Property_TraceFragmentShader {
+            get {
+                return ResourceManager.GetString("Property_TraceFragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace geometry shader.
+        /// </summary>
+        public static string Property_TraceGeometryShader {
+            get {
+                return ResourceManager.GetString("Property_TraceGeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace location.
+        /// </summary>
+        public static string Property_TraceLocation {
+            get {
+                return ResourceManager.GetString("Property_TraceLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace maximum.
+        /// </summary>
+        public static string Property_TraceMaximum {
+            get {
+                return ResourceManager.GetString("Property_TraceMaximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace minimum.
+        /// </summary>
+        public static string Property_TraceMinimum {
+            get {
+                return ResourceManager.GetString("Property_TraceMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace orientation.
+        /// </summary>
+        public static string Property_TraceOrientation {
+            get {
+                return ResourceManager.GetString("Property_TraceOrientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace pattern.
+        /// </summary>
+        public static string Property_TracePattern {
+            get {
+                return ResourceManager.GetString("Property_TracePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to traces.
+        /// </summary>
+        public static string Property_Traces {
+            get {
+                return ResourceManager.GetString("Property_Traces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace scale.
+        /// </summary>
+        public static string Property_TraceScale {
+            get {
+                return ResourceManager.GetString("Property_TraceScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace stripe count.
+        /// </summary>
+        public static string Property_TraceStripeCount {
+            get {
+                return ResourceManager.GetString("Property_TraceStripeCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace tessellation control shader.
+        /// </summary>
+        public static string Property_TraceTessellationControlShader {
+            get {
+                return ResourceManager.GetString("Property_TraceTessellationControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace tessellation evaluation shader.
+        /// </summary>
+        public static string Property_TraceTessellationEvaluationShader {
+            get {
+                return ResourceManager.GetString("Property_TraceTessellationEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace vertex shader.
+        /// </summary>
+        public static string Property_TraceVertexShader {
+            get {
+                return ResourceManager.GetString("Property_TraceVertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trace visible.
+        /// </summary>
+        public static string Property_TraceVisible {
+            get {
+                return ResourceManager.GetString("Property_TraceVisible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vertex shader.
+        /// </summary>
+        public static string Property_VertexShader {
+            get {
+                return ResourceManager.GetString("Property_VertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VSync.
+        /// </summary>
+        public static string Property_VSync {
+            get {
+                return ResourceManager.GetString("Property_VSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scene.
         /// </summary>
         public static string PropertyName_SceneScope {

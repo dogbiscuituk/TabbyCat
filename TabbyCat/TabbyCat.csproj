@@ -193,6 +193,7 @@
     <Compile Include="Utils\ColourUtils.cs" />
     <Compile Include="Utils\GraphicUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
+    <Compile Include="Utils\PropertyUtils.cs" />
     <Compile Include="Utils\ShaderUtils.cs" />
     <Compile Include="Utils\ToolStripUtils.cs" />
     <Compile Include="Views\AboutDialog.cs">

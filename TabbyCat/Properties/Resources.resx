@@ -1046,4 +1046,175 @@ Stereo: {7}</value>
   <data name="Text_ParameterCannotBeNull" xml:space="preserve">
     <value>{0} cannot be null.</value>
   </data>
+  <data name="Property_Background" xml:space="preserve">
+    <value>background</value>
+  </data>
+  <data name="Property_Camera" xml:space="preserve">
+    <value>camera</value>
+  </data>
+  <data name="Property_CameraFocus" xml:space="preserve">
+    <value>camera focus</value>
+  </data>
+  <data name="Property_CameraPosition" xml:space="preserve">
+    <value>camera position</value>
+  </data>
+  <data name="Property_ComputeShader" xml:space="preserve">
+    <value>compute shader</value>
+  </data>
+  <data name="Property_FarPlane" xml:space="preserve">
+    <value>far plane</value>
+  </data>
+  <data name="Property_FieldOfView" xml:space="preserve">
+    <value>field of view</value>
+  </data>
+  <data name="Property_FirstShader" xml:space="preserve">
+    <value>first shader (placeholder)</value>
+  </data>
+  <data name="Property_FragmentShader" xml:space="preserve">
+    <value>fragment shader</value>
+  </data>
+  <data name="Property_GeometryShader" xml:space="preserve">
+    <value>geometry shader</value>
+  </data>
+  <data name="Property_GLTarget Version" xml:space="preserve">
+    <value>GLSL target version</value>
+  </data>
+  <data name="Property_GPULog" xml:space="preserve">
+    <value>GPU log</value>
+  </data>
+  <data name="Property_GPUStatus" xml:space="preserve">
+    <value>GPU status</value>
+  </data>
+  <data name="Property_GraphicsMode" xml:space="preserve">
+    <value>graphics mode</value>
+  </data>
+  <data name="Property_LastShader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Property_NearPlane" xml:space="preserve">
+    <value>near plane</value>
+  </data>
+  <data name="Property_None" xml:space="preserve">
+    <value>nothing</value>
+  </data>
+  <data name="Property_ProjectionType" xml:space="preserve">
+    <value>projection type</value>
+  </data>
+  <data name="Property_Samples" xml:space="preserve">
+    <value>#samples</value>
+  </data>
+  <data name="Property_SceneComputeShader" xml:space="preserve">
+    <value>scene compute shader</value>
+  </data>
+  <data name="Property_SceneFragmentShader" xml:space="preserve">
+    <value>scene fragment shader</value>
+  </data>
+  <data name="Property_SceneGeometryShader" xml:space="preserve">
+    <value>scene geometry shader</value>
+  </data>
+  <data name="Property_SceneTessellationControlShader" xml:space="preserve">
+    <value>scene tessellation control shader</value>
+  </data>
+  <data name="Property_SceneTessellationEvaluationShader" xml:space="preserve">
+    <value>scene tessellation evaluation shader</value>
+  </data>
+  <data name="Property_SceneTitle" xml:space="preserve">
+    <value>scene title</value>
+  </data>
+  <data name="Property_SceneVertexShader" xml:space="preserve">
+    <value>scene vertex shader</value>
+  </data>
+  <data name="Property_SignalAmplitude" xml:space="preserve">
+    <value>signal amplitude</value>
+  </data>
+  <data name="Property_SignalAmplitudeMaximum" xml:space="preserve">
+    <value>maximum signal amplitude</value>
+  </data>
+  <data name="Property_SignalAmplitudeMinimum" xml:space="preserve">
+    <value>minimum signal amplitude</value>
+  </data>
+  <data name="Property_SignalFrequency" xml:space="preserve">
+    <value>signal frequency</value>
+  </data>
+  <data name="Property_SignalFrequencyMaximum" xml:space="preserve">
+    <value>maximum signal frequency</value>
+  </data>
+  <data name="Property_SignalFrequencyMinimum" xml:space="preserve">
+    <value>minimum signal frequency</value>
+  </data>
+  <data name="Property_SignalName" xml:space="preserve">
+    <value>signal name</value>
+  </data>
+  <data name="Property_Signals" xml:space="preserve">
+    <value>signals</value>
+  </data>
+  <data name="Property_SignalWaveType" xml:space="preserve">
+    <value>signal wave type</value>
+  </data>
+  <data name="Property_Stereo" xml:space="preserve">
+    <value>stereo</value>
+  </data>
+  <data name="Property_TargetFPS" xml:space="preserve">
+    <value>target FPS</value>
+  </data>
+  <data name="Property_TessellationControlShader" xml:space="preserve">
+    <value>tessellation control shader</value>
+  </data>
+  <data name="Property_TessellationEvaluationShader" xml:space="preserve">
+    <value>tessellation evaluation shader</value>
+  </data>
+  <data name="Property_TraceComputeShader" xml:space="preserve">
+    <value>trace compute shader</value>
+  </data>
+  <data name="Property_TraceDescription" xml:space="preserve">
+    <value>trace description</value>
+  </data>
+  <data name="Property_TraceFragmentShader" xml:space="preserve">
+    <value>trace fragment shader</value>
+  </data>
+  <data name="Property_TraceGeometryShader" xml:space="preserve">
+    <value>trace geometry shader</value>
+  </data>
+  <data name="Property_TraceLocation" xml:space="preserve">
+    <value>trace location</value>
+  </data>
+  <data name="Property_TraceMaximum" xml:space="preserve">
+    <value>trace maximum</value>
+  </data>
+  <data name="Property_TraceMinimum" xml:space="preserve">
+    <value>trace minimum</value>
+  </data>
+  <data name="Property_TraceOrientation" xml:space="preserve">
+    <value>trace orientation</value>
+  </data>
+  <data name="Property_TracePattern" xml:space="preserve">
+    <value>trace pattern</value>
+  </data>
+  <data name="Property_Traces" xml:space="preserve">
+    <value>traces</value>
+  </data>
+  <data name="Property_TraceScale" xml:space="preserve">
+    <value>trace scale</value>
+  </data>
+  <data name="Property_TraceStripeCount" xml:space="preserve">
+    <value>trace stripe count</value>
+  </data>
+  <data name="Property_TraceTessellationControlShader" xml:space="preserve">
+    <value>trace tessellation control shader</value>
+  </data>
+  <data name="Property_TraceTessellationEvaluationShader" xml:space="preserve">
+    <value>trace tessellation evaluation shader</value>
+  </data>
+  <data name="Property_TraceVertexShader" xml:space="preserve">
+    <value>trace vertex shader</value>
+  </data>
+  <data name="Property_TraceVisible" xml:space="preserve">
+    <value>trace visible</value>
+  </data>
+  <data name="Property_VertexShader" xml:space="preserve">
+    <value>vertex shader</value>
+  </data>
+  <data name="Property_VSync" xml:space="preserve">
+    <value>VSync</value>
+  </data>
 </root>
