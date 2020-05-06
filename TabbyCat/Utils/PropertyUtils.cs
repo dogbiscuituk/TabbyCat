@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Types;
 
-    internal static class PropertyUtils
+    public static class PropertyUtils
     {
         // Private fields
 
@@ -84,8 +84,8 @@
             { Property.LastShader, Resources.Property_LastShader },
         };
 
-        // Internal methods
+        // Public methods
 
-        internal static string AsString(this Property property) => PropertyNames[property].Split('|')[0];
+        public static string AsString(this Property property) => PropertyNames[property].Split('|')[0];
     }
 }
