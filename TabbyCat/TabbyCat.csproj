@@ -175,6 +175,7 @@
     <Compile Include="Types\Pattern.cs" />
     <Compile Include="Types\Projection.cs" />
     <Compile Include="Types\ProjectionType.cs" />
+    <Compile Include="Types\Property.cs" />
     <Compile Include="Types\PropertyEditEventArgs.cs" />
     <Compile Include="Types\SplitType.cs" />
     <Compile Include="Types\TextStyleInfo.cs" />
