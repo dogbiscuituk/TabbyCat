@@ -39,7 +39,7 @@
 
         internal static Property SceneShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.SceneVertexShader - Property.VertexShader);
 
-        internal static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_SceneScope);
+        internal static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Scene);
 
         internal static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
 
@@ -94,6 +94,6 @@
 
         internal static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
 
-        internal static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_TraceScope);
+        internal static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Trace);
     }
 }

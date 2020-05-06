@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Commands
 {
     using Types;
-    using Utils;
 
     internal class AmplitudeCommand : SignalPropertyCommand<float>
     {
@@ -17,22 +16,22 @@
     internal class AmplitudeMaximumCommand : SignalPropertyCommand<float>
     {
         internal AmplitudeMaximumCommand(int index, float value) : base(
-        index,
-        Property.SignalAmplitudeMaximum,
-        value,
-        t => t.AmplitudeMaximum,
-        (t, v) => t.AmplitudeMaximum = v)
+            index,
+            Property.SignalAmplitudeMaximum,
+            value,
+            t => t.AmplitudeMaximum,
+            (t, v) => t.AmplitudeMaximum = v)
         { }
     }
 
     internal class AmplitudeMinimumCommand : SignalPropertyCommand<float>
     {
         internal AmplitudeMinimumCommand(int index, float value) : base(
-        index,
-        Property.SignalAmplitudeMinimum,
-        value,
-        t => t.AmplitudeMinimum,
-        (t, v) => t.AmplitudeMinimum = v)
+            index,
+            Property.SignalAmplitudeMinimum,
+            value,
+            t => t.AmplitudeMinimum,
+            (t, v) => t.AmplitudeMinimum = v)
         { }
     }
 

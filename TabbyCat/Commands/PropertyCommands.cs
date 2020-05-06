@@ -1,7 +1,9 @@
 ﻿namespace TabbyCat.Commands
 {
     using Models;
+    using Properties;
     using System;
+    using System.Globalization;
     using System.Text.RegularExpressions;
     using Types;
     using Utils;
@@ -41,7 +43,7 @@
             return $"{Property.AsString()} = {s}";
         }
 
-        private string Action => $"{Property.AsString()} change";
+        private string Action => string.Format(CultureInfo.CurrentCulture, Resources.Command_PropertyChange, Property.AsString());
 
         protected Func<TItem, TValue> Get;
 
@@ -66,7 +68,7 @@
             return true;
         }
 
-        protected override string Target => "Scene";
+        protected override string Target => Resources.Property_Scene;
 
         protected override Scene GetItem(Scene scene) => scene;
     }
@@ -83,7 +85,7 @@
             return true;
         }
 
-        protected override string Target => "Signal";
+        protected override string Target => Resources.Property_Signal;
 
         protected override Signal GetItem(Scene scene) => scene.Signals[Index];
     }
@@ -100,7 +102,7 @@
             return true;
         }
 
-        protected override string Target => "Trace";
+        protected override string Target => Resources.Property_Trace;
 
         protected override Trace GetItem(Scene scene) => scene.Traces[Index];
     }

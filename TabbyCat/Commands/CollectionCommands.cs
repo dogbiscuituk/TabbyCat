@@ -1,7 +1,8 @@
 ﻿namespace TabbyCat.Commands
 {
     using Models;
-    using Utils;
+    using Properties;
+    using System.Globalization;
     using Types;
 
     /// <summary>
@@ -60,7 +61,10 @@
             return true;
         }
 
-        public override string ToString() => $"{(Adding ? "Add" : "Remove")} {Target}";
+        public override string ToString() => string.Format(
+            CultureInfo.CurrentCulture,
+            Adding ? Resources.Command_AddItem : Resources.Command_RemoveItem,
+            Target);
 
         // Protected methods
 
@@ -80,7 +84,10 @@
 
         // Private methods
 
-        private string GetAction(bool undo) => $"{Property} {(Adding ^ undo ? "addition" : "removal")}";
+        private string GetAction(bool undo) => string.Format(
+            CultureInfo.CurrentCulture,
+            Adding ^ undo ? Resources.Command_ItemAddition : Resources.Command_ItemRemoval,
+            Property);
     }
 
     internal class SignalCollectionCommand : CollectionCommand<Signal>

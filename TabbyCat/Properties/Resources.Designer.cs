@@ -455,6 +455,51 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add {0}.
+        /// </summary>
+        public static string Command_AddItem {
+            get {
+                return ResourceManager.GetString("Command_AddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} addition.
+        /// </summary>
+        public static string Command_ItemAddition {
+            get {
+                return ResourceManager.GetString("Command_ItemAddition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (0) removal.
+        /// </summary>
+        public static string Command_ItemRemoval {
+            get {
+                return ResourceManager.GetString("Command_ItemRemoval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} change.
+        /// </summary>
+        public static string Command_PropertyChange {
+            get {
+                return ResourceManager.GetString("Command_PropertyChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove {0}.
+        /// </summary>
+        public static string Command_RemoveItem {
+            get {
+                return ResourceManager.GetString("Command_RemoveItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Direction|Camera direction (degrees).
         /// </summary>
         public static string Control_Camera_Direction {
@@ -1708,7 +1753,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to last shader (placeholder).
         /// </summary>
         public static string Property_LastShader {
             get {
@@ -1749,6 +1794,15 @@ namespace TabbyCat.Properties {
         public static string Property_Samples {
             get {
                 return ResourceManager.GetString("Property_Samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scene.
+        /// </summary>
+        public static string Property_Scene {
+            get {
+                return ResourceManager.GetString("Property_Scene", resourceCulture);
             }
         }
         
@@ -1812,6 +1866,15 @@ namespace TabbyCat.Properties {
         public static string Property_SceneVertexShader {
             get {
                 return ResourceManager.GetString("Property_SceneVertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal.
+        /// </summary>
+        public static string Property_Signal {
+            get {
+                return ResourceManager.GetString("Property_Signal", resourceCulture);
             }
         }
         
@@ -1929,6 +1992,15 @@ namespace TabbyCat.Properties {
         public static string Property_TessellationEvaluationShader {
             get {
                 return ResourceManager.GetString("Property_TessellationEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trace.
+        /// </summary>
+        public static string Property_Trace {
+            get {
+                return ResourceManager.GetString("Property_Trace", resourceCulture);
             }
         }
         
@@ -2095,15 +2167,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scene.
-        /// </summary>
-        public static string PropertyName_SceneScope {
-            get {
-                return ResourceManager.GetString("PropertyName_SceneScope", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to shader.
         /// </summary>
         public static string PropertyName_Shader {
@@ -2127,15 +2190,6 @@ namespace TabbyCat.Properties {
         public static string PropertyName_ShaderScope {
             get {
                 return ResourceManager.GetString("PropertyName_ShaderScope", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace.
-        /// </summary>
-        public static string PropertyName_TraceScope {
-            get {
-                return ResourceManager.GetString("PropertyName_TraceScope", resourceCulture);
             }
         }
         
