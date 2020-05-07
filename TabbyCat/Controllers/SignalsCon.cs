@@ -60,8 +60,8 @@
             signalEdit.Dock = DockStyle.Top;
             SignalCons.Add(newSignalCon);
             SignalsForm.Controls.Add(signalEdit);
-            signalEdit.BringToFront();
             newSignalCon.Connect(true);
+            AdjustZorder();
         }
 
         internal void Load()
@@ -73,7 +73,7 @@
 
         internal void RemoveAt(int index)
         {
-            var oldSignalCon = SignalCons.First(p => p.Index == index);
+            var oldSignalCon = FindSignalCon(index);
             oldSignalCon.Connect(false);
             SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
             SignalCons.Remove(oldSignalCon);
@@ -162,11 +162,21 @@
                 signalCon.Index += delta;
         }
 
+        private void AdjustZorder()
+        {
+            SignalsForm.SuspendLayout();
+            for (var index = 0; index < Scene.Signals.Count; index++)
+                FindSignalCon(index)?.SignalEdit?.BringToFront();
+            SignalsForm.ResumeLayout();
+        }
+
         private void DeleteAllButton_Click(object sender, System.EventArgs e)
         {
             for (var index = SignalsCount - 1; index >= 0; index--)
                 Run(new SignalDeleteCommand(index));
         }
+
+        private SignalCon FindSignalCon(int index) => SignalCons.FirstOrDefault(p => p.Index == index);
 
         private SignalsForm NewSignalsForm()
         {
