@@ -8,7 +8,6 @@
     using System.Linq;
     using System.Windows.Forms;
     using Types;
-    using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
