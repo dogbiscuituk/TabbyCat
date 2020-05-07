@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using FastColoredTextBoxNS;
     using CustomControls;
+    using FastColoredTextBoxNS;
     using Models;
     using OpenTK.Graphics.OpenGL;
     using Properties;
