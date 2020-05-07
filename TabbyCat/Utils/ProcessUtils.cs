@@ -5,7 +5,7 @@
     using System.Diagnostics;
     using System.Windows.Forms;
 
-    public static class Processes
+    public static class ProcessUtils
     {
         public static void Launch(this string path)
         {

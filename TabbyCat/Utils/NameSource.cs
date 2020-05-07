@@ -4,6 +4,8 @@
 
     public static class NameSource
     {
+        // Public properties
+
         /// <summary>
         /// Return the full list of alphabetical names, starting with "A" to "Z", then "AA" to "ZZ", "AAA" to "ZZZ", etc.
         /// This is similar to the problem of representing all natural numbers in the form "0" to "9", "10" to "99", "100" to "999", etc,
@@ -13,6 +15,8 @@
         /// The impact of this in the implementation is the surprise appearance of a "-1" in the body of the ToName() method.
         /// </summary>
         public static IEnumerable<string> Names => GetNames();
+
+        // Private methods
 
         private static IEnumerable<string> GetNames()
         {

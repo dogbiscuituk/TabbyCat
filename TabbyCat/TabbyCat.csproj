@@ -227,7 +227,7 @@
     <Compile Include="Utils\GraphicUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
     <Compile Include="Utils\NameSource.cs" />
-    <Compile Include="Utils\Processes.cs" />
+    <Compile Include="Utils\ProcessUtils.cs" />
     <Compile Include="Utils\PropertyUtils.cs" />
     <Compile Include="Utils\ShaderUtils.cs" />
     <Compile Include="Utils\StringUtils.cs" />
