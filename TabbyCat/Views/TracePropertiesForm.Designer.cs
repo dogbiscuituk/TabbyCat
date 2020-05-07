@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TracePropertiesEdit = new TabbyCat.Controls.TracePropertiesEdit();
+            this.TracePropertiesEdit = new UserControls.TracePropertiesEdit();
             this.SuspendLayout();
             // 
             // TracePropertiesEdit
@@ -61,6 +61,6 @@
 
         #endregion
 
-        internal Controls.TracePropertiesEdit TracePropertiesEdit;
+        internal UserControls.TracePropertiesEdit TracePropertiesEdit;
     }
 }

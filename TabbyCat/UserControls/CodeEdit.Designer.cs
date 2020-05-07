@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.Controls
+﻿namespace TabbyCat.UserControls
 {
     partial class CodeEdit
     {

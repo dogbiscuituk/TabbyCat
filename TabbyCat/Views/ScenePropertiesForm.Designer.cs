@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ScenePropertiesEdit = new TabbyCat.Controls.ScenePropertiesEdit();
+            this.ScenePropertiesEdit = new UserControls.ScenePropertiesEdit();
             this.SuspendLayout();
             // 
             // ScenePropertiesEdit
@@ -61,6 +61,6 @@
 
         #endregion
 
-        internal Controls.ScenePropertiesEdit ScenePropertiesEdit;
+        internal UserControls.ScenePropertiesEdit ScenePropertiesEdit;
     }
 }

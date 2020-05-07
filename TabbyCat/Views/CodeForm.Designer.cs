@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CodeEdit = new TabbyCat.Controls.CodeEdit();
+            this.CodeEdit = new UserControls.CodeEdit();
             this.SuspendLayout();
             // 
             // CodeEdit
@@ -57,6 +57,6 @@
 
         #endregion
 
-        internal Controls.CodeEdit CodeEdit;
+        internal UserControls.CodeEdit CodeEdit;
     }
 }

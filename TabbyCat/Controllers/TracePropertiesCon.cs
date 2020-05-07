@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Controls;
     using Models;
     using OpenTK;
     using Properties;
@@ -10,6 +9,7 @@
     using System.Linq;
     using System.Windows.Forms;
     using Types;
+    using UserControls;
     using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;

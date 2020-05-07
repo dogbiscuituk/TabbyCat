@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Controls;
     using FastColoredTextBoxNS;
     using Jmk.Controls;
     using Models;
@@ -14,6 +13,7 @@
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
     using Types;
+    using UserControls;
     using Utils;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;

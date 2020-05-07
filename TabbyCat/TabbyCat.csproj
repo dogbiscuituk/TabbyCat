@@ -115,28 +115,28 @@
     <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\TracePropertiesCon.cs" />
-    <Compile Include="Controls\CodeEdit.cs">
+    <Compile Include="UserControls\CodeEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CodeEdit.Designer.cs">
+    <Compile Include="UserControls\CodeEdit.Designer.cs">
       <DependentUpon>CodeEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ScenePropertiesEdit.cs">
+    <Compile Include="UserControls\ScenePropertiesEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ScenePropertiesEdit.Designer.cs">
+    <Compile Include="UserControls\ScenePropertiesEdit.Designer.cs">
       <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SignalEdit.cs">
+    <Compile Include="UserControls\SignalEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SignalEdit.Designer.cs">
+    <Compile Include="UserControls\SignalEdit.Designer.cs">
       <DependentUpon>SignalEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TracePropertiesEdit.cs">
+    <Compile Include="UserControls\TracePropertiesEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TracePropertiesEdit.Designer.cs">
+    <Compile Include="UserControls\TracePropertiesEdit.Designer.cs">
       <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Converters\SignalConverter.cs" />
@@ -269,16 +269,16 @@
     <Compile Include="Views\WorldForm.Designer.cs">
       <DependentUpon>WorldForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\CodeEdit.resx">
+    <EmbeddedResource Include="UserControls\CodeEdit.resx">
       <DependentUpon>CodeEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ScenePropertiesEdit.resx">
+    <EmbeddedResource Include="UserControls\ScenePropertiesEdit.resx">
       <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SignalEdit.resx">
+    <EmbeddedResource Include="UserControls\SignalEdit.resx">
       <DependentUpon>SignalEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TracePropertiesEdit.resx">
+    <EmbeddedResource Include="UserControls\TracePropertiesEdit.resx">
       <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
