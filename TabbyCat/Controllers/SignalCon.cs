@@ -55,13 +55,13 @@
         // Private constants
 
         private const int
-            AmpGaugeMin = -1024,
-            AmpGaugeMax = +1024,
+            AmpGaugeMin = 0,
+            AmpGaugeMax = 1000,
             AmpGaugeSmall = 1,
             AmpGaugeLarge = 10,
             AmpGaugeRange = AmpGaugeMax - AmpGaugeMin,
             FreqGaugeMin = 0,
-            FreqGaugeMax = 1000,
+            FreqGaugeMax = 500,
             FreqGaugeSmall = 1,
             FreqGaugeLarge = 10,
             FreqGaugeRange = FreqGaugeMax - FreqGaugeMin;
