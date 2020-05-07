@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.lblStripes = new System.Windows.Forms.CheckBox();
-            this.lblMaximum = new System.Windows.Forms.CheckBox();
-            this.lblMinimum = new System.Windows.Forms.CheckBox();
-            this.lblScale = new System.Windows.Forms.CheckBox();
+            this.cbStripes = new System.Windows.Forms.CheckBox();
+            this.cbMaximum = new System.Windows.Forms.CheckBox();
+            this.cbMinimum = new System.Windows.Forms.CheckBox();
+            this.cbScale = new System.Windows.Forms.CheckBox();
             this.lblSelectedTraces = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -93,10 +93,10 @@
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
             this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
-            this.TableLayoutPanel.Controls.Add(this.lblStripes, 0, 6);
-            this.TableLayoutPanel.Controls.Add(this.lblMaximum, 0, 5);
-            this.TableLayoutPanel.Controls.Add(this.lblMinimum, 0, 4);
-            this.TableLayoutPanel.Controls.Add(this.lblScale, 0, 3);
+            this.TableLayoutPanel.Controls.Add(this.cbStripes, 0, 6);
+            this.TableLayoutPanel.Controls.Add(this.cbMaximum, 0, 5);
+            this.TableLayoutPanel.Controls.Add(this.cbMinimum, 0, 4);
+            this.TableLayoutPanel.Controls.Add(this.cbScale, 0, 3);
             this.TableLayoutPanel.Controls.Add(this.lblSelectedTraces, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.lblLocation, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.lblDescription, 0, 0);
@@ -145,75 +145,75 @@
             // 
             // lblStripes
             // 
-            this.lblStripes.AutoSize = true;
-            this.lblStripes.BackColor = System.Drawing.SystemColors.Info;
-            this.lblStripes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblStripes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStripes.FlatAppearance.BorderSize = 0;
-            this.lblStripes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStripes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStripes.Location = new System.Drawing.Point(3, 169);
-            this.lblStripes.Name = "lblStripes";
-            this.lblStripes.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.lblStripes.Size = new System.Drawing.Size(79, 21);
-            this.lblStripes.TabIndex = 34;
-            this.lblStripes.Text = "#Stripes";
-            this.lblStripes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblStripes.UseVisualStyleBackColor = false;
+            this.cbStripes.AutoSize = true;
+            this.cbStripes.BackColor = System.Drawing.SystemColors.Info;
+            this.cbStripes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStripes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbStripes.FlatAppearance.BorderSize = 0;
+            this.cbStripes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbStripes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStripes.Location = new System.Drawing.Point(3, 169);
+            this.cbStripes.Name = "lblStripes";
+            this.cbStripes.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbStripes.Size = new System.Drawing.Size(79, 21);
+            this.cbStripes.TabIndex = 34;
+            this.cbStripes.Text = "#Stripes";
+            this.cbStripes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbStripes.UseVisualStyleBackColor = false;
             // 
             // lblMaximum
             // 
-            this.lblMaximum.AutoSize = true;
-            this.lblMaximum.BackColor = System.Drawing.SystemColors.Info;
-            this.lblMaximum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMaximum.FlatAppearance.BorderSize = 0;
-            this.lblMaximum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblMaximum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaximum.Location = new System.Drawing.Point(3, 142);
-            this.lblMaximum.Name = "lblMaximum";
-            this.lblMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.lblMaximum.Size = new System.Drawing.Size(79, 21);
-            this.lblMaximum.TabIndex = 33;
-            this.lblMaximum.Text = "Max";
-            this.lblMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMaximum.UseVisualStyleBackColor = false;
+            this.cbMaximum.AutoSize = true;
+            this.cbMaximum.BackColor = System.Drawing.SystemColors.Info;
+            this.cbMaximum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbMaximum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbMaximum.FlatAppearance.BorderSize = 0;
+            this.cbMaximum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMaximum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMaximum.Location = new System.Drawing.Point(3, 142);
+            this.cbMaximum.Name = "lblMaximum";
+            this.cbMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbMaximum.Size = new System.Drawing.Size(79, 21);
+            this.cbMaximum.TabIndex = 33;
+            this.cbMaximum.Text = "Max";
+            this.cbMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbMaximum.UseVisualStyleBackColor = false;
             // 
             // lblMinimum
             // 
-            this.lblMinimum.AutoSize = true;
-            this.lblMinimum.BackColor = System.Drawing.SystemColors.Info;
-            this.lblMinimum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMinimum.FlatAppearance.BorderSize = 0;
-            this.lblMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblMinimum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinimum.Location = new System.Drawing.Point(3, 115);
-            this.lblMinimum.Name = "lblMinimum";
-            this.lblMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.lblMinimum.Size = new System.Drawing.Size(79, 21);
-            this.lblMinimum.TabIndex = 32;
-            this.lblMinimum.Text = "Min";
-            this.lblMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblMinimum.UseVisualStyleBackColor = false;
+            this.cbMinimum.AutoSize = true;
+            this.cbMinimum.BackColor = System.Drawing.SystemColors.Info;
+            this.cbMinimum.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbMinimum.FlatAppearance.BorderSize = 0;
+            this.cbMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMinimum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMinimum.Location = new System.Drawing.Point(3, 115);
+            this.cbMinimum.Name = "lblMinimum";
+            this.cbMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbMinimum.Size = new System.Drawing.Size(79, 21);
+            this.cbMinimum.TabIndex = 32;
+            this.cbMinimum.Text = "Min";
+            this.cbMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbMinimum.UseVisualStyleBackColor = false;
             // 
             // lblScale
             // 
-            this.lblScale.AutoSize = true;
-            this.lblScale.BackColor = System.Drawing.SystemColors.Info;
-            this.lblScale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblScale.FlatAppearance.BorderSize = 0;
-            this.lblScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblScale.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScale.Location = new System.Drawing.Point(3, 88);
-            this.lblScale.Name = "lblScale";
-            this.lblScale.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.lblScale.Size = new System.Drawing.Size(79, 21);
-            this.lblScale.TabIndex = 31;
-            this.lblScale.Text = "Scale";
-            this.lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblScale.UseVisualStyleBackColor = false;
+            this.cbScale.AutoSize = true;
+            this.cbScale.BackColor = System.Drawing.SystemColors.Info;
+            this.cbScale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbScale.FlatAppearance.BorderSize = 0;
+            this.cbScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbScale.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbScale.Location = new System.Drawing.Point(3, 88);
+            this.cbScale.Name = "lblScale";
+            this.cbScale.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.cbScale.Size = new System.Drawing.Size(79, 21);
+            this.cbScale.TabIndex = 31;
+            this.cbScale.Text = "Scale";
+            this.cbScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbScale.UseVisualStyleBackColor = false;
             // 
             // lblSelectedTraces
             // 
@@ -783,9 +783,9 @@
         public System.Windows.Forms.Label lblSelectedTraces;
         public Jmk.Controls.JmkToolStrip SelectionToolbar;
         public System.Windows.Forms.ToolStripLabel lblAll;
-        public System.Windows.Forms.CheckBox lblScale;
-        public System.Windows.Forms.CheckBox lblMinimum;
-        public System.Windows.Forms.CheckBox lblMaximum;
-        public System.Windows.Forms.CheckBox lblStripes;
+        public System.Windows.Forms.CheckBox cbScale;
+        public System.Windows.Forms.CheckBox cbMinimum;
+        public System.Windows.Forms.CheckBox cbMaximum;
+        public System.Windows.Forms.CheckBox cbStripes;
     }
 }

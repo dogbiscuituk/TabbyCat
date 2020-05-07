@@ -24,7 +24,7 @@
 
         public Color BackgroundColour { get; set; }
         public Camera Camera { get; set; }
-        public float FPS { get; set; }
+        public float TargetFPS { get; set; }
         public string GLTargetVersion { get; set; }
         public Projection Projection { get; set; }
         public int Samples { get; set; }
@@ -118,7 +118,7 @@
             InitShaders();
             BackgroundColour = Color.White;
             Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
-            FPS = 60;
+            TargetFPS = 60;
             GLTargetVersion = "330";
             GPULog = string.Empty;
             GPUStatus = GPUStatus.OK;

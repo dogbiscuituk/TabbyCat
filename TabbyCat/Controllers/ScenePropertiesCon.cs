@@ -173,7 +173,7 @@
                         ScenePropertiesEdit.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
                         break;
                     case Property.TargetFPS:
-                        ScenePropertiesEdit.seFPS.Value = (decimal)Scene.FPS;
+                        ScenePropertiesEdit.seFPS.Value = (decimal)Scene.TargetFPS;
                         break;
                     case Property.GLTargetVersion:
                         ScenePropertiesEdit.seGLSLVersion.Text = Scene.GLTargetVersion;

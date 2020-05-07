@@ -6,8 +6,6 @@
 
     public static class PropertyUtils
     {
-        // Private fields
-
         private static readonly Dictionary<Property, string> PropertyNames = new Dictionary<Property, string>
         {
             { Property.None, Resources.Property_None},
@@ -18,11 +16,7 @@
             { Property.Camera, Resources.Property_Camera},
             { Property.CameraFocus, Resources.Property_CameraFocus},
             { Property.CameraPosition, Resources.Property_CameraPosition},
-            { Property.FarPlane, Resources.Property_FarPlane},
-            { Property.FieldOfView, Resources.Property_FieldOfView},
             { Property.GLTargetVersion, Resources.Property_GLTarget_Version},
-            { Property.NearPlane, Resources.Property_NearPlane},
-            { Property.ProjectionType, Resources.Property_ProjectionType},
             { Property.Samples, Resources.Property_Samples},
             { Property.SceneTitle, Resources.Property_SceneTitle},
             { Property.Signals, Resources.Property_Signals},
@@ -30,6 +24,15 @@
             { Property.TargetFPS, Resources.Property_TargetFPS},
             { Property.Traces, Resources.Property_Traces},
             { Property.VSync, Resources.Property_VSync},
+
+            // Projection properties
+
+            { Property.BeforeProjection, Resources.Blank },
+            { Property.ProjectionType, Resources.Property_ProjectionType},
+            { Property.FieldOfView, Resources.Property_FieldOfView},
+            { Property.NearPlane, Resources.Property_NearPlane},
+            { Property.FarPlane, Resources.Property_FarPlane},
+            { Property.AfterProjection, Resources.Blank },
 
             // Signal properties
 
@@ -62,7 +65,7 @@
 
             // Shader properties
 
-            { Property.FirstShader, Resources.Property_FirstShader },
+            { Property.BeforeShaders, Resources.Blank },
             { Property.VertexShader, Resources.Property_VertexShader },
             { Property.TessellationControlShader, Resources.Property_TessellationControlShader },
             { Property.TessellationEvaluationShader, Resources.Property_TessellationEvaluationShader },
@@ -81,11 +84,52 @@
             { Property.TraceGeometryShader, Resources.Property_TraceGeometryShader },
             { Property.TraceFragmentShader, Resources.Property_TraceFragmentShader },
             { Property.TraceComputeShader, Resources.Property_TraceComputeShader },
-            { Property.LastShader, Resources.Property_LastShader },
+            { Property.AfterShaders, Resources.Blank },
         };
 
         // Public methods
 
-        public static string AsString(this Property property) => PropertyNames[property].Split('|')[0];
+        /// <summary>
+        /// Retrieve the localized string for a Property enum value.
+        /// </summary>
+        /// <param name="p">The given enum value.</param>
+        /// <returns>A string localized to represent the given enum value.</returns>
+        public static string AsString(this Property p) => PropertyNames[p].Split('|')[0];
+
+        public static bool InvalidatesCameraView(this Property p)
+        {
+            switch (p)
+            {
+                case Property.Camera:
+                case Property.CameraPosition:
+                case Property.CameraFocus:
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool InvalidatesProgram(this Property p) => p.IsCollectionProperty() || p.IsShaderProperty();
+
+        public static bool InvalidatesProjection(this Property p) => p.IsProjectionProperty();
+
+        public static bool InvalidatesTrace(this Property p)
+        {
+            switch (p)
+            {
+                case Property.TracePattern:
+                case Property.TraceStripeCount:
+                    return true;
+            }
+            return false;
+        }
+
+        // Private methods
+
+        private static bool IsCollectionProperty(this Property p) => p == Property.Signals || p == Property.Traces;
+
+        private static bool IsProjectionProperty(this Property p) => p > Property.BeforeProjection && p < Property.AfterProjection;
+
+        private static bool IsShaderProperty(this Property p) => p > Property.BeforeShaders && p < Property.AfterShaders
+            || p == Property.GLTargetVersion;
     }
 }

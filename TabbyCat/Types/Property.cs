@@ -10,18 +10,23 @@
         Camera,
         CameraFocus,
         CameraPosition,
-        FarPlane,
-        FieldOfView,
         TargetFPS,
         GLTargetVersion,
-        NearPlane,
-        ProjectionType,
         Samples,
         SceneTitle,
         Signals,
         Stereo,
         Traces,
         VSync,
+
+        // Projection properties
+
+        BeforeProjection,
+        ProjectionType,
+        FieldOfView,
+        NearPlane,
+        FarPlane,
+        AfterProjection,
 
         // Signal properties
 
@@ -54,7 +59,7 @@
 
         // Shader properties
 
-        FirstShader,
+        BeforeShaders,
         VertexShader,
         TessellationControlShader,
         TessellationEvaluationShader,
@@ -73,6 +78,6 @@
         TraceGeometryShader,
         TraceFragmentShader,
         TraceComputeShader,
-        LastShader,
+        AfterShaders,
     }
 }

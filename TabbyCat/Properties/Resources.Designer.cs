@@ -109,6 +109,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Blank {
+            get {
+                return ResourceManager.GetString("Blank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Built-in Compute Shader Variables](%GLSLUrl%#compute-shader-special-variables)
         ///
         ///// workgroup dimensions
@@ -1690,15 +1699,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to first shader (placeholder).
-        /// </summary>
-        public static string Property_FirstShader {
-            get {
-                return ResourceManager.GetString("Property_FirstShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to fragment shader.
         /// </summary>
         public static string Property_FragmentShader {
@@ -1749,15 +1749,6 @@ namespace TabbyCat.Properties {
         public static string Property_GraphicsMode {
             get {
                 return ResourceManager.GetString("Property_GraphicsMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to last shader (placeholder).
-        /// </summary>
-        public static string Property_LastShader {
-            get {
-                return ResourceManager.GetString("Property_LastShader", resourceCulture);
             }
         }
         

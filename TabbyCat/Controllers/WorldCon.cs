@@ -332,7 +332,7 @@
 
         private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
 
-        private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.FPS, 1), int.MaxValue));
+        private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.TargetFPS, 1), int.MaxValue));
 
         private static Trace GetNewTrace(TraceType traceType)
         {

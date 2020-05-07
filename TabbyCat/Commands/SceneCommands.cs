@@ -61,8 +61,8 @@
         internal FpsCommand(float value) : base(
             Property.TargetFPS,
             value,
-            s => s.FPS,
-            (s, v) => s.FPS = v)
+            s => s.TargetFPS,
+            (s, v) => s.TargetFPS = v)
         { }
     }
 

@@ -130,8 +130,6 @@
 
         internal void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
 
-        internal void InvalidateCameraView() => CameraViewValid = false;
-
         internal void InvalidateProgram()
         {
             ProgramCompiled = false;
@@ -318,6 +316,8 @@
                 Loc_Signals.Add(GetUniformLocation(signal.Name));
         }
 
+        private void InvalidateCameraView() => CameraViewValid = false;
+
         private void LoadCameraView() => LoadMatrix(Loc_CameraView, Scene.GetCameraView());
 
         private void LoadParameters() // Time and AC/DC signals.
@@ -414,34 +414,14 @@
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
-            if (e.Property >= Property.FirstShader && e.Property <= Property.LastShader)
-            {
+            if (e.Property.InvalidatesCameraView())
+                InvalidateCameraView();
+            if (e.Property.InvalidatesProgram())
                 InvalidateProgram();
-                return;
-            }
-            switch (e.Property)
-            {
-                case Property.Camera:
-                case Property.CameraPosition:
-                case Property.CameraFocus:
-                    InvalidateCameraView();
-                    break;
-                case Property.ProjectionType:
-                case Property.FieldOfView:
-                case Property.NearPlane:
-                case Property.FarPlane:
-                    InvalidateProjection();
-                    break;
-                case Property.GLTargetVersion:
-                case Property.Signals:
-                case Property.Traces:
-                    InvalidateProgram();
-                    break;
-                case Property.TracePattern:
-                case Property.TraceStripeCount:
-                    RenderCon.InvalidateAllTraces();
-                    break;
-            }
+            if (e.Property.InvalidatesProjection())
+                InvalidateProjection();
+            if (e.Property.InvalidatesTrace())
+                InvalidateAllTraces();
         }
 
         // Private static methods

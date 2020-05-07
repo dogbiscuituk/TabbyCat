@@ -66,20 +66,7 @@
             }
         }
 
-        protected override bool CodeChanged(Property property)
-        {
-            switch (property)
-            {
-                case Property.GLTargetVersion:
-                case Property.Traces:
-                    return true;
-                default:
-                    return
-                        property == Shader ||
-                        property == ShaderType.SceneShader() ||
-                        property == ShaderType.TraceShader();
-            }
-        }
+        protected override bool CodeChanged(Property property) => property.InvalidatesProgram();
 
         private bool AddBreak(int b)
         {

@@ -6,7 +6,7 @@
     {
         Color BackgroundColour { get; set; }
         Camera Camera { get; set; }
-        float FPS { get; set; }
+        float TargetFPS { get; set; }
         string GLTargetVersion { get; set; }
         string GPULog { get; set; }
         GPUStatus GPUStatus { get; set; }
