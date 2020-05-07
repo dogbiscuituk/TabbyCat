@@ -31,7 +31,11 @@
 
         // Internal fields
 
+        /// <summary>
+        /// The index of this control's Signal in the Scene.Signals collection.
+        /// </summary>
         internal int Index;
+
         internal SignalEdit SignalEdit;
 
         // Protected properties
@@ -233,11 +237,10 @@
 
         private void SignalProperties_Click(object sender, EventArgs e)
         {
-            Signal signal;
+            var signal = Signal;
             using (var signalPropertiesCon = new SignalPropertiesCon(WorldCon))
-                signal = signalPropertiesCon.ShowDialog(Signal);
-            if (signal == Signal)
-                return;
+                if (!signalPropertiesCon.Execute(ref signal))
+                    return;
             Run(new SignalNameCommand(Index, signal.Name));
             Run(new WaveTypeCommand(Index, signal.WaveType));
             Run(new AmplitudeCommand(Index, signal.Amplitude));

@@ -97,7 +97,7 @@
             {
                 SignalsForm.AddButton.ButtonClick -= AddButton_ButtonClick;
                 SignalsForm.DeleteAllButton.Click -= DeleteAllButton_Click;
-                WorldCon.CollectionEdit += WorldCon_CollectionEdit;
+                WorldCon.CollectionEdit -= WorldCon_CollectionEdit;
                 WorldCon.PropertyEdit -= WorldCon_PropertyEdit;
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
@@ -201,7 +201,6 @@
                     break;
             }
         }
-
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
