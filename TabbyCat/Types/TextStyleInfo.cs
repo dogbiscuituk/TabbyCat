@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.Types
 {
     using Converters;
-    using Jmk.Controls;
+    using CustomControls;
     using System;
     using System.ComponentModel;
     using System.Drawing;

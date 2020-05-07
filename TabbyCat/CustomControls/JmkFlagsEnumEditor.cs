@@ -1,4 +1,4 @@
-﻿namespace Jmk.Controls
+﻿namespace TabbyCat.CustomControls
 {
     using System;
     using System.ComponentModel;

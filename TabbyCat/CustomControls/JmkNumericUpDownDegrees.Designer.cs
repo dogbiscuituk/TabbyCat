@@ -1,4 +1,4 @@
-﻿namespace Jmk.Controls
+﻿namespace TabbyCat.CustomControls
 {
     partial class JmkNumericUpDownDegrees
     {

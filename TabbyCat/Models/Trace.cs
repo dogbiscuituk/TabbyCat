@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Models
 {
     using Converters;
-    using Jmk.Common;
     using Newtonsoft.Json;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;

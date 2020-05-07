@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using Jmk.Controls;
+    using CustomControls;
     using Models;
     using Properties;
     using System;

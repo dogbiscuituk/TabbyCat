@@ -1,9 +1,9 @@
-﻿namespace Jmk.Controls
+﻿namespace TabbyCat.CustomControls
 {
-    using Jmk.Common;
     using System.Drawing;
     using System.IO;
     using System.Windows.Forms;
+    using Utils;
 
     public static class JmkControl
     {

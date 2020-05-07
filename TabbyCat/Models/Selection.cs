@@ -1,4 +1,4 @@
-﻿namespace Jmk.Common
+﻿namespace TabbyCat.Models
 {
     using System;
     using System.Collections.Generic;

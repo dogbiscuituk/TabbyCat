@@ -32,7 +32,7 @@
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.Toolbar = new Jmk.Controls.JmkToolStrip();
+            this.Toolbar = new CustomControls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
             this.tbNewFromTemplate = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +51,13 @@
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tbFullScreen = new System.Windows.Forms.ToolStripButton();
-            this.StatusBar = new Jmk.Controls.JmkStatusStrip();
+            this.StatusBar = new CustomControls.JmkStatusStrip();
             this.GraphicsModeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FpsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.GpuStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MainMenu = new Jmk.Controls.JmkMenuStrip();
+            this.MainMenu = new CustomControls.JmkMenuStrip();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeStop = new System.Windows.Forms.ToolStripMenuItem();
@@ -959,11 +959,11 @@
 
         internal System.Windows.Forms.ToolTip ToolTip;
         internal System.Windows.Forms.ContextMenuStrip PopupMenu;
-        internal Jmk.Controls.JmkStatusStrip StatusBar;
+        internal CustomControls.JmkStatusStrip StatusBar;
         internal System.Windows.Forms.ToolStripStatusLabel SpeedLabel;
         internal System.Windows.Forms.ToolStripStatusLabel TimeLabel;
         internal System.Windows.Forms.ToolStripStatusLabel FpsLabel;
-        internal Jmk.Controls.JmkToolStrip Toolbar;
+        internal CustomControls.JmkToolStrip Toolbar;
         internal System.Windows.Forms.ToolStripSplitButton tbNew;
         internal System.Windows.Forms.ToolStripMenuItem tbNewEmptyScene;
         internal System.Windows.Forms.ToolStripMenuItem tbNewFromTemplate;
@@ -977,7 +977,7 @@
         internal System.Windows.Forms.ToolStripButton tbCopy;
         internal System.Windows.Forms.ToolStripButton tbPaste;
         internal System.Windows.Forms.ToolStripButton tbDelete;
-        internal Jmk.Controls.JmkMenuStrip MainMenu;
+        internal CustomControls.JmkMenuStrip MainMenu;
         internal System.Windows.Forms.ToolStripMenuItem TimeDecelerate;
         internal System.Windows.Forms.ToolStripMenuItem TimeReverse;
         internal System.Windows.Forms.ToolStripMenuItem TimeStop;

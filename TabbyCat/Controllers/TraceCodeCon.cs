@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Jmk.Common;
     using Properties;
     using System;
     using System.Windows.Forms;

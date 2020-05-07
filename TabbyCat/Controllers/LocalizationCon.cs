@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using Commands;
-    using Jmk.Common;
     using Models;
     using OpenTK;
     using OpenTK.Graphics;
@@ -12,6 +11,7 @@
     using System.Windows.Forms;
     using Types;
     using UserControls;
+    using Utils;
     using Views;
 
     internal partial class LocalizationCon

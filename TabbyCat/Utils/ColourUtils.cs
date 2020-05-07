@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Utils
 {
-    using Jmk.Common;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
@@ -121,11 +120,7 @@
             if (!Brushes.TryGetValue(colour, out var brush))
             {
                 var prop = GetProp(colour);
-                var stock = prop != null;
-                if (stock)
-                    brush = ((Brush)prop.GetValue(null), true);
-                else
-                    brush = (new SolidBrush(colour), false);
+                brush = prop != null ? ((Brush)prop.GetValue(null), true) : (new SolidBrush(colour), false);
                 Brushes.Add(colour, brush);
             }
             return brush.Item1;

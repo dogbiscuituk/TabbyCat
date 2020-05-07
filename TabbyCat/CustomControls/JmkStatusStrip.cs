@@ -1,8 +1,8 @@
-﻿namespace Jmk.Controls
+﻿namespace TabbyCat.CustomControls
 {
     using System.Windows.Forms;
 
-    public class JmkMenuStrip : MenuStrip
+    public class JmkStatusStrip : StatusStrip
     {
         protected override void WndProc(ref Message m)
         {

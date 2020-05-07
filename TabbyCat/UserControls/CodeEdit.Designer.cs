@@ -49,16 +49,16 @@
             this.BottomSplit = new System.Windows.Forms.SplitContainer();
             this.PrimaryRuler = new FastColoredTextBoxNS.Ruler();
             this.PrimaryMap = new FastColoredTextBoxNS.DocumentMap();
-            this.jmkScrollPanel1 = new Jmk.Controls.JmkScrollPanel();
-            this.lblBuiltInHelp = new Jmk.Controls.JmkLinkLabel();
-            this.VerticalToolbar = new Jmk.Controls.JmkToolStrip();
+            this.jmkScrollPanel1 = new CustomControls.JmkScrollPanel();
+            this.lblBuiltInHelp = new CustomControls.JmkLinkLabel();
+            this.VerticalToolbar = new CustomControls.JmkToolStrip();
             this.tbUndo = new System.Windows.Forms.ToolStripButton();
             this.tbRedo = new System.Windows.Forms.ToolStripButton();
             this.tbCut = new System.Windows.Forms.ToolStripButton();
             this.tbCopy = new System.Windows.Forms.ToolStripButton();
             this.tbPaste = new System.Windows.Forms.ToolStripButton();
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
-            this.HorizontalToolbar = new Jmk.Controls.JmkToolStrip();
+            this.HorizontalToolbar = new CustomControls.JmkToolStrip();
             this.tbShader = new System.Windows.Forms.ToolStripSplitButton();
             this.miVertex = new System.Windows.Forms.ToolStripMenuItem();
             this.miTessellationControl = new System.Windows.Forms.ToolStripMenuItem();
@@ -741,7 +741,7 @@
         #endregion
 
         public System.Windows.Forms.ToolStripContainer ToolStripContainer;
-        public Jmk.Controls.JmkToolStrip HorizontalToolbar;
+        public CustomControls.JmkToolStrip HorizontalToolbar;
         public System.Windows.Forms.SplitContainer EditSplit;
         public System.Windows.Forms.SplitContainer TopSplit;
         public FastColoredTextBoxNS.FastColoredTextBox SecondaryTextBox;
@@ -759,8 +759,8 @@
         public System.Windows.Forms.ToolStripMenuItem miFragment;
         public System.Windows.Forms.ToolStripMenuItem miCompute;
         public System.Windows.Forms.SplitContainer MainSplit;
-        public Jmk.Controls.JmkLinkLabel lblBuiltInHelp;
-        public Jmk.Controls.JmkScrollPanel jmkScrollPanel1;
+        public CustomControls.JmkLinkLabel lblBuiltInHelp;
+        public CustomControls.JmkScrollPanel jmkScrollPanel1;
         public System.Windows.Forms.ContextMenuStrip PopupEditMenu;
         public System.Windows.Forms.ToolStripMenuItem miUndo;
         public System.Windows.Forms.ToolStripMenuItem miRedo;
@@ -769,7 +769,7 @@
         public System.Windows.Forms.ToolStripMenuItem miCopy;
         public System.Windows.Forms.ToolStripMenuItem miPaste;
         public System.Windows.Forms.ToolStripMenuItem miDelete;
-        public Jmk.Controls.JmkToolStrip VerticalToolbar;
+        public CustomControls.JmkToolStrip VerticalToolbar;
         public System.Windows.Forms.ToolStripButton tbUndo;
         public System.Windows.Forms.ToolStripButton tbRedo;
         public System.Windows.Forms.ToolStripButton tbCut;

@@ -32,7 +32,7 @@
             this.NameEditor = new System.Windows.Forms.TextBox();
             this.AmplitudeSlider = new System.Windows.Forms.TrackBar();
             this.FrequencySlider = new System.Windows.Forms.TrackBar();
-            this.Toolbar = new Jmk.Controls.JmkToolStrip();
+            this.Toolbar = new CustomControls.JmkToolStrip();
             this.WaveTypeButton = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.SignalProperties = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +167,7 @@
         public System.Windows.Forms.TextBox NameEditor;
         public System.Windows.Forms.TrackBar AmplitudeSlider;
         public System.Windows.Forms.TrackBar FrequencySlider;
-        public Jmk.Controls.JmkToolStrip Toolbar;
+        public CustomControls.JmkToolStrip Toolbar;
         public System.Windows.Forms.ToolStripSplitButton WaveTypeButton;
         public System.Windows.Forms.ToolStripButton DeleteButton;
         public System.Windows.Forms.ToolStripMenuItem SignalProperties;

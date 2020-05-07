@@ -51,10 +51,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NameSourceTests.cs" />
     <Compile Include="PropertyTests.cs" />
     <Compile Include="SignalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingalTestData.cs" />
+    <Compile Include="StringUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

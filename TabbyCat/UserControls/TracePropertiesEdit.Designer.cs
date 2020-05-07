@@ -56,10 +56,10 @@
             this.cbPattern = new System.Windows.Forms.ComboBox();
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
-            this.sePitch = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seYaw = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.seRoll = new Jmk.Controls.JmkNumericUpDownDegrees();
-            this.SelectionToolbar = new Jmk.Controls.JmkToolStrip();
+            this.sePitch = new CustomControls.JmkNumericUpDownDegrees();
+            this.seYaw = new CustomControls.JmkNumericUpDownDegrees();
+            this.seRoll = new CustomControls.JmkNumericUpDownDegrees();
+            this.SelectionToolbar = new CustomControls.JmkToolStrip();
             this.lblAll = new System.Windows.Forms.ToolStripLabel();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
@@ -763,9 +763,9 @@
         public System.Windows.Forms.NumericUpDown seLocationX;
         public System.Windows.Forms.NumericUpDown seLocationY;
         public System.Windows.Forms.NumericUpDown seLocationZ;
-        public Jmk.Controls.JmkNumericUpDownDegrees sePitch;
-        public Jmk.Controls.JmkNumericUpDownDegrees seYaw;
-        public Jmk.Controls.JmkNumericUpDownDegrees seRoll;
+        public CustomControls.JmkNumericUpDownDegrees sePitch;
+        public CustomControls.JmkNumericUpDownDegrees seYaw;
+        public CustomControls.JmkNumericUpDownDegrees seRoll;
         public System.Windows.Forms.NumericUpDown seScaleX;
         public System.Windows.Forms.NumericUpDown seScaleY;
         public System.Windows.Forms.NumericUpDown seScaleZ;
@@ -781,7 +781,7 @@
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.CheckBox cbVisible;
         public System.Windows.Forms.Label lblSelectedTraces;
-        public Jmk.Controls.JmkToolStrip SelectionToolbar;
+        public CustomControls.JmkToolStrip SelectionToolbar;
         public System.Windows.Forms.ToolStripLabel lblAll;
         public System.Windows.Forms.CheckBox cbScale;
         public System.Windows.Forms.CheckBox cbMinimum;

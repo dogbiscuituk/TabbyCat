@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Models
 {
-    using Jmk.Common;
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System;

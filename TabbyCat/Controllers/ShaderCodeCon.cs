@@ -2,7 +2,6 @@
 {
     using Commands;
     using FastColoredTextBoxNS;
-    using Jmk.Common;
     using Properties;
     using System;
     using System.Collections.Generic;

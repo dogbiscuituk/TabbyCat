@@ -1,7 +1,8 @@
-﻿namespace Jmk.Common.Tests
+﻿namespace TabbyCat.Tests
 {
     using NUnit.Framework;
     using System.Linq;
+    using Utils;
 
     [TestFixture]
     public class NameSourceTests
