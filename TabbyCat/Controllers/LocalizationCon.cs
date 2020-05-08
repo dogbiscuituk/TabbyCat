@@ -189,24 +189,33 @@
 
     public partial class LocalizationCon : IDisposable
     {
+        // Private fields
+
         private bool Disposed;
+
+        // Public methods
 
         public void Dispose()
         {
-            if (!Disposed)
-            {
-                Dispose(true);
-                Disposed = true;
-            }
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        // Protected methods
+
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-                DisposeManagedState();
+            if (!Disposed)
+            {
+                if (disposing)
+                    DisposeManagedState();
+                DisposeUnmanagedState();
+                Disposed = true;
+            }
         }
 
         protected virtual void DisposeManagedState() { }
+
+        protected virtual void DisposeUnmanagedState() { }
     }
 }

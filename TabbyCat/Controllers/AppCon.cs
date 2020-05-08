@@ -30,7 +30,7 @@
 
         public static Random Random { get; set; } = new Random();
 
-        public static List<WorldCon> WorldCons { get; set; } = new List<WorldCon>();
+        public static List<WorldCon> WorldCons { get; } = new List<WorldCon>();
 
         // Private fields
 
