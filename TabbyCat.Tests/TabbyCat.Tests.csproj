@@ -52,8 +52,11 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CurveTests.cs" />
     <Compile Include="Models\SceneTests.cs" />
+    <Compile Include="Models\SurfaceTests.cs" />
     <Compile Include="Models\TraceTests.cs" />
+    <Compile Include="Models\VolumeTests.cs" />
     <Compile Include="Utils\NameSourceTests.cs" />
     <Compile Include="Utils\PropertyUtilsTests.cs" />
     <Compile Include="Models\SignalTests.cs" />

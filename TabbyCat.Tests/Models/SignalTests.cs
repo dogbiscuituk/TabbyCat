@@ -7,6 +7,8 @@
     [TestFixture]
     public class SignalTests
     {
+        // Private fields
+
         private readonly Signal Signal = new Signal();
 
         // Public methods

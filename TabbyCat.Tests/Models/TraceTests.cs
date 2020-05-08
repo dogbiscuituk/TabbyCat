@@ -9,6 +9,8 @@
     [TestFixture]
     public class TraceTests
     {
+        // Private fields
+
         private readonly Trace Trace = new Trace();
 
         // Public methods

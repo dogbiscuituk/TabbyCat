@@ -9,6 +9,8 @@
     [TestFixture]
     public class SceneTests
     {
+        // Private fields
+
         private readonly Scene Scene = new Scene();
 
         // Public methods
