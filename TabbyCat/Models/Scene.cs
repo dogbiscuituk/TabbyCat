@@ -115,18 +115,18 @@
 
         private void Init()
         {
-            InitShaders();
             BackgroundColour = Color.White;
-            Camera = new Camera(2 * Vector3.UnitZ, Vector3.Zero);
-            TargetFPS = 60;
+            Camera = Camera.Default;
             GLTargetVersion = "330";
             GPULog = string.Empty;
-            GPUStatus = GPUStatus.OK;
-            Projection = new Projection(75, 16, 9, 0.1f, 1000);
+            GPUStatus = GPUStatus.None;
+            Projection = Projection.Default;
             Signals = new List<Signal>();
+            TargetFPS = 60;
             Title = string.Empty;
             Traces = new List<Trace>();
             VSync = false;
+            InitShaders();
         }
 
         private void InitShaders()

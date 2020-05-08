@@ -1,7 +1,7 @@
-﻿namespace TabbyCat.Tests
+﻿namespace TabbyCat.Tests.Utils
 {
     using NUnit.Framework;
-    using Utils;
+    using TabbyCat.Utils;
 
     [TestFixture]
     public class StringUtilsTests

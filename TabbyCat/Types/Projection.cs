@@ -80,5 +80,20 @@
         [JsonIgnore] public float Right => FrustumMax.X;
         [JsonIgnore] public float Top => FrustumMax.Y;
         [JsonIgnore] public float Width => Right - Left;
+
+        public static Projection Default => new Projection(75, 16, 9, 0.1f, 1000);
+
+        public static bool operator ==(Projection a, Projection b) =>
+            a?.ProjectionType == b?.ProjectionType &&
+            a?.FieldOfView == b?.FieldOfView &&
+            a?.FrustumMin == b?.FrustumMin &&
+            a?.FrustumMax == b?.FrustumMax;
+
+        public static bool operator !=(Projection a, Projection b) => !(a == b);
+
+        public override bool Equals(object obj) => obj is Projection projection && projection == this;
+
+        public override int GetHashCode() => (int)ProjectionType ^ FieldOfView.GetHashCode() ^ FrustumMin.GetHashCode() ^ FrustumMax.GetHashCode();
+
     }
 }

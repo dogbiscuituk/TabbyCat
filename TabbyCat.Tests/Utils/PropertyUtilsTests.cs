@@ -1,12 +1,12 @@
-﻿namespace TabbyCat.Tests
+﻿namespace TabbyCat.Tests.Utils
 {
     using NUnit.Framework;
     using System;
-    using Types;
-    using Utils;
+    using TabbyCat.Types;
+    using TabbyCat.Utils;
 
     [TestFixture]
-    public class PropertyTests
+    public class PropertyUtilsTests
     {
         [Test]
         public void TestPropertyAsString()

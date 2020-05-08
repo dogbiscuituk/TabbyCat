@@ -45,10 +45,10 @@
         [JsonConverter(typeof(Vector3Converter))]
         public Vector3 StripeCount { get; set; }
 
-        internal int Index
+        public int Index
         {
             get => Scene?.Traces.IndexOf(this) ?? _Index;
-            set => _Index = value;
+            private set => _Index = value;
         }
 
         /// <summary>
@@ -108,7 +108,6 @@
 
         private void Init()
         {
-            InitShaders();
             Description = string.Empty;
             Index = -1;
             Location = Vector3.Zero;
@@ -119,6 +118,7 @@
             Scale = Vector3.One;
             StripeCount = new Vector3(100, 100, 0);
             Visible = true;
+            InitShaders();
         }
 
         private void InitShaders()

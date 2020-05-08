@@ -1,8 +1,8 @@
-﻿namespace TabbyCat.Tests
+﻿namespace TabbyCat.Tests.Utils
 {
     using NUnit.Framework;
     using System.Linq;
-    using Utils;
+    using TabbyCat.Utils;
 
     [TestFixture]
     public class NameSourceTests

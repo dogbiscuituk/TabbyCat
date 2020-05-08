@@ -1,9 +1,9 @@
-﻿namespace TabbyCat.Tests
+﻿namespace TabbyCat.Tests.Models
 {
     using NUnit.Framework;
     using System.Collections;
 
-    public class SingalTestData
+    public class SingalTestsData
     {
         /// <summary>
         /// Test data for case WaveType Constant.
