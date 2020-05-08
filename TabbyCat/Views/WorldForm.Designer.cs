@@ -1054,7 +1054,7 @@
         public System.Windows.Forms.ToolStripMenuItem ViewRestoreWindowLayout;
         public System.Windows.Forms.ToolStripStatusLabel GraphicsModeLabel;
         public System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.ToolStripButton tbFullScreen;
     }
 }
