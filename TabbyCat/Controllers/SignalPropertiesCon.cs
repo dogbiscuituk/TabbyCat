@@ -6,11 +6,11 @@
     using Types;
     using Views;
 
-    internal class SignalPropertiesCon : LocalizationCon
+    public class SignalPropertiesCon : LocalizationCon
     {
-        internal SignalPropertiesCon(WorldCon worldCon) : base(worldCon) { }
+        public SignalPropertiesCon(WorldCon worldCon) : base(worldCon) { }
 
-        internal bool Execute(ref Signal signal)
+        public bool Execute(ref Signal signal)
         {
             using (var dialog = new SignalPropertiesDialog())
             {

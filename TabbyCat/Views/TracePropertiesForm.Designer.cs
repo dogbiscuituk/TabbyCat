@@ -61,6 +61,6 @@
 
         #endregion
 
-        internal UserControls.TracePropertiesEdit TracePropertiesEdit;
+        public UserControls.TracePropertiesEdit TracePropertiesEdit;
     }
 }

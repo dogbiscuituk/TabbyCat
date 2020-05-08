@@ -6,9 +6,9 @@
     using System.Globalization;
     using Types;
 
-    internal static class ShaderUtils
+    public static class ShaderUtils
     {
-        internal static IEnumerable<ShaderType> All { get; } = new[]
+        public static IEnumerable<ShaderType> All { get; } = new[]
         {
             ShaderType.VertexShader,
             ShaderType.TessControlShader,
@@ -18,7 +18,7 @@
             ShaderType.ComputeShader
         };
 
-        internal static ShaderType Next(this ShaderType shaderType)
+        public static ShaderType Next(this ShaderType shaderType)
         {
             switch (shaderType)
             {
@@ -37,20 +37,20 @@
             }
         }
 
-        internal static Property SceneShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.SceneVertexShader - Property.VertexShader);
+        public static Property SceneShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.SceneVertexShader - Property.VertexShader);
 
-        internal static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Scene);
+        public static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Scene);
 
-        internal static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
+        public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
 
-        internal static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
+        public static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
             CultureInfo.CurrentCulture,
             Resources.PropertyName_ShaderFormat,
             scope,
             shaderType.ShaderTag(),
             Resources.PropertyName_Shader);
 
-        internal static Property ShaderProperty(this ShaderType shaderType)
+        public static Property ShaderProperty(this ShaderType shaderType)
         {
             switch (shaderType)
             {
@@ -71,7 +71,7 @@
             }
         }
 
-        internal static string ShaderTag(this ShaderType shaderType)
+        public static string ShaderTag(this ShaderType shaderType)
         {
             switch (shaderType)
             {
@@ -92,8 +92,8 @@
             }
         }
 
-        internal static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
+        public static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
 
-        internal static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Trace);
+        public static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Trace);
     }
 }

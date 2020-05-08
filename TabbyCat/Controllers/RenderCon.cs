@@ -13,19 +13,19 @@
     using Types;
     using Utils;
 
-    internal partial class RenderCon : LocalizationCon
+    public partial class RenderCon : LocalizationCon
     {
         // Constructors
 
-        internal RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
+        public RenderCon(WorldCon worldCon) : base(worldCon) => Stopwatch.Start();
 
-        // Internal fields
+        // Public fields
 
-        internal float FramesPerSecond;
-        internal static GLInfo _GLInfo;
-        internal bool SceneControlSuspended;
+        public float FramesPerSecond;
+        public static GLInfo _GLInfo;
+        public bool SceneControlSuspended;
 
-        internal static GraphicsMode _GraphicsMode;
+        public static GraphicsMode _GraphicsMode;
 
         // Private fields
 
@@ -70,9 +70,9 @@
             GLInfoSyncRoot = new object(),
             GLModeSyncRoot = new object();
 
-        // Internal properties
+        // Public properties
 
-        internal GLInfo GLInfo
+        public GLInfo GLInfo
         {
             get
             {
@@ -87,11 +87,11 @@
             }
         }
 
-        internal List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
+        public List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
-        // Protected internal properties
+        // Protected public properties
 
-        protected internal override GraphicsMode GraphicsMode
+        public override GraphicsMode GraphicsMode
         {
             get
             {
@@ -110,16 +110,16 @@
 
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
-        // Internal methods
+        // Public methods
 
-        internal GLInfo GetGLInfo()
+        public GLInfo GetGLInfo()
         {
             GLInfo info = null;
             UsingGL(() => info = new GLInfo());
             return info;
         }
 
-        internal void Invalidate()
+        public void Invalidate()
         {
             InvalidateAllTraces();
             InvalidateCameraView();
@@ -127,9 +127,9 @@
             InvalidateProjection();
         }
 
-        internal void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
+        public void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
 
-        internal void InvalidateProgram()
+        public void InvalidateProgram()
         {
             ProgramCompiled = false;
             InvalidateCameraView();
@@ -145,9 +145,9 @@
             });
         }
 
-        internal void InvalidateProjection() => ProjectionValid = false;
+        public void InvalidateProjection() => ProjectionValid = false;
 
-        internal void InvalidateTrace(Trace trace)
+        public void InvalidateTrace(Trace trace)
         {
             if (trace.Vao != null)
                 UsingGL(() =>
@@ -157,7 +157,7 @@
                 });
         }
 
-        internal void Refresh()
+        public void Refresh()
         {
             lock (GLModeSyncRoot)
                 _GraphicsMode = null;
@@ -165,7 +165,7 @@
             InvalidateAllTraces();
         }
 
-        internal void Render() => UsingGL(() =>
+        public void Render() => UsingGL(() =>
         {
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Texture2D);
@@ -199,9 +199,9 @@
             SceneControl.SwapBuffers();
         });
 
-        internal void Unload() => UsingGL(InvalidateAllTraces);
+        public void Unload() => UsingGL(InvalidateAllTraces);
 
-        internal bool UsingGL(Action action)
+        public bool UsingGL(Action action)
         {
             var ok = !SceneControlSuspended &&
                 SceneControl?.IsHandleCreated == true &&
@@ -224,9 +224,9 @@
             return ok;
         }
 
-        // Protected internal methods
+        // Protected public methods
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -432,7 +432,7 @@
         private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
     }
 
-    internal partial class RenderCon : IScript
+    public partial class RenderCon : IScript
     {
         public string GetScript(ShaderType shaderType)
         {

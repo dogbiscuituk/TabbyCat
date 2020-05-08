@@ -14,27 +14,27 @@
     using Utils;
     using Views;
 
-    internal partial class LocalizationCon
+    public partial class LocalizationCon
     {
         // Constructors
 
-        internal LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
+        public LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
         // Protected fields
 
         protected bool Updating;
 
-        // Protected internal properties
+        // Protected public properties
 
-        protected internal virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
+        public virtual void UpdateAllProperties() => UpdateProperties(AllProperties);
 
         // Protected properties
 
         protected virtual Property[] AllProperties => Array.Empty<Property>();
 
-        // Protected internal methods
+        // Protected public methods
 
-        protected internal virtual void Connect(bool connect)
+        public virtual void Connect(bool connect)
         {
             if (connect)
             {
@@ -46,7 +46,7 @@
             }
         }
 
-        protected internal virtual bool Run(ICommand command) => CommandCon.Run(command);
+        public virtual bool Run(ICommand command) => CommandCon.Run(command);
 
         // Protected methods
 
@@ -139,19 +139,16 @@
     /// <summary>
     /// Derived controllers and their views.
     /// </summary>
-    internal partial class LocalizationCon
+    public partial class LocalizationCon
     {
-        // Internal properties
+        // Public properties
 
-        internal virtual CommandCon CommandCon => WorldCon.CommandCon;
-
-        // Protected internal properties
-
-        protected internal virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
-        protected internal virtual JsonCon JsonCon => WorldCon.JsonCon;
-        protected internal virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
-        protected internal GLControl SceneControl => SceneForm?.Controls?.OfType<GLControl>().FirstOrDefault();
-        protected internal virtual WorldForm WorldForm => WorldCon.WorldForm;
+        public virtual CommandCon CommandCon => WorldCon.CommandCon;
+        public virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
+        public virtual JsonCon JsonCon => WorldCon.JsonCon;
+        public virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
+        public GLControl SceneControl => SceneForm?.Controls?.OfType<GLControl>().FirstOrDefault();
+        public virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         // Protected properties
 
@@ -183,7 +180,7 @@
         protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 
-    internal partial class LocalizationCon : IDisposable
+    public partial class LocalizationCon : IDisposable
     {
         private bool Disposed;
 

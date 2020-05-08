@@ -28,13 +28,13 @@
         private AutocompleteMenu AutocompleteMenu;
         private string TextBoxLanguage;
 
-        internal string Language
+        public string Language
         {
             get => TextBoxLanguage;
             set => SetLanguage(value);
         }
 
-        internal readonly FastColoredTextBox TextBox;
+        public readonly FastColoredTextBox TextBox;
 
         public void AddSystemRange(Range range)
         {

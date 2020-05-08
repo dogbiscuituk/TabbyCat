@@ -4,11 +4,11 @@
     using System.Windows.Forms;
     using Types;
 
-    internal abstract class PropertiesCon : DockingCon
+    public abstract class PropertiesCon : DockingCon
     {
-        internal PropertiesCon(WorldCon worldCon) : base(worldCon) { }
+        public PropertiesCon(WorldCon worldCon) : base(worldCon) { }
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

@@ -11,13 +11,19 @@
 
     public class Trace : Shaders, ITrace
     {
+        // Constructors
+
         public Trace() : base() => Init();
 
-        internal Trace(Scene scene) : this() => Scene = scene;
+        public Trace(Scene scene) : this() => Scene = scene;
 
-        internal Trace(Trace trace) : base(trace) => CopyFrom(trace);
+        public Trace(Trace trace) : base(trace) => CopyFrom(trace);
+
+        // Private fields
 
         private int _Index;
+
+        // Public properties
 
         [DefaultValue("")]
         public string Description { get; set; }
@@ -45,6 +51,7 @@
         [JsonConverter(typeof(Vector3Converter))]
         public Vector3 StripeCount { get; set; }
 
+        [JsonIgnore]
         public int Index
         {
             get => Scene?.Traces.IndexOf(this) ?? _Index;
@@ -54,12 +61,16 @@
         /// <summary>
         /// The Scene object which owns this Trace.
         /// </summary>
-        internal Scene Scene;
+        [JsonIgnore]
+        public Scene Scene;
 
         /// <summary>
         /// The Video Array Object associated with this Trace.
         /// </summary>
-        internal Vao Vao;
+        [JsonIgnore]
+        public Vao Vao;
+
+        // Public methods
 
         public override string ToString() => !string.IsNullOrWhiteSpace(Description)
             ? Description
@@ -67,9 +78,9 @@
             ? $"Trace #{Index + 1}"
             : "New trace";
 
-        internal Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
+        public Matrix4 GetTransform() => MathUtils.CreateTransformation(Location, Orientation, Scale);
 
-        internal string PreviewShader(ShaderType shaderType, string formula)
+        public string PreviewShader(ShaderType shaderType, string formula)
         {
             var script = GetScript(shaderType);
             var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
@@ -84,13 +95,17 @@
             return string.Empty;
         }
 
-        internal void SetLocation(Vector3 location) => Location = location;
+        public void SetLocation(Vector3 location) => Location = location;
 
-        internal void SetOrientation(Vector3 orientation) => Orientation = orientation;
+        public void SetOrientation(Vector3 orientation) => Orientation = orientation;
 
-        internal void SetScale(Vector3 scale) => Scale = scale;
+        public void SetScale(Vector3 scale) => Scale = scale;
+
+        // Protected methods
 
         protected void SetFormula(ShaderType shaderType, string formula) => SetScript(shaderType, PreviewShader(shaderType, formula));
+
+        // Private methods
 
         private void CopyFrom(Trace trace)
         {

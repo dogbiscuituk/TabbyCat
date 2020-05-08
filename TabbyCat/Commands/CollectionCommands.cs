@@ -15,11 +15,11 @@
     /// the other, prior to the command processor moving them between the Undo and
     /// Redo stacks.
     /// </summary>
-    internal abstract class CollectionCommand<TItem> : Command<TItem>, ICollectionCommand
+    public abstract class CollectionCommand<TItem> : Command<TItem>, ICollectionCommand
     {
         // Constructors
 
-        internal CollectionCommand(int index, bool add) : base(index) => Adding = add;
+        public CollectionCommand(int index, bool add) : base(index) => Adding = add;
 
         // Public properties
 
@@ -90,11 +90,11 @@
             Property);
     }
 
-    internal class SignalCollectionCommand : CollectionCommand<Signal>
+    public class SignalCollectionCommand : CollectionCommand<Signal>
     {
         // Constructors
 
-        internal SignalCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Signals;
+        public SignalCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Signals;
 
         // Protected methods
 
@@ -111,21 +111,21 @@
         protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
     }
 
-    internal class SignalDeleteCommand : SignalCollectionCommand
+    public class SignalDeleteCommand : SignalCollectionCommand
     {
-        internal SignalDeleteCommand(int index) : base(index, false) { }
+        public SignalDeleteCommand(int index) : base(index, false) { }
     }
 
-    internal class SignalInsertCommand : SignalCollectionCommand
+    public class SignalInsertCommand : SignalCollectionCommand
     {
-        internal SignalInsertCommand(int index, Signal signal) : base(index, true) => Value = signal;
+        public SignalInsertCommand(int index, Signal signal) : base(index, true) => Value = signal;
     }
 
-    internal class TraceCollectionCommand : CollectionCommand<Trace>
+    public class TraceCollectionCommand : CollectionCommand<Trace>
     {
         // Constructors
 
-        internal TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
+        public TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
 
         // Protected methods
 
@@ -142,13 +142,13 @@
         protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
     }
 
-    internal class TraceDeleteCommand : TraceCollectionCommand
+    public class TraceDeleteCommand : TraceCollectionCommand
     {
-        internal TraceDeleteCommand(int index) : base(index, false) { }
+        public TraceDeleteCommand(int index) : base(index, false) { }
     }
 
-    internal class TraceInsertCommand : TraceCollectionCommand
+    public class TraceInsertCommand : TraceCollectionCommand
     {
-        internal TraceInsertCommand(int index, Trace trace) : base(index, true) => Value = trace;
+        public TraceInsertCommand(int index, Trace trace) : base(index, true) => Value = trace;
     }
 }

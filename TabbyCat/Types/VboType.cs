@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Types
 {
-    internal enum VboType
+    public enum VboType
     {
         None,
         Vertex,

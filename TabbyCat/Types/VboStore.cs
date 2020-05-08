@@ -6,11 +6,11 @@
     /// <summary>
     /// Static class for maintaining a list of currently active VBOs.
     /// </summary>
-    internal static class VboStore
+    public static class VboStore
     {
         private static readonly List<Vbo> Vbos = new List<Vbo>();
 
-        internal static Vbo AcquireVbo(this ITrace trace, VboType vboType)
+        public static Vbo AcquireVbo(this ITrace trace, VboType vboType)
         {
             var vbo = Vbos.FirstOrDefault(p => p.Matches(trace, vboType));
             if (vbo == null)
@@ -19,7 +19,7 @@
             return vbo;
         }
 
-        internal static void ReleaseVbo(this Vbo vbo)
+        public static void ReleaseVbo(this Vbo vbo)
         {
             if (vbo != null && vbo.Release())
                 Vbos.Remove(vbo);

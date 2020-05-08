@@ -61,6 +61,6 @@
 
         #endregion
 
-        internal OpenTK.GLControl SceneControl;
+        public OpenTK.GLControl SceneControl;
     }
 }

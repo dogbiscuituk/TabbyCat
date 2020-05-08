@@ -16,22 +16,22 @@
     /// Maintain a "WindowCaption" property for the app, including the product name,
     /// current filename if any - otherwise "(untitled)" - and the "Modified" flag.
     /// </summary>
-    internal class JsonCon : SdiCon
+    public class JsonCon : SdiCon
     {
-        internal JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
+        public JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
 
         private readonly List<Property> ChangedProperties = new List<Property>();
 
         private int UpdateCount;
 
-        internal string WindowCaption => $@"{(
+        public string WindowCaption => $@"{(
             Scene.IsModified ? "* " : string.Empty)}{(
             string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : Path.GetFileNameWithoutExtension(FilePath).ToFilename())} - {
             Application.ProductName}";
 
-        internal event EventHandler<FilePathEventArgs> FileReopen;
+        public event EventHandler<FilePathEventArgs> FileReopen;
 
-        internal static bool ClipboardCopy(IEnumerable<Trace> traces)
+        public static bool ClipboardCopy(IEnumerable<Trace> traces)
         {
             bool result;
             string text;
@@ -53,7 +53,7 @@
             return result;
         }
 
-        internal static IEnumerable<Trace> ClipboardPaste()
+        public static IEnumerable<Trace> ClipboardPaste()
         {
             IEnumerable<Trace> traces = null;
             if (AppCon.CanPaste)
@@ -72,7 +72,7 @@
             return traces;
         }
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

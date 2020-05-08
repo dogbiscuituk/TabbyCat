@@ -18,7 +18,7 @@
     /// Note: unsafe code is used to abbreviate long paths (see the implementation
     /// of the  CompactMenuText method).
     /// </summary>
-    internal class MruCon : LocalizationCon
+    public class MruCon : LocalizationCon
     {
         protected MruCon(WorldCon worldCon, string subKeyName) : base(worldCon)
         {
@@ -37,7 +37,7 @@
 
         protected ToolStripDropDownItem RecentMenu => WorldCon.WorldForm.FileReopen;
 
-        internal virtual void Reopen(ToolStripItem menuItem) { }
+        public virtual void Reopen(ToolStripItem menuItem) { }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Design",

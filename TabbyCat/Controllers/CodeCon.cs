@@ -18,9 +18,9 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal abstract partial class CodeCon : DockingCon
+    public abstract partial class CodeCon : DockingCon
     {
-        internal CodeCon(WorldCon worldCon) : base(worldCon)
+        public CodeCon(WorldCon worldCon) : base(worldCon)
         {
             LoadShaderCode();
             AppCon.InitControlTheme(CodeEdit.HorizontalToolbar, CodeEdit.VerticalToolbar, CodeEdit.PopupEditMenu);
@@ -39,7 +39,7 @@
 
         private CodeForm _CodeForm;
 
-        internal CodeForm CodeForm => _CodeForm ?? (_CodeForm = new CodeForm()
+        public CodeForm CodeForm => _CodeForm ?? (_CodeForm = new CodeForm()
         {
             TabText = GetTabText(),
             Text = GetText(),
@@ -50,7 +50,7 @@
         private ShaderType _ShaderType = ShaderType.VertexShader;
         private SplitType _SplitType;
 
-        protected internal override DockContent Form => CodeForm;
+        public override DockContent Form => CodeForm;
 
         private CodePageCon _PrimaryCon, _SecondaryCon;
 
@@ -144,7 +144,7 @@
             }
         }
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             ConnectMenu(connect);

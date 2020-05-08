@@ -272,23 +272,23 @@
         }
 
         #endregion
-        internal System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.Label label4;
-        internal System.Windows.Forms.Label lblDescription;
-        internal System.Windows.Forms.Label lblAuthor;
-        internal System.Windows.Forms.Label lblCopyright;
-        internal System.Windows.Forms.Label lblVersion;
-        internal System.Windows.Forms.Button btnOK;
-        internal System.Windows.Forms.Label lblProductName;
-        internal System.Windows.Forms.GroupBox groupBox1;
-        internal System.Windows.Forms.Label lblRendererName;
-        internal System.Windows.Forms.Label lblVendorName;
-        internal System.Windows.Forms.Label lblGLSLVersion;
-        internal System.Windows.Forms.Label lblOpenGLVersion;
-        internal System.Windows.Forms.Label label7;
-        internal System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label lblDescription;
+        public System.Windows.Forms.Label lblAuthor;
+        public System.Windows.Forms.Label lblCopyright;
+        public System.Windows.Forms.Label lblVersion;
+        public System.Windows.Forms.Button btnOK;
+        public System.Windows.Forms.Label lblProductName;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label lblRendererName;
+        public System.Windows.Forms.Label lblVendorName;
+        public System.Windows.Forms.Label lblGLSLVersion;
+        public System.Windows.Forms.Label lblOpenGLVersion;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label1;
     }
 }

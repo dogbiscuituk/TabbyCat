@@ -6,9 +6,9 @@
     using Types;
     using Utils;
 
-    internal class BackgroundColourCommand : ScenePropertyCommand<Color>
+    public class BackgroundColourCommand : ScenePropertyCommand<Color>
     {
-        internal BackgroundColourCommand(Color value) : base(
+        public BackgroundColourCommand(Color value) : base(
             Property.Background,
             value,
             r => r.BackgroundColour,
@@ -16,9 +16,9 @@
         { }
     }
 
-    internal class CameraCommand : ScenePropertyCommand<Camera>
+    public class CameraCommand : ScenePropertyCommand<Camera>
     {
-        internal CameraCommand(Camera value) : base(
+        public CameraCommand(Camera value) : base(
             Property.Camera,
             value,
             p => p.Camera,
@@ -26,9 +26,9 @@
         { }
     }
 
-    internal class CameraFocusCommand : ScenePropertyCommand<Vector3>
+    public class CameraFocusCommand : ScenePropertyCommand<Vector3>
     {
-        internal CameraFocusCommand(Vector3 value) : base(
+        public CameraFocusCommand(Vector3 value) : base(
             Property.CameraFocus,
             value,
             s => s.Camera.Focus,
@@ -36,9 +36,9 @@
         { }
     }
 
-    internal class CameraPositionCommand : ScenePropertyCommand<Vector3>
+    public class CameraPositionCommand : ScenePropertyCommand<Vector3>
     {
-        internal CameraPositionCommand(Vector3 value) : base(
+        public CameraPositionCommand(Vector3 value) : base(
             Property.CameraPosition,
             value,
             s => s.Camera.Position,
@@ -46,9 +46,9 @@
         { }
     }
 
-    internal class FieldOfViewCommand : ScenePropertyCommand<float>
+    public class FieldOfViewCommand : ScenePropertyCommand<float>
     {
-        internal FieldOfViewCommand(float value) : base(
+        public FieldOfViewCommand(float value) : base(
             Property.FieldOfView,
             value,
             s => s.Projection.FieldOfView,
@@ -56,9 +56,9 @@
         { }
     }
 
-    internal class FpsCommand : ScenePropertyCommand<float>
+    public class FpsCommand : ScenePropertyCommand<float>
     {
-        internal FpsCommand(float value) : base(
+        public FpsCommand(float value) : base(
             Property.TargetFPS,
             value,
             s => s.TargetFPS,
@@ -66,9 +66,9 @@
         { }
     }
 
-    internal class FrustumMaxCommand : ScenePropertyCommand<Vector3>
+    public class FrustumMaxCommand : ScenePropertyCommand<Vector3>
     {
-        internal FrustumMaxCommand(Vector3 value) : base(
+        public FrustumMaxCommand(Vector3 value) : base(
             Property.FarPlane,
             value,
             s => s.Projection.FrustumMax,
@@ -76,9 +76,9 @@
         { }
     }
 
-    internal class FrustumMinCommand : ScenePropertyCommand<Vector3>
+    public class FrustumMinCommand : ScenePropertyCommand<Vector3>
     {
-        internal FrustumMinCommand(Vector3 value) : base(
+        public FrustumMinCommand(Vector3 value) : base(
             Property.NearPlane,
             value,
             s => s.Projection.FrustumMin,
@@ -86,9 +86,9 @@
         { }
     }
 
-    internal class GLTargetVersionCommand : ScenePropertyCommand<string>
+    public class GLTargetVersionCommand : ScenePropertyCommand<string>
     {
-        internal GLTargetVersionCommand(string value) : base(
+        public GLTargetVersionCommand(string value) : base(
             Property.GLTargetVersion,
             value,
             s => s.GLTargetVersion,
@@ -96,9 +96,9 @@
         { }
     }
 
-    internal class ProjectionTypeCommand : ScenePropertyCommand<ProjectionType>
+    public class ProjectionTypeCommand : ScenePropertyCommand<ProjectionType>
     {
-        internal ProjectionTypeCommand(ProjectionType value) : base(
+        public ProjectionTypeCommand(ProjectionType value) : base(
             Property.ProjectionType,
             value,
             s => s.Projection.ProjectionType,
@@ -106,9 +106,9 @@
         { }
     }
 
-    internal class SamplesCommand : ScenePropertyCommand<int>
+    public class SamplesCommand : ScenePropertyCommand<int>
     {
-        internal SamplesCommand(int value) : base(
+        public SamplesCommand(int value) : base(
             Property.Samples,
             value,
             s => s.Samples,
@@ -116,9 +116,9 @@
         { }
     }
 
-    internal class SceneShaderCommand : ScenePropertyCommand<string>
+    public class SceneShaderCommand : ScenePropertyCommand<string>
     {
-        internal SceneShaderCommand(ShaderType shaderType, string value) : base(
+        public SceneShaderCommand(ShaderType shaderType, string value) : base(
             shaderType.SceneShader(),
             value,
             s => s.GetScript(shaderType),
@@ -126,9 +126,9 @@
         { }
     }
 
-    internal class StereoCommand : ScenePropertyCommand<bool>
+    public class StereoCommand : ScenePropertyCommand<bool>
     {
-        internal StereoCommand(bool value) : base(
+        public StereoCommand(bool value) : base(
             Property.Stereo,
             value,
             s => s.Stereo,
@@ -136,9 +136,9 @@
         { }
     }
 
-    internal class TitleCommand : ScenePropertyCommand<string>
+    public class TitleCommand : ScenePropertyCommand<string>
     {
-        internal TitleCommand(string value) : base(
+        public TitleCommand(string value) : base(
             Property.SceneTitle,
             value,
             s => s.Title,
@@ -146,9 +146,9 @@
         { }
     }
 
-    internal class VSyncCommand : ScenePropertyCommand<bool>
+    public class VSyncCommand : ScenePropertyCommand<bool>
     {
-        internal VSyncCommand(bool value) : base(
+        public VSyncCommand(bool value) : base(
             Property.VSync,
             value,
             s => s.VSync,

@@ -323,27 +323,27 @@
 
         #endregion
 
-        internal System.Windows.Forms.GroupBox groupBox1;
-        internal System.Windows.Forms.Button btnOK;
-        internal System.Windows.Forms.Button btnCancel;
-        internal System.Windows.Forms.RadioButton rbWindowReuse;
-        internal System.Windows.Forms.RadioButton rbWindowNew;
-        internal System.Windows.Forms.GroupBox groupBox3;
-        internal System.Windows.Forms.Button btnTemplatesFolder;
-        internal System.Windows.Forms.Button btnFilesFolder;
-        internal System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.TextBox edTemplatesFolder;
-        internal System.Windows.Forms.TextBox edFilesFolder;
-        internal System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.GroupBox groupBox2;
-        internal System.Windows.Forms.TabControl TabControl;
-        internal System.Windows.Forms.TabPage tpGeneral;
-        internal System.Windows.Forms.TabPage tpGLSLStyles;
-        internal System.Windows.Forms.PropertyGrid GLSLStylesPropertyGrid;
-        internal System.Windows.Forms.TextBox edGLSLUrl;
-        internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.GroupBox groupBox4;
-        internal System.Windows.Forms.ComboBox cbTheme;
-        internal System.Windows.Forms.Label label4;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button btnOK;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.RadioButton rbWindowReuse;
+        public System.Windows.Forms.RadioButton rbWindowNew;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.Button btnTemplatesFolder;
+        public System.Windows.Forms.Button btnFilesFolder;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox edTemplatesFolder;
+        public System.Windows.Forms.TextBox edFilesFolder;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.TabControl TabControl;
+        public System.Windows.Forms.TabPage tpGeneral;
+        public System.Windows.Forms.TabPage tpGLSLStyles;
+        public System.Windows.Forms.PropertyGrid GLSLStylesPropertyGrid;
+        public System.Windows.Forms.TextBox edGLSLUrl;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.ComboBox cbTheme;
+        public System.Windows.Forms.Label label4;
     }
 }

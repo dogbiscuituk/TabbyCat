@@ -10,29 +10,29 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class SceneCon : DockingCon
+    public class SceneCon : DockingCon
     {
         // Constructors
 
-        internal SceneCon(WorldCon worldCon) : base(worldCon) { }
+        public SceneCon(WorldCon worldCon) : base(worldCon) { }
 
         // Private fields
 
         private SceneForm _SceneForm;
 
-        // Protected internal properties
+        // Protected public properties
 
-        protected internal override DockContent Form => SceneForm;
+        public override DockContent Form => SceneForm;
 
         // Protected properties
 
         protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm());
 
-        // Internal methods
+        // Public methods
 
-        internal void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
+        public void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
-        internal void OnPropertyEdit(Property property)
+        public void OnPropertyEdit(Property property)
         {
             switch (property)
             {
@@ -49,11 +49,11 @@
             SceneControl.Invalidate();
         }
 
-        internal void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
+        public void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
 
-        // Protected internal methods
+        // Protected public methods
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

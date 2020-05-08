@@ -7,9 +7,9 @@
     using Types;
     using Utils;
 
-    internal class TraceCodeCon : CodeCon
+    public class TraceCodeCon : CodeCon
     {
-        internal TraceCodeCon(WorldCon worldCon) : base(worldCon) { }
+        public TraceCodeCon(WorldCon worldCon) : base(worldCon) { }
 
         protected override Property Shader => ShaderType.TraceShader();
 
@@ -19,7 +19,7 @@
 
         protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -52,7 +52,7 @@
                 });
         }
 
-        internal string GetFormula()
+        public string GetFormula()
         {
             var script = GetScript();
             var first = script.FindFirstTokenLine(Tokens.BeginFormula);
@@ -60,7 +60,7 @@
             return 0 <= first && first < last ? script.GetLines(first, last - first) : string.Empty;
         }
 
-        internal void SetFormula(string formula)
+        public void SetFormula(string formula)
         {
             foreach (var trace in TraceSelection.Traces)
             {

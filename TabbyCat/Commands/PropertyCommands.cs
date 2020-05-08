@@ -8,7 +8,7 @@
     using Types;
     using Utils;
 
-    internal abstract class PropertyCommand<TItem, TValue> : Command<TValue>
+    public abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
         protected PropertyCommand(int index, Property property, TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set) : base(index)
         {
@@ -56,7 +56,7 @@
         protected void SetValue(Scene scene, TValue value) => Set(GetItem(scene), value);
     }
 
-    internal abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
+    public abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
     {
         protected ScenePropertyCommand(Property property, TValue value, Func<Scene, TValue> get, Action<Scene, TValue> set) : base(0, property, value, get, set) { }
 
@@ -73,7 +73,7 @@
         protected override Scene GetItem(Scene scene) => scene;
     }
 
-    internal abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
+    public abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
     {
         protected SignalPropertyCommand(int index, Property property, TValue value, Func<Signal, TValue> get, Action<Signal, TValue> set) : base(index, property, value, get, set) { }
 
@@ -90,7 +90,7 @@
         protected override Signal GetItem(Scene scene) => scene.Signals[Index];
     }
 
-    internal abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
+    public abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
     {
         protected TracePropertyCommand(int index, Property property, TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set) : base(index, property, value, get, set) { }
 

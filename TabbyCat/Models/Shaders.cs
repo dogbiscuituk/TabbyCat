@@ -13,16 +13,33 @@
     /// </summary>
     public abstract class Shaders : IShaders
     {
+        // Constructors
+
         protected Shaders() { }
 
         protected Shaders(Shaders shaders) => CopyFrom(shaders);
 
-        [DefaultValue("")] public string VertexShader { get; set; }
-        [DefaultValue("")] public string TessControlShader { get; set; }
-        [DefaultValue("")] public string TessEvaluationShader { get; set; }
-        [DefaultValue("")] public string GeometryShader { get; set; }
-        [DefaultValue("")] public string FragmentShader { get; set; }
-        [DefaultValue("")] public string ComputeShader { get; set; }
+        // Public properties
+
+        [DefaultValue("")]
+        public string VertexShader { get; set; }
+
+        [DefaultValue("")]
+        public string TessControlShader { get; set; }
+
+        [DefaultValue("")]
+        public string TessEvaluationShader { get; set; }
+
+        [DefaultValue("")]
+        public string GeometryShader { get; set; }
+
+        [DefaultValue("")]
+        public string FragmentShader { get; set; }
+
+        [DefaultValue("")]
+        public string ComputeShader { get; set; }
+
+        // Public methods
 
         public string GetScript(ShaderType shaderType)
         {
@@ -69,6 +86,8 @@
                     break;
             }
         }
+
+        // Private methods
 
         private void CopyFrom(IScript source) => Array.ForEach(ShaderUtils.All.ToArray(), p => SetScript(p, source.GetScript(p)));
     }

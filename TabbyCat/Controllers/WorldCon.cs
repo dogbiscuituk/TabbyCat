@@ -14,9 +14,9 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class WorldCon : LocalizationCon
+    public partial class WorldCon : LocalizationCon
     {
-        internal WorldCon() : base(null)
+        public WorldCon() : base(null)
         {
             WorldForm = new WorldForm();
             Scene = new Scene(this);
@@ -26,66 +26,66 @@
             PopupWorldForm_Opening(this, new CancelEventArgs());
         }
 
-        internal TraceSelection TraceSelection = new TraceSelection();
+        public TraceSelection TraceSelection = new TraceSelection();
 
         private string
             LastSpeed,
             LastTime,
             LastFPS;
 
-        protected internal override Scene Scene { get; set; }
+        public override Scene Scene { get; set; }
 
-        protected internal override WorldForm WorldForm { get; }
+        public override WorldForm WorldForm { get; }
 
-        internal GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
+        public GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
 
         private static string GLSLUrl => Settings.Default.GLSLUrl;
 
-        internal event EventHandler<CollectionEditEventArgs> CollectionEdit;
+        public event EventHandler<CollectionEditEventArgs> CollectionEdit;
 
-        internal event EventHandler<PropertyEditEventArgs> PropertyEdit;
+        public event EventHandler<PropertyEditEventArgs> PropertyEdit;
 
-        internal event EventHandler
+        public event EventHandler
             Pulse,
             SelectionChanged;
 
-        internal void InitControlTheme() => AppCon.InitControlTheme(
+        public void InitControlTheme() => AppCon.InitControlTheme(
             WorldPanel,
             WorldForm.MainMenu,
             WorldForm.PopupMenu,
             WorldForm.Toolbar,
             WorldForm.StatusBar);
 
-        internal void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
+        public void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
 
-        internal void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
+        public void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
 
-        internal void RefreshGraphicsMode() => OnPropertyEdit(Property.GraphicsMode);
+        public void RefreshGraphicsMode() => OnPropertyEdit(Property.GraphicsMode);
 
-        internal void Show() => WorldForm.Show();
+        public void Show() => WorldForm.Show();
 
-        internal void Show(IWin32Window owner) => WorldForm.Show(owner);
+        public void Show(IWin32Window owner) => WorldForm.Show(owner);
 
-        internal void OnCollectionEdit(Property collection, int index, bool adding)
+        public void OnCollectionEdit(Property collection, int index, bool adding)
         {
             $"WorldCon.OnCollectionEdit(\"{collection}\", adding: {adding}, index: {index});".Spit();
             CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collection, index, adding));
         }
 
-        internal void OnPropertyEdit(Property property, int index = 0)
+        public void OnPropertyEdit(Property property, int index = 0)
         {
             $"WorldCon.OnPropertyEdit(\"{property}\", index: {index});".Spit();
             PropertyEdit?.Invoke(this, new PropertyEditEventArgs(property, index));
         }
 
-        internal void OnPulse()
+        public void OnPulse()
         {
             UpdateToolbar();
             UpdateStatusBar();
             Pulse?.Invoke(this, EventArgs.Empty);
         }
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -108,7 +108,7 @@
             }
         }
 
-        protected internal override void UpdateAllProperties()
+        public override void UpdateAllProperties()
         {
             SceneCodeCon.UpdateAllProperties();
             ScenePropertiesCon.UpdateAllProperties();
@@ -384,7 +384,7 @@
 
         private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
 
-        internal void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
+        public void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
 
         private void UpdateFramesPerSecond()
         {
@@ -457,7 +457,7 @@
     /// <summary>
     /// Child controllers.
     /// </summary>
-    internal partial class WorldCon
+    public partial class WorldCon
     {
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
@@ -473,9 +473,9 @@
         private TraceCodeCon _TraceCodeCon;
         private TracePropertiesCon _TracePropertiesCon;
 
-        internal override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
+        public override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
 
-        protected internal override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+        public override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
@@ -498,7 +498,7 @@
         protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
         protected DockPanel WorldPanel => WorldForm.DockPanel;
 
-        internal void ConnectCons(bool connect)
+        public void ConnectCons(bool connect)
         {
             Array.ForEach(new LocalizationCon[]
             {

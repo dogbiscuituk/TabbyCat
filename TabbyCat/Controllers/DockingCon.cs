@@ -2,13 +2,13 @@
 {
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal abstract class DockingCon : LocalizationCon
+    public abstract class DockingCon : LocalizationCon
     {
-        internal DockingCon(WorldCon worldCon) : base(worldCon) { }
+        public DockingCon(WorldCon worldCon) : base(worldCon) { }
 
-        protected internal abstract DockContent Form { get; }
+        public abstract DockContent Form { get; }
 
-        internal void SetVisibility(bool visible)
+        public void SetVisibility(bool visible)
         {
             if (visible)
                 Form.Activate();

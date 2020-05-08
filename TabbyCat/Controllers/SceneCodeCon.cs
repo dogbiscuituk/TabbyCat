@@ -6,9 +6,9 @@
     using Types;
     using Utils;
 
-    internal class SceneCodeCon : CodeCon
+    public class SceneCodeCon : CodeCon
     {
-        internal SceneCodeCon(WorldCon worldCon) : base(worldCon) { }
+        public SceneCodeCon(WorldCon worldCon) : base(worldCon) { }
 
         protected override Property Shader => ShaderType.SceneShader();
 
@@ -16,7 +16,7 @@
 
         protected override string GetRegion() => Resources.ShaderRegion_Scene;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

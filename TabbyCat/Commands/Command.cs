@@ -3,7 +3,7 @@
     using Models;
     using Types;
 
-    internal abstract class Command<TValue> : ICommand
+    public abstract class Command<TValue> : ICommand
     {
         // Constructors
 
@@ -15,10 +15,7 @@
         public Property Property { get; set; }
         public abstract string RedoAction { get; }
         public abstract string UndoAction { get; }
-
-        // Internal properties
-
-        internal TValue Value { get; set; }
+        public TValue Value { get; set; }
 
         // Protected properties
 

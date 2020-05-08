@@ -13,9 +13,9 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class ScenePropertiesCon : PropertiesCon
+    public partial class ScenePropertiesCon : PropertiesCon
     {
-        internal ScenePropertiesCon(WorldCon worldCon) : base(worldCon)
+        public ScenePropertiesCon(WorldCon worldCon) : base(worldCon)
         {
             InitCommonControls(ScenePropertiesEdit.TableLayoutPanel);
             InitLocalControls();
@@ -23,7 +23,7 @@
 
         private ScenePropertiesForm _ScenePropertiesForm;
 
-        protected internal override DockContent Form => ScenePropertiesForm;
+        public override DockContent Form => ScenePropertiesForm;
 
         protected override ScenePropertiesForm ScenePropertiesForm => _ScenePropertiesForm ?? (_ScenePropertiesForm = new ScenePropertiesForm
         {
@@ -49,7 +49,7 @@
             Property.VSync
         };
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -249,7 +249,7 @@
     /// <summary>
     /// Command runners.
     /// </summary>
-    internal partial class ScenePropertiesCon
+    public partial class ScenePropertiesCon
     {
         private void Background_SelectedIndexChanged(object sender, EventArgs e) => Run(new BackgroundColourCommand(Color.FromName(ScenePropertiesEdit.cbBackground.Text)));
 

@@ -8,9 +8,9 @@
     /// <summary>
     /// Class representing a reference counted OpenTK Vertex Buffer Object.
     /// </summary>
-    internal class Vbo
+    public class Vbo
     {
-        internal Vbo(ITrace trace, VboType vboType)
+        public Vbo(ITrace trace, VboType vboType)
         {
             Pattern = trace.Pattern;
             StripeCount = trace.StripeCount;
@@ -29,7 +29,7 @@
             }
         }
 
-        internal readonly int
+        public readonly int
             BufferID,
             ElementsCount;
 
@@ -43,13 +43,13 @@
             ? BufferTarget.ArrayBuffer
             : BufferTarget.ElementArrayBuffer;
 
-        internal void AddRef() => RefCount++;
+        public void AddRef() => RefCount++;
 
-        internal bool Matches(ITrace trace, VboType vboType) => VboType == vboType &&
+        public bool Matches(ITrace trace, VboType vboType) => VboType == vboType &&
             StripeCount == trace.StripeCount &&
             (VboType != VboType.Index || Pattern == trace.Pattern);
 
-        internal bool Release()
+        public bool Release()
         {
             var result = --RefCount <= 0;
             if (result)

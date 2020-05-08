@@ -5,9 +5,9 @@
     using Types;
     using Utils;
 
-    internal class DescriptionCommand : TracePropertyCommand<string>
+    public class DescriptionCommand : TracePropertyCommand<string>
     {
-        internal DescriptionCommand(int index, string value) : base(
+        public DescriptionCommand(int index, string value) : base(
             index,
             Property.TraceDescription,
             value,
@@ -16,9 +16,9 @@
         { }
     }
 
-    internal class LocationCommand : TracePropertyCommand<Vector3>
+    public class LocationCommand : TracePropertyCommand<Vector3>
     {
-        internal LocationCommand(int index, Vector3 value) : base(
+        public LocationCommand(int index, Vector3 value) : base(
             index,
             Property.TraceLocation,
             value,
@@ -27,9 +27,9 @@
         { }
     }
 
-    internal class MaximumCommand : TracePropertyCommand<Vector3>
+    public class MaximumCommand : TracePropertyCommand<Vector3>
     {
-        internal MaximumCommand(int index, Vector3 value) : base(
+        public MaximumCommand(int index, Vector3 value) : base(
             index,
             Property.TraceMaximum,
             value,
@@ -38,9 +38,9 @@
         { }
     }
 
-    internal class MinimumCommand : TracePropertyCommand<Vector3>
+    public class MinimumCommand : TracePropertyCommand<Vector3>
     {
-        internal MinimumCommand(int index, Vector3 value) : base(
+        public MinimumCommand(int index, Vector3 value) : base(
             index,
             Property.TraceMinimum,
             value,
@@ -49,9 +49,9 @@
         { }
     }
 
-    internal class OrientationCommand : TracePropertyCommand<Vector3>
+    public class OrientationCommand : TracePropertyCommand<Vector3>
     {
-        internal OrientationCommand(int index, Vector3 value) : base(
+        public OrientationCommand(int index, Vector3 value) : base(
             index,
             Property.TraceOrientation,
             value,
@@ -60,9 +60,9 @@
         { }
     }
 
-    internal class PatternCommand : TracePropertyCommand<Pattern>
+    public class PatternCommand : TracePropertyCommand<Pattern>
     {
-        internal PatternCommand(int index, Pattern value) : base(
+        public PatternCommand(int index, Pattern value) : base(
             index,
             Property.TracePattern,
             value,
@@ -71,9 +71,9 @@
         { }
     }
 
-    internal class ScaleCommand : TracePropertyCommand<Vector3>
+    public class ScaleCommand : TracePropertyCommand<Vector3>
     {
-        internal ScaleCommand(int index, Vector3 value) : base(
+        public ScaleCommand(int index, Vector3 value) : base(
             index,
             Property.TraceScale,
             value,
@@ -82,9 +82,9 @@
         { }
     }
 
-    internal class StripeCountCommand : TracePropertyCommand<Vector3>
+    public class StripeCountCommand : TracePropertyCommand<Vector3>
     {
-        internal StripeCountCommand(int index, Vector3 value) : base(
+        public StripeCountCommand(int index, Vector3 value) : base(
             index,
             Property.TraceStripeCount,
             value,
@@ -93,9 +93,9 @@
         { }
     }
 
-    internal class TraceShaderCommand : TracePropertyCommand<string>
+    public class TraceShaderCommand : TracePropertyCommand<string>
     {
-        internal TraceShaderCommand(int index, ShaderType shaderType, string value) : base(
+        public TraceShaderCommand(int index, ShaderType shaderType, string value) : base(
             index,
             shaderType.TraceShader(),
             value,
@@ -104,9 +104,9 @@
         { }
     }
 
-    internal class VisibleCommand : TracePropertyCommand<bool>
+    public class VisibleCommand : TracePropertyCommand<bool>
     {
-        internal VisibleCommand(int index, bool value) : base(
+        public VisibleCommand(int index, bool value) : base(
             index,
             Property.TraceVisible,
             value,

@@ -4,9 +4,9 @@
     using System.Windows.Forms;
     using Views;
 
-    internal class AboutCon : LocalizationCon
+    public class AboutCon : LocalizationCon
     {
-        internal AboutCon(WorldCon worldCon) : base(worldCon)
+        public AboutCon(WorldCon worldCon) : base(worldCon)
         {
             var asm = Assembly.GetExecutingAssembly();
             AboutDialog.Text = $"About {Application.ProductName}";
@@ -24,15 +24,15 @@
 
         private AboutDialog _AboutDialog;
 
-        internal AboutDialog AboutDialog => _AboutDialog ?? (_AboutDialog = new AboutDialog());
+        public AboutDialog AboutDialog => _AboutDialog ?? (_AboutDialog = new AboutDialog());
 
-        internal void Show(IWin32Window owner)
+        public void Show(IWin32Window owner)
         {
             Init(false);
             AboutDialog.Show(owner);
         }
 
-        internal void ShowDialog(IWin32Window owner)
+        public void ShowDialog(IWin32Window owner)
         {
             Init(true);
             AboutDialog.ShowDialog(owner);

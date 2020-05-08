@@ -57,6 +57,6 @@
 
         #endregion
 
-        internal UserControls.CodeEdit CodeEdit;
+        public UserControls.CodeEdit CodeEdit;
     }
 }

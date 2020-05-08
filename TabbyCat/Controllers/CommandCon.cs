@@ -8,9 +8,9 @@
     using System.Windows.Forms;
     using Views;
 
-    internal class CommandCon : LocalizationCon
+    public class CommandCon : LocalizationCon
     {
-        internal CommandCon(WorldCon worldCon) : base(worldCon)
+        public CommandCon(WorldCon worldCon) : base(worldCon)
         {
             WorldForm.EditUndo.Click += EditUndo_Click;
             WorldForm.tbUndo.ButtonClick += EditUndo_Click;
@@ -25,9 +25,9 @@
         private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
         private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
 
-        internal bool IsModified => LastSave != UndoStack.Count;
-        internal List<Signal> Signals => Scene.Signals;
-        internal List<Trace> Traces => Scene.Traces;
+        public bool IsModified => LastSave != UndoStack.Count;
+        public List<Signal> Signals => Scene.Signals;
+        public List<Trace> Traces => Scene.Traces;
 
         private bool CanUndo => UndoStack.Count > 0;
         private bool CanRedo => RedoStack.Count > 0;
@@ -51,11 +51,11 @@
 
         private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
 
-        internal void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
+        public void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
 
-        internal void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
+        public void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
 
-        internal void Clear()
+        public void Clear()
         {
             LastSave = 0;
             UndoStack.Clear();
@@ -63,16 +63,16 @@
             UpdateUI();
         }
 
-        internal void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
+        public void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
 
-        internal void InsertTrace(int index, Trace trace = null) => Run(new TraceInsertCommand(index, trace));
+        public void InsertTrace(int index, Trace trace = null) => Run(new TraceInsertCommand(index, trace));
 
         /// <summary>
         /// Run a command, pushing its memento on to the Undo stack.
         /// </summary>
         /// <param name="command">The command to run.</param>
         /// <returns>True if the command actually caused a property change.</returns>
-        protected internal override bool Run(ICommand command)
+        public override bool Run(ICommand command)
         {
             if (command == null)
                 return false;
@@ -82,7 +82,7 @@
             return Redo(command);
         }
 
-        internal void Save()
+        public void Save()
         {
             LastSave = UndoStack.Count;
             UpdateUI();

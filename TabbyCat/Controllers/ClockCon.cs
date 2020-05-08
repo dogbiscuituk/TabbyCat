@@ -4,23 +4,23 @@
     using Types;
     using Views;
 
-    internal class ClockCon : LocalizationCon
+    public class ClockCon : LocalizationCon
     {
-        internal ClockCon(WorldCon worldCon) : base(worldCon) => UpdateTimeControls();
+        public ClockCon(WorldCon worldCon) : base(worldCon) => UpdateTimeControls();
 
         private Clock _Clock;
 
         protected override Clock Clock => _Clock ?? (_Clock = new Clock());
-        internal bool ClockRunning => Clock.Running;
-        internal float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
+        public bool ClockRunning => Clock.Running;
+        public float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
 
-        internal float VirtualTimeFactor
+        public float VirtualTimeFactor
         {
             get => Clock.VirtualTimeFactor;
             set => Clock.VirtualTimeFactor = value;
         }
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -49,7 +49,7 @@
             Clock?.Dispose();
         }
 
-        internal void UpdateTimeControls()
+        public void UpdateTimeControls()
         {
             WorldForm.TimeAccelerate.Enabled = CanAccelerate;
             WorldForm.TimeDecelerate.Enabled = CanDecelerate;

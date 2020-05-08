@@ -61,6 +61,6 @@
 
         #endregion
 
-        internal UserControls.ScenePropertiesEdit ScenePropertiesEdit;
+        public UserControls.ScenePropertiesEdit ScenePropertiesEdit;
     }
 }

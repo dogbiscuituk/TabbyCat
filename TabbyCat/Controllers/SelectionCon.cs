@@ -8,9 +8,9 @@
     using System.Windows.Forms;
     using Utils;
 
-    internal class SelectionCon : LocalizationCon
+    public class SelectionCon : LocalizationCon
     {
-        internal SelectionCon(WorldCon worldCon) : base(worldCon) { }
+        public SelectionCon(WorldCon worldCon) : base(worldCon) { }
 
         private int LastIndex = -1;
 
@@ -24,7 +24,7 @@
 
         private Font _HighlightFont;
 
-        internal List<int> Selection
+        public List<int> Selection
         {
             get => _Selection;
             set
@@ -36,9 +36,9 @@
             }
         }
 
-        internal ToolStripItemCollection Labels => Toolbar.Items;
+        public ToolStripItemCollection Labels => Toolbar.Items;
 
-        internal int TraceCount
+        public int TraceCount
         {
             get => Labels.Count - 1;
             set
@@ -58,9 +58,9 @@
 
         private ToolStrip Toolbar => TracePropertiesCon.SelectionToolbar;
 
-        internal event EventHandler SelectionChanged;
+        public event EventHandler SelectionChanged;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

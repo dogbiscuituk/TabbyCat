@@ -17,7 +17,7 @@
     /// Keep track of the document/model's "Modified" state, prompting for "Save" as necessary
     /// (for example, prior to "File|New" or "File|Open", or application closing).
     /// </summary>
-    internal abstract class SdiCon : MruCon
+    public abstract class SdiCon : MruCon
     {
         protected SdiCon(WorldCon worldCon, string filter, string subKeyName)
             : base(worldCon, subKeyName)
@@ -26,22 +26,22 @@
             SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
         }
 
-        internal class FilePathEventArgs : EventArgs
+        public class FilePathEventArgs : EventArgs
         {
-            internal FilePathEventArgs(string filePath) => FilePath = filePath;
-            internal string FilePath { get; set; }
+            public FilePathEventArgs(string filePath) => FilePath = filePath;
+            public string FilePath { get; set; }
         }
 
-        internal event EventHandler<CancelEventArgs>
+        public event EventHandler<CancelEventArgs>
             FileLoading,
             FileSaving;
 
-        internal event EventHandler
+        public event EventHandler
             FileLoaded,
             FilePathChanged,
             FileSaved;
 
-        internal event EventHandler<FilePathEventArgs> FilePathRequest;
+        public event EventHandler<FilePathEventArgs> FilePathRequest;
 
         private string _filePath = string.Empty;
 
@@ -49,7 +49,7 @@
 
         private readonly SaveFileDialog SaveFileDialog;
 
-        protected internal string FilePath
+        public string FilePath
         {
             get => _filePath;
             set
@@ -65,13 +65,13 @@
             }
         }
 
-        internal void Clear()
+        public void Clear()
         {
             FilePath = string.Empty;
             ClearDocument();
         }
 
-        internal string SelectFilePath(FilterIndex filterIndex = FilterIndex.Default)
+        public string SelectFilePath(FilterIndex filterIndex = FilterIndex.Default)
         {
             filterIndex = EvalFilterIndex(filterIndex);
             OpenFileDialog.FilterIndex = (int)filterIndex;
@@ -79,7 +79,7 @@
             return OpenFileDialog.ShowDialog() != DialogResult.OK ? null : OpenFileDialog.FileName;
         }
 
-        internal override void Reopen(ToolStripItem menuItem)
+        public override void Reopen(ToolStripItem menuItem)
         {
             var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
@@ -98,9 +98,9 @@
                 LoadFromFile(filePath);
         }
 
-        internal bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath) ? SaveAs(filterIndex) : SaveToFile(FilePath);
+        public bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath) ? SaveAs(filterIndex) : SaveToFile(FilePath);
 
-        internal bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
+        public bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
         {
             if (string.IsNullOrWhiteSpace(FilePath))
                 OnFilePathRequest();
@@ -135,7 +135,7 @@
                 dialog.InitialDirectory = AppCon.GetDefaultFolder(filterIndex);
         }
 
-        internal bool SaveIfModified()
+        public bool SaveIfModified()
         {
             if (Scene.IsModified)
             {
@@ -224,7 +224,7 @@
             return result;
         }
 
-        internal bool LoadFromFile(string filePath)
+        public bool LoadFromFile(string filePath)
         {
             var result = false;
             if (OnFileLoading())

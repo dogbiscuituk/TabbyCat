@@ -3,12 +3,12 @@
     using Models;
     using Types;
 
-    internal interface ICollectionCommand : ICommand
+    public interface ICollectionCommand : ICommand
     {
         bool Adding { get; set; }
     }
 
-    internal interface ICommand
+    public interface ICommand
     {
         int Index { get; }
         Property Property { get; }
@@ -20,22 +20,22 @@
         bool Run(Scene scene);
     }
 
-    internal interface IScenePropertyCommand : ICommand
+    public interface IScenePropertyCommand : ICommand
     {
         bool RunOn(Scene scene);
     }
 
-    internal interface ISignalPropertyCommand : ICommand
+    public interface ISignalPropertyCommand : ICommand
     {
         bool RunOn(Signal signal);
     }
 
-    internal interface ITracePropertyCommand : ICommand
+    public interface ITracePropertyCommand : ICommand
     {
         bool RunOn(Trace trace);
     }
 
-    internal interface ITracesCommand : ICollectionCommand
+    public interface ITracesCommand : ICollectionCommand
     {
         Trace Value { get; set; }
     }

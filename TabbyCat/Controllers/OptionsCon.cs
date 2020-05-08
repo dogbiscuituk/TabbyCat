@@ -8,9 +8,9 @@
     using Utils;
     using Views;
 
-    internal class OptionsCon : LocalizationCon
+    public class OptionsCon : LocalizationCon
     {
-        internal OptionsCon(WorldCon worldCon) : base(worldCon)
+        public OptionsCon(WorldCon worldCon) : base(worldCon)
         {
             OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
             OptionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().Reverse().ToArray());
@@ -36,7 +36,7 @@
             OptionsDialog?.Dispose();
         }
 
-        internal DialogResult ShowModal()
+        public DialogResult ShowModal()
         {
             Options = AppCon.Options;
             var result = OptionsDialog.ShowDialog(WorldForm);

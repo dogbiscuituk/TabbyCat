@@ -14,9 +14,9 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal partial class TracePropertiesCon : PropertiesCon
+    public partial class TracePropertiesCon : PropertiesCon
     {
-        internal TracePropertiesCon(WorldCon worldCon) : base(worldCon)
+        public TracePropertiesCon(WorldCon worldCon) : base(worldCon)
         {
             AppCon.InitControlTheme(TracePropertiesEdit.SelectionToolbar);
             SelectionCon = new SelectionCon(worldCon);
@@ -29,7 +29,7 @@
         private readonly SelectionCon SelectionCon;
         private bool SelectionUpdating;
 
-        protected internal override DockContent Form => TracePropertiesForm;
+        public override DockContent Form => TracePropertiesForm;
 
         protected override TracePropertiesForm TracePropertiesForm => _TracePropertiesForm ?? (_TracePropertiesForm = new TracePropertiesForm
         {
@@ -38,7 +38,7 @@
             ToolTipText = Resources.TracePropertiesForm_Text
         });
 
-        internal ToolStrip SelectionToolbar => TracePropertiesEdit.SelectionToolbar;
+        public ToolStrip SelectionToolbar => TracePropertiesEdit.SelectionToolbar;
 
         protected override Property[] AllProperties => new[]
         {
@@ -57,7 +57,7 @@
 
         private TracePropertiesEdit TracePropertiesEdit => TracePropertiesForm.TracePropertiesEdit;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -164,7 +164,7 @@
             UpdateAllProperties();
         }
 
-        protected internal override void UpdateAllProperties()
+        public override void UpdateAllProperties()
         {
             base.UpdateAllProperties();
             CopySelectionToControl();
@@ -285,7 +285,7 @@
     /// <summary>
     /// Command runners.
     /// </summary>
-    internal partial class TracePropertiesCon
+    public partial class TracePropertiesCon
     {
         private void Description_TextChanged(object sender, System.EventArgs e) => Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
 

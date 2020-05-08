@@ -2,9 +2,9 @@
 {
     using Types;
 
-    internal class AmplitudeCommand : SignalPropertyCommand<float>
+    public class AmplitudeCommand : SignalPropertyCommand<float>
     {
-        internal AmplitudeCommand(int index, float value) : base(
+        public AmplitudeCommand(int index, float value) : base(
             index,
             Property.SignalAmplitude,
             value,
@@ -13,9 +13,9 @@
         { }
     }
 
-    internal class AmplitudeMaximumCommand : SignalPropertyCommand<float>
+    public class AmplitudeMaximumCommand : SignalPropertyCommand<float>
     {
-        internal AmplitudeMaximumCommand(int index, float value) : base(
+        public AmplitudeMaximumCommand(int index, float value) : base(
             index,
             Property.SignalAmplitudeMaximum,
             value,
@@ -24,9 +24,9 @@
         { }
     }
 
-    internal class AmplitudeMinimumCommand : SignalPropertyCommand<float>
+    public class AmplitudeMinimumCommand : SignalPropertyCommand<float>
     {
-        internal AmplitudeMinimumCommand(int index, float value) : base(
+        public AmplitudeMinimumCommand(int index, float value) : base(
             index,
             Property.SignalAmplitudeMinimum,
             value,
@@ -35,9 +35,9 @@
         { }
     }
 
-    internal class FrequencyCommand : SignalPropertyCommand<float>
+    public class FrequencyCommand : SignalPropertyCommand<float>
     {
-        internal FrequencyCommand(int index, float value) : base(
+        public FrequencyCommand(int index, float value) : base(
             index,
             Property.SignalFrequency,
             value,
@@ -46,9 +46,9 @@
         { }
     }
 
-    internal class FrequencyMaximumCommand : SignalPropertyCommand<float>
+    public class FrequencyMaximumCommand : SignalPropertyCommand<float>
     {
-        internal FrequencyMaximumCommand(int index, float value) : base(
+        public FrequencyMaximumCommand(int index, float value) : base(
             index,
             Property.SignalFrequencyMaximum,
             value,
@@ -57,9 +57,9 @@
         { }
     }
 
-    internal class FrequencyMinimumCommand : SignalPropertyCommand<float>
+    public class FrequencyMinimumCommand : SignalPropertyCommand<float>
     {
-        internal FrequencyMinimumCommand(int index, float value) : base(
+        public FrequencyMinimumCommand(int index, float value) : base(
             index,
             Property.SignalFrequencyMinimum,
             value,
@@ -68,9 +68,9 @@
         { }
     }
 
-    internal class SignalNameCommand : SignalPropertyCommand<string>
+    public class SignalNameCommand : SignalPropertyCommand<string>
     {
-        internal SignalNameCommand(int index, string value) : base(
+        public SignalNameCommand(int index, string value) : base(
             index,
             Property.SignalName,
             value,
@@ -79,9 +79,9 @@
         { }
     }
 
-    internal class WaveTypeCommand : SignalPropertyCommand<WaveType>
+    public class WaveTypeCommand : SignalPropertyCommand<WaveType>
     {
-        internal WaveTypeCommand(int index, WaveType value) : base(
+        public WaveTypeCommand(int index, WaveType value) : base(
             index,
             Property.SignalWaveType,
             value,

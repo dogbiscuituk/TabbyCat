@@ -9,9 +9,9 @@
     using Types;
     using Utils;
 
-    internal class ShaderCodeCon : CodeCon
+    public class ShaderCodeCon : CodeCon
     {
-        internal ShaderCodeCon(WorldCon worldCon) : base(worldCon) { }
+        public ShaderCodeCon(WorldCon worldCon) : base(worldCon) { }
 
         private readonly List<int> Breaks = new List<int>();
 
@@ -21,7 +21,7 @@
 
         protected override string GetRegion() => Resources.ShaderRegion_All;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

@@ -11,27 +11,24 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    internal class SignalsCon : DockingCon
+    public class SignalsCon : DockingCon
     {
         // Constructors
 
-        internal SignalsCon(WorldCon worldCon) : base(worldCon) { }
+        public SignalsCon(WorldCon worldCon) : base(worldCon) { }
 
-        // Internal fields
+        // Public fields
 
-        internal readonly List<SignalCon> SignalCons = new List<SignalCon>();
+        public readonly List<SignalCon> SignalCons = new List<SignalCon>();
 
         // Private fields
 
         private SignalsForm _SignalsForm;
 
-        // Internal properties
+        // Public properties
 
-        internal int SignalsCount => SignalCons.Count;
-
-        // Protected internal properties
-
-        protected internal override DockContent Form => SignalsForm;
+        public override DockContent Form => SignalsForm;
+        public int SignalsCount => SignalCons.Count;
 
         // Protected properties
 
@@ -43,15 +40,15 @@
 
         private ToolStrip Toolbar => SignalsForm.Toolbar;
 
-        // Internal methods
+        // Public methods
 
-        internal void Clear()
+        public void Clear()
         {
             for (var index = SignalCons.Count - 1; index >= 0; index--)
                 RemoveAt(index);
         }
 
-        internal void InsertAt(int index)
+        public void InsertAt(int index)
         {
             var signal = Scene.Signals[index];
             AdjustIndices(index, +1);
@@ -64,14 +61,14 @@
             AdjustZorder();
         }
 
-        internal void Load()
+        public void Load()
         {
             Clear();
             for (var index = 0; index < Scene.Signals.Count; index++)
                 InsertAt(index);
         }
 
-        internal void RemoveAt(int index)
+        public void RemoveAt(int index)
         {
             var oldSignalCon = FindSignalCon(index);
             oldSignalCon.Connect(false);
@@ -80,9 +77,9 @@
             AdjustIndices(index + 1, -1);
         }
 
-        // Protected internal methods
+        // Protected public methods
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

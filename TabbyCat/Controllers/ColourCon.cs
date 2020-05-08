@@ -7,13 +7,13 @@
     using System.Windows.Forms;
     using Utils;
 
-    internal class ColourCon
+    public class ColourCon
     {
-        internal ColourCon() { }
+        public ColourCon() { }
 
-        internal readonly List<ComboBox> Controls = new List<ComboBox>();
+        public readonly List<ComboBox> Controls = new List<ComboBox>();
 
-        internal void AddControls(params ComboBox[] controls)
+        public void AddControls(params ComboBox[] controls)
         {
             Controls.AddRange(controls);
             foreach (var control in controls)
@@ -23,14 +23,14 @@
             }
         }
 
-        internal void Clear()
+        public void Clear()
         {
             foreach (var control in Controls)
                 control.DrawItem -= Control_DrawItem;
             Controls.Clear();
         }
 
-        internal Color GetColour(ComboBox comboBox)
+        public Color GetColour(ComboBox comboBox)
         {
             var item = comboBox.SelectedItem;
             return item != null
@@ -40,7 +40,7 @@
                 : Color.Transparent;
         }
 
-        internal void SetColour(ComboBox comboBox, Color colour)
+        public void SetColour(ComboBox comboBox, Color colour)
         {
             var argb = colour.ToArgb();
             comboBox.Tag = colour;

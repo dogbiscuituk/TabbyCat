@@ -11,11 +11,11 @@
     using UserControls;
     using Utils;
 
-    internal class SignalCon : LocalizationCon
+    public class SignalCon : LocalizationCon
     {
         // Constructors
 
-        internal SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
+        public SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
         {
             SignalEdit = new SignalEdit();
             Index = Scene.Signals.IndexOf(signal);
@@ -29,14 +29,14 @@
             UpdateAllProperties();
         }
 
-        // Internal fields
+        // Public fields
 
         /// <summary>
         /// The index of this control's Signal in the Scene.Signals collection.
         /// </summary>
-        internal int Index;
+        public int Index;
 
-        internal SignalEdit SignalEdit;
+        public SignalEdit SignalEdit;
 
         // Protected properties
 
@@ -109,9 +109,9 @@
 
         private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>().Where(p => p.Tag != null);
 
-        // Internal methods
+        // Public methods
 
-        internal void InitRanges(Signal signal)
+        public void InitRanges(Signal signal)
         {
             AmpMin = signal.AmplitudeMinimum;
             AmpRatio = (signal.AmplitudeMaximum - AmpMin) / AmpGaugeRange;
@@ -119,7 +119,7 @@
             LogFreqRatio = (float)(Math.Log(signal.FrequencyMaximum) - LogFreqMin) / FreqGaugeRange;
         }
 
-        internal void SetWaveType(WaveType waveType)
+        public void SetWaveType(WaveType waveType)
         {
             var item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType);
             if (item == null)
@@ -130,9 +130,9 @@
             UpdateUI();
         }
 
-        // Protected internal methods
+        // Protected public methods
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

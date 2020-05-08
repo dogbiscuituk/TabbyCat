@@ -4,15 +4,15 @@
     using System;
     using System.Windows.Forms;
 
-    internal class FullScreenCon : LocalizationCon
+    public class FullScreenCon : LocalizationCon
     {
-        internal FullScreenCon(WorldCon worldCon) : base(worldCon) { }
+        public FullScreenCon(WorldCon worldCon) : base(worldCon) { }
 
         private bool FullScreen;
 
         private FormWindowState PriorWindowState;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)

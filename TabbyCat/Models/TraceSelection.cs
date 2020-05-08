@@ -65,11 +65,9 @@
             set => SetProperty(p => p.Visible = value == true);
         }
 
-        // Internal properties
+        public IEnumerable<Trace> Traces => Items.OrderBy(p => p.Index);
 
-        internal IEnumerable<Trace> Traces => Items.OrderBy(p => p.Index);
-
-        internal IEnumerable<int> GetTraceIndices() => Items.Select(p => p.Index);
+        public IEnumerable<int> GetTraceIndices() => Items.Select(p => p.Index);
 
         // Private methods
 

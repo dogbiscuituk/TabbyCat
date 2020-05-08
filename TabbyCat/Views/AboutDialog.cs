@@ -2,8 +2,8 @@
 {
     using System.Windows.Forms;
 
-    internal partial class AboutDialog : Form
+    public partial class AboutDialog : Form
     {
-        internal AboutDialog() => InitializeComponent();
+        public AboutDialog() => InitializeComponent();
     }
 }

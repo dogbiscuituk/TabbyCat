@@ -7,15 +7,15 @@
     using Types;
     using Views;
 
-    internal class CameraCon : LocalizationCon
+    public class CameraCon : LocalizationCon
     {
-        internal CameraCon(WorldCon worldCon) : base(worldCon) => SetDefaultCamera();
+        public CameraCon(WorldCon worldCon) : base(worldCon) => SetDefaultCamera();
 
         private const float CameraBump = 0.1f;
 
         private Camera DefaultCamera;
 
-        protected internal override void Connect(bool connect)
+        public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
@@ -48,27 +48,27 @@
             }
         }
 
-        internal void CameraMoveBack() => CameraMoveFront(-1);
+        public void CameraMoveBack() => CameraMoveFront(-1);
 
-        internal void CameraMoveDown() => CameraMoveUp(-1);
+        public void CameraMoveDown() => CameraMoveUp(-1);
 
-        internal void CameraMoveForward() => CameraMoveFront(+1);
+        public void CameraMoveForward() => CameraMoveFront(+1);
 
-        internal void CameraMoveLeft() => CameraMoveRight(-1);
+        public void CameraMoveLeft() => CameraMoveRight(-1);
 
-        internal void CameraMoveRight() => CameraMoveRight(+1);
+        public void CameraMoveRight() => CameraMoveRight(+1);
 
-        internal void CameraMoveUp() => CameraMoveUp(+1);
+        public void CameraMoveUp() => CameraMoveUp(+1);
 
-        internal void CameraRotateDown() => CameraRotateUp(-1);
+        public void CameraRotateDown() => CameraRotateUp(-1);
 
-        internal void CameraRotateLeft() => CameraRotateRight(-1);
+        public void CameraRotateLeft() => CameraRotateRight(-1);
 
-        internal void CameraRotateRight() => CameraRotateRight(+1);
+        public void CameraRotateRight() => CameraRotateRight(+1);
 
-        internal void CameraRotateUp() => CameraRotateUp(+1);
+        public void CameraRotateUp() => CameraRotateUp(+1);
 
-        internal void SetDefaultCamera() => DefaultCamera = new Camera(Camera);
+        public void SetDefaultCamera() => DefaultCamera = new Camera(Camera);
 
         private void CameraMoveBack_Click(object sender, EventArgs e) => CameraMoveBack();
 

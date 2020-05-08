@@ -11,7 +11,7 @@
     using static WeifenLuo.WinFormsUI.Docking.DockPanelExtender;
     using static WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender;
 
-    internal static partial class AppCon
+    public static partial class AppCon
     {
         // Constructors
 
@@ -22,15 +22,15 @@
             AddNewWorldCon();
         }
 
-        // Internal fields
+        // Public fields
 
-        internal static bool CanPaste;
+        public static bool CanPaste;
 
-        internal static string DataFormat = "TabbyCatDataFormat";
+        public static string DataFormat = "TabbyCatDataFormat";
 
-        internal static Random Random = new Random();
+        public static Random Random = new Random();
 
-        internal static List<WorldCon> WorldCons = new List<WorldCon>();
+        public static List<WorldCon> WorldCons = new List<WorldCon>();
 
         // Private fields
 
@@ -42,9 +42,9 @@
 
         private static int PulseCount;
 
-        // Internal properties
+        // Public properties
 
-        internal static AboutDialog AboutDialog
+        public static AboutDialog AboutDialog
         {
             get
             {
@@ -55,7 +55,7 @@
             }
         }
 
-        internal static Options Options
+        public static Options Options
         {
             get
             {
@@ -90,9 +90,9 @@
 
         private static Settings Settings => Settings.Default;
 
-        // Internal methods
+        // Public methods
 
-        internal static WorldCon AddNewWorldCon()
+        public static WorldCon AddNewWorldCon()
         {
             var worldCon = new WorldCon();
             WorldCons.Add(worldCon);
@@ -101,9 +101,9 @@
             return worldCon;
         }
 
-        internal static void Close() => Application.Exit();
+        public static void Close() => Application.Exit();
 
-        internal static string GetDefaultFolder(FilterIndex filterIndex)
+        public static string GetDefaultFolder(FilterIndex filterIndex)
         {
             switch (filterIndex)
             {
@@ -116,7 +116,7 @@
             }
         }
 
-        internal static void Remove(WorldCon worldCon)
+        public static void Remove(WorldCon worldCon)
         {
             WorldCons.Remove(worldCon);
             if (WorldCons.Count == 0)
@@ -150,9 +150,9 @@
     /// <summary>
     /// Visual Studio Themes.
     /// </summary>
-    internal partial class AppCon
+    public partial class AppCon
     {
-        internal static void InitControlTheme(params Control[] controls)
+        public static void InitControlTheme(params Control[] controls)
         {
             var theme = VsTheme;
             var version = VsVersion;
