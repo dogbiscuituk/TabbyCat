@@ -28,6 +28,7 @@
         // Public properties
 
         public override DockContent Form => SignalsForm;
+        
         public int SignalsCount => SignalCons.Count;
 
         // Protected properties

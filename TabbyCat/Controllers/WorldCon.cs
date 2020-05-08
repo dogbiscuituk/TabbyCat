@@ -463,6 +463,7 @@
         private ClockCon _ClockCon;
         private CommandCon _CommandCon;
         private FullScreenCon _FullScreenCon;
+        private HotkeysCon _HotkeysCon;
         private JsonCon _JsonCon;
         private RenderCon _RenderCon;
         private SceneCodeCon _SceneCodeCon;
@@ -480,6 +481,7 @@
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
         protected override FullScreenCon FullScreenCon => _FullScreenCon ?? (_FullScreenCon = new FullScreenCon(this));
+        protected override HotkeysCon HotkeysCon => _HotkeysCon ?? (_HotkeysCon = new HotkeysCon(this));
         protected override SignalsCon SignalsCon => _ControlCon ?? (_ControlCon = new SignalsCon(this));
         protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
         protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
@@ -489,11 +491,12 @@
         protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
-        protected DockPane ControlPane => SignalsForm.Pane;
+        protected DockPane HotkeysPane => HotkeysForm.Pane;
         protected DockPane SceneCodePane => SceneCodeForm.Pane;
         protected DockPane ScenePane => SceneForm.Pane;
         protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
         protected DockPane ShaderCodePane => ShaderCodeForm.Pane;
+        protected DockPane SignalsPane => SignalsForm.Pane;
         protected DockPane TraceCodePane => TraceCodeForm.Pane;
         protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
         protected DockPanel WorldPanel => WorldForm.DockPanel;
@@ -505,6 +508,7 @@
                 CameraCon,
                 ClockCon,
                 FullScreenCon,
+                HotkeysCon,
                 SignalsCon,
                 JsonCon,
                 RenderCon,
@@ -537,6 +541,8 @@
             SceneCodeForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
             SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, hBottom);
+            HotkeysForm.Show(SignalsPane, null);
+            SignalsForm.Activate();
         }
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)

@@ -94,6 +94,7 @@
     <Compile Include="Controllers\CameraCon.cs" />
     <Compile Include="Controllers\ClockCon.cs" />
     <Compile Include="Controllers\FullScreenCon.cs" />
+    <Compile Include="Controllers\HotkeysCon.cs" />
     <Compile Include="Controllers\SignalPropertiesCon.cs" />
     <Compile Include="Controllers\SignalsCon.cs" />
     <Compile Include="Controllers\DockingCon.cs" />
@@ -153,6 +154,12 @@
     </Compile>
     <Compile Include="UserControls\CodeEdit.Designer.cs">
       <DependentUpon>CodeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HotkeysView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HotkeysView.Designer.cs">
+      <DependentUpon>HotkeysView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ScenePropertiesEdit.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +315,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\CodeEdit.resx">
       <DependentUpon>CodeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HotkeysView.resx">
+      <DependentUpon>HotkeysView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ScenePropertiesEdit.resx">
       <DependentUpon>ScenePropertiesEdit.cs</DependentUpon>

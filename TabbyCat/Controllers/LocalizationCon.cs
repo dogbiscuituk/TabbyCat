@@ -162,6 +162,7 @@
         protected virtual CameraCon CameraCon => WorldCon.CameraCon;
         protected virtual ClockCon ClockCon => WorldCon.ClockCon;
         protected virtual FullScreenCon FullScreenCon => WorldCon.FullScreenCon;
+        protected virtual HotkeysCon HotkeysCon => WorldCon.HotkeysCon;
         protected virtual RenderCon RenderCon => WorldCon.RenderCon;
         protected virtual SceneCodeCon SceneCodeCon => WorldCon.SceneCodeCon;
         protected virtual SceneCon SceneCon => WorldCon.SceneCon;
@@ -173,6 +174,7 @@
         protected virtual WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
+        protected virtual HotkeysForm HotkeysForm => HotkeysCon.HotkeysForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
         protected virtual SignalsForm SignalsForm => SignalsCon.SignalsForm;

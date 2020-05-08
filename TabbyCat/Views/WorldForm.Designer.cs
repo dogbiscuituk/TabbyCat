@@ -32,7 +32,7 @@
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PopupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.Toolbar = new CustomControls.JmkToolStrip();
+            this.Toolbar = new TabbyCat.CustomControls.JmkToolStrip();
             this.tbNew = new System.Windows.Forms.ToolStripSplitButton();
             this.tbNewEmptyScene = new System.Windows.Forms.ToolStripMenuItem();
             this.tbNewFromTemplate = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +51,13 @@
             this.tbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tbFullScreen = new System.Windows.Forms.ToolStripButton();
-            this.StatusBar = new CustomControls.JmkStatusStrip();
+            this.StatusBar = new TabbyCat.CustomControls.JmkStatusStrip();
             this.GraphicsModeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FpsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.GpuStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MainMenu = new CustomControls.JmkMenuStrip();
+            this.MainMenu = new TabbyCat.CustomControls.JmkMenuStrip();
             this.TimeDecelerate = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeReverse = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeStop = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,6 +126,7 @@
             this.CameraReset = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpOpenGLShadingLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpCodeEditorKeys = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolbar.SuspendLayout();
@@ -907,6 +908,7 @@
             // 
             this.HelpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HelpOpenGLShadingLanguage,
+            this.HelpCodeEditorKeys,
             this.toolStripMenuItem12,
             this.HelpAbout});
             this.HelpMenu.Name = "HelpMenu";
@@ -916,18 +918,24 @@
             // HelpOpenGLShadingLanguage
             // 
             this.HelpOpenGLShadingLanguage.Name = "HelpOpenGLShadingLanguage";
-            this.HelpOpenGLShadingLanguage.Size = new System.Drawing.Size(247, 22);
+            this.HelpOpenGLShadingLanguage.Size = new System.Drawing.Size(262, 22);
             this.HelpOpenGLShadingLanguage.Text = "OpenGL® Shading Language";
+            // 
+            // HelpCodeEditorKeys
+            // 
+            this.HelpCodeEditorKeys.Name = "HelpCodeEditorKeys";
+            this.HelpCodeEditorKeys.Size = new System.Drawing.Size(262, 22);
+            this.HelpCodeEditorKeys.Text = "Code editor keyboard shortcuts";
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(244, 6);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(259, 6);
             // 
             // HelpAbout
             // 
             this.HelpAbout.Name = "HelpAbout";
-            this.HelpAbout.Size = new System.Drawing.Size(247, 22);
+            this.HelpAbout.Size = new System.Drawing.Size(262, 22);
             this.HelpAbout.Text = "About";
             // 
             // WorldForm
@@ -1056,5 +1064,6 @@
         public System.Windows.Forms.ToolStripMenuItem ViewFullScreen;
         public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.ToolStripButton tbFullScreen;
+        public System.Windows.Forms.ToolStripMenuItem HelpCodeEditorKeys;
     }
 }

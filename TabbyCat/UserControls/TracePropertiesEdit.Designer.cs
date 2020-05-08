@@ -56,10 +56,10 @@
             this.cbPattern = new System.Windows.Forms.ComboBox();
             this.cbVisible = new System.Windows.Forms.CheckBox();
             this.seLocationX = new System.Windows.Forms.NumericUpDown();
-            this.sePitch = new CustomControls.JmkNumericUpDownDegrees();
-            this.seYaw = new CustomControls.JmkNumericUpDownDegrees();
-            this.seRoll = new CustomControls.JmkNumericUpDownDegrees();
-            this.SelectionToolbar = new CustomControls.JmkToolStrip();
+            this.sePitch = new TabbyCat.CustomControls.JmkNumericUpDownDegrees();
+            this.seYaw = new TabbyCat.CustomControls.JmkNumericUpDownDegrees();
+            this.seRoll = new TabbyCat.CustomControls.JmkNumericUpDownDegrees();
+            this.SelectionToolbar = new TabbyCat.CustomControls.JmkToolStrip();
             this.lblAll = new System.Windows.Forms.ToolStripLabel();
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLocationY)).BeginInit();
@@ -143,7 +143,7 @@
             this.TableLayoutPanel.Size = new System.Drawing.Size(305, 239);
             this.TableLayoutPanel.TabIndex = 0;
             // 
-            // lblStripes
+            // cbStripes
             // 
             this.cbStripes.AutoSize = true;
             this.cbStripes.BackColor = System.Drawing.SystemColors.Info;
@@ -153,7 +153,7 @@
             this.cbStripes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbStripes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStripes.Location = new System.Drawing.Point(3, 169);
-            this.cbStripes.Name = "lblStripes";
+            this.cbStripes.Name = "cbStripes";
             this.cbStripes.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbStripes.Size = new System.Drawing.Size(79, 21);
             this.cbStripes.TabIndex = 34;
@@ -161,7 +161,7 @@
             this.cbStripes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbStripes.UseVisualStyleBackColor = false;
             // 
-            // lblMaximum
+            // cbMaximum
             // 
             this.cbMaximum.AutoSize = true;
             this.cbMaximum.BackColor = System.Drawing.SystemColors.Info;
@@ -171,7 +171,7 @@
             this.cbMaximum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbMaximum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMaximum.Location = new System.Drawing.Point(3, 142);
-            this.cbMaximum.Name = "lblMaximum";
+            this.cbMaximum.Name = "cbMaximum";
             this.cbMaximum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbMaximum.Size = new System.Drawing.Size(79, 21);
             this.cbMaximum.TabIndex = 33;
@@ -179,7 +179,7 @@
             this.cbMaximum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbMaximum.UseVisualStyleBackColor = false;
             // 
-            // lblMinimum
+            // cbMinimum
             // 
             this.cbMinimum.AutoSize = true;
             this.cbMinimum.BackColor = System.Drawing.SystemColors.Info;
@@ -189,7 +189,7 @@
             this.cbMinimum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbMinimum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMinimum.Location = new System.Drawing.Point(3, 115);
-            this.cbMinimum.Name = "lblMinimum";
+            this.cbMinimum.Name = "cbMinimum";
             this.cbMinimum.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbMinimum.Size = new System.Drawing.Size(79, 21);
             this.cbMinimum.TabIndex = 32;
@@ -197,7 +197,7 @@
             this.cbMinimum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbMinimum.UseVisualStyleBackColor = false;
             // 
-            // lblScale
+            // cbScale
             // 
             this.cbScale.AutoSize = true;
             this.cbScale.BackColor = System.Drawing.SystemColors.Info;
@@ -207,7 +207,7 @@
             this.cbScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbScale.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbScale.Location = new System.Drawing.Point(3, 88);
-            this.cbScale.Name = "lblScale";
+            this.cbScale.Name = "cbScale";
             this.cbScale.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.cbScale.Size = new System.Drawing.Size(79, 21);
             this.cbScale.TabIndex = 31;

@@ -28,6 +28,7 @@
         private TracePropertiesForm _TracePropertiesForm;
 
         private readonly SelectionCon SelectionCon;
+
         private bool SelectionUpdating;
 
         public override DockContent Form => TracePropertiesForm;
