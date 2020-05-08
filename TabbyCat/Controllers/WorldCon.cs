@@ -26,7 +26,7 @@
             PopupWorldForm_Opening(this, new CancelEventArgs());
         }
 
-        public TraceSelection TraceSelection = new TraceSelection();
+        public TraceSelection TraceSelection { get; } = new TraceSelection();
 
         private string
             LastSpeed,
@@ -37,7 +37,7 @@
 
         public override WorldForm WorldForm { get; }
 
-        public GLInfo GLInfo => RenderCon._GLInfo ?? RenderCon?.GLInfo;
+        public GLInfo GLInfo => RenderCon.TheGLInfo ?? RenderCon?.GLInfo;
 
         private static string GLSLUrl => Settings.Default.GLSLUrl;
 
@@ -384,7 +384,7 @@
 
         private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
 
-        public void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
+        public static void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
 
         private void UpdateFramesPerSecond()
         {

@@ -17,7 +17,7 @@
 
         public Trace(Scene scene) : this() => Scene = scene;
 
-        public Trace(Trace trace) : base(trace) => CopyFrom(trace);
+        public Trace(Trace trace) : base(trace) => CopyFrom(trace ?? null);
 
         // Private fields
 
@@ -62,13 +62,13 @@
         /// The Scene object which owns this Trace.
         /// </summary>
         [JsonIgnore]
-        public Scene Scene;
+        public Scene Scene { get; set; }
 
         /// <summary>
         /// The Video Array Object associated with this Trace.
         /// </summary>
         [JsonIgnore]
-        public Vao Vao;
+        public Vao Vao { get; set; }
 
         // Public methods
 

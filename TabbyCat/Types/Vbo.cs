@@ -12,10 +12,13 @@
     {
         public Vbo(ITrace trace, VboType vboType)
         {
+            if (trace == null)
+                return;
             Pattern = trace.Pattern;
             StripeCount = trace.StripeCount;
             VboType = vboType;
-            GL.GenBuffers(1, out BufferID);
+            GL.GenBuffers(1, out int bufferID);
+            BufferID = bufferID;
             GL.BindBuffer(BufferTarget, BufferID);
             switch (VboType)
             {
@@ -29,9 +32,9 @@
             }
         }
 
-        public readonly int
-            BufferID,
-            ElementsCount;
+        public int BufferID { get; }
+
+        public int ElementsCount { get; }
 
         private readonly Pattern Pattern;
         private readonly Vector3 StripeCount;
@@ -45,7 +48,9 @@
 
         public void AddRef() => RefCount++;
 
-        public bool Matches(ITrace trace, VboType vboType) => VboType == vboType &&
+        public bool Matches(ITrace trace, VboType vboType) => trace == null
+            ? false
+            : VboType == vboType &&
             StripeCount == trace.StripeCount &&
             (VboType != VboType.Index || Pattern == trace.Pattern);
 

@@ -24,13 +24,13 @@
 
         // Public fields
 
-        public static bool CanPaste;
+        public static bool CanPaste { get; set; }
 
-        public static string DataFormat = "TabbyCatDataFormat";
+        public static string DataFormat { get; set; } = "TabbyCatDataFormat";
 
-        public static Random Random = new Random();
+        public static Random Random { get; set; } = new Random();
 
-        public static List<WorldCon> WorldCons = new List<WorldCon>();
+        public static List<WorldCon> WorldCons { get; set; } = new List<WorldCon>();
 
         // Private fields
 
@@ -76,6 +76,8 @@
             }
             set
             {
+                if (value == null)
+                    return;
                 Settings.Options_Theme = value.Theme;
                 Settings.Options_OpenInNewWindow = value.OpenInNewWindow;
                 Settings.FilesFolderPath = value.FilesFolderPath;

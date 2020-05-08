@@ -4,6 +4,7 @@
     using OpenTK;
     using Properties;
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.Globalization;
     using System.Linq;
@@ -32,7 +33,7 @@
             ToolTipText = Resources.ScenePropertiesForm_Text
         });
 
-        protected override Property[] AllProperties => new[]
+        protected override IEnumerable<Property> AllProperties => new List<Property>
         {
             Property.Background,
             Property.CameraFocus,
@@ -135,8 +136,10 @@
             Localize(Resources.Control_Scene_VSync, ScenePropertiesEdit.cbVSync);
         }
 
-        protected override void UpdateProperties(params Property[] properties)
+        protected override void UpdateProperties(IEnumerable<Property> properties)
         {
+            if (properties == null)
+                return;
             foreach (var property in properties)
                 switch (property)
                 {

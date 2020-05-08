@@ -11,7 +11,7 @@
     {
         public ColourCon() { }
 
-        public readonly List<ComboBox> Controls = new List<ComboBox>();
+        public List<ComboBox> Controls { get; } = new List<ComboBox>();
 
         public void AddControls(params ComboBox[] controls)
         {
@@ -30,8 +30,10 @@
             Controls.Clear();
         }
 
-        public Color GetColour(ComboBox comboBox)
+        public static Color GetColour(ComboBox comboBox)
         {
+            if (comboBox == null)
+                return Color.Transparent;
             var item = comboBox.SelectedItem;
             return item != null
                 ? Color.FromName(item.ToString())
@@ -40,8 +42,10 @@
                 : Color.Transparent;
         }
 
-        public void SetColour(ComboBox comboBox, Color colour)
+        public static void SetColour(ComboBox comboBox, Color colour)
         {
+            if (comboBox == null)
+                return;
             var argb = colour.ToArgb();
             comboBox.Tag = colour;
             var name = comboBox.Items.Cast<string>()

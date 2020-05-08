@@ -27,12 +27,19 @@
         // Public properties
 
         public Color BackgroundColour { get; set; }
+
         public Camera Camera { get; set; }
+
         public float TargetFPS { get; set; }
+
         public string GLTargetVersion { get; set; }
+
         public Projection Projection { get; set; }
+
         public int Samples { get; set; }
+
         public bool Stereo { get; set; }
+
         public bool VSync { get; set; }
 
         [DefaultValue("")]
@@ -74,13 +81,10 @@
         public CommandCon CommandCon => WorldCon?.CommandCon;
 
         [JsonIgnore]
-        public GraphicsMode GraphicsMode => WorldCon?.GraphicsMode;
-
-        [JsonIgnore]
         public bool IsModified => CommandCon?.IsModified ?? false;
 
         [JsonIgnore]
-        public WorldCon WorldCon;
+        public WorldCon WorldCon { get; set; }
 
         // Private properties
 
@@ -104,7 +108,7 @@
 
         public GraphicsMode GetGraphicsMode() => WorldCon?.GraphicsMode;
 
-        public Matrix4 GetProjection() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
+        public Matrix4 GetProjectionMatrix() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
         public void InsertSignal(int index, Signal signal) => Signals.Insert(index, signal);
 
@@ -125,10 +129,6 @@
             if (index >= 0 && index < Traces.Count)
                 Traces.RemoveAt(index);
         }
-
-        public void SetCameraView(Matrix4 _) { }
-
-        public void SetProjection(Matrix4 _) { }
 
         private void Init()
         {

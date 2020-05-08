@@ -34,7 +34,7 @@
             set => SetLanguage(value);
         }
 
-        public readonly FastColoredTextBox TextBox;
+        public FastColoredTextBox TextBox { get; }
 
         public void AddSystemRange(Range range)
         {

@@ -19,7 +19,7 @@
 
         // Public fields
 
-        public readonly List<SignalCon> SignalCons = new List<SignalCon>();
+        public List<SignalCon> SignalCons { get;  } = new List<SignalCon>();
 
         // Private fields
 
@@ -32,7 +32,7 @@
 
         // Protected properties
 
-        protected override Property[] AllProperties => new[] { Property.Signals };
+        protected override IEnumerable<Property> AllProperties => new List<Property> { Property.Signals };
 
         protected override SignalsForm SignalsForm => _SignalsForm ?? NewSignalsForm();
 
@@ -131,8 +131,10 @@
             Localize(Resources.WorldForm_ViewSignals, WorldForm.ViewSignals);
         }
 
-        protected override void UpdateProperties(params Property[] properties)
+        protected override void UpdateProperties(IEnumerable<Property> properties)
         {
+            if (properties == null)
+                return;
             foreach (var property in properties)
                 switch (property)
                 {

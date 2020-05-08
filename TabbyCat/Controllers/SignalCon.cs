@@ -20,7 +20,7 @@
             SignalEdit = new SignalEdit();
             Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
-            NameEditor.Text = signal.Name;
+            NameEditor.Text = signal?.Name;
             InitRanges(signal);
             InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
@@ -34,13 +34,13 @@
         /// <summary>
         /// The index of this control's Signal in the Scene.Signals collection.
         /// </summary>
-        public int Index;
+        public int Index { get; set; }
 
-        public SignalEdit SignalEdit;
+        public SignalEdit SignalEdit { get; set; }
 
         // Protected properties
 
-        protected override Property[] AllProperties => new[]
+        protected override IEnumerable<Property> AllProperties => new[]
         {
             Property.SignalAmplitude,
             Property.SignalAmplitudeMaximum,
@@ -113,6 +113,8 @@
 
         public void InitRanges(Signal signal)
         {
+            if (signal == null)
+                return;
             AmpMin = signal.AmplitudeMinimum;
             AmpRatio = (signal.AmplitudeMaximum - AmpMin) / AmpGaugeRange;
             LogFreqMin = (float)Math.Log(signal.FrequencyMinimum);
@@ -177,8 +179,10 @@
             Localize(Resources.SignalsForm_DeleteButton, SignalEdit.DeleteButton);
         }
 
-        protected override void UpdateProperties(params Property[] properties)
+        protected override void UpdateProperties(IEnumerable<Property> properties)
         {
+            if (properties == null)
+                return;
             if (Updating)
                 return;
             Updating = true;
@@ -264,7 +268,7 @@
 
         private void WaveTypeItem_Click(object sender, EventArgs e) => Run(new WaveTypeCommand(Index, (WaveType)((ToolStripItem)sender).Tag));
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.Property);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperty(e.Property);
 
         // Private static methods
 

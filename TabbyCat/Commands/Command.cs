@@ -48,6 +48,6 @@
 
         // Protected methods
 
-        protected virtual void OnPropertyEdit(Scene scene) => scene.OnPropertyEdit(Property, Index);
+        protected virtual void OnPropertyEdit(Scene scene) => scene?.OnPropertyEdit(Property, Index);
     }
 }

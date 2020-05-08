@@ -5,6 +5,7 @@
     using OpenTK;
     using Properties;
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
@@ -40,7 +41,7 @@
 
         public ToolStrip SelectionToolbar => TracePropertiesEdit.SelectionToolbar;
 
-        protected override Property[] AllProperties => new[]
+        protected override IEnumerable<Property> AllProperties => new List<Property>
         {
             Property.TraceDescription,
             Property.TraceLocation,
@@ -177,8 +178,10 @@
                 }));
         }
 
-        protected override void UpdateProperties(params Property[] properties)
+        protected override void UpdateProperties(IEnumerable<Property> properties)
         {
+            if (properties == null)
+                return;
             if (Updating)
                 return;
             Updating = true;
@@ -246,7 +249,7 @@
                 return;
             SelectionUpdating = true;
             SelectionCon.TraceCount = Scene.Traces.Count;
-            SelectionCon.Selection = Selection.GetTraceIndices().ToList();
+            SelectionCon.SetSelection(Selection.GetTraceIndices().ToList());
             SelectionUpdating = false;
         }
 

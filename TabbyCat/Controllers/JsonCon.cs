@@ -202,9 +202,9 @@
 
         private void JsonCon_FilePathChanged(object sender, EventArgs e) => UpdateCaption();
 
-        private void JsonCon_FilePathRequest(object sender, SdiCon.FilePathEventArgs e) => OnFilePathRequest(e);
+        private void JsonCon_FilePathRequest(object sender, FilePathEventArgs e) => OnFilePathRequest(e);
 
-        private void JsonCon_FileReopen(object sender, SdiCon.FilePathEventArgs e) => OpenFile(e.FilePath);
+        private void JsonCon_FileReopen(object sender, FilePathEventArgs e) => OpenFile(e.FilePath);
 
         private void JsonCon_FileSaved(object sender, EventArgs e) => OnSave();
 
@@ -227,7 +227,7 @@
             Reset();
         }
 
-        private void OnFilePathRequest(SdiCon.FilePathEventArgs e)
+        private void OnFilePathRequest(FilePathEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.FilePath))
                 e.FilePath = Scene.Title.ToFilename();

@@ -6,6 +6,7 @@
     using OpenTK.Graphics;
     using Properties;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
@@ -22,7 +23,7 @@
 
         // Protected fields
 
-        protected bool Updating;
+        protected bool Updating { get; set; }
 
         // Protected public properties
 
@@ -30,7 +31,7 @@
 
         // Protected properties
 
-        protected virtual Property[] AllProperties => Array.Empty<Property>();
+        protected virtual IEnumerable<Property> AllProperties => Enumerable.Empty<Property>();
 
         // Protected public methods
 
@@ -54,6 +55,8 @@
 
         protected virtual void Localize(string info, params Control[] controls)
         {
+            if (info == null)
+                info = string.Empty;
             string hint, text = Parse(info, out hint, out _, out _);
             foreach (var control in controls)
             {
@@ -65,6 +68,8 @@
 
         protected virtual void Localize(string info, params ToolStripItem[] items)
         {
+            if (info == null)
+                info = string.Empty;
             var text = Parse(info, out var hint, out var keys, out var shortcut);
             foreach (var item in items)
             {
@@ -82,13 +87,15 @@
 
         protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
-        protected virtual void UpdateProperties(params Property[] properties) { }
+        protected virtual void UpdateProperties(IEnumerable<Property> properties) { }
+
+        protected void UpdateProperty(Property property) => UpdateProperties(new List<Property> { property });
 
         // Protected static methods
 
         protected static void InitCommonControls(Control control)
         {
-            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
+            foreach (var spinEdit in control?.Controls.OfType<NumericUpDown>())
             {
                 spinEdit.Minimum = decimal.MinValue;
                 spinEdit.Maximum = decimal.MaxValue;
@@ -188,10 +195,16 @@
         {
             if (!Disposed)
             {
-                DisposeManagedState();
+                Dispose(true);
                 Disposed = true;
             }
             GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+                DisposeManagedState();
         }
 
         protected virtual void DisposeManagedState() { }

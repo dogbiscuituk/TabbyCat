@@ -78,7 +78,7 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected virtual void OnCollectionEdit(Scene scene) => scene.OnCollectionEdit(Property, Index, Adding);
+        protected virtual void OnCollectionEdit(Scene scene) => scene?.OnCollectionEdit(Property, Index, Adding);
 
         protected abstract void RemoveItem(Scene scene);
 
@@ -98,17 +98,17 @@
 
         // Protected methods
 
-        protected override void AddItem(Scene scene) => scene.AddSignal(Value);
+        protected override void AddItem(Scene scene) => scene?.AddSignal(Value);
 
-        protected override Signal GetItem(Scene scene) => scene.Signals[Index];
+        protected override Signal GetItem(Scene scene) => scene?.Signals[Index];
 
-        protected override int GetItemsCount(Scene scene) => scene.Signals.Count;
+        protected override int GetItemsCount(Scene scene) => scene?.Signals.Count ?? 0;
 
         protected override Signal GetNewItem(Scene scene) => new Signal();
 
-        protected override void InsertItem(Scene scene) => scene.InsertSignal(Index, Value);
+        protected override void InsertItem(Scene scene) => scene?.InsertSignal(Index, Value);
 
-        protected override void RemoveItem(Scene scene) => scene.RemoveSignal(Index);
+        protected override void RemoveItem(Scene scene) => scene?.RemoveSignal(Index);
     }
 
     public class SignalDeleteCommand : SignalCollectionCommand
@@ -129,17 +129,17 @@
 
         // Protected methods
 
-        protected override void AddItem(Scene scene) => scene.AddTrace(Value);
+        protected override void AddItem(Scene scene) => scene?.AddTrace(Value);
 
-        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
+        protected override Trace GetItem(Scene scene) => scene?.Traces[Index];
 
-        protected override int GetItemsCount(Scene scene) => scene.Traces.Count;
+        protected override int GetItemsCount(Scene scene) => scene?.Traces?.Count ?? 0;
 
         protected override Trace GetNewItem(Scene scene) => new Trace(scene);
 
-        protected override void InsertItem(Scene scene) => scene.InsertTrace(Index, Value);
+        protected override void InsertItem(Scene scene) => scene?.InsertTrace(Index, Value);
 
-        protected override void RemoveItem(Scene scene) => scene.RemoveTrace(Index);
+        protected override void RemoveItem(Scene scene) => scene?.RemoveTrace(Index);
     }
 
     public class TraceDeleteCommand : TraceCollectionCommand

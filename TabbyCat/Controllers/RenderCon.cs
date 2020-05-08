@@ -21,11 +21,13 @@
 
         // Public fields
 
-        public float FramesPerSecond;
-        public static GLInfo _GLInfo;
-        public bool SceneControlSuspended;
+        public float FramesPerSecond { get; set; }
 
-        public static GraphicsMode _GraphicsMode;
+        public bool SceneControlSuspended { get; set; }
+
+        public static GLInfo TheGLInfo { get; set; }
+
+        public static GraphicsMode TheGraphicsMode { get; set; }
 
         // Private fields
 
@@ -76,14 +78,14 @@
         {
             get
             {
-                if (_GLInfo == null)
+                if (TheGLInfo == null)
                 {
                     GLInfo info = null;
                     UsingGL(() => info = new GLInfo());
                     lock (GLInfoSyncRoot)
-                        _GLInfo = info;
+                        TheGLInfo = info;
                 }
-                return _GLInfo;
+                return TheGLInfo;
             }
         }
 
@@ -95,14 +97,14 @@
         {
             get
             {
-                if (_GraphicsMode == null)
+                if (TheGraphicsMode == null)
                 {
                     GraphicsMode mode = null;
                     UsingGL(() => mode = SceneControl.GraphicsMode);
                     lock (GLModeSyncRoot)
-                        _GraphicsMode = mode;
+                        TheGraphicsMode = mode;
                 }
-                return _GraphicsMode;
+                return TheGraphicsMode;
             }
         }
 
@@ -111,13 +113,6 @@
         private bool ProgramValid => ProgramCompiled && Scene.GPUStatus == GPUStatus.OK;
 
         // Public methods
-
-        public GLInfo GetGLInfo()
-        {
-            GLInfo info = null;
-            UsingGL(() => info = new GLInfo());
-            return info;
-        }
 
         public void Invalidate()
         {
@@ -149,7 +144,7 @@
 
         public void InvalidateTrace(Trace trace)
         {
-            if (trace.Vao != null)
+            if (trace?.Vao != null)
                 UsingGL(() =>
                 {
                     trace.Vao.ReleaseBuffers();
@@ -160,7 +155,7 @@
         public void Refresh()
         {
             lock (GLModeSyncRoot)
-                _GraphicsMode = null;
+                TheGraphicsMode = null;
             InvalidateProgram();
             InvalidateAllTraces();
         }
@@ -203,6 +198,8 @@
 
         public bool UsingGL(Action action)
         {
+            if (action == null)
+                return false;
             var ok = !SceneControlSuspended &&
                 SceneControl?.IsHandleCreated == true &&
                 SceneControl?.HasValidContext == true &&
@@ -330,7 +327,7 @@
             }
         }
 
-        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjection());
+        private void LoadProjection() => LoadMatrix(Loc_Projection, Scene.GetProjectionMatrix());
 
         private void LoadTraceNumber(int traceIndex) => LoadInt(Loc_TraceNumber, traceIndex);
 

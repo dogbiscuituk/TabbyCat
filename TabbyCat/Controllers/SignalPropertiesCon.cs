@@ -12,6 +12,8 @@
 
         public bool Execute(ref Signal signal)
         {
+            if (signal == null)
+                return false;
             using (var dialog = new SignalPropertiesDialog())
             {
                 InitCommonControls(dialog.TableLayoutPanel);

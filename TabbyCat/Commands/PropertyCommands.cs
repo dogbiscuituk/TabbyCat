@@ -10,6 +10,8 @@
 
     public abstract class PropertyCommand<TItem, TValue> : Command<TValue>
     {
+        // Constructors
+
         protected PropertyCommand(int index, Property property, TValue value, Func<TItem, TValue> get, Action<TItem, TValue> set) : base(index)
         {
             Property = property;
@@ -18,17 +20,29 @@
             Set = set;
         }
 
+        // Public properties
+
+        private string Action => string.Format(CultureInfo.CurrentCulture, Resources.Command_PropertyChange, Property.AsString());
+
         public override string RedoAction => Action;
 
         public override string UndoAction => Action;
 
+        // Protected properties
+
+        protected Func<TItem, TValue> Get { get; set; }
+
+        protected Action<TItem, TValue> Set { get; set; }
+
+        // Public methods
+
         public override bool Run(Scene scene)
         {
-            var value = GetValue(scene);
+            var value = GetPropertyValue(scene);
             var result = !Equals(value, Value);
             if (result)
             {
-                SetValue(scene, Value);
+                SetPropertyValue(scene, Value);
                 Value = value;
             }
             return result;
@@ -43,17 +57,13 @@
             return $"{Property.AsString()} = {s}";
         }
 
-        private string Action => string.Format(CultureInfo.CurrentCulture, Resources.Command_PropertyChange, Property.AsString());
-
-        protected Func<TItem, TValue> Get;
-
-        protected Action<TItem, TValue> Set;
+        // Protected methods
 
         protected abstract TItem GetItem(Scene scene);
 
-        protected TValue GetValue(Scene scene) => Get(GetItem(scene));
+        protected TValue GetPropertyValue(Scene scene) => Get(GetItem(scene));
 
-        protected void SetValue(Scene scene, TValue value) => Set(GetItem(scene), value);
+        protected void SetPropertyValue(Scene scene, TValue value) => Set(GetItem(scene), value);
     }
 
     public abstract class ScenePropertyCommand<TValue> : PropertyCommand<Scene, TValue>, IScenePropertyCommand
@@ -87,7 +97,7 @@
 
         protected override string Target => Resources.Property_Signal;
 
-        protected override Signal GetItem(Scene scene) => scene.Signals[Index];
+        protected override Signal GetItem(Scene scene) => scene?.Signals[Index];
     }
 
     public abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
@@ -104,6 +114,6 @@
 
         protected override string Target => Resources.Property_Trace;
 
-        protected override Trace GetItem(Scene scene) => scene.Traces[Index];
+        protected override Trace GetItem(Scene scene) => scene?.Traces[Index];
     }
 }

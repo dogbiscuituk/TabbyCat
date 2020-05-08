@@ -26,12 +26,6 @@
             SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
         }
 
-        public class FilePathEventArgs : EventArgs
-        {
-            public FilePathEventArgs(string filePath) => FilePath = filePath;
-            public string FilePath { get; set; }
-        }
-
         public event EventHandler<CancelEventArgs>
             FileLoading,
             FileSaving;
@@ -81,6 +75,8 @@
 
         public override void Reopen(ToolStripItem menuItem)
         {
+            if (menuItem == null)
+                return;
             var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
             {
@@ -175,6 +171,8 @@
             Justification = "Can't predict what exception types the client-supplied action may throw, but the sole purpose of this method is simply to swallow them all.")]
         protected static bool UseStream(Action action)
         {
+            if (action == null)
+                return false;
             var result = true;
             try
             {

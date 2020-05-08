@@ -6,6 +6,7 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.Globalization;
     using System.IO;
@@ -319,7 +320,7 @@
 
         private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
 
-        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperties(e.Property);
+        private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperty(e.Property);
 
         private void WorldCon_Pulse(object sender, EventArgs e) => CodeEdit.tbPaste.Enabled = CanPaste();
 
@@ -549,8 +550,10 @@
             UpdateUI();
         }
 
-        protected override void UpdateProperties(params Property[] properties)
+        protected override void UpdateProperties(IEnumerable<Property> properties)
         {
+            if (properties == null)
+                return;
             if (Updating)
                 return;
             Updating = true;

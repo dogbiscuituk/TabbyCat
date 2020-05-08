@@ -16,25 +16,13 @@
 
         private ToolStripLabel PrevLabel;
 
-        private List<int> _Selection = new List<int>();
-
         private readonly Brush
             Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush(),
             HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
 
         private Font _HighlightFont;
 
-        public List<int> Selection
-        {
-            get => _Selection;
-            set
-            {
-                if (ToString(Selection) == ToString(value))
-                    return;
-                _Selection = value;
-                OnSelectionChanged();
-            }
-        }
+        public List<int> Selection { get; private set; } = new List<int>();
 
         public ToolStripItemCollection Labels => Toolbar.Items;
 
@@ -74,6 +62,14 @@
             }
         }
 
+        public void SetSelection(List<int> selection)
+        {
+            if (ToString(Selection) == ToString(selection))
+                return;
+            Selection = selection;
+            OnSelectionChanged();
+        }
+
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
@@ -92,18 +88,18 @@
             label.Paint += Label_Paint;
         }
 
-        private void ClearSelection() => _Selection.Clear();
+        private void ClearSelection() => Selection.Clear();
 
         private void Exclude(int traceIndex)
         {
-            if (_Selection.Contains(traceIndex))
-                _Selection.Remove(traceIndex);
+            if (Selection.Contains(traceIndex))
+                Selection.Remove(traceIndex);
         }
 
         private void Include(int traceIndex)
         {
-            if (!_Selection.Contains(traceIndex))
-                _Selection.Add(traceIndex);
+            if (!Selection.Contains(traceIndex))
+                Selection.Add(traceIndex);
         }
 
         private void IncludeRange(int low, int high)
@@ -167,7 +163,7 @@
 
         private void Label_Paint(object sender, PaintEventArgs e)
         {
-            if (_Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
+            if (Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
                 Paint_Highlight(sender, e);
         }
 
@@ -214,7 +210,7 @@
 
         private void Toggle(int traceIndex)
         {
-            if (_Selection.Contains(traceIndex))
+            if (Selection.Contains(traceIndex))
                 Exclude(traceIndex);
             else
                 Include(traceIndex);
