@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using OpenTK;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCat.Types;
 
     [TestFixture]
@@ -13,6 +14,9 @@
         private readonly Curve Curve = new Curve();
 
         // Public methods
+
+        [Test]
+        public void TestCurveDescription() => Assert.AreEqual(Resources.Property_Curve, Curve.Description);
 
         [Test]
         public void TestCurvePattern() => Assert.AreEqual(Pattern.Lines, Curve.Pattern);

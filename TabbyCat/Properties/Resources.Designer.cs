@@ -1681,6 +1681,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Curve.
+        /// </summary>
+        public static string Property_Curve {
+            get {
+                return ResourceManager.GetString("Property_Curve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to far plane.
         /// </summary>
         public static string Property_FarPlane {
@@ -1960,6 +1969,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surface.
+        /// </summary>
+        public static string Property_Surface {
+            get {
+                return ResourceManager.GetString("Property_Surface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to target FPS.
         /// </summary>
         public static string Property_TargetFPS {
@@ -2145,6 +2163,15 @@ namespace TabbyCat.Properties {
         public static string Property_VertexShader {
             get {
                 return ResourceManager.GetString("Property_VertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume.
+        /// </summary>
+        public static string Property_Volume {
+            get {
+                return ResourceManager.GetString("Property_Volume", resourceCulture);
             }
         }
         

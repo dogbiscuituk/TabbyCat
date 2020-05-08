@@ -11,7 +11,7 @@
 
         private void Init()
         {
-            Description = "Curve";
+            Description = Resources.Property_Curve;
             Pattern = Pattern.Lines;
             StripeCount = new Vector3(1000, 0, 0);
             SetFormula(ShaderType.VertexShader, Resources.Curve_VertexFormula);

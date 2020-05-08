@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using OpenTK;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCat.Types;
 
     [TestFixture]
@@ -13,6 +14,9 @@
         private readonly Surface Surface = new Surface();
 
         // Public methods
+
+        [Test]
+        public void TestSurfaceDescription() => Assert.AreEqual(Resources.Property_Surface, Surface.Description);
 
         [Test]
         public void TestSurfacePattern() => Assert.AreEqual(Pattern.Quads, Surface.Pattern);

@@ -1232,4 +1232,13 @@ Stereo: {7}</value>
   <data name="Blank" xml:space="preserve">
     <value />
   </data>
+  <data name="Property_Curve" xml:space="preserve">
+    <value>Curve</value>
+  </data>
+  <data name="Property_Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="Property_Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
 </root>

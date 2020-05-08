@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using OpenTK;
     using TabbyCat.Models;
+    using TabbyCat.Properties;
     using TabbyCat.Types;
 
     [TestFixture]
@@ -13,6 +14,9 @@
         private readonly Volume Volume = new Volume();
 
         // Public methods
+
+        [Test]
+        public void TestVolumeDescription() => Assert.AreEqual(Resources.Property_Volume, Volume.Description);
 
         [Test]
         public void TestVolumePattern() => Assert.AreEqual(Pattern.Quads, Volume.Pattern);
