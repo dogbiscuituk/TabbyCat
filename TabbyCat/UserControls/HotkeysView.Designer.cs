@@ -170,28 +170,29 @@
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(316, 442);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(303, 442);
             this.TableLayoutPanel.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 17);
+            this.label1.Size = new System.Drawing.Size(145, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cut";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(161, 0);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(154, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 17);
+            this.label2.Size = new System.Drawing.Size(146, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "^X";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,22 +200,23 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 17);
+            this.label3.Size = new System.Drawing.Size(145, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Copy";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(161, 17);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(154, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 17);
+            this.label4.Size = new System.Drawing.Size(146, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "^C";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -222,143 +224,155 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 17);
+            this.label5.Size = new System.Drawing.Size(145, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Paste";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 51);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(152, 17);
+            this.label6.Size = new System.Drawing.Size(145, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Select All";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 17);
+            this.label7.Size = new System.Drawing.Size(145, 34);
             this.label7.TabIndex = 6;
             this.label7.Text = "Column select";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 102);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(152, 17);
+            this.label8.Size = new System.Drawing.Size(145, 17);
             this.label8.TabIndex = 7;
             this.label8.Text = "Undo";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 119);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 17);
+            this.label9.Size = new System.Drawing.Size(145, 17);
             this.label9.TabIndex = 8;
             this.label9.Text = "Redo";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 136);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(152, 17);
+            this.label10.Size = new System.Drawing.Size(145, 17);
             this.label10.TabIndex = 9;
             this.label10.Text = "Find";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 153);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(152, 17);
+            this.label11.Size = new System.Drawing.Size(145, 17);
             this.label11.TabIndex = 10;
             this.label11.Text = "Find char";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(3, 170);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(152, 17);
+            this.label12.Size = new System.Drawing.Size(145, 17);
             this.label12.TabIndex = 11;
             this.label12.Text = "Find next";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(3, 187);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(152, 17);
+            this.label13.Size = new System.Drawing.Size(145, 17);
             this.label13.TabIndex = 12;
             this.label13.Text = "Replace";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(3, 204);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(152, 17);
+            this.label14.Size = new System.Drawing.Size(145, 17);
             this.label14.TabIndex = 13;
             this.label14.Text = "Goto";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(3, 221);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(152, 17);
+            this.label15.Size = new System.Drawing.Size(145, 17);
             this.label15.TabIndex = 14;
             this.label15.Text = "Navigate forward / back";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(3, 238);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(152, 17);
+            this.label16.Size = new System.Drawing.Size(145, 17);
             this.label16.TabIndex = 15;
             this.label16.Text = "Bookmark";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(161, 34);
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(154, 34);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(152, 17);
+            this.label17.Size = new System.Drawing.Size(146, 17);
             this.label17.TabIndex = 16;
             this.label17.Text = "^V";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -366,11 +380,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(161, 51);
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(154, 51);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(152, 17);
+            this.label18.Size = new System.Drawing.Size(146, 17);
             this.label18.TabIndex = 17;
             this.label18.Text = "^A";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -378,10 +392,11 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label19.Location = new System.Drawing.Point(161, 68);
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(154, 68);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(152, 34);
+            this.label19.Size = new System.Drawing.Size(146, 34);
             this.label19.TabIndex = 18;
             this.label19.Text = "Alt+mouse, Alt+Shift+arrow";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,10 +404,11 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label20.Location = new System.Drawing.Point(161, 102);
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(154, 102);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(152, 17);
+            this.label20.Size = new System.Drawing.Size(146, 17);
             this.label20.TabIndex = 19;
             this.label20.Text = "^Z, Alt+backspace";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -400,10 +416,11 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label21.Location = new System.Drawing.Point(161, 119);
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(154, 119);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(152, 17);
+            this.label21.Size = new System.Drawing.Size(146, 17);
             this.label21.TabIndex = 20;
             this.label21.Text = "^Y";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -411,10 +428,11 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label22.Location = new System.Drawing.Point(161, 136);
+            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(154, 136);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(152, 17);
+            this.label22.Size = new System.Drawing.Size(146, 17);
             this.label22.TabIndex = 21;
             this.label22.Text = "^F";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -422,10 +440,11 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label23.Location = new System.Drawing.Point(161, 153);
+            this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(154, 153);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(152, 17);
+            this.label23.Size = new System.Drawing.Size(146, 17);
             this.label23.TabIndex = 22;
             this.label23.Text = "Alt+F char";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -433,10 +452,11 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label24.Location = new System.Drawing.Point(161, 170);
+            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(154, 170);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(152, 17);
+            this.label24.Size = new System.Drawing.Size(146, 17);
             this.label24.TabIndex = 23;
             this.label24.Text = "F3";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -444,10 +464,11 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label25.Location = new System.Drawing.Point(161, 187);
+            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(154, 187);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(152, 17);
+            this.label25.Size = new System.Drawing.Size(146, 17);
             this.label25.TabIndex = 24;
             this.label25.Text = "^H";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -455,10 +476,11 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label26.Location = new System.Drawing.Point(161, 204);
+            this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(154, 204);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(152, 17);
+            this.label26.Size = new System.Drawing.Size(146, 17);
             this.label26.TabIndex = 25;
             this.label26.Text = "^G";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -466,10 +488,11 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label27.Location = new System.Drawing.Point(161, 221);
+            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label27.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(154, 221);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(152, 17);
+            this.label27.Size = new System.Drawing.Size(146, 17);
             this.label27.TabIndex = 26;
             this.label27.Text = "^- / Shift+^-";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -477,10 +500,11 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label28.Location = new System.Drawing.Point(161, 238);
+            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(154, 238);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(152, 17);
+            this.label28.Size = new System.Drawing.Size(146, 17);
             this.label28.TabIndex = 27;
             this.label28.Text = "^B, Shift+^B";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -488,131 +512,143 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(3, 255);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(152, 17);
+            this.label29.Size = new System.Drawing.Size(145, 17);
             this.label29.TabIndex = 28;
             this.label29.Text = "Navigate to bookmark";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(3, 272);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(152, 17);
+            this.label30.Size = new System.Drawing.Size(145, 17);
             this.label30.TabIndex = 29;
             this.label30.Text = "Zoom";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(3, 289);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(152, 17);
+            this.label31.Size = new System.Drawing.Size(145, 17);
             this.label31.TabIndex = 30;
             this.label31.Text = "Zoom in / out";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(3, 306);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(152, 17);
+            this.label32.Size = new System.Drawing.Size(145, 17);
             this.label32.TabIndex = 31;
             this.label32.Text = "Zoom reset";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(3, 323);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(152, 17);
+            this.label33.Size = new System.Drawing.Size(145, 17);
             this.label33.TabIndex = 32;
             this.label33.Text = "Indent";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(3, 340);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(152, 17);
+            this.label34.Size = new System.Drawing.Size(145, 17);
             this.label34.TabIndex = 33;
             this.label34.Text = "Auto Indent";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(3, 357);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(152, 17);
+            this.label35.Size = new System.Drawing.Size(145, 17);
             this.label35.TabIndex = 34;
             this.label35.Text = "Move lines";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(3, 374);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(152, 17);
+            this.label36.Size = new System.Drawing.Size(145, 17);
             this.label36.TabIndex = 35;
             this.label36.Text = "Change case";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(3, 391);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(152, 17);
+            this.label37.Size = new System.Drawing.Size(145, 17);
             this.label37.TabIndex = 36;
             this.label37.Text = "Comment / uncomment";
-            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(3, 408);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(152, 17);
+            this.label38.Size = new System.Drawing.Size(145, 17);
             this.label38.TabIndex = 37;
             this.label38.Text = "Macro start / stop";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(3, 425);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(152, 17);
+            this.label39.Size = new System.Drawing.Size(145, 17);
             this.label39.TabIndex = 38;
             this.label39.Text = "Execute macro";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label40.Location = new System.Drawing.Point(161, 255);
+            this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label40.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(154, 255);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(152, 17);
+            this.label40.Size = new System.Drawing.Size(146, 17);
             this.label40.TabIndex = 39;
             this.label40.Text = "^N, Shift+^N";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -620,10 +656,11 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label41.Location = new System.Drawing.Point(161, 272);
+            this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label41.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(154, 272);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(152, 17);
+            this.label41.Size = new System.Drawing.Size(146, 17);
             this.label41.TabIndex = 40;
             this.label41.Text = "^wheel";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -631,10 +668,11 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label42.Location = new System.Drawing.Point(161, 289);
+            this.label42.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label42.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(154, 289);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(152, 17);
+            this.label42.Size = new System.Drawing.Size(146, 17);
             this.label42.TabIndex = 41;
             this.label42.Text = "^num+ / ^num-";
             this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -642,10 +680,11 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label43.Location = new System.Drawing.Point(161, 306);
+            this.label43.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label43.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(154, 306);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(152, 17);
+            this.label43.Size = new System.Drawing.Size(146, 17);
             this.label43.TabIndex = 42;
             this.label43.Text = "^0";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -653,10 +692,11 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label44.Location = new System.Drawing.Point(161, 323);
+            this.label44.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label44.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(154, 323);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(152, 17);
+            this.label44.Size = new System.Drawing.Size(146, 17);
             this.label44.TabIndex = 43;
             this.label44.Text = "tab, Shift+tab";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -664,10 +704,11 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label45.Location = new System.Drawing.Point(161, 340);
+            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label45.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(154, 340);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(152, 17);
+            this.label45.Size = new System.Drawing.Size(146, 17);
             this.label45.TabIndex = 44;
             this.label45.Text = "^I";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -675,10 +716,11 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label46.Location = new System.Drawing.Point(161, 357);
+            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label46.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(154, 357);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(152, 17);
+            this.label46.Size = new System.Drawing.Size(146, 17);
             this.label46.TabIndex = 45;
             this.label46.Text = "Alt+up/down";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -686,10 +728,11 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label47.Location = new System.Drawing.Point(161, 374);
+            this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label47.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(154, 374);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(152, 17);
+            this.label47.Size = new System.Drawing.Size(146, 17);
             this.label47.TabIndex = 46;
             this.label47.Text = "^U, Shift+^U";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -697,10 +740,11 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label48.Location = new System.Drawing.Point(161, 391);
+            this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label48.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(154, 391);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(152, 17);
+            this.label48.Size = new System.Drawing.Size(146, 17);
             this.label48.TabIndex = 47;
             this.label48.Text = "Shift+^C";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -708,10 +752,11 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label49.Location = new System.Drawing.Point(161, 408);
+            this.label49.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label49.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(154, 408);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(152, 17);
+            this.label49.Size = new System.Drawing.Size(146, 17);
             this.label49.TabIndex = 48;
             this.label49.Text = "^M";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -719,10 +764,11 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label50.Location = new System.Drawing.Point(161, 425);
+            this.label50.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label50.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(154, 425);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(152, 17);
+            this.label50.Size = new System.Drawing.Size(146, 17);
             this.label50.TabIndex = 49;
             this.label50.Text = "^E";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -737,7 +783,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HotkeysView";
-            this.Size = new System.Drawing.Size(316, 450);
+            this.Size = new System.Drawing.Size(303, 442);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
