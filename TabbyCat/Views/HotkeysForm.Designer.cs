@@ -52,7 +52,7 @@
             this.Controls.Add(this.hotkeysView1);
             this.Name = "HotkeysForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Code editor keyboard shortcuts";
+            this.Text = "Code hotkeys";
             this.ResumeLayout(false);
 
         }

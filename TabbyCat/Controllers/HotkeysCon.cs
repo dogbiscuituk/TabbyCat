@@ -27,11 +27,11 @@
             base.Connect(connect);
             if (connect)
             {
-                WorldForm.HelpCodeEditorKeys.Click += HelpCodeEditorKeys_Click;
+                WorldForm.HelpCodeHotkeys.Click += HelpCodeEditorKeys_Click;
             }
             else
             {
-                WorldForm.HelpCodeEditorKeys.Click -= HelpCodeEditorKeys_Click;
+                WorldForm.HelpCodeHotkeys.Click -= HelpCodeEditorKeys_Click;
             }
         }
 
