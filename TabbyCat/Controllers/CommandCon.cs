@@ -97,20 +97,29 @@
             if (cmd1.GetType() == cmd2.GetType())
                 switch (cmd1)
                 {
-                    case IScenePropertyCommand _: return true;
-                    case ITracePropertyCommand tpc1: return tpc1.Index == ((ITracePropertyCommand)cmd2).Index;
+                    case IScenePropertyCommand _:
+                        return true;
+                    case ISignalPropertyCommand spc1:
+                        return spc1.Index == ((ISignalPropertyCommand)cmd2).Index;
+                    case ITracePropertyCommand tpc1:
+                        return tpc1.Index == ((ITracePropertyCommand)cmd2).Index;
                 }
             else if (cmd1 is ICollectionCommand cc1 && !cc1.Adding)
                 switch (cc1)
                 {
-                    case ITracesCommand tc1:
+                    case ISignalCollectionCommand sc1:
+                        if (cmd2 is ISignalPropertyCommand spc2 && spc2.Index == sc1.Index)
+                        {
+                            if (sc1.Value == null)
+                                sc1.Value = Scene.Signals[sc1.Index];
+                            return true;
+                        }
+                        break;
+                    case ITraceCollectionCommand tc1:
                         if (cmd2 is ITracePropertyCommand tpc2 && tpc2.Index == tc1.Index)
                         {
                             if (tc1.Value == null)
-                            {
                                 tc1.Value = Scene.Traces[tc1.Index];
-                            }
-
                             return true;
                         }
                         break;

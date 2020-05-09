@@ -3,11 +3,6 @@
     using Models;
     using Types;
 
-    public interface ICollectionCommand : ICommand
-    {
-        bool Adding { get; set; }
-    }
-
     public interface ICommand
     {
         int Index { get; }
@@ -35,7 +30,17 @@
         bool RunOn(Trace trace);
     }
 
-    public interface ITracesCommand : ICollectionCommand
+    public interface ICollectionCommand : ICommand
+    {
+        bool Adding { get; set; }
+    }
+
+    public interface ISignalCollectionCommand : ICollectionCommand
+    {
+        Signal Value { get; set; }
+    }
+
+    public interface ITraceCollectionCommand : ICollectionCommand
     {
         Trace Value { get; set; }
     }

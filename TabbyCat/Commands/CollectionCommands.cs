@@ -90,7 +90,7 @@
             Property);
     }
 
-    public class SignalCollectionCommand : CollectionCommand<Signal>
+    public class SignalCollectionCommand : CollectionCommand<Signal>, ISignalCollectionCommand
     {
         // Constructors
 
@@ -121,7 +121,7 @@
         public SignalInsertCommand(int index, Signal signal) : base(index, true) => Value = signal;
     }
 
-    public class TraceCollectionCommand : CollectionCommand<Trace>
+    public class TraceCollectionCommand : CollectionCommand<Trace>, ITraceCollectionCommand
     {
         // Constructors
 
