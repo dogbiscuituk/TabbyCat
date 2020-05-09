@@ -14,9 +14,10 @@
     {
         // Private fields
 
-        // TODO: When finalized, dispose any Brush (Item1) in this dictionary whose Item2 is false.
-        // This flag indicates whether the associated Brush is "stock"; if not, it was created here.
-        private static readonly Dictionary<Color, (Brush, bool)> Brushes = new Dictionary<Color, (Brush, bool)>();
+        // TODO: When finalized, dispose any SolidBrush in this dictionary whose Stock property is false.
+        // The Stock flag indicates whether the associated SolidBrush is retrieved from the standard colour Brushes.
+        // If not, then it was created here, and we are ultimately responsible for its disposal.
+        private static readonly Dictionary<Color, (SolidBrush SolidBrush, bool Stock)> SolidBrushInfos = new Dictionary<Color, (SolidBrush, bool)>();
 
         private static readonly Dictionary<string, Func<Color, float>> ColourOrders = new Dictionary<string, Func<Color, float>>
         {
@@ -40,8 +41,8 @@
             var g = e.Graphics;
             var r = e.Bounds;
             g.SetOptimization(Optimization.HighQuality);
-            background.WithBrush(brush => g.FillRectangle(brush, r));
-            foreground.WithBrush(brush => g.DrawString(text, e.Font, brush, r.X + 1, r.Y - 2));
+            background.WithSolidBrush(brush => g.FillRectangle(brush, r));
+            foreground.WithSolidBrush(brush => g.DrawString(text, e.Font, brush, r.X + 1, r.Y - 2));
         }
 
         public static Color GetColour(this GPUStatus status)
@@ -59,7 +60,11 @@
             }
         }
 
-        public static IEnumerable<Color> GetColours() => Enum.GetValues(typeof(KnownColor)).Cast<KnownColor>().Select(Color.FromKnownColor).Where(c => !c.IsSystemColor);
+        public static IEnumerable<Color> GetColours() =>
+            Enum.GetValues(typeof(KnownColor))
+            .Cast<KnownColor>()
+            .Select(Color.FromKnownColor)
+            .Where(c => !c.IsSystemColor);
 
         public static IEnumerable<string> GetNonSystemColourNames(string orderByColourProperties)
         {
@@ -115,28 +120,27 @@
             }
         }
 
-        public static Brush ToBrush(this Color colour)
+        /// <summary>
+        /// Converts a given colour to a SolidBrush of that colour. Results are cached in the static SolidBrushes Dictionary.
+        /// The dictionary is indexed by colour, and each SolidBrush value is accompanied by a boolean "stock" flag.
+        /// If true, this flag indicates that the corresponding SolidBrush was obtained from the standard Brushes list.
+        /// </summary>
+        /// <param name="colour">The colour of the required SolidBrush.</param>
+        /// <returns>The required SolidBrush.</returns>
+        public static SolidBrush ToSolidBrush(this Color colour)
         {
-            if (!Brushes.TryGetValue(colour, out var brush))
+            if (!SolidBrushInfos.TryGetValue(colour, out var info))
             {
                 var prop = GetProp(colour);
-                brush = prop != null ? ((Brush)prop.GetValue(null), true) : (new SolidBrush(colour), false);
-                Brushes.Add(colour, brush);
+                info = prop != null
+                    ? (SolidBrush: (SolidBrush)prop.GetValue(null), Stock: true)
+                    : (SolidBrush: new SolidBrush(colour), Stock: false);
+                SolidBrushInfos.Add(colour, info);
             }
-            return brush.Item1;
+            return info.SolidBrush;
         }
 
-        public static void WithBrush(this Color colour, Action<Brush> action)
-        {
-            if (action == null)
-                return;
-            var prop = GetProp(colour);
-            if (prop != null)
-                action((Brush)prop.GetValue(null));
-            else
-                using (var brush = new SolidBrush(colour))
-                    action(brush);
-        }
+        public static void WithSolidBrush(this Color colour, Action<Brush> action) => action?.Invoke(colour.ToSolidBrush());
 
         // Private methods
 

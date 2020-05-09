@@ -232,9 +232,9 @@
         private static void InitStyle(TextStyleInfo info, TextStyle style)
         {
             if (((SolidBrush)style.ForeBrush).Color != info.Foreground)
-                style.ForeBrush = info.Foreground.ToBrush();
+                style.ForeBrush = info.Foreground.ToSolidBrush();
             if (((SolidBrush)style.BackgroundBrush).Color != info.Background)
-                style.BackgroundBrush = info.Background.ToBrush();
+                style.BackgroundBrush = info.Background.ToSolidBrush();
             style.FontStyle = info.FontStyle;
         }
 

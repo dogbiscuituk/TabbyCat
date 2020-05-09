@@ -17,8 +17,8 @@
         private ToolStripLabel PrevLabel;
 
         private readonly Brush
-            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToBrush(),
-            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToBrush();
+            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToSolidBrush(),
+            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToSolidBrush();
 
         private Font _HighlightFont;
 
