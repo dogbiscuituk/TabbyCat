@@ -38,8 +38,8 @@
 
         [Test, Sequential]
         public void TestGetLineCount(
-            [Values(null, "", " ", "123", "123\n456\n789", "\n123\n456\n789\n")] string s,
-            [Values(0, 0, 1, 1, 3, 5)] int expected) => Assert.AreEqual(expected, s.GetLineCount());
+            [Values(null, "", " ", "123", "\n", "\n\n", "123\n456\n789", "\n123\n456\n789\n", "1\n2\n3\n4\n5\n6\n7\n8\n9\n10")] string s,
+            [Values(0, 0, 1, 1, 2, 3, 3, 5, 10)] int expected) => Assert.AreEqual(expected, s.GetLineCount());
 
         [Test, Sequential]
         public void TestGetLinePos(

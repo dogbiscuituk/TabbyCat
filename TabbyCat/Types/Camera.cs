@@ -6,6 +6,8 @@
 
     public class Camera
     {
+        public Camera() : this(Vector3.Zero, new Vector3(0, 0, 2)) { }
+
         public Camera(Vector3 position, Vector3 focus)
         {
             Position = position;

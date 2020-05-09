@@ -57,6 +57,7 @@
     <Compile Include="Models\SurfaceTests.cs" />
     <Compile Include="Models\TraceTests.cs" />
     <Compile Include="Models\VolumeTests.cs" />
+    <Compile Include="Utils\MathUtilsTests.cs" />
     <Compile Include="Utils\NameSourceTests.cs" />
     <Compile Include="Utils\PropertyUtilsTests.cs" />
     <Compile Include="Models\SignalTests.cs" />
