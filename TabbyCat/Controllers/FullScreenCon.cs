@@ -6,11 +6,17 @@
 
     public class FullScreenCon : LocalizationCon
     {
+        // Constructors
+
         public FullScreenCon(WorldCon worldCon) : base(worldCon) { }
 
-        private bool FullScreen;
+        // Private fields
 
-        private FormWindowState PriorWindowState;
+        private bool _fullScreen;
+
+        private FormWindowState _priorWindowState;
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -27,19 +33,23 @@
             }
         }
 
+        // Protected methods
+
         protected override void Localize()
         {
             base.Localize();
             Localize(Resources.WorldForm_ViewFullScreen, WorldForm.ViewFullScreen, WorldForm.tbFullScreen);
         }
 
+        // Private methods
+
         private void ViewFullScreen_Click(object sender, System.EventArgs e)
         {
-            FullScreen = !FullScreen;
-            if (!FullScreen)
+            _fullScreen = !_fullScreen;
+            if (!_fullScreen)
             {
                 WorldForm.FormBorderStyle = FormBorderStyle.Sizable;
-                WorldForm.WindowState = PriorWindowState;
+                WorldForm.WindowState = _priorWindowState;
             }
             Array.ForEach(new DockingCon[]
             {
@@ -50,17 +60,17 @@
                 TraceCodeCon,
                 TracePropertiesCon
             },
-                p => p.SetVisibility(!FullScreen));
+                p => p.SetVisibility(!_fullScreen));
             WorldForm.MainMenu.Visible =
                 WorldForm.Toolbar.Visible =
-                WorldForm.StatusBar.Visible = !FullScreen;
-            if (FullScreen)
+                WorldForm.StatusBar.Visible = !_fullScreen;
+            if (_fullScreen)
             {
-                PriorWindowState = WorldForm.WindowState;
+                _priorWindowState = WorldForm.WindowState;
                 WorldForm.WindowState = FormWindowState.Maximized;
                 WorldForm.FormBorderStyle = FormBorderStyle.None;
             }
-            WorldForm.ViewFullScreen.Checked = WorldForm.tbFullScreen.Checked = FullScreen;
+            WorldForm.ViewFullScreen.Checked = WorldForm.tbFullScreen.Checked = _fullScreen;
         }
     }
 }
