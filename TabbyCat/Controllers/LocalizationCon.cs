@@ -19,7 +19,7 @@
     {
         // Constructors
 
-        public LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
+        protected LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
 
         // Protected fields
 
@@ -33,7 +33,7 @@
 
         protected virtual IEnumerable<Property> AllProperties => Enumerable.Empty<Property>();
 
-        // Protected public methods
+        // Public methods
 
         public virtual void Connect(bool connect)
         {
@@ -47,8 +47,6 @@
             }
         }
 
-        public virtual bool Run(ICommand command) => CommandCon.Run(command);
-
         // Protected methods
 
         protected virtual void Localize() { }
@@ -57,7 +55,7 @@
         {
             if (info == null)
                 info = string.Empty;
-            string hint, text = Parse(info, out hint, out _, out _);
+            var text = Parse(info, out var hint, out _, out _);
             foreach (var control in controls)
             {
                 if (!string.IsNullOrWhiteSpace(text))
@@ -83,9 +81,11 @@
             }
         }
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        protected void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
 
-        protected virtual void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        protected void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+
+        protected virtual bool Run(ICommand command) => CommandCon.Run(command);
 
         protected virtual void UpdateProperties(IEnumerable<Property> properties) { }
 
@@ -153,8 +153,8 @@
         public virtual CommandCon CommandCon => WorldCon.CommandCon;
         public virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         public virtual JsonCon JsonCon => WorldCon.JsonCon;
-        public virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
-        public GLControl SceneControl => SceneForm?.Controls?.OfType<GLControl>().FirstOrDefault();
+        public virtual Scene Scene { get => WorldCon.Scene; protected set => WorldCon.Scene = value; }
+        public GLControl SceneControl => SceneForm?.Controls.OfType<GLControl>().FirstOrDefault();
         public virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         // Protected properties
@@ -193,7 +193,7 @@
     {
         // Private fields
 
-        private bool Disposed;
+        private bool _disposed;
 
         // Public methods
 
@@ -207,12 +207,12 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!Disposed)
+            if (!_disposed)
             {
                 if (disposing)
                     DisposeManagedState();
                 DisposeUnmanagedState();
-                Disposed = true;
+                _disposed = true;
             }
         }
 
