@@ -9,56 +9,27 @@
 
     public class ColourCon
     {
-        public ColourCon() { }
+        // Private fields
 
-        public List<ComboBox> Controls { get; } = new List<ComboBox>();
+        private List<ComboBox> Controls { get; } = new List<ComboBox>();
+
+        private static readonly IEnumerable<string> ColourNames = ColourUtils.GetNonSystemColourNames(Properties.Settings.Default.KnownColorSortOrder);
+
+        // Public methods
 
         public void AddControls(params ComboBox[] controls)
         {
             Controls.AddRange(controls);
             foreach (var control in controls)
             {
-                control.Items.AddRange(NonSystemColourNames);
+                control.Items.AddRange(ColourNames.Cast<object>().ToArray());
                 control.DrawItem += Control_DrawItem;
             }
         }
 
-        public void Clear()
-        {
-            foreach (var control in Controls)
-                control.DrawItem -= Control_DrawItem;
-            Controls.Clear();
-        }
+        // Private methods
 
-        public static Color GetColour(ComboBox comboBox)
-        {
-            if (comboBox == null)
-                return Color.Transparent;
-            var item = comboBox.SelectedItem;
-            return item != null
-                ? Color.FromName(item.ToString())
-                : comboBox.Tag is Color
-                ? (Color)comboBox.Tag
-                : Color.Transparent;
-        }
-
-        public static void SetColour(ComboBox comboBox, Color colour)
-        {
-            if (comboBox == null)
-                return;
-            var argb = colour.ToArgb();
-            comboBox.Tag = colour;
-            var name = comboBox.Items.Cast<string>()
-                .FirstOrDefault(s => Color.FromName(s).ToArgb() == argb);
-            comboBox.SelectedIndex =
-                string.IsNullOrWhiteSpace(name) ? -1 : comboBox.Items.IndexOf(name);
-            comboBox.Invalidate();
-        }
-
-        private static readonly string[] NonSystemColourNames =
-            ColourUtils.GetNonSystemColourNames(Properties.Settings.Default.KnownColorSortOrder).ToArray();
-
-        private void Control_DrawItem(object sender, DrawItemEventArgs e)
+        private static void Control_DrawItem(object sender, DrawItemEventArgs e)
         {
             var selected = (e.State & DrawItemState.Selected) != 0;
             var text = "Transparent";
