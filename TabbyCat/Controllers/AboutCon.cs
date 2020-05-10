@@ -1,7 +1,9 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using System.Globalization;
     using System.Reflection;
     using System.Windows.Forms;
+    using Properties;
     using Views;
 
     public class AboutCon : LocalizationCon
@@ -9,7 +11,7 @@
         public AboutCon(WorldCon worldCon) : base(worldCon)
         {
             var asm = Assembly.GetExecutingAssembly();
-            AboutDialog.Text = $"About {Application.ProductName}";
+            AboutDialog.Text = string.Format(CultureInfo.CurrentCulture, Resources.AboutDialog, Application.ProductName);
             AboutDialog.lblProductName.Text = Application.ProductName;
             AboutDialog.lblDescription.Text = asm.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
             AboutDialog.lblVersion.Text = Application.ProductVersion;
@@ -22,22 +24,14 @@
             AboutDialog.lblRendererName.Text = info.Renderer;
         }
 
-        private AboutDialog _AboutDialog;
+        private AboutDialog _aboutDialog;
 
-        public AboutDialog AboutDialog => _AboutDialog ?? (_AboutDialog = new AboutDialog());
-
-        public void Show(IWin32Window owner)
-        {
-            Init(false);
-            AboutDialog.Show(owner);
-        }
+        public AboutDialog AboutDialog => _aboutDialog ?? (_aboutDialog = new AboutDialog());
 
         public void ShowDialog(IWin32Window owner)
         {
-            Init(true);
+            AboutDialog.btnOK.Visible = true;
             AboutDialog.ShowDialog(owner);
         }
-
-        private void Init(bool showOK) => AboutDialog.btnOK.Visible = showOK;
     }
 }

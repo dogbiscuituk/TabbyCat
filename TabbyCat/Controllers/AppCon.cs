@@ -24,23 +24,21 @@
 
         // Public fields
 
-        public static bool CanPaste { get; set; }
+        public static bool CanPaste { get; private set; }
 
-        public static string DataFormat { get; set; } = "TabbyCatDataFormat";
-
-        public static Random Random { get; set; } = new Random();
+        public static string DataFormat { get; } = "TabbyCatDataFormat";
 
         public static List<WorldCon> WorldCons { get; } = new List<WorldCon>();
 
         // Private fields
 
-        private static AboutDialog _AboutDialog;
+        private static AboutDialog _aboutDialog;
 
         private static readonly string DefaultFilesFolderPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{Application.ProductName}";
 
         private static readonly Timer Pulse = new Timer { Interval = 200, Enabled = true };
 
-        private static int PulseCount;
+        private static int _pulseCount;
 
         // Public properties
 
@@ -48,10 +46,10 @@
         {
             get
             {
-                if (_AboutDialog == null)
+                if (_aboutDialog == null)
                     using (var aboutCon = new AboutCon(null))
-                        _AboutDialog = aboutCon.AboutDialog;
-                return _AboutDialog;
+                        _aboutDialog = aboutCon.AboutDialog;
+                return _aboutDialog;
             }
         }
 
@@ -142,8 +140,8 @@
             CanPaste = Clipboard.ContainsData(DataFormat);
             foreach (var worldCon in WorldCons)
                 worldCon.OnPulse();
-            if (PulseCount < 10)
-                PulseCount++;
+            if (_pulseCount < 10)
+                _pulseCount++;
             else
                 AboutDialog.Hide();
         }

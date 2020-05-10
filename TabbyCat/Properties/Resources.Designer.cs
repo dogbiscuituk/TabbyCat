@@ -29,7 +29,7 @@ namespace TabbyCat.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Resources() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -75,6 +75,15 @@ namespace TabbyCat.Properties {
         public static string A_Sample_Entry_2 {
             get {
                 return ResourceManager.GetString("A_Sample_Entry_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0}.
+        /// </summary>
+        public static string AboutDialog {
+            get {
+                return ResourceManager.GetString("AboutDialog", resourceCulture);
             }
         }
         

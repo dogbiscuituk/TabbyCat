@@ -1241,4 +1241,7 @@ Stereo: {7}</value>
   <data name="Property_Volume" xml:space="preserve">
     <value>Volume</value>
   </data>
+  <data name="AboutDialog" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
 </root>
