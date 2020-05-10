@@ -20,13 +20,7 @@
     {
         // Constructors
 
-        public JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
-
-        // Private fields
-
-        private readonly List<Property> _changedProperties = new List<Property>();
-
-        private int _updateCount;
+        public JsonCon(WorldCon worldCon) : base(worldCon, Settings.Default.FileFilter, "LibraryMRU") { }
 
         // Public properties
 
@@ -92,15 +86,14 @@
 
         // Public static methods
 
-        public static bool ClipboardCopy(IEnumerable<Trace> traces)
+        public static void ClipboardCopy(IEnumerable<Trace> traces)
         {
-            bool result;
             string text;
             using (var stream = new MemoryStream())
             using (var streamWriter = new StreamWriter(stream))
             using (var textWriter = new JsonTextWriter(streamWriter))
             {
-                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
+                UseStream(() => GetSerializer().Serialize(textWriter, traces));
                 textWriter.Flush();
                 streamWriter.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
@@ -111,24 +104,22 @@
             dataObject.SetData(AppCon.DataFormat, text);
             dataObject.SetData(DataFormats.Text, text);
             Clipboard.SetDataObject(dataObject, copy: true);
-            return result;
         }
 
         public static IEnumerable<Trace> ClipboardPaste()
         {
+            if (!AppCon.CanPaste)
+                return null;
             IEnumerable<Trace> traces = null;
-            if (AppCon.CanPaste)
+            using (var stream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(stream))
             {
-                using (var stream = new MemoryStream())
-                using (var streamWriter = new StreamWriter(stream))
-                {
-                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
-                    streamWriter.Flush();
-                    stream.Seek(0, SeekOrigin.Begin);
-                    using (var streamReader = new StreamReader(stream))
-                    using (var textReader = new JsonTextReader(streamReader))
-                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
-                }
+                streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
+                streamWriter.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var streamReader = new StreamReader(stream))
+                using (var textReader = new JsonTextReader(streamReader))
+                    UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
             }
             return traces;
         }
@@ -170,31 +161,19 @@
 
         // Private methods
 
-        private void BeginUpdate() => ++_updateCount;
+        private void FileClose_Click(object sender, EventArgs e) => WorldForm.Close();
 
-        private void EndUpdate()
-        {
-            if (--_updateCount == 0)
-            {
-                foreach (var property in _changedProperties)
-                    WorldCon.OnPropertyEdit(property);
-                _changedProperties.Clear();
-            }
-        }
+        private void FileExit_Click(object sender, EventArgs e) => AppCon.Close();
 
-        private void FileClose_Click(object sender, System.EventArgs e) => WorldForm.Close();
+        private void FileNewEmptyScene_Click(object sender, EventArgs e) => NewEmptyScene();
 
-        private void FileExit_Click(object sender, System.EventArgs e) => AppCon.Close();
+        private void FileNewFromTemplate_Click(object sender, EventArgs e) => NewFromTemplate();
 
-        private void FileNewEmptyScene_Click(object sender, System.EventArgs e) => NewEmptyScene();
+        private void FileOpen_Click(object sender, EventArgs e) => OpenFile();
 
-        private void FileNewFromTemplate_Click(object sender, System.EventArgs e) => NewFromTemplate();
+        private void FileSave_Click(object sender, EventArgs e) => SaveFile();
 
-        private void FileOpen_Click(object sender, System.EventArgs e) => OpenFile();
-
-        private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
-
-        private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
+        private void FileSaveAs_Click(object sender, EventArgs e) => SaveFileAs();
 
         private WorldCon GetNewWorldCon()
         {
@@ -246,10 +225,8 @@
         {
             WorldCon.ConnectCons(false);
             Scene.WorldCon = WorldCon;
-            BeginUpdate();
             Scene.AttachTraces();
             CommandCon.Clear();
-            EndUpdate();
             WorldCon.ConnectCons(true);
             SceneCon.RecreateSceneControl();
             SignalsCon.Load();
@@ -258,9 +235,7 @@
 
         private void OnSave()
         {
-            BeginUpdate();
             CommandCon.Save();
-            EndUpdate();
             Reset();
         }
 
