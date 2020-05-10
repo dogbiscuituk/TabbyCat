@@ -4,9 +4,15 @@
 
     public abstract class DockingCon : LocalizationCon
     {
+        // Constructors
+
         protected DockingCon(WorldCon worldCon) : base(worldCon) { }
 
+        // Protected properties
+
         protected abstract DockContent Form { get; }
+
+        // Public methods
 
         public void SetVisibility(bool visible)
         {
@@ -15,6 +21,8 @@
             else
                 Form.Hide();
         }
+
+        // Protected methods
 
         protected void ToggleVisibility() => SetVisibility(!Form.Visible);
     }
