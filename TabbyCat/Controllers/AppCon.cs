@@ -154,13 +154,18 @@
     {
         public static void InitControlTheme(params Control[] controls)
         {
-            var theme = VsTheme;
-            var version = VsVersion;
+            var theme = _vsTheme;
+            var version = _vsVersion;
             foreach (var control in controls)
-                if (control is DockPanel dockPanel)
-                    dockPanel.Theme = theme;
-                else if (control is ToolStrip toolStrip)
-                    ToolStripExtender.SetStyle(toolStrip, version, theme);
+                switch (control)
+                {
+                    case DockPanel dockPanel:
+                        dockPanel.Theme = theme;
+                        break;
+                    case ToolStrip toolStrip:
+                        ToolStripExtender.SetStyle(toolStrip, version, theme);
+                        break;
+                }
         }
 
         private static readonly IFloatWindowFactory FloatingFormFactory = new FloatingFormFactory();
@@ -170,9 +175,9 @@
             DefaultRenderer = new ToolStripProfessionalRenderer()
         };
 
-        private static ThemeBase VsTheme;
+        private static ThemeBase _vsTheme;
 
-        private static VsVersion VsVersion;
+        private static VsVersion _vsVersion;
 
         private static ThemeBase GetVsTheme()
         {
@@ -236,10 +241,10 @@
 
         private static void InitTheme()
         {
-            VsTheme = GetVsTheme();
-            VsVersion = GetVsVersion();
-            if (VsTheme != null)
-                VsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
+            _vsTheme = GetVsTheme();
+            _vsVersion = GetVsVersion();
+            if (_vsTheme != null)
+                _vsTheme.Extender.FloatWindowFactory = FloatingFormFactory;
         }
     }
 }

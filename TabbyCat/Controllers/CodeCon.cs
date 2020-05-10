@@ -19,9 +19,11 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    public abstract partial class CodeCon : DockingCon
+    public abstract class CodeCon : DockingCon
     {
-        public CodeCon(WorldCon worldCon) : base(worldCon)
+        // Constructors
+
+        protected CodeCon(WorldCon worldCon) : base(worldCon)
         {
             LoadShaderCode();
             AppCon.InitControlTheme(CodeEdit.HorizontalToolbar, CodeEdit.VerticalToolbar, CodeEdit.PopupEditMenu);
@@ -38,33 +40,34 @@
             items[5].Tag = ShaderType.ComputeShader;
         }
 
-        private CodeForm _CodeForm;
+        // Private fields
 
-        public CodeForm CodeForm => _CodeForm ?? (_CodeForm = new CodeForm()
+        private FastColoredTextBox _activeTextBox;
+        private CodeForm _codeForm;
+        private CodePageCon _primaryCon, _secondaryCon;
+        private ShaderType _shaderType = ShaderType.VertexShader;
+        private SplitType _splitType;
+
+        // Public properties
+
+        public CodeForm CodeForm => _codeForm ?? (_codeForm = new CodeForm()
         {
             TabText = GetTabText(),
             Text = GetText(),
             ToolTipText = GetToolTipText()
         });
 
-        private FastColoredTextBox ActiveTextBox;
-        private ShaderType _ShaderType = ShaderType.VertexShader;
-        private SplitType _SplitType;
-
         public override DockContent Form => CodeForm;
 
-        private CodePageCon _PrimaryCon, _SecondaryCon;
+        // Protected properties
 
         protected CodeEdit CodeEdit => CodeForm.CodeEdit;
-        protected CodePageCon PrimaryCon => _PrimaryCon ?? (_PrimaryCon = new CodePageCon(PrimaryTextBox));
-        private SplitContainer PrimarySplitter => CodeEdit.BottomSplit;
+
+        protected CodePageCon PrimaryCon => _primaryCon ?? (_primaryCon = new CodePageCon(PrimaryTextBox));
+
         protected FastColoredTextBox PrimaryTextBox => CodeEdit.PrimaryTextBox;
-        private CodePageCon SecondaryCon => _SecondaryCon ?? (_SecondaryCon = new CodePageCon(SecondaryTextBox));
-        private SplitContainer SecondarySplitter => CodeEdit.TopSplit;
-        private FastColoredTextBox SecondaryTextBox => CodeEdit.SecondaryTextBox;
 
         protected TraceSelection TraceSelection => WorldCon.TraceSelection;
-        private SplitContainer Splitter => CodeEdit.EditSplit;
 
         protected abstract Property Shader { get; }
 
@@ -72,21 +75,30 @@
 
         protected ShaderType ShaderType
         {
-            get => _ShaderType;
-            set
+            get => _shaderType;
+            private set
             {
-                if (ShaderType != value)
-                {
-                    _ShaderType = value;
-                    CodeEdit.tbShader.Text =
-                        CodeEdit.tbShader.DropDownItems
+                if (ShaderType == value)
+                    return;
+                _shaderType = value;
+                CodeEdit.tbShader.Text =
+                    CodeEdit.tbShader.DropDownItems
                         .Cast<ToolStripMenuItem>()
                         .First(p => (ShaderType)p.Tag == ShaderType)
                         .Text;
-                    LoadContent();
-                }
+                LoadContent();
             }
         }
+
+        // Private properties
+
+        private SplitContainer PrimarySplitter => CodeEdit.BottomSplit;
+
+        private CodePageCon SecondaryCon => _secondaryCon ?? (_secondaryCon = new CodePageCon(SecondaryTextBox));
+
+        private SplitContainer SecondarySplitter => CodeEdit.TopSplit;
+
+        private FastColoredTextBox SecondaryTextBox => CodeEdit.SecondaryTextBox;
 
         private bool ShowDocumentMap
         {
@@ -120,12 +132,14 @@
             }
         }
 
+        private SplitContainer Splitter => CodeEdit.EditSplit;
+
         private SplitType SplitType
         {
-            get => _SplitType;
+            get => _splitType;
             set
             {
-                _SplitType = value;
+                _splitType = value;
                 switch (SplitType)
                 {
                     case SplitType.None:
@@ -144,6 +158,8 @@
                 }
             }
         }
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -167,11 +183,26 @@
             }
         }
 
+        // Protected methods
+
+        protected virtual bool CodeChanged(Property property) => property == Shader;
+
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
             PrimaryCon?.Dispose();
             SecondaryCon?.Dispose();
+        }
+
+        protected abstract string GetRegion();
+
+        protected string GetScript() => GetScript(ShaderType);
+
+        protected virtual void LoadScript()
+        {
+            var script = GetScript();
+            PrimaryTextBox.Text = script;
+            SecondaryTextBox.Text = script;
         }
 
         protected override void Localize()
@@ -197,23 +228,47 @@
             Localize(Resources.CodeForm_SplitNone, CodeEdit.tbSplitNone);
         }
 
-        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
+        protected abstract void RunShaderCommand(string text);
 
-        private void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LaunchBrowser(e.Link.LinkData.ToString());
+        protected override void UpdateProperties(IEnumerable<Property> properties)
+        {
+            if (properties == null)
+                return;
+            if (Updating)
+                return;
+            Updating = true;
+            if (properties.Any(CodeChanged))
+                LoadScript();
+            Updating = false;
+        }
+
+        protected virtual void UpdateUI()
+        {
+            CodeEdit.tbExport.Enabled = CodeEdit.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
+            CodeEdit.tbUndo.Enabled = CodeEdit.miUndo.Enabled = _activeTextBox != null && _activeTextBox.UndoEnabled;
+            CodeEdit.tbRedo.Enabled = CodeEdit.miRedo.Enabled = _activeTextBox != null && _activeTextBox.RedoEnabled;
+            CodeEdit.tbCut.Enabled = CodeEdit.tbCopy.Enabled = CodeEdit.tbDelete.Enabled =
+                CodeEdit.miCut.Enabled = CodeEdit.miCopy.Enabled = CodeEdit.miDelete.Enabled =
+                    _activeTextBox != null && !_activeTextBox.Selection.IsEmpty;
+        }
+
+        // Private methods
+
+        private void BuiltInHelp_ActiveLinkChanged(object sender, EventArgs e) => WorldForm.ToolTip.SetToolTip(CodeEdit.lblBuiltInHelp, CodeEdit.lblBuiltInHelp.ActiveLink?.Description);
 
         private void BuiltInHelp_LookupParameterValue(object sender, LookupParameterEventArgs e) => e.Value = LookupParameterValue(e.Name);
 
         private void BuiltInHelpParent_Resize(object sender, EventArgs e) => ResizeBuiltInHelp();
 
-        private void Copy_Click(object sender, EventArgs e) => ActiveTextBox?.Copy();
+        private void Copy_Click(object sender, EventArgs e) => _activeTextBox?.Copy();
 
-        private void Cut_Click(object sender, EventArgs e) => ActiveTextBox?.Cut();
+        private void Cut_Click(object sender, EventArgs e) => _activeTextBox?.Cut();
 
-        private void Delete_Click(object sender, EventArgs e) => ActiveTextBox?.ClearSelected();
+        private void Delete_Click(object sender, EventArgs e) => _activeTextBox?.ClearSelected();
 
-        private void DocumentMap_Click(object sender, System.EventArgs e) => ShowDocumentMap = !ShowDocumentMap;
+        private void DocumentMap_Click(object sender, EventArgs e) => ShowDocumentMap = !ShowDocumentMap;
 
-        private void ExportHTML_Click(object sender, System.EventArgs e)
+        private void ExportHTML_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog
             {
@@ -224,7 +279,7 @@
                     File.WriteAllText(dialog.FileName, GetHTML(dialog.FilterIndex));
         }
 
-        private void ExportRTF_Click(object sender, System.EventArgs e)
+        private void ExportRTF_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog
             {
@@ -237,8 +292,6 @@
 
         private void Focus_Changed(object sender, EventArgs e) => SetActiveTextBox(sender as FastColoredTextBox);
 
-        protected abstract string GetRegion();
-
         private string GetTabText() => GetText(Resources.ShaderForm_TabText);
 
         private string GetText() => GetText(Resources.ShaderForm_Text);
@@ -247,24 +300,22 @@
 
         private string GetToolTipText() => GetText(Resources.ShaderForm_ToolTipText);
 
-        private void LineNumbers_Click(object sender, System.EventArgs e) => ShowLineNumbers = !ShowLineNumbers;
+        private void LineNumbers_Click(object sender, EventArgs e) => ShowLineNumbers = !ShowLineNumbers;
 
-        private void Options_DropDownOpening(object sender, System.EventArgs e)
+        private void Options_DropDownOpening(object sender, EventArgs e)
         {
             CodeEdit.tbRuler.Checked = ShowRuler;
             CodeEdit.tbLineNumbers.Checked = ShowLineNumbers;
             CodeEdit.tbDocumentMap.Checked = ShowDocumentMap;
         }
 
-        private void Paste_Click(object sender, EventArgs e) => ActiveTextBox?.Paste();
+        private void Paste_Click(object sender, EventArgs e) => _activeTextBox?.Paste();
 
-        private void Print_Click(object sender, System.EventArgs e) => PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
+        private void Print_Click(object sender, EventArgs e) => PrimaryTextBox.Print(new PrintDialogSettings() { ShowPrintPreviewDialog = true });
 
-        private void PropertyTab_SelectedIndexChanged(object sender, System.EventArgs e) => LoadShaderCode();
+        private void Redo_Click(object sender, EventArgs e) => _activeTextBox?.Redo();
 
-        private void Redo_Click(object sender, EventArgs e) => ActiveTextBox?.Redo();
-
-        private void Ruler_Click(object sender, System.EventArgs e) => ShowRuler = !ShowRuler;
+        private void Ruler_Click(object sender, EventArgs e) => ShowRuler = !ShowRuler;
 
         private void Shader_ButtonClick(object sender, EventArgs e) => SelectNextShader();
 
@@ -318,25 +369,13 @@
             }
         }
 
-        private void Undo_Click(object sender, EventArgs e) => ActiveTextBox?.Undo();
+        private void Undo_Click(object sender, EventArgs e) => _activeTextBox?.Undo();
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperty(e.Property);
 
         private void WorldCon_Pulse(object sender, EventArgs e) => CodeEdit.tbPaste.Enabled = CanPaste();
 
         private void WorldCon_SelectionChanged(object sender, EventArgs e) => OnSelectionChanged();
-
-        private static bool CanPaste()
-        {
-            try
-            {
-                return Clipboard.ContainsText();
-            }
-            catch (ExternalException)
-            {
-                return false;
-            }
-        }
 
         private void ConnectHelp(bool connect)
         {
@@ -486,21 +525,12 @@
             }
         }
 
-        protected string GetScript() => GetScript(ShaderType);
-
         private string GetScript(ShaderType shaderType) => ShaderSet.GetScript(shaderType);
 
         private void LoadContent()
         {
             LoadShaderCode();
             CodeEdit.lblBuiltInHelp.Text = GetBuiltInHelp();
-        }
-
-        protected virtual void LoadScript()
-        {
-            var script = GetScript();
-            PrimaryTextBox.Text = script;
-            SecondaryTextBox.Text = script;
         }
 
         private void LoadShaderCode()
@@ -513,23 +543,10 @@
             UpdateUI();
         }
 
-        private string LookupParameterValue(string parameterName)
-        {
-            switch (parameterName)
-            {
-                case "GLSLUrl":
-                    return AppCon.Options.GLSLPath;
-                default:
-                    return string.Empty;
-            }
-        }
-
         private void OnSelectionChanged() => LoadShaderCode();
 
         private void ResizeBuiltInHelp() => CodeEdit.lblBuiltInHelp.MaximumSize = new Size(
             CodeEdit.lblBuiltInHelp.Parent.ClientSize.Width - SystemInformation.VerticalScrollBarWidth, 0);
-
-        protected abstract void RunShaderCommand(string text);
 
         private void SaveShaderCode() => RunShaderCommand(CodeEdit.PrimaryTextBox.Text);
 
@@ -546,36 +563,35 @@
 
         private void SetActiveTextBox(FastColoredTextBox activeTextBox)
         {
-            ActiveTextBox = activeTextBox;
+            _activeTextBox = activeTextBox;
             UpdateUI();
         }
 
-        protected override void UpdateProperties(IEnumerable<Property> properties)
+        // Private static methods
+
+        private static void BuiltInHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LaunchBrowser(e.Link.LinkData.ToString());
+
+        private static bool CanPaste()
         {
-            if (properties == null)
-                return;
-            if (Updating)
-                return;
-            Updating = true;
-            foreach (var property in properties)
-                if (CodeChanged(property))
-                {
-                    LoadScript();
-                    break;
-                }
-            Updating = false;
+            try
+            {
+                return Clipboard.ContainsText();
+            }
+            catch (ExternalException)
+            {
+                return false;
+            }
         }
 
-        protected virtual bool CodeChanged(Property property) => property == Shader;
-
-        protected virtual void UpdateUI()
+        private static string LookupParameterValue(string parameterName)
         {
-            CodeEdit.tbExport.Enabled = CodeEdit.tbPrint.Enabled = !string.IsNullOrEmpty(PrimaryTextBox.Text);
-            CodeEdit.tbUndo.Enabled = CodeEdit.miUndo.Enabled = ActiveTextBox != null && ActiveTextBox.UndoEnabled;
-            CodeEdit.tbRedo.Enabled = CodeEdit.miRedo.Enabled = ActiveTextBox != null && ActiveTextBox.RedoEnabled;
-            CodeEdit.tbCut.Enabled = CodeEdit.tbCopy.Enabled = CodeEdit.tbDelete.Enabled =
-            CodeEdit.miCut.Enabled = CodeEdit.miCopy.Enabled = CodeEdit.miDelete.Enabled =
-                ActiveTextBox != null && !ActiveTextBox.Selection.IsEmpty;
+            switch (parameterName)
+            {
+                case "GLSLUrl":
+                    return AppCon.Options.GLSLPath;
+                default:
+                    return string.Empty;
+            }
         }
     }
 }

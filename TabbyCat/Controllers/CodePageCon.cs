@@ -3,7 +3,6 @@
     using FastColoredTextBoxNS;
     using Properties;
     using System;
-    using System.Collections.Generic;
     using System.Drawing;
     using System.Globalization;
     using System.Text.RegularExpressions;
@@ -18,23 +17,51 @@
     /// </summary>
     public partial class CodePageCon
     {
+        // Constructors
+
         public CodePageCon(FastColoredTextBox textBox)
         {
-            TextBox = textBox ?? throw new NullReferenceException(
-                string.Format(CultureInfo.CurrentCulture, Resources.Text_ParameterCannotBeNull, nameof(textBox)));
+            TextBox = textBox ?? throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.Text_ParameterCannotBeNull, nameof(textBox)));
             Init();
         }
 
-        private AutocompleteMenu AutocompleteMenu;
-        private string TextBoxLanguage;
+        // Private fields
 
-        public string Language
+        private AutocompleteMenu _autocompleteMenu;
+
+        private string _textBoxLanguage;
+
+        // Private properties
+
+        private string Language
         {
-            get => TextBoxLanguage;
+            get => _textBoxLanguage;
             set => SetLanguage(value);
         }
 
-        public FastColoredTextBox TextBox { get; }
+        private FastColoredTextBox TextBox { get; }
+
+        // Private static properties
+
+        private static readonly MarkerStyle
+            SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
+
+        private static readonly ReadOnlyStyle
+            ReadOnlyStyle = new ReadOnlyStyle();
+
+        private static readonly TextStyle
+            CommentStyle = NewTextStyle(),
+            DirectiveStyle = NewTextStyle(),
+            FunctionStyle = NewTextStyle(),
+            KeywordStyle = NewTextStyle(),
+            NumberStyle = NewTextStyle(),
+            ReadOnlyTextStyle = NewTextStyle(),
+            ReservedWordStyle = NewTextStyle(),
+            StringStyle = NewTextStyle();
+
+        private static TextStyle NewTextStyle() => new TextStyle(Brushes.Black, Brushes.Transparent, 0);
+
+        // Public methods
 
         public void AddSystemRange(Range range)
         {
@@ -47,28 +74,57 @@
             range.SetStyle(ReadOnlyTextStyle);
         }
 
-        public List<Range> GetUserRanges()
+        // Private methods
+
+        private void CreateAutocompleteMenu()
         {
-            var ranges = new List<Range>();
-            var inRange = false;
-            for (var lineIndex = 0; lineIndex < TextBox.LinesCount; lineIndex++)
+            _autocompleteMenu = new AutocompleteMenu(TextBox)
             {
-                var range = TextBox.GetLine(lineIndex);
-                if (!range.ReadOnly)
-                    if (!inRange)
-                    {
-                        ranges.Add(range);
-                        inRange = true;
-                    }
-                    else
-                    {
-                        var rangeIndex = ranges.Count - 1;
-                        ranges[rangeIndex] = ranges[rangeIndex].GetUnionWith(range);
-                    }
-                else
-                    inRange = false;
+                MinFragmentLength = 2,
+                SearchPattern = "[#\\w\\.]" // Directives begin with '#'.
+            };
+            _autocompleteMenu.Items.SetAutocompleteItems(GLSL.AutocompleteItems);
+            _autocompleteMenu.Items.MaximumSize = new Size(200, 300);
+            _autocompleteMenu.Items.Width = 200;
+        }
+
+        private Languages GetLanguage() => GetLanguage(Language);
+
+        private void Init()
+        {
+            Language = "GLSL";
+            TextBox.HotkeysMapping.Remove(Keys.Control | Keys.R);
+            TextBox.HotkeysMapping.Add(Keys.Control | Keys.Y, FCTBAction.Redo);
+            TextBox.KeyDown += TextBox_KeyDown;
+            TextBox.PaintLine += TextBox_PaintLine;
+            TextBox.TextChanged += TextBox_TextChanged;
+            TextBox.TextChanging += TextBox_TextChanging;
+            CreateAutocompleteMenu();
+            TextBox_TextChanged(this, new TextChangedEventArgs(TextBox.Range));
+        }
+
+        private void SetLanguage(string language)
+        {
+            if (Language == language)
+                return;
+            _textBoxLanguage = language;
+            InitStylesPriority(TextBox);
+            TextBox.Language = GetLanguage();
+            if (Language == "GLSL")
+            {
+                TextBox.CommentPrefix = "//";
+                TextBox.OnTextChanged();
             }
-            return ranges;
+            TextBox.OnSyntaxHighlight(new TextChangedEventArgs(TextBox.Range));
+        }
+
+        private void SyntaxHighlightGLSL(TextChangedEventArgs e)
+        {
+            TextBox.LeftBracket = '(';
+            TextBox.RightBracket = ')';
+            TextBox.LeftBracket2 = '\x0';
+            TextBox.RightBracket2 = '\x0';
+            ApplyStylesGLSL(e.ChangedRange);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -77,7 +133,7 @@
             {
                 case Keys.Control | Keys.K:
                     // forced show (MinFragmentLength will be ignored)
-                    AutocompleteMenu.Show(true);
+                    _autocompleteMenu.Show(true);
                     e.Handled = true;
                     break;
             }
@@ -107,89 +163,7 @@
             e.Cancel = selection.IsReadOnlyLeftChar() || selection.IsReadOnlyRightChar();
         }
 
-        private void CreateAutocompleteMenu()
-        {
-            AutocompleteMenu = new AutocompleteMenu(TextBox)
-            {
-                MinFragmentLength = 2,
-                SearchPattern = "[#\\w\\.]" // Directives begin with '#'.
-            };
-            AutocompleteMenu.Items.SetAutocompleteItems(GLSL.AutocompleteItems);
-            AutocompleteMenu.Items.MaximumSize = new Size(200, 300);
-            AutocompleteMenu.Items.Width = 200;
-        }
-
-        private Languages GetLanguage() => GetLanguage(Language);
-
-        private void Init()
-        {
-            Language = "GLSL";
-            TextBox.HotkeysMapping.Remove(Keys.Control | Keys.R);
-            TextBox.HotkeysMapping.Add(Keys.Control | Keys.Y, FCTBAction.Redo);
-            TextBox.KeyDown += TextBox_KeyDown;
-            TextBox.PaintLine += TextBox_PaintLine;
-            TextBox.TextChanged += TextBox_TextChanged;
-            TextBox.TextChanging += TextBox_TextChanging;
-            CreateAutocompleteMenu();
-            TextBox_TextChanged(this, new TextChangedEventArgs(TextBox.Range));
-        }
-
-        private void SetLanguage(string language)
-        {
-            if (Language == language)
-                return;
-            TextBoxLanguage = language;
-            InitStylesPriority(TextBox);
-            TextBox.Language = GetLanguage();
-            if (Language == "GLSL")
-            {
-                TextBox.CommentPrefix = "//";
-                TextBox.OnTextChanged();
-            }
-            TextBox.OnSyntaxHighlight(new TextChangedEventArgs(TextBox.Range));
-        }
-
-        private void SyntaxHighlightGLSL(TextChangedEventArgs e)
-        {
-            TextBox.LeftBracket = '(';
-            TextBox.RightBracket = ')';
-            TextBox.LeftBracket2 = '\x0';
-            TextBox.RightBracket2 = '\x0';
-            ApplyStylesGLSL(e.ChangedRange);
-        }
-
-        private static Languages GetLanguage(string language)
-        {
-            switch (language)
-            {
-                case "C#": return Languages.CSharp;
-                case "GLSL": return Languages.Custom;
-                case "HTML": return Languages.HTML;
-                case "JS": return Languages.JS;
-                case "Lua": return Languages.Lua;
-                case "PHP": return Languages.PHP;
-                case "SQL": return Languages.SQL;
-                case "VB": return Languages.VB;
-                case "XML": return Languages.XML;
-                default: return Languages.Custom;
-            }
-        }
-
-        private static readonly MarkerStyle
-            SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
-
-        private static readonly ReadOnlyStyle
-            ReadOnlyStyle = new ReadOnlyStyle();
-
-        private static readonly TextStyle
-            CommentStyle = NewTextStyle(),
-            DirectiveStyle = NewTextStyle(),
-            FunctionStyle = NewTextStyle(),
-            KeywordStyle = NewTextStyle(),
-            NumberStyle = NewTextStyle(),
-            ReadOnlyTextStyle = NewTextStyle(),
-            ReservedWordStyle = NewTextStyle(),
-            StringStyle = NewTextStyle();
+        // Private static methods
 
         public static void ApplyStyles(TextStyleInfos styles)
         {
@@ -229,6 +203,23 @@
             range.SetFoldingMarkers(@"/\*", @"\*/");
         }
 
+        private static Languages GetLanguage(string language)
+        {
+            switch (language)
+            {
+                case "C#": return Languages.CSharp;
+                case "GLSL": return Languages.Custom;
+                case "HTML": return Languages.HTML;
+                case "JS": return Languages.JS;
+                case "Lua": return Languages.Lua;
+                case "PHP": return Languages.PHP;
+                case "SQL": return Languages.SQL;
+                case "VB": return Languages.VB;
+                case "XML": return Languages.XML;
+                default: return Languages.Custom;
+            }
+        }
+
         private static void InitStyle(TextStyleInfo info, TextStyle style)
         {
             if (((SolidBrush)style.ForeBrush).Color != info.Foreground)
@@ -252,13 +243,11 @@
             textBox.AddStyle(ReservedWordStyle);
             textBox.AddStyle(DirectiveStyle);
         }
-
-        private static TextStyle NewTextStyle() => new TextStyle(Brushes.Black, Brushes.Transparent, 0);
     }
 
     public partial class CodePageCon : IDisposable
     {
-        private bool Disposed;
+        private bool _disposed;
 
         public void Dispose()
         {
@@ -268,12 +257,12 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!Disposed && disposing)
+            if (!_disposed && disposing)
             {
-                AutocompleteMenu?.Dispose();
+                _autocompleteMenu?.Dispose();
                 TextBox?.Dispose();
             }
-            Disposed = true;
+            _disposed = true;
         }
     }
 }

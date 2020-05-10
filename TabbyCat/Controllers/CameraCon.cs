@@ -5,7 +5,6 @@
     using Properties;
     using System;
     using Types;
-    using Views;
 
     public class CameraCon : LocalizationCon
     {
@@ -13,7 +12,7 @@
 
         private const float CameraBump = 0.1f;
 
-        private Camera DefaultCamera;
+        private Camera _defaultCamera;
 
         public override void Connect(bool connect)
         {
@@ -48,47 +47,27 @@
             }
         }
 
-        public void CameraMoveBack() => CameraMoveFront(-1);
+        public void SetDefaultCamera() => _defaultCamera = new Camera(Camera);
 
-        public void CameraMoveDown() => CameraMoveUp(-1);
+        private void CameraMoveBack_Click(object sender, EventArgs e) => CameraMoveFront(-1);
 
-        public void CameraMoveForward() => CameraMoveFront(+1);
+        private void CameraMoveDown_Click(object sender, EventArgs e) => CameraMoveUp(-1);
 
-        public void CameraMoveLeft() => CameraMoveRight(-1);
+        private void CameraMoveForward_Click(object sender, EventArgs e) => CameraMoveFront(+1);
 
-        public void CameraMoveRight() => CameraMoveRight(+1);
+        private void CameraMoveLeft_Click(object sender, EventArgs e) => CameraMoveRight(-1);
 
-        public void CameraMoveUp() => CameraMoveUp(+1);
+        private void CameraMoveRight_Click(object sender, EventArgs e) => CameraMoveRight(+1);
 
-        public void CameraRotateDown() => CameraRotateUp(-1);
+        private void CameraMoveUp_Click(object sender, EventArgs e) => CameraMoveUp(+1);
 
-        public void CameraRotateLeft() => CameraRotateRight(-1);
+        private void CameraRotateDown_Click(object sender, EventArgs e) => CameraRotateUp(-1);
 
-        public void CameraRotateRight() => CameraRotateRight(+1);
+        private void CameraRotateLeft_Click(object sender, EventArgs e) => CameraRotateRight(-1);
 
-        public void CameraRotateUp() => CameraRotateUp(+1);
+        private void CameraRotateRight_Click(object sender, EventArgs e) => CameraRotateRight(+1);
 
-        public void SetDefaultCamera() => DefaultCamera = new Camera(Camera);
-
-        private void CameraMoveBack_Click(object sender, EventArgs e) => CameraMoveBack();
-
-        private void CameraMoveDown_Click(object sender, EventArgs e) => CameraMoveDown();
-
-        private void CameraMoveForward_Click(object sender, EventArgs e) => CameraMoveForward();
-
-        private void CameraMoveLeft_Click(object sender, EventArgs e) => CameraMoveLeft();
-
-        private void CameraMoveRight_Click(object sender, EventArgs e) => CameraMoveRight();
-
-        private void CameraMoveUp_Click(object sender, EventArgs e) => CameraMoveUp();
-
-        private void CameraRotateDown_Click(object sender, EventArgs e) => CameraRotateDown();
-
-        private void CameraRotateLeft_Click(object sender, EventArgs e) => CameraRotateLeft();
-
-        private void CameraRotateRight_Click(object sender, EventArgs e) => CameraRotateRight();
-
-        private void CameraRotateUp_Click(object sender, EventArgs e) => CameraRotateUp();
+        private void CameraRotateUp_Click(object sender, EventArgs e) => CameraRotateUp(+1);
 
         private void CameraReset_Click(object sender, EventArgs e) => CameraReset();
 
@@ -110,7 +89,7 @@
                 : new Camera(Camera.Position + shift, Camera.Focus));
         }
 
-        private void CameraReset() => RunCameraCommand(DefaultCamera);
+        private void CameraReset() => RunCameraCommand(_defaultCamera);
 
         private void CameraRotate(Vector3 basis, float delta)
         {

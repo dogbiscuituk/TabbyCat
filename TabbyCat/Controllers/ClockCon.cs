@@ -2,23 +2,37 @@
 {
     using System;
     using Types;
-    using Views;
 
     public class ClockCon : LocalizationCon
     {
+        // Constructors
+
         public ClockCon(WorldCon worldCon) : base(worldCon) => UpdateTimeControls();
 
-        private Clock _Clock;
+        // Private fields
 
-        protected override Clock Clock => _Clock ?? (_Clock = new Clock());
-        public bool ClockRunning => Clock.Running;
-        public float VirtualSecondsElapsed => Clock.VirtualSecondsElapsed;
+        private Clock _clock;
 
-        public float VirtualTimeFactor
+        // Protected properties
+
+        protected override Clock Clock => _clock ?? (_clock = new Clock());
+
+        // Private properties
+
+        private bool CanAccelerate => VirtualTimeFactor < +32;
+        private bool CanDecelerate => VirtualTimeFactor > -32;
+        private bool CanPause => Clock.Running;
+        private bool CanReverse => !Clock.Running || VirtualTimeFactor > 0;
+        private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
+        private bool CanStop => Clock.Running;
+
+        private float VirtualTimeFactor
         {
             get => Clock.VirtualTimeFactor;
             set => Clock.VirtualTimeFactor = value;
         }
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -43,12 +57,6 @@
             }
         }
 
-        protected override void DisposeManagedState()
-        {
-            base.DisposeManagedState();
-            Clock?.Dispose();
-        }
-
         public void UpdateTimeControls()
         {
             WorldForm.TimeAccelerate.Enabled = CanAccelerate;
@@ -59,12 +67,15 @@
             WorldForm.TimeStop.Enabled = CanStop;
         }
 
-        private bool CanAccelerate => VirtualTimeFactor < +32;
-        private bool CanDecelerate => VirtualTimeFactor > -32;
-        private bool CanPause => Clock.Running;
-        private bool CanReverse => !Clock.Running || VirtualTimeFactor > 0;
-        private bool CanStart => !Clock.Running || VirtualTimeFactor < 0;
-        private bool CanStop => Clock.Running;
+        // Protected methods
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            Clock?.Dispose();
+        }
+
+        // Private methods
 
         private void Accelerate_Click(object sender, EventArgs e)
         {
