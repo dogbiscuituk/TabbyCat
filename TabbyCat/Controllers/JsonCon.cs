@@ -18,59 +18,28 @@
     /// </summary>
     public class JsonCon : SdiCon
     {
+        // Constructors
+
         public JsonCon(WorldCon worldCon) : base(worldCon, Properties.Settings.Default.FileFilter, "LibraryMRU") { }
 
-        private readonly List<Property> ChangedProperties = new List<Property>();
+        // Private fields
 
-        private int UpdateCount;
+        private readonly List<Property> _changedProperties = new List<Property>();
+
+        private int _updateCount;
+
+        // Public properties
 
         public string WindowCaption => $@"{(
             Scene.IsModified ? "* " : string.Empty)}{(
             string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : Path.GetFileNameWithoutExtension(FilePath).ToFilename())} - {
             Application.ProductName}";
 
+        // Public events
+
         public event EventHandler<FilePathEventArgs> FileReopen;
 
-        public static bool ClipboardCopy(IEnumerable<Trace> traces)
-        {
-            bool result;
-            string text;
-            using (var stream = new MemoryStream())
-            using (var streamWriter = new StreamWriter(stream))
-            using (var textWriter = new JsonTextWriter(streamWriter))
-            {
-                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
-                textWriter.Flush();
-                streamWriter.Flush();
-                stream.Seek(0, SeekOrigin.Begin);
-                using (var streamReader = new StreamReader(stream))
-                    text = streamReader.ReadToEnd();
-            }
-            var dataObject = new DataObject();
-            dataObject.SetData(AppCon.DataFormat, text);
-            dataObject.SetData(DataFormats.Text, text);
-            Clipboard.SetDataObject(dataObject, copy: true);
-            return result;
-        }
-
-        public static IEnumerable<Trace> ClipboardPaste()
-        {
-            IEnumerable<Trace> traces = null;
-            if (AppCon.CanPaste)
-            {
-                using (var stream = new MemoryStream())
-                using (var streamWriter = new StreamWriter(stream))
-                {
-                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
-                    streamWriter.Flush();
-                    stream.Seek(0, SeekOrigin.Begin);
-                    using (var streamReader = new StreamReader(stream))
-                    using (var textReader = new JsonTextReader(streamReader))
-                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
-                }
-            }
-            return traces;
-        }
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -121,6 +90,51 @@
             }
         }
 
+        // Public static methods
+
+        public static bool ClipboardCopy(IEnumerable<Trace> traces)
+        {
+            bool result;
+            string text;
+            using (var stream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(stream))
+            using (var textWriter = new JsonTextWriter(streamWriter))
+            {
+                result = UseStream(() => GetSerializer().Serialize(textWriter, traces));
+                textWriter.Flush();
+                streamWriter.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                using (var streamReader = new StreamReader(stream))
+                    text = streamReader.ReadToEnd();
+            }
+            var dataObject = new DataObject();
+            dataObject.SetData(AppCon.DataFormat, text);
+            dataObject.SetData(DataFormats.Text, text);
+            Clipboard.SetDataObject(dataObject, copy: true);
+            return result;
+        }
+
+        public static IEnumerable<Trace> ClipboardPaste()
+        {
+            IEnumerable<Trace> traces = null;
+            if (AppCon.CanPaste)
+            {
+                using (var stream = new MemoryStream())
+                using (var streamWriter = new StreamWriter(stream))
+                {
+                    streamWriter.Write(Clipboard.GetData(AppCon.DataFormat));
+                    streamWriter.Flush();
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using (var streamReader = new StreamReader(stream))
+                    using (var textReader = new JsonTextReader(streamReader))
+                        UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
+                }
+            }
+            return traces;
+        }
+
+        // Protected methods
+
         protected override void ClearDocument() => OnClear();
 
         protected override bool LoadFromStream(Stream stream)
@@ -154,15 +168,17 @@
                 return UseStream(() => GetSerializer().Serialize(TextWriter, Scene));
         }
 
-        private void BeginUpdate() => ++UpdateCount;
+        // Private methods
+
+        private void BeginUpdate() => ++_updateCount;
 
         private void EndUpdate()
         {
-            if (--UpdateCount == 0)
+            if (--_updateCount == 0)
             {
-                foreach (var property in ChangedProperties)
+                foreach (var property in _changedProperties)
                     WorldCon.OnPropertyEdit(property);
-                ChangedProperties.Clear();
+                _changedProperties.Clear();
             }
         }
 
@@ -179,13 +195,6 @@
         private void FileSave_Click(object sender, System.EventArgs e) => SaveFile();
 
         private void FileSaveAs_Click(object sender, System.EventArgs e) => SaveFileAs();
-
-        private static JsonSerializer GetSerializer() => new JsonSerializer
-        {
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            Formatting = Formatting.Indented,
-            MissingMemberHandling = MissingMemberHandling.Error
-        };
 
         private WorldCon GetNewWorldCon()
         {
@@ -285,5 +294,14 @@
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 
         private void UpdateCaption() => WorldForm.Text = JsonCon.WindowCaption;
+
+        // Private static methods
+
+        private static JsonSerializer GetSerializer() => new JsonSerializer
+        {
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            Formatting = Formatting.Indented,
+            MissingMemberHandling = MissingMemberHandling.Error
+        };
     }
 }
