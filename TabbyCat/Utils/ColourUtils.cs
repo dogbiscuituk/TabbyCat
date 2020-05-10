@@ -60,12 +60,6 @@
             }
         }
 
-        public static IEnumerable<Color> GetColours() =>
-            Enum.GetValues(typeof(KnownColor))
-            .Cast<KnownColor>()
-            .Select(Color.FromKnownColor)
-            .Where(c => !c.IsSystemColor);
-
         public static IEnumerable<string> GetNonSystemColourNames(string orderByColourProperties)
         {
             var colours = GetColours();
@@ -73,8 +67,6 @@
                 colours = colours.OrderByColourProperties(orderByColourProperties);
             return colours.Select(c => c.Name);
         }
-
-        public static bool IsBright(this Color colour) => colour.Luma() > 0.5;
 
         public static bool IsDark(this Color colour) => colour.Luma() <= 0.5;
 
@@ -144,7 +136,15 @@
 
         // Private methods
 
+        private static IEnumerable<Color> GetColours() =>
+            Enum.GetValues(typeof(KnownColor))
+                .Cast<KnownColor>()
+                .Select(Color.FromKnownColor)
+                .Where(c => !c.IsSystemColor);
+
         private static PropertyInfo GetProp(Color colour) => typeof(Brushes).GetProperty(colour.Name, BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static);
+
+        private static bool IsBright(this Color colour) => colour.Luma() > 0.5;
 
         private static IEnumerable<Color> OrderByColourProperties(this IEnumerable<Color> colours, string colourProperties)
         {
