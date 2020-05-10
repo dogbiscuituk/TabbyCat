@@ -6,50 +6,39 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
-    using Views;
 
     public class CommandCon : LocalizationCon
     {
-        public CommandCon(WorldCon worldCon) : base(worldCon)
-        {
-            WorldForm.EditUndo.Click += EditUndo_Click;
-            WorldForm.tbUndo.ButtonClick += EditUndo_Click;
-            WorldForm.tbUndo.DropDownOpening += TbUndo_DropDownOpening;
-            WorldForm.EditRedo.Click += EditRedo_Click;
-            WorldForm.tbRedo.ButtonClick += EditRedo_Click;
-            WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
-        }
+        // Constructors
 
-        private int LastSave, UpdateCount;
+        public CommandCon(WorldCon worldCon) : base(worldCon) { }
 
-        private readonly Stack<ICommand> UndoStack = new Stack<ICommand>();
-        private readonly Stack<ICommand> RedoStack = new Stack<ICommand>();
+        // Private fields
 
-        public bool IsModified => LastSave != UndoStack.Count;
-        public List<Signal> Signals => Scene.Signals;
-        public List<Trace> Traces => Scene.Traces;
+        private int
+            _lastSave,
+            _updateCount;
 
-        private bool CanUndo => UndoStack.Count > 0;
-        private bool CanRedo => RedoStack.Count > 0;
+        private readonly Stack<ICommand>
+            _undoStack = new Stack<ICommand>(),
+            _redoStack = new Stack<ICommand>();
 
-        private string UndoAction => UndoStack.Peek().UndoAction;
-        private string RedoAction => RedoStack.Peek().RedoAction;
+        // Public properties
 
-        private void EditRedo_Click(object sender, EventArgs e) => Redo();
+        public bool IsModified => _lastSave != _undoStack.Count;
 
-        private void EditUndo_Click(object sender, EventArgs e) => Undo();
+        // Private properties
 
-        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(UndoStack, WorldForm.tbUndo, UndoMultiple);
+        private bool CanUndo => _undoStack.Count > 0;
+        private bool CanRedo => _redoStack.Count > 0;
 
-        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(RedoStack, WorldForm.tbRedo, RedoMultiple);
+        private string UndoAction => _undoStack.Peek().UndoAction;
+        private string RedoAction => _redoStack.Peek().RedoAction;
 
-        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
+        private List<Signal> Signals => Scene.Signals;
+        private List<Trace> Traces => Scene.Traces;
 
-        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
-
-        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, RedoStack, () => Redo());
-
-        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, UndoStack, () => Undo());
+        // Public methods
 
         public void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
 
@@ -57,15 +46,36 @@
 
         public void Clear()
         {
-            LastSave = 0;
-            UndoStack.Clear();
-            RedoStack.Clear();
+            _lastSave = 0;
+            _undoStack.Clear();
+            _redoStack.Clear();
             UpdateUI();
         }
 
-        public void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
+        public override void Connect(bool connect)
+        {
+            base.Connect(connect);
+            if (connect)
+            {
+                WorldForm.EditUndo.Click += EditUndo_Click;
+                WorldForm.tbUndo.ButtonClick += EditUndo_Click;
+                WorldForm.tbUndo.DropDownOpening += TbUndo_DropDownOpening;
+                WorldForm.EditRedo.Click += EditRedo_Click;
+                WorldForm.tbRedo.ButtonClick += EditRedo_Click;
+                WorldForm.tbRedo.DropDownOpening += TbRedo_DropDownOpening;
+            }
+            else
+            {
+                WorldForm.EditUndo.Click -= EditUndo_Click;
+                WorldForm.tbUndo.ButtonClick -= EditUndo_Click;
+                WorldForm.tbUndo.DropDownOpening -= TbUndo_DropDownOpening;
+                WorldForm.EditRedo.Click -= EditRedo_Click;
+                WorldForm.tbRedo.ButtonClick -= EditRedo_Click;
+                WorldForm.tbRedo.DropDownOpening -= TbRedo_DropDownOpening;
+            }
+        }
 
-        public void InsertTrace(int index, Trace trace = null) => Run(new TraceInsertCommand(index, trace));
+        public void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
 
         /// <summary>
         /// Run a command, pushing its memento on to the Undo stack.
@@ -76,19 +86,21 @@
         {
             if (command == null)
                 return false;
-            if (LastSave > UndoStack.Count)
-                LastSave = -1;
-            RedoStack.Clear();
+            if (_lastSave > _undoStack.Count)
+                _lastSave = -1;
+            _redoStack.Clear();
             return Redo(command);
         }
 
         public void Save()
         {
-            LastSave = UndoStack.Count;
+            _lastSave = _undoStack.Count;
             UpdateUI();
         }
 
-        private void BeginUpdate() => ++UpdateCount;
+        // Private methods
+
+        private void BeginUpdate() => ++_updateCount;
 
         private bool CanGroup(ICommand cmd1, ICommand cmd2)
         {
@@ -127,22 +139,6 @@
             return false;
         }
 
-        private void Copy(Stack<ICommand> source, ToolStripDropDownItem target, EventHandler handler)
-        {
-            const int MaxItems = 20;
-            var commands = source.ToArray();
-            var items = target.DropDownItems;
-            items.Clear();
-            for (var n = 0; n < Math.Min(commands.Length, MaxItems); n++)
-            {
-                var command = commands[n];
-                var item = items.Add(command.ToString(), null, handler);
-                item.Tag = command;
-                item.MouseEnter += UndoRedoItems_MouseEnter;
-                item.Paint += UndoRedoItems_Paint;
-            }
-        }
-
         private void DoMultiple(object sender, Stack<ICommand> stack, Action act)
         {
             BeginUpdate();
@@ -157,10 +153,79 @@
             EndUpdate();
         }
 
+        private void EditRedo_Click(object sender, EventArgs e) => Redo();
+
+        private void EditUndo_Click(object sender, EventArgs e) => Undo();
+
         private void EndUpdate()
         {
-            if (--UpdateCount == 0)
+            if (--_updateCount == 0)
                 UpdateUI();
+        }
+
+        private bool Redo() => CanRedo && Redo(_redoStack.Pop());
+
+        private bool Redo(ICommand command)
+        {
+            if (!command.Do(Scene))
+                return false;
+            if (!(CanUndo && CanGroup(_undoStack.Peek(), command)))
+                _undoStack.Push(command);
+            UpdateUI();
+            return true;
+        }
+
+        private void RedoMultiple(object sender, EventArgs e) => DoMultiple(sender, _redoStack, () => Redo());
+
+        private void TbUndo_DropDownOpening(object sender, EventArgs e) => Copy(_undoStack, WorldForm.tbUndo, UndoMultiple);
+
+        private void TbRedo_DropDownOpening(object sender, EventArgs e) => Copy(_redoStack, WorldForm.tbRedo, RedoMultiple);
+
+        private bool Undo() => CanUndo && Undo(_undoStack.Pop());
+
+        private bool Undo(ICommand command)
+        {
+            if (!command.Do(Scene))
+                return false;
+            _redoStack.Push(command);
+            UpdateUI();
+            return true;
+        }
+
+        private void UndoMultiple(object sender, EventArgs e) => DoMultiple(sender, _undoStack, () => Undo());
+
+        private void UpdateUI()
+        {
+            if (_updateCount > 0)
+                return;
+            string
+                undo = CanUndo ? $"Undo {UndoAction}" : "Undo",
+                redo = CanRedo ? $"Redo {RedoAction}" : "Redo";
+            WorldForm.EditUndo.Enabled = WorldForm.tbUndo.Enabled = CanUndo;
+            WorldForm.EditRedo.Enabled = WorldForm.tbRedo.Enabled = CanRedo;
+            WorldForm.EditUndo.Text = $"&{undo}";
+            WorldForm.EditRedo.Text = $"&{redo}";
+            WorldForm.tbUndo.ToolTipText = $"{undo} (^Z)";
+            WorldForm.tbRedo.ToolTipText = $"{redo} (^Y)";
+            WorldCon.ModifiedChanged();
+        }
+
+        // Private static methods
+
+        private static void Copy(Stack<ICommand> source, ToolStripDropDownItem target, EventHandler handler)
+        {
+            const int maxItems = 20;
+            var commands = source.ToArray();
+            var items = target.DropDownItems;
+            items.Clear();
+            for (var n = 0; n < Math.Min(commands.Length, maxItems); n++)
+            {
+                var command = commands[n];
+                var item = items.Add(command.ToString(), null, handler);
+                item.Tag = command;
+                item.MouseEnter += UndoRedoItems_MouseEnter;
+                item.Paint += UndoRedoItems_Paint;
+            }
         }
 
         private static void HighlightUndoRedoItems(ToolStripItem activeItem)
@@ -175,43 +240,8 @@
                     : KnownColor.Control);
         }
 
-        private bool Redo() => CanRedo && Redo(RedoStack.Pop());
+        private static void UndoRedoItems_MouseEnter(object sender, EventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
 
-        private bool Redo(ICommand command)
-        {
-            if (!command.Do(Scene))
-                return false;
-            if (!(CanUndo && CanGroup(UndoStack.Peek(), command)))
-                UndoStack.Push(command);
-            UpdateUI();
-            return true;
-        }
-
-        private bool Undo() => CanUndo && Undo(UndoStack.Pop());
-
-        private bool Undo(ICommand command)
-        {
-            if (!command.Do(Scene))
-                return false;
-            RedoStack.Push(command);
-            UpdateUI();
-            return true;
-        }
-
-        private void UpdateUI()
-        {
-            if (UpdateCount > 0)
-                return;
-            string
-                undo = CanUndo ? $"Undo {UndoAction}" : "Undo",
-                redo = CanRedo ? $"Redo {RedoAction}" : "Redo";
-            WorldForm.EditUndo.Enabled = WorldForm.tbUndo.Enabled = CanUndo;
-            WorldForm.EditRedo.Enabled = WorldForm.tbRedo.Enabled = CanRedo;
-            WorldForm.EditUndo.Text = $"&{undo}";
-            WorldForm.EditRedo.Text = $"&{redo}";
-            WorldForm.tbUndo.ToolTipText = $"{undo} (^Z)";
-            WorldForm.tbRedo.ToolTipText = $"{redo} (^Y)";
-            WorldCon.ModifiedChanged();
-        }
+        private static void UndoRedoItems_Paint(object sender, PaintEventArgs e) => HighlightUndoRedoItems((ToolStripItem)sender);
     }
 }

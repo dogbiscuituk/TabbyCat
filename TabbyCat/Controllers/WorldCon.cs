@@ -516,6 +516,7 @@
             {
                 CameraCon,
                 ClockCon,
+                CommandCon,
                 FullScreenCon,
                 HotkeysCon,
                 SignalsCon,
