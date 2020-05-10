@@ -53,6 +53,7 @@
             }
             Array.ForEach(new DockingCon[]
             {
+                HotkeysCon,
                 SignalsCon,
                 SceneCodeCon,
                 ScenePropertiesCon,
