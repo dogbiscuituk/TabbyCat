@@ -57,11 +57,11 @@
             ToolTipText = GetToolTipText()
         });
 
-        public override DockContent Form => CodeForm;
-
         // Protected properties
 
         protected CodeEdit CodeEdit => CodeForm.CodeEdit;
+
+        protected override DockContent Form => CodeForm;
 
         protected CodePageCon PrimaryCon => _primaryCon ?? (_primaryCon = new CodePageCon(PrimaryTextBox));
 

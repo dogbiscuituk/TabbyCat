@@ -20,11 +20,9 @@
 
         private SceneForm _SceneForm;
 
-        // Protected public properties
-
-        public override DockContent Form => SceneForm;
-
         // Protected properties
+
+        protected override DockContent Form => SceneForm;
 
         protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm());
 

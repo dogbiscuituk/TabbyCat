@@ -4,9 +4,9 @@
 
     public abstract class DockingCon : LocalizationCon
     {
-        public DockingCon(WorldCon worldCon) : base(worldCon) { }
+        protected DockingCon(WorldCon worldCon) : base(worldCon) { }
 
-        public abstract DockContent Form { get; }
+        protected abstract DockContent Form { get; }
 
         public void SetVisibility(bool visible)
         {

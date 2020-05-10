@@ -24,7 +24,7 @@
 
         private ScenePropertiesForm _ScenePropertiesForm;
 
-        public override DockContent Form => ScenePropertiesForm;
+        protected override DockContent Form => ScenePropertiesForm;
 
         protected override ScenePropertiesForm ScenePropertiesForm => _ScenePropertiesForm ?? (_ScenePropertiesForm = new ScenePropertiesForm
         {

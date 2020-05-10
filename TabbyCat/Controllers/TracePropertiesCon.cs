@@ -31,7 +31,7 @@
 
         private bool SelectionUpdating;
 
-        public override DockContent Form => TracePropertiesForm;
+        protected override DockContent Form => TracePropertiesForm;
 
         protected override TracePropertiesForm TracePropertiesForm => _TracePropertiesForm ?? (_TracePropertiesForm = new TracePropertiesForm
         {

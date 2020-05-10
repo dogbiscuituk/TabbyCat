@@ -26,14 +26,14 @@
         private SignalsForm _SignalsForm;
 
         // Public properties
-
-        public override DockContent Form => SignalsForm;
         
         public int SignalsCount => SignalCons.Count;
 
         // Protected properties
 
         protected override IEnumerable<Property> AllProperties => new List<Property> { Property.Signals };
+
+        protected override DockContent Form => SignalsForm;
 
         protected override SignalsForm SignalsForm => _SignalsForm ?? NewSignalsForm();
 

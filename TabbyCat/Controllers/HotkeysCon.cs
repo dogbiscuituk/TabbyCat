@@ -14,11 +14,9 @@
 
         private HotkeysForm _HotkeysForm;
 
-        // Public properties
-
-        public override DockContent Form => HotkeysForm;
-
         // Protected properties
+
+        protected override DockContent Form => HotkeysForm;
 
         protected override HotkeysForm HotkeysForm => _HotkeysForm ?? (_HotkeysForm = new HotkeysForm());
 
