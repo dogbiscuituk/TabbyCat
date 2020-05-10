@@ -77,11 +77,6 @@
 
         public void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
 
-        /// <summary>
-        /// Run a command, pushing its memento on to the Undo stack.
-        /// </summary>
-        /// <param name="command">The command to run.</param>
-        /// <returns>True if the command actually caused a property change.</returns>
         public void Save()
         {
             _lastSave = _undoStack.Count;
@@ -90,6 +85,11 @@
 
         // Protected methods
 
+        /// <summary>
+        /// Run a command, pushing its memento on to the Undo stack.
+        /// </summary>
+        /// <param name="command">The command to run.</param>
+        /// <returns>True if the command actually caused a property change.</returns>
         protected override bool Run(ICommand command)
         {
             if (command == null)
