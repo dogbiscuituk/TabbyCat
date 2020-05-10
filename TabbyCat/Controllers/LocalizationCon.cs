@@ -171,7 +171,7 @@
         protected virtual SignalsCon SignalsCon => WorldCon.SignalsCon;
         protected virtual TraceCodeCon TraceCodeCon => WorldCon.TraceCodeCon;
         protected virtual TracePropertiesCon TracePropertiesCon => WorldCon.TracePropertiesCon;
-        protected virtual WorldCon WorldCon { get; }
+        protected WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
         protected virtual HotkeysForm HotkeysForm => HotkeysCon.HotkeysForm;

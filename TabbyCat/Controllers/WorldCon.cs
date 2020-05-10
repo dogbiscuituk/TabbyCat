@@ -49,13 +49,6 @@
             Pulse,
             SelectionChanged;
 
-        public void InitControlTheme() => AppCon.InitControlTheme(
-            WorldPanel,
-            WorldForm.MainMenu,
-            WorldForm.PopupMenu,
-            WorldForm.Toolbar,
-            WorldForm.StatusBar);
-
         public void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
 
         public void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
@@ -354,6 +347,13 @@
                 aboutCon.ShowDialog(WorldForm);
         }
 
+        private void InitControlTheme() => AppCon.InitControlTheme(
+            WorldPanel,
+            WorldForm.MainMenu,
+            WorldForm.PopupMenu,
+            WorldForm.Toolbar,
+            WorldForm.StatusBar);
+
         private void InvertSelection() => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
 
         private void OnSelectionChanged()
@@ -459,6 +459,8 @@
     /// </summary>
     public partial class WorldCon
     {
+        // Private fields
+
         private CameraCon _CameraCon;
         private ClockCon _ClockCon;
         private CommandCon _CommandCon;
@@ -474,9 +476,12 @@
         private TraceCodeCon _TraceCodeCon;
         private TracePropertiesCon _TracePropertiesCon;
 
-        public override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
+        // Public properties
 
+        public override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
         public override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+
+        // Protected properties
 
         protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
         protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
@@ -491,15 +496,19 @@
         protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
         protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
 
-        protected DockPane HotkeysPane => HotkeysForm.Pane;
-        protected DockPane SceneCodePane => SceneCodeForm.Pane;
-        protected DockPane ScenePane => SceneForm.Pane;
-        protected DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
-        protected DockPane ShaderCodePane => ShaderCodeForm.Pane;
-        protected DockPane SignalsPane => SignalsForm.Pane;
-        protected DockPane TraceCodePane => TraceCodeForm.Pane;
-        protected DockPane TracePropertiesPane => TracePropertiesForm.Pane;
-        protected DockPanel WorldPanel => WorldForm.DockPanel;
+        // Private properties
+
+        private DockPane HotkeysPane => HotkeysForm.Pane;
+        private DockPane SceneCodePane => SceneCodeForm.Pane;
+        private DockPane ScenePane => SceneForm.Pane;
+        private DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
+        private DockPane ShaderCodePane => ShaderCodeForm.Pane;
+        private DockPane SignalsPane => SignalsForm.Pane;
+        private DockPane TraceCodePane => TraceCodeForm.Pane;
+        private DockPane TracePropertiesPane => TracePropertiesForm.Pane;
+        private DockPanel WorldPanel => WorldForm.DockPanel;
+
+        // Public methods
 
         public void ConnectCons(bool connect)
         {
@@ -527,6 +536,8 @@
                 RenderCon.Unload();
             }
         }
+
+        // Private methods
 
         private void RestoreWindowLayout()
         {
