@@ -43,7 +43,7 @@
 
         // Private methods
 
-        private void ViewFullScreen_Click(object sender, System.EventArgs e)
+        private void ViewFullScreen_Click(object sender, EventArgs e)
         {
             _fullScreen = !_fullScreen;
             if (!_fullScreen)
