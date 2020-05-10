@@ -153,7 +153,7 @@
         public virtual CommandCon CommandCon => WorldCon.CommandCon;
         public virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         public virtual JsonCon JsonCon => WorldCon.JsonCon;
-        public virtual Scene Scene { get => WorldCon.Scene; protected set => WorldCon.Scene = value; }
+        public virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
         public GLControl SceneControl => SceneForm?.Controls.OfType<GLControl>().FirstOrDefault();
         public virtual WorldForm WorldForm => WorldCon.WorldForm;
 

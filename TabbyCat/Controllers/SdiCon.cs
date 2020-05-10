@@ -73,7 +73,7 @@
             return OpenFileDialog.ShowDialog() != DialogResult.OK ? null : OpenFileDialog.FileName;
         }
 
-        public override void Reopen(ToolStripItem menuItem)
+        protected override void Reopen(ToolStripItem menuItem)
         {
             if (menuItem == null)
                 return;

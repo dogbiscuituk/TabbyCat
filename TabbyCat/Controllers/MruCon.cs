@@ -20,11 +20,13 @@
     /// </summary>
     public class MruCon : LocalizationCon
     {
+        // Constructors
+
         protected MruCon(WorldCon worldCon, string subKeyName) : base(worldCon)
         {
             if (string.IsNullOrWhiteSpace(subKeyName))
                 throw new ArgumentNullException(nameof(subKeyName));
-            SubKeyName = string.Format(
+            _subKeyName = string.Format(
                 CultureInfo.InvariantCulture,
                 @"Software\{0}\{1}\{2}",
                 Application.CompanyName,
@@ -33,11 +35,15 @@
             RefreshRecentMenu();
         }
 
-        private readonly string SubKeyName;
+        // Private fields
 
-        protected ToolStripDropDownItem RecentMenu => WorldCon.WorldForm.FileReopen;
+        private readonly string _subKeyName;
 
-        public virtual void Reopen(ToolStripItem menuItem) { }
+        // Private properties
+
+        private ToolStripDropDownItem RecentMenu => WorldCon.WorldForm.FileReopen;
+
+        // Protected methods
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
             "Design",
@@ -94,18 +100,13 @@
             RefreshRecentMenu();
         }
 
-        private Win32.RegistryKey CreateSubKey() => Win32.Registry.CurrentUser.CreateSubKey(SubKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+        protected virtual void Reopen(ToolStripItem menuItem) { }
 
-        private static void DeleteItem(Win32.RegistryKey key, string item)
-        {
-            var name = key.GetValueNames()
-                .Where(n => key.GetValue(n, null) as string == item)
-                .FirstOrDefault();
-            if (name != null)
-                key.DeleteValue(name);
-        }
+        // Private methods
 
-        private Win32.RegistryKey OpenSubKey(bool writable) => Win32.Registry.CurrentUser.OpenSubKey(SubKeyName, writable);
+        private Win32.RegistryKey CreateSubKey() => Win32.Registry.CurrentUser.CreateSubKey(_subKeyName, Win32.RegistryKeyPermissionCheck.ReadWriteSubTree);
+
+        private Win32.RegistryKey OpenSubKey(bool writable) => Win32.Registry.CurrentUser.OpenSubKey(_subKeyName, writable);
 
         private void RecentItemClick(object sender, EventArgs e) => Reopen((ToolStripItem)sender);
 
@@ -169,6 +170,17 @@
                 }
             }
             RecentMenu.Enabled = ok;
+        }
+
+        // Private static methods
+
+        private static void DeleteItem(Win32.RegistryKey key, string item)
+        {
+            var name = key
+                .GetValueNames()
+                .FirstOrDefault(n => key.GetValue(n, null) as string == item);
+            if (name != null)
+                key.DeleteValue(name);
         }
     }
 }

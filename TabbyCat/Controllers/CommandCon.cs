@@ -82,7 +82,15 @@
         /// </summary>
         /// <param name="command">The command to run.</param>
         /// <returns>True if the command actually caused a property change.</returns>
-        public override bool Run(ICommand command)
+        public void Save()
+        {
+            _lastSave = _undoStack.Count;
+            UpdateUI();
+        }
+
+        // Protected methods
+
+        protected override bool Run(ICommand command)
         {
             if (command == null)
                 return false;
@@ -90,12 +98,6 @@
                 _lastSave = -1;
             _redoStack.Clear();
             return Redo(command);
-        }
-
-        public void Save()
-        {
-            _lastSave = _undoStack.Count;
-            UpdateUI();
         }
 
         // Private methods
