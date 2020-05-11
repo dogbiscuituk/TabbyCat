@@ -19,7 +19,6 @@
                     array[1].Type == JTokenType.Integer &&
                     array[2].Type == JTokenType.Float &&
                     array[3].Type == JTokenType.Float)
-                {
                     return new Signal
                     {
                         Name = array[0].Value<string>(),
@@ -27,7 +26,6 @@
                         Amplitude = array[2].Value<float>(),
                         Frequency = array[3].Value<float>()
                     };
-                }
             }
             return new Signal();
         }
