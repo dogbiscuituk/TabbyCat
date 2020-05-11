@@ -129,7 +129,6 @@
 
         private static bool IsProjectionProperty(this Property p) => p > Property.BeforeProjection && p < Property.AfterProjection;
 
-        private static bool IsShaderProperty(this Property p) => p > Property.BeforeShaders && p < Property.AfterShaders
-            || p == Property.GLTargetVersion;
+        private static bool IsShaderProperty(this Property p) => p > Property.BeforeShaders && p < Property.AfterShaders || p == Property.GLTargetVersion;
     }
 }
