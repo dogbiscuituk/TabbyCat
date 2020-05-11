@@ -1,4 +1,4 @@
-﻿namespace TabbyCat.CustomControls
+﻿namespace TabbyCat.Types
 {
     using System;
 

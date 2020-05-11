@@ -4,6 +4,7 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using Types;
 
     /// <summary>
     /// A LinkLabel with a couple of additional features:
