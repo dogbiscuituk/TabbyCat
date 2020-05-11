@@ -3,55 +3,66 @@
     using System;
     using System.ComponentModel;
     using System.Globalization;
+    using System.Linq;
     using System.Windows.Forms;
 
     public partial class JmkFlagsCheckedListBox : CheckedListBox
     {
+        // Constructors
+
         public JmkFlagsCheckedListBox() => InitializeComponent();
 
-        private Type _EnumType;
-        private Enum _EnumValue;
-        private bool Updating;
+        // Private fields
 
-        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        private Type _enumType;
+        private Enum _enumValue;
+        private bool _updating;
+
+        // Public properties
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Enum EnumValue
         {
-            get => (Enum)Enum.ToObject(_EnumType, GetCurrentValue());
+            get => (Enum)Enum.ToObject(_enumType, GetCurrentValue());
             set
             {
                 Items.Clear();
-                _EnumValue = value;
-                _EnumType = value?.GetType();
+                _enumValue = value;
+                _enumType = value?.GetType();
                 Populate();
                 Apply();
             }
         }
 
-        public JmkFlagsCheckedListBoxItem Add(string text, int value) => Add(new JmkFlagsCheckedListBoxItem(text, value));
-
-        public JmkFlagsCheckedListBoxItem Add(JmkFlagsCheckedListBoxItem item)
-        {
-            Items.Add(item);
-            return item;
-        }
-
-        public int GetCurrentValue()
-        {
-            var result = 0;
-            for (var index = 0; index < Items.Count; index++)
-                if (GetItemChecked(index))
-                    result |= ((JmkFlagsCheckedListBoxItem)Items[index]).Value;
-            return result;
-        }
+        // Protected methods
 
         protected override void OnItemCheck(ItemCheckEventArgs e)
         {
             base.OnItemCheck(e);
-            if (!Updating && e != null)
+            if (!_updating && e != null)
                 UpdateItems((JmkFlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
         }
 
-        protected void UpdateItems(JmkFlagsCheckedListBoxItem item, CheckState state)
+        // Private methods
+
+        private void Add(string text, int value) => Add(new JmkFlagsCheckedListBoxItem(text, value));
+
+        private void Add(JmkFlagsCheckedListBoxItem item) => Items.Add(item);
+
+        private void Apply() => UpdateItems(ChangeType(_enumValue));
+
+        private int GetCurrentValue() =>
+            Items.Cast<object>().Where((t, index) =>
+                GetItemChecked(index)).Aggregate(0, (current, t) =>
+                current | ((JmkFlagsCheckedListBoxItem)t).Value);
+
+        private void Populate()
+        {
+            foreach (var name in Enum.GetNames(_enumType))
+                Add(name, ChangeType(Enum.Parse(_enumType, name)));
+        }
+
+        private void UpdateItems(JmkFlagsCheckedListBoxItem item, CheckState state)
         {
             if (item == null)
                 return;
@@ -68,9 +79,9 @@
             UpdateItems(result);
         }
 
-        protected void UpdateItems(int value)
+        private void UpdateItems(int value)
         {
-            Updating = true;
+            _updating = true;
             for (var index = 0; index < Items.Count; index++)
             {
                 var item = (JmkFlagsCheckedListBoxItem)Items[index];
@@ -78,16 +89,10 @@
                     ? value == 0
                     : (item.Value & value) == item.Value && item.Value != 0);
             }
-            Updating = false;
+            _updating = false;
         }
 
-        private void Apply() => UpdateItems(ChangeType(_EnumValue));
-
-        private void Populate()
-        {
-            foreach (var name in Enum.GetNames(_EnumType))
-                Add(name, ChangeType(Enum.Parse(_EnumType, name)));
-        }
+        // Private static methods
 
         private static int ChangeType(object value) => (int)Convert.ChangeType(value, typeof(int), CultureInfo.InvariantCulture);
     }
