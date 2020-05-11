@@ -8,7 +8,11 @@
 
     public class SignalPropertiesCon : LocalizationCon
     {
+        // Constructors
+
         public SignalPropertiesCon(WorldCon worldCon) : base(worldCon) { }
+
+        // Public methods
 
         public bool Execute(ref Signal signal)
         {
