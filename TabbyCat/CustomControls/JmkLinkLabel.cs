@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.CustomControls
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
@@ -27,9 +28,17 @@
     /// if that's what your LookupParameterValue event handler returns for the variable name URL.
     /// Note that such values are substituted on each assignment to the JmkLinkLabel's Text property.
     /// </summary>
-    public partial class JmkLinkLabel : LinkLabel
+    public sealed class JmkLinkLabel : LinkLabel
     {
+        // Constructors
+
         public Link ActiveLink { get; private set; }
+
+        // Private fields
+
+        private int _offset;
+
+        // Public properties
 
         public override string Text
         {
@@ -37,18 +46,19 @@
             set => SetText(value);
         }
 
+        // Public events
+
         public event EventHandler ActiveLinkChanged;
         public event EventHandler<LookupParameterEventArgs> LookupParameterValue;
 
-        private int Offset;
+        // Protected methods
 
-        protected virtual void OnActiveLinkChanged() => ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
+        private void OnActiveLinkChanged() => ActiveLinkChanged?.Invoke(this, EventArgs.Empty);
 
+        [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "e is never null")]
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            if (e == null)
-                return;
             var link = PointInLink(e.X, e.Y);
             if (link == ActiveLink)
                 return;
@@ -62,6 +72,8 @@
             base.WndProc(ref m);
         }
 
+        // Private methods
+
         private string EvaluateLink(Match match)
         {
             var groups = match.Groups;
@@ -72,9 +84,9 @@
                 start = group1.Index,
                 length = group1.Length;
             var url = group2.Value;
-            Links.Add(new Link(start - 1 + Offset, length, url) { Description = url });
+            Links.Add(new Link(start - 1 + _offset, length, url) { Description = url });
             var result = groups[1].Value;
-            Offset += result.Length - match.Value.Length;
+            _offset += result.Length - match.Value.Length;
             return result;
         }
 
@@ -88,29 +100,29 @@
             };
             LookupParameterValue?.Invoke(this, e);
             var result = e.Value;
-            Offset += result.Length - match.Value.Length;
+            _offset += result.Length - match.Value.Length;
             return result;
         }
 
         private string ReplaceAll(string text, string pattern, MatchEvaluator evaluator)
         {
-            Offset = 0;
+            _offset = 0;
             return Regex.Replace(text, pattern, evaluator);
         }
 
         private void SetText(string text)
         {
             const string
-                LinkPattern = @"\[([^\]]+)\]\(([^\)]+)\)",
-                ParameterPattern = @"\%([^\%]*)\%";
+                linkPattern = @"\[([^\]]+)\]\(([^\)]+)\)",
+                parameterPattern = @"\%([^\%]*)\%";
             ActiveLink = null;
             Links.Clear();
             base.Text = ReplaceAll(
                 ReplaceAll(
                     text,
-                    ParameterPattern,
+                    parameterPattern,
                     EvaluateParameter),
-                LinkPattern,
+                linkPattern,
                 EvaluateLink);
         }
     }
