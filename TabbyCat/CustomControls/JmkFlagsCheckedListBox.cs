@@ -43,6 +43,12 @@
                 UpdateItems((JmkFlagsCheckedListBoxItem)Items[e.Index], e.NewValue);
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            this.FirstFocus(ref m);
+            base.WndProc(ref m);
+        }
+
         // Private methods
 
         private void Add(string text, int value) => Add(new JmkFlagsCheckedListBoxItem(text, value));
