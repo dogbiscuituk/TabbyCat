@@ -10,28 +10,24 @@
     using System.Linq;
     using System.Windows.Forms;
     using Types;
-    using UserControls;
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
     public partial class ScenePropertiesCon : PropertiesCon
     {
+        // Constructors
+
         public ScenePropertiesCon(WorldCon worldCon) : base(worldCon)
         {
             InitCommonControls(ScenePropertiesEdit.TableLayoutPanel);
             InitLocalControls();
         }
 
-        private ScenePropertiesForm _ScenePropertiesForm;
+        // Private fields
 
-        protected override DockContent Form => ScenePropertiesForm;
+        private ScenePropertiesForm _scenePropertiesForm;
 
-        protected override ScenePropertiesForm ScenePropertiesForm => _ScenePropertiesForm ?? (_ScenePropertiesForm = new ScenePropertiesForm
-        {
-            TabText = Resources.ScenePropertiesForm_TabText,
-            Text = Resources.ScenePropertiesForm_Text,
-            ToolTipText = Resources.ScenePropertiesForm_Text
-        });
+        // Protected properties
 
         protected override IEnumerable<Property> AllProperties => new List<Property>
         {
@@ -49,6 +45,17 @@
             Property.Stereo,
             Property.VSync
         };
+
+        protected override DockContent Form => ScenePropertiesForm;
+
+        protected override ScenePropertiesForm ScenePropertiesForm => _scenePropertiesForm ?? (_scenePropertiesForm = new ScenePropertiesForm
+        {
+            TabText = Resources.ScenePropertiesForm_TabText,
+            Text = Resources.ScenePropertiesForm_Text,
+            ToolTipText = Resources.ScenePropertiesForm_Text
+        });
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -75,7 +82,7 @@
                 ScenePropertiesEdit.cbBackground.SelectedIndexChanged += Background_SelectedIndexChanged;
                 ScenePropertiesEdit.cbVSync.CheckedChanged += VSync_CheckedChanged;
                 ScenePropertiesEdit.seSampleCount.SelectedItemChanged += Samples_ValueChanged;
-                ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged += GLSLVersion_SelectedItemChanged;
+                ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged += GlslVersion_SelectedItemChanged;
                 WorldForm.ViewSceneProperties.Click += ViewSceneProperties_Click;
             }
             else
@@ -100,10 +107,12 @@
                 ScenePropertiesEdit.cbBackground.SelectedIndexChanged -= Background_SelectedIndexChanged;
                 ScenePropertiesEdit.cbVSync.CheckedChanged -= VSync_CheckedChanged;
                 ScenePropertiesEdit.seSampleCount.SelectedItemChanged -= Samples_ValueChanged;
-                ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged -= GLSLVersion_SelectedItemChanged;
+                ScenePropertiesEdit.seGLSLVersion.SelectedItemChanged -= GlslVersion_SelectedItemChanged;
                 WorldForm.ViewSceneProperties.Click -= ViewSceneProperties_Click;
             }
         }
+
+        // Protected methods
 
         protected override void Localize()
         {
@@ -140,7 +149,8 @@
         {
             if (properties == null)
                 return;
-            foreach (var property in properties)
+            var props = properties as Property[] ?? properties.ToArray();
+            foreach (var property in props)
                 switch (property)
                 {
                     case Property.ProjectionType:
@@ -150,7 +160,7 @@
             if (Updating)
                 return;
             Updating = true;
-            foreach (var property in properties)
+            foreach (var property in props)
                 switch (property)
                 {
                     case Property.Background:
@@ -205,11 +215,7 @@
             UpdateUI();
         }
 
-        private static void InitDomainUpDownItems(DomainUpDown control, string items)
-        {
-            control.Items.Clear();
-            control.Items.AddRange(items.Split('|').Reverse().ToList());
-        }
+        // Private methods
 
         private void InitLocalControls()
         {
@@ -247,6 +253,14 @@
             ScenePropertiesEdit.seFrustumMaxX.Visible =
             ScenePropertiesEdit.seFrustumMaxY.Visible = !perspective;
         }
+
+        // Private static methods
+
+        private static void InitDomainUpDownItems(DomainUpDown control, string items)
+        {
+            control.Items.Clear();
+            control.Items.AddRange(items.Split('|').Reverse().ToList());
+        }
     }
 
     /// <summary>
@@ -280,7 +294,7 @@
             (float)ScenePropertiesEdit.seFrustumMinY.Value,
             (float)ScenePropertiesEdit.seFrustumMinZ.Value)));
 
-        private void GLSLVersion_SelectedItemChanged(object sender, EventArgs e) => Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
+        private void GlslVersion_SelectedItemChanged(object sender, EventArgs e) => Run(new GLTargetVersionCommand(ScenePropertiesEdit.seGLSLVersion.Text));
 
         private void ProjectionType_SelectedItemChanged(object sender, EventArgs e) => Run(new ProjectionTypeCommand((ProjectionType)ScenePropertiesEdit.seProjectionType.SelectedIndex));
 
