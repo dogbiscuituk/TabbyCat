@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
     using CustomControls;
-    using Models;
     using Properties;
     using System;
     using System.ComponentModel;
@@ -19,31 +18,25 @@
     /// </summary>
     public abstract class SdiCon : MruCon
     {
-        protected SdiCon(WorldCon worldCon, string filter, string subKeyName)
-            : base(worldCon, subKeyName)
+        // Constructors
+
+        protected SdiCon(WorldCon worldCon, string filter, string subKeyName) : base(worldCon, subKeyName)
         {
-            OpenFileDialog = new OpenFileDialog { Filter = filter, Title = Resources.OpenFileDialog_Title };
-            SaveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
+            _openFileDialog = new OpenFileDialog { Filter = filter, Title = Resources.OpenFileDialog_Title };
+            _saveFileDialog = new SaveFileDialog { Filter = filter, Title = Resources.SaveFileDialog_Title };
         }
 
-        public event EventHandler<CancelEventArgs>
-            FileLoading,
-            FileSaving;
-
-        public event EventHandler
-            FileLoaded,
-            FilePathChanged,
-            FileSaved;
-
-        public event EventHandler<FilePathEventArgs> FilePathRequest;
+        // Private fields
 
         private string _filePath = string.Empty;
 
-        private readonly OpenFileDialog OpenFileDialog;
+        private readonly OpenFileDialog _openFileDialog;
 
-        private readonly SaveFileDialog SaveFileDialog;
+        private readonly SaveFileDialog _saveFileDialog;
 
-        public string FilePath
+        // Protected properties
+
+        protected string FilePath
         {
             get => _filePath;
             set
@@ -59,18 +52,79 @@
             }
         }
 
-        public void Clear()
+        // Public events
+
+        public event EventHandler<CancelEventArgs>
+            FileLoading,
+            FileSaving;
+
+        public event EventHandler
+            FileLoaded,
+            FilePathChanged,
+            FileSaved;
+
+        public event EventHandler<FilePathEventArgs> FilePathRequest;
+
+        // Public methods
+
+        public bool LoadFromFile(string filePath)
+        {
+            if (!OnFileLoading())
+                return false;
+            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                if (!LoadFromStream(stream))
+                    return false;
+            FilePath = filePath;
+            AddItem(filePath);
+            OnFileLoaded();
+            return true;
+        }
+
+        public bool SaveIfModified()
+        {
+            if (!Scene.IsModified)
+                return true;
+            OnFilePathRequest();
+            switch (MessageBox.Show(
+                WorldForm,
+                Resources.Message_FileModified_Text,
+                string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : FilePath.CompactText(),
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Warning))
+            {
+                case DialogResult.Yes:
+                    return Save();
+                case DialogResult.No:
+                    return true;
+                case DialogResult.Cancel:
+                    return false;
+            }
+            return true;
+        }
+
+        // Protected methods
+
+        protected void Clear()
         {
             FilePath = string.Empty;
             ClearDocument();
         }
 
-        public string SelectFilePath(FilterIndex filterIndex = FilterIndex.Default)
+        protected abstract void ClearDocument();
+
+        protected override void DisposeManagedState()
         {
-            filterIndex = EvalFilterIndex(filterIndex);
-            OpenFileDialog.FilterIndex = (int)filterIndex;
-            InitFolderPath(OpenFileDialog, filterIndex);
-            return OpenFileDialog.ShowDialog() != DialogResult.OK ? null : OpenFileDialog.FileName;
+            base.DisposeManagedState();
+            _openFileDialog?.Dispose();
+            _saveFileDialog?.Dispose();
+        }
+
+        protected abstract bool LoadFromStream(Stream stream);
+
+        protected virtual void OnFileReopen(string filePath)
+        {
+            if (SaveIfModified())
+                LoadFromFile(filePath);
         }
 
         protected override void Reopen(ToolStripItem menuItem)
@@ -88,84 +142,29 @@
             OnFileReopen(filePath);
         }
 
-        protected virtual void OnFileReopen(string filePath)
-        {
-            if (SaveIfModified())
-                LoadFromFile(filePath);
-        }
+        protected bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath) ? SaveAs(filterIndex) : SaveToFile(FilePath);
 
-        public bool Save(FilterIndex filterIndex = FilterIndex.Default) => string.IsNullOrEmpty(FilePath) || !File.Exists(FilePath) ? SaveAs(filterIndex) : SaveToFile(FilePath);
-
-        public bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
+        protected bool SaveAs(FilterIndex filterIndex = FilterIndex.Default)
         {
             if (string.IsNullOrWhiteSpace(FilePath))
                 OnFilePathRequest();
-            SaveFileDialog.FileName = FilePath;
+            _saveFileDialog.FileName = FilePath;
             filterIndex = EvalFilterIndex(filterIndex);
-            InitFolderPath(SaveFileDialog, filterIndex);
-            SaveFileDialog.FilterIndex = (int)filterIndex;
-            return SaveFileDialog.ShowDialog() == DialogResult.OK
-                && SaveToFile(SaveFileDialog.FileName);
+            InitFolderPath(_saveFileDialog, filterIndex);
+            _saveFileDialog.FilterIndex = (int)filterIndex;
+            return _saveFileDialog.ShowDialog() == DialogResult.OK
+                && SaveToFile(_saveFileDialog.FileName);
         }
-
-        private FilterIndex EvalFilterIndex(FilterIndex filterIndex)
-        {
-            if (filterIndex == FilterIndex.Default)
-                switch (Path.GetExtension(FilePath))
-                {
-                    case ".tgt":
-                        return FilterIndex.Template;
-                    case ".tgf":
-                    default:
-                        return FilterIndex.File;
-                }
-            return filterIndex;
-        }
-
-        private static void InitFolderPath(FileDialog dialog, FilterIndex filterIndex)
-        {
-            var folderPath = string.Empty;
-            if (!string.IsNullOrWhiteSpace(dialog.FileName))
-                folderPath = Path.GetDirectoryName(dialog.FileName);
-            if (string.IsNullOrWhiteSpace(folderPath))
-                dialog.InitialDirectory = AppCon.GetDefaultFolder(filterIndex);
-        }
-
-        public bool SaveIfModified()
-        {
-            if (Scene.IsModified)
-            {
-                OnFilePathRequest();
-                switch (MessageBox.Show(
-                    WorldForm,
-                    Resources.Message_FileModified_Text,
-                    string.IsNullOrWhiteSpace(FilePath) ? Resources.Text_NewScene : FilePath.CompactText(),
-                    MessageBoxButtons.YesNoCancel,
-                    MessageBoxIcon.Warning))
-                {
-                    case DialogResult.Yes:
-                        return Save();
-                    case DialogResult.No:
-                        return true;
-                    case DialogResult.Cancel:
-                        return false;
-                }
-            }
-            return true;
-        }
-
-        protected abstract void ClearDocument();
-
-        protected override void DisposeManagedState()
-        {
-            base.DisposeManagedState();
-            OpenFileDialog?.Dispose();
-            SaveFileDialog?.Dispose();
-        }
-
-        protected abstract bool LoadFromStream(Stream stream);
 
         protected abstract bool SaveToStream(Stream stream);
+
+        protected string SelectFilePath(FilterIndex filterIndex = FilterIndex.Default)
+        {
+            filterIndex = EvalFilterIndex(filterIndex);
+            _openFileDialog.FilterIndex = (int)filterIndex;
+            InitFolderPath(_openFileDialog, filterIndex);
+            return _openFileDialog.ShowDialog() != DialogResult.OK ? null : _openFileDialog.FileName;
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types",
             Justification = "Can't predict what exception types the client-supplied action may throw, but the sole purpose of this method is simply to swallow them all.")]
@@ -190,11 +189,26 @@
             return result;
         }
 
-        protected virtual void OnFilePathChanged() => FilePathChanged?.Invoke(this, EventArgs.Empty);
+        // Private methods
 
-        protected virtual void OnFileLoaded() => FileLoaded?.Invoke(this, EventArgs.Empty);
+        private FilterIndex EvalFilterIndex(FilterIndex filterIndex)
+        {
+            if (filterIndex != FilterIndex.Default)
+                return filterIndex;
+            switch (Path.GetExtension(FilePath))
+            {
+                case ".tgf":
+                    goto default;
+                case ".tgt":
+                    return FilterIndex.Template;
+                default:
+                    return FilterIndex.File;
+            }
+        }
 
-        protected virtual bool OnFileLoading()
+        private void OnFileLoaded() => FileLoaded?.Invoke(this, EventArgs.Empty);
+
+        private bool OnFileLoading()
         {
             var result = true;
             var fileLoading = FileLoading;
@@ -207,9 +221,11 @@
             return result;
         }
 
-        protected virtual void OnFileSaved() => FileSaved?.Invoke(this, EventArgs.Empty);
+        private void OnFilePathChanged() => FilePathChanged?.Invoke(this, EventArgs.Empty);
 
-        protected virtual bool OnFileSaving()
+        private void OnFileSaved() => FileSaved?.Invoke(this, EventArgs.Empty);
+
+        private bool OnFileSaving()
         {
             var result = true;
             var fileSaving = FileSaving;
@@ -218,23 +234,6 @@
                 var e = new CancelEventArgs();
                 fileSaving(this, e);
                 result = !e.Cancel;
-            }
-            return result;
-        }
-
-        public bool LoadFromFile(string filePath)
-        {
-            var result = false;
-            if (OnFileLoading())
-            {
-                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                    result = LoadFromStream(stream);
-                if (result)
-                {
-                    FilePath = filePath;
-                    AddItem(filePath);
-                    OnFileLoaded();
-                }
             }
             return result;
         }
@@ -261,6 +260,17 @@
                     }
                 }
             return result;
+        }
+
+        // Private static methods
+
+        private static void InitFolderPath(FileDialog dialog, FilterIndex filterIndex)
+        {
+            var folderPath = string.Empty;
+            if (!string.IsNullOrWhiteSpace(dialog.FileName))
+                folderPath = Path.GetDirectoryName(dialog.FileName);
+            if (string.IsNullOrWhiteSpace(folderPath))
+                dialog.InitialDirectory = AppCon.GetDefaultFolder(filterIndex);
         }
     }
 }
