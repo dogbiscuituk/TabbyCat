@@ -5,7 +5,6 @@
     using Properties;
     using System;
     using System.ComponentModel;
-    using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
@@ -374,7 +373,7 @@
 
         private void UpdateFramesPerSecond()
         {
-            var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
+            var fps = Resources.WorldForm_FPS.Format(RenderCon.FramesPerSecond);
             if (_lastFps != fps)
                 _lastFps = WorldForm.FpsLabel.Text = fps;
         }
@@ -392,7 +391,7 @@
         {
             var label = WorldForm.GraphicsModeLabel;
             var mode = GraphicsMode;
-            label.Text = string.Format(CultureInfo.CurrentCulture, Resources.Text_GraphicsModeIndexFormat, mode.Index);
+            label.Text = Resources.Text_GraphicsModeIndexFormat.Format(mode.Index);
             label.ToolTipText = mode.AsString();
         }
 
@@ -434,7 +433,7 @@
 
         private void UpdateVirtualTime()
         {
-            var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
+            var time = Resources.WorldForm_Time.Format(Clock.VirtualSecondsElapsed);
             if (_lastTime != time)
                 _lastTime = WorldForm.TimeLabel.Text = time;
         }

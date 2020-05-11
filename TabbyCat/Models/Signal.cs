@@ -3,8 +3,8 @@
     using Properties;
     using System;
     using System.ComponentModel;
-    using System.Globalization;
     using Types;
+    using Utils;
 
     public class Signal
     {
@@ -38,7 +38,7 @@
 
         public float GetValueAt(float time) => Amplitude * GetScaleAt(time);
 
-        public override string ToString() => string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
+        public override string ToString() => Resources.Text_SignalName.Format(Name);
 
         // Private methods
 

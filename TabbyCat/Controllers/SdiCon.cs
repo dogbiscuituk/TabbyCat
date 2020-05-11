@@ -4,10 +4,10 @@
     using Properties;
     using System;
     using System.ComponentModel;
-    using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
     using Types;
+    using Utils;
 
     /// <summary>
     /// "Single Document Interface" Controller.
@@ -134,8 +134,10 @@
             var filePath = menuItem.ToolTipText;
             if (!File.Exists(filePath))
             {
-                if (MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.Message_FileNotFound_Text, filePath),
-                    Resources.Message_FileNotFound_Caption, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(
+                    Resources.Message_FileNotFound_Text.Format(FilePath),
+                    Resources.Message_FileNotFound_Caption,
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
                     RemoveItem(filePath);
                 return;
             }

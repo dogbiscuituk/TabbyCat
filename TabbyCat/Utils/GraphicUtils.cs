@@ -2,7 +2,6 @@
 {
     using OpenTK.Graphics;
     using Properties;
-    using System.Globalization;
 
     public static class GraphicUtils
     {
@@ -39,16 +38,16 @@
                 stereo: stereo);
         }
 
-        public static string AsString(this GraphicsMode mode) => mode == null ? string.Empty : string.Format(
-            CultureInfo.CurrentCulture,
-            Resources.GraphicsModeFormat,
-            mode.Index,
-            mode.ColorFormat,
-            mode.AccumulatorFormat,
-            mode.Buffers,
-            mode.Depth,
-            mode.Samples,
-            mode.Stencil,
-            mode.Stereo);
+        public static string AsString(this GraphicsMode mode) => mode == null
+            ? string.Empty
+            : Resources.GraphicsModeFormat.Format(
+                mode.Index,
+                mode.ColorFormat,
+                mode.AccumulatorFormat,
+                mode.Buffers,
+                mode.Depth,
+                mode.Samples,
+                mode.Stencil,
+                mode.Stereo);
     }
 }
