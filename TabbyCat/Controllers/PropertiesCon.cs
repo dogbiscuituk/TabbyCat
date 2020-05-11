@@ -1,12 +1,15 @@
 ﻿namespace TabbyCat.Controllers
 {
     using System;
-    using System.Windows.Forms;
     using Types;
 
     public abstract class PropertiesCon : DockingCon
     {
-        public PropertiesCon(WorldCon worldCon) : base(worldCon) { }
+        // Constructors
+
+        protected PropertiesCon(WorldCon worldCon) : base(worldCon) { }
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -23,13 +26,11 @@
             }
         }
 
+        // Protected methods
+
         protected virtual void OnSelectionEdit() { }
 
-        protected void SetToolTip(Control control, string toolTip)
-        {
-            if (ToolTip.GetToolTip(control) != toolTip)
-                ToolTip.SetToolTip(control, toolTip);
-        }
+        // Private methods
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => UpdateProperty(e.Property);
 
