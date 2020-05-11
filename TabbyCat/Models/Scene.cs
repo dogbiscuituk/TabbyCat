@@ -3,7 +3,6 @@
     using Controllers;
     using Newtonsoft.Json;
     using OpenTK;
-    using OpenTK.Graphics;
     using Properties;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -15,14 +14,15 @@
     {
         // Constructors
 
-        public Scene() : base() => Init();
+        public Scene() => Init();
 
         public Scene(WorldCon worldCon) : this() => WorldCon = worldCon;
 
         // Private fields
 
-        private string _GPULog = string.Empty;
-        private GPUStatus _GPUStatus;
+        private string _gpuLog = string.Empty;
+
+        private GPUStatus _gpuStatus;
 
         // Public properties
 
@@ -54,12 +54,12 @@
         [JsonIgnore]
         public GPUStatus GPUStatus
         {
-            get => _GPUStatus;
+            get => _gpuStatus;
             set
             {
                 if (GPUStatus == value)
                     return;
-                _GPUStatus = value;
+                _gpuStatus = value;
                 OnPropertyEdit(Property.GPUStatus);
             }
         }
@@ -67,18 +67,15 @@
         [JsonIgnore]
         public string GPULog
         {
-            get => _GPULog;
+            get => _gpuLog;
             set
             {
                 if (GPULog == value)
                     return;
-                _GPULog = value;
+                _gpuLog = value;
                 OnPropertyEdit(Property.GPULog);
             }
         }
-
-        [JsonIgnore]
-        public CommandCon CommandCon => WorldCon?.CommandCon;
 
         [JsonIgnore]
         public bool IsModified => CommandCon?.IsModified ?? false;
@@ -87,6 +84,8 @@
         public WorldCon WorldCon { get; set; }
 
         // Private properties
+
+        private CommandCon CommandCon => WorldCon?.CommandCon;
 
         private GLControl GLControl => WorldCon?.SceneControl;
 
@@ -105,8 +104,6 @@
         public void Clear() => Init();
 
         public Matrix4 GetCameraView() => MathUtils.CreateCameraView(Camera);
-
-        public GraphicsMode GetGraphicsMode() => WorldCon?.GraphicsMode;
 
         public Matrix4 GetProjectionMatrix() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
@@ -129,6 +126,8 @@
             if (index >= 0 && index < Traces.Count)
                 Traces.RemoveAt(index);
         }
+
+        // Private methods
 
         private void Init()
         {
