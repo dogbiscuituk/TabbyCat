@@ -8,17 +8,7 @@
 
     public class Signal
     {
-        // Constructors
-
-        public Signal() { }
-
         // Public properties
-
-        [DefaultValue("")]
-        public string Name { get; set; } = string.Empty;
-
-        [DefaultValue(0)]
-        public WaveType WaveType { get; set; } = WaveType.Constant;
 
         [DefaultValue(0f)]
         public float Amplitude { get; set; } = 0;
@@ -38,11 +28,19 @@
         [DefaultValue(0.1f)]
         public float FrequencyMinimum { get; set; } = 0.1f;
 
+        [DefaultValue("")]
+        public string Name { get; set; } = string.Empty;
+
+        [DefaultValue(0)]
+        public WaveType WaveType { get; set; } = WaveType.Constant;
+
         // Public methods
 
         public float GetValueAt(float time) => Amplitude * GetScaleAt(time);
 
         public override string ToString() => string.Format(CultureInfo.CurrentCulture, Resources.Text_SignalName, Name);
+
+        // Private methods
 
         private float GetScaleAt(float time)
         {
