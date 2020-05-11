@@ -14,8 +14,10 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    public partial class WorldCon : LocalizationCon
+    public sealed partial class WorldCon : LocalizationCon
     {
+        // Constructors
+
         public WorldCon() : base(null)
         {
             WorldForm = new WorldForm();
@@ -26,57 +28,38 @@
             PopupWorldForm_Opening(this, new CancelEventArgs());
         }
 
-        public TraceSelection TraceSelection { get; } = new TraceSelection();
+        // Private fields
 
         private string
-            LastSpeed,
-            LastTime,
-            LastFPS;
+            _lastSpeed,
+            _lastTime,
+            _lastFps;
 
-        public override Scene Scene { get; set; }
-
-        public override WorldForm WorldForm { get; }
+        // Public properties
 
         public GLInfo GLInfo => RenderCon.TheGLInfo ?? RenderCon?.GLInfo;
 
+        public override Scene Scene { get; set; }
+
+        public TraceSelection TraceSelection { get; } = new TraceSelection();
+
+        public override WorldForm WorldForm { get; }
+
+        // Private static properties
+
         private static string GLSLUrl => Settings.Default.GLSLUrl;
+
+        // Public events
 
         public event EventHandler<CollectionEditEventArgs> CollectionEdit;
 
         public event EventHandler<PropertyEditEventArgs> PropertyEdit;
 
-        public event EventHandler
-            Pulse,
-            SelectionChanged;
+        public event EventHandler Pulse;
 
-        public void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
+        public event EventHandler SelectionChanged;
 
-        public void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
-
-        public void RefreshGraphicsMode() => OnPropertyEdit(Property.GraphicsMode);
-
-        public void Show() => WorldForm.Show();
-
-        public void Show(IWin32Window owner) => WorldForm.Show(owner);
-
-        public void OnCollectionEdit(Property collection, int index, bool adding)
-        {
-            $"WorldCon.OnCollectionEdit(\"{collection}\", adding: {adding}, index: {index});".Spit();
-            CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collection, index, adding));
-        }
-
-        public void OnPropertyEdit(Property property, int index = 0)
-        {
-            $"WorldCon.OnPropertyEdit(\"{property}\", index: {index});".Spit();
-            PropertyEdit?.Invoke(this, new PropertyEditEventArgs(property, index));
-        }
-
-        public void OnPulse()
-        {
-            UpdateToolbar();
-            UpdateStatusBar();
-            Pulse?.Invoke(this, EventArgs.Empty);
-        }
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -101,6 +84,35 @@
             }
         }
 
+        public void LoadFromFile(string filePath) => JsonCon.LoadFromFile(filePath);
+
+        public void ModifiedChanged() => WorldForm.Text = JsonCon.WindowCaption;
+
+        public void OnCollectionEdit(Property collection, int index, bool adding)
+        {
+            $"WorldCon.OnCollectionEdit(\"{collection}\", adding: {adding}, index: {index});".Spit();
+            CollectionEdit?.Invoke(this, new CollectionEditEventArgs(collection, index, adding));
+        }
+
+        public void OnPropertyEdit(Property property, int index = 0)
+        {
+            $"WorldCon.OnPropertyEdit(\"{property}\", index: {index});".Spit();
+            PropertyEdit?.Invoke(this, new PropertyEditEventArgs(property, index));
+        }
+
+        public void OnPulse()
+        {
+            UpdateToolbar();
+            UpdateStatusBar();
+            Pulse?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RefreshGraphicsMode() => OnPropertyEdit(Property.GraphicsMode);
+
+        public void Show() => WorldForm.Show();
+
+        public void Show(IWin32Window owner) => WorldForm.Show(owner);
+
         public override void UpdateAllProperties()
         {
             SceneCodeCon.UpdateAllProperties();
@@ -110,6 +122,8 @@
             TraceCodeCon.UpdateAllProperties();
             TracePropertiesCon.UpdateAllProperties();
         }
+
+        //Protected methods
 
         protected override void DisposeManagedState()
         {
@@ -148,45 +162,11 @@
             LocalizeFmt(Resources.WorldForm_HelpAbout, Application.ProductName, WorldForm.HelpAbout);
         }
 
-        private void Clock_Tick(object sender, EventArgs e) => RenderCon.Render();
+        // Private methods
 
-        private void AddCurve_Click(object sender, EventArgs e) => AddCurve();
+        private void AddCurve_Click(object sender, EventArgs e) => AddTrace(TraceType.Curve);
 
-        private void AddSurface_Click(object sender, EventArgs e) => AddSurface();
-
-        private void AddVolume_Click(object sender, EventArgs e) => AddVolume();
-
-        private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
-
-        private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
-
-        private void EditPaste_Click(object sender, EventArgs e) => PasteFromClipboard();
-
-        private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
-
-        private void EditSelectAll_Click(object sender, EventArgs e) => SelectAll();
-
-        private void EditInvertSelection_Click(object sender, EventArgs e) => InvertSelection();
-
-        private void EditOptions_Click(object sender, EventArgs e) => EditOptions();
-
-        private void ViewRestoreWindowLayout_Click(object sender, EventArgs e) => RestoreWindowLayout();
-
-        private void HelpAbout_Click(object sender, EventArgs e) => HelpAbout();
-
-        private void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
-
-        private void PopupWorldForm_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
-
-        private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => FormClosed();
-
-        private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !FormClosing(e.CloseReason);
-
-        private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
-
-        private void AddCurve() => AddTrace(TraceType.Curve);
-
-        private void AddSurface() => AddTrace(TraceType.Surface);
+        private void AddSurface_Click(object sender, EventArgs e) => AddTrace(TraceType.Surface);
 
         private void AddTrace(TraceType traceType)
         {
@@ -196,7 +176,9 @@
             TraceSelection.Set(new[] { Scene.Traces.Last() });
         }
 
-        private void AddVolume() => AddTrace(TraceType.Volume);
+        private void AddVolume_Click(object sender, EventArgs e) => AddTrace(TraceType.Volume);
+
+        private void Clock_Tick(object sender, EventArgs e) => RenderCon.Render();
 
         private void ClockInit() => Clock.IntervalMilliseconds = GetFrameMilliseconds();
 
@@ -208,8 +190,6 @@
             Clock.Start();
             ClockCon.UpdateTimeControls();
         }
-
-        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
 
         private void ConnectEventHandlers(bool connect)
         {
@@ -298,6 +278,8 @@
 
         private void CopyToClipboard() => JsonCon.ClipboardCopy(TraceSelection.Traces);
 
+        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
+
         private void CutToClipboard()
         {
             CopyToClipboard();
@@ -314,15 +296,13 @@
             TraceSelection.Clear();
         }
 
-        private void EditOptions()
-        {
-            using (var optionsCon = new OptionsCon(this))
-                optionsCon.ShowModal();
-        }
+        private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
 
-        private void FormClosed() => Connect(false);
+        private void EditCut_Click(object sender, EventArgs e) => CutToClipboard();
 
-        private bool FormClosing(CloseReason _) => JsonCon.SaveIfModified();
+        private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
+
+        private void EditInvertSelection_Click(object sender, EventArgs e) => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
 
         private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.TargetFPS, 1), int.MaxValue));
 
@@ -341,12 +321,6 @@
             }
         }
 
-        private void HelpAbout()
-        {
-            using (var aboutCon = new AboutCon(this))
-                aboutCon.ShowDialog(WorldForm);
-        }
-
         private void InitControlTheme() => AppCon.InitControlTheme(
             WorldPanel,
             WorldForm.MainMenu,
@@ -354,21 +328,13 @@
             WorldForm.Toolbar,
             WorldForm.StatusBar);
 
-        private void InvertSelection() => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
-
-        private void OnSelectionChanged()
+        private void EditOptions_Click(object sender, EventArgs e)
         {
-            ToolStripUtils.EnableButtons(!TraceSelection.IsEmpty, new ToolStripItem[] {
-                WorldForm.EditCut,
-                WorldForm.EditCopy,
-                WorldForm.EditDelete,
-                WorldForm.tbCut,
-                WorldForm.tbCopy,
-                WorldForm.tbDelete });
-            SelectionChanged?.Invoke(this, EventArgs.Empty);
+            using (var optionsCon = new OptionsCon(this))
+                optionsCon.ShowModal();
         }
 
-        private void PasteFromClipboard()
+        private void EditPaste_Click(object sender, EventArgs e)
         {
             var traces = JsonCon.ClipboardPaste();
             if (traces == null || !traces.Any())
@@ -382,15 +348,35 @@
             TraceSelection.Set(traces);
         }
 
-        private void SelectAll() => TraceSelection.AddRange(Scene.Traces);
+        private void EditSelectAll_Click(object sender, EventArgs e) => TraceSelection.AddRange(Scene.Traces);
 
-        public static void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
+        private void HelpAbout_Click(object sender, EventArgs e)
+        {
+            using (var aboutCon = new AboutCon(this))
+                aboutCon.ShowDialog(WorldForm);
+        }
+
+        private void OnSelectionChanged()
+        {
+            ToolStripUtils.EnableButtons(!TraceSelection.IsEmpty, new ToolStripItem[] {
+                WorldForm.EditCut,
+                WorldForm.EditCopy,
+                WorldForm.EditDelete,
+                WorldForm.tbCut,
+                WorldForm.tbCopy,
+                WorldForm.tbDelete });
+            SelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void PopupWorldForm_Opening(object sender, CancelEventArgs e) => CreateMainMenuClone();
+
+        private void Selection_Changed(object sender, EventArgs e) => OnSelectionChanged();
 
         private void UpdateFramesPerSecond()
         {
             var fps = string.Format(CultureInfo.CurrentCulture, "FPS={0:f1}", RenderCon.FramesPerSecond);
-            if (LastFPS != fps)
-                LastFPS = WorldForm.FpsLabel.Text = fps;
+            if (_lastFps != fps)
+                _lastFps = WorldForm.FpsLabel.Text = fps;
         }
 
         private void UpdateGpuStatusLabel()
@@ -440,8 +426,8 @@
                     factor = 1 / factor;
                 speed = divide ? $"time ÷ {factor}" : $"time × {factor}";
             }
-            if (LastSpeed != speed)
-                LastSpeed = WorldForm.SpeedLabel.Text = speed;
+            if (_lastSpeed != speed)
+                _lastSpeed = WorldForm.SpeedLabel.Text = speed;
         }
 
         private void UpdateToolbar() => WorldForm.EditPaste.Enabled = WorldForm.tbPaste.Enabled = AppCon.CanPaste;
@@ -449,52 +435,64 @@
         private void UpdateVirtualTime()
         {
             var time = string.Format(CultureInfo.CurrentCulture, "t={0:f1}", Clock.VirtualSecondsElapsed);
-            if (LastTime != time)
-                LastTime = WorldForm.TimeLabel.Text = time;
+            if (_lastTime != time)
+                _lastTime = WorldForm.TimeLabel.Text = time;
         }
+
+        private void ViewRestoreWindowLayout_Click(object sender, EventArgs e) => RestoreWindowLayout();
+
+        private void WorldForm_FormClosed(object sender, FormClosedEventArgs e) => Connect(false);
+
+        private void WorldForm_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !JsonCon.SaveIfModified();
+
+        // Private static methods
+
+        private static void HelpTheOpenGLShadingLanguage_Click(object sender, EventArgs e) => ShowOpenGLSLBook();
+
+        private static void ShowOpenGLSLBook() => LaunchBrowser($"{GLSLUrl}");
     }
 
     /// <summary>
     /// Child controllers.
     /// </summary>
-    public partial class WorldCon
+    public sealed partial class WorldCon
     {
         // Private fields
 
-        private CameraCon _CameraCon;
-        private ClockCon _ClockCon;
-        private CommandCon _CommandCon;
-        private FullScreenCon _FullScreenCon;
-        private HotkeysCon _HotkeysCon;
-        private JsonCon _JsonCon;
-        private RenderCon _RenderCon;
-        private SceneCodeCon _SceneCodeCon;
-        private SceneCon _SceneCon;
-        private ScenePropertiesCon _ScenePropertiesCon;
-        private ShaderCodeCon _ShaderCodeCon;
-        private SignalsCon _ControlCon;
-        private TraceCodeCon _TraceCodeCon;
-        private TracePropertiesCon _TracePropertiesCon;
+        private CameraCon _cameraCon;
+        private ClockCon _clockCon;
+        private CommandCon _commandCon;
+        private FullScreenCon _fullScreenCon;
+        private HotkeysCon _hotkeysCon;
+        private JsonCon _jsonCon;
+        private RenderCon _renderCon;
+        private SceneCodeCon _sceneCodeCon;
+        private SceneCon _sceneCon;
+        private ScenePropertiesCon _scenePropertiesCon;
+        private ShaderCodeCon _shaderCodeCon;
+        private SignalsCon _signalsCon;
+        private TraceCodeCon _traceCodeCon;
+        private TracePropertiesCon _tracePropertiesCon;
 
         // Public properties
 
-        public override CommandCon CommandCon => _CommandCon ?? (_CommandCon = new CommandCon(this));
-        public override JsonCon JsonCon => _JsonCon ?? (_JsonCon = new JsonCon(this));
+        public override CommandCon CommandCon => _commandCon ?? (_commandCon = new CommandCon(this));
+        public override JsonCon JsonCon => _jsonCon ?? (_jsonCon = new JsonCon(this));
 
         // Protected properties
 
-        protected override CameraCon CameraCon => _CameraCon ?? (_CameraCon = new CameraCon(this));
-        protected override ClockCon ClockCon => _ClockCon ?? (_ClockCon = new ClockCon(this));
-        protected override FullScreenCon FullScreenCon => _FullScreenCon ?? (_FullScreenCon = new FullScreenCon(this));
-        protected override HotkeysCon HotkeysCon => _HotkeysCon ?? (_HotkeysCon = new HotkeysCon(this));
-        protected override SignalsCon SignalsCon => _ControlCon ?? (_ControlCon = new SignalsCon(this));
-        protected override RenderCon RenderCon => _RenderCon ?? (_RenderCon = new RenderCon(this));
-        protected override SceneCodeCon SceneCodeCon => _SceneCodeCon ?? (_SceneCodeCon = new SceneCodeCon(this));
-        protected override SceneCon SceneCon => _SceneCon ?? (_SceneCon = new SceneCon(this));
-        protected override ScenePropertiesCon ScenePropertiesCon => _ScenePropertiesCon ?? (_ScenePropertiesCon = new ScenePropertiesCon(this));
-        protected override ShaderCodeCon ShaderCodeCon => _ShaderCodeCon ?? (_ShaderCodeCon = new ShaderCodeCon(this));
-        protected override TraceCodeCon TraceCodeCon => _TraceCodeCon ?? (_TraceCodeCon = new TraceCodeCon(this));
-        protected override TracePropertiesCon TracePropertiesCon => _TracePropertiesCon ?? (_TracePropertiesCon = new TracePropertiesCon(this));
+        protected override CameraCon CameraCon => _cameraCon ?? (_cameraCon = new CameraCon(this));
+        protected override ClockCon ClockCon => _clockCon ?? (_clockCon = new ClockCon(this));
+        protected override FullScreenCon FullScreenCon => _fullScreenCon ?? (_fullScreenCon = new FullScreenCon(this));
+        protected override HotkeysCon HotkeysCon => _hotkeysCon ?? (_hotkeysCon = new HotkeysCon(this));
+        protected override SignalsCon SignalsCon => _signalsCon ?? (_signalsCon = new SignalsCon(this));
+        protected override RenderCon RenderCon => _renderCon ?? (_renderCon = new RenderCon(this));
+        protected override SceneCodeCon SceneCodeCon => _sceneCodeCon ?? (_sceneCodeCon = new SceneCodeCon(this));
+        protected override SceneCon SceneCon => _sceneCon ?? (_sceneCon = new SceneCon(this));
+        protected override ScenePropertiesCon ScenePropertiesCon => _scenePropertiesCon ?? (_scenePropertiesCon = new ScenePropertiesCon(this));
+        protected override ShaderCodeCon ShaderCodeCon => _shaderCodeCon ?? (_shaderCodeCon = new ShaderCodeCon(this));
+        protected override TraceCodeCon TraceCodeCon => _traceCodeCon ?? (_traceCodeCon = new TraceCodeCon(this));
+        protected override TracePropertiesCon TracePropertiesCon => _tracePropertiesCon ?? (_tracePropertiesCon = new TracePropertiesCon(this));
 
         // Private properties
 
