@@ -18,38 +18,15 @@
 
         // Private fields
 
-        private SceneForm _SceneForm;
+        private SceneForm _sceneForm;
 
         // Protected properties
 
         protected override DockContent Form => SceneForm;
 
-        protected override SceneForm SceneForm => _SceneForm ?? (_SceneForm = new SceneForm());
+        protected override SceneForm SceneForm => _sceneForm ?? (_sceneForm = new SceneForm());
 
         // Public methods
-
-        public void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
-
-        public void OnPropertyEdit(Property property)
-        {
-            switch (property)
-            {
-                case Property.GraphicsMode:
-                    RecreateSceneControl();
-                    break;
-                case Property.Samples:
-                    RecreateSceneControl("Samples", Scene.Samples);
-                    break;
-                case Property.Stereo:
-                    RecreateSceneControl("Stereo", Scene.Stereo);
-                    break;
-            }
-            SceneControl.Invalidate();
-        }
-
-        public void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
-
-        // Protected public methods
 
         public override void Connect(bool connect)
         {
@@ -80,6 +57,8 @@
             }
         }
 
+        public void RecreateSceneControl() => RecreateSceneControl(GraphicsMode);
+
         // Protected methods
 
         protected override void Localize()
@@ -90,17 +69,24 @@
 
         // Private methods
 
-        private void Resize() => RenderCon.InvalidateProjection();
+        private void BackColorChanged() => SceneControl.Parent.BackColor = Scene.BackgroundColour;
 
-        private void SceneControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
-
-        private void SceneControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
-
-        private void SceneControl_Load(object sender, EventArgs e) { }
-
-        private void SceneControl_Paint(object sender, PaintEventArgs e) => RenderCon.Render();
-
-        private void SceneControl_Resize(object sender, EventArgs e) { }
+        private void OnPropertyEdit(Property property)
+        {
+            switch (property)
+            {
+                case Property.GraphicsMode:
+                    RecreateSceneControl();
+                    break;
+                case Property.Samples:
+                    RecreateSceneControl("Samples", Scene.Samples);
+                    break;
+                case Property.Stereo:
+                    RecreateSceneControl("Stereo", Scene.Stereo);
+                    break;
+            }
+            SceneControl.Invalidate();
+        }
 
         private void RecreateSceneControl(string propertyName, object value) => RecreateSceneControl(GraphicsMode.Change(propertyName, value));
 
@@ -128,7 +114,15 @@
             oldControl.Dispose();
         }
 
-        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void Resize() => RenderCon.InvalidateProjection();
+
+        private void SceneControl_BackColorChanged(object sender, EventArgs e) => BackColorChanged();
+
+        private void SceneControl_ClientSizeChanged(object sender, EventArgs e) => Resize();
+
+        private void SceneControl_Load(object sender, EventArgs e) { }
+
+        private void SceneControl_Paint(object sender, PaintEventArgs e) => RenderCon.Render();
 
         private void SceneForm_HandleCreated(object sender, EventArgs e)
         {
@@ -142,6 +136,12 @@
             RenderCon.SceneControlSuspended = true;
         }
 
+        private void ViewScene_Click(object sender, EventArgs e) => ToggleVisibility();
+
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e) => OnPropertyEdit(e.Property);
+
+        // Private static methods
+
+        private static void SceneControl_Resize(object sender, EventArgs e) { }
     }
 }
