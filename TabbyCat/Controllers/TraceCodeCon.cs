@@ -73,11 +73,10 @@
                 var script = trace.GetScript(ShaderType);
                 var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
                 var endLine = script.FindFirstTokenLine(Tokens.EndFormula);
-                if (0 <= beginLine && beginLine < endLine)
-                {
-                    script = $"{script.GetLines(0, beginLine)}{formula}{script.GetLines(endLine, script.GetLineCount() - endLine)}";
-                    Run(new TraceShaderCommand(trace.Index, ShaderType, script));
-                }
+                if (0 > beginLine || beginLine >= endLine)
+                    continue;
+                script = $"{script.GetLines(0, beginLine)}{formula}{script.GetLines(endLine, script.GetLineCount() - endLine)}";
+                Run(new TraceShaderCommand(trace.Index, ShaderType, script));
             }
         }
 
