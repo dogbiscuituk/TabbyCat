@@ -9,7 +9,11 @@
 
     public class TraceCodeCon : CodeCon
     {
+        // Constructors
+
         public TraceCodeCon(WorldCon worldCon) : base(worldCon) { }
+
+        // Protected properties
 
         protected override Property Shader => ShaderType.TraceShader();
 
@@ -17,26 +21,26 @@
 
         protected override string GetRegion() => Resources.ShaderRegion_Trace;
 
-        protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+        // Public methods
 
         public override void Connect(bool connect)
         {
             base.Connect(connect);
             if (connect)
-            {
                 WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
-            }
             else
-            {
                 WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
-            }
         }
+
+        // Protected methods
 
         protected override void Localize()
         {
             base.Localize();
             Localize(Resources.WorldForm_ViewTraceCode, WorldForm.ViewTraceCode);
         }
+
+        protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
 
         protected override void UpdateUI()
         {
@@ -51,6 +55,8 @@
                     CodeEdit.SecondaryTextBox
                 });
         }
+
+        // Public methods
 
         public string GetFormula()
         {
