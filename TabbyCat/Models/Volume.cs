@@ -7,9 +7,7 @@
 
     public class Volume : Trace
     {
-        public Volume() : base() => Init();
-
-        private void Init()
+        public Volume()
         {
             Description = Resources.Property_Volume;
             Pattern = Pattern.Quads;

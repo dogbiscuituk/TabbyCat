@@ -7,9 +7,7 @@
 
     public class Surface : Trace
     {
-        public Surface() : base() => Init();
-
-        private void Init()
+        public Surface()
         {
             Description = Resources.Property_Surface;
             Pattern = Pattern.Quads;

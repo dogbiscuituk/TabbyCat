@@ -7,9 +7,7 @@
 
     public class Curve : Trace
     {
-        public Curve() : base() => Init();
-
-        private void Init()
+        public Curve()
         {
             Description = Resources.Property_Curve;
             Pattern = Pattern.Lines;
