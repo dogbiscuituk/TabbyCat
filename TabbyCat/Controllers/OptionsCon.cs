@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using Properties;
@@ -16,7 +15,7 @@
 
         public OptionsCon(WorldCon worldCon) : base(worldCon)
         {
-            _optionsDialog = new OptionsDialog { Text = string.Format(CultureInfo.CurrentCulture, Resources.OptionsDialog, Application.ProductName) };
+            _optionsDialog = new OptionsDialog { Text = Resources.OptionsDialog.Format(Application.ProductName) };
             _optionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().Reverse().Cast<object>().ToArray());
             _optionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
             _optionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
@@ -63,7 +62,7 @@
         {
             using (var dialog = new FolderBrowserDialog
             {
-                Description = string.Format(CultureInfo.CurrentCulture, Resources.OptionsDialog_DefaultFolder, detail),
+                Description = Resources.OptionsDialog_DefaultFolder.Format(detail),
                 SelectedPath = textBox.Text,
                 ShowNewFolderButton = true
             })

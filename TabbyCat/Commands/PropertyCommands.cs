@@ -3,7 +3,6 @@
     using Models;
     using Properties;
     using System;
-    using System.Globalization;
     using System.Text.RegularExpressions;
     using Types;
     using Utils;
@@ -22,7 +21,7 @@
 
         // Public properties
 
-        private string Action => string.Format(CultureInfo.CurrentCulture, Resources.Command_PropertyChange, Property.AsString());
+        private string Action => Resources.Command_PropertyChange.Format(Property.AsString());
 
         public override string RedoAction => Action;
 

@@ -3,11 +3,12 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.Collections.Generic;
-    using System.Globalization;
     using Types;
 
     public static class ShaderUtils
     {
+        // Public fields
+
         public static IEnumerable<ShaderType> All { get; } = new[]
         {
             ShaderType.VertexShader,
@@ -17,6 +18,8 @@
             ShaderType.FragmentShader,
             ShaderType.ComputeShader
         };
+
+        // Public methods
 
         public static ShaderType Next(this ShaderType shaderType)
         {
@@ -39,16 +42,7 @@
 
         public static Property SceneShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.SceneVertexShader - Property.VertexShader);
 
-        public static string SceneShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Scene);
-
         public static string ShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.PropertyName_ShaderScope);
-
-        public static string ShaderName(this ShaderType shaderType, string scope) => string.Format(
-            CultureInfo.CurrentCulture,
-            Resources.PropertyName_ShaderFormat,
-            scope,
-            shaderType.ShaderTag(),
-            Resources.PropertyName_Shader);
 
         public static Property ShaderProperty(this ShaderType shaderType)
         {
@@ -71,7 +65,16 @@
             }
         }
 
-        public static string ShaderTag(this ShaderType shaderType)
+        public static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
+
+        // Private methods
+
+        private static string ShaderName(this ShaderType shaderType, string scope) => Resources.PropertyName_ShaderFormat.Format(
+            scope,
+            shaderType.ShaderTag(),
+            Resources.PropertyName_Shader);
+
+        private static string ShaderTag(this ShaderType shaderType)
         {
             switch (shaderType)
             {
@@ -91,9 +94,5 @@
                     return string.Empty;
             }
         }
-
-        public static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
-
-        public static string TraceShaderName(this ShaderType shaderType) => shaderType.ShaderName(Resources.Property_Trace);
     }
 }

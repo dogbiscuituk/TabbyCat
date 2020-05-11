@@ -34,6 +34,8 @@
         /// <returns>The zero-based index of the line containing the first occurrence of the given token.</returns>
         public static int FindFirstTokenLine(this string s, string t) => s == null ? -1 : s.Substring(0, s.IndexOf(t, StringComparison.InvariantCulture)).GetLineCount() - 1;
 
+        public static string Format(this string format, params object[] args) => string.Format(CultureInfo.CurrentCulture, format, args);
+
         /// <summary>
         /// Get the number of occurrences of a given character in a string.
         /// </summary>

@@ -2,8 +2,8 @@
 {
     using Models;
     using Properties;
-    using System.Globalization;
     using Types;
+    using Utils;
 
     /// <summary>
     /// Common ancestor for collection management (item insert and delete) commands.
@@ -61,10 +61,7 @@
             return true;
         }
 
-        public override string ToString() => string.Format(
-            CultureInfo.CurrentCulture,
-            Adding ? Resources.Command_AddItem : Resources.Command_RemoveItem,
-            Target);
+        public override string ToString() => (Adding ? Resources.Command_AddItem : Resources.Command_RemoveItem).Format(Target);
 
         // Protected methods
 
@@ -82,10 +79,7 @@
 
         // Private methods
 
-        private string GetAction(bool undo) => string.Format(
-            CultureInfo.CurrentCulture,
-            Adding ^ undo ? Resources.Command_ItemAddition : Resources.Command_ItemRemoval,
-            Property);
+        private string GetAction(bool undo) => (Adding ^ undo ? Resources.Command_ItemAddition : Resources.Command_ItemRemoval).Format(Property);
 
         private void OnCollectionEdit(Scene scene) => scene?.OnCollectionEdit(Property, Index, Adding);
     }

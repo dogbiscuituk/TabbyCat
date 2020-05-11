@@ -1250,4 +1250,13 @@ Stereo: {7}</value>
   <data name="OptionsDialog_DefaultFolder" xml:space="preserve">
     <value>Select the default folder for storing scene {0}:</value>
   </data>
+  <data name="Message_Compiling" xml:space="preserve">
+    <value>Compiling {0}</value>
+  </data>
+  <data name="WorldForm_FPS" xml:space="preserve">
+    <value>FPS={0:f1}</value>
+  </data>
+  <data name="WorldForm_Time" xml:space="preserve">
+    <value>t={0:f1}</value>
+  </data>
 </root>

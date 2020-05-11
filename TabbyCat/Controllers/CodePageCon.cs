@@ -21,7 +21,7 @@
 
         public CodePageCon(FastColoredTextBox textBox)
         {
-            TextBox = textBox ?? throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.Text_ParameterCannotBeNull, nameof(textBox)));
+            TextBox = textBox ?? throw new NullReferenceException(Resources.Text_ParameterCannotBeNull.Format(nameof(textBox)));
             Init();
         }
 

@@ -1,9 +1,9 @@
 ﻿namespace TabbyCat.Controllers
 {
-    using System.Globalization;
     using System.Reflection;
     using System.Windows.Forms;
     using Properties;
+    using Utils;
     using Views;
 
     public class AboutCon : LocalizationCon
@@ -11,7 +11,7 @@
         public AboutCon(WorldCon worldCon) : base(worldCon)
         {
             var asm = Assembly.GetExecutingAssembly();
-            AboutDialog.Text = string.Format(CultureInfo.CurrentCulture, Resources.AboutDialog, Application.ProductName);
+            AboutDialog.Text = Resources.AboutDialog.Format(Application.ProductName);
             AboutDialog.lblProductName.Text = Application.ProductName;
             AboutDialog.lblDescription.Text = asm.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
             AboutDialog.lblVersion.Text = Application.ProductVersion;

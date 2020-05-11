@@ -7,7 +7,6 @@
     using Properties;
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
     using Types;
@@ -81,9 +80,9 @@
             }
         }
 
-        protected void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        protected void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(format.Format(value), controls);
 
-        protected void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(string.Format(CultureInfo.CurrentCulture, format, value), controls);
+        protected void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(format.Format(value), controls);
 
         protected virtual bool Run(ICommand command) => CommandCon.Run(command);
 
@@ -105,7 +104,7 @@
         protected static void LaunchBrowser(string path)
         {
             if (MessageBox.Show(
-                string.Format(CultureInfo.CurrentCulture, Resources.Text_LaunchMessage, path),
+                Resources.Text_LaunchMessage.Format(path),
                 Resources.Text_LaunchCaption,
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information) == DialogResult.OK)

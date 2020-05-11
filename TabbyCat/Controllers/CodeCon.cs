@@ -7,7 +7,6 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing;
-    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
@@ -295,7 +294,7 @@
 
         private string GetText() => GetText(Resources.ShaderForm_Text);
 
-        private string GetText(string format) => string.Format(CultureInfo.CurrentCulture, format, GetRegion());
+        private string GetText(string format) => format.Format(GetRegion());
 
         private string GetToolTipText() => GetText(Resources.ShaderForm_ToolTipText);
 

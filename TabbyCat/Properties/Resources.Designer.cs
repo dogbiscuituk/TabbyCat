@@ -1449,6 +1449,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compiling {0}.
+        /// </summary>
+        public static string Message_Compiling {
+            get {
+                return ResourceManager.GetString("Message_Compiling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The contents of this file have changed. Do you want to save the changes?.
         /// </summary>
         public static string Message_FileModified_Text {
@@ -3467,6 +3476,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FPS={0:f1}.
+        /// </summary>
+        public static string WorldForm_FPS {
+            get {
+                return ResourceManager.GetString("WorldForm_FPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;About {0}.
         /// </summary>
         public static string WorldForm_HelpAbout {
@@ -3490,6 +3508,15 @@ namespace TabbyCat.Properties {
         public static string WorldForm_HelpOpenGLShadingLanguage {
             get {
                 return ResourceManager.GetString("WorldForm_HelpOpenGLShadingLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t={0:f1}.
+        /// </summary>
+        public static string WorldForm_Time {
+            get {
+                return ResourceManager.GetString("WorldForm_Time", resourceCulture);
             }
         }
         

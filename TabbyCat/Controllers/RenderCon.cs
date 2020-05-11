@@ -205,7 +205,7 @@
             var script = GetScript(shaderType);
             if (string.IsNullOrWhiteSpace(script))
                 return 0;
-            Log($"Compiling {shaderType.ShaderName()};");
+            Log(Resources.Message_Compiling.Format(shaderType.ShaderName()));
             var shader = GL.CreateShader(shaderType);
             GL.ShaderSource(shader, script);
             GL.CompileShader(shader);
