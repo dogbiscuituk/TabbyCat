@@ -6,32 +6,25 @@
 
     public class Selection<TItem>
     {
-        // Constructors
-
-        public List<TItem> Items { get; } = new List<TItem>();
-
         // Private fields
 
-        private int UpdateCount;
-        private bool Updated;
+        private int _updateCount;
+
+        private bool _updated;
 
         // Public properties
 
         public bool IsEmpty => !Items.Any();
+
+        // Protected properties
+
+        protected List<TItem> Items { get; } = new List<TItem>();
 
         // Public events
 
         public event EventHandler Changed;
 
         // Public methods
-
-        public void Add(TItem item)
-        {
-            if (Items.Contains(item))
-                return;
-            Items.Add(item);
-            OnChanged();
-        }
 
         public void AddRange(IEnumerable<TItem> items)
         {
@@ -42,7 +35,7 @@
             OnChanged();
         }
 
-        public void BeginUpdate() => UpdateCount++;
+        public void BeginUpdate() => _updateCount++;
 
         public void Clear()
         {
@@ -54,9 +47,9 @@
 
         public void EndUpdate()
         {
-            if (--UpdateCount > 0 || !Updated)
+            if (--_updateCount > 0 || !_updated)
                 return;
-            Updated = false;
+            _updated = false;
             OnChanged();
         }
 
@@ -105,14 +98,16 @@
                 : first;
         }
 
-        protected virtual void OnChanged()
+        protected void SetProperty(Action<TItem> set) => ForEach(set);
+
+        // Private methods
+
+        private void OnChanged()
         {
-            if (UpdateCount > 0)
-                Updated = true;
+            if (_updateCount > 0)
+                _updated = true;
             else
                 Changed?.Invoke(this, EventArgs.Empty);
         }
-
-        protected void SetProperty(Action<TItem> set) => ForEach(set);
     }
 }
