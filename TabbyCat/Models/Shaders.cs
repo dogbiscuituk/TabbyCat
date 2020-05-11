@@ -17,7 +17,7 @@
 
         protected Shaders() { }
 
-        protected Shaders(Shaders shaders) => CopyFrom(shaders);
+        protected Shaders(IScript shaders) => CopyFrom(shaders);
 
         // Public properties
 
