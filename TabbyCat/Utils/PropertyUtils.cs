@@ -108,7 +108,7 @@
             return false;
         }
 
-        public static bool InvalidatesProgram(this Property p) => p.IsCollectionProperty() || p.IsShaderProperty();
+        public static bool InvalidatesProgram(this Property p) => p.IsCollectionProperty() || p.IsShaderProperty() || p == Property.SignalName;
 
         public static bool InvalidatesProjection(this Property p) => p.IsProjectionProperty();
 
