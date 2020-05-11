@@ -19,7 +19,7 @@
     {
         // Constructors
 
-        public CollectionCommand(int index, bool add) : base(index) => Adding = add;
+        protected CollectionCommand(int index, bool adding) : base(index) => Adding = adding;
 
         // Public properties
 
@@ -78,8 +78,6 @@
 
         protected abstract void InsertItem(Scene scene);
 
-        protected virtual void OnCollectionEdit(Scene scene) => scene?.OnCollectionEdit(Property, Index, Adding);
-
         protected abstract void RemoveItem(Scene scene);
 
         // Private methods
@@ -88,13 +86,15 @@
             CultureInfo.CurrentCulture,
             Adding ^ undo ? Resources.Command_ItemAddition : Resources.Command_ItemRemoval,
             Property);
+
+        private void OnCollectionEdit(Scene scene) => scene?.OnCollectionEdit(Property, Index, Adding);
     }
 
     public class SignalCollectionCommand : CollectionCommand<Signal>, ISignalCollectionCommand
     {
         // Constructors
 
-        public SignalCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Signals;
+        protected SignalCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Signals;
 
         // Protected methods
 
@@ -125,7 +125,7 @@
     {
         // Constructors
 
-        public TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
+        protected TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
 
         // Protected methods
 
