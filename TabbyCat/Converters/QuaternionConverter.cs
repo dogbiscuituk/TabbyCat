@@ -15,13 +15,11 @@
             {
                 var array = (JArray)token;
                 if (array.Count == 4 && array.All(p => p.Type == JTokenType.Float))
-                {
                     return new Quaternion(
                         x: array[0].Value<float>(),
                         y: array[1].Value<float>(),
                         z: array[2].Value<float>(),
                         w: array[3].Value<float>());
-                }
             }
             return Quaternion.Identity;
         }
