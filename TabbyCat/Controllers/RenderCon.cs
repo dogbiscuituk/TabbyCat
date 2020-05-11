@@ -32,13 +32,13 @@
             _tickIndex;
 
         private int
-            _programId,
-            _vertexShaderId,
-            _tessControlShaderId,
-            _tessEvaluationShaderId,
-            _geometryShaderId,
-            _fragmentShaderId,
-            _computeShaderId;
+            _program,
+            _vertexShader,
+            _tessControlShader,
+            _tessEvaluationShader,
+            _geometryShader,
+            _fragmentShader,
+            _computeShader;
 
         private int
             _locCameraView,
@@ -140,10 +140,10 @@
             UsingGL(() =>
             {
                 DeleteShaders();
-                if (_programId != 0)
+                if (_program != 0)
                 {
-                    GL.DeleteProgram(_programId);
-                    _programId = 0;
+                    GL.DeleteProgram(_program);
+                    _program = 0;
                 }
             });
         }
@@ -167,7 +167,7 @@
             ValidateProgram();
             if (ProgramValid)
             {
-                GL.UseProgram(_programId); // Start Shader
+                GL.UseProgram(_program); // Start Shader
                 ValidateCameraView();
                 ValidateProjection();
                 LoadParameters();
@@ -196,7 +196,7 @@
 
         // Private methods
 
-        private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(_programId, attributeIndex, variableName);
+        private void BindAttribute(int attributeIndex, string variableName) => GL.BindAttribLocation(_program, attributeIndex, variableName);
 
         private void BindAttributes() => BindAttribute(0, "position");
 
@@ -206,31 +206,31 @@
             if (string.IsNullOrWhiteSpace(script))
                 return 0;
             Log($"Compiling {shaderType.ShaderName()};");
-            var shaderId = GL.CreateShader(shaderType);
-            GL.ShaderSource(shaderId, script);
-            GL.CompileShader(shaderId);
-            GL.AttachShader(_programId, shaderId);
-            Log(GL.GetShaderInfoLog(shaderId));
+            var shader = GL.CreateShader(shaderType);
+            GL.ShaderSource(shader, script);
+            GL.CompileShader(shader);
+            GL.AttachShader(_program, shader);
+            Log(GL.GetShaderInfoLog(shader));
             ShaderTypes.Add(shaderType);
-            return shaderId;
+            return shader;
         }
 
         private void CreateShaders()
         {
             ShaderTypes.Clear();
-            _vertexShaderId = CreateShader(ShaderType.VertexShader);
-            _tessControlShaderId = CreateShader(ShaderType.TessControlShader);
-            _tessEvaluationShaderId = CreateShader(ShaderType.TessEvaluationShader);
-            _geometryShaderId = CreateShader(ShaderType.GeometryShader);
-            _fragmentShaderId = CreateShader(ShaderType.FragmentShader);
-            _computeShaderId = CreateShader(ShaderType.ComputeShader);
+            _vertexShader = CreateShader(ShaderType.VertexShader);
+            _tessControlShader = CreateShader(ShaderType.TessControlShader);
+            _tessEvaluationShader = CreateShader(ShaderType.TessEvaluationShader);
+            _geometryShader = CreateShader(ShaderType.GeometryShader);
+            _fragmentShader = CreateShader(ShaderType.FragmentShader);
+            _computeShader = CreateShader(ShaderType.ComputeShader);
         }
 
         private void DeleteShader(ref int shaderId)
         {
             if (shaderId != 0)
             {
-                GL.DetachShader(_programId, shaderId);
+                GL.DetachShader(_program, shaderId);
                 GL.DeleteShader(shaderId);
                 shaderId = 0;
             }
@@ -238,12 +238,12 @@
 
         private void DeleteShaders()
         {
-            DeleteShader(ref _vertexShaderId);
-            DeleteShader(ref _tessControlShaderId);
-            DeleteShader(ref _tessEvaluationShaderId);
-            DeleteShader(ref _geometryShaderId);
-            DeleteShader(ref _fragmentShaderId);
-            DeleteShader(ref _computeShaderId);
+            DeleteShader(ref _vertexShader);
+            DeleteShader(ref _tessControlShader);
+            DeleteShader(ref _tessEvaluationShader);
+            DeleteShader(ref _geometryShader);
+            DeleteShader(ref _fragmentShader);
+            DeleteShader(ref _computeShader);
         }
 
         private string GetSignalScript()
@@ -256,7 +256,7 @@
             return script.ToString();
         }
 
-        private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(_programId, uniformName);
+        private int GetUniformLocation(string uniformName) => GL.GetUniformLocation(_program, uniformName);
 
         private void GetUniformLocations()
         {
@@ -367,7 +367,7 @@
                 return;
             Scene.GPUStatus = GPUStatus.OK;
             _gpuLog = new StringBuilder();
-            _programId = GL.CreateProgram();
+            _program = GL.CreateProgram();
             CreateShaders();
             if (!ShaderTypes.Any())
                 Log("No Trace Shaders found to compile.");
@@ -375,9 +375,9 @@
             {
                 Log("Linking program;");
                 BindAttributes();
-                GL.LinkProgram(_programId);
-                GL.ValidateProgram(_programId);
-                Log(GL.GetProgramInfoLog(_programId));
+                GL.LinkProgram(_program);
+                GL.ValidateProgram(_program);
+                Log(GL.GetProgramInfoLog(_program));
             }
             DeleteShaders();
             Log("End of log.");
