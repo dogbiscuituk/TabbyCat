@@ -15,12 +15,10 @@
             {
                 var array = (JArray)token;
                 if (array.Count == 3 && array.All(p => p.Type == JTokenType.Float))
-                {
                     return new Vector3(
                         array[0].Value<float>(),
                         array[1].Value<float>(),
                         array[2].Value<float>());
-                }
             }
             return Vector3.Zero;
         }
