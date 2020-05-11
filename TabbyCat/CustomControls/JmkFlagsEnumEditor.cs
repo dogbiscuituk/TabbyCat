@@ -7,50 +7,46 @@
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
-    public class JmkFlagsEnumEditor : UITypeEditor, IDisposable
+    public sealed partial class JmkFlagsEnumEditor : UITypeEditor
     {
-        public JmkFlagsEnumEditor() => FlagsCheckedListBox = new JmkFlagsCheckedListBox
-        {
-            BorderStyle = BorderStyle.None
-        };
+        // Constructors
+
+        public JmkFlagsEnumEditor() => _listBox = new JmkFlagsCheckedListBox {BorderStyle = BorderStyle.None};
+
+        // Private fields
+
+        private readonly JmkFlagsCheckedListBox _listBox;
+
+        // Public methods
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            if (context != null && context.Instance != null && provider != null)
-            {
-                var service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
-                if (service != null)
-                {
-                    FlagsCheckedListBox.EnumValue = (Enum)Convert.ChangeType(
-                        value, context.PropertyDescriptor.PropertyType, CultureInfo.InvariantCulture);
-                    service.DropDownControl(FlagsCheckedListBox);
-                    return FlagsCheckedListBox.EnumValue;
-                }
-            }
-            return null;
+            if (context?.Instance == null || provider == null)
+                return null;
+            var service = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (service == null)
+                return null;
+            if (context.PropertyDescriptor != null)
+                _listBox.EnumValue = (Enum)Convert.ChangeType(value, context.PropertyDescriptor.PropertyType,
+                    CultureInfo.InvariantCulture);
+            service.DropDownControl(_listBox);
+            return _listBox.EnumValue;
         }
 
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
+    }
 
-        private readonly JmkFlagsCheckedListBox FlagsCheckedListBox;
+    partial class JmkFlagsEnumEditor : IDisposable
+    {
+        private bool _disposed;
 
-        #region IDisposable
+        public void Dispose() => Dispose(true);
 
-        private bool Disposed;
-
-        public void Dispose()
+        private void Dispose(bool disposing)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            if (!_disposed && disposing)
+                _listBox?.Dispose();
+            _disposed = true;
         }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed && disposing)
-                FlagsCheckedListBox?.Dispose();
-            Disposed = true;
-        }
-
-        #endregion
     }
 }
