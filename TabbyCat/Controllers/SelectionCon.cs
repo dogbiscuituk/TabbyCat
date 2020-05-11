@@ -10,21 +10,25 @@
 
     public class SelectionCon : LocalizationCon
     {
+        // Constructors
+
         public SelectionCon(WorldCon worldCon) : base(worldCon) { }
 
-        private int LastIndex = -1;
+        // Private fields
 
-        private ToolStripLabel PrevLabel;
+        private int _lastIndex = -1;
+
+        private ToolStripLabel _prevLabel;
 
         private readonly Brush
-            Highlight = Color.FromKnownColor(KnownColor.Highlight).ToSolidBrush(),
-            HighlightText = Color.FromKnownColor(KnownColor.HighlightText).ToSolidBrush();
+            _highlight = Color.FromKnownColor(KnownColor.Highlight).ToSolidBrush(),
+            _highlightText = Color.FromKnownColor(KnownColor.HighlightText).ToSolidBrush();
 
-        private Font _HighlightFont;
+        private Font _highlightFont;
+
+        // Public properties
 
         public List<int> Selection { get; private set; } = new List<int>();
-
-        public ToolStripItemCollection Labels => Toolbar.Items;
 
         public int TraceCount
         {
@@ -36,17 +40,25 @@
                     AddLabel();
                 for (; delta < 0; delta++)
                     RemoveLabel();
-                LastIndex = -1;
+                _lastIndex = -1;
             }
         }
 
+        // Private properties
+
         private bool AllSelected => Selection.Count == TraceCount;
 
-        private Font HighlightFont => _HighlightFont ?? (_HighlightFont = new Font(Toolbar.Font, FontStyle.Bold));
+        private ToolStripItemCollection Labels => Toolbar.Items;
+
+        private Font HighlightFont => _highlightFont ?? (_highlightFont = new Font(Toolbar.Font, FontStyle.Bold));
 
         private ToolStrip Toolbar => TracePropertiesCon.SelectionToolbar;
 
+        // Public events
+
         public event EventHandler SelectionChanged;
+
+        // Public methods
 
         public override void Connect(bool connect)
         {
@@ -57,9 +69,7 @@
                 Toolbar.MouseMove += Toolbar_MouseMove;
             }
             else
-            {
                 Toolbar.MouseMove -= Toolbar_MouseMove;
-            }
         }
 
         public void SetSelection(List<int> selection)
@@ -70,17 +80,20 @@
             OnSelectionChanged();
         }
 
+        // Protected methods
+
         protected override void DisposeManagedState()
         {
             base.DisposeManagedState();
-            Highlight?.Dispose();
-            HighlightText?.Dispose();
-            _HighlightFont?.Dispose();
+            _highlight?.Dispose();
+            _highlightText?.Dispose();
+            _highlightFont?.Dispose();
         }
+
+        // Private methods
 
         private void AddLabel()
         {
-            var traceIndex = TraceCount;
             var label = new ToolStripLabel($"{TraceCount + 1}");
             Labels.Add(label);
             label.MouseDown += Label_MouseDown;
@@ -123,6 +136,35 @@
             label.Paint += LabelAll_Paint;
         }
 
+        private void Label_MouseDown(object sender, MouseEventArgs e)
+        {
+            var traceIndex = Labels.IndexOf((ToolStripItem)sender) - 1;
+            bool
+                shift = (Control.ModifierKeys & Keys.Shift) != 0,
+                ctrl = (Control.ModifierKeys & Keys.Control) != 0;
+            if (!ctrl)
+                ClearSelection();
+            if (shift && _lastIndex >= 0)
+                IncludeRange(_lastIndex, traceIndex);
+            else
+            {
+                if (ctrl)
+                    Toggle(traceIndex);
+                else
+                    Include(traceIndex);
+                _lastIndex = traceIndex;
+            }
+            OnSelectionChanged();
+        }
+
+        private void Label_MouseMove(object sender, MouseEventArgs e) => MouseMove(sender);
+
+        private void Label_Paint(object sender, PaintEventArgs e)
+        {
+            if (Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
+                Paint_Highlight(sender, e);
+        }
+
         private void LabelAll_MouseDown(object sender, MouseEventArgs e)
         {
             if (AllSelected)
@@ -138,41 +180,12 @@
                 Paint_Highlight(sender, e);
         }
 
-        private void Label_MouseDown(object sender, MouseEventArgs e)
-        {
-            var traceIndex = Labels.IndexOf(sender as ToolStripItem) - 1;
-            bool
-                shift = (Control.ModifierKeys & Keys.Shift) != 0,
-                ctrl = (Control.ModifierKeys & Keys.Control) != 0;
-            if (!ctrl)
-                ClearSelection();
-            if (shift && LastIndex >= 0)
-                IncludeRange(LastIndex, traceIndex);
-            else
-            {
-                if (ctrl)
-                    Toggle(traceIndex);
-                else
-                    Include(traceIndex);
-                LastIndex = traceIndex;
-            }
-            OnSelectionChanged();
-        }
-
-        private void Label_MouseMove(object sender, MouseEventArgs e) => MouseMove(sender);
-
-        private void Label_Paint(object sender, PaintEventArgs e)
-        {
-            if (Selection.Contains(Labels.IndexOf((ToolStripItem)sender) - 1))
-                Paint_Highlight(sender, e);
-        }
-
         private void MouseMove(object sender)
         {
-            var label = sender as ToolStripLabel;
-            if (label == PrevLabel)
+            var label = (ToolStripLabel)sender;
+            if (label == _prevLabel)
                 return;
-            PrevLabel = label;
+            _prevLabel = label;
             var index = Labels.IndexOf(label);
             var tooltip = index < 0
                 ? string.Empty
@@ -192,8 +205,8 @@
         {
             var item = (ToolStripItem)sender;
             var g = e.Graphics;
-            g.FillRectangle(Highlight, 1, 1, item.Width - 2, item.Height - 1);
-            g.DrawString(item.Text, HighlightFont, HighlightText, 1, 0);
+            g.FillRectangle(_highlight, 1, 1, item.Width - 2, item.Height - 1);
+            g.DrawString(item.Text, HighlightFont, _highlightText, 1, 0);
         }
 
         private void RemoveLabel()
@@ -206,8 +219,6 @@
 
         private void SelectAll() => IncludeRange(0, TraceCount - 1);
 
-        private void Toolbar_MouseMove(object sender, MouseEventArgs e) => MouseMove(Toolbar.GetItemAt(e.X, e.Y));
-
         private void Toggle(int traceIndex)
         {
             if (Selection.Contains(traceIndex))
@@ -216,8 +227,16 @@
                 Include(traceIndex);
         }
 
-        private static string ToString(IEnumerable<int> items) => items == null || !items.Any()
-            ? string.Empty
-            : string.Concat(items.OrderBy(p => p).Select(p => $"{p} "));
+        private void Toolbar_MouseMove(object sender, MouseEventArgs e) => MouseMove(Toolbar.GetItemAt(e.X, e.Y));
+
+        // Private static methods
+
+        private static string ToString(IEnumerable<int> items)
+        {
+            var ints = items as int[] ?? items.ToArray();
+            return ints.Any()
+                ? string.Concat(ints.OrderBy(p => p).Select(p => $"{p} "))
+                : string.Empty;
+        }
     }
 }
