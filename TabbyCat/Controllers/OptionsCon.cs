@@ -2,23 +2,31 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Forms;
+    using Properties;
     using Types;
     using Utils;
     using Views;
 
     public class OptionsCon : LocalizationCon
     {
+        // Constructors
+
         public OptionsCon(WorldCon worldCon) : base(worldCon)
         {
-            OptionsDialog = new OptionsDialog { Text = $"{Application.ProductName} Options" };
-            OptionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().Reverse().ToArray());
-            OptionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
-            OptionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
+            _optionsDialog = new OptionsDialog { Text = string.Format(CultureInfo.CurrentCulture, Resources.OptionsDialog, Application.ProductName) };
+            _optionsDialog.cbTheme.Items.AddRange(typeof(Theme).GetDescriptions().Reverse().Cast<object>().ToArray());
+            _optionsDialog.btnFilesFolder.Click += BtnFilesFolder_Click;
+            _optionsDialog.btnTemplatesFolder.Click += BtnTemplatesFolder_Click;
         }
 
-        private readonly OptionsDialog OptionsDialog;
+        // Private fields
+
+        private readonly OptionsDialog _optionsDialog;
+
+        // Private properties
 
         private Options Options
         {
@@ -26,30 +34,36 @@
             set => SetOptions(value);
         }
 
-        private PropertyGrid StylesGrid => OptionsDialog.GLSLStylesPropertyGrid;
+        private PropertyGrid StylesGrid => _optionsDialog.GLSLStylesPropertyGrid;
 
         private static IList<string> ThemeDescriptions => typeof(Theme).GetDescriptions().ToList();
 
-        protected override void DisposeManagedState()
-        {
-            base.DisposeManagedState();
-            OptionsDialog?.Dispose();
-        }
+        // Public methods
 
         public DialogResult ShowModal()
         {
             Options = AppCon.Options;
-            var result = OptionsDialog.ShowDialog(WorldForm);
+            var result = _optionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
                 AppCon.Options = Options;
             return result;
         }
 
+        // Protected methods
+
+        protected override void DisposeManagedState()
+        {
+            base.DisposeManagedState();
+            _optionsDialog?.Dispose();
+        }
+
+        // Private methods
+
         private void BrowseFolder(string detail, TextBox textBox)
         {
             using (var dialog = new FolderBrowserDialog
             {
-                Description = $"Select the default folder for storing scene {detail}:",
+                Description = string.Format(CultureInfo.CurrentCulture, Resources.OptionsDialog_DefaultFolder, detail),
                 SelectedPath = textBox.Text,
                 ShowNewFolderButton = true
             })
@@ -57,29 +71,29 @@
                     textBox.Text = dialog.SelectedPath;
         }
 
-        private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", OptionsDialog.edFilesFolder);
+        private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", _optionsDialog.edFilesFolder);
 
-        private void BtnTemplatesFolder_Click(object sender, EventArgs e) => BrowseFolder("templates", OptionsDialog.edTemplatesFolder);
+        private void BtnTemplatesFolder_Click(object sender, EventArgs e) => BrowseFolder("templates", _optionsDialog.edTemplatesFolder);
 
         private Options GetOptions() => new Options
         {
-            Theme = (Theme)ThemeDescriptions.IndexOf(OptionsDialog.cbTheme.Text),
-            OpenInNewWindow = OptionsDialog.rbWindowNew.Checked,
-            FilesFolderPath = OptionsDialog.edFilesFolder.Text,
-            TemplatesFolderPath = OptionsDialog.edTemplatesFolder.Text,
+            Theme = (Theme)ThemeDescriptions.IndexOf(_optionsDialog.cbTheme.Text),
+            OpenInNewWindow = _optionsDialog.rbWindowNew.Checked,
+            FilesFolderPath = _optionsDialog.edFilesFolder.Text,
+            TemplatesFolderPath = _optionsDialog.edTemplatesFolder.Text,
             SyntaxHighlightStyles = (TextStyleInfos)StylesGrid.SelectedObject,
-            GLSLPath = OptionsDialog.edGLSLUrl.Text
+            GLSLPath = _optionsDialog.edGLSLUrl.Text
         };
 
         private void SetOptions(Options options)
         {
-            OptionsDialog.cbTheme.Text = ThemeDescriptions[(int)options.Theme];
-            OptionsDialog.rbWindowNew.Checked = options.OpenInNewWindow;
-            OptionsDialog.rbWindowReuse.Checked = !options.OpenInNewWindow;
-            OptionsDialog.edFilesFolder.Text = options.FilesFolderPath;
-            OptionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
+            _optionsDialog.cbTheme.Text = ThemeDescriptions[(int)options.Theme];
+            _optionsDialog.rbWindowNew.Checked = options.OpenInNewWindow;
+            _optionsDialog.rbWindowReuse.Checked = !options.OpenInNewWindow;
+            _optionsDialog.edFilesFolder.Text = options.FilesFolderPath;
+            _optionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
             StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
-            OptionsDialog.edGLSLUrl.Text = options.GLSLPath;
+            _optionsDialog.edGLSLUrl.Text = options.GLSLPath;
         }
     }
 }

@@ -1535,6 +1535,24 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} options.
+        /// </summary>
+        public static string OptionsDialog {
+            get {
+                return ResourceManager.GetString("OptionsDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the default folder for storing scene {0}:.
+        /// </summary>
+        public static string OptionsDialog_DefaultFolder {
+            get {
+                return ResourceManager.GetString("OptionsDialog_DefaultFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap OptionsHS {

@@ -1244,4 +1244,10 @@ Stereo: {7}</value>
   <data name="AboutDialog" xml:space="preserve">
     <value>About {0}</value>
   </data>
+  <data name="OptionsDialog" xml:space="preserve">
+    <value>{0} options</value>
+  </data>
+  <data name="OptionsDialog_DefaultFolder" xml:space="preserve">
+    <value>Select the default folder for storing scene {0}:</value>
+  </data>
 </root>
