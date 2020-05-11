@@ -11,16 +11,18 @@
     using UserControls;
     using Utils;
 
-    public class SignalCon : LocalizationCon
+    public sealed class SignalCon : LocalizationCon
     {
         // Constructors
 
         public SignalCon(WorldCon worldCon, Signal signal) : base(worldCon)
         {
+            if (signal == null)
+                throw new ArgumentNullException(nameof(signal));
             SignalEdit = new SignalEdit();
             Index = Scene.Signals.IndexOf(signal);
             NameEditor.AutoSize = true;
-            NameEditor.Text = signal?.Name;
+            NameEditor.Text = signal.Name;
             InitRanges(signal);
             InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
@@ -28,29 +30,6 @@
             AppCon.InitControlTheme(Toolbar);
             UpdateAllProperties();
         }
-
-        // Public fields
-
-        /// <summary>
-        /// The index of this control's Signal in the Scene.Signals collection.
-        /// </summary>
-        public int Index { get; set; }
-
-        public SignalEdit SignalEdit { get; set; }
-
-        // Protected properties
-
-        protected override IEnumerable<Property> AllProperties => new[]
-        {
-            Property.SignalAmplitude,
-            Property.SignalAmplitudeMaximum,
-            Property.SignalAmplitudeMinimum,
-            Property.SignalFrequency,
-            Property.SignalFrequencyMaximum,
-            Property.SignalFrequencyMinimum,
-            Property.SignalName,
-            Property.SignalWaveType,
-        };
 
         // Private constants
 
@@ -69,10 +48,33 @@
         // Private fields
 
         private float
-            AmpMin,
-            AmpRatio,
-            LogFreqMin,
-            LogFreqRatio;
+            _ampMin,
+            _ampRatio,
+            _logFreqMin,
+            _logFreqRatio;
+
+        // Public properties
+
+        /// <summary>
+        /// The index of this control's Signal in the Scene.Signals collection.
+        /// </summary>
+        public int Index { get; set; }
+
+        public SignalEdit SignalEdit { get; }
+
+        // Protected properties
+
+        protected override IEnumerable<Property> AllProperties => new[]
+        {
+            Property.SignalAmplitude,
+            Property.SignalAmplitudeMaximum,
+            Property.SignalAmplitudeMinimum,
+            Property.SignalFrequency,
+            Property.SignalFrequencyMaximum,
+            Property.SignalFrequencyMinimum,
+            Property.SignalName,
+            Property.SignalWaveType,
+        };
 
         // Private properties
 
@@ -102,7 +104,7 @@
             get
             {
                 var tag = WaveTypeButton.Tag;
-                return tag == null ? WaveType.Constant : (WaveType)tag;
+                return (WaveType?) tag ?? WaveType.Constant;
             }
             set => SetWaveType(value);
         }
@@ -110,29 +112,6 @@
         private IEnumerable<ToolStripMenuItem> WaveTypeItems => WaveTypeButton.DropDownItems.OfType<ToolStripMenuItem>().Where(p => p.Tag != null);
 
         // Public methods
-
-        public void InitRanges(Signal signal)
-        {
-            if (signal == null)
-                return;
-            AmpMin = signal.AmplitudeMinimum;
-            AmpRatio = (signal.AmplitudeMaximum - AmpMin) / AmpGaugeRange;
-            LogFreqMin = (float)Math.Log(signal.FrequencyMinimum);
-            LogFreqRatio = (float)(Math.Log(signal.FrequencyMaximum) - LogFreqMin) / FreqGaugeRange;
-        }
-
-        public void SetWaveType(WaveType waveType)
-        {
-            var item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType);
-            if (item == null)
-                item = WaveTypeItems.First();
-            WaveTypeButton.Image = item.Image;
-            WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
-            WaveTypeButton.Tag = item.Tag;
-            UpdateUI();
-        }
-
-        // Protected public methods
 
         public override void Connect(bool connect)
         {
@@ -213,7 +192,7 @@
 
         // Private methods
 
-        private float AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: AmpMin, ratio: AmpRatio);
+        private float AmplitudeFromGauge(int gauge) => ValueFromGauge(gauge, left: AmpGaugeMin, min: _ampMin, ratio: _ampRatio);
 
         private void AmplitudeSlider_ValueChanged(object sender, EventArgs e)
         {
@@ -221,11 +200,11 @@
             LocalizeFmt(Resources.SignalsForm_Amplitude, Amplitude, AmplitudeSlider);
         }
 
-        private int AmplitudeToGauge(float amplitude) => ValueToGauge(value: amplitude, min: AmpMin, left: AmpGaugeMin, ratio: AmpRatio);
+        private int AmplitudeToGauge(float amplitude) => ValueToGauge(value: amplitude, min: _ampMin, left: AmpGaugeMin, ratio: _ampRatio);
 
         private void DeleteButton_Click(object sender, EventArgs e) => Run(new SignalDeleteCommand(Index));
 
-        private float FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: LogFreqMin, ratio: LogFreqRatio);
+        private float FrequencyFromGauge(int gauge) => ValueFromGaugeLog(gauge, left: FreqGaugeMin, min: _logFreqMin, ratio: _logFreqRatio);
 
         private void FrequencySlider_ValueChanged(object sender, EventArgs e)
         {
@@ -233,9 +212,28 @@
             LocalizeFmt(Resources.SignalsForm_Frequency, Frequency, FrequencySlider);
         }
 
-        private int FrequencyToGauge(float frequency) => ValueToGaugeLog(value: frequency, min: LogFreqMin, left: FreqGaugeMin, ratio: LogFreqRatio);
+        private int FrequencyToGauge(float frequency) => ValueToGaugeLog(value: frequency, min: _logFreqMin, left: FreqGaugeMin, ratio: _logFreqRatio);
+
+        private void InitRanges(Signal signal)
+        {
+            if (signal == null)
+                return;
+            _ampMin = signal.AmplitudeMinimum;
+            _ampRatio = (signal.AmplitudeMaximum - _ampMin) / AmpGaugeRange;
+            _logFreqMin = (float)Math.Log(signal.FrequencyMinimum);
+            _logFreqRatio = (float)(Math.Log(signal.FrequencyMaximum) - _logFreqMin) / FreqGaugeRange;
+        }
+
 
         private void NameEditor_TextChanged(object sender, EventArgs e) => Run(new SignalNameCommand(Index, NameEditor.Text));
+        private void SetWaveType(WaveType waveType)
+        {
+            var item = WaveTypeItems.FirstOrDefault(p => (WaveType)p.Tag == waveType) ?? WaveTypeItems.First();
+            WaveTypeButton.Image = item.Image;
+            WaveTypeButton.ImageTransparentColor = item.ImageTransparentColor;
+            WaveTypeButton.Tag = item.Tag;
+            UpdateUI();
+        }
 
         private void Signal_Enter(object sender, EventArgs e) => UpdateUI();
 
