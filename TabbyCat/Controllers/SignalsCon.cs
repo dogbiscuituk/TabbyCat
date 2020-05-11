@@ -17,17 +17,9 @@
 
         public SignalsCon(WorldCon worldCon) : base(worldCon) { }
 
-        // Public fields
-
-        public List<SignalCon> SignalCons { get;  } = new List<SignalCon>();
-
         // Private fields
 
-        private SignalsForm _SignalsForm;
-
-        // Public properties
-        
-        public int SignalsCount => SignalCons.Count;
+        private SignalsForm _signalsForm;
 
         // Protected properties
 
@@ -35,9 +27,13 @@
 
         protected override DockContent Form => SignalsForm;
 
-        protected override SignalsForm SignalsForm => _SignalsForm ?? NewSignalsForm();
+        protected override SignalsForm SignalsForm => _signalsForm ?? NewSignalsForm();
 
         // Private properties
+
+        private List<SignalCon> SignalCons { get; } = new List<SignalCon>();
+
+        private int SignalsCount => SignalCons.Count;
 
         private ToolStrip Toolbar => SignalsForm.Toolbar;
 
@@ -49,33 +45,11 @@
                 RemoveAt(index);
         }
 
-        public void InsertAt(int index)
-        {
-            var signal = Scene.Signals[index];
-            AdjustIndices(index, +1);
-            var newSignalCon = new SignalCon(WorldCon, signal);
-            var signalEdit = newSignalCon.SignalEdit;
-            signalEdit.Dock = DockStyle.Top;
-            SignalCons.Add(newSignalCon);
-            SignalsForm.Controls.Add(signalEdit);
-            newSignalCon.Connect(true);
-            AdjustZorder();
-        }
-
         public void Load()
         {
             Clear();
             for (var index = 0; index < Scene.Signals.Count; index++)
                 InsertAt(index);
-        }
-
-        public void RemoveAt(int index)
-        {
-            var oldSignalCon = FindSignalCon(index);
-            oldSignalCon.Connect(false);
-            SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
-            SignalCons.Remove(oldSignalCon);
-            AdjustIndices(index + 1, -1);
         }
 
         // Protected public methods
@@ -100,16 +74,10 @@
                 WorldForm.ViewSignals.Click -= ViewSignals_Click;
             }
             foreach (var item in SignalsForm.AddButton.DropDownItems.OfType<ToolStripMenuItem>())
-            {
                 if (connect)
-                {
                     item.Click += AddButton_ButtonClick;
-                }
                 else
-                {
                     item.Click -= AddButton_ButtonClick;
-                }
-            }
         }
 
         // Protected methods
@@ -162,7 +130,7 @@
                 signalCon.Index += delta;
         }
 
-        private void AdjustZorder()
+        private void AdjustOrder()
         {
             SignalsForm.SuspendLayout();
             for (var index = 0; index < Scene.Signals.Count; index++)
@@ -178,23 +146,45 @@
 
         private SignalCon FindSignalCon(int index) => SignalCons.FirstOrDefault(p => p.Index == index);
 
+        private void InsertAt(int index)
+        {
+            var signal = Scene.Signals[index];
+            AdjustIndices(index, +1);
+            var newSignalCon = new SignalCon(WorldCon, signal);
+            var signalEdit = newSignalCon.SignalEdit;
+            signalEdit.Dock = DockStyle.Top;
+            SignalCons.Add(newSignalCon);
+            SignalsForm.Controls.Add(signalEdit);
+            newSignalCon.Connect(true);
+            AdjustOrder();
+        }
+
         private SignalsForm NewSignalsForm()
         {
-            _SignalsForm = new SignalsForm
+            _signalsForm = new SignalsForm
             {
                 TabText = Resources.SignalsForm_TabText,
                 Text = Resources.SignalsForm_Text,
                 ToolTipText = Resources.SignalsForm_Text
             };
-            Init(_SignalsForm.AddButton, WaveType.Constant);
-            Init(_SignalsForm.WaveTypeSlider, WaveType.Constant);
-            Init(_SignalsForm.WaveTypeSine, WaveType.Sine);
-            Init(_SignalsForm.WaveTypeSquare, WaveType.Square);
-            Init(_SignalsForm.WaveTypeTriangle, WaveType.Triangle);
-            Init(_SignalsForm.WaveTypeRampUp, WaveType.RampUp);
-            Init(_SignalsForm.WaveTypeRampDown, WaveType.RampDown);
+            Init(_signalsForm.AddButton, WaveType.Constant);
+            Init(_signalsForm.WaveTypeSlider, WaveType.Constant);
+            Init(_signalsForm.WaveTypeSine, WaveType.Sine);
+            Init(_signalsForm.WaveTypeSquare, WaveType.Square);
+            Init(_signalsForm.WaveTypeTriangle, WaveType.Triangle);
+            Init(_signalsForm.WaveTypeRampUp, WaveType.RampUp);
+            Init(_signalsForm.WaveTypeRampDown, WaveType.RampDown);
             AppCon.InitControlTheme(Toolbar);
-            return _SignalsForm;
+            return _signalsForm;
+        }
+
+        private void RemoveAt(int index)
+        {
+            var oldSignalCon = FindSignalCon(index);
+            oldSignalCon.Connect(false);
+            SignalsForm.Controls.Remove(oldSignalCon.SignalEdit);
+            SignalCons.Remove(oldSignalCon);
+            AdjustIndices(index + 1, -1);
         }
 
         private void ViewSignals_Click(object sender, System.EventArgs e) => ToggleVisibility();
