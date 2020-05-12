@@ -550,7 +550,8 @@
             SceneCodeForm.Show(TraceCodePane, null);
             TraceCodeForm.Activate();
             SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, hBottom);
-            HotkeysForm.Show(SignalsPane, null);
+            HotkeysForm.Show(WorldPanel, DockState.Float);
+            HotkeysForm.Hide();
             SignalsForm.Activate();
         }
 
