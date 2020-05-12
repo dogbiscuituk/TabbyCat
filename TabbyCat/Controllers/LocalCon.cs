@@ -14,11 +14,11 @@
     using Utils;
     using Views;
 
-    public partial class LocalizationCon
+    public partial class LocalCon
     {
         // Constructors
 
-        protected LocalizationCon(WorldCon worldCon) => WorldCon = worldCon;
+        protected LocalCon(WorldCon worldCon) => WorldCon = worldCon;
 
         // Protected fields
 
@@ -36,21 +36,17 @@
 
         public virtual void Connect(bool connect)
         {
-            if (connect)
-            {
-                Localize();
-                UpdateAllProperties();
-            }
-            else
-            {
-            }
+            if (!connect)
+                return;
+            Localize();
+            UpdateAllProperties();
         }
 
         // Protected methods
 
         protected virtual void Localize() { }
 
-        protected virtual void Localize(string info, params Control[] controls)
+        protected void Localize(string info, params Control[] controls)
         {
             if (info == null)
                 info = string.Empty;
@@ -63,26 +59,7 @@
             }
         }
 
-        protected virtual void Localize(string info, params ToolStripItem[] items)
-        {
-            if (info == null)
-                info = string.Empty;
-            var text = Parse(info, out var hint, out var keys, out var shortcut);
-            foreach (var item in items)
-            {
-                item.Text = text;
-                item.ToolTipText = hint;
-                if (shortcut != Keys.None && item is ToolStripMenuItem menuItem)
-                {
-                    menuItem.ShortcutKeys = shortcut;
-                    menuItem.ShortcutKeyDisplayString = keys;
-                }
-            }
-        }
-
         protected void LocalizeFmt<T>(string format, T value, params Control[] controls) => Localize(format.Format(value), controls);
-
-        protected void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(format.Format(value), controls);
 
         protected virtual bool Run(ICommand command) => CommandCon.Run(command);
 
@@ -94,7 +71,9 @@
 
         protected static void InitCommonControls(Control control)
         {
-            foreach (var spinEdit in control?.Controls.OfType<NumericUpDown>())
+            if (control == null)
+                return;
+            foreach (var spinEdit in control.Controls.OfType<NumericUpDown>())
             {
                 spinEdit.Minimum = decimal.MinValue;
                 spinEdit.Maximum = decimal.MaxValue;
@@ -110,6 +89,24 @@
                 MessageBoxIcon.Information) == DialogResult.OK)
                 path.Launch();
         }
+
+        protected static void Localize(string info, params ToolStripItem[] items)
+        {
+            if (info == null)
+                info = string.Empty;
+            var text = Parse(info, out var hint, out var keys, out var shortcut);
+            foreach (var item in items)
+            {
+                item.Text = text;
+                item.ToolTipText = hint;
+                if (shortcut == Keys.None || !(item is ToolStripMenuItem menuItem))
+                    continue;
+                menuItem.ShortcutKeys = shortcut;
+                menuItem.ShortcutKeyDisplayString = keys;
+            }
+        }
+
+        protected static void LocalizeFmt<T>(string format, T value, params ToolStripItem[] controls) => Localize(format.Format(value), controls);
 
         // Private static methods
 
@@ -145,12 +142,11 @@
     /// <summary>
     /// Derived controllers and their views.
     /// </summary>
-    public partial class LocalizationCon
+    public partial class LocalCon
     {
         // Public properties
 
         public virtual CommandCon CommandCon => WorldCon.CommandCon;
-        public virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         public virtual JsonCon JsonCon => WorldCon.JsonCon;
         public virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
         public GLControl SceneControl => SceneForm?.Controls.OfType<GLControl>().FirstOrDefault();
@@ -173,6 +169,7 @@
         protected WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
+        protected virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         protected virtual HotkeysForm HotkeysForm => HotkeysCon.HotkeysForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
@@ -188,7 +185,7 @@
         protected ToolTip ToolTip => WorldForm.ToolTip;
     }
 
-    public partial class LocalizationCon : IDisposable
+    public partial class LocalCon : IDisposable
     {
         // Private fields
 

@@ -14,7 +14,7 @@
     using Utils;
     using Trace = Models.Trace;
 
-    public partial class RenderCon : LocalizationCon
+    public partial class RenderCon : LocalCon
     {
         // Constructors
 
@@ -82,7 +82,7 @@
             }
         }
 
-        public override GraphicsMode GraphicsMode
+        protected override GraphicsMode GraphicsMode
         {
             get
             {

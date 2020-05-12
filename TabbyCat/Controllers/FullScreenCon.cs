@@ -4,7 +4,7 @@
     using System;
     using System.Windows.Forms;
 
-    public class FullScreenCon : LocalizationCon
+    public class FullScreenCon : LocalCon
     {
         // Constructors
 

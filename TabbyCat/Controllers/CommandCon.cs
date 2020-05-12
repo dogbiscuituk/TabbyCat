@@ -7,7 +7,7 @@
     using System.Drawing;
     using System.Windows.Forms;
 
-    public class CommandCon : LocalizationCon
+    public class CommandCon : LocalCon
     {
         // Constructors
 

@@ -6,7 +6,7 @@
     using Utils;
     using Views;
 
-    public class AboutCon : LocalizationCon
+    public class AboutCon : LocalCon
     {
         public AboutCon(WorldCon worldCon) : base(worldCon)
         {

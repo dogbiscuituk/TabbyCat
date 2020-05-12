@@ -2,7 +2,7 @@
 {
     using WeifenLuo.WinFormsUI.Docking;
 
-    public abstract class DockingCon : LocalizationCon
+    public abstract class DockingCon : LocalCon
     {
         // Constructors
 

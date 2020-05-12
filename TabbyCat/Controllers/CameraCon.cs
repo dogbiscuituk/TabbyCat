@@ -6,7 +6,7 @@
     using System;
     using Types;
 
-    public class CameraCon : LocalizationCon
+    public class CameraCon : LocalCon
     {
         public CameraCon(WorldCon worldCon) : base(worldCon) => SetDefaultCamera();
 

@@ -8,7 +8,7 @@
     using System.Windows.Forms;
     using Utils;
 
-    public class SelectionCon : LocalizationCon
+    public class SelectionCon : LocalCon
     {
         // Constructors
 

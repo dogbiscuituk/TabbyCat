@@ -3,7 +3,7 @@
     using System;
     using Types;
 
-    public class ClockCon : LocalizationCon
+    public class ClockCon : LocalCon
     {
         // Constructors
 

@@ -18,7 +18,7 @@
     /// Note: unsafe code is used to abbreviate long paths (see the implementation
     /// of the  CompactMenuText method).
     /// </summary>
-    public class MruCon : LocalizationCon
+    public class MruCon : LocalCon
     {
         // Constructors
 

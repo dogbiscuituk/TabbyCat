@@ -13,7 +13,7 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    public sealed partial class WorldCon : LocalizationCon
+    public sealed partial class WorldCon : LocalCon
     {
         // Constructors
 
@@ -509,7 +509,7 @@
 
         public void ConnectCons(bool connect)
         {
-            Array.ForEach(new LocalizationCon[]
+            Array.ForEach(new LocalCon[]
             {
                 CameraCon,
                 ClockCon,

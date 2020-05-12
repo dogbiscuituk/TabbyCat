@@ -9,7 +9,7 @@
     using Utils;
     using Views;
 
-    public class OptionsCon : LocalizationCon
+    public class OptionsCon : LocalCon
     {
         // Constructors
 

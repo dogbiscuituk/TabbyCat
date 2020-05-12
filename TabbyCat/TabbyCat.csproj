@@ -100,7 +100,7 @@
     <Compile Include="Controllers\DockingCon.cs" />
     <Compile Include="Controllers\SceneCodeCon.cs" />
     <Compile Include="Controllers\SceneCon.cs" />
-    <Compile Include="Controllers\LocalizationCon.cs" />
+    <Compile Include="Controllers\LocalCon.cs" />
     <Compile Include="Controllers\SelectionCon.cs" />
     <Compile Include="Controllers\CodeCon.cs" />
     <Compile Include="Controllers\PropertiesCon.cs" />

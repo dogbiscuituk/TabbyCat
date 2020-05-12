@@ -6,7 +6,7 @@
     using Types;
     using Views;
 
-    public class SignalPropertiesCon : LocalizationCon
+    public class SignalPropertiesCon : LocalCon
     {
         // Constructors
 

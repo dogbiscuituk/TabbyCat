@@ -11,7 +11,7 @@
     using UserControls;
     using Utils;
 
-    public sealed class SignalCon : LocalizationCon
+    public sealed class SignalCon : LocalCon
     {
         // Constructors
 
