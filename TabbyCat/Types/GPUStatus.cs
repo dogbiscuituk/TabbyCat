@@ -3,7 +3,7 @@
     public enum GPUStatus
     {
         None,
-        OK,
+        Ok,
         Warning,
         Error
     }

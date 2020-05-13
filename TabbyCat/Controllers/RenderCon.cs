@@ -105,7 +105,7 @@
 
         // Private properties
 
-        private bool ProgramValid => _programCompiled && Scene.GPUStatus == GPUStatus.OK;
+        private bool ProgramValid => _programCompiled && Scene.GPUStatus == GPUStatus.Ok;
 
         private List<ShaderType> ShaderTypes { get; } = new List<ShaderType>();
 
@@ -312,7 +312,7 @@
             s = s.ToUpper(CultureInfo.InvariantCulture);
             if (s.Contains("ERROR"))
                 Scene.GPUStatus = GPUStatus.Error;
-            else if (Scene.GPUStatus == GPUStatus.OK && s.Contains("WARNING"))
+            else if (Scene.GPUStatus == GPUStatus.Ok && s.Contains("WARNING"))
                 Scene.GPUStatus = GPUStatus.Warning;
         }
 
@@ -366,13 +366,13 @@
         {
             if (_programCompiled)
                 return;
-            Scene.GPUStatus = GPUStatus.OK;
+            Scene.GPUStatus = GPUStatus.Ok;
             _gpuLog = new StringBuilder();
             _program = GL.CreateProgram();
             CreateShaders();
             if (!ShaderTypes.Any())
                 Log("No Shape Shaders found to compile.");
-            if (Scene.GPUStatus == GPUStatus.OK)
+            if (Scene.GPUStatus == GPUStatus.Ok)
             {
                 Log("Linking program;");
                 BindAttributes();

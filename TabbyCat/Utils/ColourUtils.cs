@@ -49,7 +49,7 @@
         {
             switch (status)
             {
-                case GPUStatus.OK:
+                case GPUStatus.Ok:
                     return Color.Green;
                 case GPUStatus.Warning:
                     return Color.Orange;

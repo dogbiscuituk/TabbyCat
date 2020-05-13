@@ -3,77 +3,68 @@
     using System;
     using System.Windows.Forms;
 
-    public class Clock : IDisposable
+    public sealed class Clock : IDisposable
     {
         public Clock()
         {
-            Timer = new Timer { Enabled = false };
-            Timer.Tick += Timer_Tick;
+            _timer = new Timer { Enabled = false };
+            _timer.Tick += Timer_Tick;
         }
 
         private const int LimitFactor = 32;
-        private bool _Running;
-        private DateTime _StartedAt;
-        private TimeSpan _RealTimeElapsed, _VirtualTimeElapsed;
-        private int _SuspendCount;
-        private readonly Timer Timer;
-        private float _VirtualTimeFactor = 1;
+        private bool _running;
+        private DateTime _startedAt;
+        private TimeSpan _virtualTimeElapsed;
+        private readonly Timer _timer;
+        private float _virtualTimeFactor = 1;
 
         public bool Running
         {
-            get => _Running;
-            set
+            get => _running;
+            private set
             {
                 if (Running != value)
                 {
                     var now = DateTime.Now;
                     if (Running)
                     {
-                        Timer.Enabled = false;
-                        var elapsed = now - _StartedAt;
-                        _RealTimeElapsed += elapsed;
-                        _VirtualTimeElapsed += GetVirtualIncrement(now);
+                        _timer.Enabled = false;
+                        _virtualTimeElapsed += GetVirtualIncrement(now);
                     }
-                    _Running = value;
+                    _running = value;
                     if (Running)
                     {
-                        _StartedAt = now;
-                        Timer.Enabled = true;
+                        _startedAt = now;
+                        _timer.Enabled = true;
                     }
                 }
             }
         }
 
-        public float RealSecondsElapsed => (float)RealTimeElapsed.TotalSeconds;
         public float VirtualSecondsElapsed => (float)VirtualTimeElapsed.TotalSeconds;
 
         public int IntervalMilliseconds
         {
-            get => Timer.Interval;
-            set => Timer.Interval = value;
+            get => _timer.Interval;
+            set => _timer.Interval = value;
         }
 
-        public TimeSpan RealTimeElapsed => Running
-            ? _RealTimeElapsed + (DateTime.Now - _StartedAt)
-            : _RealTimeElapsed;
-
-        public TimeSpan VirtualTimeElapsed => Running
-            ? _VirtualTimeElapsed + GetVirtualIncrement(DateTime.Now)
-            : _VirtualTimeElapsed;
+        private TimeSpan VirtualTimeElapsed => Running
+            ? _virtualTimeElapsed + GetVirtualIncrement(DateTime.Now)
+            : _virtualTimeElapsed;
 
         public float VirtualTimeFactor
         {
-            get => _VirtualTimeFactor;
+            get => _virtualTimeFactor;
             set
             {
-                if (VirtualTimeFactor != value)
-                {
-                    var running = Running;
-                    Stop();
-                    _VirtualTimeFactor = value;
-                    if (running)
-                        Start();
-                }
+                if (VirtualTimeFactor == value)
+                    return;
+                var running = Running;
+                Stop();
+                _virtualTimeFactor = value;
+                if (running)
+                    Start();
             }
         }
 
@@ -86,36 +77,15 @@
         public void Reset()
         {
             Running = false;
-            _RealTimeElapsed = TimeSpan.Zero;
-            _VirtualTimeElapsed = TimeSpan.Zero;
-            _VirtualTimeFactor = 1;
+            _virtualTimeElapsed = TimeSpan.Zero;
+            _virtualTimeFactor = 1;
         }
 
-        public void Resume()
-        {
-            if (_SuspendCount > 0 && --_SuspendCount == 0)
-                Running = true;
-        }
+        public void Start() => Running = true;
 
-        public void Start()
-        {
-            _SuspendCount = 0;
-            Running = true;
-        }
+        public void Stop() => Running = false;
 
-        public void Stop()
-        {
-            _SuspendCount = 0;
-            Running = false;
-        }
-
-        public void Suspend()
-        {
-            _SuspendCount++;
-            Running = false;
-        }
-
-        private TimeSpan GetVirtualIncrement(DateTime now) => TimeSpan.FromSeconds((now - _StartedAt).TotalSeconds * VirtualTimeFactor);
+        private TimeSpan GetVirtualIncrement(DateTime now) => TimeSpan.FromSeconds((now - _startedAt).TotalSeconds * VirtualTimeFactor);
 
         private static float Scale(float factor)
         {
@@ -138,7 +108,7 @@
 
         #region IDisposable
 
-        private bool Disposed;
+        private bool _disposed;
 
         public void Dispose()
         {
@@ -146,15 +116,15 @@
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (!Disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
-                    Timer?.Dispose();
+                    _timer?.Dispose();
                 }
-                Disposed = true;
+                _disposed = true;
             }
         }
 
