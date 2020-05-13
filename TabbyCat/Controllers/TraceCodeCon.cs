@@ -7,19 +7,19 @@
     using Types;
     using Utils;
 
-    public class TraceCodeCon : CodeCon
+    public class ShapeCodeCon : CodeCon
     {
         // Constructors
 
-        public TraceCodeCon(WorldCon worldCon) : base(worldCon) { }
+        public ShapeCodeCon(WorldCon worldCon) : base(worldCon) { }
 
         // Protected properties
 
-        protected override Property Shader => ShaderType.TraceShader();
+        protected override Property Shader => ShaderType.ShapeShader();
 
-        protected override IScript ShaderSet => TraceSelection;
+        protected override IScript ShaderSet => ShapeSelection;
 
-        protected override string GetRegion() => Resources.ShaderRegion_Trace;
+        protected override string GetRegion() => Resources.ShaderRegion_Shape;
 
         // Public methods
 
@@ -27,9 +27,9 @@
         {
             base.Connect(connect);
             if (connect)
-                WorldForm.ViewTraceCode.Click += ViewTraceCode_Click;
+                WorldForm.ViewShapeCode.Click += ViewShapeCode_Click;
             else
-                WorldForm.ViewTraceCode.Click -= ViewTraceCode_Click;
+                WorldForm.ViewShapeCode.Click -= ViewShapeCode_Click;
         }
 
         // Protected methods
@@ -37,16 +37,16 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.WorldForm_ViewTraceCode, WorldForm.ViewTraceCode);
+            Localize(Resources.WorldForm_ViewShapeCode, WorldForm.ViewShapeCode);
         }
 
-        protected override void RunShaderCommand(string text) => TraceSelection.ForEach(p => Run(new TraceShaderCommand(p.Index, ShaderType, text)));
+        protected override void RunShaderCommand(string text) => ShapeSelection.ForEach(p => Run(new ShapeShaderCommand(p.Index, ShaderType, text)));
 
         protected override void UpdateUI()
         {
             base.UpdateUI();
             ToolStripUtils.EnableControls(
-                !TraceSelection.IsEmpty,
+                !ShapeSelection.IsEmpty,
                 new Control[]
                 {
                     CodeEdit.HorizontalToolbar,
@@ -68,18 +68,18 @@
 
         public void SetFormula(string formula)
         {
-            foreach (var trace in TraceSelection.Traces)
+            foreach (var shape in ShapeSelection.Shapes)
             {
-                var script = trace.GetScript(ShaderType);
+                var script = shape.GetScript(ShaderType);
                 var beginLine = script.FindFirstTokenLine(Tokens.BeginFormula) + 1;
                 var endLine = script.FindFirstTokenLine(Tokens.EndFormula);
                 if (0 > beginLine || beginLine >= endLine)
                     continue;
                 script = $"{script.GetLines(0, beginLine)}{formula}{script.GetLines(endLine, script.GetLineCount() - endLine)}";
-                Run(new TraceShaderCommand(trace.Index, ShaderType, script));
+                Run(new ShapeShaderCommand(shape.Index, ShaderType, script));
             }
         }
 
-        private void ViewTraceCode_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewShapeCode_Click(object sender, EventArgs e) => ToggleVisibility();
     }
 }

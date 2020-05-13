@@ -146,6 +146,11 @@
     <Compile Include="CustomControls\JmkToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Types\LookupParameterEventArgs.cs" />
     <Compile Include="Models\Selection.cs" />
     <Compile Include="Types\FilePathEventArgs.cs" />
@@ -185,16 +190,11 @@
     <Compile Include="Models\Scene.cs" />
     <Compile Include="Models\Signal.cs" />
     <Compile Include="Models\Surface.cs" />
-    <Compile Include="Models\Trace.cs" />
-    <Compile Include="Models\TraceSelection.cs" />
+    <Compile Include="Models\Shape.cs" />
+    <Compile Include="Models\ShapeSelection.cs" />
     <Compile Include="Models\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Converters\QuaternionConverter.cs" />
     <Compile Include="Converters\Vector3Converter.cs" />
     <Compile Include="Types\Camera.cs" />
@@ -656,12 +656,12 @@
     <Content Include="Snippets\Scene_VertexShader.txt" />
     <Content Include="Snippets\Surface_VertexFormula.txt" />
     <Content Include="Snippets\Volume_VertexFormula.txt" />
-    <Content Include="Snippets\Trace_ComputeShader.txt" />
-    <Content Include="Snippets\Trace_FragmentShader.txt" />
-    <Content Include="Snippets\Trace_GeometryShader.txt" />
-    <Content Include="Snippets\Trace_TessControlShader.txt" />
-    <Content Include="Snippets\Trace_TessEvaluationShader.txt" />
-    <Content Include="Snippets\Trace_VertexShader.txt" />
+    <Content Include="Snippets\Shape_ComputeShader.txt" />
+    <Content Include="Snippets\Shape_FragmentShader.txt" />
+    <Content Include="Snippets\Shape_GeometryShader.txt" />
+    <Content Include="Snippets\Shape_TessControlShader.txt" />
+    <Content Include="Snippets\Shape_TessEvaluationShader.txt" />
+    <Content Include="Snippets\Shape_VertexShader.txt" />
     <None Include="Resources\ThinkTimenode_8848.png" />
     <Content Include="Snippets\Built_in_ComputeShader.txt" />
     <Content Include="Snippets\Built_in_FragmentShader.txt" />
@@ -671,7 +671,7 @@
     <Content Include="Snippets\Built_in_VertexShader.txt" />
     <Content Include="Snippets\Format_Scene.txt" />
     <Content Include="Snippets\Format_Case.txt" />
-    <Content Include="Snippets\Format_Trace.txt" />
+    <Content Include="Snippets\Format_Shape.txt" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />

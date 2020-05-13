@@ -5,13 +5,13 @@
 
     public static class Entity
     {
-        public static IEnumerable<float> GetCoords(this ITrace trace) => trace != null ? GetCoords(trace.StripeCount) : null;
+        public static IEnumerable<float> GetCoords(this IShape shape) => shape != null ? GetCoords(shape.StripeCount) : null;
 
-        public static int GetCoordsCount(this ITrace trace) => trace != null ? GetCoordsCount(trace.StripeCount) : 0;
+        public static int GetCoordsCount(this IShape shape) => shape != null ? GetCoordsCount(shape.StripeCount) : 0;
 
-        public static IEnumerable<int> GetIndices(this ITrace trace) => trace != null ? GetIndices(trace.Pattern, trace.StripeCount) : null;
+        public static IEnumerable<int> GetIndices(this IShape shape) => shape != null ? GetIndices(shape.Pattern, shape.StripeCount) : null;
 
-        public static int GetIndicesCount(this ITrace trace) => trace != null ? GetIndicesCount(trace.Pattern, trace.StripeCount) : 0;
+        public static int GetIndicesCount(this IShape shape) => shape != null ? GetIndicesCount(shape.Pattern, shape.StripeCount) : 0;
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.

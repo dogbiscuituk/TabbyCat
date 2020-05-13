@@ -5,110 +5,110 @@
     using Types;
     using Utils;
 
-    public class DescriptionCommand : TracePropertyCommand<string>
+    public class DescriptionCommand : ShapePropertyCommand<string>
     {
         public DescriptionCommand(int index, string value) : base(
             index,
-            Property.TraceDescription,
+            Property.ShapeDescription,
             value,
             t => t.Description,
             (t, v) => t.Description = v)
         { }
     }
 
-    public class LocationCommand : TracePropertyCommand<Vector3>
+    public class LocationCommand : ShapePropertyCommand<Vector3>
     {
         public LocationCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceLocation,
+            Property.ShapeLocation,
             value,
             e => e.Location,
             (e, v) => e.Location = v)
         { }
     }
 
-    public class MaximumCommand : TracePropertyCommand<Vector3>
+    public class MaximumCommand : ShapePropertyCommand<Vector3>
     {
         public MaximumCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceMaximum,
+            Property.ShapeMaximum,
             value,
             t => t.Maximum,
             (t, v) => t.Maximum = v)
         { }
     }
 
-    public class MinimumCommand : TracePropertyCommand<Vector3>
+    public class MinimumCommand : ShapePropertyCommand<Vector3>
     {
         public MinimumCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceMinimum,
+            Property.ShapeMinimum,
             value,
             t => t.Minimum,
             (t, v) => t.Minimum = v)
         { }
     }
 
-    public class OrientationCommand : TracePropertyCommand<Vector3>
+    public class OrientationCommand : ShapePropertyCommand<Vector3>
     {
         public OrientationCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceOrientation,
+            Property.ShapeOrientation,
             value,
             e => e.Orientation,
             (e, v) => e.Orientation = v)
         { }
     }
 
-    public class PatternCommand : TracePropertyCommand<Pattern>
+    public class PatternCommand : ShapePropertyCommand<Pattern>
     {
         public PatternCommand(int index, Pattern value) : base(
             index,
-            Property.TracePattern,
+            Property.ShapePattern,
             value,
             t => t.Pattern,
             (t, v) => t.Pattern = v)
         { }
     }
 
-    public class ScaleCommand : TracePropertyCommand<Vector3>
+    public class ScaleCommand : ShapePropertyCommand<Vector3>
     {
         public ScaleCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceScale,
+            Property.ShapeScale,
             value,
             e => e.Scale,
             (e, v) => e.Scale = v)
         { }
     }
 
-    public class StripeCountCommand : TracePropertyCommand<Vector3>
+    public class StripeCountCommand : ShapePropertyCommand<Vector3>
     {
         public StripeCountCommand(int index, Vector3 value) : base(
             index,
-            Property.TraceStripeCount,
+            Property.ShapeStripeCount,
             value,
             t => t.StripeCount,
             (t, v) => t.StripeCount = v)
         { }
     }
 
-    public class TraceShaderCommand : TracePropertyCommand<string>
+    public class ShapeShaderCommand : ShapePropertyCommand<string>
     {
-        public TraceShaderCommand(int index, ShaderType shaderType, string value) : base(
+        public ShapeShaderCommand(int index, ShaderType shaderType, string value) : base(
             index,
-            shaderType.TraceShader(),
+            shaderType.ShapeShader(),
             value,
             t => t.GetScript(shaderType),
             (t, v) => t.SetScript(shaderType, v))
         { }
     }
 
-    public class VisibleCommand : TracePropertyCommand<bool>
+    public class VisibleCommand : ShapePropertyCommand<bool>
     {
         public VisibleCommand(int index, bool value) : base(
             index,
-            Property.TraceVisible,
+            Property.ShapeVisible,
             value,
             t => t.Visible,
             (t, v) => t.Visible = v)

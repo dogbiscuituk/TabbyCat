@@ -5,7 +5,7 @@
     using Properties;
     using Types;
 
-    public class Curve : Trace
+    public class Curve : Shape
     {
         public Curve()
         {

@@ -16,13 +16,13 @@
             { Property.Camera, Resources.Property_Camera},
             { Property.CameraFocus, Resources.Property_CameraFocus},
             { Property.CameraPosition, Resources.Property_CameraPosition},
-            { Property.GLTargetVersion, Resources.Property_GLTarget_Version},
+            { Property.GlslTargetVersion, Resources.Property_GLTarget_Version},
             { Property.Samples, Resources.Property_Samples},
             { Property.SceneTitle, Resources.Property_SceneTitle},
             { Property.Signals, Resources.Property_Signals},
             { Property.Stereo, Resources.Property_Stereo},
-            { Property.TargetFPS, Resources.Property_TargetFPS},
-            { Property.Traces, Resources.Property_Traces},
+            { Property.TargetFps, Resources.Property_TargetFPS},
+            { Property.Shapes, Resources.Property_Shapes},
             { Property.VSync, Resources.Property_VSync},
 
             // Projection properties
@@ -45,17 +45,17 @@
             { Property.SignalFrequencyMinimum, Resources.Property_SignalFrequencyMinimum },
             { Property.SignalWaveType, Resources.Property_SignalWaveType },
 
-            // Trace properties
+            // Shape properties
 
-            { Property.TraceDescription, Resources.Property_TraceDescription },
-            { Property.TraceLocation, Resources.Property_TraceLocation },
-            { Property.TraceMaximum, Resources.Property_TraceMaximum },
-            { Property.TraceMinimum, Resources.Property_TraceMinimum },
-            { Property.TraceOrientation, Resources.Property_TraceOrientation },
-            { Property.TracePattern, Resources.Property_TracePattern },
-            { Property.TraceScale, Resources.Property_TraceScale },
-            { Property.TraceStripeCount, Resources.Property_TraceStripeCount },
-            { Property.TraceVisible, Resources.Property_TraceVisible },
+            { Property.ShapeDescription, Resources.Property_ShapeDescription },
+            { Property.ShapeLocation, Resources.Property_ShapeLocation },
+            { Property.ShapeMaximum, Resources.Property_ShapeMaximum },
+            { Property.ShapeMinimum, Resources.Property_ShapeMinimum },
+            { Property.ShapeOrientation, Resources.Property_ShapeOrientation },
+            { Property.ShapePattern, Resources.Property_ShapePattern },
+            { Property.ShapeScale, Resources.Property_ShapeScale },
+            { Property.ShapeStripeCount, Resources.Property_ShapeStripeCount },
+            { Property.ShapeVisible, Resources.Property_ShapeVisible },
 
             // GPU properties
 
@@ -78,12 +78,12 @@
             { Property.SceneGeometryShader, Resources.Property_SceneGeometryShader },
             { Property.SceneFragmentShader, Resources.Property_SceneFragmentShader },
             { Property.SceneComputeShader, Resources.Property_SceneComputeShader },
-            { Property.TraceVertexShader, Resources.Property_TraceVertexShader },
-            { Property.TraceTessellationControlShader, Resources.Property_TraceTessellationControlShader },
-            { Property.TraceTessellationEvaluationShader, Resources.Property_TraceTessellationEvaluationShader },
-            { Property.TraceGeometryShader, Resources.Property_TraceGeometryShader },
-            { Property.TraceFragmentShader, Resources.Property_TraceFragmentShader },
-            { Property.TraceComputeShader, Resources.Property_TraceComputeShader },
+            { Property.ShapeVertexShader, Resources.Property_ShapeVertexShader },
+            { Property.ShapeTessellationControlShader, Resources.Property_ShapeTessellationControlShader },
+            { Property.ShapeTessellationEvaluationShader, Resources.Property_ShapeTessellationEvaluationShader },
+            { Property.ShapeGeometryShader, Resources.Property_ShapeGeometryShader },
+            { Property.ShapeFragmentShader, Resources.Property_ShapeFragmentShader },
+            { Property.ShapeComputeShader, Resources.Property_ShapeComputeShader },
             { Property.AfterShaders, Resources.Blank },
         };
 
@@ -112,12 +112,12 @@
 
         public static bool InvalidatesProjection(this Property p) => p.IsProjectionProperty();
 
-        public static bool InvalidatesTrace(this Property p)
+        public static bool InvalidatesShape(this Property p)
         {
             switch (p)
             {
-                case Property.TracePattern:
-                case Property.TraceStripeCount:
+                case Property.ShapePattern:
+                case Property.ShapeStripeCount:
                     return true;
             }
             return false;
@@ -125,10 +125,10 @@
 
         // Private methods
 
-        private static bool IsCollectionProperty(this Property p) => p == Property.Signals || p == Property.Traces;
+        private static bool IsCollectionProperty(this Property p) => p == Property.Signals || p == Property.Shapes;
 
         private static bool IsProjectionProperty(this Property p) => p > Property.BeforeProjection && p < Property.AfterProjection;
 
-        private static bool IsShaderProperty(this Property p) => p > Property.BeforeShaders && p < Property.AfterShaders || p == Property.GLTargetVersion;
+        private static bool IsShaderProperty(this Property p) => p > Property.BeforeShaders && p < Property.AfterShaders || p == Property.GlslTargetVersion;
     }
 }

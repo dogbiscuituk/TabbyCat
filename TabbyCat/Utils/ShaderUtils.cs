@@ -65,7 +65,7 @@
             }
         }
 
-        public static Property TraceShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.TraceVertexShader - Property.VertexShader);
+        public static Property ShapeShader(this ShaderType shaderType) => shaderType.ShaderProperty() + (Property.ShapeVertexShader - Property.VertexShader);
 
         // Private methods
 

@@ -8,7 +8,7 @@
     using Utils;
 
     /// <summary>
-    /// Base class for Scene and Trace (but not TraceSelection).
+    /// Base class for Scene and Shape (but not ShapeSelection).
     /// Provides concrete string properties for shader code.
     /// </summary>
     public abstract class Shaders : IShaders

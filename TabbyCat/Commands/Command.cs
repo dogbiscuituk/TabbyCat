@@ -29,8 +29,8 @@
         /// Redo stacks. Since property commands are their own inverses
         /// (they just tell the Scene "Swap your property value with the one
         /// I'm carrying"), the Invert() method is almost always empty. See
-        /// CollectionCommand classes, for example TraceInsertCommand
-        /// and TraceDeleteCommand for notable exceptions to this rule.
+        /// CollectionCommand classes, for example ShapeInsertCommand
+        /// and ShapeDeleteCommand for notable exceptions to this rule.
         /// </summary>
         /// <param name="scene">The Scene object upon which the command is executed.</param>
         public bool Do(Scene scene)

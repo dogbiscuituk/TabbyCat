@@ -7,33 +7,33 @@
     /// </summary>
     public class Vao
     {
-        public Vao(ITrace trace)
+        public Vao(IShape shape)
         {
-            GL.GenVertexArrays(1, out _VaoID);
+            GL.GenVertexArrays(1, out _vao);
             GL.BindVertexArray(VaoID);
-            VertexVbo = VboStore.AcquireVbo(trace, VboType.Vertex);
-            IndexVbo = VboStore.AcquireVbo(trace, VboType.Index);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VertexVbo.BufferID);
+            _vertexVbo = VboStore.AcquireVbo(shape, VboType.Vertex);
+            _indexVbo = VboStore.AcquireVbo(shape, VboType.Index);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexVbo.BufferID);
             GL.EnableVertexAttribArray(0);
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndexVbo.BufferID);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _indexVbo.BufferID);
             GL.BindVertexArray(0);
         }
 
-        private readonly int _VaoID;
+        private readonly int _vao;
 
         private readonly Vbo
-            IndexVbo,
-            VertexVbo;
+            _indexVbo,
+            _vertexVbo;
 
-        public int ElementCount => IndexVbo.ElementsCount;
+        public int ElementCount => _indexVbo.ElementsCount;
 
-        public int VaoID => _VaoID;
+        public int VaoID => _vao;
 
         public void ReleaseBuffers()
         {
-            VboStore.ReleaseVbo(IndexVbo);
-            VboStore.ReleaseVbo(VertexVbo);
+            VboStore.Release(_indexVbo);
+            VboStore.Release(_vertexVbo);
             GL.DeleteVertexArray(VaoID);
         }
     }

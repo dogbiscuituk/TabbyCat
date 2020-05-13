@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.Types
 {
-    public enum TraceType
+    public enum ShapeType
     {
         None,
         Curve,

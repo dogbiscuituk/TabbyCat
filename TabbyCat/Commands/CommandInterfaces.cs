@@ -20,14 +20,14 @@
         bool RunOn(Scene scene);
     }
 
+    public interface IShapePropertyCommand : ICommand
+    {
+        bool RunOn(Shape shape);
+    }
+
     public interface ISignalPropertyCommand : ICommand
     {
         bool RunOn(Signal signal);
-    }
-
-    public interface ITracePropertyCommand : ICommand
-    {
-        bool RunOn(Trace trace);
     }
 
     public interface ICollectionCommand : ICommand
@@ -35,13 +35,13 @@
         bool Adding { get; set; }
     }
 
+    public interface IShapeCollectionCommand : ICollectionCommand
+    {
+        Shape Value { get; set; }
+    }
+
     public interface ISignalCollectionCommand : ICollectionCommand
     {
         Signal Value { get; set; }
-    }
-
-    public interface ITraceCollectionCommand : ICollectionCommand
-    {
-        Trace Value { get; set; }
     }
 }

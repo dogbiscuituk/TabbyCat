@@ -15,59 +15,59 @@
     using Views;
     using WeifenLuo.WinFormsUI.Docking;
 
-    public partial class TracePropertiesCon : PropertiesCon
+    public partial class ShapePropertiesCon : PropertiesCon
     {
         // Constructors
 
-        public TracePropertiesCon(WorldCon worldCon) : base(worldCon)
+        public ShapePropertiesCon(WorldCon worldCon) : base(worldCon)
         {
-            AppCon.InitControlTheme(TracePropertiesEdit.SelectionToolbar);
+            AppCon.InitControlTheme(ShapePropertiesEdit.SelectionToolbar);
             _selectionCon = new SelectionCon(worldCon);
-            InitCommonControls(TracePropertiesEdit.TableLayoutPanel);
+            InitCommonControls(ShapePropertiesEdit.TableLayoutPanel);
             InitLocalControls();
         }
 
         // Private fields
 
-        private TracePropertiesForm _tracePropertiesForm;
-
         private readonly SelectionCon _selectionCon;
 
         private bool _selectionUpdating;
 
+        private ShapePropertiesForm _shapePropertiesForm;
+
         // Public properties
 
-        public ToolStrip SelectionToolbar => TracePropertiesEdit.SelectionToolbar;
+        public ToolStrip SelectionToolbar => ShapePropertiesEdit.SelectionToolbar;
 
         // Protected properties
 
         protected override IEnumerable<Property> AllProperties => new List<Property>
         {
-            Property.TraceDescription,
-            Property.TraceLocation,
-            Property.TraceMaximum,
-            Property.TraceMinimum,
-            Property.TraceOrientation,
-            Property.TracePattern,
-            Property.TraceScale,
-            Property.TraceStripeCount,
-            Property.TraceVisible
+            Property.ShapeDescription,
+            Property.ShapeLocation,
+            Property.ShapeMaximum,
+            Property.ShapeMinimum,
+            Property.ShapeOrientation,
+            Property.ShapePattern,
+            Property.ShapeScale,
+            Property.ShapeStripeCount,
+            Property.ShapeVisible
         };
 
-        protected override DockContent Form => TracePropertiesForm;
+        protected override DockContent Form => ShapePropertiesForm;
 
-        protected override TracePropertiesForm TracePropertiesForm => _tracePropertiesForm ?? (_tracePropertiesForm = new TracePropertiesForm
+        protected override ShapePropertiesForm ShapePropertiesForm => _shapePropertiesForm ?? (_shapePropertiesForm = new ShapePropertiesForm
         {
-            TabText = Resources.TracePropertiesForm_TabText,
-            Text = Resources.TracePropertiesForm_Text,
-            ToolTipText = Resources.TracePropertiesForm_Text
+            TabText = Resources.ShapePropertiesForm_TabText,
+            Text = Resources.ShapePropertiesForm_Text,
+            ToolTipText = Resources.ShapePropertiesForm_Text
         });
 
         // Private properties
 
-        private TraceSelection Selection => WorldCon.TraceSelection;
+        private ShapeSelection Selection => WorldCon.ShapeSelection;
 
-        private TracePropertiesEdit TracePropertiesEdit => TracePropertiesForm.TracePropertiesEdit;
+        private ShapePropertiesEdit ShapePropertiesEdit => ShapePropertiesForm.ShapePropertiesEdit;
 
         // Public methods
 
@@ -77,56 +77,56 @@
             if (connect)
             {
                 _selectionCon.SelectionChanged += Selection_Changed;
-                TracePropertiesEdit.edDescription.TextChanged += Description_TextChanged;
-                TracePropertiesEdit.seLocationX.ValueChanged += LocationX_ValueChanged;
-                TracePropertiesEdit.seLocationY.ValueChanged += LocationY_ValueChanged;
-                TracePropertiesEdit.seLocationZ.ValueChanged += LocationZ_ValueChanged;
-                TracePropertiesEdit.sePitch.ValueChanged += OrientationX_ValueChanged;
-                TracePropertiesEdit.seYaw.ValueChanged += OrientationY_ValueChanged;
-                TracePropertiesEdit.seRoll.ValueChanged += OrientationZ_ValueChanged;
-                TracePropertiesEdit.seScaleX.ValueChanged += ScaleX_ValueChanged;
-                TracePropertiesEdit.seScaleY.ValueChanged += ScaleY_ValueChanged;
-                TracePropertiesEdit.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
-                TracePropertiesEdit.cbPattern.DrawItem += Pattern_DrawItem;
-                TracePropertiesEdit.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
-                TracePropertiesEdit.seMinimumX.ValueChanged += MinimumX_ValueChanged;
-                TracePropertiesEdit.seMinimumY.ValueChanged += MinimumY_ValueChanged;
-                TracePropertiesEdit.seMinimumZ.ValueChanged += MinimumZ_ValueChanged;
-                TracePropertiesEdit.seMaximumX.ValueChanged += MaximumX_ValueChanged;
-                TracePropertiesEdit.seMaximumY.ValueChanged += MaximumY_ValueChanged;
-                TracePropertiesEdit.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
-                TracePropertiesEdit.seStripeCountX.ValueChanged += StripeCountX_ValueChanged;
-                TracePropertiesEdit.seStripeCountY.ValueChanged += StripeCountY_ValueChanged;
-                TracePropertiesEdit.seStripeCountZ.ValueChanged += StripeCountZ_ValueChanged;
-                TracePropertiesEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
-                WorldForm.ViewTraceProperties.Click += ViewTraceProperties_Click;
+                ShapePropertiesEdit.edDescription.TextChanged += Description_TextChanged;
+                ShapePropertiesEdit.seLocationX.ValueChanged += LocationX_ValueChanged;
+                ShapePropertiesEdit.seLocationY.ValueChanged += LocationY_ValueChanged;
+                ShapePropertiesEdit.seLocationZ.ValueChanged += LocationZ_ValueChanged;
+                ShapePropertiesEdit.sePitch.ValueChanged += OrientationX_ValueChanged;
+                ShapePropertiesEdit.seYaw.ValueChanged += OrientationY_ValueChanged;
+                ShapePropertiesEdit.seRoll.ValueChanged += OrientationZ_ValueChanged;
+                ShapePropertiesEdit.seScaleX.ValueChanged += ScaleX_ValueChanged;
+                ShapePropertiesEdit.seScaleY.ValueChanged += ScaleY_ValueChanged;
+                ShapePropertiesEdit.seScaleZ.ValueChanged += ScaleZ_ValueChanged;
+                ShapePropertiesEdit.cbPattern.DrawItem += Pattern_DrawItem;
+                ShapePropertiesEdit.cbPattern.SelectedValueChanged += Pattern_SelectedValueChanged;
+                ShapePropertiesEdit.seMinimumX.ValueChanged += MinimumX_ValueChanged;
+                ShapePropertiesEdit.seMinimumY.ValueChanged += MinimumY_ValueChanged;
+                ShapePropertiesEdit.seMinimumZ.ValueChanged += MinimumZ_ValueChanged;
+                ShapePropertiesEdit.seMaximumX.ValueChanged += MaximumX_ValueChanged;
+                ShapePropertiesEdit.seMaximumY.ValueChanged += MaximumY_ValueChanged;
+                ShapePropertiesEdit.seMaximumZ.ValueChanged += MaximumZ_ValueChanged;
+                ShapePropertiesEdit.seStripeCountX.ValueChanged += StripeCountX_ValueChanged;
+                ShapePropertiesEdit.seStripeCountY.ValueChanged += StripeCountY_ValueChanged;
+                ShapePropertiesEdit.seStripeCountZ.ValueChanged += StripeCountZ_ValueChanged;
+                ShapePropertiesEdit.cbVisible.CheckedChanged += Visible_CheckedChanged;
+                WorldForm.ViewShapeProperties.Click += ViewShapeProperties_Click;
             }
             else
             {
                 _selectionCon.SelectionChanged -= Selection_Changed;
-                TracePropertiesEdit.edDescription.TextChanged -= Description_TextChanged;
-                TracePropertiesEdit.seLocationX.ValueChanged -= LocationX_ValueChanged;
-                TracePropertiesEdit.seLocationY.ValueChanged -= LocationY_ValueChanged;
-                TracePropertiesEdit.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
-                TracePropertiesEdit.sePitch.ValueChanged -= OrientationX_ValueChanged;
-                TracePropertiesEdit.seYaw.ValueChanged -= OrientationY_ValueChanged;
-                TracePropertiesEdit.seRoll.ValueChanged -= OrientationZ_ValueChanged;
-                TracePropertiesEdit.seScaleX.ValueChanged -= ScaleX_ValueChanged;
-                TracePropertiesEdit.seScaleY.ValueChanged -= ScaleY_ValueChanged;
-                TracePropertiesEdit.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
-                TracePropertiesEdit.cbPattern.DrawItem -= Pattern_DrawItem;
-                TracePropertiesEdit.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
-                TracePropertiesEdit.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
-                TracePropertiesEdit.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
-                TracePropertiesEdit.seMinimumZ.ValueChanged -= MinimumZ_ValueChanged;
-                TracePropertiesEdit.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
-                TracePropertiesEdit.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
-                TracePropertiesEdit.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
-                TracePropertiesEdit.seStripeCountX.ValueChanged -= StripeCountX_ValueChanged;
-                TracePropertiesEdit.seStripeCountY.ValueChanged -= StripeCountY_ValueChanged;
-                TracePropertiesEdit.seStripeCountZ.ValueChanged -= StripeCountZ_ValueChanged;
-                TracePropertiesEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
-                WorldForm.ViewTraceProperties.Click -= ViewTraceProperties_Click;
+                ShapePropertiesEdit.edDescription.TextChanged -= Description_TextChanged;
+                ShapePropertiesEdit.seLocationX.ValueChanged -= LocationX_ValueChanged;
+                ShapePropertiesEdit.seLocationY.ValueChanged -= LocationY_ValueChanged;
+                ShapePropertiesEdit.seLocationZ.ValueChanged -= LocationZ_ValueChanged;
+                ShapePropertiesEdit.sePitch.ValueChanged -= OrientationX_ValueChanged;
+                ShapePropertiesEdit.seYaw.ValueChanged -= OrientationY_ValueChanged;
+                ShapePropertiesEdit.seRoll.ValueChanged -= OrientationZ_ValueChanged;
+                ShapePropertiesEdit.seScaleX.ValueChanged -= ScaleX_ValueChanged;
+                ShapePropertiesEdit.seScaleY.ValueChanged -= ScaleY_ValueChanged;
+                ShapePropertiesEdit.seScaleZ.ValueChanged -= ScaleZ_ValueChanged;
+                ShapePropertiesEdit.cbPattern.DrawItem -= Pattern_DrawItem;
+                ShapePropertiesEdit.cbPattern.SelectedValueChanged -= Pattern_SelectedValueChanged;
+                ShapePropertiesEdit.seMinimumX.ValueChanged -= MinimumX_ValueChanged;
+                ShapePropertiesEdit.seMinimumY.ValueChanged -= MinimumY_ValueChanged;
+                ShapePropertiesEdit.seMinimumZ.ValueChanged -= MinimumZ_ValueChanged;
+                ShapePropertiesEdit.seMaximumX.ValueChanged -= MaximumX_ValueChanged;
+                ShapePropertiesEdit.seMaximumY.ValueChanged -= MaximumY_ValueChanged;
+                ShapePropertiesEdit.seMaximumZ.ValueChanged -= MaximumZ_ValueChanged;
+                ShapePropertiesEdit.seStripeCountX.ValueChanged -= StripeCountX_ValueChanged;
+                ShapePropertiesEdit.seStripeCountY.ValueChanged -= StripeCountY_ValueChanged;
+                ShapePropertiesEdit.seStripeCountZ.ValueChanged -= StripeCountZ_ValueChanged;
+                ShapePropertiesEdit.cbVisible.CheckedChanged -= Visible_CheckedChanged;
+                WorldForm.ViewShapeProperties.Click -= ViewShapeProperties_Click;
             }
             _selectionCon.Connect(connect);
         }
@@ -136,11 +136,11 @@
             base.UpdateAllProperties();
             CopySelectionToControl();
             ToolStripUtils.EnableControls(!Selection.IsEmpty,
-                TracePropertiesEdit.TableLayoutPanel.Controls.Cast<Control>()
+                ShapePropertiesEdit.TableLayoutPanel.Controls.Cast<Control>()
                     .Except(new Control[]
                     {
-                        TracePropertiesEdit.lblSelectedTraces,
-                        TracePropertiesEdit.SelectionToolbar
+                        ShapePropertiesEdit.lblSelectedShapes,
+                        ShapePropertiesEdit.SelectionToolbar
                     }));
         }
 
@@ -155,36 +155,36 @@
         protected override void Localize()
         {
             base.Localize();
-            Localize(Resources.WorldForm_ViewTraceProperties, WorldForm.ViewTraceProperties);
-            Localize(Resources.Control_Trace_Description, TracePropertiesEdit.lblDescription, TracePropertiesEdit.edDescription);
-            Localize(Resources.Control_Trace_Location, TracePropertiesEdit.lblLocation);
-            Localize(Resources.Control_Trace_LocationX, TracePropertiesEdit.seLocationX);
-            Localize(Resources.Control_Trace_LocationY, TracePropertiesEdit.seLocationY);
-            Localize(Resources.Control_Trace_LocationZ, TracePropertiesEdit.seLocationZ);
-            Localize(Resources.Control_Trace_Orientation, TracePropertiesEdit.lblOrientation);
-            Localize(Resources.Control_Trace_Pitch, TracePropertiesEdit.sePitch);
-            Localize(Resources.Control_Trace_Yaw, TracePropertiesEdit.seYaw);
-            Localize(Resources.Control_Trace_Roll, TracePropertiesEdit.seRoll);
-            Localize(Resources.Control_Trace_Scale, TracePropertiesEdit.cbScale);
-            Localize(Resources.Control_Trace_ScaleX, TracePropertiesEdit.seScaleX);
-            Localize(Resources.Control_Trace_ScaleY, TracePropertiesEdit.seScaleY);
-            Localize(Resources.Control_Trace_ScaleZ, TracePropertiesEdit.seScaleZ);
-            Localize(Resources.Control_Trace_Minimum, TracePropertiesEdit.cbMinimum);
-            Localize(Resources.Control_Trace_MinimumX, TracePropertiesEdit.seMinimumX);
-            Localize(Resources.Control_Trace_MinimumY, TracePropertiesEdit.seMinimumY);
-            Localize(Resources.Control_Trace_MinimumZ, TracePropertiesEdit.seMinimumZ);
-            Localize(Resources.Control_Trace_Maximum, TracePropertiesEdit.cbMaximum);
-            Localize(Resources.Control_Trace_MaximumX, TracePropertiesEdit.seMaximumX);
-            Localize(Resources.Control_Trace_MaximumY, TracePropertiesEdit.seMaximumY);
-            Localize(Resources.Control_Trace_MaximumZ, TracePropertiesEdit.seMaximumZ);
-            Localize(Resources.Control_Trace_Stripes, TracePropertiesEdit.cbStripes);
-            Localize(Resources.Control_Trace_StripesX, TracePropertiesEdit.seStripeCountX);
-            Localize(Resources.Control_Trace_StripesY, TracePropertiesEdit.seStripeCountY);
-            Localize(Resources.Control_Trace_StripesZ, TracePropertiesEdit.seStripeCountZ);
-            Localize(Resources.Control_Trace_Pattern, TracePropertiesEdit.lblPattern, TracePropertiesEdit.cbPattern);
-            Localize(Resources.Control_Trace_Visible, TracePropertiesEdit.cbVisible);
-            Localize(Resources.Control_Trace_Selection, TracePropertiesEdit.lblSelectedTraces);
-            Localize(Resources.WorldForm_Trace_All, TracePropertiesEdit.lblAll);
+            Localize(Resources.WorldForm_ViewShapeProperties, WorldForm.ViewShapeProperties);
+            Localize(Resources.Control_Shape_Description, ShapePropertiesEdit.lblDescription, ShapePropertiesEdit.edDescription);
+            Localize(Resources.Control_Shape_Location, ShapePropertiesEdit.lblLocation);
+            Localize(Resources.Control_Shape_LocationX, ShapePropertiesEdit.seLocationX);
+            Localize(Resources.Control_Shape_LocationY, ShapePropertiesEdit.seLocationY);
+            Localize(Resources.Control_Shape_LocationZ, ShapePropertiesEdit.seLocationZ);
+            Localize(Resources.Control_Shape_Orientation, ShapePropertiesEdit.lblOrientation);
+            Localize(Resources.Control_Shape_Pitch, ShapePropertiesEdit.sePitch);
+            Localize(Resources.Control_Shape_Yaw, ShapePropertiesEdit.seYaw);
+            Localize(Resources.Control_Shape_Roll, ShapePropertiesEdit.seRoll);
+            Localize(Resources.Control_Shape_Scale, ShapePropertiesEdit.cbScale);
+            Localize(Resources.Control_Shape_ScaleX, ShapePropertiesEdit.seScaleX);
+            Localize(Resources.Control_Shape_ScaleY, ShapePropertiesEdit.seScaleY);
+            Localize(Resources.Control_Shape_ScaleZ, ShapePropertiesEdit.seScaleZ);
+            Localize(Resources.Control_Shape_Minimum, ShapePropertiesEdit.cbMinimum);
+            Localize(Resources.Control_Shape_MinimumX, ShapePropertiesEdit.seMinimumX);
+            Localize(Resources.Control_Shape_MinimumY, ShapePropertiesEdit.seMinimumY);
+            Localize(Resources.Control_Shape_MinimumZ, ShapePropertiesEdit.seMinimumZ);
+            Localize(Resources.Control_Shape_Maximum, ShapePropertiesEdit.cbMaximum);
+            Localize(Resources.Control_Shape_MaximumX, ShapePropertiesEdit.seMaximumX);
+            Localize(Resources.Control_Shape_MaximumY, ShapePropertiesEdit.seMaximumY);
+            Localize(Resources.Control_Shape_MaximumZ, ShapePropertiesEdit.seMaximumZ);
+            Localize(Resources.Control_Shape_Stripes, ShapePropertiesEdit.cbStripes);
+            Localize(Resources.Control_Shape_StripesX, ShapePropertiesEdit.seStripeCountX);
+            Localize(Resources.Control_Shape_StripesY, ShapePropertiesEdit.seStripeCountY);
+            Localize(Resources.Control_Shape_StripesZ, ShapePropertiesEdit.seStripeCountZ);
+            Localize(Resources.Control_Shape_Pattern, ShapePropertiesEdit.lblPattern, ShapePropertiesEdit.cbPattern);
+            Localize(Resources.Control_Shape_Visible, ShapePropertiesEdit.cbVisible);
+            Localize(Resources.Control_Shape_Selection, ShapePropertiesEdit.lblSelectedShapes);
+            Localize(Resources.WorldForm_Shape_All, ShapePropertiesEdit.lblAll);
         }
 
         protected override void OnSelectionEdit()
@@ -203,47 +203,47 @@
             foreach (var property in properties)
                 switch (property)
                 {
-                    case Property.TraceDescription:
-                        TracePropertiesEdit.edDescription.Text = Selection.Description;
+                    case Property.ShapeDescription:
+                        ShapePropertiesEdit.edDescription.Text = Selection.Description;
                         break;
-                    case Property.TraceLocation:
-                        TracePropertiesEdit.seLocationX.Value = (decimal)Selection.Location.X;
-                        TracePropertiesEdit.seLocationY.Value = (decimal)Selection.Location.Y;
-                        TracePropertiesEdit.seLocationZ.Value = (decimal)Selection.Location.Z;
+                    case Property.ShapeLocation:
+                        ShapePropertiesEdit.seLocationX.Value = (decimal)Selection.Location.X;
+                        ShapePropertiesEdit.seLocationY.Value = (decimal)Selection.Location.Y;
+                        ShapePropertiesEdit.seLocationZ.Value = (decimal)Selection.Location.Z;
                         break;
-                    case Property.TraceMaximum:
-                        TracePropertiesEdit.seMaximumX.Value = (decimal)Selection.Maximum.X;
-                        TracePropertiesEdit.seMaximumY.Value = (decimal)Selection.Maximum.Y;
-                        TracePropertiesEdit.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
+                    case Property.ShapeMaximum:
+                        ShapePropertiesEdit.seMaximumX.Value = (decimal)Selection.Maximum.X;
+                        ShapePropertiesEdit.seMaximumY.Value = (decimal)Selection.Maximum.Y;
+                        ShapePropertiesEdit.seMaximumZ.Value = (decimal)Selection.Maximum.Z;
                         break;
-                    case Property.TraceMinimum:
-                        TracePropertiesEdit.seMinimumX.Value = (decimal)Selection.Minimum.X;
-                        TracePropertiesEdit.seMinimumY.Value = (decimal)Selection.Minimum.Y;
-                        TracePropertiesEdit.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
+                    case Property.ShapeMinimum:
+                        ShapePropertiesEdit.seMinimumX.Value = (decimal)Selection.Minimum.X;
+                        ShapePropertiesEdit.seMinimumY.Value = (decimal)Selection.Minimum.Y;
+                        ShapePropertiesEdit.seMinimumZ.Value = (decimal)Selection.Minimum.Z;
                         break;
-                    case Property.TraceOrientation:
-                        TracePropertiesEdit.sePitch.Value = (decimal)Selection.Orientation.X;
-                        TracePropertiesEdit.seYaw.Value = (decimal)Selection.Orientation.Y;
-                        TracePropertiesEdit.seRoll.Value = (decimal)Selection.Orientation.Z;
+                    case Property.ShapeOrientation:
+                        ShapePropertiesEdit.sePitch.Value = (decimal)Selection.Orientation.X;
+                        ShapePropertiesEdit.seYaw.Value = (decimal)Selection.Orientation.Y;
+                        ShapePropertiesEdit.seRoll.Value = (decimal)Selection.Orientation.Z;
                         break;
-                    case Property.TracePattern:
-                        TracePropertiesEdit.cbPattern.SelectedItem = Selection.Pattern;
+                    case Property.ShapePattern:
+                        ShapePropertiesEdit.cbPattern.SelectedItem = Selection.Pattern;
                         break;
-                    case Property.TraceScale:
-                        TracePropertiesEdit.seScaleX.Value = (decimal)Selection.Scale.X;
-                        TracePropertiesEdit.seScaleY.Value = (decimal)Selection.Scale.Y;
-                        TracePropertiesEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
+                    case Property.ShapeScale:
+                        ShapePropertiesEdit.seScaleX.Value = (decimal)Selection.Scale.X;
+                        ShapePropertiesEdit.seScaleY.Value = (decimal)Selection.Scale.Y;
+                        ShapePropertiesEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
                         break;
-                    case Property.TraceStripeCount:
-                        TracePropertiesEdit.seStripeCountX.Value = (decimal)Selection.StripeCount.X;
-                        TracePropertiesEdit.seStripeCountY.Value = (decimal)Selection.StripeCount.Y;
-                        TracePropertiesEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
+                    case Property.ShapeStripeCount:
+                        ShapePropertiesEdit.seStripeCountX.Value = (decimal)Selection.StripeCount.X;
+                        ShapePropertiesEdit.seStripeCountY.Value = (decimal)Selection.StripeCount.Y;
+                        ShapePropertiesEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
                         break;
-                    case Property.Traces:
+                    case Property.Shapes:
                         OnSelectionEdit();
                         break;
-                    case Property.TraceVisible:
-                        TracePropertiesEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);
+                    case Property.ShapeVisible:
+                        ShapePropertiesEdit.cbVisible.CheckState = GetCheckState(Selection.Visible);
                         break;
                 }
             Updating = false;
@@ -256,7 +256,7 @@
             if (_selectionUpdating)
                 return;
             _selectionUpdating = true;
-            Selection.Set(_selectionCon.Selection.Select(p => Scene.Traces[p]));
+            Selection.Set(_selectionCon.Selection.Select(p => Scene.Shapes[p]));
             _selectionUpdating = false;
         }
 
@@ -265,20 +265,20 @@
             if (_selectionUpdating)
                 return;
             _selectionUpdating = true;
-            _selectionCon.TraceCount = Scene.Traces.Count;
-            _selectionCon.SetSelection(Selection.GetTraceIndices().ToList());
+            _selectionCon.ShapeCount = Scene.Shapes.Count;
+            _selectionCon.SetSelection(Selection.GetShapeIndices().ToList());
             _selectionUpdating = false;
         }
 
         private void InitLocalControls()
         {
-            TracePropertiesEdit.seStripeCountX.Minimum =
-            TracePropertiesEdit.seStripeCountY.Minimum =
-            TracePropertiesEdit.seStripeCountZ.Minimum = 0;
-            TracePropertiesEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
+            ShapePropertiesEdit.seStripeCountX.Minimum =
+            ShapePropertiesEdit.seStripeCountY.Minimum =
+            ShapePropertiesEdit.seStripeCountZ.Minimum = 0;
+            ShapePropertiesEdit.cbPattern.Items.AddRange(Enum.GetValues(typeof(Pattern)).Cast<object>().ToArray());
         }
 
-        private void Run(Func<Trace, ICommand> command)
+        private void Run(Func<Shape, ICommand> command)
         {
             if (!Selection.IsEmpty)
                 Selection.ForEach(p => Run(command(p)));
@@ -305,69 +305,69 @@
     /// <summary>
     /// Command runners.
     /// </summary>
-    public partial class TracePropertiesCon
+    public partial class ShapePropertiesCon
     {
-        private void Description_TextChanged(object sender, EventArgs e) => Run(p => new DescriptionCommand(p.Index, TracePropertiesEdit.edDescription.Text));
+        private void Description_TextChanged(object sender, EventArgs e) => Run(p => new DescriptionCommand(p.Index, ShapePropertiesEdit.edDescription.Text));
 
         private void LocationX_ValueChanged(object sender, EventArgs e) => Run(p => new LocationCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.seLocationX.Value,
+            (float)ShapePropertiesEdit.seLocationX.Value,
             p.Location.Y,
             p.Location.Z)));
 
         private void LocationY_ValueChanged(object sender, EventArgs e) => Run(p => new LocationCommand(p.Index, new Vector3(
             p.Location.X,
-            (float)TracePropertiesEdit.seLocationY.Value,
+            (float)ShapePropertiesEdit.seLocationY.Value,
             p.Location.Z)));
 
         private void LocationZ_ValueChanged(object sender, EventArgs e) => Run(p => new LocationCommand(p.Index, new Vector3(
             p.Location.X,
             p.Location.Y,
-            (float)TracePropertiesEdit.seLocationZ.Value)));
+            (float)ShapePropertiesEdit.seLocationZ.Value)));
 
         private void MaximumX_ValueChanged(object sender, EventArgs e) => Run(p => new MaximumCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.seMaximumX.Value,
+            (float)ShapePropertiesEdit.seMaximumX.Value,
             p.Maximum.Y,
             p.Maximum.Z)));
 
         private void MaximumY_ValueChanged(object sender, EventArgs e) => Run(p => new MaximumCommand(p.Index, new Vector3(
             p.Maximum.X,
-            (float)TracePropertiesEdit.seMaximumY.Value,
+            (float)ShapePropertiesEdit.seMaximumY.Value,
             p.Maximum.Z)));
 
         private void MaximumZ_ValueChanged(object sender, EventArgs e) => Run(p => new MaximumCommand(p.Index, new Vector3(
             p.Maximum.X,
             p.Maximum.Y,
-            (float)TracePropertiesEdit.seMaximumZ.Value)));
+            (float)ShapePropertiesEdit.seMaximumZ.Value)));
 
         private void MinimumX_ValueChanged(object sender, EventArgs e) => Run(p => new MinimumCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.seMinimumX.Value,
+            (float)ShapePropertiesEdit.seMinimumX.Value,
             p.Minimum.Y,
             p.Minimum.Z)));
 
         private void MinimumY_ValueChanged(object sender, EventArgs e) => Run(p => new MinimumCommand(p.Index, new Vector3(
             p.Minimum.X,
-            (float)TracePropertiesEdit.seMinimumY.Value,
+            (float)ShapePropertiesEdit.seMinimumY.Value,
             p.Minimum.Z)));
 
         private void MinimumZ_ValueChanged(object sender, EventArgs e) => Run(p => new MinimumCommand(p.Index, new Vector3(
             p.Minimum.X,
             p.Minimum.Y,
-            (float)TracePropertiesEdit.seMinimumZ.Value)));
+            (float)ShapePropertiesEdit.seMinimumZ.Value)));
 
         private void OrientationX_ValueChanged(object sender, EventArgs e) => Run(p => new OrientationCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.sePitch.Value,
+            (float)ShapePropertiesEdit.sePitch.Value,
             p.Orientation.Y,
             p.Orientation.Z)));
 
         private void OrientationY_ValueChanged(object sender, EventArgs e) => Run(p => new OrientationCommand(p.Index, new Vector3(
             p.Orientation.X,
-            (float)TracePropertiesEdit.seYaw.Value,
+            (float)ShapePropertiesEdit.seYaw.Value,
             p.Orientation.Z)));
 
         private void OrientationZ_ValueChanged(object sender, EventArgs e) => Run(p => new OrientationCommand(p.Index, new Vector3(
             p.Orientation.X,
             p.Orientation.Y,
-            (float)TracePropertiesEdit.seRoll.Value)));
+            (float)ShapePropertiesEdit.seRoll.Value)));
 
         private void Pattern_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -380,40 +380,40 @@
                 text: comboBox.Items[e.Index].ToString());
         }
 
-        private void Pattern_SelectedValueChanged(object sender, EventArgs e) => Run(p => new PatternCommand(p.Index, (Pattern)TracePropertiesEdit.cbPattern.SelectedItem));
+        private void Pattern_SelectedValueChanged(object sender, EventArgs e) => Run(p => new PatternCommand(p.Index, (Pattern)ShapePropertiesEdit.cbPattern.SelectedItem));
 
         private void ScaleX_ValueChanged(object sender, EventArgs e) => Run(p => new ScaleCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.seScaleX.Value,
+            (float)ShapePropertiesEdit.seScaleX.Value,
             p.Scale.Y,
             p.Scale.Z)));
 
         private void ScaleY_ValueChanged(object sender, EventArgs e) => Run(p => new ScaleCommand(p.Index, new Vector3(
             p.Scale.X,
-            (float)TracePropertiesEdit.seScaleY.Value,
+            (float)ShapePropertiesEdit.seScaleY.Value,
             p.Scale.Z)));
 
         private void ScaleZ_ValueChanged(object sender, EventArgs e) => Run(p => new ScaleCommand(p.Index, new Vector3(
             p.Scale.X,
             p.Scale.Y,
-            (float)TracePropertiesEdit.seScaleZ.Value)));
+            (float)ShapePropertiesEdit.seScaleZ.Value)));
 
         private void StripeCountX_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
-            (float)TracePropertiesEdit.seStripeCountX.Value,
+            (float)ShapePropertiesEdit.seStripeCountX.Value,
             p.StripeCount.Y,
             p.StripeCount.Z)));
 
         private void StripeCountY_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
             p.StripeCount.X,
-            (float)TracePropertiesEdit.seStripeCountY.Value,
+            (float)ShapePropertiesEdit.seStripeCountY.Value,
             p.StripeCount.Z)));
 
         private void StripeCountZ_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
             p.StripeCount.X,
             p.StripeCount.Y,
-            (float)TracePropertiesEdit.seStripeCountZ.Value)));
+            (float)ShapePropertiesEdit.seStripeCountZ.Value)));
 
-        private void ViewTraceProperties_Click(object sender, EventArgs e) => ToggleVisibility();
+        private void ViewShapeProperties_Click(object sender, EventArgs e) => ToggleVisibility();
 
-        private void Visible_CheckedChanged(object sender, EventArgs e) => Run(p => new VisibleCommand(p.Index, TracePropertiesEdit.cbVisible.Checked));
+        private void Visible_CheckedChanged(object sender, EventArgs e) => Run(p => new VisibleCommand(p.Index, ShapePropertiesEdit.cbVisible.Checked));
     }
 }

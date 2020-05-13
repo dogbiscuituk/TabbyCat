@@ -1,6 +1,6 @@
 ﻿namespace TabbyCat.UserControls
 {
-    partial class TracePropertiesEdit
+    partial class ShapePropertiesEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.cbMaximum = new System.Windows.Forms.CheckBox();
             this.cbMinimum = new System.Windows.Forms.CheckBox();
             this.cbScale = new System.Windows.Forms.CheckBox();
-            this.lblSelectedTraces = new System.Windows.Forms.Label();
+            this.lblSelectedShapes = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.edDescription = new System.Windows.Forms.TextBox();
@@ -97,7 +97,7 @@
             this.TableLayoutPanel.Controls.Add(this.cbMaximum, 0, 5);
             this.TableLayoutPanel.Controls.Add(this.cbMinimum, 0, 4);
             this.TableLayoutPanel.Controls.Add(this.cbScale, 0, 3);
-            this.TableLayoutPanel.Controls.Add(this.lblSelectedTraces, 0, 8);
+            this.TableLayoutPanel.Controls.Add(this.lblSelectedShapes, 0, 8);
             this.TableLayoutPanel.Controls.Add(this.lblLocation, 0, 1);
             this.TableLayoutPanel.Controls.Add(this.lblDescription, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.edDescription, 1, 0);
@@ -215,19 +215,19 @@
             this.cbScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbScale.UseVisualStyleBackColor = false;
             // 
-            // lblSelectedTraces
+            // lblSelectedShapes
             // 
-            this.lblSelectedTraces.AutoSize = true;
-            this.lblSelectedTraces.BackColor = System.Drawing.SystemColors.Window;
-            this.lblSelectedTraces.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblSelectedTraces.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedTraces.Location = new System.Drawing.Point(3, 219);
-            this.lblSelectedTraces.Margin = new System.Windows.Forms.Padding(3);
-            this.lblSelectedTraces.Name = "lblSelectedTraces";
-            this.lblSelectedTraces.Size = new System.Drawing.Size(79, 17);
-            this.lblSelectedTraces.TabIndex = 29;
-            this.lblSelectedTraces.Text = "Selection";
-            this.lblSelectedTraces.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSelectedShapes.AutoSize = true;
+            this.lblSelectedShapes.BackColor = System.Drawing.SystemColors.Window;
+            this.lblSelectedShapes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblSelectedShapes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedShapes.Location = new System.Drawing.Point(3, 219);
+            this.lblSelectedShapes.Margin = new System.Windows.Forms.Padding(3);
+            this.lblSelectedShapes.Name = "lblSelectedShapes";
+            this.lblSelectedShapes.Size = new System.Drawing.Size(79, 17);
+            this.lblSelectedShapes.TabIndex = 29;
+            this.lblSelectedShapes.Text = "Selection";
+            this.lblSelectedShapes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblLocation
             // 
@@ -712,9 +712,9 @@
             this.lblAll.Name = "lblAll";
             this.lblAll.Size = new System.Drawing.Size(22, 17);
             this.lblAll.Text = "All";
-            this.lblAll.ToolTipText = "Select or deselect all traces";
+            this.lblAll.ToolTipText = "Select or deselect all shapes";
             // 
-            // TracePropertiesEdit
+            // ShapePropertiesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -723,7 +723,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.TableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "TracePropertiesEdit";
+            this.Name = "ShapePropertiesEdit";
             this.Size = new System.Drawing.Size(305, 239);
             this.TableLayoutPanel.ResumeLayout(false);
             this.TableLayoutPanel.PerformLayout();
@@ -780,7 +780,7 @@
         public System.Windows.Forms.NumericUpDown seStripeCountZ;
         public System.Windows.Forms.ComboBox cbPattern;
         public System.Windows.Forms.CheckBox cbVisible;
-        public System.Windows.Forms.Label lblSelectedTraces;
+        public System.Windows.Forms.Label lblSelectedShapes;
         public CustomControls.JmkToolStrip SelectionToolbar;
         public System.Windows.Forms.ToolStripLabel lblAll;
         public System.Windows.Forms.CheckBox cbScale;

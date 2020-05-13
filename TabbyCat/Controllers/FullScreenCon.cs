@@ -58,8 +58,8 @@
                 SceneCodeCon,
                 ScenePropertiesCon,
                 ShaderCodeCon,
-                TraceCodeCon,
-                TracePropertiesCon
+                ShapeCodeCon,
+                ShapePropertiesCon
             },
                 p => p.SetVisibility(!_fullScreen));
             WorldForm.MainMenu.Visible =

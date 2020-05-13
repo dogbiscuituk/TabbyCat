@@ -59,17 +59,17 @@
             FindBreaks(text);
             if (!_breaks.Any())
                 return;
-            for (var traceNumber = 0; traceNumber <= Scene.Traces.Count; traceNumber++)
+            for (var shapeNumber = 0; shapeNumber <= Scene.Shapes.Count; shapeNumber++)
             {
                 string
-                    oldScript = traceNumber == 0 ? Scene.GetScript(ShaderType) : Scene.Traces[traceNumber - 1].GetScript(ShaderType),
-                    newScript = ExtractScript(text, traceNumber).Outdent("  ");
+                    oldScript = shapeNumber == 0 ? Scene.GetScript(ShaderType) : Scene.Shapes[shapeNumber - 1].GetScript(ShaderType),
+                    newScript = ExtractScript(text, shapeNumber).Outdent("  ");
                 if (newScript == oldScript)
                     continue;
-                if (traceNumber == 0)
+                if (shapeNumber == 0)
                     Run(new SceneShaderCommand(ShaderType, newScript));
                 else
-                    Run(new TraceShaderCommand(traceNumber - 1, ShaderType, newScript));
+                    Run(new ShapeShaderCommand(shapeNumber - 1, ShaderType, newScript));
             }
         }
 
@@ -83,9 +83,9 @@
             return ok;
         }
 
-        private string ExtractScript(string text, int traceNumber)
+        private string ExtractScript(string text, int shapeNumber)
         {
-            var breakIndex = 2 * traceNumber + 1;
+            var breakIndex = 2 * shapeNumber + 1;
             int start = _breaks[breakIndex], end = _breaks[breakIndex + 1];
             return text.GetLines(start, end - start);
         }
@@ -96,8 +96,8 @@
             if (string.IsNullOrWhiteSpace(script))
                 return;
             var ok = AddBreak(0) && AddBreak(script.FindFirstTokenLine(Tokens.BeginScene) + 2) && AddBreak(script.FindFirstTokenLine(Tokens.EndScene) - 1);
-            for (var index = 0; index < Scene.Traces.Count; index++)
-                ok &= AddBreak(script.FindFirstTokenLine(Tokens.BeginTrace(index)) + 2) & AddBreak(script.FindFirstTokenLine(Tokens.EndTrace(index)) - 1);
+            for (var index = 0; index < Scene.Shapes.Count; index++)
+                ok &= AddBreak(script.FindFirstTokenLine(Tokens.BeginShape(index)) + 2) & AddBreak(script.FindFirstTokenLine(Tokens.EndShape(index)) - 1);
             ok &= AddBreak(script.GetLineCount());
             if (!ok)
                 _breaks.Clear();

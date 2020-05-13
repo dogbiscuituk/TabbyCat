@@ -149,7 +149,7 @@ keeping it pointed at an object|^Right</value>
   <data name="CodeForm_Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="Control_Trace_StripesX" xml:space="preserve">
+  <data name="Control_Shape_StripesX" xml:space="preserve">
     <value>|The number of stripes in the x-direction</value>
   </data>
   <data name="DataContainer_MoveNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -182,7 +182,7 @@ keeping it pointed at an object|^Right</value>
   <data name="CodeForm_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="Control_Trace_ScaleY" xml:space="preserve">
+  <data name="Control_Shape_ScaleY" xml:space="preserve">
     <value>|The y-component of scale</value>
   </data>
   <data name="WorldForm_FileNewEmptyScene" xml:space="preserve">
@@ -233,7 +233,7 @@ keeping it pointed at an object|^Right</value>
   <data name="SignalsForm_WaveTypeSine" xml:space="preserve">
     <value>S&amp;ine|Sinusoidal wave</value>
   </data>
-  <data name="Control_Trace_LocationY" xml:space="preserve">
+  <data name="Control_Shape_LocationY" xml:space="preserve">
     <value>|Location y</value>
   </data>
   <data name="Text_Properties" xml:space="preserve">
@@ -244,9 +244,6 @@ keeping it pointed at an object|^Right</value>
   </data>
   <data name="WaveType_RampUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WaveType_RampUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Trace_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Scene_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\scene_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -319,9 +316,6 @@ keeping it pointed at an object|^Right</value>
   <data name="openfolderHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfolderHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="Control_Camera_Position" xml:space="preserve">
     <value>Position|Camera position</value>
   </data>
@@ -349,32 +343,29 @@ keeping it pointed at an object|^Right</value>
   <data name="Format_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\snippets\format_scene.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Control_Trace_Pattern" xml:space="preserve">
-    <value>Pattern|The trace rendering pattern</value>
+  <data name="Control_Shape_Pattern" xml:space="preserve">
+    <value>Pattern|The shape rendering pattern</value>
   </data>
-  <data name="TracePropertiesForm_Text" xml:space="preserve">
-    <value>Trace properties</value>
+  <data name="ShapePropertiesForm_Text" xml:space="preserve">
+    <value>Shape properties</value>
   </data>
-  <data name="Control_Trace_MaximumZ" xml:space="preserve">
+  <data name="Control_Shape_MaximumZ" xml:space="preserve">
     <value>|The maximum value of z</value>
   </data>
   <data name="WorldForm_AddMenu" xml:space="preserve">
-    <value>&amp;Add|Add a new trace or signal to this scene</value>
+    <value>&amp;Add|Add a new shape or signal to this scene</value>
   </data>
   <data name="PieChart3DHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieChart3DHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WorldForm_EditSelectAll" xml:space="preserve">
-    <value>Select &amp;all|Select all traces</value>
+    <value>Select &amp;all|Select all shapes</value>
   </data>
   <data name="Control_Camera_Yaw" xml:space="preserve">
     <value>|Camera yaw (degrees)</value>
   </data>
   <data name="Control_Scene_FarPlaneZ" xml:space="preserve">
     <value>|The z-component of the far projective plane</value>
-  </data>
-  <data name="Format_Trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\format_trace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PointerHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PointerHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -390,17 +381,14 @@ keeping it pointed at an object|^Left</value>
     <value>&amp;Reset|Return the camera to its default position &amp; direction, 
 as it was after the last new/open/save operation|^Home</value>
   </data>
-  <data name="Trace_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="ScenePropertiesForm_Text" xml:space="preserve">
     <value>Scene properties</value>
   </data>
   <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WorldForm_ViewTraceCode" xml:space="preserve">
-    <value>Trace code|Show or hide the trace code editor</value>
+  <data name="WorldForm_ViewShapeCode" xml:space="preserve">
+    <value>Shape code|Show or hide the shape code editor</value>
   </data>
   <data name="SpeechMicHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeechMicHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -433,9 +421,6 @@ and reset the timer to zero</value>
   </data>
   <data name="SignalsForm_WaveTypeSquare" xml:space="preserve">
     <value>&amp;Square|Square wave</value>
-  </data>
-  <data name="Trace_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Control_Scene_Samples" xml:space="preserve">
     <value>#Samples|The number of samples interpolated over</value>
@@ -470,8 +455,8 @@ and reset the timer to zero</value>
   <data name="WorldForm_HelpMenu" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
-  <data name="Control_Trace_Roll" xml:space="preserve">
-    <value>|Trace roll (degrees)</value>
+  <data name="Control_Shape_Roll" xml:space="preserve">
+    <value>|Shape roll (degrees)</value>
   </data>
   <data name="SendToBackHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SendToBackHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -505,27 +490,27 @@ The value of a constant DC signal.</value>
   <data name="CodeForm_Print" xml:space="preserve">
     <value>Print...</value>
   </data>
-  <data name="Control_Trace_LocationZ" xml:space="preserve">
+  <data name="Control_Shape_LocationZ" xml:space="preserve">
     <value>|Location z</value>
   </data>
   <data name="FlipHorizontalHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontalHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_Orientation" xml:space="preserve">
-    <value>Orientation|Trace orientation (degrees)</value>
+  <data name="Control_Shape_Orientation" xml:space="preserve">
+    <value>Orientation|Shape orientation (degrees)</value>
   </data>
   <data name="ShowGridlinesHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShowGridlinesHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WorldForm_Trace_All" xml:space="preserve">
+  <data name="WorldForm_Shape_All" xml:space="preserve">
     <value>All</value>
     <comment>Do not provide a tooltip (one will be supplied by the toolbar's MouseMove event).</comment>
   </data>
   <data name="FFwdHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FFwdHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WorldForm_ViewTraceProperties" xml:space="preserve">
-    <value>Trace properties|Show or hide the trace properties editor</value>
+  <data name="WorldForm_ViewShapeProperties" xml:space="preserve">
+    <value>Shape properties|Show or hide the shape properties editor</value>
   </data>
   <data name="WorldForm_View" xml:space="preserve">
     <value>&amp;View|Display of edit controls</value>
@@ -543,7 +528,7 @@ is stereoscopic</value>
   <data name="OptionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OptionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_MaximumX" xml:space="preserve">
+  <data name="Control_Shape_MaximumX" xml:space="preserve">
     <value>|The maximum value of x</value>
   </data>
   <data name="Scene_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -564,7 +549,7 @@ is stereoscopic</value>
   <data name="A_Sample_Entry_2" xml:space="preserve">
     <value>Copy|Copy to clipboard|^C</value>
   </data>
-  <data name="Control_Trace_ScaleX" xml:space="preserve">
+  <data name="Control_Shape_ScaleX" xml:space="preserve">
     <value>|The x-component of scale</value>
   </data>
   <data name="Control_Scene_NearPlaneY" xml:space="preserve">
@@ -573,8 +558,8 @@ is stereoscopic</value>
   <data name="GraphicsStateForm_Text" xml:space="preserve">
     <value>Graphics state</value>
   </data>
-  <data name="Control_Trace_Stripes" xml:space="preserve">
-    <value>#Stripes|The number of stripes in each dimension of the trace 
+  <data name="Control_Shape_Stripes" xml:space="preserve">
+    <value>#Stripes|The number of stripes in each dimension of the shape 
 Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="SaveFormDesignHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -586,8 +571,8 @@ Select the checkbox to adjust the three values at once</value>
   <data name="SignalsForm_NameLabel" xml:space="preserve">
     <value>Name|The name given to this signal in code</value>
   </data>
-  <data name="Control_Trace_Scale" xml:space="preserve">
-    <value>Scale|Trace magnification factor 
+  <data name="Control_Shape_Scale" xml:space="preserve">
+    <value>Scale|Shape magnification factor 
 Select the checkbox to adjust the three values at once</value>
   </data>
   <data name="PasteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -611,11 +596,8 @@ Select the checkbox to adjust the three values at once</value>
   <data name="RightArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RightArrowHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="WorldForm_EditDelete" xml:space="preserve">
-    <value>&amp;Delete|Delete selected trace(s)</value>
+    <value>&amp;Delete|Delete selected shape(s)</value>
   </data>
   <data name="SignalsForm_WaveTypeRampUp" xml:space="preserve">
     <value>Ramp up|Sawtooth wave</value>
@@ -635,7 +617,7 @@ Select the checkbox to adjust the three values at once</value>
   <data name="WorldForm_FileSaveAs" xml:space="preserve">
     <value>Save &amp;as...|Save this scene under a different filename</value>
   </data>
-  <data name="Control_Trace_MinimumY" xml:space="preserve">
+  <data name="Control_Shape_MinimumY" xml:space="preserve">
     <value>|The minimum value of y</value>
   </data>
   <data name="ShaderRegion_All" xml:space="preserve">
@@ -647,11 +629,11 @@ Select the checkbox to adjust the three values at once</value>
   <data name="WorldForm_CameraMenu" xml:space="preserve">
     <value>&amp;Camera</value>
   </data>
-  <data name="Control_Trace_LocationX" xml:space="preserve">
+  <data name="Control_Shape_LocationX" xml:space="preserve">
     <value>|Location x</value>
   </data>
-  <data name="Control_Trace_Selection" xml:space="preserve">
-    <value>Selection|The set of selected traces</value>
+  <data name="Control_Shape_Selection" xml:space="preserve">
+    <value>Selection|The set of selected shapes</value>
   </data>
   <data name="Control_Scene_FarPlaneY" xml:space="preserve">
     <value>|The y-component of the far projective plane</value>
@@ -709,8 +691,8 @@ Add a new surface to this scene|F3</value>
   <data name="Control_Scene_Title" xml:space="preserve">
     <value>Scene Title|The title of this scene</value>
   </data>
-  <data name="Control_Trace_Location" xml:space="preserve">
-    <value>Location|Trace location</value>
+  <data name="Control_Shape_Location" xml:space="preserve">
+    <value>Location|Shape location</value>
   </data>
   <data name="WorldForm_CameraStrafeLeft" xml:space="preserve">
     <value>&amp;Left|Strafe to the left|Shift+^Left</value>
@@ -760,9 +742,6 @@ Add a new surface to this scene|F3</value>
   <data name="EditTableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditTableHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trace_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\snippets\trace_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="ScenePropertiesForm_TabText" xml:space="preserve">
     <value>Scene properties</value>
   </data>
@@ -778,8 +757,8 @@ Add a new surface to this scene|F3</value>
   <data name="SignalsForm_DeleteAllButton" xml:space="preserve">
     <value>Delete all existing signals from this scene</value>
   </data>
-  <data name="Text_SelectDeselectAllTraces" xml:space="preserve">
-    <value>Select / deselect all traces</value>
+  <data name="Text_SelectDeselectAllShapes" xml:space="preserve">
+    <value>Select / deselect all shapes</value>
   </data>
   <data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -791,8 +770,8 @@ Add a new surface to this scene|F3</value>
     <value>&amp;Down|Move the camera down while
 keeping it pointed at an object|^Down</value>
   </data>
-  <data name="Control_Trace_Visible" xml:space="preserve">
-    <value>Visible|Whether or not a trace is visible</value>
+  <data name="Control_Shape_Visible" xml:space="preserve">
+    <value>Visible|Whether or not a shape is visible</value>
   </data>
   <data name="WaveType_Square" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WaveType_Square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -812,16 +791,16 @@ keeping it pointed at an object|^Down</value>
   <data name="ShaderForm_TabText" xml:space="preserve">
     <value>{0} code</value>
   </data>
-  <data name="Control_Trace_MinimumX" xml:space="preserve">
+  <data name="Control_Shape_MinimumX" xml:space="preserve">
     <value>|The minimum value of x</value>
   </data>
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TracePropertiesForm_TabText" xml:space="preserve">
-    <value>Trace properties</value>
+  <data name="ShapePropertiesForm_TabText" xml:space="preserve">
+    <value>Shape properties</value>
   </data>
-  <data name="Control_Trace_MinimumZ" xml:space="preserve">
+  <data name="Control_Shape_MinimumZ" xml:space="preserve">
     <value>|The minimum value of z</value>
   </data>
   <data name="eps_openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -863,13 +842,13 @@ keeping it pointed at an object|^Down</value>
   <data name="SignalsForm_WaveType" xml:space="preserve">
     <value>|Change the waveform of this signal</value>
   </data>
-  <data name="ShaderRegion_Trace" xml:space="preserve">
-    <value>Trace</value>
+  <data name="ShaderRegion_Shape" xml:space="preserve">
+    <value>Shape</value>
   </data>
   <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_StripesY" xml:space="preserve">
+  <data name="Control_Shape_StripesY" xml:space="preserve">
     <value>|The number of stripes in the y-direction</value>
   </data>
   <data name="SaveRtfDialog_Filter" xml:space="preserve">
@@ -891,14 +870,14 @@ targeted by this code</value>
   <data name="GoRtlHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoRtlHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_ScaleZ" xml:space="preserve">
+  <data name="Control_Shape_ScaleZ" xml:space="preserve">
     <value>|The z-component of scale</value>
   </data>
   <data name="SignalsForm_WaveTypeRampDown" xml:space="preserve">
     <value>Ramp down|Reverse sawtooth wave</value>
   </data>
   <data name="WorldForm_EditInvertSelection" xml:space="preserve">
-    <value>&amp;Invert selection|Toggle the selected status of each trace</value>
+    <value>&amp;Invert selection|Toggle the selected status of each shape</value>
   </data>
   <data name="Control_Scene_Projection" xml:space="preserve">
     <value>Projection|Scene projection type</value>
@@ -921,7 +900,7 @@ targeted by this code</value>
   <data name="FindNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FindNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_MaximumY" xml:space="preserve">
+  <data name="Control_Shape_MaximumY" xml:space="preserve">
     <value>|The maximum value of y</value>
   </data>
   <data name="WorldForm_TimePause" xml:space="preserve">
@@ -932,7 +911,7 @@ targeted by this code</value>
 Add a new curve to this scene|F2</value>
   </data>
   <data name="WorldForm_EditCopy" xml:space="preserve">
-    <value>&amp;Copy|Copy selected trace(s)</value>
+    <value>&amp;Copy|Copy selected shape(s)</value>
   </data>
   <data name="CodeForm_Copy" xml:space="preserve">
     <value>Copy</value>
@@ -941,7 +920,7 @@ Add a new curve to this scene|F2</value>
     <value>Graphics state</value>
   </data>
   <data name="WorldForm_EditPaste" xml:space="preserve">
-    <value>&amp;Paste|Paste trace(s) from clipboard</value>
+    <value>&amp;Paste|Paste shape(s) from clipboard</value>
   </data>
   <data name="WorldForm_ViewSceneProperties" xml:space="preserve">
     <value>Scene properties|Show or hide the scene properties editor</value>
@@ -959,7 +938,7 @@ keeping it pointed at an object|^Up</value>
   <data name="WaveType_Constant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WaveType_Constant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_StripesZ" xml:space="preserve">
+  <data name="Control_Shape_StripesZ" xml:space="preserve">
     <value>|The number of stripes in the z-direction</value>
   </data>
   <data name="DoubleLeftArrowHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -968,17 +947,17 @@ keeping it pointed at an object|^Up</value>
   <data name="NoteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoteHS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Control_Trace_Pitch" xml:space="preserve">
-    <value>|Trace pitch (degrees)</value>
+  <data name="Control_Shape_Pitch" xml:space="preserve">
+    <value>|Shape pitch (degrees)</value>
   </data>
   <data name="WorldForm_EditCut" xml:space="preserve">
-    <value>Cu&amp;t|Cut selected trace(s)</value>
+    <value>Cu&amp;t|Cut selected shape(s)</value>
   </data>
   <data name="CodeForm_Options" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="Control_Trace_Yaw" xml:space="preserve">
-    <value>|Trace yaw (degrees)</value>
+  <data name="Control_Shape_Yaw" xml:space="preserve">
+    <value>|Shape yaw (degrees)</value>
   </data>
   <data name="SignalsForm" xml:space="preserve">
     <value>Signal generator</value>
@@ -998,16 +977,16 @@ keeping it pointed at an object|^Up</value>
   <data name="A_Sample_Entry_1" xml:space="preserve">
     <value>Text|ToolTipText|ShortcutKeyDisplayString</value>
   </data>
-  <data name="Control_Trace_Maximum" xml:space="preserve">
+  <data name="Control_Shape_Maximum" xml:space="preserve">
     <value>Max|Upper limit of range 
 Select the checkbox to adjust the three values at once</value>
   </data>
-  <data name="Control_Trace_Minimum" xml:space="preserve">
+  <data name="Control_Shape_Minimum" xml:space="preserve">
     <value>Min|Lower limit of range 
 Select the checkbox to adjust the three values at once</value>
   </data>
-  <data name="Control_Trace_Description" xml:space="preserve">
-    <value>Description|Trace description</value>
+  <data name="Control_Shape_Description" xml:space="preserve">
+    <value>Description|Shape description</value>
   </data>
   <data name="Control_Scene_NearPlaneZ" xml:space="preserve">
     <value>|The z-component of the near projective plane</value>
@@ -1040,8 +1019,8 @@ Stereo: {7}</value>
   <data name="PropertyName_ShaderScope" xml:space="preserve">
     <value />
   </data>
-  <data name="Property_Trace" xml:space="preserve">
-    <value>Trace</value>
+  <data name="Property_Shape" xml:space="preserve">
+    <value>Shape</value>
   </data>
   <data name="Text_ParameterCannotBeNull" xml:space="preserve">
     <value>{0} cannot be null.</value>
@@ -1157,53 +1136,53 @@ Stereo: {7}</value>
   <data name="Property_TessellationEvaluationShader" xml:space="preserve">
     <value>tessellation evaluation shader</value>
   </data>
-  <data name="Property_TraceComputeShader" xml:space="preserve">
-    <value>trace compute shader</value>
+  <data name="Property_ShapeComputeShader" xml:space="preserve">
+    <value>shape compute shader</value>
   </data>
-  <data name="Property_TraceDescription" xml:space="preserve">
-    <value>trace description</value>
+  <data name="Property_ShapeDescription" xml:space="preserve">
+    <value>shape description</value>
   </data>
-  <data name="Property_TraceFragmentShader" xml:space="preserve">
-    <value>trace fragment shader</value>
+  <data name="Property_ShapeFragmentShader" xml:space="preserve">
+    <value>shape fragment shader</value>
   </data>
-  <data name="Property_TraceGeometryShader" xml:space="preserve">
-    <value>trace geometry shader</value>
+  <data name="Property_ShapeGeometryShader" xml:space="preserve">
+    <value>shape geometry shader</value>
   </data>
-  <data name="Property_TraceLocation" xml:space="preserve">
-    <value>trace location</value>
+  <data name="Property_ShapeLocation" xml:space="preserve">
+    <value>shape location</value>
   </data>
-  <data name="Property_TraceMaximum" xml:space="preserve">
-    <value>trace maximum</value>
+  <data name="Property_ShapeMaximum" xml:space="preserve">
+    <value>shape maximum</value>
   </data>
-  <data name="Property_TraceMinimum" xml:space="preserve">
-    <value>trace minimum</value>
+  <data name="Property_ShapeMinimum" xml:space="preserve">
+    <value>shape minimum</value>
   </data>
-  <data name="Property_TraceOrientation" xml:space="preserve">
-    <value>trace orientation</value>
+  <data name="Property_ShapeOrientation" xml:space="preserve">
+    <value>shape orientation</value>
   </data>
-  <data name="Property_TracePattern" xml:space="preserve">
-    <value>trace pattern</value>
+  <data name="Property_ShapePattern" xml:space="preserve">
+    <value>shape pattern</value>
   </data>
-  <data name="Property_Traces" xml:space="preserve">
-    <value>traces</value>
+  <data name="Property_Shapes" xml:space="preserve">
+    <value>shapes</value>
   </data>
-  <data name="Property_TraceScale" xml:space="preserve">
-    <value>trace scale</value>
+  <data name="Property_ShapeScale" xml:space="preserve">
+    <value>shape scale</value>
   </data>
-  <data name="Property_TraceStripeCount" xml:space="preserve">
-    <value>trace stripe count</value>
+  <data name="Property_ShapeStripeCount" xml:space="preserve">
+    <value>shape stripe count</value>
   </data>
-  <data name="Property_TraceTessellationControlShader" xml:space="preserve">
-    <value>trace tessellation control shader</value>
+  <data name="Property_ShapeTessellationControlShader" xml:space="preserve">
+    <value>shape tessellation control shader</value>
   </data>
-  <data name="Property_TraceTessellationEvaluationShader" xml:space="preserve">
-    <value>trace tessellation evaluation shader</value>
+  <data name="Property_ShapeTessellationEvaluationShader" xml:space="preserve">
+    <value>shape tessellation evaluation shader</value>
   </data>
-  <data name="Property_TraceVertexShader" xml:space="preserve">
-    <value>trace vertex shader</value>
+  <data name="Property_ShapeVertexShader" xml:space="preserve">
+    <value>shape vertex shader</value>
   </data>
-  <data name="Property_TraceVisible" xml:space="preserve">
-    <value>trace visible</value>
+  <data name="Property_ShapeVisible" xml:space="preserve">
+    <value>shape visible</value>
   </data>
   <data name="Property_VertexShader" xml:space="preserve">
     <value>vertex shader</value>
@@ -1258,5 +1237,26 @@ Stereo: {7}</value>
   </data>
   <data name="WorldForm_Time" xml:space="preserve">
     <value>t={0:f1}</value>
+  </data>
+  <data name="Shape_ComputeShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_computeshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Shape_FragmentShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_fragmentshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Shape_GeometryShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_geometryshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Shape_TessControlShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_tesscontrolshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Shape_TessEvaluationShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_tessevaluationshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Shape_VertexShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\shape_vertexshader.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Format_Shape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\snippets\format_shape.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

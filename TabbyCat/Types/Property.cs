@@ -10,13 +10,13 @@
         Camera,
         CameraFocus,
         CameraPosition,
-        TargetFPS,
-        GLTargetVersion,
+        GlslTargetVersion,
         Samples,
         SceneTitle,
+        Shapes,
         Signals,
         Stereo,
-        Traces,
+        TargetFps,
         VSync,
 
         // Projection properties
@@ -28,6 +28,18 @@
         FarPlane,
         AfterProjection,
 
+        // Shape properties
+
+        ShapeDescription,
+        ShapeLocation,
+        ShapeMaximum,
+        ShapeMinimum,
+        ShapeOrientation,
+        ShapePattern,
+        ShapeScale,
+        ShapeStripeCount,
+        ShapeVisible,
+
         // Signal properties
 
         SignalName,
@@ -38,18 +50,6 @@
         SignalFrequencyMaximum,
         SignalFrequencyMinimum,
         SignalWaveType,
-
-        // Trace properties
-
-        TraceDescription,
-        TraceLocation,
-        TraceMaximum,
-        TraceMinimum,
-        TraceOrientation,
-        TracePattern,
-        TraceScale,
-        TraceStripeCount,
-        TraceVisible,
 
         // GPU properties
 
@@ -72,12 +72,12 @@
         SceneGeometryShader,
         SceneFragmentShader,
         SceneComputeShader,
-        TraceVertexShader,
-        TraceTessellationControlShader,
-        TraceTessellationEvaluationShader,
-        TraceGeometryShader,
-        TraceFragmentShader,
-        TraceComputeShader,
+        ShapeVertexShader,
+        ShapeTessellationControlShader,
+        ShapeTessellationEvaluationShader,
+        ShapeGeometryShader,
+        ShapeFragmentShader,
+        ShapeComputeShader,
         AfterShaders,
     }
 }

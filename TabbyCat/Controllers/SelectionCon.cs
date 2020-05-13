@@ -30,12 +30,12 @@
 
         public List<int> Selection { get; private set; } = new List<int>();
 
-        public int TraceCount
+        public int ShapeCount
         {
             get => Labels.Count - 1;
             set
             {
-                var delta = value - TraceCount;
+                var delta = value - ShapeCount;
                 for (; delta > 0; delta--)
                     AddLabel();
                 for (; delta < 0; delta++)
@@ -46,13 +46,13 @@
 
         // Private properties
 
-        private bool AllSelected => Selection.Count == TraceCount;
+        private bool AllSelected => Selection.Count == ShapeCount;
 
         private ToolStripItemCollection Labels => Toolbar.Items;
 
         private Font HighlightFont => _highlightFont ?? (_highlightFont = new Font(Toolbar.Font, FontStyle.Bold));
 
-        private ToolStrip Toolbar => TracePropertiesCon.SelectionToolbar;
+        private ToolStrip Toolbar => ShapePropertiesCon.SelectionToolbar;
 
         // Public events
 
@@ -94,7 +94,7 @@
 
         private void AddLabel()
         {
-            var label = new ToolStripLabel($"{TraceCount + 1}");
+            var label = new ToolStripLabel($"{ShapeCount + 1}");
             Labels.Add(label);
             label.MouseDown += Label_MouseDown;
             label.MouseMove += Label_MouseMove;
@@ -103,16 +103,16 @@
 
         private void ClearSelection() => Selection.Clear();
 
-        private void Exclude(int traceIndex)
+        private void Exclude(int shapeIndex)
         {
-            if (Selection.Contains(traceIndex))
-                Selection.Remove(traceIndex);
+            if (Selection.Contains(shapeIndex))
+                Selection.Remove(shapeIndex);
         }
 
-        private void Include(int traceIndex)
+        private void Include(int shapeIndex)
         {
-            if (!Selection.Contains(traceIndex))
-                Selection.Add(traceIndex);
+            if (!Selection.Contains(shapeIndex))
+                Selection.Add(shapeIndex);
         }
 
         private void IncludeRange(int low, int high)
@@ -129,7 +129,7 @@
         {
             Labels.Clear();
             var label = new ToolStripLabel(string.Empty);
-            Localize(Resources.WorldForm_Trace_All, label);
+            Localize(Resources.WorldForm_Shape_All, label);
             Labels.Add(label);
             label.MouseDown += LabelAll_MouseDown;
             label.MouseMove += Label_MouseMove;
@@ -138,21 +138,21 @@
 
         private void Label_MouseDown(object sender, MouseEventArgs e)
         {
-            var traceIndex = Labels.IndexOf((ToolStripItem)sender) - 1;
+            var shapeIndex = Labels.IndexOf((ToolStripItem)sender) - 1;
             bool
                 shift = (Control.ModifierKeys & Keys.Shift) != 0,
                 ctrl = (Control.ModifierKeys & Keys.Control) != 0;
             if (!ctrl)
                 ClearSelection();
             if (shift && _lastIndex >= 0)
-                IncludeRange(_lastIndex, traceIndex);
+                IncludeRange(_lastIndex, shapeIndex);
             else
             {
                 if (ctrl)
-                    Toggle(traceIndex);
+                    Toggle(shapeIndex);
                 else
-                    Include(traceIndex);
-                _lastIndex = traceIndex;
+                    Include(shapeIndex);
+                _lastIndex = shapeIndex;
             }
             OnSelectionChanged();
         }
@@ -176,7 +176,7 @@
 
         private void LabelAll_Paint(object sender, PaintEventArgs e)
         {
-            if (TraceCount > 0 && AllSelected)
+            if (ShapeCount > 0 && AllSelected)
                 Paint_Highlight(sender, e);
         }
 
@@ -190,8 +190,8 @@
             var tooltip = index < 0
                 ? string.Empty
                 : index == 0
-                ? Resources.Text_SelectDeselectAllTraces
-                : TracePropertiesCon.Scene.Traces[index - 1].ToString();
+                ? Resources.Text_SelectDeselectAllShapes
+                : ShapePropertiesCon.Scene.Shapes[index - 1].ToString();
             ToolTip.SetToolTip(Toolbar, tooltip);
         }
 
@@ -211,20 +211,20 @@
 
         private void RemoveLabel()
         {
-            var label = Labels[TraceCount];
+            var label = Labels[ShapeCount];
             Labels.Remove(label);
             label.MouseDown -= Label_MouseDown;
             label.Paint -= Label_Paint;
         }
 
-        private void SelectAll() => IncludeRange(0, TraceCount - 1);
+        private void SelectAll() => IncludeRange(0, ShapeCount - 1);
 
-        private void Toggle(int traceIndex)
+        private void Toggle(int shapeIndex)
         {
-            if (Selection.Contains(traceIndex))
-                Exclude(traceIndex);
+            if (Selection.Contains(shapeIndex))
+                Exclude(shapeIndex);
             else
-                Include(traceIndex);
+                Include(shapeIndex);
         }
 
         private void Toolbar_MouseMove(object sender, MouseEventArgs e) => MouseMove(Toolbar.GetItemAt(e.X, e.Y));

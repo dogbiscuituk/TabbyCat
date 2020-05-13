@@ -43,7 +43,7 @@
         public void TestSceneTitle() => Assert.AreEqual(string.Empty, Scene.Title);
 
         [Test]
-        public void TestSceneTraces() => Assert.AreEqual(0, Scene.Traces.Count);
+        public void TestSceneShapes() => Assert.AreEqual(0, Scene.Shapes.Count);
 
         [Test]
         public void TestSceneVSync() => Assert.AreEqual(false, Scene.VSync);

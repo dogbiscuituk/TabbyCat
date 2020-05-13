@@ -36,13 +36,13 @@
         private string RedoAction => _redoStack.Peek().RedoAction;
 
         private List<Signal> Signals => Scene.Signals;
-        private List<Trace> Traces => Scene.Traces;
+        private List<Shape> Shapes => Scene.Shapes;
 
         // Public methods
 
-        public void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
+        public void AppendShape(Shape shape = null) => Run(new ShapeInsertCommand(Shapes.Count, shape));
 
-        public void AppendTrace(Trace trace = null) => Run(new TraceInsertCommand(Traces.Count, trace));
+        public void AppendSignal(Signal signal = null) => Run(new SignalInsertCommand(Signals.Count, signal));
 
         public void Clear()
         {
@@ -75,7 +75,7 @@
             }
         }
 
-        public void DeleteTrace(int index) => Run(new TraceDeleteCommand(index));
+        public void DeleteShape(int index) => Run(new ShapeDeleteCommand(index));
 
         public void Save()
         {
@@ -115,8 +115,8 @@
                         return true;
                     case ISignalPropertyCommand spc1:
                         return spc1.Index == ((ISignalPropertyCommand)cmd2).Index;
-                    case ITracePropertyCommand tpc1:
-                        return tpc1.Index == ((ITracePropertyCommand)cmd2).Index;
+                    case IShapePropertyCommand tpc1:
+                        return tpc1.Index == ((IShapePropertyCommand)cmd2).Index;
                 }
             else if (cmd1 is ICollectionCommand cc1 && !cc1.Adding)
                 switch (cc1)
@@ -129,11 +129,11 @@
                             return true;
                         }
                         break;
-                    case ITraceCollectionCommand tc1:
-                        if (cmd2 is ITracePropertyCommand tpc2 && tpc2.Index == tc1.Index)
+                    case IShapeCollectionCommand tc1:
+                        if (cmd2 is IShapePropertyCommand tpc2 && tpc2.Index == tc1.Index)
                         {
                             if (tc1.Value == null)
-                                tc1.Value = Scene.Traces[tc1.Index];
+                                tc1.Value = Scene.Shapes[tc1.Index];
                             return true;
                         }
                         break;

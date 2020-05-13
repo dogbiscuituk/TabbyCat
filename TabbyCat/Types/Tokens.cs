@@ -8,8 +8,8 @@
             EndFormula = "// End Formula",
             EndScene = "// End Scene";
 
-        public static string BeginTrace(int index) => $"// Begin Trace #{index + 1}";
+        public static string BeginShape(int index) => $"// Begin Shape #{index + 1}";
 
-        public static string EndTrace(int index) => $"// End Trace #{index + 1}";
+        public static string EndShape(int index) => $"// End Shape #{index + 1}";
     }
 }

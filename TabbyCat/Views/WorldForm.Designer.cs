@@ -95,11 +95,11 @@
             this.ViewSignals = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewSceneProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewTraceProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewShapeProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewShaderCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSceneCode = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewTraceCode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewShapeCode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewRestoreWindowLayout = new System.Windows.Forms.ToolStripMenuItem();
@@ -670,11 +670,11 @@
             this.ViewSignals,
             this.toolStripMenuItem6,
             this.ViewSceneProperties,
-            this.ViewTraceProperties,
+            this.ViewShapeProperties,
             this.toolStripMenuItem3,
             this.ViewShaderCode,
             this.ViewSceneCode,
-            this.ViewTraceCode,
+            this.ViewShapeCode,
             this.toolStripMenuItem7,
             this.ViewFullScreen,
             this.ViewRestoreWindowLayout});
@@ -705,11 +705,11 @@
             this.ViewSceneProperties.Size = new System.Drawing.Size(208, 22);
             this.ViewSceneProperties.Text = "Scene properties";
             // 
-            // ViewTraceProperties
+            // ViewShapeProperties
             // 
-            this.ViewTraceProperties.Name = "ViewTraceProperties";
-            this.ViewTraceProperties.Size = new System.Drawing.Size(208, 22);
-            this.ViewTraceProperties.Text = "Trace properties";
+            this.ViewShapeProperties.Name = "ViewShapeProperties";
+            this.ViewShapeProperties.Size = new System.Drawing.Size(208, 22);
+            this.ViewShapeProperties.Text = "Shape properties";
             // 
             // toolStripMenuItem3
             // 
@@ -728,11 +728,11 @@
             this.ViewSceneCode.Size = new System.Drawing.Size(208, 22);
             this.ViewSceneCode.Text = "Scene code";
             // 
-            // ViewTraceCode
+            // ViewShapeCode
             // 
-            this.ViewTraceCode.Name = "ViewTraceCode";
-            this.ViewTraceCode.Size = new System.Drawing.Size(208, 22);
-            this.ViewTraceCode.Text = "Trace code";
+            this.ViewShapeCode.Name = "ViewShapeCode";
+            this.ViewShapeCode.Size = new System.Drawing.Size(208, 22);
+            this.ViewShapeCode.Text = "Shape code";
             // 
             // toolStripMenuItem7
             // 
@@ -1040,10 +1040,10 @@
         public System.Windows.Forms.ToolStripMenuItem ViewMenu;
         public System.Windows.Forms.ToolStripStatusLabel GpuStatusLabel;
         public System.Windows.Forms.ToolStripMenuItem ViewSceneProperties;
-        public System.Windows.Forms.ToolStripMenuItem ViewTraceProperties;
+        public System.Windows.Forms.ToolStripMenuItem ViewShapeProperties;
         public System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         public System.Windows.Forms.ToolStripMenuItem ViewSceneCode;
-        public System.Windows.Forms.ToolStripMenuItem ViewTraceCode;
+        public System.Windows.Forms.ToolStripMenuItem ViewShapeCode;
         public System.Windows.Forms.ToolStripMenuItem ViewShaderCode;
         public System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         public System.Windows.Forms.ToolStripMenuItem ViewScene;

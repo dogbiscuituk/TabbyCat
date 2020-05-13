@@ -5,7 +5,7 @@
     using Properties;
     using Types;
 
-    public class Volume : Trace
+    public class Volume : Shape
     {
         public Volume()
         {

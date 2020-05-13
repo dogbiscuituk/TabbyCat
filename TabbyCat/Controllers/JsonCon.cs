@@ -86,14 +86,14 @@
 
         // Public static methods
 
-        public static void ClipboardCopy(IEnumerable<Trace> traces)
+        public static void ClipboardCopy(IEnumerable<Shape> shapes)
         {
             string text;
             using (var stream = new MemoryStream())
             using (var streamWriter = new StreamWriter(stream))
             using (var textWriter = new JsonTextWriter(streamWriter))
             {
-                UseStream(() => GetSerializer().Serialize(textWriter, traces));
+                UseStream(() => GetSerializer().Serialize(textWriter, shapes));
                 textWriter.Flush();
                 streamWriter.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
@@ -106,11 +106,11 @@
             Clipboard.SetDataObject(dataObject, copy: true);
         }
 
-        public static IEnumerable<Trace> ClipboardPaste()
+        public static IEnumerable<Shape> ClipboardPaste()
         {
             if (!AppCon.CanPaste)
                 return null;
-            IEnumerable<Trace> traces = null;
+            IEnumerable<Shape> shapes = null;
             using (var stream = new MemoryStream())
             using (var streamWriter = new StreamWriter(stream))
             {
@@ -119,9 +119,9 @@
                 stream.Seek(0, SeekOrigin.Begin);
                 using (var streamReader = new StreamReader(stream))
                 using (var textReader = new JsonTextReader(streamReader))
-                    UseStream(() => traces = GetSerializer().Deserialize<IEnumerable<Trace>>(textReader));
+                    UseStream(() => shapes = GetSerializer().Deserialize<IEnumerable<Shape>>(textReader));
             }
-            return traces;
+            return shapes;
         }
 
         // Protected methods
@@ -225,7 +225,7 @@
         {
             WorldCon.ConnectCons(false);
             Scene.WorldCon = WorldCon;
-            Scene.AttachTraces();
+            Scene.AttachShapes();
             CommandCon.Clear();
             WorldCon.ConnectCons(true);
             SceneCon.RecreateSceneControl();

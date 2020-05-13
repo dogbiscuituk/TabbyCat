@@ -7,62 +7,62 @@
     using TabbyCat.Types;
 
     [TestFixture]
-    public class TraceTests
+    public class ShapeTests
     {
         // Private fields
 
-        private readonly Trace Trace = new Trace();
+        private readonly Shape Shape = new Shape();
 
         // Public methods
 
         [Test]
-        public void TestTraceDescription() => Assert.AreEqual(string.Empty, Trace.Description);
+        public void TestShapeDescription() => Assert.AreEqual(string.Empty, Shape.Description);
 
         [Test]
-        public void TestTraceIndex() => Assert.AreEqual(-1, Trace.Index);
+        public void TestShapeIndex() => Assert.AreEqual(-1, Shape.Index);
 
         [Test]
-        public void TestTraceLocation() => Assert.AreEqual(Vector3.Zero, Trace.Location);
+        public void TestShapeLocation() => Assert.AreEqual(Vector3.Zero, Shape.Location);
 
         [Test]
-        public void TestTraceMaximum() => Assert.AreEqual(Vector3.Zero, Trace.Maximum);
+        public void TestShapeMaximum() => Assert.AreEqual(Vector3.Zero, Shape.Maximum);
 
         [Test]
-        public void TestTraceMinimum() => Assert.AreEqual(Vector3.Zero, Trace.Minimum);
+        public void TestShapeMinimum() => Assert.AreEqual(Vector3.Zero, Shape.Minimum);
 
         [Test]
-        public void TestTraceOrientation() => Assert.AreEqual(Vector3.Zero, Trace.Orientation);
+        public void TestShapeOrientation() => Assert.AreEqual(Vector3.Zero, Shape.Orientation);
 
         [Test]
-        public void TestTracePattern() => Assert.AreEqual(Pattern.Fill, Trace.Pattern);
+        public void TestShapePattern() => Assert.AreEqual(Pattern.Fill, Shape.Pattern);
 
         [Test]
-        public void TestTraceScale() => Assert.AreEqual(Vector3.One, Trace.Scale);
+        public void TestShapeScale() => Assert.AreEqual(Vector3.One, Shape.Scale);
 
         [Test]
-        public void TestTraceStripeCount() => Assert.AreEqual(new Vector3(100, 100, 0), Trace.StripeCount);
+        public void TestShapeStripeCount() => Assert.AreEqual(new Vector3(100, 100, 0), Shape.StripeCount);
 
         [Test]
-        public void TestTraceVisible() => Assert.AreEqual(true, Trace.Visible);
+        public void TestShapeVisible() => Assert.AreEqual(true, Shape.Visible);
 
         // Shaders
 
         [Test]
-        public void TestTraceVertexShader() => Assert.AreEqual(Resources.Trace_VertexShader, Trace.VertexShader);
+        public void TestShapeVertexShader() => Assert.AreEqual(Resources.Shape_VertexShader, Shape.VertexShader);
 
         [Test]
-        public void TestTraceTessControlShader() => Assert.AreEqual(Resources.Trace_TessControlShader, Trace.TessControlShader);
+        public void TestShapeTessControlShader() => Assert.AreEqual(Resources.Shape_TessControlShader, Shape.TessControlShader);
 
         [Test]
-        public void TestTraceTessEvaluationShader() => Assert.AreEqual(Resources.Trace_TessEvaluationShader, Trace.TessEvaluationShader);
+        public void TestShapeTessEvaluationShader() => Assert.AreEqual(Resources.Shape_TessEvaluationShader, Shape.TessEvaluationShader);
 
         [Test]
-        public void TestTraceGeometryShader() => Assert.AreEqual(Resources.Trace_GeometryShader, Trace.GeometryShader);
+        public void TestShapeGeometryShader() => Assert.AreEqual(Resources.Shape_GeometryShader, Shape.GeometryShader);
 
         [Test]
-        public void TestTraceFragmentShader() => Assert.AreEqual(Resources.Trace_FragmentShader, Trace.FragmentShader);
+        public void TestShapeFragmentShader() => Assert.AreEqual(Resources.Shape_FragmentShader, Shape.FragmentShader);
 
         [Test]
-        public void TestTraceComputeShader() => Assert.AreEqual(Resources.Trace_ComputeShader, Trace.ComputeShader);
+        public void TestShapeComputeShader() => Assert.AreEqual(Resources.Shape_ComputeShader, Shape.ComputeShader);
     }
 }

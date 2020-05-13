@@ -59,7 +59,7 @@
     public class FpsCommand : ScenePropertyCommand<float>
     {
         public FpsCommand(float value) : base(
-            Property.TargetFPS,
+            Property.TargetFps,
             value,
             s => s.TargetFPS,
             (s, v) => s.TargetFPS = v)
@@ -89,7 +89,7 @@
     public class GLTargetVersionCommand : ScenePropertyCommand<string>
     {
         public GLTargetVersionCommand(string value) : base(
-            Property.GLTargetVersion,
+            Property.GlslTargetVersion,
             value,
             s => s.GLTargetVersion,
             (s, v) => s.GLTargetVersion = v)

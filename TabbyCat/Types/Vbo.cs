@@ -10,12 +10,12 @@
     /// </summary>
     public class Vbo
     {
-        public Vbo(ITrace trace, VboType vboType)
+        public Vbo(IShape shape, VboType vboType)
         {
-            if (trace == null)
+            if (shape == null)
                 return;
-            Pattern = trace.Pattern;
-            StripeCount = trace.StripeCount;
+            Pattern = shape.Pattern;
+            StripeCount = shape.StripeCount;
             VboType = vboType;
             GL.GenBuffers(1, out int bufferID);
             BufferID = bufferID;
@@ -23,11 +23,11 @@
             switch (VboType)
             {
                 case VboType.Vertex:
-                    BufferData(trace.GetCoordsCount() * sizeof(float), trace.GetCoords());
+                    BufferData(shape.GetCoordsCount() * sizeof(float), shape.GetCoords());
                     break;
                 case VboType.Index:
-                    ElementsCount = trace.GetIndicesCount();
-                    BufferData(ElementsCount * sizeof(int), trace.GetIndices());
+                    ElementsCount = shape.GetIndicesCount();
+                    BufferData(ElementsCount * sizeof(int), shape.GetIndices());
                     break;
             }
         }
@@ -48,11 +48,11 @@
 
         public void AddRef() => RefCount++;
 
-        public bool Matches(ITrace trace, VboType vboType) => trace == null
+        public bool Matches(IShape shape, VboType vboType) => shape == null
             ? false
             : VboType == vboType &&
-            StripeCount == trace.StripeCount &&
-            (VboType != VboType.Index || Pattern == trace.Pattern);
+            StripeCount == shape.StripeCount &&
+            (VboType != VboType.Index || Pattern == shape.Pattern);
 
         public bool Release()
         {

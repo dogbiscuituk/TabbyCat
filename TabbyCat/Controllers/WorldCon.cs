@@ -40,7 +40,7 @@
 
         public override Scene Scene { get; set; }
 
-        public TraceSelection TraceSelection { get; } = new TraceSelection();
+        public ShapeSelection ShapeSelection { get; } = new ShapeSelection();
 
         public override WorldForm WorldForm { get; }
 
@@ -118,8 +118,8 @@
             ScenePropertiesCon.UpdateAllProperties();
             ShaderCodeCon.UpdateAllProperties();
             SignalsCon.UpdateAllProperties();
-            TraceCodeCon.UpdateAllProperties();
-            TracePropertiesCon.UpdateAllProperties();
+            ShapeCodeCon.UpdateAllProperties();
+            ShapePropertiesCon.UpdateAllProperties();
         }
 
         //Protected methods
@@ -163,19 +163,19 @@
 
         // Private methods
 
-        private void AddCurve_Click(object sender, EventArgs e) => AddTrace(TraceType.Curve);
+        private void AddCurve_Click(object sender, EventArgs e) => AddShape(ShapeType.Curve);
 
-        private void AddSurface_Click(object sender, EventArgs e) => AddTrace(TraceType.Surface);
+        private void AddSurface_Click(object sender, EventArgs e) => AddShape(ShapeType.Surface);
 
-        private void AddTrace(TraceType traceType)
+        private void AddShape(ShapeType shapeType)
         {
-            var trace = GetNewTrace(traceType);
-            trace.Scene = Scene;
-            CommandCon.AppendTrace(trace);
-            TraceSelection.Set(new[] { Scene.Traces.Last() });
+            var shape = GetNewShape(shapeType);
+            shape.Scene = Scene;
+            CommandCon.AppendShape(shape);
+            ShapeSelection.Set(new[] { Scene.Shapes.Last() });
         }
 
-        private void AddVolume_Click(object sender, EventArgs e) => AddTrace(TraceType.Volume);
+        private void AddVolume_Click(object sender, EventArgs e) => AddShape(ShapeType.Volume);
 
         private void Clock_Tick(object sender, EventArgs e) => RenderCon.Render();
 
@@ -197,14 +197,14 @@
             if (connect)
             {
                 PropertyEdit += WorldCon_PropertyEdit;
-                TraceSelection.Changed += Selection_Changed;
+                ShapeSelection.Changed += Selection_Changed;
                 WorldForm.FormClosed += WorldForm_FormClosed;
                 WorldForm.FormClosing += WorldForm_FormClosing;
             }
             else
             {
                 PropertyEdit -= WorldCon_PropertyEdit;
-                TraceSelection.Changed -= Selection_Changed;
+                ShapeSelection.Changed -= Selection_Changed;
                 WorldForm.FormClosed -= WorldForm_FormClosed;
                 WorldForm.FormClosing -= WorldForm_FormClosing;
             }
@@ -275,7 +275,7 @@
             }
         }
 
-        private void CopyToClipboard() => JsonCon.ClipboardCopy(TraceSelection.Traces);
+        private void CopyToClipboard() => JsonCon.ClipboardCopy(ShapeSelection.Shapes);
 
         private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
 
@@ -287,12 +287,12 @@
 
         private void DeleteSelection()
         {
-            if (TraceSelection.IsEmpty)
+            if (ShapeSelection.IsEmpty)
                 return;
-            var indices = TraceSelection.GetTraceIndices().OrderByDescending(p => p).ToList();
+            var indices = ShapeSelection.GetShapeIndices().OrderByDescending(p => p).ToList();
             foreach (var index in indices)
-                CommandCon.DeleteTrace(index);
-            TraceSelection.Clear();
+                CommandCon.DeleteShape(index);
+            ShapeSelection.Clear();
         }
 
         private void EditCopy_Click(object sender, EventArgs e) => CopyToClipboard();
@@ -301,19 +301,19 @@
 
         private void EditDelete_Click(object sender, EventArgs e) => DeleteSelection();
 
-        private void EditInvertSelection_Click(object sender, EventArgs e) => TraceSelection.Set(Scene.Traces.Where(p => !TraceSelection.Traces.Contains(p)).ToList());
+        private void EditInvertSelection_Click(object sender, EventArgs e) => ShapeSelection.Set(Scene.Shapes.Where(p => !ShapeSelection.Shapes.Contains(p)).ToList());
 
         private int GetFrameMilliseconds() => (int)Math.Round(1000f / Math.Min(Math.Max(Scene.TargetFPS, 1), int.MaxValue));
 
-        private static Trace GetNewTrace(TraceType traceType)
+        private static Shape GetNewShape(ShapeType shapeType)
         {
-            switch (traceType)
+            switch (shapeType)
             {
-                case TraceType.Curve:
+                case ShapeType.Curve:
                     return new Curve();
-                case TraceType.Surface:
+                case ShapeType.Surface:
                     return new Surface();
-                case TraceType.Volume:
+                case ShapeType.Volume:
                     return new Volume();
                 default:
                     return null;
@@ -335,19 +335,19 @@
 
         private void EditPaste_Click(object sender, EventArgs e)
         {
-            var traces = JsonCon.ClipboardPaste();
-            if (traces == null || !traces.Any())
+            var shapes = JsonCon.ClipboardPaste().ToList();
+            if (!shapes.Any())
                 return;
-            var index = Scene.Traces.Count;
-            foreach (var trace in traces)
+            var index = Scene.Shapes.Count;
+            foreach (var shape in shapes)
             {
-                trace.Scene = Scene;
-                Run(new TraceInsertCommand(index++, trace));
+                shape.Scene = Scene;
+                Run(new ShapeInsertCommand(index++, shape));
             }
-            TraceSelection.Set(traces);
+            ShapeSelection.Set(shapes);
         }
 
-        private void EditSelectAll_Click(object sender, EventArgs e) => TraceSelection.AddRange(Scene.Traces);
+        private void EditSelectAll_Click(object sender, EventArgs e) => ShapeSelection.AddRange(Scene.Shapes);
 
         private void HelpAbout_Click(object sender, EventArgs e)
         {
@@ -357,7 +357,7 @@
 
         private void OnSelectionChanged()
         {
-            ToolStripUtils.EnableButtons(!TraceSelection.IsEmpty, new ToolStripItem[] {
+            ToolStripUtils.EnableButtons(!ShapeSelection.IsEmpty, new ToolStripItem[] {
                 WorldForm.EditCut,
                 WorldForm.EditCopy,
                 WorldForm.EditDelete,
@@ -397,12 +397,12 @@
 
         private void UpdateSelection()
         {
-            TraceSelection.BeginUpdate();
-            TraceSelection.Traces
-                .Where(p => !Scene.Traces.Contains(p))
+            ShapeSelection.BeginUpdate();
+            ShapeSelection.Shapes
+                .Where(p => !Scene.Shapes.Contains(p))
                 .ToList()
-                .ForEach(p => TraceSelection.Remove(p));
-            TraceSelection.EndUpdate();
+                .ForEach(p => ShapeSelection.Remove(p));
+            ShapeSelection.EndUpdate();
         }
 
         private void UpdateStatusBar()
@@ -470,8 +470,8 @@
         private ScenePropertiesCon _scenePropertiesCon;
         private ShaderCodeCon _shaderCodeCon;
         private SignalsCon _signalsCon;
-        private TraceCodeCon _traceCodeCon;
-        private TracePropertiesCon _tracePropertiesCon;
+        private ShapeCodeCon _shapeCodeCon;
+        private ShapePropertiesCon _shapePropertiesCon;
 
         // Public properties
 
@@ -490,8 +490,8 @@
         protected override SceneCon SceneCon => _sceneCon ?? (_sceneCon = new SceneCon(this));
         protected override ScenePropertiesCon ScenePropertiesCon => _scenePropertiesCon ?? (_scenePropertiesCon = new ScenePropertiesCon(this));
         protected override ShaderCodeCon ShaderCodeCon => _shaderCodeCon ?? (_shaderCodeCon = new ShaderCodeCon(this));
-        protected override TraceCodeCon TraceCodeCon => _traceCodeCon ?? (_traceCodeCon = new TraceCodeCon(this));
-        protected override TracePropertiesCon TracePropertiesCon => _tracePropertiesCon ?? (_tracePropertiesCon = new TracePropertiesCon(this));
+        protected override ShapeCodeCon ShapeCodeCon => _shapeCodeCon ?? (_shapeCodeCon = new ShapeCodeCon(this));
+        protected override ShapePropertiesCon ShapePropertiesCon => _shapePropertiesCon ?? (_shapePropertiesCon = new ShapePropertiesCon(this));
 
         // Private properties
 
@@ -501,8 +501,8 @@
         private DockPane ScenePropertiesPane => ScenePropertiesForm.Pane;
         private DockPane ShaderCodePane => ShaderCodeForm.Pane;
         private DockPane SignalsPane => SignalsForm.Pane;
-        private DockPane TraceCodePane => TraceCodeForm.Pane;
-        private DockPane TracePropertiesPane => TracePropertiesForm.Pane;
+        private DockPane ShapeCodePane => ShapeCodeForm.Pane;
+        private DockPane ShapePropertiesPane => ShapePropertiesForm.Pane;
         private DockPanel WorldPanel => WorldForm.DockPanel;
 
         // Public methods
@@ -523,8 +523,8 @@
                 SceneCon,
                 ScenePropertiesCon,
                 ShaderCodeCon,
-                TraceCodeCon,
-                TracePropertiesCon
+                ShapeCodeCon,
+                ShapePropertiesCon
             }, p => p.Connect(connect));
             if (connect)
             {
@@ -544,11 +544,11 @@
                 hBottom = 0.35f;
             SceneForm.Show(WorldPanel, DockState.Document);
             ShaderCodeForm.Show(WorldPanel, DockState.DockRight);
-            TracePropertiesForm.Show(WorldPanel, DockState.DockLeft);
-            TraceCodeForm.Show(TracePropertiesPane, DockAlignment.Bottom, 1 - hTop);
-            ScenePropertiesForm.Show(TraceCodePane, DockAlignment.Bottom, hBottom / (1 - hTop));
-            SceneCodeForm.Show(TraceCodePane, null);
-            TraceCodeForm.Activate();
+            ShapePropertiesForm.Show(WorldPanel, DockState.DockLeft);
+            ShapeCodeForm.Show(ShapePropertiesPane, DockAlignment.Bottom, 1 - hTop);
+            ScenePropertiesForm.Show(ShapeCodePane, DockAlignment.Bottom, hBottom / (1 - hTop));
+            SceneCodeForm.Show(ShapeCodePane, null);
+            ShapeCodeForm.Activate();
             SignalsForm.Show(ShaderCodePane, DockAlignment.Bottom, hBottom);
             HotkeysForm.Show(WorldPanel, DockState.Float);
             HotkeysForm.Hide();
@@ -559,10 +559,10 @@
         {
             switch (e.Property)
             {
-                case Property.Traces:
+                case Property.Shapes:
                     UpdateSelection();
                     break;
-                case Property.TargetFPS:
+                case Property.TargetFps:
                     ClockInit();
                     break;
                 case Property.GraphicsMode:

@@ -30,26 +30,26 @@
 
         public Camera Camera { get; set; }
 
-        public float TargetFPS { get; set; }
-
         public string GLTargetVersion { get; set; }
 
         public Projection Projection { get; set; }
 
         public int Samples { get; set; }
 
-        public bool Stereo { get; set; }
-
-        public bool VSync { get; set; }
-
-        [DefaultValue("")]
-        public string Title { get; set; }
+        [JsonProperty]
+        public List<Shape> Shapes { get; private set; }
 
         [JsonProperty]
         public List<Signal> Signals { get; private set; }
 
-        [JsonProperty]
-        public List<Trace> Traces { get; private set; }
+        public bool Stereo { get; set; }
+
+        public float TargetFPS { get; set; }
+
+        [DefaultValue("")]
+        public string Title { get; set; }
+
+        public bool VSync { get; set; }
 
         [JsonIgnore]
         public GPUStatus GPUStatus
@@ -93,12 +93,12 @@
 
         public void AddSignal(Signal signal) => Signals.Add(signal);
 
-        public void AddTrace(Trace trace) => Traces.Add(trace);
+        public void AddShape(Shape shape) => Shapes.Add(shape);
 
-        public void AttachTraces()
+        public void AttachShapes()
         {
-            foreach (var trace in Traces)
-                trace.Scene = this;
+            foreach (var shape in Shapes)
+                shape.Scene = this;
         }
 
         public void Clear() => Init();
@@ -107,24 +107,24 @@
 
         public Matrix4 GetProjectionMatrix() => MathUtils.CreateProjection(Projection, GLControl.ClientSize);
 
-        public void InsertSignal(int index, Signal signal) => Signals.Insert(index, signal);
+        public void InsertShape(int index, Shape shape) => Shapes.Insert(index, shape);
 
-        public void InsertTrace(int index, Trace trace) => Traces.Insert(index, trace);
+        public void InsertSignal(int index, Signal signal) => Signals.Insert(index, signal);
 
         public void OnCollectionEdit(Property property, int index, bool adding) => WorldCon.OnCollectionEdit(property, index, adding);
 
         public void OnPropertyEdit(Property property, int index = 0) => WorldCon?.OnPropertyEdit(property, index);
 
+        public void RemoveShape(int index)
+        {
+            if (index >= 0 && index < Shapes.Count)
+                Shapes.RemoveAt(index);
+        }
+
         public void RemoveSignal(int index)
         {
             if (index >= 0 && index < Signals.Count)
                 Signals.RemoveAt(index);
-        }
-
-        public void RemoveTrace(int index)
-        {
-            if (index >= 0 && index < Traces.Count)
-                Traces.RemoveAt(index);
         }
 
         // Private methods
@@ -140,7 +140,7 @@
             Signals = new List<Signal>();
             TargetFPS = 60;
             Title = string.Empty;
-            Traces = new List<Trace>();
+            Shapes = new List<Shape>();
             VSync = false;
             InitShaders();
         }

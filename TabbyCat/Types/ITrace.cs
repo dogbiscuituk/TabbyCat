@@ -2,7 +2,7 @@
 {
     using OpenTK;
 
-    public interface ITrace : IShaders
+    public interface IShape : IShaders
     {
         string Description { get; set; }
         Pattern Pattern { get; set; }

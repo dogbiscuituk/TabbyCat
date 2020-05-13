@@ -1,5 +1,6 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Models;
     using OpenTK;
     using OpenTK.Graphics;
     using OpenTK.Graphics.OpenGL;
@@ -12,7 +13,6 @@
     using System.Text;
     using Types;
     using Utils;
-    using Trace = Models.Trace;
 
     public partial class RenderCon : LocalCon
     {
@@ -44,7 +44,7 @@
             _locCameraView,
             _locProjection,
             _locTimeValue,
-            _locTraceNumber,
+            _locShapeNumber,
             _locTransform;
 
         private readonly List<int> _locSignals = new List<int>();
@@ -126,7 +126,7 @@
 
         public void Invalidate()
         {
-            InvalidateAllTraces();
+            InvalidateAllShapes();
             InvalidateCameraView();
             InvalidateProgram();
             InvalidateProjection();
@@ -155,7 +155,7 @@
             lock (ModeSyncRoot)
                 TheGraphicsMode = null;
             InvalidateProgram();
-            InvalidateAllTraces();
+            InvalidateAllShapes();
         }
 
         public void Render() => UsingGL(() =>
@@ -171,18 +171,18 @@
                 ValidateCameraView();
                 ValidateProjection();
                 LoadParameters();
-                for (var traceIndex = 0; traceIndex < Scene.Traces.Count; traceIndex++)
+                for (var shapeIndex = 0; shapeIndex < Scene.Shapes.Count; shapeIndex++)
                 {
-                    var trace = Scene.Traces[traceIndex];
-                    if (!trace.Visible)
+                    var shape = Scene.Shapes[shapeIndex];
+                    if (!shape.Visible)
                         continue;
-                    var traceNumber = traceIndex + 1;
-                    LoadTraceNumber(traceNumber);
-                    LoadTransform(trace);
-                    ValidateTrace(trace);
-                    GL.BindVertexArray(trace.Vao.VaoID);
+                    var shapeNumber = shapeIndex + 1;
+                    LoadShapeNumber(shapeNumber);
+                    LoadTransform(shape);
+                    ValidateShape(shape);
+                    GL.BindVertexArray(shape.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
-                    GL.DrawElements((PrimitiveType)((int)trace.Pattern & 0x0F), trace.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    GL.DrawElements((PrimitiveType)((int)shape.Pattern & 0x0F), shape.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
@@ -192,7 +192,7 @@
             SceneControl.SwapBuffers();
         });
 
-        public void Unload() => UsingGL(InvalidateAllTraces);
+        public void Unload() => UsingGL(InvalidateAllShapes);
 
         // Private methods
 
@@ -263,24 +263,24 @@
             _locCameraView = GetUniformLocation("cameraView");
             _locProjection = GetUniformLocation("projection");
             _locTimeValue = GetUniformLocation("timeValue");
-            _locTraceNumber = GetUniformLocation("traceNumber");
+            _locShapeNumber = GetUniformLocation("shapeNumber");
             _locTransform = GetUniformLocation("transform");
             _locSignals.Clear();
             foreach (var signal in Scene.Signals)
                 _locSignals.Add(GetUniformLocation(signal.Name));
         }
 
-        private void InvalidateAllTraces() => Scene.Traces.ForEach(InvalidateTrace);
+        private void InvalidateAllShapes() => Scene.Shapes.ForEach(InvalidateShape);
 
         private void InvalidateCameraView() => _cameraViewValid = false;
 
-        private void InvalidateTrace(Trace trace)
+        private void InvalidateShape(Shape shape)
         {
-            if (trace?.Vao != null)
+            if (shape?.Vao != null)
                 UsingGL(() =>
                 {
-                    trace.Vao.ReleaseBuffers();
-                    trace.Vao = null;
+                    shape.Vao.ReleaseBuffers();
+                    shape.Vao = null;
                 });
         }
 
@@ -299,9 +299,9 @@
 
         private void LoadProjection() => LoadMatrix(_locProjection, Scene.GetProjectionMatrix());
 
-        private void LoadTraceNumber(int traceIndex) => LoadInt(_locTraceNumber, traceIndex);
+        private void LoadShapeNumber(int shapeIndex) => LoadInt(_locShapeNumber, shapeIndex);
 
-        private void LoadTransform(Trace trace) => LoadMatrix(_locTransform, trace.GetTransform());
+        private void LoadTransform(Shape shape) => LoadMatrix(_locTransform, shape.GetTransform());
 
         private void Log(string s)
         {
@@ -370,7 +370,7 @@
             _program = GL.CreateProgram();
             CreateShaders();
             if (!ShaderTypes.Any())
-                Log("No Trace Shaders found to compile.");
+                Log("No Shape Shaders found to compile.");
             if (Scene.GPUStatus == GPUStatus.OK)
             {
                 Log("Linking program;");
@@ -396,10 +396,10 @@
             _projectionValid = true;
         }
 
-        private void ValidateTrace(Trace trace)
+        private void ValidateShape(Shape shape)
         {
-            if (trace.Vao == null)
-                UsingGL(() => trace.Vao = new Vao(trace));
+            if (shape.Vao == null)
+                UsingGL(() => shape.Vao = new Vao(shape));
         }
 
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
@@ -410,8 +410,8 @@
                 InvalidateProgram();
             if (e.Property.InvalidatesProjection())
                 InvalidateProjection();
-            if (e.Property.InvalidatesTrace())
-                InvalidateAllTraces();
+            if (e.Property.InvalidatesShape())
+                InvalidateAllShapes();
         }
 
         // Private static methods
@@ -430,21 +430,21 @@
             var version = Scene.GLTargetVersion;
             var signals = GetSignalScript();
             var sceneScript = Scene.GetScript(shaderType);
-            var traceScripts = string.Concat(Scene.Traces.Select(
+            var shapeScripts = string.Concat(Scene.Shapes.Select(
                 p => string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.Format_Trace,
+                    Resources.Format_Shape,
                     p.Index + 1,
                     p,
-                    Tokens.BeginTrace(p.Index),
+                    Tokens.BeginShape(p.Index),
                     p.GetScript(shaderType).Indent("  "),
-                    Tokens.EndTrace(p.Index))));
-            var cases = !Scene.Traces.Any()
+                    Tokens.EndShape(p.Index))));
+            var cases = !Scene.Shapes.Any()
                 ? string.Empty
-                : Scene.Traces
+                : Scene.Shapes
                     .Select(p => string.Format(CultureInfo.InvariantCulture, Resources.Format_Case, p.Index + 1))
                     .Aggregate((p, q) => $"{p}{q}");
-            return Scene.Traces.All(p => string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
+            return Scene.Shapes.All(p => string.IsNullOrWhiteSpace(p.GetScript(shaderType)))
                 ? string.Empty
                 : string.Format(
                     CultureInfo.InvariantCulture,
@@ -454,7 +454,7 @@
                     Tokens.BeginScene,
                     sceneScript,
                     Tokens.EndScene,
-                    traceScripts,
+                    shapeScripts,
                     cases);
         }
 

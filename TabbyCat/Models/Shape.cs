@@ -9,13 +9,13 @@
     using Types;
     using Utils;
 
-    public class Trace : Shaders, ITrace
+    public class Shape : Shaders, IShape
     {
         // Constructors
 
-        public Trace() => Init();
+        public Shape() => Init();
 
-        public Trace(Scene scene) : this() => Scene = scene;
+        public Shape(Scene scene) : this() => Scene = scene;
 
         // Private fields
 
@@ -29,7 +29,7 @@
         [JsonIgnore]
         public int Index
         {
-            get => Scene?.Traces.IndexOf(this) ?? _index;
+            get => Scene?.Shapes.IndexOf(this) ?? _index;
             private set => _index = value;
         }
 
@@ -51,7 +51,7 @@
         public Vector3 Scale { get; set; }
 
         /// <summary>
-        /// The Scene object which owns this Trace.
+        /// The Scene object which owns this Shape.
         /// </summary>
         [JsonIgnore]
         public Scene Scene { get; set; }
@@ -60,7 +60,7 @@
         public Vector3 StripeCount { get; set; }
 
         /// <summary>
-        /// The Video Array Object associated with this Trace.
+        /// The Video Array Object associated with this Shape.
         /// </summary>
         [JsonIgnore]
         public Vao Vao { get; set; }
@@ -75,8 +75,8 @@
         public override string ToString() => !string.IsNullOrWhiteSpace(Description)
             ? Description
             : Index >= 0
-            ? $"Trace #{Index + 1}"
-            : "New trace";
+            ? $"Shape #{Index + 1}"
+            : "New shape";
 
         // Protected methods
 
@@ -101,12 +101,12 @@
 
         private void InitShaders()
         {
-            VertexShader = Resources.Trace_VertexShader;
-            TessControlShader = Resources.Trace_TessControlShader;
-            TessEvaluationShader = Resources.Trace_TessEvaluationShader;
-            GeometryShader = Resources.Trace_GeometryShader;
-            FragmentShader = Resources.Trace_FragmentShader;
-            ComputeShader = Resources.Trace_ComputeShader;
+            VertexShader = Resources.Shape_VertexShader;
+            TessControlShader = Resources.Shape_TessControlShader;
+            TessEvaluationShader = Resources.Shape_TessEvaluationShader;
+            GeometryShader = Resources.Shape_GeometryShader;
+            FragmentShader = Resources.Shape_FragmentShader;
+            ComputeShader = Resources.Shape_ComputeShader;
         }
 
         private string PreviewShader(ShaderType shaderType, string formula)

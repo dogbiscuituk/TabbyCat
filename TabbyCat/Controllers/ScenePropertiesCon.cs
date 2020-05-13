@@ -36,8 +36,8 @@
             Property.CameraPosition,
             Property.FarPlane,
             Property.FieldOfView,
-            Property.TargetFPS,
-            Property.GLTargetVersion,
+            Property.TargetFps,
+            Property.GlslTargetVersion,
             Property.NearPlane,
             Property.ProjectionType,
             Property.Samples,
@@ -184,10 +184,10 @@
                     case Property.FieldOfView:
                         ScenePropertiesEdit.seFieldOfView.Value = (decimal)Scene.Projection.FieldOfView;
                         break;
-                    case Property.TargetFPS:
+                    case Property.TargetFps:
                         ScenePropertiesEdit.seFPS.Value = (decimal)Scene.TargetFPS;
                         break;
-                    case Property.GLTargetVersion:
+                    case Property.GlslTargetVersion:
                         ScenePropertiesEdit.seGLSLVersion.Text = Scene.GLTargetVersion;
                         break;
                     case Property.NearPlane:

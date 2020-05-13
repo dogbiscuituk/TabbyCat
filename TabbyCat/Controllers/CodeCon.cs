@@ -65,7 +65,7 @@
 
         protected FastColoredTextBox PrimaryTextBox => CodeEdit.PrimaryTextBox;
 
-        protected TraceSelection TraceSelection => WorldCon.TraceSelection;
+        protected ShapeSelection ShapeSelection => WorldCon.ShapeSelection;
 
         protected abstract Property Shader { get; }
 

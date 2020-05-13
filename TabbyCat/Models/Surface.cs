@@ -5,7 +5,7 @@
     using Properties;
     using Types;
 
-    public class Surface : Trace
+    public class Surface : Shape
     {
         public Surface()
         {

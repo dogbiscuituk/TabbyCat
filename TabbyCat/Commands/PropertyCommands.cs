@@ -82,6 +82,23 @@
         protected override Scene GetItem(Scene scene) => scene;
     }
 
+    public abstract class ShapePropertyCommand<TValue> : PropertyCommand<Shape, TValue>, IShapePropertyCommand
+    {
+        protected ShapePropertyCommand(int index, Property property, TValue value, Func<Shape, TValue> get, Action<Shape, TValue> set) : base(index, property, value, get, set) { }
+
+        public bool RunOn(Shape shape)
+        {
+            if (Equals(Get(shape), Value))
+                return false;
+            Set(shape, Value);
+            return true;
+        }
+
+        protected override string Target => Resources.Property_Shape;
+
+        protected override Shape GetItem(Scene scene) => scene?.Shapes[Index];
+    }
+
     public abstract class SignalPropertyCommand<TValue> : PropertyCommand<Signal, TValue>, ISignalPropertyCommand
     {
         protected SignalPropertyCommand(int index, Property property, TValue value, Func<Signal, TValue> get, Action<Signal, TValue> set) : base(index, property, value, get, set) { }
@@ -97,22 +114,5 @@
         protected override string Target => Resources.Property_Signal;
 
         protected override Signal GetItem(Scene scene) => scene?.Signals[Index];
-    }
-
-    public abstract class TracePropertyCommand<TValue> : PropertyCommand<Trace, TValue>, ITracePropertyCommand
-    {
-        protected TracePropertyCommand(int index, Property property, TValue value, Func<Trace, TValue> get, Action<Trace, TValue> set) : base(index, property, value, get, set) { }
-
-        public bool RunOn(Trace trace)
-        {
-            if (Equals(Get(trace), Value))
-                return false;
-            Set(trace, Value);
-            return true;
-        }
-
-        protected override string Target => Resources.Property_Trace;
-
-        protected override Trace GetItem(Scene scene) => scene?.Traces[Index];
     }
 }

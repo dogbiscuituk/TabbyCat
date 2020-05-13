@@ -745,47 +745,47 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description|Trace description.
+        ///   Looks up a localized string similar to Description|Shape description.
         /// </summary>
-        public static string Control_Trace_Description {
+        public static string Control_Shape_Description {
             get {
-                return ResourceManager.GetString("Control_Trace_Description", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Location|Trace location.
+        ///   Looks up a localized string similar to Location|Shape location.
         /// </summary>
-        public static string Control_Trace_Location {
+        public static string Control_Shape_Location {
             get {
-                return ResourceManager.GetString("Control_Trace_Location", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Location", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |Location x.
         /// </summary>
-        public static string Control_Trace_LocationX {
+        public static string Control_Shape_LocationX {
             get {
-                return ResourceManager.GetString("Control_Trace_LocationX", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_LocationX", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |Location y.
         /// </summary>
-        public static string Control_Trace_LocationY {
+        public static string Control_Shape_LocationY {
             get {
-                return ResourceManager.GetString("Control_Trace_LocationY", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_LocationY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |Location z.
         /// </summary>
-        public static string Control_Trace_LocationZ {
+        public static string Control_Shape_LocationZ {
             get {
-                return ResourceManager.GetString("Control_Trace_LocationZ", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_LocationZ", resourceCulture);
             }
         }
         
@@ -793,36 +793,36 @@ namespace TabbyCat.Properties {
         ///   Looks up a localized string similar to Max|Upper limit of range 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
-        public static string Control_Trace_Maximum {
+        public static string Control_Shape_Maximum {
             get {
-                return ResourceManager.GetString("Control_Trace_Maximum", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Maximum", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The maximum value of x.
         /// </summary>
-        public static string Control_Trace_MaximumX {
+        public static string Control_Shape_MaximumX {
             get {
-                return ResourceManager.GetString("Control_Trace_MaximumX", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MaximumX", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The maximum value of y.
         /// </summary>
-        public static string Control_Trace_MaximumY {
+        public static string Control_Shape_MaximumY {
             get {
-                return ResourceManager.GetString("Control_Trace_MaximumY", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MaximumY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The maximum value of z.
         /// </summary>
-        public static string Control_Trace_MaximumZ {
+        public static string Control_Shape_MaximumZ {
             get {
-                return ResourceManager.GetString("Control_Trace_MaximumZ", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MaximumZ", resourceCulture);
             }
         }
         
@@ -830,173 +830,173 @@ namespace TabbyCat.Properties {
         ///   Looks up a localized string similar to Min|Lower limit of range 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
-        public static string Control_Trace_Minimum {
+        public static string Control_Shape_Minimum {
             get {
-                return ResourceManager.GetString("Control_Trace_Minimum", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Minimum", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The minimum value of x.
         /// </summary>
-        public static string Control_Trace_MinimumX {
+        public static string Control_Shape_MinimumX {
             get {
-                return ResourceManager.GetString("Control_Trace_MinimumX", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MinimumX", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The minimum value of y.
         /// </summary>
-        public static string Control_Trace_MinimumY {
+        public static string Control_Shape_MinimumY {
             get {
-                return ResourceManager.GetString("Control_Trace_MinimumY", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MinimumY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The minimum value of z.
         /// </summary>
-        public static string Control_Trace_MinimumZ {
+        public static string Control_Shape_MinimumZ {
             get {
-                return ResourceManager.GetString("Control_Trace_MinimumZ", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_MinimumZ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orientation|Trace orientation (degrees).
+        ///   Looks up a localized string similar to Orientation|Shape orientation (degrees).
         /// </summary>
-        public static string Control_Trace_Orientation {
+        public static string Control_Shape_Orientation {
             get {
-                return ResourceManager.GetString("Control_Trace_Orientation", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Orientation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pattern|The trace rendering pattern.
+        ///   Looks up a localized string similar to Pattern|The shape rendering pattern.
         /// </summary>
-        public static string Control_Trace_Pattern {
+        public static string Control_Shape_Pattern {
             get {
-                return ResourceManager.GetString("Control_Trace_Pattern", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Pattern", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |Trace pitch (degrees).
+        ///   Looks up a localized string similar to |Shape pitch (degrees).
         /// </summary>
-        public static string Control_Trace_Pitch {
+        public static string Control_Shape_Pitch {
             get {
-                return ResourceManager.GetString("Control_Trace_Pitch", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Pitch", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |Trace roll (degrees).
+        ///   Looks up a localized string similar to |Shape roll (degrees).
         /// </summary>
-        public static string Control_Trace_Roll {
+        public static string Control_Shape_Roll {
             get {
-                return ResourceManager.GetString("Control_Trace_Roll", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Roll", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale|Trace magnification factor 
+        ///   Looks up a localized string similar to Scale|Shape magnification factor 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
-        public static string Control_Trace_Scale {
+        public static string Control_Shape_Scale {
             get {
-                return ResourceManager.GetString("Control_Trace_Scale", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Scale", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The x-component of scale.
         /// </summary>
-        public static string Control_Trace_ScaleX {
+        public static string Control_Shape_ScaleX {
             get {
-                return ResourceManager.GetString("Control_Trace_ScaleX", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_ScaleX", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The y-component of scale.
         /// </summary>
-        public static string Control_Trace_ScaleY {
+        public static string Control_Shape_ScaleY {
             get {
-                return ResourceManager.GetString("Control_Trace_ScaleY", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_ScaleY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The z-component of scale.
         /// </summary>
-        public static string Control_Trace_ScaleZ {
+        public static string Control_Shape_ScaleZ {
             get {
-                return ResourceManager.GetString("Control_Trace_ScaleZ", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_ScaleZ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selection|The set of selected traces.
+        ///   Looks up a localized string similar to Selection|The set of selected shapes.
         /// </summary>
-        public static string Control_Trace_Selection {
+        public static string Control_Shape_Selection {
             get {
-                return ResourceManager.GetString("Control_Trace_Selection", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Selection", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #Stripes|The number of stripes in each dimension of the trace 
+        ///   Looks up a localized string similar to #Stripes|The number of stripes in each dimension of the shape 
         ///Select the checkbox to adjust the three values at once.
         /// </summary>
-        public static string Control_Trace_Stripes {
+        public static string Control_Shape_Stripes {
             get {
-                return ResourceManager.GetString("Control_Trace_Stripes", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Stripes", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The number of stripes in the x-direction.
         /// </summary>
-        public static string Control_Trace_StripesX {
+        public static string Control_Shape_StripesX {
             get {
-                return ResourceManager.GetString("Control_Trace_StripesX", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_StripesX", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The number of stripes in the y-direction.
         /// </summary>
-        public static string Control_Trace_StripesY {
+        public static string Control_Shape_StripesY {
             get {
-                return ResourceManager.GetString("Control_Trace_StripesY", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_StripesY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to |The number of stripes in the z-direction.
         /// </summary>
-        public static string Control_Trace_StripesZ {
+        public static string Control_Shape_StripesZ {
             get {
-                return ResourceManager.GetString("Control_Trace_StripesZ", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_StripesZ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visible|Whether or not a trace is visible.
+        ///   Looks up a localized string similar to Visible|Whether or not a shape is visible.
         /// </summary>
-        public static string Control_Trace_Visible {
+        public static string Control_Shape_Visible {
             get {
-                return ResourceManager.GetString("Control_Trace_Visible", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Visible", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to |Trace yaw (degrees).
+        ///   Looks up a localized string similar to |Shape yaw (degrees).
         /// </summary>
-        public static string Control_Trace_Yaw {
+        public static string Control_Shape_Yaw {
             get {
-                return ResourceManager.GetString("Control_Trace_Yaw", resourceCulture);
+                return ResourceManager.GetString("Control_Shape_Yaw", resourceCulture);
             }
         }
         
@@ -1240,7 +1240,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     case {0}: execTrace{0}(); break;
+        ///   Looks up a localized string similar to     case {0}: execShape{0}(); break;
         ///.
         /// </summary>
         public static string Format_Case {
@@ -1252,7 +1252,7 @@ namespace TabbyCat.Properties {
         /// <summary>
         ///   Looks up a localized string similar to #version {0}
         /// 
-        ///uniform int traceNumber;
+        ///uniform int shapeNumber;
         ///{1}
         ///uniform mat4 transform, cameraView, projection;
         /// 
@@ -1264,7 +1264,7 @@ namespace TabbyCat.Properties {
         /// 
         ///{5}void main()
         ///{{
-        ///  switch (traceNumber)
+        ///  switch (shapeNumber)
         ///  {{
         ///{6}    default: break;
         ///  }}
@@ -1277,7 +1277,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to void execTrace{0}() // {1}
+        ///   Looks up a localized string similar to void execShape{0}() // {1}
         ///{{
         ///  {2}
         ///  
@@ -1288,9 +1288,9 @@ namespace TabbyCat.Properties {
         /// 
         ///.
         /// </summary>
-        public static string Format_Trace {
+        public static string Format_Shape {
             get {
-                return ResourceManager.GetString("Format_Trace", resourceCulture);
+                return ResourceManager.GetString("Format_Shape", resourceCulture);
             }
         }
         
@@ -1906,6 +1906,159 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shape.
+        /// </summary>
+        public static string Property_Shape {
+            get {
+                return ResourceManager.GetString("Property_Shape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape compute shader.
+        /// </summary>
+        public static string Property_ShapeComputeShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape description.
+        /// </summary>
+        public static string Property_ShapeDescription {
+            get {
+                return ResourceManager.GetString("Property_ShapeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape fragment shader.
+        /// </summary>
+        public static string Property_ShapeFragmentShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeFragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape geometry shader.
+        /// </summary>
+        public static string Property_ShapeGeometryShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeGeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape location.
+        /// </summary>
+        public static string Property_ShapeLocation {
+            get {
+                return ResourceManager.GetString("Property_ShapeLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape maximum.
+        /// </summary>
+        public static string Property_ShapeMaximum {
+            get {
+                return ResourceManager.GetString("Property_ShapeMaximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape minimum.
+        /// </summary>
+        public static string Property_ShapeMinimum {
+            get {
+                return ResourceManager.GetString("Property_ShapeMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape orientation.
+        /// </summary>
+        public static string Property_ShapeOrientation {
+            get {
+                return ResourceManager.GetString("Property_ShapeOrientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape pattern.
+        /// </summary>
+        public static string Property_ShapePattern {
+            get {
+                return ResourceManager.GetString("Property_ShapePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shapes.
+        /// </summary>
+        public static string Property_Shapes {
+            get {
+                return ResourceManager.GetString("Property_Shapes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape scale.
+        /// </summary>
+        public static string Property_ShapeScale {
+            get {
+                return ResourceManager.GetString("Property_ShapeScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape stripe count.
+        /// </summary>
+        public static string Property_ShapeStripeCount {
+            get {
+                return ResourceManager.GetString("Property_ShapeStripeCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape tessellation control shader.
+        /// </summary>
+        public static string Property_ShapeTessellationControlShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeTessellationControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape tessellation evaluation shader.
+        /// </summary>
+        public static string Property_ShapeTessellationEvaluationShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeTessellationEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape vertex shader.
+        /// </summary>
+        public static string Property_ShapeVertexShader {
+            get {
+                return ResourceManager.GetString("Property_ShapeVertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape visible.
+        /// </summary>
+        public static string Property_ShapeVisible {
+            get {
+                return ResourceManager.GetString("Property_ShapeVisible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signal.
         /// </summary>
         public static string Property_Signal {
@@ -2037,159 +2190,6 @@ namespace TabbyCat.Properties {
         public static string Property_TessellationEvaluationShader {
             get {
                 return ResourceManager.GetString("Property_TessellationEvaluationShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace.
-        /// </summary>
-        public static string Property_Trace {
-            get {
-                return ResourceManager.GetString("Property_Trace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace compute shader.
-        /// </summary>
-        public static string Property_TraceComputeShader {
-            get {
-                return ResourceManager.GetString("Property_TraceComputeShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace description.
-        /// </summary>
-        public static string Property_TraceDescription {
-            get {
-                return ResourceManager.GetString("Property_TraceDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace fragment shader.
-        /// </summary>
-        public static string Property_TraceFragmentShader {
-            get {
-                return ResourceManager.GetString("Property_TraceFragmentShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace geometry shader.
-        /// </summary>
-        public static string Property_TraceGeometryShader {
-            get {
-                return ResourceManager.GetString("Property_TraceGeometryShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace location.
-        /// </summary>
-        public static string Property_TraceLocation {
-            get {
-                return ResourceManager.GetString("Property_TraceLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace maximum.
-        /// </summary>
-        public static string Property_TraceMaximum {
-            get {
-                return ResourceManager.GetString("Property_TraceMaximum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace minimum.
-        /// </summary>
-        public static string Property_TraceMinimum {
-            get {
-                return ResourceManager.GetString("Property_TraceMinimum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace orientation.
-        /// </summary>
-        public static string Property_TraceOrientation {
-            get {
-                return ResourceManager.GetString("Property_TraceOrientation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace pattern.
-        /// </summary>
-        public static string Property_TracePattern {
-            get {
-                return ResourceManager.GetString("Property_TracePattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to traces.
-        /// </summary>
-        public static string Property_Traces {
-            get {
-                return ResourceManager.GetString("Property_Traces", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace scale.
-        /// </summary>
-        public static string Property_TraceScale {
-            get {
-                return ResourceManager.GetString("Property_TraceScale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace stripe count.
-        /// </summary>
-        public static string Property_TraceStripeCount {
-            get {
-                return ResourceManager.GetString("Property_TraceStripeCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace tessellation control shader.
-        /// </summary>
-        public static string Property_TraceTessellationControlShader {
-            get {
-                return ResourceManager.GetString("Property_TraceTessellationControlShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace tessellation evaluation shader.
-        /// </summary>
-        public static string Property_TraceTessellationEvaluationShader {
-            get {
-                return ResourceManager.GetString("Property_TraceTessellationEvaluationShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace vertex shader.
-        /// </summary>
-        public static string Property_TraceVertexShader {
-            get {
-                return ResourceManager.GetString("Property_TraceVertexShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to trace visible.
-        /// </summary>
-        public static string Property_TraceVisible {
-            get {
-                return ResourceManager.GetString("Property_TraceVisible", resourceCulture);
             }
         }
         
@@ -2562,11 +2562,98 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trace.
+        ///   Looks up a localized string similar to Shape.
         /// </summary>
-        public static string ShaderRegion_Trace {
+        public static string ShaderRegion_Shape {
             get {
-                return ResourceManager.GetString("ShaderRegion_Trace", resourceCulture);
+                return ResourceManager.GetString("ShaderRegion_Shape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Shape_ComputeShader {
+            get {
+                return ResourceManager.GetString("Shape_ComputeShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
+        /// </summary>
+        public static string Shape_FragmentShader {
+            get {
+                return ResourceManager.GetString("Shape_FragmentShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Shape_GeometryShader {
+            get {
+                return ResourceManager.GetString("Shape_GeometryShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Shape_TessControlShader {
+            get {
+                return ResourceManager.GetString("Shape_TessControlShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Shape_TessEvaluationShader {
+            get {
+                return ResourceManager.GetString("Shape_TessEvaluationShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to float
+        ///  t = timeValue,
+        ///  x = position.x,
+        ///  y = position.y,
+        ///  z = position.z,
+        ///  r = 0,
+        ///  g = 0,
+        ///  b = 0;
+        ///
+        ///// Begin Formula
+        ///
+        ///
+        ///// End Formula
+        ///
+        ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
+        ///colour = vec3(r, g, b);.
+        /// </summary>
+        public static string Shape_VertexShader {
+            get {
+                return ResourceManager.GetString("Shape_VertexShader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shape properties.
+        /// </summary>
+        public static string ShapePropertiesForm_TabText {
+            get {
+                return ResourceManager.GetString("ShapePropertiesForm_TabText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shape properties.
+        /// </summary>
+        public static string ShapePropertiesForm_Text {
+            get {
+                return ResourceManager.GetString("ShapePropertiesForm_Text", resourceCulture);
             }
         }
         
@@ -2883,11 +2970,11 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select / deselect all traces.
+        ///   Looks up a localized string similar to Select / deselect all shapes.
         /// </summary>
-        public static string Text_SelectDeselectAllTraces {
+        public static string Text_SelectDeselectAllShapes {
             get {
-                return ResourceManager.GetString("Text_SelectDeselectAllTraces", resourceCulture);
+                return ResourceManager.GetString("Text_SelectDeselectAllShapes", resourceCulture);
             }
         }
         
@@ -2927,93 +3014,6 @@ namespace TabbyCat.Properties {
             get {
                 object obj = ResourceManager.GetObject("TileWindowsHorizontallyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_ComputeShader {
-            get {
-                return ResourceManager.GetString("Trace_ComputeShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FragColor = vec4(colour, 0.1);.
-        /// </summary>
-        public static string Trace_FragmentShader {
-            get {
-                return ResourceManager.GetString("Trace_FragmentShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_GeometryShader {
-            get {
-                return ResourceManager.GetString("Trace_GeometryShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_TessControlShader {
-            get {
-                return ResourceManager.GetString("Trace_TessControlShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Trace_TessEvaluationShader {
-            get {
-                return ResourceManager.GetString("Trace_TessEvaluationShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to float
-        ///  t = timeValue,
-        ///  x = position.x,
-        ///  y = position.y,
-        ///  z = position.z,
-        ///  r = 0,
-        ///  g = 0,
-        ///  b = 0;
-        ///
-        ///// Begin Formula
-        ///
-        ///
-        ///// End Formula
-        ///
-        ///gl_Position = projection * cameraView * transform * vec4(x, y, z, 1);
-        ///colour = vec3(r, g, b);.
-        /// </summary>
-        public static string Trace_VertexShader {
-            get {
-                return ResourceManager.GetString("Trace_VertexShader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace properties.
-        /// </summary>
-        public static string TracePropertiesForm_TabText {
-            get {
-                return ResourceManager.GetString("TracePropertiesForm_TabText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace properties.
-        /// </summary>
-        public static string TracePropertiesForm_Text {
-            get {
-                return ResourceManager.GetString("TracePropertiesForm_Text", resourceCulture);
             }
         }
         
@@ -3109,7 +3109,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add|Add a new trace or signal to this scene.
+        ///   Looks up a localized string similar to &amp;Add|Add a new shape or signal to this scene.
         /// </summary>
         public static string WorldForm_AddMenu {
             get {
@@ -3287,7 +3287,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Copy|Copy selected trace(s).
+        ///   Looks up a localized string similar to &amp;Copy|Copy selected shape(s).
         /// </summary>
         public static string WorldForm_EditCopy {
             get {
@@ -3296,7 +3296,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cu&amp;t|Cut selected trace(s).
+        ///   Looks up a localized string similar to Cu&amp;t|Cut selected shape(s).
         /// </summary>
         public static string WorldForm_EditCut {
             get {
@@ -3305,7 +3305,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Delete|Delete selected trace(s).
+        ///   Looks up a localized string similar to &amp;Delete|Delete selected shape(s).
         /// </summary>
         public static string WorldForm_EditDelete {
             get {
@@ -3314,7 +3314,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Invert selection|Toggle the selected status of each trace.
+        ///   Looks up a localized string similar to &amp;Invert selection|Toggle the selected status of each shape.
         /// </summary>
         public static string WorldForm_EditInvertSelection {
             get {
@@ -3341,7 +3341,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Paste|Paste trace(s) from clipboard.
+        ///   Looks up a localized string similar to &amp;Paste|Paste shape(s) from clipboard.
         /// </summary>
         public static string WorldForm_EditPaste {
             get {
@@ -3359,7 +3359,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select &amp;all|Select all traces.
+        ///   Looks up a localized string similar to Select &amp;all|Select all shapes.
         /// </summary>
         public static string WorldForm_EditSelectAll {
             get {
@@ -3512,6 +3512,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string WorldForm_Shape_All {
+            get {
+                return ResourceManager.GetString("WorldForm_Shape_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to t={0:f1}.
         /// </summary>
         public static string WorldForm_Time {
@@ -3578,15 +3587,6 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All.
-        /// </summary>
-        public static string WorldForm_Trace_All {
-            get {
-                return ResourceManager.GetString("WorldForm_Trace_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;View|Display of edit controls.
         /// </summary>
         public static string WorldForm_View {
@@ -3641,29 +3641,29 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shape code|Show or hide the shape code editor.
+        /// </summary>
+        public static string WorldForm_ViewShapeCode {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewShapeCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shape properties|Show or hide the shape properties editor.
+        /// </summary>
+        public static string WorldForm_ViewShapeProperties {
+            get {
+                return ResourceManager.GetString("WorldForm_ViewShapeProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signal generator|Show or hide the signal generator controls.
         /// </summary>
         public static string WorldForm_ViewSignals {
             get {
                 return ResourceManager.GetString("WorldForm_ViewSignals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace code|Show or hide the trace code editor.
-        /// </summary>
-        public static string WorldForm_ViewTraceCode {
-            get {
-                return ResourceManager.GetString("WorldForm_ViewTraceCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trace properties|Show or hide the trace properties editor.
-        /// </summary>
-        public static string WorldForm_ViewTraceProperties {
-            get {
-                return ResourceManager.GetString("WorldForm_ViewTraceProperties", resourceCulture);
             }
         }
         

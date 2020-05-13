@@ -84,6 +84,37 @@
         private void OnCollectionEdit(Scene scene) => scene?.OnCollectionEdit(Property, Index, Adding);
     }
 
+    public class ShapeCollectionCommand : CollectionCommand<Shape>, IShapeCollectionCommand
+    {
+        // Constructors
+
+        protected ShapeCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Shapes;
+
+        // Protected methods
+
+        protected override void AddItem(Scene scene) => scene?.AddShape(Value);
+
+        protected override Shape GetItem(Scene scene) => scene?.Shapes[Index];
+
+        protected override int GetItemsCount(Scene scene) => scene?.Shapes?.Count ?? 0;
+
+        protected override Shape GetNewItem(Scene scene) => new Shape(scene);
+
+        protected override void InsertItem(Scene scene) => scene?.InsertShape(Index, Value);
+
+        protected override void RemoveItem(Scene scene) => scene?.RemoveShape(Index);
+    }
+
+    public class ShapeDeleteCommand : ShapeCollectionCommand
+    {
+        public ShapeDeleteCommand(int index) : base(index, false) { }
+    }
+
+    public class ShapeInsertCommand : ShapeCollectionCommand
+    {
+        public ShapeInsertCommand(int index, Shape shape) : base(index, true) => Value = shape;
+    }
+
     public class SignalCollectionCommand : CollectionCommand<Signal>, ISignalCollectionCommand
     {
         // Constructors
@@ -113,36 +144,5 @@
     public class SignalInsertCommand : SignalCollectionCommand
     {
         public SignalInsertCommand(int index, Signal signal) : base(index, true) => Value = signal;
-    }
-
-    public class TraceCollectionCommand : CollectionCommand<Trace>, ITraceCollectionCommand
-    {
-        // Constructors
-
-        protected TraceCollectionCommand(int index, bool add) : base(index, add) => Property = Property.Traces;
-
-        // Protected methods
-
-        protected override void AddItem(Scene scene) => scene?.AddTrace(Value);
-
-        protected override Trace GetItem(Scene scene) => scene?.Traces[Index];
-
-        protected override int GetItemsCount(Scene scene) => scene?.Traces?.Count ?? 0;
-
-        protected override Trace GetNewItem(Scene scene) => new Trace(scene);
-
-        protected override void InsertItem(Scene scene) => scene?.InsertTrace(Index, Value);
-
-        protected override void RemoveItem(Scene scene) => scene?.RemoveTrace(Index);
-    }
-
-    public class TraceDeleteCommand : TraceCollectionCommand
-    {
-        public TraceDeleteCommand(int index) : base(index, false) { }
-    }
-
-    public class TraceInsertCommand : TraceCollectionCommand
-    {
-        public TraceInsertCommand(int index, Trace trace) : base(index, true) => Value = trace;
     }
 }
