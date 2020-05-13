@@ -9,13 +9,15 @@
     {
         public Vao(IShape shape)
         {
+            if (shape == null)
+                return;
             GL.GenVertexArrays(1, out _vao);
             GL.BindVertexArray(VaoID);
-            _vertexVbo = VboStore.AcquireVbo(shape, VboType.Vertex);
-            _indexVbo = VboStore.AcquireVbo(shape, VboType.Index);
+            _vertexVbo = shape.AcquireVbo(VboType.Vertex);
+            _indexVbo = shape.AcquireVbo(VboType.Index);
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexVbo.BufferID);
             GL.EnableVertexAttribArray(0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
+            GL.VertexAttribPointer(0, shape.DimensionCount, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _indexVbo.BufferID);
             GL.BindVertexArray(0);
         }

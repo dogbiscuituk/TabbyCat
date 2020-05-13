@@ -180,6 +180,7 @@
                     LoadShapeNumber(shapeNumber);
                     LoadTransform(shape);
                     ValidateShape(shape);
+
                     GL.BindVertexArray(shape.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
                     GL.DrawElements((PrimitiveType)((int)shape.Pattern & 0x0F), shape.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);

@@ -36,10 +36,8 @@
 
         public int Samples { get; set; }
 
-        [JsonProperty]
         public List<Shape> Shapes { get; private set; }
 
-        [JsonProperty]
         public List<Signal> Signals { get; private set; }
 
         public bool Stereo { get; set; }

@@ -14,13 +14,13 @@
         {
             if (shape == null)
                 return;
-            Pattern = shape.Pattern;
-            StripeCount = shape.StripeCount;
-            VboType = vboType;
-            GL.GenBuffers(1, out int bufferID);
-            BufferID = bufferID;
+            _pattern = shape.Pattern;
+            _stripeCount = shape.StripeCount;
+            _vboType = vboType;
+            GL.GenBuffers(1, out int buffer);
+            BufferID = buffer;
             GL.BindBuffer(BufferTarget, BufferID);
-            switch (VboType)
+            switch (_vboType)
             {
                 case VboType.Vertex:
                     BufferData(shape.GetCoordsCount() * sizeof(float), shape.GetCoords());
@@ -36,27 +36,26 @@
 
         public int ElementsCount { get; }
 
-        private readonly Pattern Pattern;
-        private readonly Vector3 StripeCount;
-        private readonly VboType VboType;
+        private readonly Pattern _pattern;
+        private readonly Vector3 _stripeCount;
+        private readonly VboType _vboType;
 
-        private int RefCount;
+        private int _refCount;
 
-        private BufferTarget BufferTarget => VboType == VboType.Vertex
+        private BufferTarget BufferTarget => _vboType == VboType.Vertex
             ? BufferTarget.ArrayBuffer
             : BufferTarget.ElementArrayBuffer;
 
-        public void AddRef() => RefCount++;
+        public void AddRef() => _refCount++;
 
-        public bool Matches(IShape shape, VboType vboType) => shape == null
-            ? false
-            : VboType == vboType &&
-            StripeCount == shape.StripeCount &&
-            (VboType != VboType.Index || Pattern == shape.Pattern);
+        public bool Matches(IShape shape, VboType vboType) =>
+            shape != null && _vboType == vboType &&
+            _stripeCount == shape.StripeCount &&
+            (_vboType != VboType.Index || _pattern == shape.Pattern);
 
         public bool Release()
         {
-            var result = --RefCount <= 0;
+            var result = --_refCount <= 0;
             if (result)
                 GL.DeleteBuffer(BufferID);
             return result;

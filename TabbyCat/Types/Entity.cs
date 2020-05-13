@@ -39,7 +39,12 @@
         /// <param name="cy">The number of steps along the y axis.</param>
         /// <param name="cz">The number of steps along the z axis.</param>
         /// <returns>
-        /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
+        /// If all of cx, cy, cz are nonzero:
+        /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the lattice points.
+        /// If any one of cx, cy, cz is zero:
+        /// 2(cx+1)(cy+1)(cz+1) floats, being the planar coordinates of the points.
+        /// If any two of cx, cy, cz are zero:
+        /// (cx+1)(cy+1)(cz+1) floats, being the linear coordinates of the points.
         /// </returns>
         private static IEnumerable<float> GetCoords(int cx, int cy, int cz)
         {
@@ -52,9 +57,12 @@
                     for (var k = 0; k <= cz; k++)
                     {
                         var z = cz == 0 ? 0 : 2f * k / cz - 1;
-                        yield return x;
-                        yield return y;
-                        yield return z;
+                        if (cx != 0)
+                            yield return x;
+                        if (cy != 0)
+                            yield return y;
+                        if (cz != 0)
+                            yield return z;
                     }
                 }
             }

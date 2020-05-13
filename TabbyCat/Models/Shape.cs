@@ -5,6 +5,7 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
+    using System;
     using System.ComponentModel;
     using Types;
     using Utils;
@@ -25,6 +26,11 @@
 
         [DefaultValue("")]
         public string Description { get; set; }
+
+        public int DimensionCount =>
+            Math.Sign(StripeCount.X) +
+            Math.Sign(StripeCount.Y) +
+            Math.Sign(StripeCount.Z);
 
         [JsonIgnore]
         public int Index

@@ -146,6 +146,7 @@
     <Compile Include="CustomControls\JmkToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Axes.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
