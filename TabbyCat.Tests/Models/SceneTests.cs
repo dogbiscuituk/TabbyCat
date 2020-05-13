@@ -2,70 +2,70 @@
 {
     using NUnit.Framework;
     using System.Drawing;
+    using Properties;
     using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Types;
+    using Types;
 
     [TestFixture]
     public class SceneTests
     {
         // Private fields
 
-        private readonly Scene Scene = new Scene();
+        private readonly Scene _scene = new Scene();
 
         // Public methods
 
         [Test]
-        public void TestSceneBackgroundColour() => Assert.AreEqual(Color.White, Scene.BackgroundColour);
+        public void TestSceneBackgroundColour() => Assert.AreEqual(Color.White, _scene.BackgroundColour);
 
         [Test]
-        public void TestSceneCamera() => Assert.AreEqual(Camera.Default, Scene.Camera);
+        public void TestSceneCamera() => Assert.AreEqual(Camera.Default, _scene.Camera);
 
         [Test]
-        public void TestSceneGLTargetVersion() => Assert.AreEqual("330", Scene.GLTargetVersion);
+        public void TestSceneGLTargetVersion() => Assert.AreEqual("330", _scene.GLTargetVersion);
 
         [Test]
-        public void TestSceneGPULog() => Assert.AreEqual(string.Empty, Scene.GPULog);
+        public void TestSceneGPULog() => Assert.AreEqual(string.Empty, _scene.GPULog);
 
         [Test]
-        public void TestSceneGPUStatus() => Assert.AreEqual(GPUStatus.None, Scene.GPUStatus);
+        public void TestSceneGPUStatus() => Assert.AreEqual(GPUStatus.None, _scene.GPUStatus);
 
         [Test]
-        public void TestSceneProjection() => Assert.AreEqual(Projection.Default, Scene.Projection);
+        public void TestSceneProjection() => Assert.AreEqual(Projection.Default, _scene.Projection);
 
         [Test]
-        public void TestSceneSignals() => Assert.AreEqual(0, Scene.Signals.Count);
+        public void TestSceneSignals() => Assert.AreEqual(0, _scene.Signals.Count);
 
         [Test]
-        public void TestSceneTargetFPS() => Assert.AreEqual(60, Scene.TargetFPS);
+        public void TestSceneTargetFPS() => Assert.AreEqual(60, _scene.TargetFPS);
 
         [Test]
-        public void TestSceneTitle() => Assert.AreEqual(string.Empty, Scene.Title);
+        public void TestSceneTitle() => Assert.AreEqual(string.Empty, _scene.Title);
 
         [Test]
-        public void TestSceneShapes() => Assert.AreEqual(0, Scene.Shapes.Count);
+        public void TestSceneShapes() => Assert.AreEqual(0, _scene.Shapes.Count);
 
         [Test]
-        public void TestSceneVSync() => Assert.AreEqual(false, Scene.VSync);
+        public void TestSceneVSync() => Assert.AreEqual(false, _scene.VSync);
 
         // Shaders
 
         [Test]
-        public void TestSceneVertexShader() => Assert.AreEqual(Resources.Scene_VertexShader, Scene.VertexShader);
+        public void TestSceneVertexShader() => Assert.AreEqual(Resources.Scene_VertexShader, _scene.VertexShader);
 
         [Test]
-        public void TestSceneTessControlShader() => Assert.AreEqual(Resources.Scene_TessControlShader, Scene.TessControlShader);
+        public void TestSceneTessControlShader() => Assert.AreEqual(Resources.Scene_TessControlShader, _scene.TessControlShader);
 
         [Test]
-        public void TestSceneTessEvaluationShader() => Assert.AreEqual(Resources.Scene_TessEvaluationShader, Scene.TessEvaluationShader);
+        public void TestSceneTessEvaluationShader() => Assert.AreEqual(Resources.Scene_TessEvaluationShader, _scene.TessEvaluationShader);
 
         [Test]
-        public void TestSceneGeometryShader() => Assert.AreEqual(Resources.Scene_GeometryShader, Scene.GeometryShader);
+        public void TestSceneGeometryShader() => Assert.AreEqual(Resources.Scene_GeometryShader, _scene.GeometryShader);
 
         [Test]
-        public void TestSceneFragmentShader() => Assert.AreEqual(Resources.Scene_FragmentShader, Scene.FragmentShader);
+        public void TestSceneFragmentShader() => Assert.AreEqual(Resources.Scene_FragmentShader, _scene.FragmentShader);
 
         [Test]
-        public void TestSceneComputeShader() => Assert.AreEqual(Resources.Scene_ComputeShader, Scene.ComputeShader);
+        public void TestSceneComputeShader() => Assert.AreEqual(Resources.Scene_ComputeShader, _scene.ComputeShader);
     }
 }

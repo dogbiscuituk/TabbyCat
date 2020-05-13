@@ -2,26 +2,26 @@
 {
     using NUnit.Framework;
     using OpenTK;
+    using Properties;
     using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Types;
+    using Types;
 
     [TestFixture]
     public class CurveTests
     {
         // Private fields
 
-        private readonly Curve Curve = new Curve();
+        private readonly Curve _curve = new Curve();
 
         // Public methods
 
         [Test]
-        public void TestCurveDescription() => Assert.AreEqual(Resources.Property_Curve, Curve.Description);
+        public void TestCurveDescription() => Assert.AreEqual(Resources.Property_Curve, _curve.Description);
 
         [Test]
-        public void TestCurvePattern() => Assert.AreEqual(Pattern.Lines, Curve.Pattern);
+        public void TestCurvePattern() => Assert.AreEqual(Pattern.Lines, _curve.Pattern);
 
         [Test]
-        public void TestCurveStripeCount() => Assert.AreEqual(new Vector3(1000, 0, 0), Curve.StripeCount);
+        public void TestCurveStripeCount() => Assert.AreEqual(new Vector3(1000, 0, 0), _curve.StripeCount);
     }
 }

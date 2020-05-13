@@ -55,14 +55,14 @@
     <Compile Include="Models\CurveTests.cs" />
     <Compile Include="Models\SceneTests.cs" />
     <Compile Include="Models\SurfaceTests.cs" />
-    <Compile Include="Models\TraceTests.cs" />
+    <Compile Include="Models\ShapeTests.cs" />
     <Compile Include="Models\VolumeTests.cs" />
     <Compile Include="Utils\MathUtilsTests.cs" />
     <Compile Include="Utils\NameSourceTests.cs" />
     <Compile Include="Utils\PropertyUtilsTests.cs" />
     <Compile Include="Models\SignalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\SingalTestsData.cs" />
+    <Compile Include="Models\SignalTestsData.cs" />
     <Compile Include="Utils\StringUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>

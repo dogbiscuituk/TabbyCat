@@ -2,26 +2,26 @@
 {
     using NUnit.Framework;
     using OpenTK;
+    using Properties;
     using TabbyCat.Models;
-    using TabbyCat.Properties;
-    using TabbyCat.Types;
+    using Types;
 
     [TestFixture]
     public class VolumeTests
     {
         // Private fields
 
-        private readonly Volume Volume = new Volume();
+        private readonly Volume _volume = new Volume();
 
         // Public methods
 
         [Test]
-        public void TestVolumeDescription() => Assert.AreEqual(Resources.Property_Volume, Volume.Description);
+        public void TestVolumeDescription() => Assert.AreEqual(Resources.Property_Volume, _volume.Description);
 
         [Test]
-        public void TestVolumePattern() => Assert.AreEqual(Pattern.Quads, Volume.Pattern);
+        public void TestVolumePattern() => Assert.AreEqual(Pattern.Quads, _volume.Pattern);
 
         [Test]
-        public void TestVolumeStripeCount() => Assert.AreEqual(new Vector3(10, 10, 10), Volume.StripeCount);
+        public void TestVolumeStripeCount() => Assert.AreEqual(new Vector3(10, 10, 10), _volume.StripeCount);
     }
 }

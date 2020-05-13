@@ -3,11 +3,11 @@
     using NUnit.Framework;
     using System.Collections;
 
-    public class SingalTestsData
+    public class SignalTestsData
     {
         /// <summary>
         /// Test data for case WaveType Constant.
-        /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-eighth period intervals.
         /// The value obtained should always be equal to the amplitude.
         /// </summary>
         public static IEnumerable ConstantTestCases
@@ -28,7 +28,7 @@
 
         /// <summary>
         /// Test data for case WaveType RampDown.
-        /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-eighth period intervals.
         /// </summary>
         public static IEnumerable RampDownTestCases
         {
@@ -48,7 +48,7 @@
 
         /// <summary>
         /// Test data for case WaveType RampUp.
-        /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-eighth period intervals.
         /// </summary>
         public static IEnumerable RampUpTestCases
         {
@@ -68,7 +68,7 @@
 
         /// <summary>
         /// Test data for case WaveType Sine.
-        /// In general, the time value sampes the first period of the waveform, at one-twelfth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-twelfth period intervals.
         /// There are also a few test times outside this interval.
         /// </summary>
         public static IEnumerable SineTestCases
@@ -100,7 +100,7 @@
 
         /// <summary>
         /// Test data for case WaveType Square.
-        /// In general, the time value sampes the first period of the waveform, at one-twelfth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-twelfth period intervals.
         /// </summary>
         public static IEnumerable SquareTestCases
         {
@@ -124,7 +124,7 @@
 
         /// <summary>
         /// Test data for case WaveType Triangle.
-        /// In general, the time value sampes the first period of the waveform, at one-eighth period intervals.
+        /// In general, the time value samples the first period of the waveform, at one-eighth period intervals.
         /// </summary>
         public static IEnumerable TriangleTestCases
         {

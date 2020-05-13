@@ -88,7 +88,7 @@
     <Compile Include="Commands\PropertyCommands.cs" />
     <Compile Include="Commands\SceneCommands.cs" />
     <Compile Include="Commands\SignalCommands.cs" />
-    <Compile Include="Commands\TraceCommands.cs" />
+    <Compile Include="Commands\ShapeCommands.cs" />
     <Compile Include="Controllers\AboutCon.cs" />
     <Compile Include="Controllers\AppCon.cs" />
     <Compile Include="Controllers\CameraCon.cs" />
@@ -111,11 +111,11 @@
     <Compile Include="Controllers\RenderCon.cs" />
     <Compile Include="Controllers\ShaderCodeCon.cs" />
     <Compile Include="Controllers\SignalCon.cs" />
-    <Compile Include="Controllers\TraceCodeCon.cs" />
+    <Compile Include="Controllers\ShapeCodeCon.cs" />
     <Compile Include="Controllers\WorldCon.cs" />
     <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
-    <Compile Include="Controllers\TracePropertiesCon.cs" />
+    <Compile Include="Controllers\ShapePropertiesCon.cs" />
     <Compile Include="CustomControls\JmkControl.cs" />
     <Compile Include="CustomControls\JmkFlagsCheckedListBox.cs">
       <SubType>Component</SubType>
@@ -178,11 +178,11 @@
     <Compile Include="UserControls\SignalEdit.Designer.cs">
       <DependentUpon>SignalEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TracePropertiesEdit.cs">
+    <Compile Include="UserControls\ShapePropertiesEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\TracePropertiesEdit.Designer.cs">
-      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
+    <Compile Include="UserControls\ShapePropertiesEdit.Designer.cs">
+      <DependentUpon>ShapePropertiesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Converters\SignalConverter.cs" />
     <Compile Include="Models\Shaders.cs" />
@@ -224,7 +224,7 @@
     <Compile Include="Converters\TextStyleInfoTypeConverter.cs" />
     <Compile Include="Types\Theme.cs" />
     <Compile Include="Types\Tokens.cs" />
-    <Compile Include="Types\TraceType.cs" />
+    <Compile Include="Types\ShapeType.cs" />
     <Compile Include="Types\Vao.cs" />
     <Compile Include="Types\Vbo.cs" />
     <Compile Include="Types\VboStore.cs" />
@@ -301,11 +301,11 @@
     <Compile Include="Views\CodeForm.Designer.cs">
       <DependentUpon>CodeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TracePropertiesForm.cs">
+    <Compile Include="Views\ShapePropertiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TracePropertiesForm.Designer.cs">
-      <DependentUpon>TracePropertiesForm.cs</DependentUpon>
+    <Compile Include="Views\ShapePropertiesForm.Designer.cs">
+      <DependentUpon>ShapePropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WorldForm.cs">
       <SubType>Form</SubType>
@@ -325,8 +325,8 @@
     <EmbeddedResource Include="UserControls\SignalEdit.resx">
       <DependentUpon>SignalEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\TracePropertiesEdit.resx">
-      <DependentUpon>TracePropertiesEdit.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ShapePropertiesEdit.resx">
+      <DependentUpon>ShapePropertiesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -363,8 +363,8 @@
     <EmbeddedResource Include="Views\CodeForm.resx">
       <DependentUpon>CodeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TracePropertiesForm.resx">
-      <DependentUpon>TracePropertiesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ShapePropertiesForm.resx">
+      <DependentUpon>ShapePropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>
