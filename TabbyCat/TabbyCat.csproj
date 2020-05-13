@@ -155,6 +155,7 @@
     <Compile Include="Types\LookupParameterEventArgs.cs" />
     <Compile Include="Models\Selection.cs" />
     <Compile Include="Types\FilePathEventArgs.cs" />
+    <Compile Include="Types\ToolStripCloneOptions.cs" />
     <Compile Include="UserControls\CodeEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>

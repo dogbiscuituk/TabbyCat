@@ -264,7 +264,7 @@
 
         private void SetDefaultCamera() => CameraCon.SetDefaultCamera();
 
-        private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen, ToolStripUtils.CloneOptions.All);
+        private void TbOpen_DropDownOpening(object sender, EventArgs e) => WorldForm.FileReopen.CloneTo(WorldForm.tbOpen, ToolStripCloneOptions.All);
 
         private void TbSave_Click(object sender, EventArgs e) => SaveOrSaveAs();
 

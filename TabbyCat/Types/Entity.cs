@@ -22,7 +22,7 @@
         /// </summary>
         /// <param name="stripeCount">The number of steps along each axis.</param>
         /// <returns>
-        /// 3(cx+1)(cy+1)(cz+1) floats, being the xyz coordinates of the points in the lattice.
+        /// (1, 2 or 3) * (cx+1)(cy+1)(cz+1) floats, being the coordinates (x, or xy, or xyz) of the points in the lattice.
         /// </returns>
         private static IEnumerable<float> GetCoords(Vector3 stripeCount) => GetCoords((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
 

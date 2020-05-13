@@ -26,7 +26,7 @@
             InitRanges(signal);
             InitSlider(AmplitudeSlider, AmpGaugeMin, AmpGaugeMax, AmpGaugeSmall, AmpGaugeLarge, AmplitudeToGauge(signal.Amplitude));
             InitSlider(FrequencySlider, FreqGaugeMin, FreqGaugeMax, FreqGaugeSmall, FreqGaugeLarge, FrequencyToGauge(signal.Frequency));
-            SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, ToolStripUtils.CloneOptions.None);
+            SignalsForm.AddButton.CloneTo(SignalEdit.WaveTypeButton, ToolStripCloneOptions.None);
             AppCon.InitControlTheme(Toolbar);
             UpdateAllProperties();
         }

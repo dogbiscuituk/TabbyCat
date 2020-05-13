@@ -110,8 +110,6 @@
 
         public void Show() => WorldForm.Show();
 
-        public void Show(IWin32Window owner) => WorldForm.Show(owner);
-
         public override void UpdateAllProperties()
         {
             SceneCodeCon.UpdateAllProperties();
@@ -277,7 +275,7 @@
 
         private void CopyToClipboard() => JsonCon.ClipboardCopy(ShapeSelection.Shapes);
 
-        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripUtils.CloneOptions.All);
+        private void CreateMainMenuClone() => WorldForm.MainMenu.CloneTo(WorldForm.PopupMenu, ToolStripCloneOptions.All);
 
         private void CutToClipboard()
         {
@@ -526,13 +524,8 @@
                 ShapeCodeCon,
                 ShapePropertiesCon
             }, p => p.Connect(connect));
-            if (connect)
-            {
-            }
-            else
-            {
+            if (!connect)
                 RenderCon.Unload();
-            }
         }
 
         // Private methods

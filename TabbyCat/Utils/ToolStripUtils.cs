@@ -2,27 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Windows.Forms;
+    using Types;
 
     public static class ToolStripUtils
     {
-        [Flags]
-        public enum CloneOptions
-        {
-            [Description("None of the available options are selected.")]
-            None = 0x00,
-
-            [Description("The destination items will be cleared before the copy operation.")]
-            ClearTarget = 0x01,
-
-            [Description("Existing OnClick event handlers will be copied across.")]
-            CopyClickHandler = 0x02,
-
-            [Description("All of the available options are selected.")]
-            All = ClearTarget | CopyClickHandler,
-        }
-
         // Public methods
 
         /// <summary>
@@ -30,56 +14,68 @@
         /// </summary>
         /// <param name="source">The source, contributing the items to be copied.</param>
         /// <param name="target">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStrip source, ToolStrip target, CloneOptions options) => source?.Items.CloneTo(target?.Items, options);
+        /// <param name="options">Flags determining details of the cloning performed, such as
+        /// whether the destination items will be cleared before the copy operation, or
+        /// whether an existing OnClick event handler will be copied across."</param>
+        public static void CloneTo(this ToolStrip source, ToolStrip target, ToolStripCloneOptions options) => source?.Items.CloneTo(target?.Items, options);
 
         /// <summary>
         /// Copy the Items from one ToolStripDropDownItem to another.
         /// </summary>
         /// <param name="source">The source, contributing the items to be copied.</param>
         /// <param name="target">The target, receiving the copies.</param>
-        public static void CloneTo(this ToolStripDropDownItem source, ToolStripDropDownItem target, CloneOptions options) => source?.DropDownItems.CloneTo(target?.DropDownItems, options);
+        /// <param name="options">Flags determining details of the cloning performed, such as
+        /// whether the destination items will be cleared before the copy operation, or
+        /// whether an existing OnClick event handler will be copied across."</param>
+        public static void CloneTo(this ToolStripDropDownItem source, ToolStripDropDownItem target, ToolStripCloneOptions options) => source?.DropDownItems.CloneTo(target?.DropDownItems, options);
 
         /// <summary>
         /// Copy the Items from a ToolStrip to a ToolStripDropDownItem.
         /// </summary>
         /// <param name="source">The source, contributing the items to be copied.</param>
         /// <param name="target">The target, receiving the copies.</param>
-        /// <param name="onClick">Whether or not the OnClick event handlers are copied across.</param>
-        public static void CloneTo(this ToolStrip source, ToolStripDropDownItem target, CloneOptions options) => source?.Items.CloneTo(target?.DropDownItems, options);
+        /// <param name="options">Flags determining details of the cloning performed, such as
+        /// whether the destination items will be cleared before the copy operation, or
+        /// whether an existing OnClick event handler will be copied across."</param>
+        public static void CloneTo(this ToolStrip source, ToolStripDropDownItem target, ToolStripCloneOptions options) => source?.Items.CloneTo(target?.DropDownItems, options);
 
         /// <summary>
         /// Copy the DropDownItems from a ToolStripDropDownItem to a ToolStrip.
         /// </summary>
         /// <param name="source">The source, contributing the items to be copied.</param>
         /// <param name="target">The target, receiving the copies.</param>
-        /// <param name="onClick">Whether or not the OnClick event handlers are copied across.</param>
-        public static void CloneTo(this ToolStripDropDownItem source, ToolStrip target, CloneOptions options) => source?.DropDownItems.CloneTo(target?.Items, options);
+        /// <param name="options">Flags determining details of the cloning performed, such as
+        /// whether the destination items will be cleared before the copy operation, or
+        /// whether an existing OnClick event handler will be copied across."</param>
+        public static void CloneTo(this ToolStripDropDownItem source, ToolStrip target, ToolStripCloneOptions options) => source?.DropDownItems.CloneTo(target?.Items, options);
 
         public static void EnableButtons(bool enabled, IEnumerable<ToolStripItem> items)
         {
-            if (items != null)
-                foreach (var item in items)
-                    item.Enabled = enabled;
+            if (items == null)
+                return;
+            foreach (var item in items)
+                item.Enabled = enabled;
         }
 
         public static void EnableControls(bool enabled, IEnumerable<Control> controls)
         {
-            if (controls != null)
-                foreach (var control in controls)
-                    control.Enabled = enabled;
+            if (controls == null)
+                return;
+            foreach (var control in controls)
+                control.Enabled = enabled;
         }
 
         // Private methods
 
-        private static ToolStripItem CloneItem(this ToolStripItem source, CloneOptions options)
+        private static ToolStripItem CloneItem(this ToolStripItem source, ToolStripCloneOptions options)
         {
             switch (source)
             {
                 case ToolStripSeparator _:
-                case ToolStripMenuItem separator when separator.Text == "-":
+                case ToolStripMenuItem separator when separator.Text == @"-":
                     return new ToolStripSeparator();
                 case ToolStripMenuItem menuItem:
-                    var copyClickHandler = (options & CloneOptions.CopyClickHandler) != 0;
+                    var copyClickHandler = (options & ToolStripCloneOptions.CopyClickHandler) != 0;
                     var target = new ToolStripMenuItem(
                         menuItem.Text,
                         menuItem.Image,
@@ -100,9 +96,9 @@
             return null;
         }
 
-        private static void CloneTo(this ToolStripItemCollection source, ToolStripItemCollection target, CloneOptions options)
+        private static void CloneTo(this ToolStripItemCollection source, ToolStripItemCollection target, ToolStripCloneOptions options)
         {
-            if ((options & CloneOptions.ClearTarget) != 0)
+            if ((options & ToolStripCloneOptions.ClearTarget) != 0)
                 target.Clear();
             foreach (ToolStripItem item in source)
                 target.Add(item.CloneItem(options));
