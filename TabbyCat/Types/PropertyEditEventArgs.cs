@@ -14,7 +14,7 @@
 
         // Public properties
 
-        public int Index { get; set; }
-        public Property Property { get; set; }
+        public int Index { get; }
+        public Property Property { get; }
     }
 }

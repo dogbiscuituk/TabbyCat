@@ -59,8 +59,8 @@
 
             // GPU properties
 
-            { Property.GPULog, Resources.Property_GPULog },
-            { Property.GPUStatus, Resources.Property_GPUStatus },
+            { Property.GpuLog, Resources.Property_GPULog },
+            { Property.GpuStatus, Resources.Property_GPUStatus },
             { Property.GraphicsMode, Resources.Property_GraphicsMode },
 
             // Shader properties

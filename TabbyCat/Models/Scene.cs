@@ -58,7 +58,7 @@
                 if (GPUStatus == value)
                     return;
                 _gpuStatus = value;
-                OnPropertyEdit(Property.GPUStatus);
+                OnPropertyEdit(Property.GpuStatus);
             }
         }
 
@@ -71,7 +71,7 @@
                 if (GPULog == value)
                     return;
                 _gpuLog = value;
-                OnPropertyEdit(Property.GPULog);
+                OnPropertyEdit(Property.GpuLog);
             }
         }
 

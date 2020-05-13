@@ -570,8 +570,8 @@
                 case Property.Stereo:
                     UpdateGraphicsModeLabel();
                     break;
-                case Property.GPULog:
-                case Property.GPUStatus:
+                case Property.GpuLog:
+                case Property.GpuStatus:
                     UpdateGpuStatusLabel();
                     break;
             }

@@ -185,27 +185,27 @@
             {
                 case Theme.None:
                     return null;
-                case Theme.VS2003:
+                case Theme.Vs2003:
                     return new VS2003Theme();
-                case Theme.VS2005:
+                case Theme.Vs2005:
                     return new VS2005Theme();
-                case Theme.VS2012Blue:
+                case Theme.Vs2012Blue:
                     return new VS2012BlueTheme();
-                case Theme.VS2012Dark:
+                case Theme.Vs2012Dark:
                     return new VS2012DarkTheme();
-                case Theme.VS2012Light:
+                case Theme.Vs2012Light:
                     return new VS2012LightTheme();
-                case Theme.VS2013Blue:
+                case Theme.Vs2013Blue:
                     return new VS2013BlueTheme();
-                case Theme.VS2013Dark:
+                case Theme.Vs2013Dark:
                     return new VS2013DarkTheme();
-                case Theme.VS2013Light:
+                case Theme.Vs2013Light:
                     return new VS2013LightTheme();
-                case Theme.VS2015Blue:
+                case Theme.Vs2015Blue:
                     return new VS2015BlueTheme();
-                case Theme.VS2015Dark:
+                case Theme.Vs2015Dark:
                     return new VS2015DarkTheme();
-                case Theme.VS2015Light:
+                case Theme.Vs2015Light:
                     return new VS2015LightTheme();
                 default:
                     return new VS2015BlueTheme();
@@ -218,21 +218,21 @@
             {
                 case Theme.None:
                     return VsVersion.Unknown;
-                case Theme.VS2003:
+                case Theme.Vs2003:
                     return VsVersion.Vs2003;
-                case Theme.VS2005:
+                case Theme.Vs2005:
                     return VsVersion.Vs2005;
-                case Theme.VS2012Blue:
-                case Theme.VS2012Dark:
-                case Theme.VS2012Light:
+                case Theme.Vs2012Blue:
+                case Theme.Vs2012Dark:
+                case Theme.Vs2012Light:
                     return VsVersion.Vs2012;
-                case Theme.VS2013Blue:
-                case Theme.VS2013Dark:
-                case Theme.VS2013Light:
+                case Theme.Vs2013Blue:
+                case Theme.Vs2013Dark:
+                case Theme.Vs2013Light:
                     return VsVersion.Vs2013;
-                case Theme.VS2015Blue:
-                case Theme.VS2015Dark:
-                case Theme.VS2015Light:
+                case Theme.Vs2015Blue:
+                case Theme.Vs2015Dark:
+                case Theme.Vs2015Light:
                     return VsVersion.Vs2015;
                 default:
                     return VsVersion.Vs2015;

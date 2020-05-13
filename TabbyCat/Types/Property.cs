@@ -53,8 +53,8 @@
 
         // GPU properties
 
-        GPULog,
-        GPUStatus,
+        GpuLog,
+        GpuStatus,
         GraphicsMode,
 
         // Shader properties

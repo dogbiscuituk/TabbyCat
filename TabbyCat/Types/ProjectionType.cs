@@ -6,10 +6,13 @@
     {
         [Description("Orthographic")]
         Orthographic,
+
         [Description("Orthographic (Offset)")]
         OrthographicOffset,
+
         [Description("Perspective")]
         Perspective,
+
         [Description("Perspective (Offset)")]
         PerspectiveOffset
     }

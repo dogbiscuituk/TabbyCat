@@ -12,7 +12,7 @@
     {
         public TextStyleInfo(Color foreground, FontStyle fontStyle = 0) : this(foreground, Color.Transparent, fontStyle) { }
 
-        public TextStyleInfo(Color foreground, Color background, FontStyle fontStyle = 0)
+        private TextStyleInfo(Color foreground, Color background, FontStyle fontStyle = 0)
         {
             Foreground = foreground;
             Background = background;
@@ -21,18 +21,18 @@
 
         [Description("The foreground colour of the text style.")]
         [DisplayName("Foreground Colour")]
-        public Color Foreground { get; set; }
+        public Color Foreground { get; }
 
         [DefaultValue(typeof(Color), "Transparent")]
         [Description("The background colour of the text style.")]
         [DisplayName("Background Colour")]
-        public Color Background { get; set; }
+        public Color Background { get; }
 
         [DefaultValue(0)]
         [Description("The font attributes of the text style (bold, italic, etc).")]
         [DisplayName("Font Attributes")]
         [Editor(typeof(JmkFlagsEnumEditor), typeof(UITypeEditor))]
-        public FontStyle FontStyle { get; set; }
+        public FontStyle FontStyle { get; }
 
         public static TextStyleInfo Parse(string s)
         {
