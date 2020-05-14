@@ -152,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Types\Axes.cs" />
     <Compile Include="Types\LookupParameterEventArgs.cs" />
     <Compile Include="Models\Selection.cs" />
     <Compile Include="Types\FilePathEventArgs.cs" />

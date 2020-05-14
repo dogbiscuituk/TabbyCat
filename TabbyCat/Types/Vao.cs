@@ -17,7 +17,7 @@
             _indexVbo = shape.AcquireVbo(VboType.Index);
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexVbo.BufferID);
             GL.EnableVertexAttribArray(0);
-            var size = shape.DimensionCount;
+            var size = shape.AxesCount;
             GL.VertexAttribPointer(0, size, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _indexVbo.BufferID);
             GL.BindVertexArray(0);
