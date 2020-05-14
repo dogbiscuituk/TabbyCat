@@ -1672,6 +1672,15 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to axis.
+        /// </summary>
+        public static string Property_Axis {
+            get {
+                return ResourceManager.GetString("Property_Axis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to background.
         /// </summary>
         public static string Property_Background {
@@ -1717,7 +1726,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Curve.
+        ///   Looks up a localized string similar to curve.
         /// </summary>
         public static string Property_Curve {
             get {
@@ -1834,7 +1843,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scene.
+        ///   Looks up a localized string similar to scene.
         /// </summary>
         public static string Property_Scene {
             get {
@@ -1906,7 +1915,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shape.
+        ///   Looks up a localized string similar to shape.
         /// </summary>
         public static string Property_Shape {
             get {
@@ -2059,7 +2068,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signal.
+        ///   Looks up a localized string similar to signal.
         /// </summary>
         public static string Property_Signal {
             get {
@@ -2158,7 +2167,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Surface.
+        ///   Looks up a localized string similar to surface.
         /// </summary>
         public static string Property_Surface {
             get {
@@ -2203,7 +2212,7 @@ namespace TabbyCat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume.
+        ///   Looks up a localized string similar to volume.
         /// </summary>
         public static string Property_Volume {
             get {
@@ -2217,6 +2226,33 @@ namespace TabbyCat.Properties {
         public static string Property_VSync {
             get {
                 return ResourceManager.GetString("Property_VSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to x-axis.
+        /// </summary>
+        public static string Property_Xaxis {
+            get {
+                return ResourceManager.GetString("Property_Xaxis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y-axis.
+        /// </summary>
+        public static string Property_Yaxis {
+            get {
+                return ResourceManager.GetString("Property_Yaxis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to z-axis.
+        /// </summary>
+        public static string Property_Zaxis {
+            get {
+                return ResourceManager.GetString("Property_Zaxis", resourceCulture);
             }
         }
         

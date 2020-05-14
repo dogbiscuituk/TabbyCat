@@ -167,10 +167,20 @@
 
         private void AddShape(ShapeType shapeType)
         {
-            var shape = GetNewShape(shapeType);
+            if (!Scene.Shapes.Any())
+            {
+                AddShape(new XAxis());
+                AddShape(new YAxis());
+                AddShape(new ZAxis());
+            }
+            AddShape(GetNewShape(shapeType));
+        }
+
+        private void AddShape(Shape shape)
+        {
             shape.Scene = Scene;
             CommandCon.AppendShape(shape);
-            ShapeSelection.Set(new[] { Scene.Shapes.Last() });
+            ShapeSelection.Set(new[] { shape });
         }
 
         private void AddVolume_Click(object sender, EventArgs e) => AddShape(ShapeType.Volume);
