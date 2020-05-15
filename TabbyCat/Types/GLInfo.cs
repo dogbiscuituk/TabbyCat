@@ -4,6 +4,8 @@
 
     public class GLInfo
     {
+        // Constructors
+
         public GLInfo() : this(
             number: GL.GetString(StringName.Version),
             major: GL.GetInteger(GetPName.MajorVersion),
@@ -13,7 +15,7 @@
             renderer: GL.GetString(StringName.Renderer))
         { }
 
-        public GLInfo(string number, int major, int minor, string vendor, string renderer, string shader)
+        private GLInfo(string number, int major, int minor, string shader, string vendor, string renderer)
         {
             Number = number;
             Major = major;
@@ -23,12 +25,19 @@
             Renderer = renderer;
         }
 
+        // Public properties
+
         public string Number { get; }
-        public int Major { get; }
-        public int Minor { get; }
         public string Shader { get; }
         public string Vendor { get; }
         public string Renderer { get; }
+
+        // Private properties
+
+        private int Major { get; }
+        private int Minor { get; }
+
+        // Public methods
 
         public override string ToString() => $"{Number}, {Major}, {Minor}, {Shader}, {Vendor}, {Renderer}";
     }
