@@ -41,6 +41,7 @@
             _computeShader;
 
         private int
+            _locAxesUsed,
             _locCameraView,
             _locProjection,
             _locTimeValue,
@@ -178,9 +179,9 @@
                         continue;
                     var shapeNumber = shapeIndex + 1;
                     LoadShapeNumber(shapeNumber);
+                    LoadAxesUsed(shape);
                     LoadTransform(shape);
                     ValidateShape(shape);
-
                     GL.BindVertexArray(shape.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
                     GL.DrawElements((PrimitiveType)((int)shape.Pattern & 0x0F), shape.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
@@ -261,6 +262,7 @@
 
         private void GetUniformLocations()
         {
+            _locAxesUsed = GetUniformLocation("axesUsed");
             _locCameraView = GetUniformLocation("cameraView");
             _locProjection = GetUniformLocation("projection");
             _locTimeValue = GetUniformLocation("timeValue");
@@ -284,6 +286,8 @@
                     shape.Vao = null;
                 });
         }
+
+        private void LoadAxesUsed(Shape shape) => LoadInt(_locAxesUsed, (int)shape.AxesUsed);
 
         private void LoadCameraView() => LoadMatrix(_locCameraView, Scene.GetCameraView());
 

@@ -1,6 +1,6 @@
 ﻿#version {0}
  
-uniform int shapeNumber;
+uniform int shapeNumber, axesUsed;
 {1}
 uniform mat4 transform, cameraView, projection;
  

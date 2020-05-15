@@ -7,6 +7,14 @@
   g = 0,
   b = 0;
 
+switch (axesUsed)
+{
+  case 2: y = x; x = 0; break;
+  case 4: z = x; x = 0; break;
+  case 5: z = x; x = y; y = 0; break;
+  case 6: z = y; y = x; x = 0; break;
+}
+
 // Begin Formula
 
 
