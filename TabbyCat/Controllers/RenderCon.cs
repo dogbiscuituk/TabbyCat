@@ -287,7 +287,7 @@
                 });
         }
 
-        private void LoadAxesUsed(Shape shape) => LoadInt(_locAxesUsed, (int)shape.AxesUsed);
+        private void LoadAxesUsed(Shape shape) => LoadInt(_locAxesUsed, (int)shape.StripeCount.AxesUsed());
 
         private void LoadCameraView() => LoadMatrix(_locCameraView, Scene.GetCameraView());
 

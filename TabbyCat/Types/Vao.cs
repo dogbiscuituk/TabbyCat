@@ -1,6 +1,7 @@
 ﻿namespace TabbyCat.Types
 {
     using OpenTK.Graphics.OpenGL;
+    using TabbyCat.Utils;
 
     /// <summary>
     /// Class representing an OpenTK Vertex Array Object.
@@ -17,7 +18,7 @@
             _indexVbo = shape.AcquireVbo(VboType.Index);
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexVbo.BufferID);
             GL.EnableVertexAttribArray(0);
-            var size = shape.AxesCount;
+            var size = shape.StripeCount.AxesCount();
             GL.VertexAttribPointer(0, size, VertexAttribPointerType.Float, false, 0, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _indexVbo.BufferID);
             GL.BindVertexArray(0);

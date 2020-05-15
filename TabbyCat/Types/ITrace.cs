@@ -5,7 +5,6 @@
     public interface IShape : IShaders
     {
         string Description { get; set; }
-        int AxesCount { get; }
         Pattern Pattern { get; set; }
         bool Visible { get; set; }
 

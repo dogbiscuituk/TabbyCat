@@ -6,7 +6,6 @@
     using OpenTK.Graphics.OpenGL;
     using Properties;
     using System.ComponentModel;
-    using System.Diagnostics.CodeAnalysis;
     using Types;
     using Utils;
 
@@ -23,32 +22,6 @@
         private int _index;
 
         // Public properties
-
-        public int AxesCount
-        {
-            get
-            {
-                switch (AxesUsed)
-                {
-                    case Axes.None:
-                        return 0;
-                    case Axes.X:
-                    case Axes.Y:
-                    case Axes.Z:
-                        return 1;
-                    case Axes.XYZ:
-                        return 3;
-                    default:
-                        return 2;
-                }
-            }
-        }
-
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
-        public Axes AxesUsed =>
-            (StripeCount.X != 0 ? Axes.X : 0) |
-            (StripeCount.Y != 0 ? Axes.Y : 0) |
-            (StripeCount.Z != 0 ? Axes.Z : 0);
 
         [DefaultValue("")]
         public string Description { get; set; }
