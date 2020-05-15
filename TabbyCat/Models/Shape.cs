@@ -5,7 +5,6 @@
     using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using Properties;
-    using System;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using Types;
@@ -84,8 +83,8 @@
         [JsonIgnore]
         public Scene Scene { get; set; }
 
-        [JsonConverter(typeof(Vector3Converter))]
-        public Vector3 StripeCount { get; set; }
+        [JsonConverter(typeof(Vector3iConverter))]
+        public Vector3i StripeCount { get; set; }
 
         /// <summary>
         /// The Video Array Object associated with this Shape.
@@ -122,7 +121,7 @@
             Orientation = Vector3.Zero;
             Pattern = Pattern.Fill;
             Scale = Vector3.One;
-            StripeCount = new Vector3(100, 100, 0);
+            StripeCount = new Vector3i(100, 100, 0);
             Visible = true;
             InitShaders();
         }

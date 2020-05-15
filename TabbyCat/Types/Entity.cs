@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Types
 {
-    using OpenTK;
     using System.Collections.Generic;
 
     public static class Entity
@@ -24,7 +23,7 @@
         /// <returns>
         /// (1, 2 or 3) * (cx+1)(cy+1)(cz+1) floats, being the coordinates (x, or xy, or xyz) of the points in the lattice.
         /// </returns>
-        private static IEnumerable<float> GetCoords(Vector3 stripeCount) => GetCoords((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
+        private static IEnumerable<float> GetCoords(Vector3i stripeCount) => GetCoords(stripeCount.X, stripeCount.Y, stripeCount.Z);
 
         /// <summary>
         /// Get the coordinates of all points in a regular 3D xyz lattice, where -1 <= x,y,z <= +1.
@@ -123,7 +122,7 @@
             }
         }
 
-        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3 stripeCount) => GetIndices(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
+        private static IEnumerable<int> GetIndices(Pattern pattern, Vector3i stripeCount) => GetIndices(pattern, stripeCount.X, stripeCount.Y, stripeCount.Z);
 
         private static IEnumerable<int> GetIndices(Pattern pattern, int cx, int cy, int cz)
         {
@@ -142,7 +141,7 @@
                 case Pattern.Triangles:
                     return GetTriangles(cx, cy);
             }
-            return new int[1] { 0 };
+            return new[] { 0 };
         }
 
         private static IEnumerable<int> GetLines(int cx, int cy, int cz) => GetPoints(cx, cy, cz);
@@ -230,9 +229,9 @@
                 }
         }
 
-        private static int GetCoordsCount(Vector3 stripeCount) => GetCoordsCount((int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
+        private static int GetCoordsCount(Vector3i stripeCount) => GetCoordsCount(stripeCount.X, stripeCount.Y, stripeCount.Z);
 
-        private static int GetIndicesCount(Pattern pattern, Vector3 stripeCount) => GetIndicesCount(pattern, (int)stripeCount.X, (int)stripeCount.Y, (int)stripeCount.Z);
+        private static int GetIndicesCount(Pattern pattern, Vector3i stripeCount) => GetIndicesCount(pattern, stripeCount.X, stripeCount.Y, stripeCount.Z);
 
         private static int GetIndicesCount(Pattern pattern, int cx, int cy, int cz)
         {

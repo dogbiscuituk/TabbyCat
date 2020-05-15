@@ -397,20 +397,20 @@
             p.Scale.Y,
             (float)ShapePropertiesEdit.seScaleZ.Value)));
 
-        private void StripeCountX_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
-            (float)ShapePropertiesEdit.seStripeCountX.Value,
+        private void StripeCountX_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3i(
+            (int)ShapePropertiesEdit.seStripeCountX.Value,
             p.StripeCount.Y,
             p.StripeCount.Z)));
 
-        private void StripeCountY_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
+        private void StripeCountY_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3i(
             p.StripeCount.X,
-            (float)ShapePropertiesEdit.seStripeCountY.Value,
+            (int)ShapePropertiesEdit.seStripeCountY.Value,
             p.StripeCount.Z)));
 
-        private void StripeCountZ_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3(
+        private void StripeCountZ_ValueChanged(object sender, EventArgs e) => Run(p => new StripeCountCommand(p.Index, new Vector3i(
             p.StripeCount.X,
             p.StripeCount.Y,
-            (float)ShapePropertiesEdit.seStripeCountZ.Value)));
+            (int)ShapePropertiesEdit.seStripeCountZ.Value)));
 
         private void ViewShapeProperties_Click(object sender, EventArgs e) => ToggleVisibility();
 

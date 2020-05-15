@@ -116,6 +116,7 @@
     <Compile Include="Controllers\ScenePropertiesCon.cs" />
     <Compile Include="Controllers\SdiCon.cs" />
     <Compile Include="Controllers\ShapePropertiesCon.cs" />
+    <Compile Include="Converters\Vector3iConverter.cs" />
     <Compile Include="CustomControls\JmkControl.cs" />
     <Compile Include="CustomControls\JmkFlagsCheckedListBox.cs">
       <SubType>Component</SubType>
@@ -157,6 +158,7 @@
     <Compile Include="Models\Selection.cs" />
     <Compile Include="Types\FilePathEventArgs.cs" />
     <Compile Include="Types\ToolStripCloneOptions.cs" />
+    <Compile Include="Types\Vector3i.cs" />
     <Compile Include="UserControls\CodeEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -242,6 +244,7 @@
     <Compile Include="Utils\PropertyUtils.cs" />
     <Compile Include="Utils\ShaderUtils.cs" />
     <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="Utils\StripeCountUtils.cs" />
     <Compile Include="Utils\ToolStripUtils.cs" />
     <Compile Include="Views\AboutDialog.cs">
       <SubType>Form</SubType>

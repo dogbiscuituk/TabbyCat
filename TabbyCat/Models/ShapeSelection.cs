@@ -25,7 +25,7 @@
 
         public Vector3 Scale => GetVector3(p => p.Scale);
 
-        public Vector3 StripeCount => GetVector3(p => p.StripeCount);
+        public Vector3i StripeCount => GetVector3i(p => p.StripeCount);
 
         public IEnumerable<Shape> Shapes => Items.OrderBy(p => p.Index);
 
@@ -42,6 +42,11 @@
         // Private methods
 
         private Vector3 GetVector3(Func<Shape, Vector3> f) => new Vector3(
+            GetProperty(p => f(p).X),
+            GetProperty(p => f(p).Y),
+            GetProperty(p => f(p).Z));
+
+        private Vector3i GetVector3i(Func<Shape, Vector3i> f) => new Vector3i(
             GetProperty(p => f(p).X),
             GetProperty(p => f(p).Y),
             GetProperty(p => f(p).Z));

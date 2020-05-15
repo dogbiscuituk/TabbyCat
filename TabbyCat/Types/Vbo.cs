@@ -37,7 +37,7 @@
         public int ElementsCount { get; }
 
         private readonly Pattern _pattern;
-        private readonly Vector3 _stripeCount;
+        private readonly Vector3i _stripeCount;
         private readonly VboType _vboType;
 
         private int _refCount;

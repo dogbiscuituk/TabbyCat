@@ -82,9 +82,9 @@
         { }
     }
 
-    public class StripeCountCommand : ShapePropertyCommand<Vector3>
+    public class StripeCountCommand : ShapePropertyCommand<Vector3i>
     {
-        public StripeCountCommand(int index, Vector3 value) : base(
+        public StripeCountCommand(int index, Vector3i value) : base(
             index,
             Property.ShapeStripeCount,
             value,
