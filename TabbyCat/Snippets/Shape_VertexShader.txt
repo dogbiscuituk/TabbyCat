@@ -1,19 +1,9 @@
 ﻿float
-  t = timeValue,
-  x = position.x,
-  y = position.y,
-  z = position.z,
-  r = 0,
-  g = 0,
-  b = 0;
+    x, y, z,
+    t = timeValue,
+    r = 0, g = 0, b = 0;
 
-switch (axesUsed)
-{
-  case 2: y = x; x = 0; break;
-  case 4: z = x; x = 0; break;
-  case 5: z = x; x = y; y = 0; break;
-  case 6: z = y; y = x; x = 0; break;
-}
+DecodeAxes(x, y, z);
 
 // Begin Formula
 
