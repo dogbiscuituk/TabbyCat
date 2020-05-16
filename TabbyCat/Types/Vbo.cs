@@ -1,6 +1,5 @@
 ﻿namespace TabbyCat.Types
 {
-    using OpenTK;
     using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
     using System.Linq;
@@ -62,6 +61,7 @@
             return result;
         }
 
-        private void BufferData<T>(int byteCount, IEnumerable<T> data) where T : struct => GL.BufferData(BufferTarget, byteCount, data.ToArray(), BufferUsageHint.StaticDraw);
+        private void BufferData<T>(int byteCount, IEnumerable<T> data) where T : struct =>
+            GL.BufferData(BufferTarget, byteCount, data.ToArray(), BufferUsageHint.StaticDraw);
     }
 }
