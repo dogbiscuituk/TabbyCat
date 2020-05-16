@@ -1,10 +1,10 @@
 ﻿namespace TabbyCat.Controllers
 {
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
-    using Properties;
     using Types;
     using Utils;
     using Views;

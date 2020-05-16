@@ -11,7 +11,7 @@
     {
         // Constructors
 
-        public JmkFlagsEnumEditor() => _listBox = new JmkFlagsCheckedListBox {BorderStyle = BorderStyle.None};
+        public JmkFlagsEnumEditor() => _listBox = new JmkFlagsCheckedListBox { BorderStyle = BorderStyle.None };
 
         // Private fields
 
@@ -36,7 +36,7 @@
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) => UITypeEditorEditStyle.DropDown;
     }
 
-    partial class JmkFlagsEnumEditor : IDisposable
+    public partial class JmkFlagsEnumEditor : IDisposable
     {
         private bool _disposed;
 

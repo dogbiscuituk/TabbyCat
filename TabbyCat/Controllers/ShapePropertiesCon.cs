@@ -235,9 +235,9 @@
                         ShapePropertiesEdit.seScaleZ.Value = (decimal)Selection.Scale.Z;
                         break;
                     case Property.ShapeStripeCount:
-                        ShapePropertiesEdit.seStripeCountX.Value = (decimal)Selection.StripeCount.X;
-                        ShapePropertiesEdit.seStripeCountY.Value = (decimal)Selection.StripeCount.Y;
-                        ShapePropertiesEdit.seStripeCountZ.Value = (decimal)Selection.StripeCount.Z;
+                        ShapePropertiesEdit.seStripeCountX.Value = Selection.StripeCount.X;
+                        ShapePropertiesEdit.seStripeCountY.Value = Selection.StripeCount.Y;
+                        ShapePropertiesEdit.seStripeCountZ.Value = Selection.StripeCount.Z;
                         break;
                     case Property.Shapes:
                         OnSelectionEdit();

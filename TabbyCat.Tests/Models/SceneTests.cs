@@ -1,8 +1,8 @@
 ﻿namespace TabbyCat.Tests.Models
 {
     using NUnit.Framework;
-    using System.Drawing;
     using Properties;
+    using System.Drawing;
     using TabbyCat.Models;
     using Types;
 

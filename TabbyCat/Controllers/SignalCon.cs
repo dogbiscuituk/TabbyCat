@@ -104,7 +104,7 @@
             get
             {
                 var tag = WaveTypeButton.Tag;
-                return (WaveType?) tag ?? WaveType.Constant;
+                return (WaveType?)tag ?? WaveType.Constant;
             }
             set => SetWaveType(value);
         }
