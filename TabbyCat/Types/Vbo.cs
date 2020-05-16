@@ -4,6 +4,7 @@
     using OpenTK.Graphics.OpenGL;
     using System.Collections.Generic;
     using System.Linq;
+    using Utils;
 
     /// <summary>
     /// Class representing a reference counted OpenTK Vertex Buffer Object.
@@ -50,7 +51,7 @@
 
         public bool Matches(IShape shape, VboType vboType) =>
             shape != null && _vboType == vboType &&
-            _stripeCount == shape.StripeCount &&
+            _stripeCount.EquiAxial(shape.StripeCount) &&
             (_vboType != VboType.Index || _pattern == shape.Pattern);
 
         public bool Release()

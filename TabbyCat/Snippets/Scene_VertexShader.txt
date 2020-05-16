@@ -7,7 +7,7 @@ void DecodeAxes(out float x, out float y, out float z)
   {
     case 2: x = 0; y = position.x; z = 0; break;
     case 4: x = 0; y = 0; z = position.x; break;
-    case 5: x = position.y; y = 0; z = position.x; break;
+    case 5: x = position.x; y = 0; z = position.y; break;
     case 6: x = 0; y = position.x; z = position.y; break;
     default: x = position.x; y = position.y; z = position.z; break;
   }
