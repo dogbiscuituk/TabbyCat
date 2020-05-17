@@ -72,13 +72,12 @@
         {
             get
             {
-                if (TheGLInfo == null)
-                {
-                    GLInfo info = null;
-                    UsingGL(() => info = new GLInfo());
-                    lock (InfoSyncRoot)
-                        TheGLInfo = info;
-                }
+                if (TheGLInfo != null)
+                    return TheGLInfo;
+                GLInfo info = null;
+                UsingGL(() => info = new GLInfo());
+                lock (InfoSyncRoot)
+                    TheGLInfo = info;
                 return TheGLInfo;
             }
         }
@@ -289,7 +288,7 @@
 
         private void LoadAxesUsed(Shape shape) => LoadInt(_locAxesUsed, (int)shape.StripeCount.AxesUsed());
 
-        private void LoadCameraView() => LoadMatrix(_locCameraView, Scene.GetCameraView());
+        private void LoadCameraView() => LoadMatrix4(_locCameraView, Scene.GetCameraView());
 
         private void LoadParameters() // Time and AC/DC signals.
         {
@@ -302,11 +301,11 @@
             }
         }
 
-        private void LoadProjection() => LoadMatrix(_locProjection, Scene.GetProjectionMatrix());
+        private void LoadProjection() => LoadMatrix4(_locProjection, Scene.GetProjectionMatrix());
 
         private void LoadShapeNumber(int shapeIndex) => LoadInt(_locShapeNumber, shapeIndex);
 
-        private void LoadTransform(Shape shape) => LoadMatrix(_locTransform, shape.GetTransform());
+        private void LoadTransform(Shape shape) => LoadMatrix4(_locTransform, shape.GetTransform());
 
         private void Log(string s)
         {
@@ -344,6 +343,8 @@
                      SceneControl?.Visible == true;
             if (ok)
             {
+                if (_currencyCount != 0)
+                    return;
                 if (++_currencyCount == 1)
                     SceneControl.MakeCurrent();
                 try
@@ -425,7 +426,7 @@
 
         private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
 
-        private static void LoadMatrix(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
+        private static void LoadMatrix4(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
     }
 
     public partial class RenderCon : IScript

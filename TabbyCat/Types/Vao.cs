@@ -1,7 +1,7 @@
 ﻿namespace TabbyCat.Types
 {
     using OpenTK.Graphics.OpenGL;
-    using TabbyCat.Utils;
+    using Utils;
 
     /// <summary>
     /// Class representing an OpenTK Vertex Array Object.
