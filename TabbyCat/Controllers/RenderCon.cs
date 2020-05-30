@@ -286,7 +286,7 @@
                 });
         }
 
-        private void LoadAxesUsed(Shape shape) => LoadInt(_locAxesUsed, (int)shape.StripeCount.AxesUsed());
+        private void LoadAxesUsed(IShape shape) => LoadInt(_locAxesUsed, (int)shape.StripeCount.AxesUsed());
 
         private void LoadCameraView() => LoadMatrix4(_locCameraView, Scene.GetCameraView());
 
@@ -349,7 +349,8 @@
                     SceneControl.MakeCurrent();
                 try
                 {
-                    action();
+                    UsingGLInvoke(action);
+                    //action();
                 }
                 finally
                 {
@@ -357,6 +358,15 @@
                         SceneControl.Context.MakeCurrent(null);
                 }
             }
+        }
+
+        private void UsingGLInvoke(Action action)
+        {
+            if (SceneControl.InvokeRequired)
+                SceneControl.Invoke(action);
+            else
+                action();
+
         }
 
         private void ValidateCameraView()

@@ -104,7 +104,17 @@
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e) => Tick?.Invoke(this, EventArgs.Empty);
+        bool foo;
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (!foo)
+            {
+                foo = true;
+                Tick?.Invoke(this, EventArgs.Empty);
+                foo = false;
+            }
+        }
 
         #region IDisposable
 

@@ -39,13 +39,12 @@
 
         // Public methods
 
-        public DialogResult ShowModal()
+        public void ShowModal()
         {
             Options = AppCon.Options;
             var result = _optionsDialog.ShowDialog(WorldForm);
             if (result == DialogResult.OK)
                 AppCon.Options = Options;
-            return result;
         }
 
         // Protected methods
@@ -57,18 +56,6 @@
         }
 
         // Private methods
-
-        private void BrowseFolder(string detail, TextBox textBox)
-        {
-            using (var dialog = new FolderBrowserDialog
-            {
-                Description = Resources.OptionsDialog_DefaultFolder.Format(detail),
-                SelectedPath = textBox.Text,
-                ShowNewFolderButton = true
-            })
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    textBox.Text = dialog.SelectedPath;
-        }
 
         private void BtnFilesFolder_Click(object sender, EventArgs e) => BrowseFolder("files", _optionsDialog.edFilesFolder);
 
@@ -93,6 +80,20 @@
             _optionsDialog.edTemplatesFolder.Text = options.TemplatesFolderPath;
             StylesGrid.SelectedObject = options.SyntaxHighlightStyles;
             _optionsDialog.edGLSLUrl.Text = options.GLSLPath;
+        }
+
+        // Private static methods
+
+        private static void BrowseFolder(string detail, TextBox textBox)
+        {
+            using (var dialog = new FolderBrowserDialog
+            {
+                Description = Resources.OptionsDialog_DefaultFolder.Format(detail),
+                SelectedPath = textBox.Text,
+                ShowNewFolderButton = true
+            })
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    textBox.Text = dialog.SelectedPath;
         }
     }
 }
