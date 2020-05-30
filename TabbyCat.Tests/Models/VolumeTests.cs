@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Tests.Models
 {
     using NUnit.Framework;
-    using OpenTK;
     using Properties;
     using TabbyCat.Models;
     using Types;
@@ -22,6 +21,6 @@
         public void TestVolumePattern() => Assert.AreEqual(Pattern.Quads, _volume.Pattern);
 
         [Test]
-        public void TestVolumeStripeCount() => Assert.AreEqual(new Vector3(10, 10, 10), _volume.StripeCount);
+        public void TestVolumeStripeCount() =>Assert.AreEqual(new Vector3i(10, 10, 10), _volume.StripeCount);
     }
 }

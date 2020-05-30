@@ -1,7 +1,6 @@
 ﻿namespace TabbyCat.Tests.Models
 {
     using NUnit.Framework;
-    using OpenTK;
     using Properties;
     using TabbyCat.Models;
     using Types;
@@ -22,6 +21,6 @@
         public void TestSurfacePattern() => Assert.AreEqual(Pattern.Quads, _surface.Pattern);
 
         [Test]
-        public void TestSurfaceStripeCount() => Assert.AreEqual(new Vector3(30, 30, 0), _surface.StripeCount);
+        public void TestSurfaceStripeCount() => Assert.AreEqual(new Vector3i(30, 30, 0), _surface.StripeCount);
     }
 }

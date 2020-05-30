@@ -40,7 +40,7 @@
         public void TestShapeScale() => Assert.AreEqual(Vector3.One, _shape.Scale);
 
         [Test]
-        public void TestShapeStripeCount() => Assert.AreEqual(new Vector3(100, 100, 0), _shape.StripeCount);
+        public void TestShapeStripeCount() => Assert.AreEqual(new Vector3i(100, 100, 0), _shape.StripeCount);
 
         [Test]
         public void TestShapeVisible() => Assert.AreEqual(true, _shape.Visible);

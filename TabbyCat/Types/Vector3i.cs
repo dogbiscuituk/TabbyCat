@@ -46,5 +46,7 @@
         public override bool Equals(object obj) => obj is Vector3i v && v == this;
 
         public override int GetHashCode() => X ^ Y ^ Z;
+
+        public override string ToString() => $"({X}, {Y}, {Z})";
     }
 }
