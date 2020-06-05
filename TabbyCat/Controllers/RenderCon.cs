@@ -439,7 +439,7 @@
         }
     }
 
-    public partial class RenderCon : IScript
+    partial class RenderCon : IScript
     {
         public string GetScript(ShaderType shaderType)
         {
