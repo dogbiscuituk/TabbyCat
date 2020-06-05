@@ -412,12 +412,6 @@
             _projectionValid = true;
         }
 
-        private void ValidateShape(Shape shape)
-        {
-            if (shape.Vao == null)
-                UsingGL(() => shape.Vao = new Vao(shape));
-        }
-
         private void WorldCon_PropertyEdit(object sender, PropertyEditEventArgs e)
         {
             if (e.Property.InvalidatesCameraView())
@@ -437,6 +431,12 @@
         private static void LoadInt(int location, int value) => GL.Uniform1(location, value);
 
         private static void LoadMatrix4(int location, Matrix4 value) => GL.UniformMatrix4(location, false, ref value);
+
+        private static void ValidateShape(Shape shape)
+        {
+            if (shape.Vao == null)
+                shape.Vao = new Vao(shape);
+        }
     }
 
     public partial class RenderCon : IScript
