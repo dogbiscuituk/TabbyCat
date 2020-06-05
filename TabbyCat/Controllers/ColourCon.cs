@@ -40,9 +40,9 @@
                 text = comboBox.Items[e.Index].ToString();
                 background = Color.FromName(text);
             }
-            else if (comboBox.Tag is Color)
+            else if (comboBox.Tag is Color colour)
             {
-                background = (Color)comboBox.Tag;
+                background = colour;
                 text = $"{background.ToArgb() & 0xffffff:X}";
             }
             var foreground = background.Contrast();

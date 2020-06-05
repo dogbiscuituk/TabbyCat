@@ -7,7 +7,7 @@
     using System.Linq;
     using Types;
 
-    public class ShapeSelection : Selection<Shape>, IScript
+    public partial class ShapeSelection : Selection<Shape>
     {
         // Public properties
 
@@ -33,11 +33,7 @@
 
         // Public methods
 
-        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
-
         public IEnumerable<int> GetShapeIndices() => Items.Select(p => p.Index);
-
-        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
 
         // Private methods
 
@@ -50,5 +46,12 @@
             GetProperty(p => f(p).X),
             GetProperty(p => f(p).Y),
             GetProperty(p => f(p).Z));
+    }
+
+    partial class ShapeSelection : Selection<Shape>, IScript
+    {
+        public string GetScript(ShaderType shaderType) => GetProperty(p => p.GetScript(shaderType)) ?? string.Empty;
+
+        public void SetScript(ShaderType shaderType, string value) => SetProperty(p => p.SetScript(shaderType, value));
     }
 }
