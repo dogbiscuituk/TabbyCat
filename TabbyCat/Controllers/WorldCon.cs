@@ -36,7 +36,21 @@
 
         // Public properties
 
-        public GLInfo GLInfo => RenderCon.TheGLInfo ?? RenderCon?.GLInfo;
+        //public GLInfo GLInfo => RenderCon.TheGLInfo ?? RenderCon?.GLInfo;
+
+        /*
+        public GLInfo GLInfo
+        {
+            get
+            {
+                var info = RenderCon.TheGLInfo;
+                if (info != null)
+                    return info;
+                info = RenderCon.GLInfo;
+                return info;
+            }
+        }
+        */
 
         public override Scene Scene { get; set; }
 
@@ -397,10 +411,12 @@
 
         private void UpdateGraphicsModeLabel()
         {
+            /*
             var label = WorldForm.GraphicsModeLabel;
             var mode = GraphicsMode;
             label.Text = Resources.Text_GraphicsModeIndexFormat.Format(mode.Index);
             label.ToolTipText = mode.AsString();
+            */
         }
 
         private void UpdateSelection()

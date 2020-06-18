@@ -68,6 +68,7 @@
 
         public float FramesPerSecond { get; private set; }
 
+        /*
         public GLInfo GLInfo
         {
             get
@@ -89,7 +90,11 @@
                 if (TheGraphicsMode == null)
                 {
                     GraphicsMode mode = null;
-                    UsingGL(() => mode = SceneControl.GraphicsMode);
+                    var sceneControl = SceneCon.GetSceneControl();
+                    if (sceneControl != null)
+                        UsingGL(() => mode = SceneControl.GraphicsMode);
+                    else
+                        mode = new GraphicsMode();
                     lock (ModeSyncRoot)
                         TheGraphicsMode = mode;
                 }
@@ -97,11 +102,10 @@
             }
         }
 
-        public bool SceneControlSuspended { get; set; }
-
         // Public static properties
 
         public static GLInfo TheGLInfo { get; private set; }
+        */
 
         // Private properties
 
@@ -111,7 +115,7 @@
 
         // Private static properties
 
-        private static GraphicsMode TheGraphicsMode { get; set; }
+        //private static GraphicsMode TheGraphicsMode { get; set; }
 
         // Public methods
 
@@ -127,9 +131,9 @@
         public void Invalidate()
         {
             InvalidateAllShapes();
-            InvalidateCameraView();
+            //InvalidateCameraView();
             InvalidateProgram();
-            InvalidateProjection();
+            //InvalidateProjection();
         }
 
         public void InvalidateProgram()
@@ -152,8 +156,8 @@
 
         public void Refresh()
         {
-            lock (ModeSyncRoot)
-                TheGraphicsMode = null;
+            //lock (ModeSyncRoot)
+            //    TheGraphicsMode = null;
             InvalidateProgram();
             InvalidateAllShapes();
         }
@@ -183,7 +187,14 @@
                     ValidateShape(shape);
                     GL.BindVertexArray(shape.Vao.VaoID);
                     GL.EnableVertexAttribArray(0);
-                    GL.DrawElements((PrimitiveType)((int)shape.Pattern & 0x0F), shape.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    try
+                    {
+                        GL.DrawElements((PrimitiveType)((int)shape.Pattern & 0x0F), shape.Vao.ElementCount, DrawElementsType.UnsignedInt, 0);
+                    }
+                    catch (AccessViolationException)
+                    {
+                        ;
+                    }
                     GL.DisableVertexAttribArray(0);
                     GL.BindVertexArray(0);
                 }
@@ -337,10 +348,10 @@
         {
             if (action == null)
                 return;
-            var ok = !SceneControlSuspended &&
-                     SceneControl?.IsHandleCreated == true &&
-                     SceneControl?.HasValidContext == true &&
-                     SceneControl?.Visible == true;
+            var ok =
+                SceneControl?.IsHandleCreated == true &&
+                SceneControl?.HasValidContext == true &&
+                SceneControl?.Visible == true;
             if (ok)
             {
                 if (_currencyCount != 0)
@@ -349,8 +360,7 @@
                     SceneControl.MakeCurrent();
                 try
                 {
-                    UsingGLInvoke(action);
-                    //action();
+                    action();
                 }
                 finally
                 {
@@ -358,15 +368,6 @@
                         SceneControl.Context.MakeCurrent(null);
                 }
             }
-        }
-
-        private void UsingGLInvoke(Action action)
-        {
-            if (SceneControl.InvokeRequired)
-                SceneControl.Invoke(action);
-            else
-                action();
-
         }
 
         private void ValidateCameraView()

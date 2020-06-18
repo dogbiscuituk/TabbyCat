@@ -17,11 +17,13 @@
             AboutDialog.lblVersion.Text = Application.ProductVersion;
             AboutDialog.lblAuthor.Text = Application.CompanyName;
             AboutDialog.lblCopyright.Text = asm.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            /*
             var info = AppCon.WorldCons[0].GLInfo;
             AboutDialog.lblOpenGLVersion.Text = info.Number;
             AboutDialog.lblGLSLVersion.Text = info.Shader;
             AboutDialog.lblVendorName.Text = info.Vendor;
             AboutDialog.lblRendererName.Text = info.Renderer;
+            */
         }
 
         private AboutDialog _aboutDialog;

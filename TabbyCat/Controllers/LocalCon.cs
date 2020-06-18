@@ -149,7 +149,7 @@
         public virtual CommandCon CommandCon => WorldCon.CommandCon;
         public virtual JsonCon JsonCon => WorldCon.JsonCon;
         public virtual Scene Scene { get => WorldCon.Scene; set => WorldCon.Scene = value; }
-        public GLControl SceneControl => SceneForm?.Controls.OfType<GLControl>().FirstOrDefault();
+        public virtual GLControl SceneControl => SceneCon.SceneControl;
         public virtual WorldForm WorldForm => WorldCon.WorldForm;
 
         // Protected properties
@@ -169,7 +169,7 @@
         protected WorldCon WorldCon { get; }
 
         protected virtual Clock Clock => ClockCon.Clock;
-        protected virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
+        //protected virtual GraphicsMode GraphicsMode => RenderCon.GraphicsMode;
         protected virtual HotkeysForm HotkeysForm => HotkeysCon.HotkeysForm;
         protected virtual SceneForm SceneForm => SceneCon.SceneForm;
         protected virtual ScenePropertiesForm ScenePropertiesForm => ScenePropertiesCon.ScenePropertiesForm;
