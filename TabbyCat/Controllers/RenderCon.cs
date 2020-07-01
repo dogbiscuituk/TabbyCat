@@ -354,8 +354,6 @@
                 SceneControl?.Visible == true;
             if (ok)
             {
-                if (_currencyCount != 0)
-                    return;
                 if (++_currencyCount == 1)
                     SceneControl.MakeCurrent();
                 try
